@@ -34,7 +34,7 @@ function initMonroeIntro() {
   // Grace period: ignore accidental clicks and reload keystrokes (Cmd+R, Ctrl+R, F5)
   setTimeout(() => {
     canDismiss = true;
-  }, 900);
+  }, 450);
 
   function dismissIntro() {
     if (autoTimer) {
@@ -49,7 +49,7 @@ function initMonroeIntro() {
     canDismiss = false;
     setTimeout(() => {
       canDismiss = true;
-    }, 900);
+    }, 450);
     intro.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     const svgWrap = intro.querySelector('.monroe-handwriting-wrap');
@@ -60,17 +60,17 @@ function initMonroeIntro() {
     if (autoTimer) clearTimeout(autoTimer);
     autoTimer = setTimeout(() => {
       dismissIntro();
-    }, 7800);
+    }, 4600);
   }
 
   if (replayBtn) {
     replayBtn.addEventListener('click', playIntro);
   }
 
-  // Initial auto-dismiss after grand cursive handwriting finishes (~7.8s)
+  // Initial auto-dismiss after calligraphic handwriting finishes (~4.6s total)
   autoTimer = setTimeout(() => {
     dismissIntro();
-  }, 7800);
+  }, 4600);
 
   // Click or touch anywhere to enter after grace period
   intro.addEventListener('click', () => {

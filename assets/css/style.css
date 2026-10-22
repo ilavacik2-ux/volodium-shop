@@ -2829,37 +2829,37 @@ img {
 }
 
 .monroe-svg-title {
-  font-family: 'Pinyon Script', 'Alex Brush', cursive;
+  font-family: 'Alex Brush', cursive;
   font-size: 155px;
   font-weight: 400;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   fill: #0b0c10;
   stroke: #0b0c10;
-  stroke-width: 1.8px;
-  stroke-dasharray: 1500;
-  stroke-dashoffset: 1500;
-  animation: drawHandwriting 5.8s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.4s;
+  stroke-width: 1.5px;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: drawHandwriting 3.2s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.3s;
 }
 
 .monroe-svg-sub {
   font-family: var(--font-serif);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.55em;
   fill: #444444;
   stroke: #444444;
   stroke-width: 0.8px;
   stroke-dasharray: 700;
   stroke-dashoffset: 700;
-  animation: drawHandwriting 3.2s cubic-bezier(0.25, 1, 0.45, 1) forwards 3.6s;
+  animation: drawHandwriting 1.8s cubic-bezier(0.25, 1, 0.45, 1) forwards 2.0s;
 }
 
 @keyframes drawHandwriting {
   0% {
-    stroke-dashoffset: 1500;
+    stroke-dashoffset: 1400;
     fill-opacity: 0;
   }
-  75% {
+  70% {
     stroke-dashoffset: 0;
     fill-opacity: 0.25;
   }
@@ -2882,7 +2882,7 @@ img {
   opacity: 0;
   top: 48%;
   left: 20%;
-  animation: penTrack 5.8s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.4s;
+  animation: penTrack 3.2s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.3s;
 }
 
 @keyframes penTrack {
@@ -2902,7 +2902,7 @@ img {
   color: #9ca3af;
   margin-top: 1.25rem;
   opacity: 0;
-  animation: fadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 3s;
+  animation: fadeDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.4s;
   cursor: pointer;
   transition: color var(--transition-fast);
 }
@@ -2926,10 +2926,11 @@ img {
 
 .hero-title-monroe {
   display: block;
-  font-family: 'Pinyon Script', 'Alex Brush', cursive;
-  font-size: clamp(4.4rem, 10vw, 7.6rem);
-  line-height: 0.95;
-  font-weight: 400;
+  font-family: 'Playfair Display', var(--font-serif);
+  font-style: italic;
+  font-size: clamp(3.6rem, 8vw, 6.4rem);
+  line-height: 1.05;
+  font-weight: 600;
   letter-spacing: 0.02em;
   color: #111216;
   background: none;

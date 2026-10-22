@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMonroeIntro();
   initHeroCanvas();
   initCatalog();
-  initQuiz();
-  initCertificateStudio();
   initCart();
   initFAQ();
   initCookieBanner();
@@ -167,42 +165,57 @@ let currentSearch = '';
 let currentSort = 'popular';
 const selectedVolumes = {}; // map of perfumeId -> selected volume string ('3ml', '5ml', '10ml', 'bottle')
 
+const CATALOG_PAGE_SIZE = 12;
+let catalogVisibleCount = CATALOG_PAGE_SIZE;
+let lastFilteredCatalogItems = [];
+
 function initCatalog() {
-  const grid = document.getElementById('perfumesGrid');
   const searchInput = document.getElementById('catalogSearch');
   const sortSelect = document.getElementById('catalogSort');
   const tabBtns = document.querySelectorAll('.catalog-tabs .tab-btn');
+  const btnLoadMore = document.getElementById('btnLoadMore');
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       tabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentCategory = btn.dataset.category;
-      renderCatalog();
+      catalogVisibleCount = CATALOG_PAGE_SIZE;
+      renderCatalog(true);
     });
   });
 
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       currentSearch = e.target.value.toLowerCase().trim();
-      renderCatalog();
+      catalogVisibleCount = CATALOG_PAGE_SIZE;
+      renderCatalog(true);
     });
   }
 
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
       currentSort = e.target.value;
-      renderCatalog();
+      catalogVisibleCount = CATALOG_PAGE_SIZE;
+      renderCatalog(true);
     });
   }
 
-  renderCatalog();
+  if (btnLoadMore) {
+    btnLoadMore.addEventListener('click', () => {
+      catalogVisibleCount += CATALOG_PAGE_SIZE;
+      renderCatalog(false);
+      playChime(520);
+    });
+  }
+
+  renderCatalog(true);
   renderAromaBoxes();
 }
 
-function renderCatalog() {
+function renderCatalog(resetScroll = false) {
   const grid = document.getElementById('perfumesGrid');
-  if (!grid) return;
+  if (!grid || typeof PERFUMES_DATA === 'undefined') return;
 
   // Filter items (purely perfumes, aromaboxes are in their own dedicated showcase)
   let items = [];
@@ -225,8 +238,8 @@ function renderCatalog() {
       const name = (item.name || '').toLowerCase();
       const brand = (item.brand || '').toLowerCase();
       const desc = (item.description || '').toLowerCase();
-      const subtitle = (item.subtitle || '').toLowerCase();
-      return name.includes(currentSearch) || brand.includes(currentSearch) || desc.includes(currentSearch) || subtitle.includes(currentSearch);
+      const fullTitle = (item.fullTitle || '').toLowerCase();
+      return name.includes(currentSearch) || brand.includes(currentSearch) || desc.includes(currentSearch) || fullTitle.includes(currentSearch);
     });
   }
 
@@ -237,21 +250,44 @@ function renderCatalog() {
     items.sort((a, b) => getMinPrice(b) - getMinPrice(a));
   }
 
+  lastFilteredCatalogItems = items;
+
+  const paginationWrap = document.getElementById('catalogPagination');
+  const btnLoadMore = document.getElementById('btnLoadMore');
+  const loadMoreCount = document.getElementById('loadMoreCount');
+  const loadedInfo = document.getElementById('catalogLoadedInfo');
+
   if (items.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
-        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">Ничего не найдено по запросу «${escapeHtml(currentSearch)}»</p>
-        <p style="font-size: 0.9rem;">Попробуйте изменить категорию или напишите Владимиру в Telegram для подбора редкого аромата.</p>
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main);">Ничего не найдено по запросу «${escapeHtml(currentSearch)}»</p>
+        <p style="font-size: 0.9rem;">В нашей коллекции более 270 нишевых ароматов. Попробуйте изменить запрос или напишите Владимиру в Telegram для индивидуального поиска.</p>
         <a href="https://t.me/volodiumparfum" target="_blank" class="btn-secondary" style="margin-top: 1.5rem; display: inline-flex;">Написать в Telegram</a>
       </div>
     `;
+    if (paginationWrap) paginationWrap.style.display = 'none';
     return;
   }
 
-  grid.innerHTML = items.map(item => createProductCardHtml(item)).join('');
+  const visibleItems = items.slice(0, catalogVisibleCount);
+  grid.innerHTML = visibleItems.map(item => createProductCardHtml(item)).join('');
+
+  // Update pagination controls
+  if (paginationWrap && btnLoadMore) {
+    const remaining = items.length - visibleItems.length;
+    paginationWrap.style.display = 'flex';
+    if (remaining > 0) {
+      btnLoadMore.style.display = 'inline-flex';
+      if (loadMoreCount) loadMoreCount.textContent = `(+${Math.min(remaining, CATALOG_PAGE_SIZE)})`;
+      if (loadedInfo) loadedInfo.textContent = `Показано ${visibleItems.length} из ${items.length} ароматов`;
+    } else {
+      btnLoadMore.style.display = 'none';
+      if (loadedInfo) loadedInfo.textContent = `Все ${items.length} ароматов каталога показаны`;
+    }
+  }
 
   // Attach card event listeners
-  items.forEach(item => {
+  visibleItems.forEach(item => {
     // Volume buttons
     const volBtns = grid.querySelectorAll(`.vol-btn-${item.id}`);
     volBtns.forEach(btn => {
@@ -292,18 +328,25 @@ function renderAromaBoxes() {
   const grid = document.getElementById('aromaBoxesGrid');
   if (!grid || typeof AROMA_BOXES_DATA === 'undefined') return;
 
+  const volLabels = {
+    '3ml': '5 шт по 3 мл',
+    '5ml': '5 шт по 5 мл',
+    '10ml': '5 шт по 10 мл'
+  };
+
   grid.innerHTML = AROMA_BOXES_DATA.map(box => {
-    const currentVol = selectedVolumes[box.id] || '3ml';
-    const price = box.prices ? box.prices[currentVol] : 5900;
+    const availableVols = box.prices ? Object.keys(box.prices) : ['3ml'];
+    const currentVol = selectedVolumes[box.id] || availableVols[0];
+    const price = box.prices ? box.prices[currentVol] : 3240;
+    const oldPrice = box.oldPrices ? box.oldPrices[currentVol] : null;
     
     return `
       <div class="aroma-box-card" id="card-${box.id}">
-        ${box.badge ? `<span class="aroma-box-badge">${box.badge}</span>` : ''}
         <div class="aroma-box-img-wrap">
-          <img src="${box.image}" alt="${escapeHtml(box.name)}" loading="lazy">
+          <img src="${box.image}" alt="${escapeHtml(box.name)}" loading="lazy" onerror="this.src='${box.cdnImage || box.image}'">
         </div>
         <div class="aroma-box-content">
-          <span class="aroma-box-tag">Сет из 5 культовых отливантов</span>
+          <span class="aroma-box-tag">Аромабокс • 5 композиций</span>
           <h3 class="aroma-box-title">${box.name}</h3>
           <p class="aroma-box-desc">${box.subtitle || box.description}</p>
           
@@ -315,18 +358,20 @@ function renderAromaBoxes() {
           </div>
 
           <div class="volume-selector aroma-box-vol-selector">
-            <button class="volume-btn vol-btn-${box.id} ${currentVol === '3ml' ? 'active' : ''}" data-vol="3ml">
-              5 шт по 3 мл
-            </button>
-            <button class="volume-btn vol-btn-${box.id} ${currentVol === '5ml' ? 'active' : ''}" data-vol="5ml">
-              5 шт по 5 мл
-            </button>
+            ${availableVols.map(v => `
+              <button class="volume-btn vol-btn-${box.id} ${currentVol === v ? 'active' : ''}" data-vol="${v}">
+                ${volLabels[v] || v}
+              </button>
+            `).join('')}
           </div>
 
           <div class="card-footer aroma-box-footer">
             <div class="price-wrap">
-              <div class="price-current" id="price-${box.id}">${formatPrice(price)}</div>
-              <div class="price-unit">за весь набор (5 ароматов)</div>
+              <div class="price-row-box">
+                <span class="price-old" id="old-price-${box.id}" style="${oldPrice ? '' : 'display:none;'}">${oldPrice ? formatPrice(oldPrice) : ''}</span>
+                <div class="price-current" id="price-${box.id}">${formatPrice(price)}</div>
+              </div>
+              <div class="price-unit">за весь набор (5 флаконов)</div>
             </div>
             <button class="btn-primary btn-add-cart add-cart-${box.id}">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -351,8 +396,17 @@ function renderAromaBoxes() {
         const vol = btn.dataset.vol;
         selectedVolumes[box.id] = vol;
         const priceEl = document.getElementById(`price-${box.id}`);
+        const oldPriceEl = document.getElementById(`old-price-${box.id}`);
         if (priceEl && box.prices && box.prices[vol]) {
           priceEl.textContent = formatPrice(box.prices[vol]);
+        }
+        if (oldPriceEl) {
+          if (box.oldPrices && box.oldPrices[vol]) {
+            oldPriceEl.textContent = formatPrice(box.oldPrices[vol]);
+            oldPriceEl.style.display = 'inline';
+          } else {
+            oldPriceEl.style.display = 'none';
+          }
         }
         volBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -364,7 +418,8 @@ function renderAromaBoxes() {
     if (addBtn) {
       addBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const vol = selectedVolumes[box.id] || '3ml';
+        const availableVols = box.prices ? Object.keys(box.prices) : ['3ml'];
+        const vol = selectedVolumes[box.id] || availableVols[0];
         addItemToCart(box, vol);
         playChime(660);
       });
@@ -639,296 +694,12 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* ==========================================================================
-   4. Interactive Fragrance Quiz ("Парфюмерный гардероб за 60 секунд")
-   ========================================================================== */
-const QUIZ_STEPS = [
-  {
-    question: "Кому подбираем аромат?",
-    subtitle: "Выберите, для кого создается персональный парфюмерный гардероб",
-    options: [
-      { label: "Для неё", hint: "Женственные, чувственные, романтичные ноты", icon: "✨", val: "women" },
-      { label: "Для него", hint: "Мужественные, уверенные, статусные аккорды", icon: "🏛️", val: "men" },
-      { label: "Унисекс", hint: "Стильные нишевые композиции без гендерных рамок", icon: "💎", val: "unisex" },
-      { label: "В подарок", hint: "Идеально сбалансированные комплиментарные хиты", icon: "🎁", val: "gift" }
-    ]
-  },
-  {
-    question: "Какое впечатление вы хотите производить?",
-    subtitle: "Аромат — это невидимая визитная карточка вашего характера",
-    options: [
-      { label: "Статусный & Респектабельный", hint: "Дорогая кожа, благородное дерево, пряности", icon: "👑", val: "status" },
-      { label: "Сексуальный & Магнетический", hint: "Ликерная вишня, ваниль, амбра, манящий шлейф", icon: "🔥", val: "sexy" },
-      { label: "Свежий & Элегантный", hint: "Чистая белая рубашка, минералы, утренняя роса", icon: "🌿", val: "fresh" },
-      { label: "Уютный & Гурманский", hint: "Коньяк в дубовой бочке, корица, пралине", icon: "☕", val: "gourmand" }
-    ]
-  },
-  {
-    question: "Какие ноты вам наиболее приятны?",
-    subtitle: "Выберите любимое ольфакторное направление",
-    options: [
-      { label: "Дерево, Кожа и Табак", hint: "Уд, сандал, кедр, выдержанный табак", icon: "🪵", val: "woody" },
-      { label: "Минералы и Замша", hint: "Авангардная свежесть как в Ganymede", icon: "🪐", val: "mineral" },
-      { label: "Спелая вишня и Десерты", hint: "Ликер, миндаль, ваниль, шоколад", icon: "🍒", val: "cherry" },
-      { label: "Цветы и Экзотические фрукты", hint: "Пионы, личи, белый персик, флердоранж", icon: "🌸", val: "floral" }
-    ]
-  },
-  {
-    question: "В каком формате хотите познакомиться?",
-    subtitle: "Выберите комфортный для вас вариант знакомства",
-    options: [
-      { label: "Secret Box (Сюрприз)", hint: "Владимир подберет ароматы под вас лично", icon: "📦", val: "secret" },
-      { label: "Аромабокс (5 миниатюр)", hint: "Готовый тематический сет бестселлеров", icon: "✨", val: "box" },
-      { label: "Отливант 5 или 10 мл", hint: "Знакомство с конкретным флаконом на месяц", icon: "🧪", val: "decant" },
-      { label: "Личная консультация", hint: "Встреча с Владимиром и 150+ ароматами", icon: "👤", val: "consult" }
-    ]
-  }
-];
 
-let quizCurrentStep = 0;
-const quizAnswers = {};
 
-function initQuiz() {
-  const card = document.getElementById('quizCard');
-  if (!card) return;
-  renderQuizStep();
-}
 
-function renderQuizStep() {
-  const container = document.getElementById('quizStepContainer');
-  const progressFill = document.getElementById('quizProgressFill');
-  const stepText = document.getElementById('quizStepNumber');
-  const resultWrap = document.getElementById('quizResultWrap');
-  if (!container) return;
-
-  if (quizCurrentStep >= QUIZ_STEPS.length) {
-    // Show Results
-    container.style.display = 'none';
-    if (resultWrap) {
-      resultWrap.style.display = 'block';
-      renderQuizResults();
-    }
-    progressFill.style.width = '100%';
-    stepText.textContent = 'Итог подбора';
-    return;
-  }
-
-  container.style.display = 'block';
-  if (resultWrap) resultWrap.style.display = 'none';
-
-  const step = QUIZ_STEPS[quizCurrentStep];
-  progressFill.style.width = `${((quizCurrentStep + 1) / QUIZ_STEPS.length) * 100}%`;
-  stepText.textContent = `Шаг ${quizCurrentStep + 1} из ${QUIZ_STEPS.length}`;
-
-  container.innerHTML = `
-    <h3 class="quiz-question-title">${step.question}</h3>
-    <p class="quiz-question-sub">${step.subtitle}</p>
-    <div class="quiz-options-grid">
-      ${step.options.map((opt, i) => `
-        <button class="quiz-opt-btn ${quizAnswers[quizCurrentStep] === opt.val ? 'active' : ''}" data-val="${opt.val}">
-          <span class="quiz-opt-icon">${opt.icon}</span>
-          <span class="quiz-opt-label">${opt.label}</span>
-          <span class="quiz-opt-hint">${opt.hint}</span>
-        </button>
-      `).join('')}
-    </div>
-    <div class="quiz-actions">
-      ${quizCurrentStep > 0 ? `
-        <button class="btn-secondary" id="btnQuizPrev" style="padding: 0.65rem 1.4rem;">
-          ← Назад
-        </button>
-      ` : '<div></div>'}
-      <button class="btn-primary" id="btnQuizNext" style="padding: 0.65rem 1.8rem;" ${!quizAnswers[quizCurrentStep] ? 'disabled style="opacity:0.5; pointer-events:none;"' : ''}>
-        ${quizCurrentStep === QUIZ_STEPS.length - 1 ? 'Получить подборку ✨' : 'Далее →'}
-      </button>
-    </div>
-  `;
-
-  // Attach option clicks
-  container.querySelectorAll('.quiz-opt-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      container.querySelectorAll('.quiz-opt-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      quizAnswers[quizCurrentStep] = btn.dataset.val;
-      const nextBtn = document.getElementById('btnQuizNext');
-      if (nextBtn) {
-        nextBtn.removeAttribute('disabled');
-        nextBtn.style.opacity = '1';
-        nextBtn.style.pointerEvents = 'auto';
-      }
-      playChime(480);
-    });
-  });
-
-  const nextBtn = document.getElementById('btnQuizNext');
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      if (!quizAnswers[quizCurrentStep]) return;
-      quizCurrentStep++;
-      renderQuizStep();
-      playChime(600);
-    });
-  }
-
-  const prevBtn = document.getElementById('btnQuizPrev');
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      quizCurrentStep--;
-      renderQuizStep();
-      playChime(400);
-    });
-  }
-}
-
-function renderQuizResults() {
-  const resultCards = document.getElementById('quizResultCards');
-  if (!resultCards) return;
-
-  // Compute recommendations
-  let recPerfumes = [];
-  const notePref = quizAnswers[2];
-  const vibePref = quizAnswers[1];
-
-  if (notePref === 'cherry' || vibePref === 'sexy') {
-    recPerfumes = [
-      PERFUMES_DATA.find(p => p.id === 'lost-cherry'),
-      PERFUMES_DATA.find(p => p.id === 'angels-share'),
-      AROMA_BOXES_DATA.find(b => b.id === 'box-gourmand')
-    ];
-  } else if (notePref === 'mineral' || vibePref === 'fresh') {
-    recPerfumes = [
-      PERFUMES_DATA.find(p => p.id === 'ganymede'),
-      PERFUMES_DATA.find(p => p.id === 'byredo-blanche'),
-      AROMA_BOXES_DATA.find(b => b.id === 'box-cleanliness')
-    ];
-  } else if (notePref === 'woody' || vibePref === 'status') {
-    recPerfumes = [
-      PERFUMES_DATA.find(p => p.id === 'tobacco-vanille'),
-      PERFUMES_DATA.find(p => p.id === 'initio-oud-for-greatness'),
-      AROMA_BOXES_DATA.find(b => b.id === 'box-woody-leather')
-    ];
-  } else {
-    recPerfumes = [
-      PERFUMES_DATA.find(p => p.id === 'baccarat-540'),
-      PERFUMES_DATA.find(p => p.id === 'fleur-narcotique'),
-      AROMA_BOXES_DATA.find(b => b.id === 'box-compliments')
-    ];
-  }
-
-  // Filter out undefined
-  recPerfumes = recPerfumes.filter(Boolean);
-
-  resultCards.innerHTML = recPerfumes.map(item => `
-    <div class="perfume-card" style="background: rgba(255,255,255,0.03);">
-      <div class="card-img-wrap" style="height: 180px;">
-        <img src="${item.image}" alt="${escapeHtml(item.name)}">
-      </div>
-      <div class="card-brand">${item.brand || 'VOLODIUM PARFUM'}</div>
-      <h4 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 0.35rem;">${item.name}</h4>
-      <p style="font-size: 0.8rem; color: var(--gold-light); margin-bottom: 1rem;">${item.subtitle || ''}</p>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid var(--border-subtle); padding-top: 0.75rem;">
-        <span style="font-family: var(--font-serif); font-size: 1.3rem; font-weight: 600;">${formatPrice(getMinPrice(item))}</span>
-        <button class="btn-add-cart" onclick="addItemToCartById('${item.id}'); playChime(660);">В корзину</button>
-      </div>
-    </div>
-  `).join('');
-
-  // Telegram direct message link
-  const tgBtn = document.getElementById('btnQuizTgShare');
-  if (tgBtn) {
-    const summary = `Здравствуйте, Владимир! Я прошел подбор на сайте:
-- Для кого: ${quizAnswers[0] || 'не указано'}
-- Впечатление: ${quizAnswers[1] || 'не указано'}
-- Ноты: ${quizAnswers[2] || 'не указано'}
-- Формат: ${quizAnswers[3] || 'не указано'}
-Помогите, пожалуйста, согласовать идеальный бокс!`;
-    tgBtn.href = `https://t.me/volodiumparfum?text=${encodeURIComponent(summary)}`;
-  }
-}
-
-window.resetQuiz = function() {
-  quizCurrentStep = 0;
-  for (let key in quizAnswers) delete quizAnswers[key];
-  renderQuizStep();
-};
 
 /* ==========================================================================
-   5. Interactive 3D Gold Foil Certificate Studio
-   ========================================================================== */
-function initCertificateStudio() {
-  const card = document.getElementById('liveCertCard');
-  const nameInput = document.getElementById('certNameInput');
-  const wishInput = document.getElementById('certWishInput');
-  const recipientNameEl = document.getElementById('certDisplayRecipient');
-  const wishEl = document.getElementById('certDisplayWish');
-  const amountEl = document.getElementById('certDisplayAmount');
-  const amtBtns = document.querySelectorAll('.cert-amt-btn');
-  const addToCartBtn = document.getElementById('btnOrderCert');
-
-  let activeAmount = 5000;
-
-  if (amtBtns.length) {
-    amtBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        amtBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeAmount = parseInt(btn.dataset.amt, 10);
-        if (amountEl) amountEl.textContent = formatPrice(activeAmount);
-        playChime(500);
-      });
-    });
-  }
-
-  if (nameInput && recipientNameEl) {
-    nameInput.addEventListener('input', (e) => {
-      recipientNameEl.textContent = e.target.value.trim() || 'Имя получателя';
-    });
-  }
-
-  if (wishInput && wishEl) {
-    wishInput.addEventListener('input', (e) => {
-      wishEl.textContent = e.target.value.trim() ? `«${e.target.value.trim()}»` : '«Для самого особенного человека в мире ароматов»';
-    });
-  }
-
-  // 3D tilt tracking mouse
-  if (card) {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const rotateX = -(y / rect.height) * 16;
-      const rotateY = (x / rect.width) * 16;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    });
-  }
-
-  if (addToCartBtn) {
-    addToCartBtn.addEventListener('click', () => {
-      const recipient = (nameInput ? nameInput.value.trim() : '') || 'Владельцу сертификата';
-      const wish = (wishInput ? wishInput.value.trim() : '') || 'Для лучшего парфюмерного выбора';
-      const certItem = {
-        id: `cert-${activeAmount}-${Date.now()}`,
-        name: `Подарочный сертификат ${formatPrice(activeAmount)}`,
-        brand: 'VOLODIUM PARFUM',
-        price: activeAmount,
-        image: 'assets/images/IMG_3867.PNG',
-        isCert: true,
-        recipient: recipient,
-        wish: wish
-      };
-      addItemToCart(certItem, 'электронный');
-      playChime(700);
-      showToast(`Подарочный сертификат на ${formatPrice(activeAmount)} добавлен в корзину!`);
-    });
-  }
-}
-
-/* ==========================================================================
-   6. Shopping Cart & Checkout System
+   4. Shopping Cart & Checkout System
    ========================================================================== */
 let cart = [];
 let appliedPromo = null; // e.g. { code: 'СТАРТ', discountPercent: 10 }
@@ -998,10 +769,11 @@ function addItemToCart(item, volume) {
   if (existing) {
     existing.qty += 1;
   } else {
+    const itemName = item.name || item.title || item.level || 'VOLODIUM Парфюм';
     cart.push({
       cartId: cartId,
       itemId: item.id,
-      name: item.name,
+      name: itemName,
       brand: item.brand || 'VOLODIUM PARFUM',
       volume: volume,
       price: price,
@@ -1013,7 +785,7 @@ function addItemToCart(item, volume) {
   saveCart();
   updateCartBadge();
   renderCartDrawer();
-  showToast(`«${item.name}» (${volume}) добавлен в корзину`);
+  showToast(`«${item.name || item.title || 'Товар'}» (${volume}) добавлен в корзину`);
 }
 
 window.addItemToCartById = function(itemId, volume = '3ml') {
@@ -1172,6 +944,21 @@ function applyPromoCode() {
     showToast('Неверный промокод или срок его действия истек');
   }
 }
+
+window.copyPromoCode = function(code = 'СТАРТ') {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(code).catch(() => {});
+  }
+  const input = document.getElementById('promoCodeInput');
+  if (input) {
+    input.value = code;
+  }
+  appliedPromo = { code: code, discountPercent: 10 };
+  openCart();
+  renderCartDrawer();
+  playChime(660);
+  showToast(`Промокод «${code}» активирован! Скидка 10% применена.`);
+};
 
 /* ==========================================================================
    7. Checkout Form & Telegram Order Forwarding

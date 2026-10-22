@@ -1,536 +1,6075 @@
 /**
- * VOLODIUM PARFUM - Catalog Database
- * Curated selection of iconic niche fragrances, signature aroma boxes, and secret boxes.
+ * VOLODIUM PARFUM - Authentic Catalog Database
+ * Scraped and synchronized with official store https://volodiumparfum.ru
+ * Total catalog perfumes: 277
+ * Total authentic aromaboxes: 9
+ * Total secret boxes: 3
  */
+
 const PERFUMES_DATA = [
   {
-    id: "baccarat-540",
-    brand: "Maison Francis Kurkdjian",
-    name: "Baccarat Rouge 540 Extrait",
-    subtitle: "Древесно-амбровый эталон роскоши",
-    gender: "unisex",
-    category: "perfume",
-    notesFamily: "oriental",
-    image: "assets/images/perfumes/baccarat-540.jpg",
-    badge: "Абсолютный Хит",
-    prices: {
-      "3ml": 1900,
-      "5ml": 2900,
-      "10ml": 5200,
-      "bottle": 38500
+    "id": "vp-501166132292",
+    "uid": 501166132292,
+    "brand": "SIU",
+    "name": "Sisu",
+    "fullTitle": "SIU Sisu",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3534-6563-4266-b632-633933346232/e198519c028ea4797f745871c968304f.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 970,
+      "5ml": 1450,
+      "10ml": 2600,
+      "15ml": 3750,
+      "20ml": 4300
     },
-    bottleSize: "70 ml",
-    pyramid: {
-      top: ["Горький миндаль", "Красный шафран"],
-      heart: ["Египетский жасмин Грандифлорум", "Виргинский кедр"],
-      base: ["Серая амбра", "Древесный мускус", "Сухая древесина"]
-    },
-    metrics: {
-      longevity: "18+ часов",
-      longevityScore: 98,
-      sillage: "Шлейф до 5 метров",
-      sillageScore: 95,
-      season: "Осень / Зима / Вечер",
-      vibe: "Статусный, магнетический, густой"
-    },
-    description: "Легендарный парфюмерный манифест Франсиса Кюркджяна. Версия Extrait de Parfum звучит глубже, теплее и богаче классики: горьковатый миндаль сплетается с драгоценным шафраном, хрустальным жасмином и густой серой амброй."
+    "description": "Яркий, многоликий, богатый аромат ухоженной и уверенной в себе женщины, которая не боится быть в центре внимания и оставлять за собой длинный, манящий шлейф. Композиция стартует освежающим цветочно-травяным оттенком лаванды в окружении ненавязчивых белых цветов. Таинственный а...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/501166132292-siu-sisu"
   },
   {
-    id: "ganymede",
-    brand: "Marc-Antoine Barrois",
-    name: "Ganymede",
-    subtitle: "Минерально-замшевый космический футуризм",
-    gender: "unisex",
-    category: "perfume",
-    notesFamily: "mineral",
-    image: "assets/images/perfumes/ganymede.jpg",
-    badge: "Топ Комплиментов",
-    prices: {
-      "3ml": 1400,
-      "5ml": 2100,
+    "id": "vp-293527017052",
+    "uid": 293527017052,
+    "brand": "Fugazzi",
+    "name": "Orange Crush",
+    "fullTitle": "Fugazzi Orange Crush",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6263-3732-4230-a561-633237353330/7ce8effdb661cfda5bf4e9ef0ecc3f22.png",
+    "badge": "",
+    "prices": {
+      "3ml": 825,
+      "5ml": 1275,
+      "10ml": 2350
+    },
+    "description": "Композиция составлена всего из трех основных ингредиентов. Первый: синтетическая молекула Iso e Super (вызывает ощущение мягкой, прозрачной древесины). Второй: белая амбра (обладающая способностью вызывать теплое, успокаивающее ощущение, живая теплота кожи). Третье: апельсин (...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/293527017052-fugazzi-orange-crush"
+  },
+  {
+    "id": "vp-606165626662",
+    "uid": 606165626662,
+    "brand": "ByBozo",
+    "name": "Will You Marry Me?",
+    "fullTitle": "ByBozo Will You Marry Me?",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "floral",
+    "image": "https://static.tildacdn.com/stor6236-3665-4530-b366-366632386439/49ccbbd60b7651a46941c223ca2b9e4b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 825,
+      "5ml": 1275,
+      "10ml": 2350,
+      "15ml": 3225,
+      "20ml": 3900
+    },
+    "description": "\"Will You Marry Me?\" - аромат, вдохновлённый одним из самых нежных моментов в жизни. Его нежное и притягательное звучание пробуждает воспоминания о встречах, любви и романтике. Ноты сочных фруктов, переносят в состояния первой влюбленности и ощущения безграничного счастья. Byb...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/606165626662-bybozo-will-you-marry-me"
+  },
+  {
+    "id": "vp-779512634542",
+    "uid": 779512634542,
+    "brand": "Dolce & Gabbana",
+    "name": "The Only One intense",
+    "fullTitle": "Dolce&Gabbana The Only One intense",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3939-3361-4230-a434-363131346561/8cd9a6c0b3654af1d0e5d417c2d58e35.png",
+    "badge": "",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
+    },
+    "description": "Аромат The Only One Eau de Parfum Intense — это особая, изысканная и притягательная форма женственности. Соблазнительный и пьянящий аромат объединяет свежесть цитрусов, нежность цветов и тонкую сладость ванили. В начале — сияние: итальянский мандарин и нероли ловят последние л...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/779512634542-dolceampgabbana-the-only-one-intense"
+  },
+  {
+    "id": "vp-671760672482",
+    "uid": 671760672482,
+    "brand": "French Avenue",
+    "name": "Mythical Gryphon",
+    "fullTitle": "French Avenue Mythical Gryphon",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6331-3739-4232-b162-373034363763/beaab54270f182f2d5e0f008a022113b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Это символ силы и элегантности, созданный для тех, кто стремится выделяться и подчеркивать свою индивидуальность. Этот уникальный аромат, воплощающий современность и традицию, погружает в мир, где магия и реальность переплетаются. Он начинается с ярких акцентов, в которых соче...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/671760672482-french-avenue-mythical-gryphon"
+  },
+  {
+    "id": "vp-331971244182",
+    "uid": 331971244182,
+    "brand": "Givenchy",
+    "name": "Gentleman Boisée",
+    "fullTitle": "Gentleman Givenchy Boisée",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3262-3038-4266-a563-343961626630/6159524a990a4ee3b2534576a0e4d69e.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 660,
+      "5ml": 1050,
+      "10ml": 2000,
+      "15ml": 2850,
+      "20ml": 3600
+    },
+    "description": "Мужская парфюмерная вода Gentleman Givenchy Boisée - древесный цветочный аромат, который усиливает магнетическое притяжение и раскрывает чувственную сторону мужчины. В композиции парфюмерной воды Gentleman Givenchy Boisée элегантная нота Ириса гармонирует с притягательным акко...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/331971244182-gentleman-givenchy-boise"
+  },
+  {
+    "id": "vp-623394294672",
+    "uid": 623394294672,
+    "brand": "Afnan",
+    "name": "Tribute Blue",
+    "fullTitle": "Afnan Tribute Blue",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6664-6131-4837-a238-376534633630/f7ccb5fdf62011af4edabdf1d4d17c84.png",
+    "badge": "",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Синий — цвет моря и неба. Цвет бескрайнего пространства аравийской пустыни. Аромат действительно напоминает путешествие по пустыне — прохладные аккорды цитрусов создают выразительный контраст с теплыми древесными нотами, будто после долгого перехода ты вступаешь в цветущий оаз...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/623394294672-afnan-tribute-blue"
+  },
+  {
+    "id": "vp-580504102842",
+    "uid": 580504102842,
+    "brand": "French Avenue",
+    "name": "Vulcan Black Friday",
+    "fullTitle": "French Avenue Vulcan Black Friday",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6332-6536-4866-b838-326439356665/dab8d5e75ceca33e55c2cf075c460cbe.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "French Avenue Vulcan Black Friday — это смелый, дымно-кожаный мужской парфюм из ОАЭ, выпущенный в 2025 году. Верхние ноты: Шафран, корица и сочное яблоко, задающие пряно-фруктовый старт. Средние ноты: Аккорды брутальной дымной кожи и бархатистая роза. Базовые ноты: Пачули, мох...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/580504102842-french-avenue-vulcan-black-friday"
+  },
+  {
+    "id": "vp-347578816322",
+    "uid": 347578816322,
+    "brand": "French Avenue",
+    "name": "Fierte Luna",
+    "fullTitle": "French Avenue Fierte Luna",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6433-3937-4338-a437-636631376263/d1293331cb3124144d4d32ace640731c.png",
+    "badge": "",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
+    },
+    "description": "Утонченный сладко-цитрусовый эликсир Fragrance World Fierte Luna – это гармоничное сочетание солнечных цитрусов, натурального меда и элитного табака. Отличный вариант для прохладной погоды. Парфюмер уделил особое внимание деталям. Эффектный старт взрывается терпким лимоном и б...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/347578816322-french-avenue-fierte-luna"
+  },
+  {
+    "id": "vp-498946979672",
+    "uid": 498946979672,
+    "brand": "Electimuss",
+    "name": "Black Caviar",
+    "fullTitle": "Electimuss Black Caviar",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3232-6637-4839-b765-376534616431/cc1ec7ebf82d765a5f1347af9a1e7dac.png",
+    "badge": "",
+    "prices": {
+      "3ml": 960,
+      "5ml": 1500,
+      "10ml": 2800,
+      "15ml": 3900,
+      "20ml": 4800
+    },
+    "description": "Эстетский, изысканный, статный — Black Caviar заряжает уверенностью. Деликатес, почитаемый на пирах императора, в своем ольфакторном воплощении звучит томно и пряно. Удовое дерево и кедр неожиданно смеяняются лавандой, которую смешали с оттенками шалфея и розмарина. Солоновату...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/498946979672-electimuss-black-caviar"
+  },
+  {
+    "id": "vp-928039740202",
+    "uid": 928039740202,
+    "brand": "Ajmal",
+    "name": "Shine",
+    "fullTitle": "Ajmal Shine",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3738-3838-4937-b430-646465336664/2c345e6233b3bd17bb4d222443c78569.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 477,
+      "5ml": 745,
+      "10ml": 1390,
+      "15ml": 1935,
+      "20ml": 2380
+    },
+    "description": "Ajmal Shine — это популярный женский цветочно-фруктовый аромат от известного парфюмерного бренда Ajmal из ОАЭ, выпущенный в 2017 году. Парфюм входит в изысканную коллекцию Prestige и позиционируется как яркий, жизнерадостный, кокетливый и солнечный аромат для современных женщи...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/928039740202-ajmal-shine"
+  },
+  {
+    "id": "vp-654393277562",
+    "uid": 654393277562,
+    "brand": "Afnan",
+    "name": "Mirsaal of Trust",
+    "fullTitle": "Afnan Mirsaal of Trust",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6435-6637-4761-b761-653337306630/23b64eb7bf0fcf395522e551e969e2b2.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Mirsaal of Trust Afnan — восточный пряный аромат для мужчин, выпущенный в 2020 году. Название переводится как «Послание доверия» — аромат лаконичный, уверенный, без лишних слов. Mirsaal of Trust — необычная конструкция: вместо привычных цитрусовых верхов — Ambroxan и ветивер, ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/654393277562-afnan-mirsaal-of-trust"
+  },
+  {
+    "id": "vp-367678801132",
+    "uid": 367678801132,
+    "brand": "French Avenue",
+    "name": "An Equestrian Series Olena",
+    "fullTitle": "French Avenue An Equestrian Series Olena",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6535-3139-4233-b036-366666376362/f3708c97e3f2f53cf8bf69c6a104df3c.png",
+    "badge": "",
+    "prices": {
+      "3ml": 495,
+      "5ml": 775,
+      "10ml": 1450,
+      "15ml": 2025,
+      "20ml": 2500
+    },
+    "description": "French Avenue An Equestrian Series Olena — это популярный женский аромат от известного арабского бренда Fragrance World (выпускаемый в рамках их премиальной линейки French Avenue). Парфюм относится к группе цветочные, фруктовые, гурманские и широко известен как более доступный...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/367678801132-french-avenue-an-equestrian-series-olena"
+  },
+  {
+    "id": "vp-844009709762",
+    "uid": 844009709762,
+    "brand": "Burberry",
+    "name": "London for woman",
+    "fullTitle": "Burberry London for woman",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6537-3462-4265-b432-336266323034/cc1bc4f7f2a70e84304ae494ef8899ab.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Это цветочная парфюмерная вода, которую бренд выпустил в 2006 году. Создатели хотели передать атмосферу современного Лондона: например, прогулку после дождя, когда в воздухе витает аромат мокрых тротуаров, парков, жимолости и жасмина. Многие ассоциируют парфюм с «духом дождлив...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/844009709762-burberry-london-for-woman"
+  },
+  {
+    "id": "vp-264493861902",
+    "uid": 264493861902,
+    "brand": "Chopard",
+    "name": "Iris Malika",
+    "fullTitle": "Chopard Iris Malika",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3039-6438-4661-a535-346137336634/f82c652c8cec0bbbafd61a5fc89663ea.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 750,
+      "5ml": 1150,
+      "10ml": 2100,
+      "15ml": 2850,
+      "20ml": 3400
+    },
+    "description": "Chopard Iris Malika — это роскошный восточно-цветочный аромат для женщин, выпущенный в 2022 году в рамках элитной коллекции Chopard Imperiale. Созданный парфюмером Дорой Багриш, он задумывался как ольфакторное воплощение королевского величия и ювелирных украшений с аметистами....",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/264493861902-chopard-iris-malika"
+  },
+  {
+    "id": "vp-460809808402",
+    "uid": 460809808402,
+    "brand": "Ajmal",
+    "name": "Amber Zest",
+    "fullTitle": "Ajmal Amber Zest",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3563-6165-4665-b365-313932303737/f60f6c25eb9baf6a508a0d276d68d0c3.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "С 1951 дом AJMAL выпускает пышные, сияющие обилием оттенков ароматы, влюбляющие в себя миллионы людей по всему миру. Amber Zest - это соблазнительный и чарующий аромат для мужчин и женщин. Он открывается освежающим и в то же время пленительным аккордом бергамота, грейпфрута, л...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/460809808402-ajmal-amber-zest"
+  },
+  {
+    "id": "vp-630169855112",
+    "uid": 630169855112,
+    "brand": "Byredo",
+    "name": "Blanche",
+    "fullTitle": "Byredo Blanche",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6164-6332-4534-b761-313561623333/e9110ca5ecba10d7ecd8cb62e0e1c325.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1020,
+      "5ml": 1600,
+      "10ml": 3000,
+      "15ml": 4500,
+      "20ml": 5200
+    },
+    "description": "Byredo Blanche — это культовый цветочно-альдегидный аромат от шведского нишевого бренда Byredo, созданный основателем марки Беном Горхэмом в 2009 году. Композиция стала синонимом абсолютной чистоты, свежести и минимализма, напоминая запах хрустящих белых простыней, дорогого мы...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/630169855112-byredo-blanche"
+  },
+  {
+    "id": "vp-970646418732",
+    "uid": 970646418732,
+    "brand": "French Avenue",
+    "name": "Bourbon",
+    "fullTitle": "French Avenue Bourbon",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3061-6335-4935-b064-366239336437/0d93f566f33c1b23d500652744b4af02.png",
+    "badge": "",
+    "prices": {
+      "3ml": 465,
+      "5ml": 725,
+      "10ml": 1350,
+      "15ml": 1875,
+      "20ml": 2300
+    },
+    "description": "Композиция выделяется своим глубоким, согревающим и аристократичным звучанием. Она сочетает в себе свежие пряные специи, гурманские алкогольные акценты и благородную древесную базу. Верхние ноты: Корица, перечная мята, древесная кора и базилик. Создают контрастное, одновременн...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/970646418732-french-avenue-bourbon"
+  },
+  {
+    "id": "vp-232428211382",
+    "uid": 232428211382,
+    "brand": "Kilian",
+    "name": "Good Girl Gone Bad",
+    "fullTitle": "Kilian Good Girl Gone Bad",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3764-3165-4164-a539-383730336661/14cbf5095d7d6382baa13617e05ed6cd.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1185,
+      "5ml": 1875,
+      "10ml": 3550,
+      "15ml": 5025,
+      "20ml": 6300
+    },
+    "description": "Источник вдохновения Килиана Хеннесси. Good girl gone Bad by Kilian — настоящий вихрь смелых фруктовых ароматов в райском саду добра и зла. Аромат. Одновременно невинный и чувственный аромат открывается абрикосовыми оттенками цветов апельсина и абсолютов османтуса и майской ро...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/232428211382-kilian-good-girl-gone-bad"
+  },
+  {
+    "id": "vp-603968070092",
+    "uid": 603968070092,
+    "brand": "Chanel",
+    "name": "Coco Noir",
+    "fullTitle": "Chanel Coco Noir",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3636-3765-4033-a538-663834626231/cd828748580fd9255f25de6e66b0720d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 756,
+      "5ml": 1160,
+      "10ml": 2120,
+      "15ml": 2880,
+      "20ml": 3440
+    },
+    "description": "Chanel Coco Noir — это ода тёмной, загадочной женственности, где классическая элегантность встречается с чувственной глубиной. Аромат словно воплощает саму ночь: в нём есть и холодная, освежающая грань, и тёплое, обволакивающее сердце, которое раскрывается постепенно, оставляя...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/603968070092-chanel-coco-noir"
+  },
+  {
+    "id": "vp-995917670782",
+    "uid": 995917670782,
+    "brand": "French Avenue",
+    "name": "Tropical kiss",
+    "fullTitle": "French Avenue Tropical kiss",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3632-6264-4636-b163-656431633637/22e4256a14cdeb83f3f9153421dd6081.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Это восхитительная парфюмерная композиция, которая погружает в атмосферу тропических путешествий и оставляет за собой шлейф незабываемых воспоминаний. Этот аромат, созданный мастером парфюмерного искусства Жан-Луи Сьозаком, предназначен для женщин, которые жаждут окутать себя ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/995917670782-french-avenue-tropical-kiss"
+  },
+  {
+    "id": "vp-538782379242",
+    "uid": 538782379242,
+    "brand": "ByBozo",
+    "name": "Rival in love",
+    "fullTitle": "Bybozo Rival in love",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3836-3936-4337-a562-333833636638/8fbf02d2e3a15ed7070a53298980e2b4.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "Ambre Pimente — про благородную сложность и уют без излишней сладости. Пряный старт моментально бодрит, сердце из кедра, гваяка и амбры добавляет статусный древесно-тёплый характер, а база из мускуса и ветивера делает шлейф стойким и узнаваемым. Лучше всего аромат раскрывается...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/538782379242-bybozo-rival-in-love"
+  },
+  {
+    "id": "vp-694060228352",
+    "uid": 694060228352,
+    "brand": "Ajmal",
+    "name": "Ambre Pimente",
+    "fullTitle": "Ajmal Ambre Pimente",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6231-3837-4231-a632-373963376562/c28b54b68b950cb7b6c0ed52a1710ca6.png",
+    "badge": "",
+    "prices": {
+      "3ml": 435,
+      "5ml": 675,
+      "10ml": 1250,
+      "15ml": 1725,
+      "20ml": 2100
+    },
+    "description": "Ajmal Ambre Pimente — это восточно-древесный нишевый аромат-унисекс, выпущенный известным парфюмерным домом из ОАЭ Ajmal в 2012 году. Композиция сочетает в себе теплоту амбры, выраженную остроту специй и благородные древесные оттенки. Парфюм обладает отличной стойкостью и инти...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/694060228352-ajmal-ambre-pimente"
+  },
+  {
+    "id": "vp-131585660712",
+    "uid": 131585660712,
+    "brand": "Ex Nihilo",
+    "name": "Fleur Narcotique",
+    "fullTitle": "Ex Nihilo Fleur Narcotique",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3564-3234-4162-b266-303962383939/b00e2c88b59de9f0a5d07dbf35beb620.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1260,
+      "5ml": 2000,
       "10ml": 3800,
-      "bottle": 24900
+      "15ml": 5400,
+      "20ml": 6800
     },
-    bottleSize: "100 ml",
-    pyramid: {
-      top: ["Итальянский мандарин", "Шафран"],
-      heart: ["Китайский османтус", "Абсолют фиалки"],
-      base: ["Акигалавуд (Akigalawood)", "Бессмертник", "Тонкая замша"]
-    },
-    metrics: {
-      longevity: "24+ часа",
-      longevityScore: 100,
-      sillage: "Километровый шлейф",
-      sillageScore: 99,
-      season: "Всесезонный",
-      vibe: "Авангардный, притягательный, чистый"
-    },
-    description: "Созданный гениальным Квентином Бишем, Ganymede стал главным парфюмерным феноменом десятилетия. Минеральные аккорды свежести, мягкая перчаточная замша и благородный древесный акигалавуд создают шлейф, который невозможно забыть."
+    "description": "«Цветочная передозировка». Аромат-воплощение современной женщины, загадочной и соблазнительной. Окутывающий и необычный цветочный аромат, яркий взрыв насыщенных нот с чувственным шлейфом пиона и древесных оттенков. Это воплощение экзотического цветка, беззаботного и рокового о...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/131585660712-ex-nihilo-fleur-narcotique"
   },
   {
-    id: "lost-cherry",
-    brand: "Tom Ford",
-    name: "Lost Cherry",
-    subtitle: "Пьянящая вишня в амаретто и ликере",
-    gender: "women",
-    category: "perfume",
-    notesFamily: "gourmand",
-    image: "assets/images/perfumes/lost-cherry.jpg",
-    badge: "Чувственный Соблазн",
-    prices: {
-      "3ml": 1800,
-      "5ml": 2700,
-      "10ml": 4900,
-      "bottle": 36000
+    "id": "vp-224216745342",
+    "uid": 224216745342,
+    "brand": "French Avenue",
+    "name": "An Equestrian Series Della",
+    "fullTitle": "French Avenue An Equestrian Series Della",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3137-3530-4661-a532-623939303438/fb9fa174ffeb3e295ca75e052ee99331.png",
+    "badge": "",
+    "prices": {
+      "3ml": 495,
+      "5ml": 775,
+      "10ml": 1450,
+      "15ml": 2025,
+      "20ml": 2500
     },
-    bottleSize: "50 ml",
-    pyramid: {
-      top: ["Черная вишня", "Вишневый ликер", "Горький миндаль"],
-      heart: ["Вишневый сироп Griotte", "Турецкая роза", "Жасмин самбак"],
-      base: ["Перуанский бальзам", "Бобы тонка", "Сандал", "Ветивер", "Кедр"]
-    },
-    metrics: {
-      longevity: "10-12 часов",
-      longevityScore: 88,
-      sillage: "Соблазнительный шлейф",
-      sillageScore: 90,
-      season: "Осень / Зима / Свидания",
-      vibe: "Сексуальный, десертный, пьянящий"
-    },
-    description: "Культовый аромат запретного удовольствия. Сочные спелые вишни, утопающие в вишневом ликере с миндальной горчинкой и согревающим послевкусием пряных бобов тонка."
+    "description": "An Equestrian Series Della от бренда French Avenue (суббренд Fragrance World, ОАЭ) — это женская парфюмерная вода (EDP), выпущенная в 2025 году. Аромат принадлежит к группе цветочные и позиционируется как более доступная альтернатива знаменитому нишевому парфюму Delina от Parf...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/224216745342-french-avenue-an-equestrian-series-della"
   },
   {
-    id: "angels-share",
-    brand: "Kilian",
-    name: "Angels' Share",
-    subtitle: "Выдержанный коньяк, корица и пралине",
-    gender: "unisex",
-    category: "perfume",
-    notesFamily: "gourmand",
-    image: "assets/images/perfumes/angels-share.jpg",
-    badge: "Зимний Фаворит",
-    prices: {
-      "3ml": 1750,
-      "5ml": 2600,
-      "10ml": 4700,
-      "bottle": 31500
+    "id": "vp-501899333992",
+    "uid": 501899333992,
+    "brand": "Etat",
+    "name": "Libre d'Orange Putain des Palaces",
+    "fullTitle": "Etat Libre d'Orange Putain des Palaces",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6535-3963-4138-a636-663532383830/b711381e4ff9ce34a70b2aada72aecb5.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 840,
+      "5ml": 1300,
+      "10ml": 2400,
+      "15ml": 3300,
+      "20ml": 4000
     },
-    bottleSize: "50 ml",
-    pyramid: {
-      top: ["Выдержанный французский коньяк"],
-      heart: ["Корица", "Бобы тонка", "Дубовая древесина"],
-      base: ["Пралине", "Мадагаскарская ваниль", "Сандал"]
-    },
-    metrics: {
-      longevity: "14+ часов",
-      longevityScore: 92,
-      sillage: "Густой согревающий",
-      sillageScore: 94,
-      season: "Осень / Зима",
-      vibe: "Уютный, богатый, согревающий"
-    },
-    description: "«Доля ангелов» — парфюмерная ода знаменитой династии Хеннесси. Аромат дубовой коньячной бочки, яблочного пирога с корицей, карамельного пралине и теплой ванили."
+    "description": "Оригинальный нишевый аромат Etat Libre d'Orange Putain des Palaces на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/501899333992-etat-libre-dorange-putain-des-palaces"
   },
   {
-    id: "fleur-narcotique",
-    brand: "Ex Nihilo",
-    name: "Fleur Narcotique",
-    subtitle: "Цветочный гипноз с сочными личи и пионом",
-    gender: "women",
-    category: "perfume",
-    notesFamily: "floral",
-    image: "assets/images/perfumes/fleur-narcotique.jpg",
-    badge: "Бестселлер",
-    prices: {
-      "3ml": 1650,
-      "5ml": 2450,
-      "10ml": 4400,
-      "bottle": 29500
+    "id": "vp-933182442462",
+    "uid": 933182442462,
+    "brand": "Carner",
+    "name": "Barcelona Rima XI",
+    "fullTitle": "Carner Barcelona Rima XI",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6537-6131-4430-b736-636433636466/9a34a26610ab932184eb2651bc1e51a7.png",
+    "badge": "",
+    "prices": {
+      "3ml": 759,
+      "5ml": 1165,
+      "10ml": 2130,
+      "15ml": 2895,
+      "20ml": 3460
     },
-    bottleSize: "100 ml",
-    pyramid: {
-      top: ["Бергамот", "Личи", "Белый персик"],
-      heart: ["Жасмин", "Пион", "Цветок апельсина (Флердоранж)"],
-      base: ["Древесные ноты", "Дубовый мох", "Шелковистый мускус"]
-    },
-    metrics: {
-      longevity: "12+ часов",
-      longevityScore: 90,
-      sillage: "Яркий летящий шлейф",
-      sillageScore: 93,
-      season: "Весна / Лето / Офис / Вечер",
-      vibe: "Женственный, звонкий, комплиментарный"
-    },
-    description: "Наркотический цветок нового поколения. Взрыв сочного персика и экзотического личи, переходящий в охапку свежих пионов на прохладной мускусно-древесной базе."
+    "description": "Оригинальный нишевый аромат Carner Barcelona Rima XI на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/933182442462-carner-barcelona-rima-xi"
   },
   {
-    id: "tobacco-vanille",
-    brand: "Tom Ford",
-    name: "Tobacco Vanille",
-    subtitle: "Английский трубочный табак и теплая ваниль",
-    gender: "unisex",
-    category: "perfume",
-    notesFamily: "oriental",
-    image: "assets/images/perfumes/tobacco-vanille.jpg",
-    badge: "Классика Ниши",
-    prices: {
-      "3ml": 1700,
+    "id": "vp-338839865692",
+    "uid": 338839865692,
+    "brand": "French Avenue",
+    "name": "Chocola Addict",
+    "fullTitle": "French Avenue Chocola Addict",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6530-3036-4930-b865-353231643936/3db633703feee5b19b30b371ce3cac64.png",
+    "badge": "",
+    "prices": {
+      "3ml": 465,
+      "5ml": 725,
+      "10ml": 1350,
+      "15ml": 1875,
+      "20ml": 2300
+    },
+    "description": "Оригинальный нишевый аромат French Avenue Chocola Addict на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/338839865692-french-avenue-chocola-addict"
+  },
+  {
+    "id": "vp-996140651372",
+    "uid": 996140651372,
+    "brand": "Abercrombie",
+    "name": "& Fitch First Instinct",
+    "fullTitle": "Abercrombie & Fitch First Instinct",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6138-6136-4532-b036-636434303436/bcf814ddd78157564f52899de5bffb56.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Оригинальный нишевый аромат Abercrombie & Fitch First Instinct на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/996140651372-abercrombie-amp-fitch-first-instinct"
+  },
+  {
+    "id": "vp-606001055132",
+    "uid": 606001055132,
+    "brand": "Franck",
+    "name": "Boclet Chameleon",
+    "fullTitle": "Franck Boclet Chameleon",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3863-3033-4163-b463-303362623232/6c3c26338e103c8c465dd61d915f9d12.png",
+    "badge": "",
+    "prices": {
+      "3ml": 795,
+      "5ml": 1225,
+      "10ml": 2250,
+      "15ml": 3075,
+      "20ml": 3700
+    },
+    "description": "Оригинальный нишевый аромат Franck Boclet Chameleon на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/606001055132-franck-boclet-chameleon"
+  },
+  {
+    "id": "vp-652730016632",
+    "uid": 652730016632,
+    "brand": "French Avenue",
+    "name": "An Equestrian Series Pierce",
+    "fullTitle": "French Avenue An Equestrian Series Pierce",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3838-3433-4538-a331-316631643362/0ef114c6c4dd6ebe3ead328cca1f21db.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 495,
+      "5ml": 775,
+      "10ml": 1450,
+      "15ml": 2025,
+      "20ml": 2500
+    },
+    "description": "French Avenue An Equestrian Series Pierce — это парфюмерная вода из конной серии бренда French Avenue (производитель — Fragrance World, ОАЭ). Аромат заявлен как унисекс, но чаще позиционируется как мужской. Верхние ноты: бергамот, грейпфрут, нероли — дают яркий, свежий, чуть г...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/652730016632-french-avenue-an-equestrian-series-pierc"
+  },
+  {
+    "id": "vp-723871875672",
+    "uid": 723871875672,
+    "brand": "Chopard",
+    "name": "Love",
+    "fullTitle": "Chopard Love",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3764-6339-4639-b662-333466373534/97e6759ae44dc21e1b617e3bdb963a00.png",
+    "badge": "",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
+    },
+    "description": "Оригинальный нишевый аромат Chopard Love на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/723871875672-chopard-love"
+  },
+  {
+    "id": "vp-296582663002",
+    "uid": 296582663002,
+    "brand": "Afnan",
+    "name": "9pm",
+    "fullTitle": "Afnan 9pm",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6666-3233-4230-a163-623031353239/bb443be58f25304bafce50a6fe9ebd0a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Группа ароматов: Восточные, гурманские, пряные. Главный профиль: Сладкий, фруктовый, ванильный, свеже-пряный. Сезонность: Идеально подходит для осени, зимы и прохладных вечеров. Стойкость и шлейф: Выше среднего. Аромат держится на коже от 7–9 часов и оставляет заметный, компли...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/296582663002-afnan-9pm"
+  },
+  {
+    "id": "vp-983375599862",
+    "uid": 983375599862,
+    "brand": "Byzance",
+    "name": "Rochas",
+    "fullTitle": "Byzance Rochas",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3238-6139-4939-b135-383130663461/e76cd66a5c658860addd01806ea73733.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Оригинальный нишевый аромат Byzance Rochas на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/983375599862-byzance-rochas"
+  },
+  {
+    "id": "vp-824906269822",
+    "uid": 824906269822,
+    "brand": "Ajmal",
+    "name": "Aurum",
+    "fullTitle": "Ajmal Aurum",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6234-3133-4664-b736-323731663234/82a5274f0a9290dfc5a716346752d1fa.png",
+    "badge": "",
+    "prices": {
+      "3ml": 456,
+      "5ml": 710,
+      "10ml": 1320,
+      "15ml": 1830,
+      "20ml": 2240
+    },
+    "description": "Популярный цветочно-фруктовый женский аромат, выпущенный известным парфюмерным домом из ОАЭ Ajmal в 2011 году. Он позиционируется как роскошная, но доступная композиция, сочетающая восточную глубину с традициями европейского люкса. Верхние ноты: спелая малина и сочный лимон. С...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/824906269822-ajmal-aurum"
+  },
+  {
+    "id": "vp-632810215282",
+    "uid": 632810215282,
+    "brand": "ByBozo",
+    "name": "Date in paris",
+    "fullTitle": "Bybozo Date in paris",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3261-3136-4664-b332-393434636237/9779ab8282ccad6a0177b62f78b2f0e0.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Оригинальный нишевый аромат Bybozo Date in paris на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/632810215282-bybozo-date-in-paris"
+  },
+  {
+    "id": "vp-945088861562",
+    "uid": 945088861562,
+    "brand": "Essential Parfums",
+    "name": "Bois Impérial",
+    "fullTitle": "Essential Parfums Bois Impérial",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3836-6139-4137-a630-653733373664/0c78fcc7f354faeaa2e697db4a1dfa76.png",
+    "badge": "",
+    "prices": {
+      "3ml": 780,
+      "5ml": 1200,
+      "10ml": 2200,
+      "15ml": 3000,
+      "20ml": 3600
+    },
+    "description": "Оригинальный нишевый аромат Essential Parfums Bois Impérial на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/945088861562-essential-parfums-bois-imprial"
+  },
+  {
+    "id": "vp-298615513922",
+    "uid": 298615513922,
+    "brand": "French Avenue",
+    "name": "Coconut leche",
+    "fullTitle": "French Avenue Coconut leche",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3162-3039-4637-b139-376531613632/99e447d322df463079a4bfadfc54e1a5.png",
+    "badge": "",
+    "prices": {
+      "3ml": 465,
+      "5ml": 725,
+      "10ml": 1350,
+      "15ml": 1875,
+      "20ml": 2300
+    },
+    "description": "Оригинальный нишевый аромат French Avenue Coconut leche на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/298615513922-french-avenue-coconut-leche"
+  },
+  {
+    "id": "vp-633769156962",
+    "uid": 633769156962,
+    "brand": "Byredo",
+    "name": "Bal D`afrique",
+    "fullTitle": "Byredo Bal D`afrique",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3661-3564-4336-a166-393663623238/1ec4f7516209ae793f8fe95accaa6d75.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1080,
+      "5ml": 1700,
+      "10ml": 3200,
+      "15ml": 4500,
+      "20ml": 5600
+    },
+    "description": "Основатель бренда Бен Горхем задумал этот аромат как «любовное письмо» Африке. Композиция вдохновлена Парижем 1920-х годов, периодом расцвета авангарда, когда французская столица была очарована африканской культурой, музыкой, танцами и образом артистки Жозефины Бейкер. Аромат ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/633769156962-byredo-bal-dafrique"
+  },
+  {
+    "id": "vp-474848291622",
+    "uid": 474848291622,
+    "brand": "Franck",
+    "name": "Boclet Cocaïne",
+    "fullTitle": "Franck Boclet Cocaïne",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3334-3439-4133-a430-613335356130/db55e9819983b44c12127a3359914791.png",
+    "badge": "",
+    "prices": {
+      "3ml": 750,
+      "5ml": 1150,
+      "10ml": 2100,
+      "15ml": 2850,
+      "20ml": 3400
+    },
+    "description": "Это эпатирующий, провокационный и плотный унисекс-аромат, выпущенный в 2017 году в рамках коллекции Rock & Riot. Композиция вдохновлена эстетикой 1980-х годов: винилом, рок-н-роллом и бунтарским духом. По своей классификации парфюм относится к группе восточные и гурманские. Ве...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/474848291622-franck-boclet-cocane"
+  },
+  {
+    "id": "vp-209369748592",
+    "uid": 209369748592,
+    "brand": "Ajmal",
+    "name": "Shadow",
+    "fullTitle": "Ajmal Shadow",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3936-3037-4135-a136-333365366366/44088a6a4d978dbc2d537783e0cba80a.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 456,
+      "5ml": 710,
+      "10ml": 1320,
+      "15ml": 1830,
+      "20ml": 2240
+    },
+    "description": "Этот древесно-пряный аромат считается воплощением строгой мужской элегантности. Он полюбился ценителям за глубокое, медитативное звучание с выраженными дымными и землистыми оттенками. Пирамида нот: фимиам (ладан), мускатный шалфей, ветивер, пачули, сандал, мускус. Как звучит: ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/209369748592-ajmal-shadow"
+  },
+  {
+    "id": "vp-337852498472",
+    "uid": 337852498472,
+    "brand": "Geoffrey",
+    "name": "Beene Grey Flannel",
+    "fullTitle": "Geoffrey Beene Grey Flannel",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3263-3062-4664-a630-653036343465/a55f8792f036bc38ed4f7fa2b06bade1.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Легендарный мужской аромат Geoffrey Beene Grey Flannel (1975) — это винтажный цветочно-зеленый парфюм. Он выделяется строгим, горьковато-травянистым звучанием с пудровыми и брутально-мшистыми акцентами. В его шлейфе доминируют дождливая фиалка, гальбанум и тяжелый дубовый мох....",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/337852498472-geoffrey-beene-grey-flannel"
+  },
+  {
+    "id": "vp-895415346342",
+    "uid": 895415346342,
+    "brand": "1",
+    "name": "Million Parfum Rabanne",
+    "fullTitle": "1 Million Parfum Rabanne",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6234-3338-4663-b736-306432633234/f1bf4bab74ff37e80e695045242a3cc4.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 543,
+      "5ml": 855,
+      "10ml": 1610,
+      "15ml": 2265,
+      "20ml": 2820
+    },
+    "description": "Оригинальный нишевый аромат 1 Million Parfum Rabanne на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/895415346342-1-million-parfum-rabanne"
+  },
+  {
+    "id": "vp-741499425812",
+    "uid": 741499425812,
+    "brand": "Givenchy",
+    "name": "Gentleman 2017",
+    "fullTitle": "Givenchy Gentleman 2017",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3231-3166-4135-b538-343864613539/d91ba04bdf20872b1f45530c95451ac1.png",
+    "badge": "",
+    "prices": {
+      "3ml": 645,
+      "5ml": 1025,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Givenchy Gentleman (2017) — это современный древесно-цветочный аромат для мужчин, сочетающий смелую дерзость и классическую элегантность. Композиция раскрывается сочными фруктовыми нотами груши и ананаса, переходя в пудровое сердце из ириса и лаванды, и завершается теплым шлей...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/741499425812-givenchy-gentleman-2017"
+  },
+  {
+    "id": "vp-221958335552",
+    "uid": 221958335552,
+    "brand": "Bentley",
+    "name": "for Men Intense",
+    "fullTitle": "Bentley for Men Intense",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3235-6164-4637-b835-636339646331/e43a9f5c2b5bfe1289084a2f0b125743.png",
+    "badge": "",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
+    },
+    "description": "Bentley for Men Intense — это ольфакторный образ закрытого мужского клуба, где пахнет кубинским табаком, дорогой мебелью и выдержанным алкоголем. Старт: Взрыв черного перца и терпкого лавра. Звучит смело, уверенно и немного дерзко. Сердце: Обжигающий глоток золотого рома, тону...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/221958335552-bentley-for-men-intense"
+  },
+  {
+    "id": "vp-954512894142",
+    "uid": 954512894142,
+    "brand": "French Avenue",
+    "name": "An Equestrian Series Haydan",
+    "fullTitle": "French Avenue An Equestrian Series Haydan",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3736-3562-4061-b334-356465356361/7d3f489a7a0cb64dbb3e1fe51868502b.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 495,
+      "5ml": 775,
+      "10ml": 1450,
+      "15ml": 2025,
+      "20ml": 2500
+    },
+    "description": "Оригинальный нишевый аромат French Avenue An Equestrian Series Haydan на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/954512894142-french-avenue-an-equestrian-series-hayda"
+  },
+  {
+    "id": "vp-143755781052",
+    "uid": 143755781052,
+    "brand": "Afnan",
+    "name": "Supremacy Not Only Intense",
+    "fullTitle": "Afnan Supremacy Not Only Intense",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3534-6538-4464-b963-336632366563/06536bb0f128d9c0aac132920388c2a1.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Afnan Supremacy Not Only Intense — восточная парфюмерная вода с фужерно-древесным пряным ароматом для мужчин, созданная в 2021 году арабским парфюмерным брендом Afnan из ОАЭ. Роскошный и аристократичный элитный мужской аромат Supremacy Not Only Intense дарит незабываемые эмоци...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/143755781052-afnan-supremacy-not-only-intense"
+  },
+  {
+    "id": "vp-482503118042",
+    "uid": 482503118042,
+    "brand": "French Avenue",
+    "name": "Amber Empire",
+    "fullTitle": "French Avenue Amber Empire",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6134-3034-4937-b461-633465323737/ccfe57739ea579e42d9acc5c2092fc35.png",
+    "badge": "",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Оригинальный нишевый аромат French Avenue Amber Empire на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/482503118042-french-avenue-amber-empire"
+  },
+  {
+    "id": "vp-278991840702",
+    "uid": 278991840702,
+    "brand": "Lattafa Perfumes",
+    "name": "Ajwad",
+    "fullTitle": "Lattafa Perfumes Ajwad",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6637-3632-4736-a235-303933336536/dd4c79bbc5a0af5fce8738fc6807dd69.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "По-восточному щедрый, многогранный аромат. Он рисует образ оживлённого восточного рынка: сочные фрукты соседствуют с нежными лепестками роз и жасмина, а в базе ощущается тепло специй и древесины. Аромат особенно органично раскрывается в прохладную погоду — осенью, зимой. Но пр...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/278991840702-lattafa-perfumes-ajwad"
+  },
+  {
+    "id": "vp-648443392722",
+    "uid": 648443392722,
+    "brand": "Lattafa Perfumes",
+    "name": "Khamrah Dukhan",
+    "fullTitle": "Lattafa Perfumes Khamrah Dukhan",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3936-6335-4362-a537-306362303963/8f3bb0eb9a143fa67662e5eab1c0cba8.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Аромат вдохновлён ближневосточной традицией сжигания благовоний. Само слово «духан» (دخان) в переводе с арабского означает «дым». Создатели хотели передать красоту этого ритуала — как ароматный дым превращается в изысканное звучание. Khamrah Dukhan - плотный, многослойный, вос...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/648443392722-lattafa-perfumes-khamrah-dukhan"
+  },
+  {
+    "id": "vp-822504376052",
+    "uid": 822504376052,
+    "brand": "Montale",
+    "name": "Amber & Spices",
+    "fullTitle": "Montale Amber & Spices",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3239-3562-4265-a564-353438663134/9f4c09415562c8b6f7dd14013c2d7e37.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
+    },
+    "description": "Оригинальный нишевый аромат Montale Amber & Spices на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/822504376052-montale-amber-amp-spices"
+  },
+  {
+    "id": "vp-236699861042",
+    "uid": 236699861042,
+    "brand": "Nicheend",
+    "name": "Saturn",
+    "fullTitle": "Nicheend Saturn",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3137-3832-4432-b130-373961306234/e89bf6ef9fa284f0847faf6d2664f7ae.png",
+    "badge": "",
+    "prices": {
+      "3ml": 795,
+      "5ml": 1225,
+      "10ml": 2250,
+      "15ml": 3075,
+      "20ml": 3700
+    },
+    "description": "Аромат входит в коллекцию Universe, где каждый парфюм посвящён какому-то небесному телу. Saturn вдохновлён Сатурном — планетой с величественными кольцами из льда и камня. Создатели хотели передать в композиции сочетание свежести (как «ледяные» кольца) и сдержанной элегантности...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/236699861042-nicheend-saturn"
+  },
+  {
+    "id": "vp-221970304212",
+    "uid": 221970304212,
+    "brand": "Mancera",
+    "name": "Tonka Cola",
+    "fullTitle": "Mancera Tonka Cola",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6536-3636-4530-b966-336538323465/ef591f4468a370e8459ebceb2563b698.png",
+    "badge": "",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
+    },
+    "description": "Аромат вдохновлён американской поп-культурой и историями о древних караванах, которые перевозили экзотические орехи кола. Создатели хотели передать контраст: бодрящую свежесть газировки и тёплую, томную основу из бобов тонка. В описаниях встречаются ассоциации с тропическим от...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/221970304212-mancera-tonka-cola"
+  },
+  {
+    "id": "vp-401784339922",
+    "uid": 401784339922,
+    "brand": "Le Labo",
+    "name": "Santal 33",
+    "fullTitle": "Le Labo Santal 33",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3261-3631-4463-b163-343533643531/f9bc7b21abcbf897b0638c87150e7f1c.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1560,
+      "5ml": 2500,
+      "10ml": 4800,
+      "15ml": 6900,
+      "20ml": 8800
+    },
+    "description": "Le Labo Santal 33 — это культовый аромат-унисекс, созданный парфюмером Фрэнком Фёльклем в 2011 году. Парфюм вдохновлен образом американского ковбоя на фоне дикого Запада и бескрайних равнин. Аромат относится к группе древесных фужерных и раскрывается сложной композицией: Верхн...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/401784339922-le-labo-santal-33"
+  },
+  {
+    "id": "vp-570826727932",
+    "uid": 570826727932,
+    "brand": "Max",
+    "name": "Philip Cannabis",
+    "fullTitle": "Max Philip Cannabis",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3630-3935-4836-a537-613233333736/a087b7cd8ea0a12f6b6cc8ddaa6ad2e1.png",
+    "badge": "",
+    "prices": {
+      "3ml": 810,
+      "5ml": 1250,
+      "10ml": 2300,
+      "15ml": 3150,
+      "20ml": 3800
+    },
+    "description": "Max Philip Cannabis — это смелый и провокационный древесно-зеленый аромат-унисекс, выпущенный французским нишевым брендом Max Philip в 2024 году. Композиция позиционируется как дерзкая, землисто-травяная и смолистая, созданная для любителей нестандартной парфюмерии. Верхние но...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/570826727932-max-philip-cannabis"
+  },
+  {
+    "id": "vp-204688990162",
+    "uid": 204688990162,
+    "brand": "M.INT",
+    "name": "Winged heart",
+    "fullTitle": "M.INT Winged heart",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "floral",
+    "image": "https://static.tildacdn.com/stor3562-3732-4135-b732-373033313137/7de4948ec4a30fe6d675c81f79f51c37.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 795,
+      "5ml": 1225,
+      "10ml": 2250,
+      "15ml": 3075,
+      "20ml": 3700
+    },
+    "description": "Контрастный цветочно-пряный аромат, в котором горьковатый абсент встречается с медовым флердоранжем и тёплыми специями. В начале бергамот и лимон дают прохладу, а полынный оттенок абсента делает композицию более зелёной и необычной. В сердце раскрываются гвоздика, перуанский б...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/204688990162-mint-winged-heart"
+  },
+  {
+    "id": "vp-546476257782",
+    "uid": 546476257782,
+    "brand": "Nicheend",
+    "name": "Supernova",
+    "fullTitle": "Nicheend Supernova",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6530-6235-4633-a131-383338303737/32d3ea88a44773e45a128bb22b9d29c8.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 795,
+      "5ml": 1225,
+      "10ml": 2250,
+      "15ml": 3075,
+      "20ml": 3700
+    },
+    "description": "Nicheend Supernova — это фруктово‑древесный унисекс‑аромат из коллекции Universe бренда Nicheend (Турция), выпущен в 2022 году. Название и концепция отсылают к взрыву сверхновой — создатели хотели передать этот «космический» всплеск энергии через контрастное сочетание свежести...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/546476257782-nicheend-supernova"
+  },
+  {
+    "id": "vp-825248212502",
+    "uid": 825248212502,
+    "brand": "Orlov",
+    "name": "Paris Hope",
+    "fullTitle": "Orlov Paris Hope",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6161-3962-4463-b137-616533373735/9b705939c9776b5b36ec1b8f54ae4d5f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 705,
+      "5ml": 1075,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Orlov Paris Hope («Надежда») — это нежный и элегантный цветочно-древесно-мускусный ароматдля женщин, выпущенный в 2020 году в рамках линейки «By Orlov Collection». Композицию разработала парфюмер Амели Жакен (Amelie Jacquin). Концепция аромата построена вокруг идеи уверенности...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/825248212502-orlov-paris-hope"
+  },
+  {
+    "id": "vp-695427610782",
+    "uid": 695427610782,
+    "brand": "Montale",
+    "name": "Wild Pears",
+    "fullTitle": "Montale Wild Pears",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3439-3132-4966-a430-383465623133/2d3532af169bce35081b7190f90347c6.png",
+    "badge": "",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "Montale Wild Pears — это фруктово‑цветочный унисекс‑аромат от французского нишевого бренда Montale, выпущен в 2011 году парфюмером Пьером Монталем. Его часто называют «ароматом-настроением»: он про сочную грушу, лёгкую пряность и уютную сладковатую базу. Верхние ноты: бергамот...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/695427610782-montale-wild-pears"
+  },
+  {
+    "id": "vp-537435952662",
+    "uid": 537435952662,
+    "brand": "Parfums de Marly",
+    "name": "Sedley",
+    "fullTitle": "Parfums de Marly Sedley",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3532-6666-4236-b730-616434346439/81bd7f9b35326a47829f2e7d98d10fc2.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1167,
+      "5ml": 1845,
+      "10ml": 3490,
+      "15ml": 4935,
+      "20ml": 6180
+    },
+    "description": "Parfums de Marly Sedley — это освежающий и благородный древесно-фужерный аромат-унисекс (позиционируется также как мужской), созданный известными парфюмерами Оливье Креспом и Хамидом Мерати-Кашани в 2019 году. Композиция построена на контрасте ледяной цитрусовой свежести и глу...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/537435952662-parfums-de-marly-sedley"
+  },
+  {
+    "id": "vp-184245093662",
+    "uid": 184245093662,
+    "brand": "Mutis",
+    "name": "Nueva Granada Kintu",
+    "fullTitle": "Mutis Nueva Granada Kintu",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3766-6663-4962-b039-376633386562/de5d0ac3740cf235f6f20caa978de681.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 990,
+      "5ml": 1550,
+      "10ml": 2900,
+      "15ml": 4050,
+      "20ml": 5000
+    },
+    "description": "Название происходит от слова на языке кечуа: «кинту» означает «приношение богам». В основе аромата — андский ритуал: три листа коки (символ трёх миров — богов, живых и мёртвых) складывают в форме цветка и преподносят духам гор. Жители Анд до сих пор используют такой обряд для ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/184245093662-mutis-nueva-granada-kintu"
+  },
+  {
+    "id": "vp-926241419412",
+    "uid": 926241419412,
+    "brand": "Rudross",
+    "name": "One more time",
+    "fullTitle": "Rudross One more time",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3163-3966-4265-a439-353732656535/b5c552c987ffa3fb0e527ecd21a11b58.png",
+    "badge": "",
+    "prices": {
+      "3ml": 597,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2530,
+      "20ml": 3180
+    },
+    "description": "Оригинальный нишевый аромат Rudross One more time на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/926241419412-rudross-one-more-time"
+  },
+  {
+    "id": "vp-853918437392",
+    "uid": 853918437392,
+    "brand": "Maison Francis Kurkdjian",
+    "name": "Baccarat Rouge 540 Extrait de Parfum",
+    "fullTitle": "Maison Francis Kurkdjian Baccarat Rouge 540 Extrait de Parfum",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3634-6135-4163-b565-313737383237/3a25d844be2e6ab8381f58c2338f05af.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1590,
       "5ml": 2550,
-      "10ml": 4600,
-      "bottle": 34000
+      "10ml": 4900,
+      "15ml": 7050,
+      "20ml": 9000
     },
-    bottleSize: "50 ml",
-    pyramid: {
-      top: ["Листья дорогого табака", "Пряные специи"],
-      heart: ["Бобы тонка", "Цветок табака", "Ваниль", "Какао"],
-      base: ["Древесный аккорд", "Сухофрукты"]
-    },
-    metrics: {
-      longevity: "16+ часов",
-      longevityScore: 96,
-      sillage: "Плотный аристократичный",
-      sillageScore: 95,
-      season: "Осень / Зима",
-      vibe: "Статусный, респектабельный, глубокий"
-    },
-    description: "Атмосфера закрытого лондонского джентльменского клуба. Бархатный дорогой табак, ароматные восточные пряности, натуральная бурбонская ваниль и вяленая вишня с сухофруктами."
+    "description": "Maison Francis Kurkdjian Baccarat Rouge 540 Extrait de Parfum — это более интенсивная, глубокая и насыщенная версия культового восточно-цветочного аромата, выпущенная в 2017 году. Парфюмер Франсис Кюркджян усилил звучание оригинальной парфюмерной воды, добавив новые текстурные...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/853918437392-maison-francis-kurkdjian-baccarat-rouge"
   },
   {
-    id: "creed-aventus",
-    brand: "Creed",
-    name: "Aventus",
-    subtitle: "Икона мужского стиля и уверенности",
-    gender: "men",
-    category: "perfume",
-    notesFamily: "woody",
-    image: "assets/images/perfumes/aventus.jpg",
-    badge: "Мужской Эталон",
-    prices: {
-      "3ml": 1850,
-      "5ml": 2800,
-      "10ml": 5100,
-      "bottle": 39000
+    "id": "vp-158181933932",
+    "uid": 158181933932,
+    "brand": "Rudross",
+    "name": "Mira",
+    "fullTitle": "Rudross Mira",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3634-3166-4262-a533-336264653932/1fa6060030b8dec28615e830831e7b2e.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
     },
-    bottleSize: "100 ml",
-    pyramid: {
-      top: ["Королевский ананас", "Бергамот", "Черная смородина", "Зеленое яблоко"],
-      heart: ["Березовый деготь", "Пачули", "Марокканский жасмин", "Роза"],
-      base: ["Мускус", "Дубовый мох", "Серая амбра", "Ваниль"]
-    },
-    metrics: {
-      longevity: "12+ часов",
-      longevityScore: 90,
-      sillage: "Мужественный благородный",
-      sillageScore: 94,
-      season: "Всесезонный",
-      vibe: "Победоносный, свежий, харизматичный"
-    },
-    description: "Величайший мужской аромат современности. Искристая фруктовая свежесть ананаса и смородины плавно переходит в дымный березовый шлейф с дорогой серой амброй."
+    "description": "RudRoss Mira — это восточно-гурманский аромат-унисекс, выпущенный в 2025 году. Его концепция вдохновлена восточной легендой о звезде Мира, которая опускается на дюны Аравийской пустыни, рождая цветок невиданной красоты. Сам парфюм оставляет теплое, пряное и невероятно уютное в...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/158181933932-rudross-mira"
   },
   {
-    id: "byredo-blanche",
-    brand: "Byredo",
-    name: "Blanche",
-    subtitle: "Идеальная чистота выстиранной белой рубашки",
-    gender: "women",
-    category: "perfume",
-    notesFamily: "fresh",
-    image: "assets/images/perfumes/blanche.jpg",
-    badge: "Эстетика Чистоты",
-    prices: {
-      "3ml": 1350,
-      "5ml": 1950,
-      "10ml": 3600,
-      "bottle": 23500
+    "id": "vp-364182166172",
+    "uid": 364182166172,
+    "brand": "Montale",
+    "name": "Arabians Tonka",
+    "fullTitle": "Montale Arabians Tonka",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3933-3636-4630-b766-626633646531/e1b874dda47a887ac7531d4e5190591b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
     },
-    bottleSize: "100 ml",
-    pyramid: {
-      top: ["Белая роза", "Розовый перец", "Альдегиды"],
-      heart: ["Фиалка", "Нероли", "Пион"],
-      base: ["Светлая древесина", "Сандал", "Мускус"]
-    },
-    metrics: {
-      longevity: "8-10 часов",
-      longevityScore: 82,
-      sillage: "Нежный деликатный",
-      sillageScore: 80,
-      season: "Весна / Лето / На каждый день",
-      vibe: "Свежий, хрустальный, минималистичный"
-    },
-    description: "Посвящение невинности и свежести. Ощущение только что выглаженной хлопковой рубашки, чистого утреннего воздуха и прозрачных розовых лепестков."
+    "description": "Это популярный нишевый аромат-унисекс восточно-древесной группы, выпущенный в 2019 году. Композиция вдохновлена грацией арабских скакунов и представляет собой мощный, контрастный микс из дымного уда, пряностей и плотной гурманской сладости Верхние ноты: Острый шафран и свежий,...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/364182166172-montale-arabians-tonka"
   },
   {
-    id: "amouage-guidance",
-    brand: "Amouage",
-    name: "Guidance",
-    subtitle: "Сливочная груша, фундук, ладан и османтус",
-    gender: "women",
-    category: "perfume",
-    notesFamily: "floral",
-    image: "assets/images/perfumes/guidance.jpg",
-    badge: "Главный Тренд 2026",
-    prices: {
-      "3ml": 1900,
+    "id": "vp-294604489482",
+    "uid": 294604489482,
+    "brand": "Maison Francis Kurkdjian",
+    "name": "Baccarat Rouge 540",
+    "fullTitle": "Maison Francis Kurkdjian Baccarat Rouge 540",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6632-3737-4462-a534-336135376632/1770aa0f3f0f1ab8a2681178bf91de97.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1770,
       "5ml": 2850,
-      "10ml": 5300,
-      "bottle": 35500
+      "10ml": 5500,
+      "15ml": 7950,
+      "20ml": 10200
     },
-    bottleSize: "100 ml",
-    pyramid: {
-      top: ["Груша", "Ладан (Олибанум)", "Лесной орех (Фундук)"],
-      heart: ["Османтус", "Дамасская роза", "Шафран", "Жасмин самбак"],
-      base: ["Сандал", "Ваниль", "Акигалавуд", "Серая амбра", "Лабданум"]
-    },
-    metrics: {
-      longevity: "24+ часа",
-      longevityScore: 100,
-      sillage: "Невероятный шлейф 10/10",
-      sillageScore: 100,
-      season: "Всесезонный",
-      vibe: "Женственный, роскошный, гипнотический"
-    },
-    description: "Знаковая работа парфюмера Квентина Биша для дома Amouage. Сливочная тающая груша с лесным орехом, бархатным пудровым османтусом и многочасовой стойкостью."
+    "description": "Аромат создали в честь 250-летия французского хрустального дома Baccarat. Цифра 540 в названии отсылает к температуре (в градусах), при которой в прозрачное стекло добавляют золотой порошок 24 карата — так получается характерный красный цвет хрусталя. Верхние ноты: шафран и жа...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/294604489482-maison-francis-kurkdjian-baccarat-rouge"
   },
   {
-    id: "initio-oud-for-greatness",
-    brand: "Initio Parfums Prives",
-    name: "Oud for Greatness",
-    subtitle: "Мистический уд, лаванда и драгоценный шафран",
-    gender: "unisex",
-    category: "perfume",
-    notesFamily: "woody",
-    image: "assets/images/perfumes/oud-for-greatness.jpg",
-    badge: "Черное Золото",
-    prices: {
-      "3ml": 1950,
-      "5ml": 2950,
-      "10ml": 5400,
-      "bottle": 37000
+    "id": "vp-687186476162",
+    "uid": 687186476162,
+    "brand": "Mancera",
+    "name": "Cedrat Boise",
+    "fullTitle": "Mancera Cedrat Boise",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3838-3866-4030-b364-306635306536/ef6b8f1db76a614b0139eeb863431891.png",
+    "badge": "",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
     },
-    bottleSize: "90 ml",
-    pyramid: {
-      top: ["Лаванда", "Шафран", "Мускатный орех"],
-      heart: ["Натуральный Уд (Агаровое дерево)"],
-      base: ["Пачули", "Мускус"]
-    },
-    metrics: {
-      longevity: "20+ часов",
-      longevityScore: 98,
-      sillage: "Гипнотический магнетический",
-      sillageScore: 97,
-      season: "Осень / Зима / Вечер",
-      vibe: "Мощный, мистический, статусный"
-    },
-    description: "Аромат священной геометрии и абсолютной уверенности. Чистейший натуральный уд высочайшего качества в обрамлении свежей лаванды и теплого шафрана."
+    "description": "Оригинальный нишевый аромат Mancera Cedrat Boise на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/687186476162-mancera-cedrat-boise"
   },
   {
-    id: "xerjoff-naxos",
-    brand: "Xerjoff",
-    name: "Naxos 1861",
-    subtitle: "Дикий сицилийский мед, лаванда и табак",
-    gender: "unisex",
-    category: "perfume",
-    notesFamily: "oriental",
-    image: "assets/images/perfumes/naxos.jpg",
-    badge: "Итальянское Солнце",
-    prices: {
-      "3ml": 1600,
+    "id": "vp-970496381632",
+    "uid": 970496381632,
+    "brand": "Marc-Antoine Barrois",
+    "name": "Ganymede",
+    "fullTitle": "Marc-Antoine Barrois Ganymede",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3633-3136-4161-b762-636664376666/407a6f5d51da0c3a81e88923cb18a13a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1200,
+      "5ml": 1900,
+      "10ml": 3600,
+      "15ml": 5100,
+      "20ml": 6400
+    },
+    "description": "Marc-Antoine Barrois Ganymede — это культовый нишевый аромат-унисекс, выпущенный во Франции в 2019 году и ставший настоящим феноменом в современной парфюмерии. Композиция создана знаменитым парфюмером Квентином Бишем (Quentin Bisch) и названа в честь Ганимеда — скалистого спут...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/970496381632-marc-antoine-barrois-ganymede"
+  },
+  {
+    "id": "vp-936955303912",
+    "uid": 936955303912,
+    "brand": "Rudross",
+    "name": "Montana",
+    "fullTitle": "Rudross Montana",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3331-6630-4234-b437-623564363431/94be6cd6bd4e8f48c843c2556806a087.png",
+    "badge": "",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "RudRoss Montana — это легкий, воздушный цветочно-фруктовый аромат категории «унисекс», выпущенный британским нишевым брендом RudRoss в 2025 году. Композиция вдохновлена эстетикой горного воздуха, свежестью утренней природы и историей золотой лихорадки в американском штате Монт...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/936955303912-rudross-montana"
+  },
+  {
+    "id": "vp-220018200602",
+    "uid": 220018200602,
+    "brand": "M.INT",
+    "name": "Meek passion",
+    "fullTitle": "M.INT Meek passion",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6435-6666-4136-b433-393936313666/30d368a030bde77fda7dae1a8fdb49d4.png",
+    "badge": "",
+    "prices": {
+      "3ml": 810,
+      "5ml": 1250,
+      "10ml": 2300,
+      "15ml": 3150,
+      "20ml": 3800
+    },
+    "description": "Страсть - неуловимая материя: тот, кто испытывал ее в полной мере, не может описать ее словами, а тот, кому быть внутри настоящей страсти не довелось, способен только гадать, каково это Верхние ноты: Банан, хрустящее яблоко, бергамот, лимон. Средние ноты: Ананас, корица, гвозд...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/220018200602-mint-meek-passion"
+  },
+  {
+    "id": "vp-297720936482",
+    "uid": 297720936482,
+    "brand": "Montale",
+    "name": "Wood and Spices",
+    "fullTitle": "Montale Wood and Spices",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6266-3930-4366-b661-333233656262/e7963c91fefc56b70baea86bb83681c0.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "Montale Wood and Spices — это роскошный, плотный и невероятно маскулинный восток, заключенный в фирменный металлический флакон. Этот аромат не пытается быть скромным: он заявляет о себе громко, уверенно и оставляет за собой километровый шлейф. Представьте себе интерьер закрыто...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/297720936482-montale-wood-and-spices"
+  },
+  {
+    "id": "vp-194954266262",
+    "uid": 194954266262,
+    "brand": "Rudross",
+    "name": "Cozy",
+    "fullTitle": "Rudross Cozy",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6536-3565-4731-b236-303066636165/0458efb60a9350b31c1ace30d887f572.png",
+    "badge": "",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "RudRoss Cozy — это мягкий, умиротворяющий восточно-древесный аромат-унисекс, выпущенный в 2023 году. Его концепция полностью оправдывает название («Уютный») — парфюм задуман как ольфакторная медитация, аромат-антидепрессант и «вторая кожа», создающая кокон спокойствия. База фо...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/194954266262-rudross-cozy"
+  },
+  {
+    "id": "vp-980821134722",
+    "uid": 980821134722,
+    "brand": "Orlov",
+    "name": "Paris The Best Of Me",
+    "fullTitle": "Orlov Paris The Best Of Me",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3662-6462-4534-a133-343732386665/f94defc75e8694489733bfb6ad7bdae3.png",
+    "badge": "",
+    "prices": {
+      "3ml": 720,
+      "5ml": 1150,
+      "10ml": 2200,
+      "15ml": 3150,
+      "20ml": 4000
+    },
+    "description": "Это изысканный восточно-древесный аромат для женщин, выпущенный французским нишевым брендом в 2020 году. Композиция, созданная парфюмером Amelie Jacquin, символизирует раскрытие лучшей стороны человеческой личности. Парфюм выделяется своим необычным «злаковым» звучанием. Верхн...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/980821134722-orlov-paris-the-best-of-me"
+  },
+  {
+    "id": "vp-559471845842",
+    "uid": 559471845842,
+    "brand": "M.INT",
+    "name": "The smart set",
+    "fullTitle": "M.INT The smart set",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3439-3066-4533-a437-633161636561/d6eba719ce4ff19bd6d2525e369b3384.png",
+    "badge": "",
+    "prices": {
+      "3ml": 810,
+      "5ml": 1250,
+      "10ml": 2300,
+      "15ml": 3150,
+      "20ml": 3800
+    },
+    "description": "The Smart Set от итальянского нишевого бренда M.INT — это древесно-пряный унисекс-аромат, выпущенный в 2016 году и созданный известным парфюмером Натали Лорсон (Nathalie Lorson). Композиция позиционируется как стильный, деловой парфюм для амбициозных людей, где ключевую роль и...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/559471845842-mint-the-smart-set"
+  },
+  {
+    "id": "vp-767866741442",
+    "uid": 767866741442,
+    "brand": "Memo Paris",
+    "name": "Marfa",
+    "fullTitle": "Memo Paris Marfa",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3937-6435-4432-a139-346439353432/18914ed3c7256adaa1d27c14272703ce.png",
+    "badge": "",
+    "prices": {
+      "3ml": 975,
+      "5ml": 1525,
+      "10ml": 2850,
+      "15ml": 3975,
+      "20ml": 4900
+    },
+    "description": "Memo Paris Marfa — это популярный нишевый аромат-унисекс (для мужчин и женщин), выпущенный французским брендом Memo Paris в 2016 году. Композиция создана парфюмером Alienor Massenet и вдохновлена техасским городом Марфа, затерянным в пустыне. Аромат принадлежит к группе цветоч...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/767866741442-memo-paris-marfa"
+  },
+  {
+    "id": "vp-298278841612",
+    "uid": 298278841612,
+    "brand": "Pernoire",
+    "name": "Oudian",
+    "fullTitle": "Pernoire Oudian",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3164-6261-4237-a562-653036383463/a589c64aa2bb7a92036cbbbecac5c87a.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1250,
+      "5ml": 2050,
+      "10ml": 3900,
+      "15ml": 5550,
+      "20ml": 7000
+    },
+    "description": "Pernoire Oudian — это нишевый восточно-древесный аромат-унисекс от швейцарского бренда Pernoire, выпущенный в 2025 году. Композиция создана парфюмером Андреасом Вильгельмом (Andreas Wilhelm) и построена на провокационном сочетании анималистичного уда и экзотического дуриана. В...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/298278841612-pernoire-oudian"
+  },
+  {
+    "id": "vp-324864482162",
+    "uid": 324864482162,
+    "brand": "Maison Francis Kurkdjian",
+    "name": "Amyris femme",
+    "fullTitle": "Maison Francis Kurkdjian Amyris femme",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3036-3964-4263-a638-336165663933/111c7415799084e53aaa9e24e066f9d6.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1020,
+      "5ml": 1600,
+      "10ml": 3000,
+      "15ml": 4200,
+      "20ml": 5200
+    },
+    "description": "Maison Francis Kurkdjian Amyris — это популярная линейка парфюмерии, построенная вокруг редкого сочетания древесных нот ямайского амириса и флорентийского ириса. Верхние ноты: Цветок лимона, Калифорнийский апельсин. Средние ноты: Ямайский амирис, Флорентийский ирис. Базовые но...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/324864482162-maison-francis-kurkdjian-amyris-femme"
+  },
+  {
+    "id": "vp-417710652102",
+    "uid": 417710652102,
+    "brand": "Nasomatto",
+    "name": "Black Afgano",
+    "fullTitle": "Nasomatto Black Afgano",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6235-6164-4963-b537-303564356133/6afd0499969ed956232e3eed7210f060.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 1980,
+      "5ml": 3200,
+      "10ml": 6200,
+      "15ml": 9000,
+      "20ml": 11600
+    },
+    "description": "Оригинальный нишевый аромат Nasomatto Black Afgano на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/417710652102-nasomatto-black-afgano"
+  },
+  {
+    "id": "vp-573132412142",
+    "uid": 573132412142,
+    "brand": "Joop!",
+    "name": "Homme",
+    "fullTitle": "Joop! Homme",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3166-6130-4266-a634-623538633665/eb0a9bf8aa0dbeea5836ca17250c7bee.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Joop! Homme — это легендарный мужской аромат от немецкого модного дома Joop!, созданный парфюмером Мишелем Альмераком в 1989 году. Он совершил революцию в парфюмерии, став одним из первых мужских парфюмов ярко-розового цвета с невероятно сладким, провокационным звучанием. Семе...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/573132412142-joop-homme"
+  },
+  {
+    "id": "vp-795710691032",
+    "uid": 795710691032,
+    "brand": "Hormone",
+    "name": "Paris This Is Not GABA",
+    "fullTitle": "Hormone Paris This Is Not GABA",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6464-6461-4563-b266-616562323333/5abbe907560dd335b9f8450c968ae4df.png",
+    "badge": "",
+    "prices": {
+      "3ml": 990,
+      "5ml": 1550,
+      "10ml": 2900,
+      "15ml": 4050,
+      "20ml": 5000
+    },
+    "description": "Источником вдохновения для названия и профиля аромата стали свойства нейромедиатора GABA (ГАМК), который помогает снижать тревожность и страх. Парфюмерная композиция настраивает на расслабление и спокойствие. Погрузиться в мягкое облако безмятежности помогают чарующие ноты осм...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/795710691032-hormone-paris-this-is-not-gaba"
+  },
+  {
+    "id": "vp-662774575032",
+    "uid": 662774575032,
+    "brand": "Rudross",
+    "name": "White Mountains",
+    "fullTitle": "Rudross White Mountains",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3766-6239-4538-b163-663165366238/91e77b321595fbe025e640a6e92507b3.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "RudRoss White Mountains — это искрящийся, ультраосвежающий зеленый фужерный парфюм-унисекс, выпущенный в 2023 году. Концепция аромата вдохновлена альпинизмом, величественной красотой заснеженных гор и глотком кристально чистого ледяного воздуха на самой вершине. Верхние ноты: ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/662774575032-rudross-white-mountains"
+  },
+  {
+    "id": "vp-192561064262",
+    "uid": 192561064262,
+    "brand": "Orto Parisi",
+    "name": "Risvelium",
+    "fullTitle": "Orto Parisi Risvelium",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "fresh",
+    "image": "https://static.tildacdn.com/stor3039-3161-4632-b037-343964653631/f551b40fcfea6c46573012917e992aac.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1470,
       "5ml": 2350,
-      "10ml": 4300,
-      "bottle": 27500
+      "10ml": 4500,
+      "15ml": 6450,
+      "20ml": 8200
     },
-    bottleSize: "100 ml",
-    pyramid: {
-      top: ["Бергамот", "Лимон", "Лаванда"],
-      heart: ["Дикий мед", "Корица", "Кашмеран", "Жасмин самбак"],
-      base: ["Листья табака", "Бобы тонка", "Ваниль"]
-    },
-    metrics: {
-      longevity: "16+ часов",
-      longevityScore: 95,
-      sillage: "Широкий пряный шлейф",
-      sillageScore: 94,
-      season: "Осень / Зима / Весна",
-      vibe: "Теплый, богатый, средиземноморский"
-    },
-    description: "Ода Сицилии и итальянской страсти. Пронзительная цитрусовая свежесть перетекает в густой золотой мед, лаванду и благородный табачный лист с ванилью."
+    "description": "Orto Parisi Risvelium — это контрастный и яркий унисекс-аромат, созданный эксцентричным парфюмером Алессандро Гуальтьери. Композиция сочетает в себе свежесть, фруктовую сладость и глубокую, анималистичную базу. Верхние ноты: Взрывной, слегка горьковатый микс грейпфрута и берга...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/192561064262-orto-parisi-risvelium"
   },
   {
-    id: "byredo-bal-dafrique",
-    brand: "Byredo",
-    name: "Bal d'Afrique",
-    subtitle: "Солнечные бархатцы, ветивер и парижский шик",
-    gender: "unisex",
-    category: "perfume",
-    notesFamily: "fresh",
-    image: "assets/images/perfumes/bal-dafrique.jpg",
-    badge: "Любимец Публики",
-    prices: {
-      "3ml": 1400,
+    "id": "vp-645676662972",
+    "uid": 645676662972,
+    "brand": "Lalique",
+    "name": "Encre Noire",
+    "fullTitle": "Lalique Encre Noire",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3263-3734-4231-a631-626632336235/467a85554b0cbcfde7d5b17fa69045b2.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Lalique Encre Noire — это культовый мужской аромат, выпущенный в 2006 году, который классифицируется как древесный фужерный. Название переводится как «Черные чернила», что полностью отражает концепцию аромата: мрачный, глубокий, таинственный и бескомпромиссный ветивер. Парфюме...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/645676662972-lalique-encre-noire"
+  },
+  {
+    "id": "vp-111768854602",
+    "uid": 111768854602,
+    "brand": "Lalique",
+    "name": "Ombre Noire",
+    "fullTitle": "Lalique Ombre Noire",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6564-6537-4739-b632-316138626531/59bfffc9707c74f6cfbcfa809c8380b2.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Lalique Ombre Noire — это глубокий восточно-пряный мужской аромат, выпущенный французским ювелирным и парфюмерным брендом Lalique в 2017 году. Автором композиции стала известный парфюмер Карин Дюбрей-Серени (Karine Dubreuil-Sereni). Аромат часто называют скрытой жемчужиной люк...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/111768854602-lalique-ombre-noire"
+  },
+  {
+    "id": "vp-123496892822",
+    "uid": 123496892822,
+    "brand": "Lab",
+    "name": "Fragrance Ambroxan",
+    "fullTitle": "Lab Fragrance Ambroxan",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3863-3763-4964-a131-363032306166/40231e8edf8aff61181677aab0ab2cc3.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 360,
+      "5ml": 550,
+      "10ml": 1000,
+      "15ml": 1350,
+      "20ml": 1600
+    },
+    "description": "Бренд Lab Fragrance выпускает линейку ароматов на основе популярной молекулы Ambroxan, которая известна своим многогранным, чистым и притягательным звучанием, адаптирующимся к теплу кожи. Верхние ноты: Бергамот, тангерин, элеми, зеленые ноты. Средние ноты (сердце): Ирис, жасми...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/123496892822-lab-fragrance-ambroxan"
+  },
+  {
+    "id": "vp-759362962112",
+    "uid": 759362962112,
+    "brand": "Rayhaan",
+    "name": "Elixir",
+    "fullTitle": "Rayhaan Elixir",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3661-3735-4530-b330-383633333263/bbe38e8cf88aa91cd22d090466635067.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Оригинальный нишевый аромат Rayhaan Elixir на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/759362962112-rayhaan-elixir"
+  },
+  {
+    "id": "vp-583633396682",
+    "uid": 583633396682,
+    "brand": "Narciso",
+    "name": "Rodriguez for Him Bleu Noir",
+    "fullTitle": "Narciso Rodriguez for Him Bleu Noir",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3362-3338-4061-b162-353232316635/2f9f1be223018ca4241319fa0d525863.png",
+    "badge": "",
+    "prices": {
+      "3ml": 705,
+      "5ml": 1075,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Название отсылает к глубоким оттенкам синего и чёрного — как в ночном небе. Аромат задумывался как воплощение элегантной, сдержанной мужественности: в нём есть баланс между силой и утончённостью. Верхние ноты (старт): бергамот, мандарин, кардамон, кипарис. Дают свежий, чуть пр...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/583633396682-narciso-rodriguez-for-him-bleu-noir"
+  },
+  {
+    "id": "vp-456041146252",
+    "uid": 456041146252,
+    "brand": "Lattafa",
+    "name": "Ajayeb Dubai Portrait",
+    "fullTitle": "Lattafa Ajayeb Dubai Portrait",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3038-3632-4330-a634-656562646531/c25439b2233198fdff415fd05886027f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 465,
+      "5ml": 725,
+      "10ml": 1350,
+      "15ml": 1875,
+      "20ml": 2300
+    },
+    "description": "Оригинальный нишевый аромат Lattafa Ajayeb Dubai Portrait на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/456041146252-lattafa-ajayeb-dubai-portrait"
+  },
+  {
+    "id": "vp-596004769712",
+    "uid": 596004769712,
+    "brand": "Maison",
+    "name": "Alhambra Kismet Magic",
+    "fullTitle": "Maison Alhambra Kismet Magic",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3234-6131-4331-b834-643935663063/274bfe3c617afa6daea96d02dbc4efa4.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Оригинальный нишевый аромат Maison Alhambra Kismet Magic на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/596004769712-maison-alhambra-kismet-magic"
+  },
+  {
+    "id": "vp-702073610302",
+    "uid": 702073610302,
+    "brand": "M.INT",
+    "name": "Refocus",
+    "fullTitle": "M.INT Refocus",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6238-3565-4063-b665-326138356161/77463e58433fb5529f6088c155f12cca.png",
+    "badge": "",
+    "prices": {
+      "3ml": 795,
+      "5ml": 1225,
+      "10ml": 2250,
+      "15ml": 3075,
+      "20ml": 3700
+    },
+    "description": "Необычный древесно-дымный аромат с ощущением концентрации, тишины и внутренней собранности. Refocus открывается холодноватыми альдегидами и ладаном, создавая эффект чистого воздуха и лёгкой минеральности. Затем композиция становится темнее: пачули, гваяковое дерево и кедр доба...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/702073610302-mint-refocus"
+  },
+  {
+    "id": "vp-590384351932",
+    "uid": 590384351932,
+    "brand": "RP",
+    "name": "paris Cuir d'Italie",
+    "fullTitle": "RP paris Cuir d'Italie",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6365-3763-4636-b037-393836623963/8fbd90910f1e16a915db027071b62c72.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Оригинальный нишевый аромат RP paris Cuir d'Italie на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/590384351932-rp-paris-cuir-ditalie"
+  },
+  {
+    "id": "vp-379247523552",
+    "uid": 379247523552,
+    "brand": "Morph",
+    "name": "Primitivo",
+    "fullTitle": "Morph Primitivo",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6262-3334-4237-b234-343965663166/4ab8f43b8019e1caef69f14d74e0645e.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 900,
+      "5ml": 1400,
+      "10ml": 2600,
+      "15ml": 3600,
+      "20ml": 4400
+    },
+    "description": "Оригинальный нишевый аромат Morph Primitivo на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/379247523552-morph-primitivo"
+  },
+  {
+    "id": "vp-330963524072",
+    "uid": 330963524072,
+    "brand": "Rayhaan",
+    "name": "Kiss",
+    "fullTitle": "Rayhaan Kiss",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6363-6462-4264-b364-313738306165/8bca3bd0a1ef4d4deaf7d98e04d0bab7.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Оригинальный нишевый аромат Rayhaan Kiss на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/330963524072-rayhaan-kiss"
+  },
+  {
+    "id": "vp-441162411832",
+    "uid": 441162411832,
+    "brand": "Richard",
+    "name": "White chocolate",
+    "fullTitle": "Richard White chocolate",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3837-6362-4366-a333-666666643262/f0076591cd54f258c7508f78a300684f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 840,
+      "5ml": 1300,
+      "10ml": 2400,
+      "15ml": 3300,
+      "20ml": 4000
+    },
+    "description": "Оригинальный нишевый аромат Richard White chocolate на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/441162411832-richard-white-chocolate"
+  },
+  {
+    "id": "vp-276545097552",
+    "uid": 276545097552,
+    "brand": "Lattafa Perfumes",
+    "name": "Mayar Natural Intense",
+    "fullTitle": "Lattafa Perfumes Mayar Natural Intense",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3639-6436-4861-b636-663530393835/5b08dcfedabdd0f7ccd6ae6f3514a013.png",
+    "badge": "",
+    "prices": {
+      "3ml": 435,
+      "5ml": 675,
+      "10ml": 1250,
+      "15ml": 1725,
+      "20ml": 2100
+    },
+    "description": "Lattafa Mayar Natural Intense — это освежающий женский парфюм с акватическим и фруктово-цветочным характером. Выпущенный в 2024 году, аромат выделяется на фоне привычной тяжелой восточной парфюмерии своей легкостью, прохладой и экзотическим звучанием Верхние ноты: Зеленый танж...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/276545097552-lattafa-perfumes-mayar-natural-intense"
+  },
+  {
+    "id": "vp-755756757282",
+    "uid": 755756757282,
+    "brand": "Lattafa Perfumes",
+    "name": "His Confession",
+    "fullTitle": "Lattafa Perfumes His Confession",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3832-3663-4537-b165-313831333338/1ec82e5710ac05ca1b1666f78334ae4e.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Оригинальный нишевый аромат Lattafa Perfumes His Confession на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/755756757282-lattafa-perfumes-his-confession"
+  },
+  {
+    "id": "vp-560692654042",
+    "uid": 560692654042,
+    "brand": "Juliette",
+    "name": "Has A Gun Not A Perfume",
+    "fullTitle": "Juliette Has A Gun Not A Perfume",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3239-3030-4962-b134-383066386363/dc7d641afe0d6b5693b28ff2fc89850b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 627,
+      "5ml": 995,
+      "10ml": 1890,
+      "15ml": 2685,
+      "20ml": 3380
+    },
+    "description": "Минималистичный молекулярный аромат, построенный вокруг одной ноты — Cetalox. Это чистое, лёгкое и очень телесное звучание с древесно-мускусным оттенком, которое не перекрывает человека, а будто усиливает естественный запах кожи. Not a Perfume часто воспринимается по-разному: ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/560692654042-juliette-has-a-gun-not-a-perfume"
+  },
+  {
+    "id": "vp-989186007452",
+    "uid": 989186007452,
+    "brand": "Lattafa Perfumes",
+    "name": "Khamrah",
+    "fullTitle": "Lattafa Perfumes Khamrah",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6564-6164-4533-a632-623165646238/a112586f5d196b84f087b0ea0807ea88.png",
+    "badge": "",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Насыщенный гурманский аромат с тёплым восточным характером. Khamrah начинается яркой корицей, мускатным орехом и бергамотом, а затем быстро становится плотнее и слаще: в сердце слышны финики, пралине и лёгкий цветочный оттенок туберозы. База раскрывается ванилью, бобами тонка,...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/989186007452-lattafa-perfumes-khamrah"
+  },
+  {
+    "id": "vp-970638064112",
+    "uid": 970638064112,
+    "brand": "Jo Malone",
+    "name": "Wood sage & Sea salt",
+    "fullTitle": "Jo Malone Wood sage & Sea salt",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3133-6536-4739-a265-666661613730/91b36669e62dd5e44b0d57047700a528.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 945,
+      "5ml": 1475,
+      "10ml": 2750,
+      "15ml": 3825,
+      "20ml": 4700
+    },
+    "description": "Оригинальный нишевый аромат Jo Malone Wood sage & Sea salt на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/970638064112-jo-malone-wood-sage-amp-sea-salt"
+  },
+  {
+    "id": "vp-288655008952",
+    "uid": 288655008952,
+    "brand": "Kajal",
+    "name": "Dahab",
+    "fullTitle": "Kajal Dahab",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3931-3165-4535-a636-306534386262/02d981c6b1703b1cac3434d51654ca96.png",
+    "badge": "",
+    "prices": {
+      "3ml": 825,
+      "5ml": 1275,
+      "10ml": 2350,
+      "15ml": 3225,
+      "20ml": 3900
+    },
+    "description": "Оригинальный нишевый аромат Kajal Dahab на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/288655008952-kajal-dahab"
+  },
+  {
+    "id": "vp-281131864152",
+    "uid": 281131864152,
+    "brand": "Lattafa Perfumes",
+    "name": "Ajwaa",
+    "fullTitle": "Lattafa Perfumes Ajwaa",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3436-3430-4535-b565-633662396638/81ab182f597c5c0f1404c789407f2922.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Lattafa Perfumes Ajwaa (из коллекции Lattafa Pride) — это восточный гурманский аромат-унисекс, выпущенный в 2023 году. Парфюм вдохновлен атмосферой арабской ночи и роскошью оазисов в пустыне, сочетая в себе глубокую сладость фиников, смолистые и пряные аккорды. Верхние ноты: Ф...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/281131864152-lattafa-perfumes-ajwaa"
+  },
+  {
+    "id": "vp-337322152752",
+    "uid": 337322152752,
+    "brand": "Gucci",
+    "name": "Bamboo",
+    "fullTitle": "Gucci Bamboo",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3065-6339-4431-a236-393365363664/a39cda089c809a0313145dd602d48ff0.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Элегантный цветочно-древесный аромат, в котором мягкие белые цветы соединяются с тёплой древесной базой. Gucci Bamboo начинается бергамотом и цветами апельсина, затем раскрывается жасмином, иланг-илангом и лилией. В финале остаётся сливочный сандал, ваниль и лёгкая тёплая древ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/337322152752-gucci-bamboo"
+  },
+  {
+    "id": "vp-623597448412",
+    "uid": 623597448412,
+    "brand": "Lataffa",
+    "name": "Al qiam gold",
+    "fullTitle": "Lataffa Al qiam gold",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6665-6231-4664-b835-303535383735/17d05f3b44bf342aef2dab4fa4f869ed.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Оригинальный нишевый аромат Lataffa Al qiam gold на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/623597448412-lataffa-al-qiam-gold"
+  },
+  {
+    "id": "vp-311699882712",
+    "uid": 311699882712,
+    "brand": "Lattafa",
+    "name": "Yara Tous",
+    "fullTitle": "Lattafa Yara Tous",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3631-3466-4466-a266-663832326337/808da4f9755ac2ee5ded92e6bc224d5f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 435,
+      "5ml": 675,
+      "10ml": 1250,
+      "15ml": 1725,
+      "20ml": 2100
+    },
+    "description": "Оригинальный нишевый аромат Lattafa Yara Tous на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/311699882712-lattafa-yara-tous"
+  },
+  {
+    "id": "vp-636564106252",
+    "uid": 636564106252,
+    "brand": "Lattafa Perfumes",
+    "name": "Ajayeb Dubai",
+    "fullTitle": "Lattafa Perfumes Ajayeb Dubai",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3562-3536-4237-b261-626439636235/991ef05691c7f43a03bc078ae7b0d2a9.png",
+    "badge": "",
+    "prices": {
+      "3ml": 435,
+      "5ml": 675,
+      "10ml": 1250,
+      "15ml": 1725,
+      "20ml": 2100
+    },
+    "description": "Оригинальный нишевый аромат Lattafa Perfumes Ajayeb Dubai на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/636564106252-lattafa-perfumes-ajayeb-dubai"
+  },
+  {
+    "id": "vp-427732232982",
+    "uid": 427732232982,
+    "brand": "Jacques",
+    "name": "Bogart Silver Scent Intense",
+    "fullTitle": "Jacques Bogart Silver Scent Intense",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6165-3766-4939-a263-646337636663/a9281d9639a5589411004c488b11449e.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 450,
+      "5ml": 700,
+      "10ml": 1300,
+      "15ml": 1800,
+      "20ml": 2200
+    },
+    "description": "Оригинальный нишевый аромат Jacques Bogart Silver Scent Intense на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/427732232982-jacques-bogart-silver-scent-intense"
+  },
+  {
+    "id": "vp-630717036432",
+    "uid": 630717036432,
+    "brand": "John",
+    "name": "Varvatos Artisan Pure",
+    "fullTitle": "John Varvatos Artisan Pure",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3035-3432-4734-a263-616135613832/97af341f512c54e7b28b13ffd051da99.png",
+    "badge": "",
+    "prices": {
+      "3ml": 510,
+      "5ml": 800,
+      "10ml": 1500,
+      "15ml": 2100,
+      "20ml": 2600
+    },
+    "description": "Оригинальный нишевый аромат John Varvatos Artisan Pure на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/630717036432-john-varvatos-artisan-pure"
+  },
+  {
+    "id": "vp-917769714722",
+    "uid": 917769714722,
+    "brand": "Jo Malone",
+    "name": "Myrrh & Tonka",
+    "fullTitle": "Jo Malone Myrrh & Tonka",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6134-3137-4439-b637-313964323837/d95ea92cb6b3209a6ffe467d7a184612.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1005,
+      "5ml": 1575,
+      "10ml": 2950,
+      "15ml": 4125,
+      "20ml": 5100
+    },
+    "description": "Оригинальный нишевый аромат Jo Malone Myrrh & Tonka на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/917769714722-jo-malone-myrrh-amp-tonka"
+  },
+  {
+    "id": "vp-299989712152",
+    "uid": 299989712152,
+    "brand": "Lattafa",
+    "name": "Yara Moi",
+    "fullTitle": "Lattafa Yara Moi",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3837-6431-4630-b437-323264396131/93c1bd2289dc06728d4a5a3a7ffd1c28.png",
+    "badge": "",
+    "prices": {
+      "3ml": 435,
+      "5ml": 675,
+      "10ml": 1250,
+      "15ml": 1725,
+      "20ml": 2100
+    },
+    "description": "Верхние ноты: персик и жасмин. Старт получается сочным и бархатистым: мягкая фруктовая сладость персика сочетается с чувственным, чуть терпким жасмином. Ноты сердца: карамель и амбра. Здесь раскрывается гурманская, сливочная грань (карамель скорее напоминает молочный десерт, а...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/299989712152-lattafa-yara-moi"
+  },
+  {
+    "id": "vp-455560858892",
+    "uid": 455560858892,
+    "brand": "Lataffa",
+    "name": "Al qiam silver",
+    "fullTitle": "Lataffa Al qiam silver",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6330-3262-4232-a339-383734303530/d7c6c7e1629c87899038a6fdbcbf07e0.png",
+    "badge": "",
+    "prices": {
+      "3ml": 645,
+      "5ml": 1025,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Оригинальный нишевый аромат Lataffa Al qiam silver на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/455560858892-lataffa-al-qiam-silver"
+  },
+  {
+    "id": "vp-684758607302",
+    "uid": 684758607302,
+    "brand": "Lattafa Perfumes",
+    "name": "Mayar",
+    "fullTitle": "Lattafa Perfumes Mayar",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3864-3835-4666-a163-323862366161/2d0b29fffa97829a42cd9bb143333607.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 435,
+      "5ml": 675,
+      "10ml": 1250,
+      "15ml": 1725,
+      "20ml": 2100
+    },
+    "description": "Верхние ноты: личи, малина, чёрная смородина. Старт получается ярким, сочным: экзотическая сладость личи переплетается с ягодной кислинкой. Ноты сердца: жасмин, роза. В сердце раскрывается нежный цветочный букет. Базовые ноты: ваниль, мускус. База добавляет теплоту и обволакив...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/684758607302-lattafa-perfumes-mayar"
+  },
+  {
+    "id": "vp-747331015802",
+    "uid": 747331015802,
+    "brand": "Lattafa Perfumes",
+    "name": "La Collection d'antiquités 1505",
+    "fullTitle": "Lattafa Perfumes La Collection d'antiquités 1505",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3961-6331-4835-b861-643462363739/56192a95713fcbbe74da5a8c7978ebbf.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Оригинальный нишевый аромат Lattafa Perfumes La Collection d'antiquités 1505 на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/747331015802-lattafa-perfumes-la-collection-dantiquit"
+  },
+  {
+    "id": "vp-875068087352",
+    "uid": 875068087352,
+    "brand": "Lattafa Perfumes",
+    "name": "Eclaire Banoffi",
+    "fullTitle": "Lattafa Perfumes Eclaire Banoffi",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6639-3534-4837-a339-333463373236/466b523f3e8cfec831a19e79d8a297b4.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 465,
+      "5ml": 725,
+      "10ml": 1350,
+      "15ml": 1875,
+      "20ml": 2300
+    },
+    "description": "Оригинальный нишевый аромат Lattafa Perfumes Eclaire Banoffi на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/875068087352-lattafa-perfumes-eclaire-banoffi"
+  },
+  {
+    "id": "vp-825973080872",
+    "uid": 825973080872,
+    "brand": "Yohji",
+    "name": "Yamamoto I'm Not Going to Disturb You Homme",
+    "fullTitle": "Yohji Yamamoto I'm Not Going to Disturb You Homme",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6363-3965-4764-b466-316131346530/787cc59d66426104a6b480e2cf86fe6b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 825,
+      "5ml": 1275,
+      "10ml": 2350,
+      "15ml": 3225,
+      "20ml": 3900
+    },
+    "description": "Необычный пряно-кожаный аромат с тёмным, интеллигентным характером. Он начинается свежим бергамотом, полынью и чёрным перцем — старт прохладный, слегка горьковатый и очень собранный. Затем аромат быстро становится мягче: появляется белый табак и замша, создающие эффект дорогой...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/825973080872-yohji-yamamoto-im-not-going-to-disturb-y"
+  },
+  {
+    "id": "vp-782945099242",
+    "uid": 782945099242,
+    "brand": "Zadig",
+    "name": "& Voltaire Just Rock! for Him",
+    "fullTitle": "Zadig & Voltaire Just Rock! for Him",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3030-6537-4637-a636-336537633566/1580e043ada1e974e59ef9c9df3b8891.png",
+    "badge": "",
+    "prices": {
+      "3ml": 807,
+      "5ml": 1245,
+      "10ml": 2290,
+      "15ml": 3135,
+      "20ml": 3780
+    },
+    "description": "Оригинальный нишевый аромат Zadig & Voltaire Just Rock! for Him на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/782945099242-zadig-amp-voltaire-just-rock-for-him"
+  },
+  {
+    "id": "vp-650407542252",
+    "uid": 650407542252,
+    "brand": "Rudross",
+    "name": "Road to paradise",
+    "fullTitle": "Rudross Road to paradise",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3761-3833-4363-b132-383562613366/7344727b88a3ede1d081768afbcaa04c.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "RudRoss Road to Paradise — это селективный нишевый аромат-унисекс, выпущенный в 2023 году, который относится к группе древесных и гурманских парфюмов. Концепция аромата строится вокруг идеи о том, что рай — это не конкретная географическая точка, а особое гармоничное состояние...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/650407542252-rudross-road-to-paradise"
+  },
+  {
+    "id": "vp-691087731752",
+    "uid": 691087731752,
+    "brand": "Trussardi",
+    "name": "femme Eau de Parfum Trussardi",
+    "fullTitle": "Trussardi femme Eau de Parfum Trussardi",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3766-6162-4132-b162-633764313130/934539a65a91ab0286a6665c9f0dde7f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Концепция аромата — современная, элегантная женственность: образ смелой, романтичной и уверенной в себе женщины. Верхние ноты: итальянский мандарин, нероли, томат. Старт получается свежим: цитрусовая свежесть мандарина сочетается с искристой сладостью нероли и лёгкой, чуть тра...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/691087731752-trussardi-femme-eau-de-parfum-trussardi"
+  },
+  {
+    "id": "vp-142344672102",
+    "uid": 142344672102,
+    "brand": "Zarkoperfume",
+    "name": "The Muse",
+    "fullTitle": "ZARKOPERFUME The Muse",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3839-6435-4262-b164-626563353238/2bcd437fa76d79c093241aa68b6522ea.png",
+    "badge": "",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "Оригинальный нишевый аромат ZARKOPERFUME The Muse на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/142344672102-zarkoperfume-the-muse"
+  },
+  {
+    "id": "vp-506649786352",
+    "uid": 506649786352,
+    "brand": "Sly",
+    "name": "John's Lab Seychelles Breeze",
+    "fullTitle": "Sly John's Lab Seychelles Breeze",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6436-3737-4233-b133-643432306236/eb972f68e6f449223037419e4ddc0168.png",
+    "badge": "",
+    "prices": {
+      "3ml": 570,
+      "5ml": 900,
+      "10ml": 1700,
+      "15ml": 2400,
+      "20ml": 3000
+    },
+    "description": "Свежий зелёно-водный аромат с ощущением морского воздуха, влажной растительности и прохладной чистоты. Seychelles Breeze начинает звучание ревенем, фиалковым листом и мокрой зеленью: здесь есть лёгкая кислинка, зелёная сочность и эффект прохладного ветра после дождя. В сердце ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/506649786352-sly-johns-lab-seychelles-breeze"
+  },
+  {
+    "id": "vp-649863148842",
+    "uid": 649863148842,
+    "brand": "Zara",
+    "name": "Leather Jardin",
+    "fullTitle": "Zara Leather Jardin",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6138-3631-4531-b766-393231366130/4478cbe390e7dae2f5185c0f69347a85.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Оригинальный нишевый аромат Zara Leather Jardin на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/649863148842-zara-leather-jardin"
+  },
+  {
+    "id": "vp-910207231502",
+    "uid": 910207231502,
+    "brand": "Sly",
+    "name": "John's Lab Mainstream",
+    "fullTitle": "Sly John's Lab Mainstream",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6239-3031-4135-b831-313262313631/0ff777233a969f77dd72fd5b3040ba62.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 570,
+      "5ml": 900,
+      "10ml": 1700,
+      "15ml": 2400,
+      "20ml": 3000
+    },
+    "description": "Оригинальный нишевый аромат Sly John's Lab Mainstream на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/910207231502-sly-johns-lab-mainstream"
+  },
+  {
+    "id": "vp-365309217182",
+    "uid": 365309217182,
+    "brand": "Zarkoperfume",
+    "name": "PINK MOLéCULE 090.09",
+    "fullTitle": "ZARKOPERFUME PINK MOLéCULE 090.09",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3365-6339-4563-b332-373137303031/66ed22a54bef1ff7d84ed3aadaef911a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 597,
+      "5ml": 945,
+      "10ml": 1790,
+      "15ml": 2535,
+      "20ml": 3180
+    },
+    "description": "Оригинальный нишевый аромат ZARKOPERFUME PINK MOLéCULE 090.09 на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/365309217182-zarkoperfume-pink-molcule-09009"
+  },
+  {
+    "id": "vp-663375722232",
+    "uid": 663375722232,
+    "brand": "Zarkoperfume",
+    "name": "The Lawyer",
+    "fullTitle": "ZARKOPERFUME The Lawyer",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3036-6538-4634-b830-313565663261/7c68c3ed0ecd45ca438490fdf4d9fa8c.png",
+    "badge": "",
+    "prices": {
+      "3ml": 510,
+      "5ml": 800,
+      "10ml": 1500,
+      "15ml": 2100,
+      "20ml": 2600
+    },
+    "description": "Оригинальный нишевый аромат ZARKOPERFUME The Lawyer на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/663375722232-zarkoperfume-the-lawyer"
+  },
+  {
+    "id": "vp-124330489352",
+    "uid": 124330489352,
+    "brand": "Xerjoff",
+    "name": "Erba Gold",
+    "fullTitle": "Xerjoff Erba Gold",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3865-3961-4533-b532-356361663936/0daa6ef9004b1fbc7867f192ef0b8b3f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1005,
+      "5ml": 1575,
+      "10ml": 2950,
+      "15ml": 4125,
+      "20ml": 5100
+    },
+    "description": "Оригинальный нишевый аромат Xerjoff Erba Gold на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/124330489352-xerjoff-erba-gold"
+  },
+  {
+    "id": "vp-756777928552",
+    "uid": 756777928552,
+    "brand": "Salvatore",
+    "name": "Ferragamo Signorina Misteriosa",
+    "fullTitle": "Salvatore Ferragamo Signorina Misteriosa",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6634-6463-4438-b934-373362643362/059fdd4adf938f1591852d3fe858d8fb.png",
+    "badge": "",
+    "prices": {
+      "3ml": 570,
+      "5ml": 900,
+      "10ml": 1700,
+      "15ml": 2400,
+      "20ml": 3000
+    },
+    "description": "Оригинальный нишевый аромат Salvatore Ferragamo Signorina Misteriosa на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/756777928552-salvatore-ferragamo-signorina-misteriosa"
+  },
+  {
+    "id": "vp-750283863072",
+    "uid": 750283863072,
+    "brand": "Tom Ford",
+    "name": "Lost Cherry",
+    "fullTitle": "Tom Ford Lost Cherry",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3731-6366-4664-a337-323739316564/1aef908a9ce096e29f5e220e0ad31cc8.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1095,
+      "5ml": 1725,
+      "10ml": 3250,
+      "15ml": 4575,
+      "20ml": 5700
+    },
+    "description": "Сочный, густой и чуть провокационный аромат вишнёвого ликёра с миндальной горчинкой. Lost Cherry открывается тёмной черешней, вишнёвым сиропом и горьким миндалём, создавая почти десертное, алкогольное звучание. Затем появляются роза и жасмин, а в базе остаются ваниль, бобы тон...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/750283863072-tom-ford-lost-cherry"
+  },
+  {
+    "id": "vp-874903372412",
+    "uid": 874903372412,
+    "brand": "Zadig",
+    "name": "& Voltaire This is Her",
+    "fullTitle": "Zadig & Voltaire This is Her",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6165-3963-4866-b235-663033383462/2b15b9bc80fa3c51fd1e31146d4cf3f4.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 720,
+      "5ml": 1150,
+      "10ml": 2200,
+      "15ml": 3150,
+      "20ml": 4000
+    },
+    "description": "Мягкий, уютный и очень узнаваемый аромат с ванилью, каштаном и сливочным сандалом. В начале слышны жасмин и розовый перец, затем появляется сладковатый каштановый аккорд с ванилью и взбитыми сливками. В базе остаются кашмерановое дерево и сандал — тёплые, древесные, немного мо...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/874903372412-zadig-amp-voltaire-this-is-her"
+  },
+  {
+    "id": "vp-305956640932",
+    "uid": 305956640932,
+    "brand": "Versace",
+    "name": "Eros Flame",
+    "fullTitle": "Versace Eros Flame",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor6561-3133-4231-b435-666661653439/c579ee146f6aa140cc11c55a64e81cec.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Оригинальный нишевый аромат Versace Eros Flame на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/305956640932-versace-eros-flame"
+  },
+  {
+    "id": "vp-227666517783",
+    "uid": 227666517783,
+    "brand": "Creed",
+    "name": "Absolu Aventus 2023",
+    "fullTitle": "Creed Absolu Aventus 2023",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3237-6466-4161-a232-396262383034/22abaca7cecb28eef1d9d8396c8f2d32.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1770,
+      "5ml": 2850,
+      "10ml": 5500,
+      "15ml": 7950,
+      "20ml": 10200
+    },
+    "description": "Более насыщенная, пряная и яркая интерпретация классического Aventus. Здесь узнаваемая фруктово-цитрусовая тема раскрывается сочным ананасом, чёрной смородиной, грейпфрутом, бергамотом и лимоном. В сердце появляются имбирь, кардамон, корица, розовый перец и пачули, а база стро...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/227666517783-creed-absolu-aventus-2023"
+  },
+  {
+    "id": "vp-651975211713",
+    "uid": 651975211713,
+    "brand": "Dolce & Gabbana",
+    "name": "Devotion",
+    "fullTitle": "Dolce&Gabbana Devotion",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3964-6531-4737-b765-333364636239/328f2b26f208c39ad791526d52e96d55.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Солнечный гурманский аромат с засахаренным лимоном, цветами апельсина и густой ванилью. Devotion открывается яркой цитрусовой сладостью, напоминающей лимонные цукаты и итальянскую выпечку. Аромат звучит радостно, женственно и очень уютно: не как тяжёлый восточный десерт, а как...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/651975211713-dolceampgabbana-devotion"
+  },
+  {
+    "id": "vp-740858604853",
+    "uid": 740858604853,
+    "brand": "Ex Nihilo",
+    "name": "Blue Talisman",
+    "fullTitle": "Ex Nihilo Blue Talisman",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3061-6337-4562-b463-626634393838/0a8bd05ee8600ccf77625d60ef854b68.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1440,
+      "5ml": 2300,
+      "10ml": 4400,
+      "15ml": 6300,
+      "20ml": 8000
+    },
+    "description": "Сияющий, воздушный аромат с сочной грушей, цитрусами и чистой древесно-мускусной базой. В начале особенно ярко звучат бергамот, мандарин, имбирь и спелая груша — свежо, слегка сладко и очень «искристо». Blue Talisman не уходит в обычную фруктовую сладость: он скорее про ощущен...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/740858604853-ex-nihilo-blue-talisman"
+  },
+  {
+    "id": "vp-694225157693",
+    "uid": 694225157693,
+    "brand": "Parfums de Marly",
+    "name": "Althair",
+    "fullTitle": "Parfums de Marly Althair",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3962-3636-4266-b236-396366343035/bb66dbb882acb5fd95b27d6040493b96.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1080,
+      "5ml": 1700,
+      "10ml": 3200,
+      "15ml": 4500,
+      "20ml": 5600
+    },
+    "description": "Тёплый ванильный аромат с пряностями, цитрусами и благородной древесной основой. Althaïr открывается корицей, кардамоном, бергамотом и флердоранжем, поэтому ваниль здесь не звучит плоско или слишком кондитерски. Постепенно она становится более кремовой и густой, соединяясь с п...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/694225157693-parfums-de-marly-althair"
+  },
+  {
+    "id": "vp-580405465803",
+    "uid": 580405465803,
+    "brand": "Penhaligon's",
+    "name": "Sartorial",
+    "fullTitle": "Penhaligon's Sartorial",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3261-6238-4362-a533-303334386663/9964a5b38485c793688a40c7ba82c972.png",
+    "badge": "",
+    "prices": {
+      "3ml": 990,
+      "5ml": 1550,
+      "10ml": 2900,
+      "15ml": 4050,
+      "20ml": 5000
+    },
+    "description": "Элегантный аромат в стиле классического английского костюма, вдохновлённый атмосферой ателье на Savile Row. Sartorial сочетает прохладные металлические и озоновые аккорды с лавандой, пряностями, кожей и пчелиным воском. В звучании легко представить отпаренную рубашку, дорогую ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/580405465803-penhaligons-sartorial"
+  },
+  {
+    "id": "vp-579651367803",
+    "uid": 579651367803,
+    "brand": "Wavechild",
+    "name": "Room 1015",
+    "fullTitle": "Wavechild Room 1015",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3661-6361-4633-b935-643437323335/58f9ec5f669eb0b57bc88420da314cbc.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 840,
+      "5ml": 1300,
+      "10ml": 2400,
+      "15ml": 3300,
+      "20ml": 4000
+    },
+    "description": "Яркий солнечный аромат с цитрусами, арбузом, кокосом и лёгкой морской солоноватостью. Wavechild начинается сочным апельсином, мандарином и лимоном, затем раскрывается прохладным арбузом и кокосовой водой. В базе появляются амбровая древесина, какао и амбра — они делают аромат ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/579651367803-wavechild-room-1015"
+  },
+  {
+    "id": "vp-702135321033",
+    "uid": 702135321033,
+    "brand": "Coco",
+    "name": "Chanel Mademoiselle",
+    "fullTitle": "Coco Chanel Mademoiselle",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6163-3237-4839-b261-323562303636/a7bae0919bae5c496388f6eb23b6ada9.png",
+    "badge": "",
+    "prices": {
+      "3ml": 750,
+      "5ml": 1150,
+      "10ml": 2100
+    },
+    "description": "Более глубокая, тёплая и насыщенная версия классического Coco Mademoiselle. В начале звучат цитрусы — апельсин, бергамот и грейпфрут, но довольно быстро аромат уходит в плотный цветочно-пачулиевый аккорд с розой и жасмином. В базе появляется мадагаскарская ваниль, бобы тонка, ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/702135321033-coco-chanel-mademoiselle"
+  },
+  {
+    "id": "vp-207276306363",
+    "uid": 207276306363,
+    "brand": "Yves Saint Laurent",
+    "name": "Babycat",
+    "fullTitle": "Yves Saint Laurent Babycat",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3035-6137-4930-a335-616637363365/6546ff585fd3a83f2311908ef8ea849e.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1050,
+      "5ml": 1650,
+      "10ml": 3100,
+      "15ml": 4350,
+      "20ml": 5400
+    },
+    "description": "Оригинальный нишевый аромат Yves Saint Laurent Babycat на распив от 3 мл в фирменном атомайзере.",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/207276306363-yves-saint-laurent-babycat"
+  },
+  {
+    "id": "vp-411275306283",
+    "uid": 411275306283,
+    "brand": "Amouage",
+    "name": "Interlude",
+    "fullTitle": "Amouage Interlude",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3731-6464-4263-a232-366665343632/1d0f50a2c016dc6435c507db5a49abc9.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1320,
       "5ml": 2100,
-      "10ml": 3800,
-      "bottle": 24000
+      "10ml": 4000,
+      "15ml": 5700,
+      "20ml": 7200
     },
-    bottleSize: "100 ml",
-    pyramid: {
-      top: ["Бергамот", "Лимон", "Нероли", "Африканские бархатцы"],
-      heart: ["Фиалка", "Жасмин", "Цикламен"],
-      base: ["Черная амбра", "Мускус", "Ветивер", "Марокканский кедр"]
+    "description": "Мощный дымно-смолистый аромат с ладаном, пряностями, кожей и удом. Interlude Man начинается резковатой смесью бергамота, орегано и ягод пименты — старт сухой, травянистый, почти лекарственный. Затем раскрывается густое сердце из ладана, амбры, лабданума, опопонакса и ванили, а...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/411275306283-amouage-interlude"
+  },
+  {
+    "id": "vp-972978582243",
+    "uid": 972978582243,
+    "brand": "Giardini",
+    "name": "Di Toscana Bianco Latte",
+    "fullTitle": "Giardini Di Toscana Bianco Latte",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3236-3434-4066-b564-313935303535/f2408b15fdf9ab3edaf21fc3c8e5c91b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 900,
+      "5ml": 1400,
+      "10ml": 2600,
+      "15ml": 3600,
+      "20ml": 4400
     },
-    metrics: {
-      longevity: "8-10 часов",
-      longevityScore: 84,
-      sillage: "Мягкий обволакивающий",
-      sillageScore: 86,
-      season: "Весна / Лето / Осень",
-      vibe: "Солнечный, радостный, комфортный"
+    "description": "Очень уютный гурманский аромат с карамелью, ванилью, мёдом и белыми мускусами. Bianco Latte звучит так, будто рядом горячее молоко с ванилью, карамельный соус и мягкий сливочный десерт. В нём есть сладость, но она не фруктовая и не конфетная — скорее кремовая, тягучая, обволак...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/972978582243-giardini-di-toscana-bianco-latte"
+  },
+  {
+    "id": "vp-251252136883",
+    "uid": 251252136883,
+    "brand": "ByBozo",
+    "name": "Sea Breeze",
+    "fullTitle": "Bybozo Sea Breeze",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3234-3466-4662-b436-656132326261/d1186c153d2e9dd4345cf0ac53a1352f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 645,
+      "5ml": 1025,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
     },
-    description: "Париж 1920-х и увлечение африканской культурой. Теплый сливочный ветивер, украшенный бархатцами, нероли и нежной фиалковой пудрой."
+    "description": "Свежий морской аромат с лимоном, солёным воздухом и мягкой ванильно-ветиверовой базой. Sea Breeze начинается ярким лимоном и розовым перцем, создавая ощущение прохладного бриза и цитрусовой цедры. В сердце появляются морская соль, карамбола, помело и цветок тиаре — композиция ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/251252136883-bybozo-sea-breeze"
+  },
+  {
+    "id": "vp-390475075453",
+    "uid": 390475075453,
+    "brand": "ByBozo",
+    "name": "Richness",
+    "fullTitle": "Bybozo Richness",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6330-6334-4139-b434-353563396231/0966d3bafb12562144383217b4a32f58.png",
+    "badge": "",
+    "prices": {
+      "3ml": 576,
+      "5ml": 910,
+      "10ml": 1720,
+      "15ml": 2430,
+      "20ml": 3040
+    },
+    "description": "Richness – аромат, воплощающий благородство и чистоту души. Как говорит Хамуди Халил, основатель парфюмерного дома BYBOZO, истинное богатство - это не машины, дома и заводы, которыми ты владеешь. Богатство - это благородство души, это люди и их уважение друг к другу. Аромат, с...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/390475075453-bybozo-richness"
+  },
+  {
+    "id": "vp-388234520503",
+    "uid": 388234520503,
+    "brand": "Franck",
+    "name": "Boclet Madness",
+    "fullTitle": "Franck Boclet Madness",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6533-3731-4930-b233-343330366365/28c66208092e9972444c1bde9ccb4e55.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 750,
+      "5ml": 1150,
+      "10ml": 2100,
+      "15ml": 2850,
+      "20ml": 3400
+    },
+    "description": "Густой восточно-гурманский аромат с кокосом, ромом, ванилью и тёмным удом. В начале слышны кокосовая мякоть и кокосовое молоко, согретые ромом и шафраном. Затем композиция становится глубже: ваниль, пряности, роза и уд создают сладкое, древесное и немного дымное звучание. В ба...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/388234520503-franck-boclet-madness"
+  },
+  {
+    "id": "vp-954521545723",
+    "uid": 954521545723,
+    "brand": "French Avenue",
+    "name": "Aromatix Royal Taboo",
+    "fullTitle": "French Avenue Aromatix Royal Taboo",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3133-3734-4566-a264-356566303338/eb8ab12a9b95d8aa20daa4c76fe37ee3.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Этот аромат — результат коллаборации линейки French Avenue (принадлежит эмиратскому бренду Fragrance World) и парфюмерного блогера Муниба Альвазира (Neeb). Верхние ноты: кардамон, корица, бензоин, амбра. Старт получается тёплым, пряным и обволакивающим: специи сочетаются со см...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/954521545723-french-avenue-aromatix-royal-taboo"
+  },
+  {
+    "id": "vp-766103358093",
+    "uid": 766103358093,
+    "brand": "Nicolai",
+    "name": "Parfumeur Createur Fig Tea Intense",
+    "fullTitle": "Nicolai Parfumeur Createur Fig Tea Intense",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3936-6134-4766-b937-393430353839/1a18fea42ec0a9d4b5dcac85e2d73a89.png",
+    "badge": "",
+    "prices": {
+      "3ml": 900,
+      "5ml": 1400,
+      "10ml": 2600,
+      "15ml": 3600,
+      "20ml": 4400
+    },
+    "description": "Это насыщенная, «интенсивная» версия аромата Fig Tea от Патрисии де Николаи — унисекс‑парфюм из коллекции Intense. Композиция звучит как тёплый фруктовый чай в средиземноморском саду: цитрусовая свежесть в начале плавно переходит в мягкий фруктово‑цветочный аккорд, а в базе по...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/766103358093-nicolai-parfumeur-createur-fig-tea-inten"
+  },
+  {
+    "id": "vp-108488230853",
+    "uid": 108488230853,
+    "brand": "Byredo",
+    "name": "Slow Dance",
+    "fullTitle": "Byredo Slow Dance",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6235-6235-4933-a630-633832613538/37517632c18bc98c65eb36216467cb83.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1023,
+      "5ml": 1605,
+      "10ml": 3010,
+      "15ml": 4215,
+      "20ml": 5220
+    },
+    "description": "Тёплый, чувственный аромат с мягкими смолами, фиалкой и ванилью. Slow Dance начинается густым опопонаксом с лёгким коньячным оттенком, затем раскрывается лабданумом, геранью и бархатистой фиалкой. В базе остаются пачули, ваниль и ладан — они делают звучание глубоким, немного п...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/108488230853-byredo-slow-dance"
+  },
+  {
+    "id": "vp-697831655343",
+    "uid": 697831655343,
+    "brand": "ByBozo",
+    "name": "Amsterdam Weekdays",
+    "fullTitle": "Bybozo Amsterdam Weekdays",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3961-3139-4037-a535-623563323031/828df808de16b0042b080921181c3ba4.png",
+    "badge": "",
+    "prices": {
+      "3ml": 630,
+      "5ml": 950,
+      "10ml": 1700,
+      "15ml": 2250,
+      "20ml": 2600
+    },
+    "description": "Аромат, рожденный из тонкой энергии мысли. Он улавливает даже то, что не произнесено вслух, и ведёт вперёд — уверенно. Amsterdam Weekdays — это тишина, в которой слышен внутренний голос. Он раскрывается свежестью водяной лилии и лёгкими альдегидами, перетекает в тонкие цветочн...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/697831655343-bybozo-amsterdam-weekdays"
+  },
+  {
+    "id": "vp-490019118763",
+    "uid": 490019118763,
+    "brand": "ByBozo",
+    "name": "Eternal Rainbow",
+    "fullTitle": "Bybozo Eternal Rainbow",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3939-3339-4839-a365-636339643135/754b531bda54c9ece7503865098c00dd.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 570,
+      "5ml": 900,
+      "10ml": 1700,
+      "15ml": 2400,
+      "20ml": 3000
+    },
+    "description": "Eternal Rainbow – «вечная радуга» - именно такую радугу увидел Хамуди Халил, основатель парфюмерного дома BYBOZO, прогуливаясь в окрестностях французского города Монпелье. Этот аромат передает атмосферу цветущих французских полей после дождя. Представьте себе яркие распустивши...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/490019118763-bybozo-eternal-rainbow"
+  },
+  {
+    "id": "vp-805071866003",
+    "uid": 805071866003,
+    "brand": "Ajmal",
+    "name": "Evoke Midnight Edition",
+    "fullTitle": "Ajmal Evoke Midnight Edition",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6265-3735-4064-a630-666565353639/e8bca20c4ed240ca30113d8aa73bdc90.png",
+    "badge": "",
+    "prices": {
+      "3ml": 450,
+      "5ml": 700,
+      "10ml": 1300,
+      "15ml": 1800,
+      "20ml": 2200
+    },
+    "description": "Яркий пряно-фруктовый аромат с малиной, мандарином и тёплой древесно-мускусной базой. В начале звучат сочная малина, розовый перец и мандарин — свежо, энергично и чуть сладко. Затем появляются фиалка, кардамон и шафран, а в финале раскрываются пачули, бобы тонка и мускус. Evok...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/805071866003-ajmal-evoke-midnight-edition"
+  },
+  {
+    "id": "vp-378584897653",
+    "uid": 378584897653,
+    "brand": "French Avenue",
+    "name": "Aromatix Sun Kissed",
+    "fullTitle": "French Avenue Aromatix Sun Kissed",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6637-3539-4439-b966-363761653737/5358a348eb4e6e61aed5e630469276bc.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Солнечный цитрусово-ароматический аромат с помело, горьким апельсином и аккордом летнего Spritz. Sun Kissed начинается ярко и искристо: помело, бергамот и горький апельсин создают ощущение холодного цитрусового коктейля. В сердце появляются чай, кардамон, газированный аккорд и...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/378584897653-french-avenue-aromatix-sun-kissed"
+  },
+  {
+    "id": "vp-401972802883",
+    "uid": 401972802883,
+    "brand": "French Avenue",
+    "name": "Aromatix X Teas Me",
+    "fullTitle": "French Avenue Aromatix X Teas Me",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3831-3832-4561-b765-623461636630/8a45227b305907d756b313f69f33303a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "French Avenue Aromatix X Teas Me Extrait de Parfum — это изысканное парфюмерное произведение, которое погружает в атмосферу магии и утончённого наслаждения. Этот экстракт, обладающий высокой концентрацией ароматических элементов, становится Вашим неизменным спутником на протяж...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/401972802883-french-avenue-aromatix-x-teas-me"
+  },
+  {
+    "id": "vp-934796290113",
+    "uid": 934796290113,
+    "brand": "Different",
+    "name": "Ego Love Me",
+    "fullTitle": "Different Ego Love Me",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3965-6663-4930-b966-396366363533/325095f03f4667da9865ea8f6fa145a7.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Романтичный фруктово-цветочный аромат с ягодами, розой и тёплой смолистой базой. В начале звучат розовый перец, красные ягоды, чёрная смородина, бергамот и нероли — ярко, немного искристо и с лёгкой пряностью. Затем аромат раскрывается турецкой розой, геранью и кардамоном, а в...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/934796290113-different-ego-love-me"
+  },
+  {
+    "id": "vp-945532132063",
+    "uid": 945532132063,
+    "brand": "French Avenue",
+    "name": "Grow",
+    "fullTitle": "French Avenue Grow",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6664-6636-4961-b532-373462656363/8178ea6345ad2fd0fe5d6f62e84a6e94.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "French Avenue Grow — это глубокий, восточно-древесный унисекс-аромат с выразительными сладкими, пряными и сливочными аккордами. Созданный в сотрудничестве с парфюмером Жан-Кристофом Эро, он выделяется сложной, многослойной композицией для любого сезона. Верхние ноты: Финики, д...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/945532132063-french-avenue-grow"
+  },
+  {
+    "id": "vp-185474204693",
+    "uid": 185474204693,
+    "brand": "French Avenue",
+    "name": "Aromatix Forbidden Fruit",
+    "fullTitle": "French Avenue Aromatix Forbidden Fruit",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6362-3834-4438-b335-306564366638/af8c76462ac0ef8f878f2423cebccdbe.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Сочный фруктово-восточный аромат с кровавым апельсином, красным яблоком, персиком и тёплой ванильно-древесной базой. Forbidden Fruit начинается ярким цитрусовым аккордом с кардамоном: свежесть здесь быстро становится более сладкой и объёмной за счёт яблока, персика, розы и кок...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/185474204693-french-avenue-aromatix-forbidden-fruit"
+  },
+  {
+    "id": "vp-217572898583",
+    "uid": 217572898583,
+    "brand": "French Avenue",
+    "name": "Chronicles Extrait de Parfum",
+    "fullTitle": "French Avenue Chronicles Extrait de Parfum",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6134-6664-4465-b932-326333316564/2b6d9fe8bf83e7be84cc7629b3acac8e.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Глубокий восточно-гурманский аромат-унисекс, выпущенный в 2025 году премиальным подразделением дубайского парфюмерного дома Fragrance World. Композиция отличается высокой концентрацией ароматических веществ (Extrait de Parfum), что обеспечивает отличную стойкость и плотный, об...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/217572898583-french-avenue-chronicles-extrait-de-parf"
+  },
+  {
+    "id": "vp-101103850123",
+    "uid": 101103850123,
+    "brand": "French Avenue",
+    "name": "Cocolatte Lassi",
+    "fullTitle": "French Avenue Cocolatte Lassi",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3537-3935-4436-b437-633836353863/611cbc3909ba1ad22917783c14eec1b4.png",
+    "badge": "",
+    "prices": {
+      "3ml": 450,
+      "5ml": 700,
+      "10ml": 1300,
+      "15ml": 1800,
+      "20ml": 2200
+    },
+    "description": "Сливочный гурманский аромат с ванилью, шоколадом, йогуртовым аккордом и тёплым ромом. В начале ваниль звучит мягко и обволакивающе, затем появляется шоколадная глубина и лёгкая кисломолочная нота, благодаря которой композиция не превращается в тяжёлый сахарный десерт. В базе р...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/101103850123-french-avenue-cocolatte-lassi"
+  },
+  {
+    "id": "vp-505620091663",
+    "uid": 505620091663,
+    "brand": "Afnan",
+    "name": "Patchouli On Fire",
+    "fullTitle": "Afnan Patchouli On Fire",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3334-6332-4133-a130-633432663963/6d9383b18bec8a2f1f15ca0a187b5fbe.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 543,
+      "5ml": 855,
+      "10ml": 1610,
+      "15ml": 2265,
+      "20ml": 2820
+    },
+    "description": "Patchouli On Fire – эффектный древесно-пряный парфюм от арабского бренда AFNAN, очаровавший красивым классическим звучанием и элегантным послевкусием ценителей элитных, истинно гурманских ароматов в 2022 году. Чувственная парфюмерная композиция, практически молниеносно перешед...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/505620091663-afnan-patchouli-on-fire"
+  },
+  {
+    "id": "vp-257406076793",
+    "uid": 257406076793,
+    "brand": "Maison",
+    "name": "Crivelli Oud Cadenza",
+    "fullTitle": "Maison Crivelli Oud Cadenza",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6531-3036-4631-b961-643931383933/4303828864f61eea0b34456d247cfbbe.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1800,
+      "5ml": 2900,
+      "10ml": 5600,
+      "15ml": 8100,
+      "20ml": 10400
+    },
+    "description": "Глубокий восточный экстракт с пряностями, финиками, карамелью и насыщенным удом. Oud Cadenza начинается шафраном, корицей, кардамоном, имбирём и розовым перцем — звучание горячее, пряное и немного дымное. В сердце появляются финики, карамель, ладан, мирра и уд, а база становит...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/257406076793-maison-crivelli-oud-cadenza"
+  },
+  {
+    "id": "vp-894498205163",
+    "uid": 894498205163,
+    "brand": "Perroy",
+    "name": "Whitedenim",
+    "fullTitle": "Perroy Whitedenim",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6465-3262-4564-b333-643765643934/76a698b7f0d93f0c7f0bbd5eb0543a7d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Необычный молочно-солёный аромат, вдохновлённый морским воздухом, прогретой солнцем белой футболкой и кожей после пляжа. В начале ощущается солёный, чуть йодистый аккорд — свежий, морской и чистый. Затем появляется мягкая молочная нота, которая делает аромат не акватическим, а...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/894498205163-perroy-whitedenim"
+  },
+  {
+    "id": "vp-735178084413",
+    "uid": 735178084413,
+    "brand": "Vittorio",
+    "name": "Ethnos V. Extrait de Parfum",
+    "fullTitle": "Vittorio Ethnos V. Extrait de Parfum",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3030-6431-4133-a266-383761326361/4026b8457ac287a37ec36eb8913fa92a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Необычный свежий аромат, в котором прохладная водная мята постепенно переходит в тёплую ванильно-древесную базу. В начале мята даёт зелёный, слегка акватический и очень освежающий эффект. Розовый перец в сердце добавляет лёгкую пряность и делает композицию более живой. В финал...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/735178084413-vittorio-ethnos-v-extrait-de-parfum"
+  },
+  {
+    "id": "vp-466879939113",
+    "uid": 466879939113,
+    "brand": "Omanluxury",
+    "name": "Paramour",
+    "fullTitle": "Omanluxury Paramour",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3234-3537-4133-b566-396133306432/80aab9039ff22dc8cc5a75ba7d5b0e2d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 945,
+      "5ml": 1475,
+      "10ml": 2750,
+      "15ml": 3825,
+      "20ml": 4700
+    },
+    "description": "Насыщенный восточный аромат, в котором сочные ягоды и цитрусы постепенно уходят в тёплую кожу, карамель и древесные смолы. В начале особенно заметны малина, грейпфрут, бергамот и шафран: звучание яркое, сладковато-терпкое, с лёгкой пряностью. Затем появляется густая роза с жас...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/466879939113-omanluxury-paramour"
+  },
+  {
+    "id": "vp-170639811263",
+    "uid": 170639811263,
+    "brand": "SIU",
+    "name": "Flawsome",
+    "fullTitle": "SIU Flawsome",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6561-6662-4036-a366-633236386234/2e56b69fc6b213c3b2b4773a1ca4d1da.png",
+    "badge": "",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1350,
+      "10ml": 2500,
+      "15ml": 3450,
+      "20ml": 4200
+    },
+    "description": "Минеральный, прозрачный и очень современный аромат на основе амброксана. Он начинается бергамотом, розовым перцем и чёрной смородиной — свежо, чуть колко и с лёгкой ягодной кислинкой. Затем выходят амброксан, кедр и фиалка, а в базе остаются белый мускус и олибанум. Flawsome в...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/170639811263-siu-flawsome"
+  },
+  {
+    "id": "vp-706987229973",
+    "uid": 706987229973,
+    "brand": "SIU",
+    "name": "Elan",
+    "fullTitle": "SIU Elan",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3638-3838-4466-a138-373362353562/3384912b67631af9f48da7a6735a5c58.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1350,
+      "10ml": 2500,
+      "15ml": 3450,
+      "20ml": 4200
+    },
+    "description": "Мягкий, солнечный и очень женственный аромат с миндалём, мимозой и кокосом. В начале миндаль даёт лёгкую ореховую горчинку, а затем быстро появляется пушистая цветочная сладость мимозы, жасмина и лиатриса. Кокос делает композицию более кремовой и воздушной, словно тёплая пудра...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/706987229973-siu-elan"
+  },
+  {
+    "id": "vp-827690092263",
+    "uid": 827690092263,
+    "brand": "Swiss",
+    "name": "Arabian Shaghaf Amber Infusion",
+    "fullTitle": "Swiss Arabian Shaghaf Amber Infusion",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6232-3534-4062-b064-383036346365/f76b088d193688fa1a0db1896e3cfa7e.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Аромат открывается ярким сочетанием сухой амбры, имбиря, кардамона, мягкой сладости абрикоса и свежего яблока, мгновенно создавая тёплое и притягательное ощущение. В сердце композиции — масло даваны с его естественными, хмельными, фруктовыми нотами, которое сочетается со сливо...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/827690092263-swiss-arabian-shaghaf-amber-infusion"
+  },
+  {
+    "id": "vp-204105822413",
+    "uid": 204105822413,
+    "brand": "Orlov",
+    "name": "Paris Red Enigma",
+    "fullTitle": "Orlov Paris Red Enigma",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6662-3738-4331-a365-633139383665/5e51d5957b9448382d69da870f258a3f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 900,
+      "5ml": 1400,
+      "10ml": 2600,
+      "15ml": 3600,
+      "20ml": 4400
+    },
+    "description": "Пьянящий вишнёво-ромовый аромат с мягкой ванилью, пудровым ирисом и смолистой базой. Начало звучит тёмной вишней, бергамотом и ромом — сладко, алкогольное и немного терпко. Затем появляются ваниль, давана и ирис: аромат становится более бархатным, пряным и чуть пудровым. В баз...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/204105822413-orlov-paris-red-enigma"
+  },
+  {
+    "id": "vp-689910282483",
+    "uid": 689910282483,
+    "brand": "Zara",
+    "name": "Tobacco Collection Rich Warm Addictive",
+    "fullTitle": "Zara Tobacco Collection Rich Warm Addictive",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6239-3632-4161-b465-353038313433/baaef7dde0b861b0bf0f1555db39b9cf.png",
+    "badge": "",
+    "prices": {
+      "3ml": 390,
+      "5ml": 600,
+      "10ml": 1100,
+      "15ml": 1500,
+      "20ml": 1800
+    },
+    "description": "Тёплый, мягкий и уютный аромат с ромом, ванилью и лёгким табачным настроением. В актуальной версии Zara делает акцент на роме, белом пионе и бурбонской ванили: аромат раскрывается сладко, немного алкогольным оттенком, затем становится кремовым и обволакивающим. Название может ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/689910282483-zara-tobacco-collection-rich-warm-addict"
+  },
+  {
+    "id": "vp-485883733513",
+    "uid": 485883733513,
+    "brand": "Vertus",
+    "name": "Narcos'is",
+    "fullTitle": "Vertus Narcos'is",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3538-3863-4238-b435-376136373637/70f0a23b1d35e05f1c2be533a935c155.png",
+    "badge": "",
+    "prices": {
+      "3ml": 885,
+      "5ml": 1375,
+      "10ml": 2550,
+      "15ml": 3525,
+      "20ml": 4300
+    },
+    "description": "Яркий фруктово-амбровый аромат с кофе, манго, ревенем и сочным персиком. В начале Narcos’is звучит очень контрастно: терпкий ревень, мандарин, кардамон и кофейная горчинка создают бодрый, чуть дерзкий старт. Затем появляется густое манго с имбирём и амброй — аромат становится ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/485883733513-vertus-narcosis"
+  },
+  {
+    "id": "vp-859399523143",
+    "uid": 859399523143,
+    "brand": "Giardino",
+    "name": "Benessere Amber",
+    "fullTitle": "Giardino Benessere Amber",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3832-6434-4936-a431-326565623663/db1e7d3a5f48cf44d0e6f52fdacc399e.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Amber подойдёт тем, кто любит спокойные, обволакивающие амбры без тяжёлой восточной громкости. Тёплый, мягкий и немного медитативный амбровый аромат, в котором цветы не спорят с базой, а делают её более воздушной. Стартует бергамотом, жасмином и иланг-илангом: звучание не цитр...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/859399523143-giardino-benessere-amber"
+  },
+  {
+    "id": "vp-936440572623",
+    "uid": 936440572623,
+    "brand": "Giardino",
+    "name": "Benessere Cotton Flower",
+    "fullTitle": "Giardino Benessere Cotton Flower",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6433-6631-4634-a161-363438653566/406953bfe88e4f1a0e90009af38c9b40.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Пудрово-цветочный аромат с лёгкой ретро-интонацией. В начале гардения, бергамот и роза дают чистое белоцветочное звучание, но довольно быстро композиция становится теплее и глубже за счёт жасмина, пиона и пряной гвоздики. В базе пачули, бобы тонка и дуб создают мягкий кремово-...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/936440572623-giardino-benessere-cotton-flower"
+  },
+  {
+    "id": "vp-149853575633",
+    "uid": 149853575633,
+    "brand": "French Avenue",
+    "name": "Sultan The Founder",
+    "fullTitle": "French Avenue Sultan The Founder",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3738-3531-4537-a331-353635393466/450c06df96a14171d05c105b08657c7e.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Глубокий восточно-древесный аромат с удом, пачули и тёплой амброй. Sultan The Founder начинается густым ориентальным аккордом с дымным удом и влажной землистостью пачули. В сердце появляется кашемировое дерево, дубовый мох и амбретта — они делают композицию более мягкой, барха...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/149853575633-french-avenue-sultan-the-founder"
+  },
+  {
+    "id": "vp-438838058453",
+    "uid": 438838058453,
+    "brand": "Lattafa",
+    "name": "Petra",
+    "fullTitle": "Lattafa Petra",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3836-6664-4634-b461-626665306233/cb01b14bcbb879252cf1a9c40ab92ffe.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Тёплый сливочно-гурманский аромат со сливой, ромом, кокосом и ванилью. В начале особенно заметен дуэт спелой сливы и рома: сладкий, немного алкогольный, с ощущением фруктового ликёра. Затем появляются тубероза и кокос, которые добавляют аромату кремовую белоцветочную мягкость....",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/438838058453-lattafa-petra"
+  },
+  {
+    "id": "vp-220930208763",
+    "uid": 220930208763,
+    "brand": "French Avenue",
+    "name": "Venus de Milo",
+    "fullTitle": "French Avenue Venus de Milo",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6430-3166-4963-b466-653262633131/f4899b6c7430ea196176b199bb23e29b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "French Avenue Venus de Milo подойдёт тем, кто любит сладкие, гурманские, но не приторные композиции с мягким цветочно-молочным характером. Аромат уместен для повседневной носки и особенно хорошо раскроется в прохладное время года — осенью, зимой или весной. Отличный выбор в по...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/220930208763-french-avenue-venus-de-milo"
+  },
+  {
+    "id": "vp-490987444743",
+    "uid": 490987444743,
+    "brand": "French Avenue",
+    "name": "X Xandal",
+    "fullTitle": "French Avenue X Xandal",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6462-6531-4665-b761-643866653439/eb4923d4c4bcb600606a993c083142df.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Это роскошный унисекс-аромат, который относится к группе цветочных и гурманских. Он представляет собой насыщенный сладкий десерт с пьянящими и древесными акцентами. Верхние ноты: Мадагаскарская ваниль, бурбонская ваниль и ванильная икра. Ноты сердца: Шоколадный трюфель, ваниль...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/490987444743-french-avenue-x-xandal"
+  },
+  {
+    "id": "vp-804605073193",
+    "uid": 804605073193,
+    "brand": "Fugazzi",
+    "name": "Vanilla Haze",
+    "fullTitle": "Fugazzi Vanilla Haze",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3364-3233-4664-b932-343264346333/0a5ce21150c3cb720b489273537fb412.png",
+    "badge": "",
+    "prices": {
+      "3ml": 945,
+      "5ml": 1475,
+      "10ml": 2750,
+      "15ml": 3825,
+      "20ml": 4700
+    },
+    "description": "Современная ваниль с орехово-сливочным стартом и лёгким эффектом подгоревшего крем-брюле. Vanilla Haze открывается миндалём, фундуком, кокосовым молоком и мандарином, поэтому сладость здесь сразу звучит объёмно: не просто ваниль, а десертная, кремовая композиция с чуть свежим ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/804605073193-fugazzi-vanilla-haze"
+  },
+  {
+    "id": "vp-391951181603",
+    "uid": 391951181603,
+    "brand": "French Avenue",
+    "name": "Platine Blanc Aromatix X",
+    "fullTitle": "French Avenue Platine Blanc Aromatix X",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3231-6537-4566-a664-376663333336/5a079d20f39ba8f0336284dd8110c26a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Свежий, зелёный и очень чистый аромат с мятой, лаймом и прохладной тоник-цитрусовой искрой. В начале особенно ярко звучат мята, лимон и лайм — бодро, чуть терпко, с эффектом холодного напитка. Затем появляются чёрная смородина, жасмин и розмарин, добавляя композиции зелёную со...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/391951181603-french-avenue-platine-blanc-aromatix-x"
+  },
+  {
+    "id": "vp-637643068543",
+    "uid": 637643068543,
+    "brand": "Laurent",
+    "name": "Mazzone Parfums Citron Caviar",
+    "fullTitle": "Laurent Mazzone Parfums Citron Caviar",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3139-3163-4639-a633-653961663634/27e792c7b03bfe26d3d5f883727037fc.png",
+    "badge": "",
+    "prices": {
+      "3ml": 675,
+      "5ml": 1025,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Яркий, бодрящий цитрусовый аромат с лаймом, мятой и зелёной свежестью. В начале особенно заметны апельсин, зелёный лайм и мята — звучание искристое, чуть терпкое и очень сочное. Затем композиция становится мягче за счёт жасмина, флердоранжа, герани и ириса, но сохраняет свой п...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/637643068543-laurent-mazzone-parfums-citron-caviar"
+  },
+  {
+    "id": "vp-712050604863",
+    "uid": 712050604863,
+    "brand": "French Avenue",
+    "name": "Ripple",
+    "fullTitle": "French Avenue Ripple",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3234-6631-4135-b562-306233613832/d9498ffab971c6040fd69becc4846149.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "French Avenue Ripple — это древесно-фужерный унисекс-парфюм 2025 года от известного бренда. Аромат раскрывается бодрящими нотами лаванды и цитрусов, переходящими в насыщенный морской бриз с мягкими древесными аккордами, и оставляет глубокий шлейф из амбры и ладана. Верхние нот...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/712050604863-french-avenue-ripple"
+  },
+  {
+    "id": "vp-855445000943",
+    "uid": 855445000943,
+    "brand": "Lattafa Perfumes",
+    "name": "Pisa",
+    "fullTitle": "Lattafa Perfumes Pisa",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6539-3038-4137-b737-373232666361/c2b245973a5cfea3e3a26ecea4b0a38f.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Свежий, солнечный цитрусово-древесный аромат с очень чистым и собранным характером. Pisa открывается сочным мандарином, лимоном и бергамотом: звучание яркое, искристое, с лёгкой сладостью цедры. В сердце появляется сухой кедр, а в базе — кремовый сандал и тёплая амбра. По наст...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/855445000943-lattafa-perfumes-pisa"
+  },
+  {
+    "id": "vp-956809841303",
+    "uid": 956809841303,
+    "brand": "Goddess",
+    "name": "Burberry",
+    "fullTitle": "Goddess Burberry",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6333-3137-4137-b530-373230653466/f955cb42f7daf780028015597e5afc61.png",
+    "badge": "",
+    "prices": {
+      "3ml": 645,
+      "5ml": 1025,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Современный ванильный аромат, в котором сладость соединяется с прохладной лавандой и лёгкой древесной сухостью. Burberry Goddess строится вокруг трёх оттенков ванили: более воздушной и древесной ванильной инфузии, насыщенной ванильной икры и глубокой ванильной абсолюты. Лаванд...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/956809841303-goddess-burberry"
+  },
+  {
+    "id": "vp-280381301033",
+    "uid": 280381301033,
+    "brand": "Angel's",
+    "name": "Share On The Rocks By Kilian",
+    "fullTitle": "Angel's Share On The Rocks By Kilian",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3963-6335-4333-b365-363365353531/17cd7a3d57b281c03e03db846e8cd5b3.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1740,
+      "5ml": 2800,
+      "10ml": 5400,
+      "15ml": 7800,
+      "20ml": 10000
+    },
+    "description": "Свежая и более лёгкая интерпретация Angels’ Share, вдохновлённая охлаждённым коньячным коктейлем. В начале появляется прохладный аккорд льда и горького апельсина, который делает аромат заметно более цитрусовым и прозрачным, чем оригинал. Затем выходит коньяк с корицей — тёплый...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/280381301033-angels-share-on-the-rocks-by-kilian"
+  },
+  {
+    "id": "vp-960447990133",
+    "uid": 960447990133,
+    "brand": "Amouage",
+    "name": "Guidance",
+    "fullTitle": "Amouage Guidance",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3534-3231-4465-a163-636338353837/7ca11fa8be245cf0d8149ec2ccb6e29d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1530,
+      "5ml": 2450,
+      "10ml": 4700,
+      "15ml": 6750,
+      "20ml": 8600
+    },
+    "description": "Сияющий, кремовый и очень статусный аромат, в котором фруктовая сладость груши встречается с ладаном, розой и мягкой древесной базой. В начале слышны сочная груша, ореховый оттенок фундука и прохладный дымок ладана. Затем аромат становится более объёмным: шафран, роза, жасмин ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/960447990133-amouage-guidance"
+  },
+  {
+    "id": "vp-147390884053",
+    "uid": 147390884053,
+    "brand": "Maison",
+    "name": "Crivelli Oud Maracujá",
+    "fullTitle": "Maison Crivelli Oud Maracujá",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3534-6131-4233-b930-383163633731/6d70e597f5c1ec5664c93e7feeb5ab03.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1620,
+      "5ml": 2600,
+      "10ml": 5000,
+      "15ml": 7200,
+      "20ml": 9200
+    },
+    "description": "Яркий контрастный аромат, в котором терпкая маракуйя сталкивается с густым кожаным удом. Начало звучит очень сочно: экзотическая маракуйя, фруктовые ноты, шафран и турецкая роза создают эффект тропического фрукта с пряной кислинкой. Но уже через несколько минут композиция стан...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/147390884053-maison-crivelli-oud-maracuj"
+  },
+  {
+    "id": "vp-204379785663",
+    "uid": 204379785663,
+    "brand": "Sunkissed",
+    "name": "Goddess By Kilian",
+    "fullTitle": "Sunkissed Goddess By Kilian",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3532-3036-4266-b335-393466393730/39047459a5e313ef1017f46cba49791f.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1470,
+      "5ml": 2350,
+      "10ml": 4500,
+      "15ml": 6450,
+      "20ml": 8200
+    },
+    "description": "Основатель бренда Килиан Хеннесси черпал вдохновение в собственных воспоминаниях о полинезийских островах. Ключевой акцент — аромат масла монои. Его традиционно делают на Таити: лепестки тиаре настаивают на кокосовом масле, получая узнаваемый медово-сливочный запах. Калис Бекк...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/204379785663-sunkissed-goddess-by-kilian"
+  },
+  {
+    "id": "vp-142053390113",
+    "uid": 142053390113,
+    "brand": "Jo Malone",
+    "name": "Scarlet Poppy Intense",
+    "fullTitle": "Jo Malone Scarlet Poppy Intense",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6261-3434-4336-b530-623734633266/21f1e7962360bcf86a97b8539e1827e4.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1005,
+      "5ml": 1575,
+      "10ml": 2950,
+      "15ml": 4125,
+      "20ml": 5100
+    },
+    "description": "Мягкий, бархатистый и очень уютный аромат с пудровым ирисом, маком и тёплой тонкой. Scarlet Poppy вдохновлён алыми маками на просторах Азии и построен не на зелёном цветочном звучании, а на кремовой, почти кашемировой текстуре. В начале слышны амбретта и инжир, затем появляетс...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/142053390113-jo-malone-scarlet-poppy-intense"
+  },
+  {
+    "id": "vp-308847495623",
+    "uid": 308847495623,
+    "brand": "Smoking",
+    "name": "Hot By Kilian",
+    "fullTitle": "Smoking Hot By Kilian",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6230-3734-4262-a465-663162373633/009fbdc46c63da84c5f3cb15b16d51cf.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 1290,
+      "5ml": 2050,
+      "10ml": 3900,
+      "15ml": 5550,
+      "20ml": 7000
+    },
+    "description": "Тёмный, пряный и очень атмосферный аромат с яблочным кальянным аккордом, табаком и густой бурбонской ванилью. В начале Smoking Hot даёт эффект горячего яблочного дыма с корицей — сладковато, пряно и немного провокационно. Затем появляется табак, дубовый мох и смолистые оттенки...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/308847495623-smoking-hot-by-kilian"
+  },
+  {
+    "id": "vp-210895295313",
+    "uid": 210895295313,
+    "brand": "Les",
+    "name": "Liquides Imaginaires Blanche Bête",
+    "fullTitle": "Les Liquides Imaginaires Blanche Bête",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3735-6465-4563-a136-373366646666/bb57a1fd845c574cb0a6247ccced1dfb.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1155,
+      "5ml": 1825,
+      "10ml": 3450,
+      "15ml": 4875,
+      "20ml": 6100
+    },
+    "description": "Кремовый, молочный и почти сказочный аромат с белыми цветами, мускусной ванилью и мягким ладаном. Blanche Bête начинается молочным аккордом и амбреттой, создавая ощущение тёплой кожи, сливочного кокона и лёгкой пудровости. Затем раскрываются тубероза и жасмин — не резкие, а ба...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/210895295313-les-liquides-imaginaires-blanche-bte"
+  },
+  {
+    "id": "vp-533382181553",
+    "uid": 533382181553,
+    "brand": "Gentleman",
+    "name": "Eau de Parfum Reserve Privée Givenchy",
+    "fullTitle": "Gentleman Eau de Parfum Reserve Privée Givenchy",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3933-3639-4436-b832-353830303663/07aba9443ec08aeb1738c1c2afde9e48.png",
+    "badge": "",
+    "prices": {
+      "3ml": 645,
+      "5ml": 1025,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Идея родилась из желания объединить мужественную элегантность выдержанного виски с нежностью цветов и насыщенностью древесных нот. Аромат задумывался как более сложная, раскованная и глубокая версия классического Gentleman (1974). Верхние ноты: бергамот и абсолют шотландского ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/533382181553-gentleman-eau-de-parfum-reserve-prive-gi"
+  },
+  {
+    "id": "vp-722070420063",
+    "uid": 722070420063,
+    "brand": "Goldfield",
+    "name": "& Banks Australia Ingenious Ginger",
+    "fullTitle": "Goldfield & Banks Australia Ingenious Ginger",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6637-3236-4238-b538-353562313563/30b68ce46943daaee40883d99ed1fa41.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 840,
+      "5ml": 1300,
+      "10ml": 2400,
+      "15ml": 3300,
+      "20ml": 4000
+    },
+    "description": "Солнечный, энергичный и очень приятный аромат с мандарином, имбирём, магнолией и тёплым сандалом. Вдохновением для композиции стал австралийский красный имбирь, который здесь звучит не остро и сухо, а ярко, свежо и слегка цветочно. В старте особенно заметны бергамот, мандарин ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/722070420063-goldfield-amp-banks-australia-ingenious"
+  },
+  {
+    "id": "vp-797641490313",
+    "uid": 797641490313,
+    "brand": "Stéphane",
+    "name": "Humbert Lucas 777 God of Fire",
+    "fullTitle": "Stéphane Humbert Lucas 777 God of Fire",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3338-3234-4462-b737-366334633636/4dd67433db4763900d10d8380d116636.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1050,
+      "5ml": 1650,
+      "10ml": 3100,
+      "15ml": 5400
+    },
+    "description": "Stéphane Humbert Lucas 777 God of Fire — это яркий и экзотический восточно-древесный унисекс-аромат, вдохновленный ацтекским богом огня. Взрывной, сочный манго и пикантный имбирь балансируют с глубокой базой из уда и амбры, образуя шлейфовый и невероятно стойкий парфюм. Верхни...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/797641490313-stphane-humbert-lucas-777-god-of-fire"
+  },
+  {
+    "id": "vp-163043892423",
+    "uid": 163043892423,
+    "brand": "La",
+    "name": "Nuit de L'Homme Bleu Électrique Yves Saint Laurent",
+    "fullTitle": "La Nuit de L'Homme Bleu Électrique Yves Saint Laurent",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3866-6561-4663-a236-303833393365/7278ac8991e4e6d2c79dc1b67f85f782.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Более яркая и современная версия La Nuit de L’Homme с фруктовой свежестью, лавандой и ванильно-древесной базой. В начале слышны зелёное яблоко, лимон и мандарин — аромат сразу кажется сочным, энергичным и более дневным, чем классическая La Nuit. Затем появляются лаванда, геран...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/163043892423-la-nuit-de-lhomme-bleu-lectrique-yves-sa"
+  },
+  {
+    "id": "vp-774916797993",
+    "uid": 774916797993,
+    "brand": "L’Homme",
+    "name": "Idéal Platine Privé Guerlain",
+    "fullTitle": "L’Homme Idéal Platine Privé Guerlain",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3530-6165-4736-a232-316336356564/0517190c625cb3a4bdede7931c474bef.png",
+    "badge": "",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Этот аромат — лимитированный фланкер в линейке L’Homme Idéal. Его можно назвать современным переосмыслением снятого с производства L’Homme Idéal Cologne. Парфюмер заново аранжировала фирменный для линейки миндальный аккорд: сделала его свежее и современнее, добавив сочные цитр...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/774916797993-lhomme-idal-platine-priv-guerlain"
+  },
+  {
+    "id": "vp-826224487353",
+    "uid": 826224487353,
+    "brand": "Секретный",
+    "name": "бокс «Исследователь»",
+    "fullTitle": "Секретный бокс «Исследователь»",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3737-3966-4633-b162-323137623034/311432ab09b4b9bfd7fdf6567ed4f7c3.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 4900,
+      "5ml": 7595,
+      "10ml": 13720
+    },
+    "description": "Быстрый способ познакомиться с ароматами, подобранными специально под вас. Внутри: — от 3 до 5 ароматов; — объем каждого аромата — 5 мл; — индивидуальный подбор по информации, указанной в заказе Вы можете написать, какие ноты вам нравятся, для какого времени года или случая ну...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/826224487353-sekretnii-boks-issledovatel"
+  },
+  {
+    "id": "vp-445538548093",
+    "uid": 445538548093,
+    "brand": "Секретный",
+    "name": "бокс «Коллекционер»",
+    "fullTitle": "Секретный бокс «Коллекционер»",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3261-3062-4263-a431-663633343463/bbc37dc2ad78fe9efd13edf7fa0f789b.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 11900,
+      "5ml": 18445,
+      "10ml": 33320
+    },
+    "description": "Расширенный персональный аромабокс для тех, кто хочет получить больше вариантов, объемов и приятных сюрпризов. Внутри: — от 5 до 8 ароматов; — ароматы в объемах 5 и 10 мл; — фирменные пробники и сэмплы; — подарки от Владимира; — индивидуальный подбор по вашим пожеланиям, харак...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/445538548093-sekretnii-boks-kollektsioner"
+  },
+  {
+    "id": "vp-618605553333",
+    "uid": 618605553333,
+    "brand": "Секретный",
+    "name": "бокс «Одержимость»",
+    "fullTitle": "Секретный бокс «Одержимость»",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "oriental",
+    "image": "https://static.tildacdn.com/stor3835-3831-4139-a563-666563303562/7f33623c076aa36d7c7937cf9741061d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 19900,
+      "5ml": 30845,
+      "10ml": 55720
+    },
+    "description": "Коллекция, собранная вокруг вашей личности, образа и эстетики. Внутри: — от 8 до 10 нишевых ароматов; — интересные, неизбитые и оригинальные парфюмерные композиции; — разные объемы ароматов в зависимости от концепции бокса и запроса; — предмет для ароматизации интерьера; — сек...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/618605553333-sekretnii-boks-oderzhimost"
+  },
+  {
+    "id": "vp-776250689083",
+    "uid": 776250689083,
+    "brand": "НЕцитрусовый",
+    "name": "аромабокс для него",
+    "fullTitle": "НЕцитрусовый аромабокс для него",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3634-6163-4361-a138-396464373261/329c4c94ffef8ac5541c9f71a81d56fc.png",
+    "badge": "",
+    "prices": {
+      "53ml": 3240,
+      "55ml": 5150,
+      "510ml": 9800
+    },
+    "description": "Аромабокс с 5 мужскими ароматами без очевидной цитрусовой свежести Бокс для тех, кто хочет пахнуть небанально свежо, а глубже, интереснее и дороже Внутри — 5 ароматов для мужчин, в которых нет привычного акцента на цитрусы. Вместо этого здесь собраны более характерные направле...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/776250689083-netsitrusovii-aromaboks-dlya-nego"
+  },
+  {
+    "id": "vp-862779877033",
+    "uid": 862779877033,
+    "brand": "НЕцитрусовый",
+    "name": "аромабокс для нее",
+    "fullTitle": "НЕцитрусовый аромабокс для нее",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3863-6532-4634-b636-373162306262/d747f6e232252620793e82e2b3204a11.png",
+    "badge": "",
+    "prices": {
+      "53ml": 3780,
+      "55ml": 6050,
+      "510ml": 11600
+    },
+    "description": "Аромабокс с 5 женскими ароматами без привычной цитрусовой свежести Внутри — 5 ароматов для нее, в которых нет акцента на очевидные цитрусы. Вместо этого здесь собраны более выразительные направления: цветочные, мускусные, древесные, сладковатые, кремовые, амбровые и шлейфовые ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/862779877033-netsitrusovii-aromaboks-dlya-nee"
+  },
+  {
+    "id": "vp-951991302213",
+    "uid": 951991302213,
+    "brand": "Аромабокс",
+    "name": "«Знакомство с брендом Rudross» для него",
+    "fullTitle": "Аромабокс «Знакомство с брендом Rudross» для него",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3333-3037-4366-b134-613734653865/7245f0c5d0caab98f41387febbc2b66f.png",
+    "badge": "",
+    "prices": {
+      "53ml": 2670,
+      "55ml": 4200,
+      "510ml": 7900
+    },
+    "description": "Универсальный аромабокс для него с пятью ароматами бренда Rudross Внутри — подборка самых интересных композиций бренда: от чистых, свежих и повседневных до более выразительных, глубоких и характерных. Это хороший способ познакомиться с Rudross сразу через несколько разных напр...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/951991302213-aromaboks-znakomstvo-s-brendom-rudross-d"
+  },
+  {
+    "id": "vp-188290376183",
+    "uid": 188290376183,
+    "brand": "Аромабокс",
+    "name": "«Знакомство с брендом M.INT» унисекс",
+    "fullTitle": "Аромабокс «Знакомство с брендом M.INT» унисекс",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6264-3765-4535-b366-323834323663/af9e289693ff382c320721a8636c432e.png",
+    "badge": "В наличии",
+    "prices": {
+      "53ml": 3500,
+      "55ml": 6300,
+      "510ml": 11200
+    },
+    "description": "Откройте для себя один из самых необычных современных нишевых брендов M’INT — это бренд, вдохновленный движением, архитектурой и современным искусством. Его ароматы объединяют высокое качество ингредиентов, необычные сочетания нот и яркий характер, благодаря чему каждый из них...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/188290376183-aromaboks-znakomstvo-s-brendom-mint-unis"
+  },
+  {
+    "id": "vp-168867808923",
+    "uid": 168867808923,
+    "brand": "Аромабокс",
+    "name": "«Самые ВКУСНЫЕ ароматы» для нее",
+    "fullTitle": "Аромабокс «Самые ВКУСНЫЕ ароматы» для нее",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3331-3366-4162-b561-646663343161/540a32430a4ce2cd2e9456a2d4073f0b.webp",
+    "badge": "Бестселлер",
+    "prices": {
+      "53ml": 3840,
+      "55ml": 6150,
+      "510ml": 11800
+    },
+    "description": "Аромабокс с 5 женственными гурманскими ароматами Бокс для тех, кто любит ароматы, от которых хочется услышать: «Чем это так вкусно пахнет?» Внутри — 5 сладких, мягких и комплиментарных ароматов для нее. Это подборка про нежность, сливочность, ваниль, карамельные оттенки, уютну...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/168867808923-aromaboks-samie-vkusnie-aromati-dlya-nee"
+  },
+  {
+    "id": "vp-977967948573",
+    "uid": 977967948573,
+    "brand": "Аромабокс",
+    "name": "«Стойко, громко, ярко» для нее",
+    "fullTitle": "Аромабокс «Стойко, громко, ярко» для нее",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3935-3062-4163-a236-313736326461/0dfa5ccae8b3ed02ab6785342060a0ca.webp",
+    "badge": "",
+    "prices": {
+      "53ml": 4580,
+      "55ml": 7350,
+      "510ml": 14200
+    },
+    "description": "Аромабокс с 5 выразительными женскими ароматами Внутри — 5 ярких, стойких и шлейфовых ароматов для нее. Это подборка для девушек, которые любят заметное звучание, комплименты и ароматы, которые остаются в памяти. Каждый аромат в боксе создан для того, чтобы подчеркнуть характе...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/977967948573-aromaboks-stoiko-gromko-yarko-dlya-nee"
+  },
+  {
+    "id": "vp-501090980333",
+    "uid": 501090980333,
+    "brand": "Аромабокс",
+    "name": "«Стойко, громко, ярко» для него",
+    "fullTitle": "Аромабокс «Стойко, громко, ярко» для него",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3461-3033-4232-b936-373731333034/76f062e23fb8fad54738859129b2cafb.png",
+    "badge": "",
+    "prices": {
+      "53ml": 4800,
+      "55ml": 7750,
+      "510ml": 14800
+    },
+    "description": "Аромабокс с 5 выразительными мужскими ароматами Бокс для мужчины, который хочет, чтобы аромат был заметной частью образа. Внутри — 5 стойких, ярких и шлейфовых ароматов для него. Это подборка про уверенное звучание, характер и эффектное первое впечатление. Ароматы из бокса под...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/501090980333-aromaboks-stoiko-gromko-yarko-dlya-nego"
+  },
+  {
+    "id": "vp-591836169713",
+    "uid": 591836169713,
+    "brand": "Аромабокс",
+    "name": "«Знакомство с брендом Bybozo» для нее",
+    "fullTitle": "Аромабокс «Знакомство с брендом Bybozo» для нее",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3338-6161-4339-a432-393665323764/e0d2f6e35108a77ac795a71cccf3efc5.png",
+    "badge": "",
+    "prices": {
+      "53ml": 2790,
+      "55ml": 4400,
+      "510ml": 8300
+    },
+    "description": "Аромабокс для нее с самыми красивыми, женственными и запоминающимися ароматами бренда BYBOZO Это подборка композиций, которые раскрываются мягко, дорого и чувственно: от нежных повседневных ароматов до более выразительных, шлейфовых и комплиментарных. Бокс подойдет тем, кто хо...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/591836169713-aromaboks-znakomstvo-s-brendom-bybozo-dl"
+  },
+  {
+    "id": "vp-691614364143",
+    "uid": 691614364143,
+    "brand": "Lattafa",
+    "name": "Atheeri",
+    "fullTitle": "Lattafa Atheeri",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3661-6439-4633-b062-323461646365/14e3ffe276fb262b14220892f4d5a2f3.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Lattafa Atheeri — нежный, воздушный аромат, в котором свежесть раннего утра сочетается с тёплой цветочной элегантностью. Он звучит деликатно, но запоминается: будто лёгкий цветочный туман с уютным ванильно‑древесным шлейфом. Верхние ноты: страстоцвет, водные аккорды («капли ро...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/691614364143-lattafa-atheeri"
+  },
+  {
+    "id": "vp-628965627023",
+    "uid": 628965627023,
+    "brand": "Ahmed",
+    "name": "Al Maghribi Kaaf",
+    "fullTitle": "Ahmed Al Maghribi Kaaf",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6232-3565-4336-b761-663865623439/41581b358114b8982a5a0f430e5ca6a3.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Ahmed Al Maghribi Kaaf — восточный унисекс‑аромат с пряно‑древесным характером и тёплой сладостью. Звучит статусно и обволакивающе — в духе классических ориентальных композиций. Верхние ноты: шафран, кардамон, специи — дают яркий пряный старт. Средние ноты: уд, роза, цветочные...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/628965627023-ahmed-al-maghribi-kaaf"
+  },
+  {
+    "id": "vp-821724811243",
+    "uid": 821724811243,
+    "brand": "Al",
+    "name": "Haramain Perfumes Amber Oud Blue Edition",
+    "fullTitle": "Al Haramain Perfumes Amber Oud Blue Edition",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3636-3161-4639-a635-346430343731/051f97ae20bc8f3ae670b9d7f1056422.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 510,
+      "5ml": 800,
+      "10ml": 1500,
+      "15ml": 2100,
+      "20ml": 2600
+    },
+    "description": "Это унисекс-композиция 2022 года. Старт получается бодрящим — цитрусы, прохлада мяты и лёгкая пряность перца. В сердце к свежести присоединяются землистые оттенки ветивера, пряность имбиря и нежность жасмина. А в долгом шлейфе древесные аккорды (сандал, кедр) сплетаются с дымн...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/821724811243-al-haramain-perfumes-amber-oud-blue-edit"
+  },
+  {
+    "id": "vp-617975838433",
+    "uid": 617975838433,
+    "brand": "Ard",
+    "name": "Al Zaafaran Oud 24 Hours",
+    "fullTitle": "Ard Al Zaafaran Oud 24 Hours",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6361-3337-4662-b333-303537636364/038992ba3162e459dfb055b7b8c2fb0e.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Ard Al Zaafaran Oud 24 Hours — восточный унисекс-аромат (выпущен в 2014 году). Его часто называют доступной и чуть более мягкой альтернативой культовой Black Orchid от Tom Ford. Композиция действительно перекликается с ней, но в Oud 24 Hours ярче звучат цитрусы и тёмный шокола...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/617975838433-ard-al-zaafaran-oud-24-hours"
+  },
+  {
+    "id": "vp-701438056923",
+    "uid": 701438056923,
+    "brand": "Ard",
+    "name": "Al Zaafaran Oud 24 Hours Majestic Gold",
+    "fullTitle": "Ard Al Zaafaran Oud 24 Hours Majestic Gold",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3766-6232-4139-b839-626462643332/6b1279f28ba3ae618ac47e4ab1fbf609.png",
+    "badge": "",
+    "prices": {
+      "3ml": 420,
+      "5ml": 650,
+      "10ml": 1200,
+      "15ml": 1650,
+      "20ml": 2000
+    },
+    "description": "Это унисекс-аромат из группы восточно-цветочных. Его выпустили в 2020 году. Верхние ноты: чёрная орхидея, иланг-иланг. Средние ноты: уд, слива. Базовые ноты: пачули, уд, цитрусы. Для каких случаев подойдёт? Идеально для особых моментов и вечерних выходов. Также хорошо раскрыва...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/701438056923-ard-al-zaafaran-oud-24-hours-majestic-go"
+  },
+  {
+    "id": "vp-186855034313",
+    "uid": 186855034313,
+    "brand": "Desert",
+    "name": "Sultan Sapphire",
+    "fullTitle": "Desert Sultan Sapphire",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6331-6563-4230-b436-626536396132/9f6dfe0672371db440bab3f5ca791d81.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Ard Al Zaafaran Desert Sultan Sapphire — мужской аромат в концентрации парфюмерной воды. Бренд из ОАЭ выпустил его в 2018 году. Название переводится как «сапфир пустынного султана»: в композиции действительно сплетаются прохладное, свежее начало и тёплые, восточные оттенки. От...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/186855034313-desert-sultan-sapphire"
+  },
+  {
+    "id": "vp-278040044553",
+    "uid": 278040044553,
+    "brand": "French Avenue",
+    "name": "Grecia Rosa Extrait",
+    "fullTitle": "French Avenue Grecia Rosa Extrait",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3662-3338-4261-b134-363661653832/96cef9e0d4606577a8ffba04211e834e.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Название можно вольно перевести как «Греческая роза» — возможно, это отсылка к античной элегантности. Концентрация Extrait (экстракт) обеспечивает хорошую стойкость: на коже аромат держится примерно 10–12 часов. Верхние ноты: грейпфрут, шампанское, груша. Средние ноты: пион, р...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/278040044553-french-avenue-grecia-rosa-extrait"
+  },
+  {
+    "id": "vp-788779700383",
+    "uid": 788779700383,
+    "brand": "French Avenue",
+    "name": "Sultry woods",
+    "fullTitle": "French Avenue Sultry woods",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6236-3965-4964-b332-343461313734/7d3482a607d191f67c779bb62f0f9e22.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Это аромат‑противоречие: одновременно мягкий и дерзкий, утончённый и глубокий. Относится к цветочному семейству, но с выраженной древесно‑пряной и чуть кожаной стороной — в духе восточного шика. Верхние ноты: турецкая роза, герань, кардамон. Средние ноты: нагармота (циприол), ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/788779700383-french-avenue-sultry-woods"
+  },
+  {
+    "id": "vp-936867566983",
+    "uid": 936867566983,
+    "brand": "French Avenue",
+    "name": "Veneno Scarlet",
+    "fullTitle": "French Avenue Veneno Scarlet",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3532-3165-4362-b732-666635353763/c67669860ae1709e608b81dce1e5bc26.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Заметный и контрастный аромат. Смелое сочетание сладкой гурманской темы с древесно-кожаными акцентами. Название переводится с испанского как «яд» — и в этом есть смысл: композиция действительно притягивает внимание и оставляет яркое, запоминающееся впечатление Верхние ноты: кл...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/936867566983-french-avenue-veneno-scarlet"
+  },
+  {
+    "id": "vp-996317922373",
+    "uid": 996317922373,
+    "brand": "French Avenue",
+    "name": "Meringue",
+    "fullTitle": "French Avenue Meringue",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3936-3461-4531-b766-383866383862/c453e90fe53fe17eaef95d2f723e1ea3.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "В аромате удачно соединились фруктовая свежесть, бархатистая мягкость и тёплый, обволакивающий шлейф. Верхние ноты: ананас, мандарин, бергамот. Средние ноты: замша, сандал. Базовые ноты: берёза, белый мускус, ваниль, серая амбра. Meringue дарит чувство лёгкости и беззаботности...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/996317922373-french-avenue-meringue"
+  },
+  {
+    "id": "vp-108899118713",
+    "uid": 108899118713,
+    "brand": "French Avenue",
+    "name": "Opus Magnum",
+    "fullTitle": "French Avenue Opus Magnum",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "fresh",
+    "image": "https://static.tildacdn.com/stor6365-3234-4966-b536-313234663066/ccaaad7f3b14c6f464859e98b978a2f3.webp",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Глубокое, многослойное путешествие, где пряности, дым и тёплые смолы сплетаются в очень статусную и загадочную историю. Верхние ноты: ладан, кардамон, базилик, бергамот. Средние ноты: табак, пажитник (фенугрек), лаванда. Базовые ноты: уд, перуанский бальзам, бобы тонка, амбра....",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/108899118713-french-avenue-opus-magnum"
+  },
+  {
+    "id": "vp-557884131193",
+    "uid": 557884131193,
+    "brand": "French Avenue",
+    "name": "Platine Blanc Aromatix X",
+    "fullTitle": "French Avenue Platine Blanc Aromatix X",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3937-6238-4566-a464-336132653635/8beb13b87f91b6e6fec312868b6b86ad.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Энергичный, но при этом очень элегантный — он отлично подойдёт тем, кто любит чистые, бодрящие композиции с интересной трансформацией. Парфюмер — Muneeb Alwazeer. Аромат унисекс Верхние ноты: мята, лайм, лимон, тоник. Средние ноты: чёрная смородина, жасмин, розмарин. Базовые н...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/557884131193-french-avenue-platine-blanc-aromatix-x"
+  },
+  {
+    "id": "vp-330909733173",
+    "uid": 330909733173,
+    "brand": "French Avenue",
+    "name": "Thunder",
+    "fullTitle": "French Avenue Thunder",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6139-6263-4965-b131-373237386336/08eb3ad4354e9fda28ecc254eff95ce1.png",
+    "badge": "",
+    "prices": {
+      "3ml": 465,
+      "5ml": 725,
+      "10ml": 1350,
+      "15ml": 1875,
+      "20ml": 2300
+    },
+    "description": "Интересная смесь силы и нежности: в нём есть и динамичный старт, и очень уютное, почти гурманское сердце. Официально его позиционируют как мужской, но по характеру он вполне унисекс. Концентрация — парфюмерная вода (Eau de Parfum) Верхние ноты: лаванда, элеми, розовый перец, б...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/330909733173-french-avenue-thunder"
+  },
+  {
+    "id": "vp-726238053613",
+    "uid": 726238053613,
+    "brand": "French Avenue",
+    "name": "Vulcan Baie",
+    "fullTitle": "French Avenue Vulcan Baie",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3433-6331-4234-b830-356137356235/23b341a7d7413814a593ee3c3e8820b9.png",
+    "badge": "",
+    "prices": {
+      "3ml": 465,
+      "5ml": 725,
+      "10ml": 1350,
+      "15ml": 1875,
+      "20ml": 2300
+    },
+    "description": "French Avenue Vulcan Baie - это фруктово-цветочная композиция, где свежесть трав и ягод переплетается с лёгкой алкогольной искрой и тёплой, многогранной базой Верхние ноты: чёрная смородина, ежевика, розмарин, бергамот. Ноты сердца: водка, малина, базилик, ландыш. Базовые ноты...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/726238053613-french-avenue-vulcan-baie"
+  },
+  {
+    "id": "vp-322799266663",
+    "uid": 322799266663,
+    "brand": "French Avenue",
+    "name": "Vulcan Sable",
+    "fullTitle": "French Avenue Vulcan Sable",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6438-3834-4465-b966-353563393634/0c649df71f23e3c21cc2da7134618da2.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Vulcan Sable создаёт ощущение «раскалённого песка и благородного огня», оставляет за собой шлейф силы, загадочности и восточной роскоши. Подходит тем, кто ценит смелые, но изысканные композиции. Его можно носить и днём, и на вечерние встречи или свидания. Верхние ноты: виски, ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/322799266663-french-avenue-vulcan-sable"
+  },
+  {
+    "id": "vp-922480490863",
+    "uid": 922480490863,
+    "brand": "French Avenue",
+    "name": "Zenith Blue",
+    "fullTitle": "French Avenue Zenith Blue",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3337-6238-4736-a138-303039633362/8cfbe963c2b95a9ddcea423a4754036f.webp",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Сбалансированный, современный фужер с интересным контрастом: свежая, почти бодрящая старт сочетается с тёплой, древесно-амбровой базой. Аромат вышел в 2025 году, его создал парфюмер Жан-Луи Сьёзак (он же работал над Kouros, Fahrenheit и Opium). Часто его относят к мужским, но ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/922480490863-french-avenue-zenith-blue"
+  },
+  {
+    "id": "vp-466447289153",
+    "uid": 466447289153,
+    "brand": "French Avenue",
+    "name": "Zenith Vanilla",
+    "fullTitle": "French Avenue Zenith Vanilla",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6465-3132-4361-b331-623261613136/9a3d3943cd9679a22d6e76502e28072b.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Тёплый, обволакивающий унисекс-аромат, где главная героиня — ваниль, но звучит она не просто сладко, а многогранно: с гурманскими, цветочными и смолисто-древесными акцентами. Верхние ноты: бергамот, ром, засахаренный апельсин. Ноты сердца: жасмин, фиалка, стиракс. Базовые ноты...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/466447289153-french-avenue-zenith-vanilla"
+  },
+  {
+    "id": "vp-538915269073",
+    "uid": 538915269073,
+    "brand": "Lattafa",
+    "name": "Asad",
+    "fullTitle": "Lattafa Asad",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3839-6262-4638-b061-386536623339/390faed58dcaf916d7a3c2520625be67.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Тёплый, пряно-восточный мужской аромат с характером — в нём гармонично сплетаются свежесть, специи, дымные оттенки и обволакивающая база. Верхние ноты: чёрный перец, ананас, табак. Ноты сердца: ирис, кофе, пачули. Базовые ноты: амбра, бензоин, ваниль, лабданум, сухая древесина...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/538915269073-lattafa-asad"
+  },
+  {
+    "id": "vp-998703134163",
+    "uid": 998703134163,
+    "brand": "Lattafa",
+    "name": "Asad Zanzibar Limited Edition",
+    "fullTitle": "Lattafa Asad Zanzibar Limited Edition",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3364-3931-4664-b764-363039646662/6d9cf426ae472a08367f2e772d27373d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 525,
+      "5ml": 825,
+      "10ml": 1550,
+      "15ml": 2175,
+      "20ml": 2700
+    },
+    "description": "Контрастный, но очень гармоничный мужской аромат: в нём прохладная морская свежесть встречается с тёплыми пряными и древесными акцентами. Вдохновением послужил Занзибар — остров, где пряные ветра сливаются с океанской свежестью. Верхние ноты: лаванда, розовый перец, морские но...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/998703134163-lattafa-asad-zanzibar-limited-edition"
+  },
+  {
+    "id": "vp-831548517373",
+    "uid": 831548517373,
+    "brand": "Lattafa",
+    "name": "Peace & Love",
+    "fullTitle": "Lattafa Peace & Love",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6465-3630-4161-a631-303530366535/a5e2dd99849ee6fc7b1c011ad61670fc.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Мягкий, обволакивающий унисекс-аромат, который действительно передаёт идею гармонии — в нём свежесть встречается с уютной теплотой. Верхние ноты: чёрная смородина, бергамот, миндаль. Ноты сердца: тубероза, роза. Базовые ноты: гелиотроп, сандал, ваниль. В нём гармонично сплетаю...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/831548517373-lattafa-peace-amp-love"
+  },
+  {
+    "id": "vp-706020708063",
+    "uid": 706020708063,
+    "brand": "Lattafa Perfumes",
+    "name": "King Of Arabia",
+    "fullTitle": "Lattafa Perfumes King Of Arabia",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6565-6139-4966-a332-653361623432/81d8f5f5e45f9f130654d4fd9355aeb5.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Насыщенный, статусный аромат с ярким характером: в нём кожаная основа гармонично сплетается с фруктовыми, древесными и тёплыми гурманскими акцентами. Название отсылает к древним традициям восточного гостеприимства и власти — создатели вдохновлялись образом современного лидера,...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/706020708063-lattafa-perfumes-king-of-arabia"
+  },
+  {
+    "id": "vp-129923921213",
+    "uid": 129923921213,
+    "brand": "Lattafa Perfumes",
+    "name": "Raghba",
+    "fullTitle": "Lattafa Perfumes Raghba",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3633-6335-4663-b466-623333623630/5f0a082bad13c1d6ab41c422f35a3459.png",
+    "badge": "",
+    "prices": {
+      "3ml": 420,
+      "5ml": 650,
+      "10ml": 1200,
+      "15ml": 1650,
+      "20ml": 2000
+    },
+    "description": "Raghba - густой, уютный аромат с восточным настроением. В раскрытии часто проступают неожиданные оттенки, которые не заявлены в официальной пирамиде: вишнёвый табак (иногда с алкогольными оттенками — будто вишня в коньяке или бренди);жжёный сахар, карамель;горький шоколад;иног...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/129923921213-lattafa-perfumes-raghba"
+  },
+  {
+    "id": "vp-115205234663",
+    "uid": 115205234663,
+    "brand": "Lattafa Perfumes",
+    "name": "Sehr",
+    "fullTitle": "Lattafa Perfumes Sehr",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6537-6130-4331-b935-656462613265/cc713b31c0cefc9fa7671f029b2c53fd.png",
+    "badge": "",
+    "prices": {
+      "3ml": 480,
+      "5ml": 750,
+      "10ml": 1400,
+      "15ml": 1950,
+      "20ml": 2400
+    },
+    "description": "Тёплый, обволакивающий унисекс-аромат с восточным характером. Это богатая, многослойная композиция, где пряные и горькие аккорды сбалансированы цветочными и гурманскими нотами. Аромат создаёт ощущение тепла, роскоши и соблазна. Он подойдёт тем, кто любит насыщенные, восточные ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/115205234663-lattafa-perfumes-sehr"
+  },
+  {
+    "id": "vp-311081379343",
+    "uid": 311081379343,
+    "brand": "Rayhaan",
+    "name": "Imperia",
+    "fullTitle": "Rayhaan Imperia",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3166-3566-4832-a539-313766376662/b0d010d2cdf31b7742942058074ede62.png",
+    "badge": "",
+    "prices": {
+      "3ml": 390,
+      "5ml": 600,
+      "10ml": 1100,
+      "15ml": 1500,
+      "20ml": 1800
+    },
+    "description": "Статусный мужской аромат с мощным, запоминающимся шлейфом. Его выпустили в 2022 году. Парфюм воплощает силу и величие Древней Римской империи — это аромат победы, силы и уверенности. Верхние ноты: итальянский бергамот, яблоко, мята, элеми (из Филиппин). Ноты сердца: жасмин, ро...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/311081379343-rayhaan-imperia"
+  },
+  {
+    "id": "vp-130167866953",
+    "uid": 130167866953,
+    "brand": "Burberry",
+    "name": "London for man",
+    "fullTitle": "Burberry London for man",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "fresh",
+    "image": "https://static.tildacdn.com/stor3265-3061-4538-b230-646462386535/cde4356579264f5e6dd35cce38af9925.webp",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Концепция аромата — передать атмосферу современного Лондона, где гармонично сплетаются классика и современность. Он адресован элегантному, уверенному в себе мужчине, который ценит стиль, но при этом остаётся верным традициям. Многие описывают его как благородный, сдержанный, у...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/130167866953-burberry-london-for-man"
+  },
+  {
+    "id": "vp-994795737803",
+    "uid": 994795737803,
+    "brand": "State",
+    "name": "of Mind French Gallantry",
+    "fullTitle": "State of Mind French Gallantry",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6131-3961-4237-a161-323066336536/01c62834dbf69a4f87257ea92cd4e2f5.webp",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 990,
+      "5ml": 1550,
+      "10ml": 2900,
+      "15ml": 4050,
+      "20ml": 5000
+    },
+    "description": "Название отсылает к французской галантности — умению сочетать серьёзность с лёгкой долей безумия, к рыцарским истокам. Аромат задумывался как рассказ о галльском шарме. Кстати, у бренда есть фишка: к каждому парфюму подобран свой чайный купаж. Для French Gallantry это кенийски...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/994795737803-state-of-mind-french-gallantry"
+  },
+  {
+    "id": "vp-422806227033",
+    "uid": 422806227033,
+    "brand": "Rochas",
+    "name": "Moustache Eau de Parfum",
+    "fullTitle": "Rochas Moustache Eau de Parfum",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3430-3834-4963-a232-373530373766/7b03fcf1b381ef1f53badaf0bd93e4d4.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Название переводится как «усы». Бренд позиционирует аромат как воплощение мужественности и квинтэссенцию соблазна. По сути, это современная версия легендарного аромата Rochas, созданного 70 лет назад — Moustache Eau de Parfum показывает более яркую и модную грань образа соврем...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/422806227033-rochas-moustache-eau-de-parfum"
+  },
+  {
+    "id": "vp-210189092393",
+    "uid": 210189092393,
+    "brand": "Mangomina",
+    "name": "D New Notes",
+    "fullTitle": "Mangomina D New Notes",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6336-6334-4961-b139-386230376465/7b83f6791855c57dd73739d466d1451a.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 930,
+      "5ml": 1450,
+      "10ml": 2700,
+      "15ml": 3750,
+      "20ml": 4600
+    },
+    "description": "Бренд описывает аромат как ольфакторное выражение солнечного тепла на коже — он призван пробуждать внутреннее сияние и ощущение радости, словно ежедневная порция «солнечного витамина» (буква D в названии как раз на это намекает). Верхние ноты: манго, мандарин, юзу, морские нот...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/210189092393-mangomina-d-new-notes"
+  },
+  {
+    "id": "vp-439887476413",
+    "uid": 439887476413,
+    "brand": "Lattafa Perfumes",
+    "name": "Creative Art",
+    "fullTitle": "Lattafa Perfumes Creative Art",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3366-6165-4139-a139-343462363633/afdc5432002325659b1f8f6541ed3ae4.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 585,
+      "5ml": 925,
+      "10ml": 1750,
+      "15ml": 2475,
+      "20ml": 3100
+    },
+    "description": "Аромат создан для тех, кто не боится выделяться, ценит индивидуальность и умеет находить вдохновение в повседневности. Его сравнивают с «запахом творческой мастерской». Верхние ноты: бергамот, лимон, кардамон, элеми, чёрный перец. Старт получается динамичным: цитрусы дают искр...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/439887476413-lattafa-perfumes-creative-art"
+  },
+  {
+    "id": "vp-837099549973",
+    "uid": 837099549973,
+    "brand": "Energizer",
+    "name": "Boadicea the Victorious",
+    "fullTitle": "Energizer Boadicea the Victorious",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3731-3461-4536-a561-336639353162/2252675c4b305052befe45e0a46bda0a.webp",
+    "badge": "",
+    "prices": {
+      "3ml": 2070,
+      "5ml": 3350,
+      "10ml": 6500,
+      "15ml": 9450,
+      "20ml": 12200
+    },
+    "description": "Название полностью соответствует характеру: Energizer создан, чтобы пробуждать, тонизировать и поднимать настроение. Многие описывают его как солнечную, искрящуюся композицию, которая идеально подходит для жаркого лета, отпуска у моря или просто для того, чтобы взбодриться в п...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/837099549973-energizer-boadicea-the-victorious"
+  },
+  {
+    "id": "vp-413491541283",
+    "uid": 413491541283,
+    "brand": "Asad",
+    "name": "Zanzibar Limited Edition Lattafa Perfumes",
+    "fullTitle": "Asad Zanzibar Limited Edition Lattafa Perfumes",
+    "gender": "men",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3339-3965-4339-a664-376536656530/04fa7c08838ace0ad27ead7598e841d5.webp",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 600,
+      "5ml": 900,
+      "10ml": 1600,
+      "15ml": 2100,
+      "20ml": 2400
+    },
+    "description": "Верхние ноты: морские ноты, лаванда, розовый перец. Старт получается освежающим: солёная прохлада бриза сочетается с приглушённой, сухой пряностью лаванды и розового перца. Ноты сердца: мыло, кашмеран, корица. Здесь раскрывается главная особенность издания: чистая, почти стери...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/413491541283-asad-zanzibar-limited-edition-lattafa-pe"
+  },
+  {
+    "id": "vp-970579272103",
+    "uid": 970579272103,
+    "brand": "Amber",
+    "name": "Oud Aqua Dubai Al Haramain Perfumes",
+    "fullTitle": "Amber Oud Aqua Dubai Al Haramain Perfumes",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3231-3265-4637-b034-356539333365/222c0aee551ed2dd30fdd71836abcb97.webp",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1350,
+      "10ml": 2500,
+      "15ml": 3450,
+      "20ml": 4200
+    },
+    "description": "Аромат - лёгкий, беззаботный, идеально подходящий для тёплого времени года. Он хорош для повседневных выходов, прогулок у воды, отдыха в солнечные дни. В раскрытии есть интересный баланс: свежесть не становится плоской, а фруктовые ноты не делают композицию слишком сладкой. Не...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/970579272103-amber-oud-aqua-dubai-al-haramain-perfume"
+  },
+  {
+    "id": "vp-746740003553",
+    "uid": 746740003553,
+    "brand": "Life",
+    "name": "Pleasure Maori Collection",
+    "fullTitle": "Life Pleasure Maori Collection",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6562-6363-4439-b737-323965633764/04b6d44c2a93660fca3b818b7ac77e77.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Аромат создал итальянский парфюмер Паоло Теренци. Концепция вдохновлена культурой народа маори: флаконы украшены мотивами традиционных полинезийских татуировок, а сам посыл аромата — «жить в удовольствие». По задумке, аромат словно невидимая татуировка маори становится личным ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/746740003553-life-pleasure-maori-collection"
+  },
+  {
+    "id": "vp-335093943113",
+    "uid": 335093943113,
+    "brand": "Giardino",
+    "name": "Benessere Pompei Garden",
+    "fullTitle": "Giardino Benessere Pompei Garden",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6238-6338-4335-a136-353933613637/f42f99aa93cf1960b8e1b6e6d98e573e.png",
+    "badge": "",
+    "prices": {
+      "3ml": 570,
+      "5ml": 900,
+      "10ml": 1700,
+      "15ml": 2400,
+      "20ml": 3000
+    },
+    "description": "Аромат вышел в 2016 году, его создал парфюмер Паоло Теренци. Концепция вдохновлена итальянскими садами древних Помпей. Создатели хотели передать ощущение прозрачного средиземноморского воздуха, наполненного благоуханием южных цветов, фруктов и тёплым морским бризом. Pompei Gar...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/335093943113-giardino-benessere-pompei-garden"
+  },
+  {
+    "id": "vp-802969598433",
+    "uid": 802969598433,
+    "brand": "Wandervogel",
+    "name": "27 87",
+    "fullTitle": "Wandervogel 27 87",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "floral",
+    "image": "https://static.tildacdn.com/stor3862-3066-4033-b262-653166633139/21541cfda68de7be1ada3fe1d269e227.png",
+    "badge": "",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1350,
+      "10ml": 2500,
+      "15ml": 3450,
+      "20ml": 4200
+    },
+    "description": "Wandervogel от 27 87 — свежий фужерный унисекс‑аромат, выпущенный в 2016 году. Парфюмер — Шьямала Мезондьё (Shyamala Maisondieu), бренд — испанский нишевый 27 87. Название переводится с немецкого как «перелётная птица» или «птица‑странник»: композиция про свободу, путешествия ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/802969598433-wandervogel-27-87"
+  },
+  {
+    "id": "vp-369110703363",
+    "uid": 369110703363,
+    "brand": "Ajmal",
+    "name": "the untold stories chapter 1",
+    "fullTitle": "Ajmal the untold stories chapter 1",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3437-3236-4662-b266-353162623965/2a2cb9c42afde993f4199cf6728d1260.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 840,
+      "5ml": 1300,
+      "10ml": 2400,
+      "15ml": 3300,
+      "20ml": 4000
+    },
+    "description": "Это первая глава из пяти в коллекции The Untold Stories, которую бренд Ajmal выпустил в 2025 году. Над композицией работал парфюмер Максим Экслер. Концепция коллекции — про стремление к самовыражению, восторг вдохновения и сохранение в памяти значимых моментов. В Chapter 1 авт...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/369110703363-ajmal-the-untold-stories-chapter-1"
+  },
+  {
+    "id": "vp-891087360043",
+    "uid": 891087360043,
+    "brand": "V",
+    "name": "Canto Arkano Della Fortuna Extrait de Parfum",
+    "fullTitle": "V Canto Arkano Della Fortuna Extrait de Parfum",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor3435-3365-4361-a162-306230383162/9bc29e0d2ba836c26df24cf238c22970.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1080,
+      "5ml": 1700,
+      "10ml": 3200,
+      "15ml": 4500,
+      "20ml": 5600
+    },
+    "description": "Аромат входит в коллекцию Arkani, где каждая композиция вдохновлена картой Таро. Arkano Della Fortuna отсылает к аркану «Колесо Фортуны». Бренд подаёт его не просто как парфюм, а как ольфакторный талисман: говорят, он призван приносить удачу, защищать и помогать верить в себя....",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/891087360043-v-canto-arkano-della-fortuna-extrait-de"
+  },
+  {
+    "id": "vp-966974125453",
+    "uid": 966974125453,
+    "brand": "Uso",
+    "name": "Colour White Tea Sandalwood Eau de Parfum",
+    "fullTitle": "Uso Colour White Tea Sandalwood Eau de Parfum",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3637-3763-4435-b661-363231633233/bdc1ee5768655616774c9a7187c81362.png",
+    "badge": "",
+    "prices": {
+      "3ml": 450,
+      "5ml": 700,
+      "10ml": 1300,
+      "15ml": 1800,
+      "20ml": 2200
+    },
+    "description": "Концепция строится вокруг контраста: прохлада белого чая встречается с кремовой, обволакивающей теплотой сандала. В целом композицию относят к древесным, иногда также к шипровым или восточным. Аромат позиционируется как женский. Верхние ноты: османтус и белый чай. Османтус доб...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/966974125453-uso-colour-white-tea-sandalwood-eau-de-p"
+  },
+  {
+    "id": "vp-429383684273",
+    "uid": 429383684273,
+    "brand": "RUBEUS",
+    "name": "MILANO VERT",
+    "fullTitle": "RUBEUS MILANO VERT",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6538-6662-4230-a231-343435393639/a5914b62756c6156291da6470dc240de.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 2970,
+      "5ml": 4850,
+      "10ml": 9500,
+      "15ml": 13950,
+      "20ml": 18200
+    },
+    "description": "Rubeus Milano Vert — это роскошный восточно‑древесный унисекс‑аромат от итальянского бренда Rubeus Milano, выпущенный в 2019 году. Парфюмер — Жорди Фернандес. Концепция и настроениеНазвание Vert отсылает к зелёному цвету (фр. vert — «зелёный»), и это считывается в образе арома...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/429383684273-rubeus-milano-vert"
+  },
+  {
+    "id": "vp-472863041073",
+    "uid": 472863041073,
+    "brand": "RUBEUS",
+    "name": "MILANO QUERCIA",
+    "fullTitle": "RUBEUS MILANO QUERCIA",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6238-6138-4630-a531-343364326331/d12ccf703c7165120368a061e128634f.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1170,
+      "5ml": 1850,
+      "10ml": 3500,
+      "15ml": 4950,
+      "20ml": 6200
+    },
+    "description": "Аромат создан в рамках коллекции Haute Parfumerie «VENETIAN GARDENS», посвящённой 1600-летию Венеции и красоте её садов. Quercia (в переводе с итальянского — «дуб») — это ода мощному, аристократичному дубу. Парфюмер хотел передать ощущение прогулки под пологом величественных д...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/472863041073-rubeus-milano-quercia"
+  },
+  {
+    "id": "vp-684989115213",
+    "uid": 684989115213,
+    "brand": "Notting",
+    "name": "Hill Hugh Parsons",
+    "fullTitle": "Notting Hill Hugh Parsons",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3731-3135-4663-b637-383830383265/f53267f23d2add4c0c7d3a0d5430b708.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 720,
+      "5ml": 1100,
+      "10ml": 2000,
+      "15ml": 2700,
+      "20ml": 3200
+    },
+    "description": "Создатель вдохновился атмосферой района Ноттинг-Хилл в Западном Лондоне. Это место, где бок о бок существуют антикварные лавки и брендовые бутики, а жизнь никогда не замирает. Парфюмер стремился передать эту энергичную, эклектичную атмосферу — смесь ярких красок, движения и лё...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/684989115213-notting-hill-hugh-parsons"
+  },
+  {
+    "id": "vp-282106773873",
+    "uid": 282106773873,
+    "brand": "Dr.",
+    "name": "Vranjes Firenze Mattutino",
+    "fullTitle": "Dr. Vranjes Firenze Mattutino",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3935-6638-4134-b030-323234643135/b054029cbe970ec394c2aff6955572d4.png",
+    "badge": "",
+    "prices": {
+      "3ml": 420,
+      "5ml": 650,
+      "10ml": 1200,
+      "15ml": 1650,
+      "20ml": 2000
+    },
+    "description": "Название Mattutino происходит от итальянского matutino — «утренний». Аромат задуман как путешествие по Флоренции на рассвете: золотистый свет заливает холмы, звучат первые птичьи трели, открываются кафе, звучит первое «buongiorno». Это история о неспешных утренних ритуалах, по...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/282106773873-dr-vranjes-firenze-mattutino"
+  },
+  {
+    "id": "vp-913234275773",
+    "uid": 913234275773,
+    "brand": "Afnan",
+    "name": "Oud Rising",
+    "fullTitle": "Afnan Oud Rising",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3932-6334-4535-b064-663433303030/93ff66ba3cdc9d1aaef693e41ebd5137.png",
+    "badge": "",
+    "prices": {
+      "3ml": 780,
+      "5ml": 1200,
+      "10ml": 2200,
+      "15ml": 3000,
+      "20ml": 3600
+    },
+    "description": "Oud Rising — это современная интерпретация известных удовых композиций (например, Tom Ford Oud Wood), но с более самобытным профилем. Он подойдёт тем, кто ценит глубину, но не любит перегруженных, «душных» ароматов. Я бы рекомендовала его для межсезонья и вечерних выходов: в п...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/913234275773-afnan-oud-rising"
+  },
+  {
+    "id": "vp-927342372223",
+    "uid": 927342372223,
+    "brand": "Afnan",
+    "name": "Patchouli On Fire",
+    "fullTitle": "Afnan Patchouli On Fire",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6435-3563-4335-a261-653035363030/92e02729d624c288a6faed2e5278759d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 780,
+      "5ml": 1200,
+      "10ml": 2200,
+      "15ml": 3000,
+      "20ml": 3600
+    },
+    "description": "Верхние ноты: пряные, ароматические и древесные ноты. Старт получается энергичным, с лёгкой терпкостью и остротой. Ноты сердца: пачули, лаванда, цитрусовые. Здесь раскрывается главная идея аромата: смолистые, но при этом горько-травянистые пачули гармонично сочетаются с прохла...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/927342372223-afnan-patchouli-on-fire"
+  },
+  {
+    "id": "vp-871259707533",
+    "uid": 871259707533,
+    "brand": "Afnan",
+    "name": "Tobacco Rush",
+    "fullTitle": "Afnan Tobacco Rush",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6537-6163-4865-a331-383637393335/86a79c074ea184ca306d5674222f8fa1.png",
+    "badge": "",
+    "prices": {
+      "3ml": 780,
+      "5ml": 1200,
+      "10ml": 2200,
+      "15ml": 3000,
+      "20ml": 3600
+    },
+    "description": "Это насыщенный кожаный аромат с доминирующей табачной нотой — он рисует образ старинной библиотеки: дерево, замша, дорогой табак, пряности. Верхние ноты: табак, пряные ноты, древесные ноты. Старт сухой и пряный: сразу чувствуется дымный, благородный табачный лист и тёплая прян...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/871259707533-afnan-tobacco-rush"
+  },
+  {
+    "id": "vp-383373203613",
+    "uid": 383373203613,
+    "brand": "Afnan",
+    "name": "9 PM Night Out",
+    "fullTitle": "Afnan 9 PM Night Out",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6132-6563-4231-b639-313834373037/3c647a72f4e1811d370f3093aebed051.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 660,
+      "5ml": 1000,
+      "10ml": 1800,
+      "15ml": 2400,
+      "20ml": 2800
+    },
+    "description": "Afnan 9 PM Night Out — яркий вечерний унисекс‑аромат из восточной пряной группы. Его можно описать как «энергию ночной вечеринки»: дерзкую, сладкую, но с благородной глубиной. По настроению он ближе к вечерним, клубным или праздничным образам: в нём есть драйв и лёгкая театрал...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/383373203613-afnan-9-pm-night-out"
+  },
+  {
+    "id": "vp-906079456663",
+    "uid": 906079456663,
+    "brand": "Heeley",
+    "name": "Menthe Fraiche",
+    "fullTitle": "Heeley Menthe Fraiche",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6663-6632-4939-b765-376535636464/fb7a88b3866008e1360533ebfad2a1a4.png",
+    "badge": "",
+    "prices": {
+      "3ml": 900,
+      "5ml": 1400,
+      "10ml": 2600,
+      "15ml": 3600,
+      "20ml": 4400
+    },
+    "description": "Heeley Menthe Fraiche — это прозрачная, «акварельная» композиция, которая будто ловит момент раннего утра: прохлада росы, запах размятых мятных листьев и лёгкий цитрусовый ветерок. Это аромат-ощущение: чистый, свежий, бодрящий, но без резкости. Он не пытается быть сложным или ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/906079456663-heeley-menthe-fraiche"
+  },
+  {
+    "id": "vp-787011418233",
+    "uid": 787011418233,
+    "brand": "Penhaligon's",
+    "name": "Halfeti Leather",
+    "fullTitle": "Penhaligon's Halfeti Leather",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3161-3032-4733-b566-343130373262/9e5cf12f3a419ad70fd557144b09efdb.png",
+    "badge": "",
+    "prices": {
+      "3ml": 950,
+      "5ml": 1500,
+      "10ml": 2700,
+      "15ml": 3750,
+      "20ml": 4600
+    },
+    "description": "Верхние ноты: бергамот, зелёные ноты, слива (иногда в описаниях встречается аккорд полыни). Старт получается свежим, с цитрусовой прохладой, сочной зеленью и лёгкой фруктовой сладостью сливы. Ноты сердца: кардамон, корица, лаванда, мускатный орех, тмин, фиалка, роза, жасмин. З...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/787011418233-penhaligons-halfeti-leather"
+  },
+  {
+    "id": "vp-496653458153",
+    "uid": 496653458153,
+    "brand": "Gucci",
+    "name": "Osmanthus Nectar",
+    "fullTitle": "Gucci Osmanthus Nectar",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3462-3065-4466-a339-613436663532/caf7838e0b05f547c4b124cecd8085c9.png",
+    "badge": "",
+    "prices": {
+      "3ml": 1230,
+      "5ml": 1950,
+      "10ml": 3700,
+      "15ml": 5300,
+      "20ml": 6600
+    },
+    "description": "Верхние ноты: абрикос, бергамот, кардамон из Гватемалы. Старт получается сочным: цитрусовая свежесть бергамота переплетается с мягкой фруктовой сладостью абрикоса, а пряный кардамон добавляет лёгкую пикантность. Ноты сердца: османтус и чай. Здесь османтус раскрывается полнее. ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/496653458153-gucci-osmanthus-nectar"
+  },
+  {
+    "id": "vp-416843091913",
+    "uid": 416843091913,
+    "brand": "Lattafa",
+    "name": "Khamrah Waha",
+    "fullTitle": "Lattafa Khamrah Waha",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6138-3135-4138-b039-303432356336/76cd037a10d8a13f8519d47fdc521aef.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 950,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Это унисекс-парфюмерная вода, выпущенная в 2026 году. Её создал парфюмер Хорди Фернандес (Jordi Fernández). Название «Waha» переводится с арабского как «оазис» — и это отлично отражает суть: аромат дарит ощущение прохлады и свежести, будто вы нашли источник воды среди песков. ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/416843091913-lattafa-khamrah-waha"
+  },
+  {
+    "id": "vp-161100410113",
+    "uid": 161100410113,
+    "brand": "By",
+    "name": "Khaliji Amber XXI Pure Amber",
+    "fullTitle": "By Khaliji Amber XXI Pure Amber",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6663-3933-4463-b234-663131346565/1681fbe1b4ad38f7de316f337f874259.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2300,
+      "20ml": 2800
+    },
+    "description": "Khaliji Amber XXI Pure Amber — унисекс-парфюмерная вода в восточно-древесном ключе. Вдохновлена Clive Christian Blonde Amber. В старте — кашемировое и ванильное дерево с ликёрной нотой, в сердце — кедр, амбра и тростниковый сахар, а шлейф из мускуса, бобов тонка, лабданума и с...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/161100410113-by-khaliji-amber-xxi-pure-amber"
+  },
+  {
+    "id": "vp-474483317113",
+    "uid": 474483317113,
+    "brand": "Sospiro",
+    "name": "Bel Canto",
+    "fullTitle": "Sospiro Bel Canto",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6238-3164-4235-b134-363362646561/18a74f41b7802572300cd38972154a19.png",
+    "badge": "",
+    "prices": {
+      "3ml": 960,
+      "5ml": 1500,
+      "10ml": 2800,
+      "15ml": 3900,
+      "20ml": 5000
+    },
+    "description": "Xerjoff Sospiro Bel Canto — это роскошный унисекс-парфюм, созданный итальянским брендом Xerjoff в рамках линейки Sospiro. Этот аромат, как и другие в линейке, отличается своей изысканностью и многогранностью. Bel Canto — это ода классической элегантности и утончённости. Композ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/474483317113-sospiro-bel-canto"
+  },
+  {
+    "id": "vp-247742649203",
+    "uid": 247742649203,
+    "brand": "Sospiro",
+    "name": "Deep Ocean Amber",
+    "fullTitle": "Sospiro Deep Ocean Amber",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6265-3133-4564-a631-356566613763/13b78ea6cb4fe23606dfaee522e13e5b.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 960,
+      "5ml": 1500,
+      "10ml": 2800,
+      "15ml": 3900,
+      "20ml": 4800
+    },
+    "description": "Создатель задумал аромат как ольфакторную картину океанских глубин. Но важно сразу оговориться: это не «морской» парфюм в прямом смысле (с явным запахом солёной воды и водорослей). Скорее, это метафора: погружение в тёмные, мистические глубины, где царствуют амбра и бальзамиче...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/247742649203-sospiro-deep-ocean-amber"
+  },
+  {
+    "id": "vp-727090786563",
+    "uid": 727090786563,
+    "brand": "Mancera",
+    "name": "Red Tobacco",
+    "fullTitle": "Mancera Red Tobacco",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6439-3462-4432-b966-363465353463/e9c6cd120d5e870e50a91d1ee61a701d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 750,
+      "5ml": 1150,
+      "10ml": 2100,
+      "15ml": 2850,
+      "20ml": 3400
+    },
+    "description": "Это один из самых громких и узнаваемых ароматов бренда — тёплый, обволакивающий, почти гипнотический древесно-пряный парфюм. Идея, по задумке Амели и Пьера Мансера, — воплотить красный цвет: страсть, тепло, спокойную уверенность и силу. Образ — вечернее небо, окрашенное в борд...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/727090786563-mancera-red-tobacco"
+  },
+  {
+    "id": "vp-961602077333",
+    "uid": 961602077333,
+    "brand": "Trussardi",
+    "name": "The Courtyards of Castello Sforzesco",
+    "fullTitle": "Trussardi The Courtyards of Castello Sforzesco",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3139-3737-4166-b663-386135343338/75c24abdf9f8cf4e58a50f0604fdcb7b.png",
+    "badge": "",
+    "prices": {
+      "3ml": 900,
+      "5ml": 1400,
+      "10ml": 2600,
+      "15ml": 3600,
+      "20ml": 4400
+    },
+    "description": "Trussardi The Courtyards of Castello Sforzesco — унисекс-парфюмерная вода, выпущенная итальянским брендом Trussardi в 2022 году. Аромат вдохновлён величественным замком Сфорцеско в Милане, где переплетаются история, роскошь и тайна. Этот древесно-пряный парфюм создан для тех, ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/961602077333-trussardi-the-courtyards-of-castello-sfo"
+  },
+  {
+    "id": "vp-980903140813",
+    "uid": 980903140813,
+    "brand": "SERGE",
+    "name": "DUMONTEN STRAWBERRIES AND RUM",
+    "fullTitle": "SERGE DUMONTEN STRAWBERRIES AND RUM",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6633-3739-4736-b839-333363356431/53663eb41eff2bb39cc8b314f88234d8.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1500,
+      "10ml": 2700,
+      "15ml": 3900,
+      "20ml": 5000
+    },
+    "description": "Это аромат-настроение: он про отпуск, лёгкость и маленькие удовольствия. Представьте веранду у моря, тёплый вечер, в руке — бокал с ягодным коктейлем, а рядом тарелка со спелой клубникой. Композиция звучит ярко, но не навязчиво: клубника даёт сочность и кислинку, ром — тёплые ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/980903140813-serge-dumonten-strawberries-and-rum"
+  },
+  {
+    "id": "vp-837615855463",
+    "uid": 837615855463,
+    "brand": "SERGE",
+    "name": "DUMONTEN PEACH BRANDY",
+    "fullTitle": "SERGE DUMONTEN PEACH BRANDY",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3366-6661-4861-b461-323063333064/da29fa2ec19fa0f47f5e31157a1760a5.png",
+    "badge": "",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1500,
+      "10ml": 2700,
+      "15ml": 3900,
+      "20ml": 5000
+    },
+    "description": "Peach Brandy — это унисекс-парфюмерная вода из фруктового семейства. За брендом стоит Серж Дюваль — художник, парфюмер и дизайнер одежды, потомок французского живописца Эжена-Эммануэля Амори-Дюваля. Свой первый аромат он составил ещё в 1989 году, и эта дата закреплена в логоти...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/837615855463-serge-dumonten-peach-brandy"
+  },
+  {
+    "id": "vp-497120307683",
+    "uid": 497120307683,
+    "brand": "SERGE",
+    "name": "DUMONTEN DRUNKEN PEAR",
+    "fullTitle": "SERGE DUMONTEN DRUNKEN PEAR",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3864-3335-4139-b366-656663666334/ff9b8676214f8f28bcca5e5706094616.png",
+    "badge": "",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1500,
+      "10ml": 2700,
+      "15ml": 3900,
+      "20ml": 5000
+    },
+    "description": "Композиция относится к фужерному семейству, но с ярко выраженной гурманской, «съедобной» основой. Её суть — в контрасте: сочная, спелая груша в сочетании с алкоголем и пряностями, которая создаёт образ изысканного алкогольного десерта. Название как нельзя точно отражает суть —...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/497120307683-serge-dumonten-drunken-pear"
+  },
+  {
+    "id": "vp-699165759263",
+    "uid": 699165759263,
+    "brand": "Attar Collection",
+    "name": "Capella",
+    "fullTitle": "Attar Collection Capella",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6362-6431-4437-b339-343762653931/98ac897ea46f4e8274e67823307af615.png",
+    "badge": "",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1400,
+      "10ml": 2500,
+      "15ml": 3500,
+      "20ml": 4200
+    },
+    "description": "Верхние ноты: бергамот, жасмин, чай. Они дают бодрящее, слегка терпкое и элегантное вступление. Чай добавляет композиции изысканную утончённость, а жасмин — нежную цветочную свежесть. Ноты сердца: белый перец, ветивер. Белый перец вносит лёгкую пикантную горечь, а ветивер — др...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/699165759263-attar-collection-capella"
+  },
+  {
+    "id": "vp-444037971593",
+    "uid": 444037971593,
+    "brand": "Attar Collection",
+    "name": "Fleur de Santal",
+    "fullTitle": "Attar Collection Fleur de Santal",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3838-6637-4866-a166-366230393438/6269950e9f780dec97e32c070b6bc31f.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1400,
+      "10ml": 2500,
+      "15ml": 3500,
+      "20ml": 4200
+    },
+    "description": "Верхние ноты: груша, розовый перец, ангелика. Старт получается свежим: сочная сладость груши сочетается с лёгкой остротой перца и травянистой, чуть мистической нотой ангелики. Ноты сердца: молоко, иланг-иланг, ирис, мимоза. Здесь раскрывается кремовая, обволакивающая сердцевин...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/444037971593-attar-collection-fleur-de-santal"
+  },
+  {
+    "id": "vp-777470737983",
+    "uid": 777470737983,
+    "brand": "Attar Collection",
+    "name": "King Solomon",
+    "fullTitle": "Attar Collection King Solomon",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3230-3535-4163-b562-396534653838/1d5b20a68d54eb9aad2fd278928c9eb5.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 780,
+      "5ml": 1200,
+      "10ml": 2200,
+      "15ml": 3000,
+      "20ml": 3600
+    },
+    "description": "Концепция строится на контрасте: холодные, сухие древесные аккорды (кедр, ветивер) сочетаются с тёплыми, пряными нотами (корица, кардамон, ваниль), а в базе добавляется лёгкая прохладная камфора. Создатели вдохновлялись образом царя Соломона — мудрого, царственного, в котором ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/777470737983-attar-collection-king-solomon"
+  },
+  {
+    "id": "vp-562656583073",
+    "uid": 562656583073,
+    "brand": "Trussardi",
+    "name": "I Vicoli Via Fiori Chiari",
+    "fullTitle": "Trussardi I Vicoli Via Fiori Chiari",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6637-6435-4432-b239-643865356531/522b3c609a6f895e39810da2014ad14a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 930,
+      "5ml": 1500,
+      "10ml": 2700,
+      "15ml": 3800,
+      "20ml": 4600
+    },
+    "description": "Верхние ноты: звёздчатый анис, кардамон (из Гватемалы), итальянский лимон. Старт получается ярким: пряность аниса и кардамона сочетается со свежей, чуть горьковатой цитрусовостью лимона. Ноты сердца: календула, пачули, чёрный перец, элеми. Здесь раскрывается сложность: нежная,...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/562656583073-trussardi-i-vicoli-via-fiori-chiari"
+  },
+  {
+    "id": "vp-460610397463",
+    "uid": 460610397463,
+    "brand": "Les",
+    "name": "Destinations 9°55'N 84°05'W Costa Rica",
+    "fullTitle": "Les Destinations 9°55'N 84°05'W Costa Rica",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3663-3964-4139-b734-646135623637/9ab1fa4667a68e07e4d0b6c32954aa89.png",
+    "badge": "",
+    "prices": {
+      "3ml": 870,
+      "5ml": 1350,
+      "10ml": 2500,
+      "15ml": 3450,
+      "20ml": 4200
+    },
+    "description": "Бренд Les Destinations (он создан под крылом компании Mäurer & Wirtz) строит всю линейку на идее «ольфакторных путешествий»: каждый аромат привязан к конкретной точке на карте. В этом случае координаты ведут в Коста-Рику. Парфюмер Нелли Ашем-Руис вдохновилась экзотикой страны:...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/460610397463-les-destinations-955n-8405w-costa-rica"
+  },
+  {
+    "id": "vp-163227435303",
+    "uid": 163227435303,
+    "brand": "Boucheron",
+    "name": "Patchouli d’Angkor",
+    "fullTitle": "Boucheron Patchouli d’Angkor",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6430-3362-4464-b461-373638386536/b3aa552aa1d29733be50af1856bd22ea.png",
+    "badge": "",
+    "prices": {
+      "3ml": 840,
+      "5ml": 1300,
+      "10ml": 2400,
+      "15ml": 3300,
+      "20ml": 4400
+    },
+    "description": "Аромат вдохновлён мистической красотой храмового комплекса Ангкор-Ват в Камбодже и атмосферой камбоджийских джунглей. Он призван перенести обладателя в это таинственное место, где вековые деревья сплетаются с каменными стенами святилищ. Верхние ноты: бергамот и груша. Старт по...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/163227435303-boucheron-patchouli-dangkor"
+  },
+  {
+    "id": "vp-521363284023",
+    "uid": 521363284023,
+    "brand": "Boucheron",
+    "name": "Fève Tonka de Canaima",
+    "fullTitle": "Boucheron Fève Tonka de Canaima",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3636-3739-4530-a130-643665383265/a95dae9e8b1ebbf0fce410a284e6c92a.png",
+    "badge": "",
+    "prices": {
+      "3ml": 900,
+      "5ml": 1400,
+      "10ml": 2600,
+      "15ml": 3600,
+      "20ml": 4400
+    },
+    "description": "Аромат вдохновлён национальным парком Канайма (Венесуэла). По легенде, именно там охотники за драгоценностями впервые обнаружили душистые и пряные бобы тонка — они и стали центральным аккордом композиции. Парфюм входит в линейку The Boucheron Collection, которая продолжает юве...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/521363284023-boucheron-fve-tonka-de-canaima"
+  },
+  {
+    "id": "vp-853667995423",
+    "uid": 853667995423,
+    "brand": "Boucheron",
+    "name": "Oud de Carthage",
+    "fullTitle": "Boucheron Oud de Carthage",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6536-3563-4435-a366-646265383732/2b6a1f2cc9d1c5336b527b7701b40dc9.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 810,
+      "5ml": 1250,
+      "10ml": 2300,
+      "15ml": 3150,
+      "20ml": 4000
+    },
+    "description": "Oud de Carthage — это про роскошь и глубину, но без «тяжёлой» сладости. Сладость мёда и ванили уравновешена дымностью ладана, строгостью кожи и благородной смолистостью уда. Многие слышат в нём благовония, тёплые пряности и дорогое дерево — будто в старинном восточном дворце. ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/853667995423-boucheron-oud-de-carthage"
+  },
+  {
+    "id": "vp-388748921403",
+    "uid": 388748921403,
+    "brand": "French Avenue",
+    "name": "Spirito Ignite",
+    "fullTitle": "French Avenue Spirito Ignite",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3163-3533-4665-a430-646364306435/e83b400bd6cd53c1866f2cc90e414d44.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 600,
+      "5ml": 1000,
+      "10ml": 1800,
+      "15ml": 2550,
+      "20ml": 3200
+    },
+    "description": "Аромат начинается неожиданно: попкорн здесь не сладкий, а скорее поджаристый, солоноватый — он создаёт тёплую гурманскую текстуру без приторности. Ирис сразу добавляет пудровую дымку, а розовый перец — бодрящий пряный укол. Стартовый аккорд получается объёмным и тактильным. В ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/388748921403-french-avenue-spirito-ignite"
+  },
+  {
+    "id": "vp-762969685043",
+    "uid": 762969685043,
+    "brand": "Sospiro",
+    "name": "Il Padrino",
+    "fullTitle": "Sospiro Il Padrino",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3733-3666-4239-a530-396366636266/175fa4a257867eb6ef86eee97e59a8b8.png",
+    "badge": "",
+    "prices": {
+      "3ml": 930,
+      "5ml": 1450,
+      "10ml": 2700,
+      "15ml": 3750,
+      "20ml": 4800
+    },
+    "description": "Il Padrino — это унисекс-аромат из группы восточно-древесных. Его выпустили в 2025 году, а над созданием работали парфюмеры Натали Темплер и Салах Аль-Заруни. Название переводится с итальянского как «крёстный отец». Создатели задумали композицию так, чтобы она передавала образ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/762969685043-sospiro-il-padrino"
+  },
+  {
+    "id": "vp-788543720123",
+    "uid": 788543720123,
+    "brand": "Аромабокс",
+    "name": "«Ароматы в необычных флаконах» для нее",
+    "fullTitle": "Аромабокс «Ароматы в необычных флаконах» для нее",
+    "gender": "women",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6234-3130-4532-b430-623866333939/06e3250d5f8125cb87e463a4eb9c33bf.png",
+    "badge": "",
+    "prices": {
+      "53ml": 3045,
+      "55ml": 5775,
+      "510ml": 9240
+    },
+    "description": "Пять ароматов из моей коллекции с самыми необычными флаконами! Дракон, античная богиня, Пизанская башня, золотой волк и песочные часы. Каждый из них — настоящее произведение искусства. В этом боксе я собрал композиции, которые привлекают внимание ещё до первого распыления. В н...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/788543720123-aromaboks-aromati-v-neobichnih-flakonah"
+  },
+  {
+    "id": "vp-838188237503",
+    "uid": 838188237503,
+    "brand": "French Avenue",
+    "name": "Chronicles",
+    "fullTitle": "French Avenue Chronicles",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6432-6133-4466-a134-373661663866/4912addfac5437356579f75d695d0c3d.png",
+    "badge": "",
+    "prices": {
+      "3ml": 540,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2300,
+      "20ml": 2900
+    },
+    "description": "Верхние ноты: элеми, мирра, розовый перец. Старт получается смолисто-пряным: элеми даёт свежую, слегка лимонную смолу, мирра — тёплый, бальзамический, чуть дымный оттенок, а розовый перец добавляет лёгкую, искрящуюся остроту. Ноты сердца: ирис, гелиотроп, ладан. Здесь картина ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/838188237503-french-avenue-chronicles"
+  },
+  {
+    "id": "vp-515739322513",
+    "uid": 515739322513,
+    "brand": "Orlov",
+    "name": "Paris Sun Drop",
+    "fullTitle": "Orlov Paris Sun Drop",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3564-3737-4638-a133-663030633261/e82d25849b7345241e1c4efc042a5810.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 645,
+      "5ml": 1025,
+      "10ml": 1950,
+      "15ml": 2775,
+      "20ml": 3500
+    },
+    "description": "Верхние ноты: шафран, мускатный орех, кардамон, корица. Сразу после нанесения даёт яркий, согревающий всплеск специй. Ноты сердца: роза, уд, гвоздика (пряность). Здесь специи постепенно смягчаются: роза добавляет чувственности, уд — дымных, древесно-бальзамических оттенков, а ...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/515739322513-orlov-paris-sun-drop"
+  },
+  {
+    "id": "vp-233570660573",
+    "uid": 233570660573,
+    "brand": "French Avenue",
+    "name": "Ravine Ice",
+    "fullTitle": "French Avenue Ravine Ice",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6335-3436-4130-b032-636163303666/9310dd720c0dcfe2de2fee641771c922.png",
+    "badge": "",
+    "prices": {
+      "3ml": 600,
+      "5ml": 850,
+      "10ml": 1600,
+      "15ml": 2250,
+      "20ml": 2800
+    },
+    "description": "Верхние ноты: лимон, бергамот, мята, озоновый аккорд. Старт очень бодрый и резкий: цитрусы дают искру, мята — мгновенную прохладу, а озоновый оттенок имитирует ощущение свежего воздуха после грозы или у водопада. Ноты сердца: лаванда, зелёные листья, водные ноты, можжевельник....",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/233570660573-french-avenue-ravine-ice"
+  },
+  {
+    "id": "vp-912591935813",
+    "uid": 912591935813,
+    "brand": "French Avenue",
+    "name": "Guava Colada",
+    "fullTitle": "French Avenue Guava Colada",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3762-3833-4231-a364-636236643665/c314465bae8e2d95774a8dc44a5ca293.png",
+    "badge": "",
+    "prices": {
+      "3ml": 510,
+      "5ml": 800,
+      "10ml": 1500,
+      "15ml": 2100,
+      "20ml": 2600
+    },
+    "description": "Верхние ноты: гуава, ананас, яблоко, апельсин. Старт очень сочный и свежий: сразу чувствуется фруктовая волна, будто только что нарезали тропические плоды. Ананас и гуава задают главный «коктейльный» тон, цитрусы добавляют искристости, а яблоко — лёгкую хрустящую грань. Ноты с...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/912591935813-french-avenue-guava-colada"
+  },
+  {
+    "id": "vp-405508756733",
+    "uid": 405508756733,
+    "brand": "French Avenue",
+    "name": "Sahara",
+    "fullTitle": "French Avenue Sahara",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6331-6239-4063-a131-353331323961/f35d445d2e5939afa9b7e3a3d84eec8a.png",
+    "badge": "Бестселлер",
+    "prices": {
+      "3ml": 510,
+      "5ml": 800,
+      "10ml": 1500,
+      "15ml": 2100,
+      "20ml": 2600
+    },
+    "description": "Название сразу задаёт тон: Sahara вдохновлена атмосферой пустыни, жарким солнцем, сухими травами и пыльными ветрами. Это не классический цветочный или фруктовый парфюм, а скорее восточно-древесная история с акцентом на тёплые, обволакивающие, чуть «пыльные» и смолистые оттенки...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/405508756733-french-avenue-sahara"
+  },
+  {
+    "id": "vp-133523531433",
+    "uid": 133523531433,
+    "brand": "Atelier",
+    "name": "Rebul Istanbul Eau de Parfum",
+    "fullTitle": "Atelier Rebul Istanbul Eau de Parfum",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor3765-3236-4363-b536-373432373738/95c344a673cf9e062e5b082b4aea0eed.png",
+    "badge": "",
+    "prices": {
+      "3ml": 780,
+      "5ml": 1200,
+      "10ml": 2200,
+      "15ml": 3000,
+      "20ml": 3600
+    },
+    "description": "Аромат вдохновлён многогранностью Стамбула: пёстрыми базарами со специями, роскошью османских дворцов, атмосферой хаммамов и морским бризом. Создатели хотели передать ощущение путешествия по городу, где смешиваются разные культуры, запахи и эмоции. Дизайн коллекции тоже отсыла...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/133523531433-atelier-rebul-istanbul-eau-de-parfum"
+  },
+  {
+    "id": "vp-942074307953",
+    "uid": 942074307953,
+    "brand": "New",
+    "name": "Notes Pomelo Malindi",
+    "fullTitle": "New Notes Pomelo Malindi",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "woody",
+    "image": "https://static.tildacdn.com/stor6361-6361-4664-b061-313734333835/d1b114afb09996a5c4f8ec757a219c1c.png",
+    "badge": "В наличии",
+    "prices": {
+      "3ml": 1080,
+      "5ml": 1700,
+      "10ml": 3200,
+      "15ml": 4500,
+      "20ml": 5600
+    },
+    "description": "Верхние ноты: помело, юзу, лимон, лайм и «ледяной» аккорд. Старт получается очень бодрящим: цитрусы дают сочность и свежесть, а «лёд» имитирует ощущение солёного морского ветра. Кстати, помело в парфюмерии ценят за то, что оно звучит свежее и мягче грейпфрута — не слишком слад...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/942074307953-new-notes-pomelo-malindi"
+  },
+  {
+    "id": "vp-586646470603",
+    "uid": 586646470603,
+    "brand": "Atelier",
+    "name": "Rebul Istanbul Golden Hour Eau de Parfum",
+    "fullTitle": "Atelier Rebul Istanbul Golden Hour Eau de Parfum",
+    "gender": "unisex",
+    "category": "perfume",
+    "notesFamily": "gourmand",
+    "image": "https://static.tildacdn.com/stor6131-6639-4034-b365-326364326533/fb024d1064c73f626f8f34da9d5a8020.png",
+    "badge": "",
+    "prices": {
+      "3ml": 840,
+      "5ml": 1300,
+      "10ml": 2400,
+      "15ml": 3300,
+      "20ml": 4000
+    },
+    "description": "Аромат вдохновлен тем самым «золотым часом» — волшебное мгновение, когда солнце низко над горизонтом и заливает город тёплым, медовым светом. Парфюмер хотел передать тёплую, сияющую атмосферу Стамбула: свежесть раннего утра (когда будто распускаются жасмин и нероли) плавно пер...",
+    "url": "http://volodiumparfum.ru/catalog/tproduct/586646470603-atelier-rebul-istanbul-golden-hour-eau-d"
   }
 ];
 
 const AROMA_BOXES_DATA = [
   {
-    id: "box-compliments",
-    name: "Аромабокс «Топ Комплиментов»",
-    subtitle: "5 главных мировых бестселлеров в одном сете",
-    category: "box",
-    badge: "Хит Продаж #1",
-    image: "assets/images/IMG_4620.PNG",
-    items: [
-      "Marc-Antoine Barrois — Ganymede",
-      "Maison Francis Kurkdjian — Baccarat Rouge 540",
-      "Tom Ford — Lost Cherry",
-      "Ex Nihilo — Fleur Narcotique",
-      "Kilian — Angels' Share"
-    ],
-    prices: {
-      "3ml": 6900,
-      "5ml": 9900
+    "id": "box-нецитрусовый-аромабокс-для-него",
+    "uid": 776250689083,
+    "name": "НЕцитрусовый аромабокс для него",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_776250689083.png",
+    "cdnImage": "https://static.tildacdn.com/stor3634-6163-4361-a138-396464373261/329c4c94ffef8ac5541c9f71a81d56fc.png",
+    "prices": {
+      "3ml": 3240,
+      "5ml": 5150,
+      "10ml": 9800
     },
-    description: "Набор, гарантирующий максимальное количество вопросов «Чем от вас так невероятно пахнет?». Пять самых комплиментарных ароматов нишевой индустрии."
+    "oldPrices": {
+      "3ml": 4200,
+      "5ml": 6300,
+      "10ml": 10900
+    },
+    "description": "Аромабокс с 5 мужскими ароматами без очевидной цитрусовой свежести Бокс для тех, кто хочет пахнуть небанально свежо, а глубже, интереснее и дороже Внутри — 5 ароматов для мужчин, в которых нет привычного акцента на цитрусы. Вместо этого здесь собраны более характерные направления: древесные, пряные,...",
+    "fullDescription": "Аромабокс с 5 мужскими ароматами без очевидной цитрусовой свежести Бокс для тех, кто хочет пахнуть небанально свежо, а глубже, интереснее и дороже Внутри — 5 ароматов для мужчин, в которых нет привычного акцента на цитрусы. Вместо этого здесь собраны более характерные направления: древесные, пряные, сладковатые, табачные, алкогольные, мускусные и чистые композиции Такой бокс подойдет тем, кто устал от стандартных «свежаков» и хочет найти аромат с индивидуальностью: для офиса, свиданий, вечера, повседневной носки или ситуаций, когда нужно звучать увереннее и заметнее Внутри 5 ароматов: Perroy Whitedenim - это манифест парфюмерного минимализма. В мире, где ароматы соревнуются в сложности и количестве нот, этот унисекс-парфюм делает смелый шаг в сторону — и выигрывает. Всего три аккорда: соль, молоко, сандал. Но за этой лаконичностью скрывается целая философия. Бренд известен своей философией наслаивания ароматов, позволяющей создавать уникальные ольфакторные комбинации. Mancera Tonka Cola - сладкий, харизматичный аромат на стыке гурманики и классики. Открывается игривой колой и пряным кардамоном — будто глоток любимого напитка в жаркий день. В сердце — тёплая корица, жасмин и пачули, а база из бобов тонка, ванили, сандала и мускуса придаёт композиции обволакивающую сладость и стойкость. Givenchy Gentleman - элегантный, статусный мужской аромат с безупречным балансом свежести и глубины. Старт — сочный ананас и пряный кардамон, которые сразу задают энергичный тон. В сердце раскрывается благородный ирис — визитная карточка композиции, дополненный перцем и лавандой. База из кожи, кедра, пачули и ветивера формирует солидный, уверенный шлейф. Идеальный выбор для стильного мужчины, который ценит классику с современным акцентом. Rudross One More Time - унисекс-парфюмерная вода. Звонкая восточно-пряная композиция, которая передаёт ощущение свободы и единения с природой. Аромат словно приглашает заново пережить прекрасные моменты на лоне природы Nicheend Saturn - унисекс‑аромат из коллекции Universe. Освежающая композиция с цитрусово‑пряным стартом, мятно‑цветочным сердцем и тёплым древесным шлейфом — воплощение образа величественного Сатурна.",
+    "items": [
+      "Внутри — 5 ароматов для мужчин, в которых нет привычного акцента на цитрусы. Вместо этого здесь собраны более характерные направления: древесные, пряные, сладковатые, табачные, алкогольные, мускусные и чистые композиции",
+      "Perroy Whitedenim - это манифест парфюмерного минимализма. В мире, где ароматы соревнуются в сложности и количестве нот, этот унисекс-парфюм делает смелый шаг в сторону — и выигрывает. Всего три аккорда: соль, молоко, сандал. Но за этой лаконичностью скрывается целая философия. Бренд известен своей философией наслаивания ароматов, позволяющей создавать уникальные ольфакторные комбинации.",
+      "Mancera Tonka Cola - сладкий, харизматичный аромат на стыке гурманики и классики. Открывается игривой колой и пряным кардамоном — будто глоток любимого напитка в жаркий день. В сердце — тёплая корица, жасмин и пачули, а база из бобов тонка, ванили, сандала и мускуса придаёт композиции обволакивающую сладость и стойкость.",
+      "Givenchy Gentleman - элегантный, статусный мужской аромат с безупречным балансом свежести и глубины. Старт — сочный ананас и пряный кардамон, которые сразу задают энергичный тон. В сердце раскрывается благородный ирис — визитная карточка композиции, дополненный перцем и лавандой. База из кожи, кедра, пачули и ветивера формирует солидный, уверенный шлейф. Идеальный выбор для стильного мужчины, который ценит классику с современным акцентом.",
+      "Nicheend Saturn - унисекс‑аромат из коллекции Universe. Освежающая композиция с цитрусово‑пряным стартом, мятно‑цветочным сердцем и тёплым древесным шлейфом — воплощение образа величественного Сатурна."
+    ]
   },
   {
-    id: "box-cleanliness",
-    name: "Аромабокс «Чистота и Белая Рубашка»",
-    subtitle: "Кристальная свежесть, хрустальный мускус и утренний воздух",
-    category: "box",
-    badge: "Офисный Идеал",
-    image: "assets/images/IMG_4626.PNG",
-    items: [
-      "Byredo — Blanche",
-      "Byredo — Bal d'Afrique",
-      "Creed — Silver Mountain Water",
-      "Escentric Molecules — Molecule 01",
-      "Zarkoperfume — The Muse"
-    ],
-    prices: {
-      "3ml": 5900,
-      "5ml": 8500
+    "id": "box-нецитрусовый-аромабокс-для-нее",
+    "uid": 862779877033,
+    "name": "НЕцитрусовый аромабокс для нее",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_862779877033.png",
+    "cdnImage": "https://static.tildacdn.com/stor3863-6532-4634-b636-373162306262/d747f6e232252620793e82e2b3204a11.png",
+    "prices": {
+      "3ml": 3780,
+      "5ml": 6050,
+      "10ml": 11600
     },
-    description: "Идеален для любителей ненавязчивого, элегантного и чистого звучания. Запах выстиранного хлопка, морского бриза и невесомой пудры."
+    "oldPrices": {
+      "3ml": 5300,
+      "5ml": 8300,
+      "10ml": 12900
+    },
+    "description": "Аромабокс с 5 женскими ароматами без привычной цитрусовой свежести Внутри — 5 ароматов для нее, в которых нет акцента на очевидные цитрусы. Вместо этого здесь собраны более выразительные направления: цветочные, мускусные, древесные, сладковатые, кремовые, амбровые и шлейфовые композиции. Это подборк...",
+    "fullDescription": "Аромабокс с 5 женскими ароматами без привычной цитрусовой свежести Внутри — 5 ароматов для нее, в которых нет акцента на очевидные цитрусы. Вместо этого здесь собраны более выразительные направления: цветочные, мускусные, древесные, сладковатые, кремовые, амбровые и шлейфовые композиции. Это подборка для девушек, которые хотят звучать ярче, глубже и интереснее, но без банальной фруктово-цитрусовой легкости. Такие ароматы хорошо подходят на каждый день, свидания, вечерние выходы, работу или моменты, когда хочется подчеркнуть женственность и индивидуальность. Внутри: Byredo Bal d’Afrique - солнечный унисекс‑аромат: чёрная смородина в старте, нежные цветы в сердце, тёплая база из амбры, мускуса и кедра. Лёгкий, но стойкий. ByBozo Habibi - уютный фруктово‑зелёный аромат: вишня и зелень в начале, миндаль в сердце, сандал и мускус в базе. Комфортный вариант на каждый день. Orlov Paris The Best of Me - восточно ‑ древесная композиция с контрастами: роза с молекулой Pomarose в сердце, дымный ветивер и бобы тонка в базе. Глубокий и небанальный шлейф. Jo Malone London Wood Sage & Sea Salt - свежий и воздушный: морская соль и амбретта в старте, травянистый шалфей в сердце, ветивер и пряности в базе. Минималистичный аромат с морским настроением. Zarkoperfume Pink Molecule 090.09 - игривый «молекулярный» аромат: чёрная бузина, абрикос, орхидея и шампанское в звучании, в шлейфе — сливки и тёплая древесина. Лёгкий, праздничный, запоминающийся. Кому подойдет Тем, кто устал от стандартных свежих ароматов и хочет попробовать более женственные, стойкие и характерные композиции. Этот бокс подойдет, если вам хочется пахнуть красиво, дорого, заметно и небанально — без цитрусовой простоты, но с выразительным настроением и красивым шлейфом.",
+    "items": [
+      "Внутри — 5 ароматов для нее, в которых нет акцента на очевидные цитрусы. Вместо этого здесь собраны более выразительные направления: цветочные, мускусные, древесные, сладковатые, кремовые, амбровые и шлейфовые композиции.",
+      "Zarkoperfume Pink Molecule 090.09 - игривый «молекулярный» аромат: чёрная бузина, абрикос, орхидея и шампанское в звучании, в шлейфе — сливки и тёплая древесина. Лёгкий, праздничный, запоминающийся.",
+      "Этот бокс подойдет, если вам хочется пахнуть красиво, дорого, заметно и небанально — без цитрусовой простоты, но с выразительным настроением и красивым шлейфом."
+    ]
   },
   {
-    id: "box-woody-leather",
-    name: "Аромабокс «Древесный & Кожаный Шик»",
-    subtitle: "Статусные, плотные и мужественные композиции",
-    category: "box",
-    badge: "Мужской Выбор",
-    image: "assets/images/IMG_4625.PNG",
-    items: [
-      "Initio — Oud for Greatness",
-      "Tom Ford — Tobacco Vanille",
-      "Marc-Antoine Barrois — Ganymede",
-      "Xerjoff — Naxos",
-      "Kilian — Black Phantom"
-    ],
-    prices: {
-      "3ml": 7200,
-      "5ml": 10500
+    "id": "box-аромабокс-знакомство-с-брендом-m-int-унисекс",
+    "uid": 188290376183,
+    "name": "Аромабокс «Знакомство с брендом M.INT» унисекс",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_188290376183.png",
+    "cdnImage": "https://static.tildacdn.com/stor6264-3765-4535-b366-323834323663/af9e289693ff382c320721a8636c432e.png",
+    "prices": {
+      "3ml": 3500,
+      "5ml": 6300,
+      "10ml": 11200
     },
-    description: "Глубокие древесные аккорды, дорогая перчаточная кожа, выдержанный табак и согревающий пряный алкоголь. Премиальный выбор уверенного человека."
+    "oldPrices": {
+      "3ml": 6000,
+      "5ml": 8500,
+      "10ml": 13500
+    },
+    "description": "Откройте для себя один из самых необычных современных нишевых брендов M’INT — это бренд, вдохновленный движением, архитектурой и современным искусством. Его ароматы объединяют высокое качество ингредиентов, необычные сочетания нот и яркий характер, благодаря чему каждый из них ощущается самобытно и ...",
+    "fullDescription": "Откройте для себя один из самых необычных современных нишевых брендов M’INT — это бренд, вдохновленный движением, архитектурой и современным искусством. Его ароматы объединяют высокое качество ингредиентов, необычные сочетания нот и яркий характер, благодаря чему каждый из них ощущается самобытно и запоминается с первого знакомства. В этом боксе собраны 5 ароматов M.INT, которые позволят познакомиться с брендом во всем его разнообразии. Это отличный способ протестировать несколько композиций перед покупкой полноразмерного флакона и найти аромат, который станет именно вашим. Внутри бокса: Blue Waterfall - свежий, воздушный аромат, будто глоток прохлады у горного водопада. В старте — акватические ноты, сочный лимон и мята, в сердце — нежный ландыш и водяная лилия, а в базе — чистый мускус и лёгкая древесина. Освежает и дарит ощущение свободы — идеален для жарких дней и городских прогулок Refocus - Сдержанный, собранный аромат для моментов, когда нужно вернуть ясность мысли. Открывается бодрящим грейпфрутом и зелёным чаем, в сердце раскрывается базилик и тонкий жасмин, а база из ветивера и кедра придаёт звучанию структуру и спокойствие. Для тех, кто ценит баланс и внутреннюю собранность. Meek Passion - Сдержанный, собранный аромат для моментов, когда нужно вернуть ясность мысли. Открывается бодрящим грейпфрутом и зелёным чаем, в сердце раскрывается базилик и тонкий жасмин, а база из ветивера и кедра придаёт звучанию структуру и спокойствие. Для тех, кто ценит баланс и внутреннюю собранность. The Smart Set - стильный, интеллигентный аромат с характером «умной элегантности». Старт — свежий бергамот и пряный розовый перец, в сердце — ирис и фиалка с лёгкой пудровой нотой, а в базе — дуб, кожа и мускус, придающие композиции благородную глубину. Отличный выбор для деловых встреч и городских образов. Winged Heart - лёгкий, романтичный аромат — словно полёт навстречу мечте. В старте — сочная малина и искристый мандарин, в сердце — воздушная фрезия и нежная орхидея, а в базе — ваниль, мускус и тонкий древесный аккорд, оставляющие тёплый, едва уловимый след. Для мечтателей и тех, кто верит в чудеса. Специальные цены действуют ограниченное время. Это отличная возможность познакомиться с брендом M’INT с максимальной выгодой.",
+    "items": [
+      "M’INT — это бренд, вдохновленный движением, архитектурой и современным искусством. Его ароматы объединяют высокое качество ингредиентов, необычные сочетания нот и яркий характер, благодаря чему каждый из них ощущается самобытно и запоминается с первого знакомства.",
+      "Blue Waterfall - свежий, воздушный аромат, будто глоток прохлады у горного водопада. В старте — акватические ноты, сочный лимон и мята, в сердце — нежный ландыш и водяная лилия, а в базе — чистый мускус и лёгкая древесина. Освежает и дарит ощущение свободы — идеален для жарких дней и городских прогулок",
+      "The Smart Set - стильный, интеллигентный аромат с характером «умной элегантности». Старт — свежий бергамот и пряный розовый перец, в сердце — ирис и фиалка с лёгкой пудровой нотой, а в базе — дуб, кожа и мускус, придающие композиции благородную глубину. Отличный выбор для деловых встреч и городских образов.",
+      "Winged Heart - лёгкий, романтичный аромат — словно полёт навстречу мечте. В старте — сочная малина и искристый мандарин, в сердце — воздушная фрезия и нежная орхидея, а в базе — ваниль, мускус и тонкий древесный аккорд, оставляющие тёплый, едва уловимый след. Для мечтателей и тех, кто верит в чудеса."
+    ]
   },
   {
-    id: "box-gourmand",
-    name: "Аромабокс «Гурманский Соблазн»",
-    subtitle: "Ликерная вишня, коньячное пралине и пряный шоколад",
-    category: "box",
-    badge: "Сладостный Восторг",
-    image: "assets/images/IMG_4623.PNG",
-    items: [
-      "Tom Ford — Lost Cherry",
-      "Kilian — Angels' Share",
-      "Tom Ford — Tobacco Vanille",
-      "Xerjoff — Italica",
-      "Lattafa — Khamrah"
-    ],
-    prices: {
-      "3ml": 6500,
-      "5ml": 9400
+    "id": "box-аромабокс-самые-вкусные-ароматы-для-нее",
+    "uid": 168867808923,
+    "name": "Аромабокс «Самые ВКУСНЫЕ ароматы» для нее",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_168867808923.webp",
+    "cdnImage": "https://static.tildacdn.com/stor3331-3366-4162-b561-646663343161/540a32430a4ce2cd2e9456a2d4073f0b.webp",
+    "prices": {
+      "3ml": 3840,
+      "5ml": 6150,
+      "10ml": 11800
     },
-    description: "Соблазнительные ароматы, которые хочется попробовать на вкус. Идеальный спутник для прохладных вечеров, романтических свиданий и уютных встреч."
+    "oldPrices": {
+      "3ml": 6800,
+      "5ml": 9500,
+      "10ml": 13500
+    },
+    "description": "Аромабокс с 5 женственными гурманскими ароматами Бокс для тех, кто любит ароматы, от которых хочется услышать: «Чем это так вкусно пахнет?» Внутри — 5 сладких, мягких и комплиментарных ароматов для нее. Это подборка про нежность, сливочность, ваниль, карамельные оттенки, уютную гурманику и красивое ...",
+    "fullDescription": "Аромабокс с 5 женственными гурманскими ароматами Бокс для тех, кто любит ароматы, от которых хочется услышать: «Чем это так вкусно пахнет?» Внутри — 5 сладких, мягких и комплиментарных ароматов для нее. Это подборка про нежность, сливочность, ваниль, карамельные оттенки, уютную гурманику и красивое женственное звучание без ощущения банальности. Такие ароматы легко носить каждый день, брать на свидания, вечерние выходы или моменты, когда хочется пахнуть особенно притягательно и запоминающеся. Внутри: Blanche Bête - это молочно-цветочный аромат с тёплой, чуть «звериной» глубиной. В старте — обволакивающее молоко с амбреттой, затем раскрываются насыщенные цветы (тубероза, жасмин) с благовонным ладаном, а в базе остаётся уютный шлейф из ванили, какао и мускуса. Bianco Latte - уютный гурманский унисекс. Сразу после нанесения — густая, сливочная карамель, затем в игру вступают кумарин (даёт оттенок выпечки и миндальной пудры) и мёд, а в шлейфе остаётся мягкая, чистая вуаль из ванили и белого мускуса. Многие описывают его как «тёплое молочно-медовое облачко» Afnan Delicious Bouquet - яркий, сладко-цитрусовый букет с гурманскими акцентами. Старт свежий — цитрусы и белые цветы с ванилью, в сердце — сладкая алкогольная нота рома, сливочные оттенки (взбитые сливки) и медовая чувственность, а базу формируют тёплые, чуть дымные бобы тонка, карамель и нежный мускус Lineam Laurent Mazzone Parfums - восточно-гурманский унисекс, который сравнивают с атмосферой ночного парка аттракционов. В старте — искристая цитрусовая вспышка (бергамот, цитрон) с орехово-сладкой нотой пралине и алкогольным флером рома. В сердце — неожиданное сочетание: хрустящий попкорн (карамелизированный, с мёдом и морской солью), смолистая мирра и лёгкая цветочная дымка. База тёплая и уютная: сливочная ваниль, медовый бензоин и мягкий мускус Lattafa Khamrah - захватывающий унисекс с пряно-сладким, восточным характером. Старт тёплый и пряный: бергамот с корицей и мускатным орехом. В сердце — сочная сладость фиников, нежное пралине и сливочная тубероза с древесным mahonial. База многогранная: ваниль и бобы тонка сливаются с тёплыми смолистыми нотами (мирра, бензоин) и древесными акцентами (амбервуд, акигалавуд). Многие чувствуют в нём атмосферу восточной лавки со сладостями Кому подойдет Тем, кто любит сладкие, молочные, ванильные, карамельные и «вкусные» ароматы, но хочет, чтобы они звучали не дешево, а красиво, объемно и женственно. Этот бокс подойдет для знакомства с гурманским направлением, для подарка или для тех, кто ищет аромат, который будет собирать комплименты.",
+    "items": [
+      "Внутри — 5 сладких, мягких и комплиментарных ароматов для нее. Это подборка про нежность, сливочность, ваниль, карамельные оттенки, уютную гурманику и красивое женственное звучание без ощущения банальности.",
+      "Blanche Bête - это молочно-цветочный аромат с тёплой, чуть «звериной» глубиной. В старте — обволакивающее молоко с амбреттой, затем раскрываются насыщенные цветы (тубероза, жасмин) с благовонным ладаном, а в базе остаётся уютный шлейф из ванили, какао и мускуса.",
+      "Bianco Latte - уютный гурманский унисекс. Сразу после нанесения — густая, сливочная карамель, затем в игру вступают кумарин (даёт оттенок выпечки и миндальной пудры) и мёд, а в шлейфе остаётся мягкая, чистая вуаль из ванили и белого мускуса. Многие описывают его как «тёплое молочно-медовое облачко»",
+      "Afnan Delicious Bouquet - яркий, сладко-цитрусовый букет с гурманскими акцентами. Старт свежий — цитрусы и белые цветы с ванилью, в сердце — сладкая алкогольная нота рома, сливочные оттенки (взбитые сливки) и медовая чувственность, а базу формируют тёплые, чуть дымные бобы тонка, карамель и нежный мускус",
+      "Lineam Laurent Mazzone Parfums - восточно-гурманский унисекс, который сравнивают с атмосферой ночного парка аттракционов. В старте — искристая цитрусовая вспышка (бергамот, цитрон) с орехово-сладкой нотой пралине и алкогольным флером рома. В сердце — неожиданное сочетание: хрустящий попкорн (карамелизированный, с мёдом и морской солью), смолистая мирра и лёгкая цветочная дымка. База тёплая и уютная: сливочная ваниль, медовый бензоин и мягкий мускус"
+    ]
+  },
+  {
+    "id": "box-аромабокс-стойко-громко-ярко-для-нее",
+    "uid": 977967948573,
+    "name": "Аромабокс «Стойко, громко, ярко» для нее",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_977967948573.webp",
+    "cdnImage": "https://static.tildacdn.com/stor3935-3062-4163-a236-313736326461/0dfa5ccae8b3ed02ab6785342060a0ca.webp",
+    "prices": {
+      "3ml": 4580,
+      "5ml": 7350,
+      "10ml": 14200
+    },
+    "oldPrices": {
+      "3ml": 7800,
+      "5ml": 10500,
+      "10ml": 16800
+    },
+    "description": "Аромабокс с 5 выразительными женскими ароматами Внутри — 5 ярких, стойких и шлейфовых ароматов для нее. Это подборка для девушек, которые любят заметное звучание, комплименты и ароматы, которые остаются в памяти. Каждый аромат в боксе создан для того, чтобы подчеркнуть характер, уверенность и женств...",
+    "fullDescription": "Аромабокс с 5 выразительными женскими ароматами Внутри — 5 ярких, стойких и шлейфовых ароматов для нее. Это подборка для девушек, которые любят заметное звучание, комплименты и ароматы, которые остаются в памяти. Каждый аромат в боксе создан для того, чтобы подчеркнуть характер, уверенность и женственность: сладко, густо, дорого, соблазнительно и с красивым шлейфом. Такой бокс подойдет для вечера, свиданий, выходов, мероприятий, холодного сезона или моментов, когда хочется звучать максимально эффектно. Внутри: Max Philip Mauve - элегантный унисекс-аромат 2024 года. Старт тёплый и обволакивающий — дуэт лесного ореха и сливочной ванили. В сердце раскрывается нежный фруктово-цветочный букет: сочная груша, изысканный жасмин и бархатистая роза. База добавляет глубину: тёплые древесные оттенки сандала, смолистые нюансы олибанума и чувственные акценты серой амбры. Получается сбалансированное звучание — одновременно лёгкое и стойкое Electimuss Vesper Reverie - унисекс-парфюм 2025 года от британского бренда Electimuss. Его вдохновили сумерки в воображаемом саду: момент, когда день переходит в вечер. Старт яркий и сочный — тропические фрукты (манго, персик) и ягоды (чёрная смородина) переплетаются со свежестью зелёного чая и лёгкими морскими оттенками. В сердце раскрывается роскошный цветочный гобелен: от огненного гибискуса до нежного ландыша и медовой чампаки. База углубляет композицию: ваниль и сахарный тростник создают тёплое, чуть гурманское ощущение, а уд, амбра и мускус добавляют глубины и чувственности. SIU Sisu - Фужерно‑цветочная композиция с медитативным настроением: в старте — лаванда и белые цветы, в сердце — бобы тонка, шалфей и необычный аккорд каро‑корунда, база из амбры и пачули придаёт глубину. Спокойный, интеллигентный аромат, будто созданный для паузы и внутренней собранности. Lattafa Queen of Arabia - Роскошный восточно‑цветочный аромат: старт из кокоса и соли создаёт экзотическую свежесть, в сердце — пудровый гелиотроп и сливочный сандал, а в базе — сладкая ваниль и тёплая амбра. Эффект «королевского» шлейфа: статусный, обволакивающий, с восточным характером. Hormone Paris Gaba - энергичный, чуть минеральный аромат с контрастом свежести и тёплой глубины. Звучит современно и собранно — для тех, кто ценит лаконичные, но выразительные композиции.",
+    "items": [
+      "Внутри — 5 ярких, стойких и шлейфовых ароматов для нее. Это подборка для девушек, которые любят заметное звучание, комплименты и ароматы, которые остаются в памяти.",
+      "Max Philip Mauve - элегантный унисекс-аромат 2024 года. Старт тёплый и обволакивающий — дуэт лесного ореха и сливочной ванили. В сердце раскрывается нежный фруктово-цветочный букет: сочная груша, изысканный жасмин и бархатистая роза. База добавляет глубину: тёплые древесные оттенки сандала, смолистые нюансы олибанума и чувственные акценты серой амбры. Получается сбалансированное звучание — одновременно лёгкое и стойкое",
+      "Electimuss Vesper Reverie - унисекс-парфюм 2025 года от британского бренда Electimuss. Его вдохновили сумерки в воображаемом саду: момент, когда день переходит в вечер. Старт яркий и сочный — тропические фрукты (манго, персик) и ягоды (чёрная смородина) переплетаются со свежестью зелёного чая и лёгкими морскими оттенками. В сердце раскрывается роскошный цветочный гобелен: от огненного гибискуса до нежного ландыша и медовой чампаки. База углубляет композицию: ваниль и сахарный тростник создают тёплое, чуть гурманское ощущение, а уд, амбра и мускус добавляют глубины и чувственности.",
+      "SIU Sisu - Фужерно‑цветочная композиция с медитативным настроением: в старте — лаванда и белые цветы, в сердце — бобы тонка, шалфей и необычный аккорд каро‑корунда, база из амбры и пачули придаёт глубину. Спокойный, интеллигентный аромат, будто созданный для паузы и внутренней собранности.",
+      "Lattafa Queen of Arabia - Роскошный восточно‑цветочный аромат: старт из кокоса и соли создаёт экзотическую свежесть, в сердце — пудровый гелиотроп и сливочный сандал, а в базе — сладкая ваниль и тёплая амбра. Эффект «королевского» шлейфа: статусный, обволакивающий, с восточным характером."
+    ]
+  },
+  {
+    "id": "box-аромабокс-стойко-громко-ярко-для-него",
+    "uid": 501090980333,
+    "name": "Аромабокс «Стойко, громко, ярко» для него",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_501090980333.png",
+    "cdnImage": "https://static.tildacdn.com/stor3461-3033-4232-b936-373731333034/76f062e23fb8fad54738859129b2cafb.png",
+    "prices": {
+      "3ml": 4800,
+      "5ml": 7750,
+      "10ml": 14800
+    },
+    "oldPrices": {
+      "3ml": 6800,
+      "5ml": 9750,
+      "10ml": 16800
+    },
+    "description": "Аромабокс с 5 выразительными мужскими ароматами Бокс для мужчины, который хочет, чтобы аромат был заметной частью образа. Внутри — 5 стойких, ярких и шлейфовых ароматов для него. Это подборка про уверенное звучание, характер и эффектное первое впечатление. Ароматы из бокса подойдут для вечера, свида...",
+    "fullDescription": "Аромабокс с 5 выразительными мужскими ароматами Бокс для мужчины, который хочет, чтобы аромат был заметной частью образа. Внутри — 5 стойких, ярких и шлейфовых ароматов для него. Это подборка про уверенное звучание, характер и эффектное первое впечатление. Ароматы из бокса подойдут для вечера, свиданий, выходов, мероприятий, холодного сезона или ситуаций, когда хочется звучать дороже, сильнее и заметнее. Здесь собраны композиции с насыщенным шлейфом, плотной базой и выразительным характером. Parfums de Marly Althair - тёплый, обволакивающий унисекс-аромат из категории восточно-гурманских. Открывается яркой пряной вспышкой: бергамот, корица и кардамон создают ощущение уютного, согревающего воздуха. Идеален для прохладного времени года, вечерних выходов и романтических встреч — создаёт атмосферу уверенности и уюта. Electimuss Black Caviar - загадочный унисекс-аромат с фужерно-древесным характером. Вдохновлён античными традициями: в Древнем Риме чёрная икра считалась символом роскоши и подавалась самым почётным гостям. Это выбор для тех, кто ценит нестандартные, статусные и в то же время сбалансированные композиции Franck Boclet Cocaine - смелый, провокационный унисекс-аромат из фужерной группы. Его характер — роскошный, решительный и соблазнительный. Шлейф формируют чувственные аккорды: масло монои, ваниль и пачули. Аромат создан для страстных, неординарных натур, которые хотят подчеркнуть свою независимость и любовь к ярким впечатлениям. Afnan Supremacy Incense - глубокий, многогранный мужской аромат с фужерным характером. Его звучание — это гармоничный контраст прохлады и тепла. В верхних нотах свежесть бергамота дополняется пряностью орегано, травянистыми акцентами и лёгкой терпкостью чёрной смородины. Аромат подойдёт современному мужчине, который стремится выделиться, но при этом сохранить стиль — идеален для вечерних выходов и свиданий в холодное время года Maison Crivelli Oud Maracuja - фруктово-древесный аромат с выраженными кожаными нюансами. Он передаёт ощущение тропического вечера, где сочная, дерзкая маракуйя встречается с тёмной, горячей глубиной уда. В сердце уд раскрывается во всей своей сложности, а индонезийские пачули вносят землистые, слегка зелёные акценты; смолистый бензоин окутывает мягким, бархатистым теплом.",
+    "items": [
+      "Внутри — 5 стойких, ярких и шлейфовых ароматов для него. Это подборка про уверенное звучание, характер и эффектное первое впечатление.",
+      "Parfums de Marly Althair - тёплый, обволакивающий унисекс-аромат из категории восточно-гурманских. Открывается яркой пряной вспышкой: бергамот, корица и кардамон создают ощущение уютного, согревающего воздуха. Идеален для прохладного времени года, вечерних выходов и романтических встреч — создаёт атмосферу уверенности и уюта.",
+      "Franck Boclet Cocaine - смелый, провокационный унисекс-аромат из фужерной группы. Его характер — роскошный, решительный и соблазнительный. Шлейф формируют чувственные аккорды: масло монои, ваниль и пачули. Аромат создан для страстных, неординарных натур, которые хотят подчеркнуть свою независимость и любовь к ярким впечатлениям.",
+      "Afnan Supremacy Incense - глубокий, многогранный мужской аромат с фужерным характером. Его звучание — это гармоничный контраст прохлады и тепла. В верхних нотах свежесть бергамота дополняется пряностью орегано, травянистыми акцентами и лёгкой терпкостью чёрной смородины. Аромат подойдёт современному мужчине, который стремится выделиться, но при этом сохранить стиль — идеален для вечерних выходов и свиданий в холодное время года"
+    ]
+  },
+  {
+    "id": "box-аромабокс-знакомство-с-брендом-rudross-для-него",
+    "uid": 951991302213,
+    "name": "Аромабокс «Знакомство с брендом Rudross» для него",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_951991302213.png",
+    "cdnImage": "https://static.tildacdn.com/stor3333-3037-4366-b134-613734653865/7245f0c5d0caab98f41387febbc2b66f.png",
+    "prices": {
+      "3ml": 2670,
+      "5ml": 4200,
+      "10ml": 7900
+    },
+    "oldPrices": {
+      "3ml": 2900,
+      "5ml": 6200,
+      "10ml": 9000
+    },
+    "description": "Универсальный аромабокс для него с пятью ароматами бренда Rudross Внутри — подборка самых интересных композиций бренда: от чистых, свежих и повседневных до более выразительных, глубоких и характерных. Это хороший способ познакомиться с Rudross сразу через несколько разных направлений и понять, какой...",
+    "fullDescription": "Универсальный аромабокс для него с пятью ароматами бренда Rudross Внутри — подборка самых интересных композиций бренда: от чистых, свежих и повседневных до более выразительных, глубоких и характерных. Это хороший способ познакомиться с Rudross сразу через несколько разных направлений и понять, какой аромат лучше всего раскрывается именно на вас Бокс подойдет тем, кто хочет открыть для себя новый бренд, попробовать ароматы без покупки полноразмерного флакона или собрать небольшую парфюмерную капсулу на разные случаи Внутри 5 ароматов: Lust For Life - яркий, энергичный аромат, про жажду впечатлений и жизнь на максимум. Старт из сочного грейпфрута и острого перца бодрит с первого вдоха, в сердце — страстный жасмин и пряная гвоздика, а в базе тёплый ветивер и кедр оставляют уверенный шлейф Mira - лёгкий и сияющий аромат, будто первое утреннее солнце на коже. В старте — сочная груша и искристый бергамот, в сердце — нежная роза и тонкий ландыш, а тёплая база из сандала и мускуса делает звучание мягким и очень носибельным. Идеальный выбор для тех, кто любит ненавязчивую элегантность. One More Time - соблазнительный и дерзкий аромат. Открывается малиной и чёрной смородиной — сочно и ярко, в сердце раскрывается тубероза и фиалка, а в базе тёплая амбра, пачули и мягкий мускус создают притягательный шлейф. Для смелых решений и ярких эмоций. Cozy - уютный, обволакивающий аромат, в котором хочется завернуться, как в любимый плед. В верхних нотах — тёплая корица и сладкий миндаль, в сердце —сливочная ваниль и нежный ирис, а база из кедра и мускуса добавляет спокойствия. Citrus Molecule - свежий, минималистичный аромат с характером. Чистый цитрусовый старт из лимона и юдзу бодрит, прозрачные молекулы и озоновые ноты придают лёгкость, а в базе тонкий мускус и древесные оттенки оставляют чистый, современный след. Для тех, кто любит свежесть без лишней сложности. Кому подойдет этот бокс Для тех, кто любит нишевую парфюмерию, ищет небанальные ароматы на каждый день или хочет попробовать бренд Rudross в разных настроениях",
+    "items": [
+      "Внутри — подборка самых интересных композиций бренда: от чистых, свежих и повседневных до более выразительных, глубоких и характерных. Это хороший способ познакомиться с Rudross сразу через несколько разных направлений и понять, какой аромат лучше всего раскрывается именно на вас",
+      "Lust For Life - яркий, энергичный аромат, про жажду впечатлений и жизнь на максимум. Старт из сочного грейпфрута и острого перца бодрит с первого вдоха, в сердце — страстный жасмин и пряная гвоздика, а в базе тёплый ветивер и кедр оставляют уверенный шлейф",
+      "Mira - лёгкий и сияющий аромат, будто первое утреннее солнце на коже. В старте — сочная груша и искристый бергамот, в сердце — нежная роза и тонкий ландыш, а тёплая база из сандала и мускуса делает звучание мягким и очень носибельным. Идеальный выбор для тех, кто любит ненавязчивую элегантность.",
+      "One More Time - соблазнительный и дерзкий аромат. Открывается малиной и чёрной смородиной — сочно и ярко, в сердце раскрывается тубероза и фиалка, а в базе тёплая амбра, пачули и мягкий мускус создают притягательный шлейф. Для смелых решений и ярких эмоций.",
+      "Cozy - уютный, обволакивающий аромат, в котором хочется завернуться, как в любимый плед. В верхних нотах — тёплая корица и сладкий миндаль, в сердце —сливочная ваниль и нежный ирис, а база из кедра и мускуса добавляет спокойствия."
+    ]
+  },
+  {
+    "id": "box-аромабокс-знакомство-с-брендом-bybozo-для-нее",
+    "uid": 591836169713,
+    "name": "Аромабокс «Знакомство с брендом Bybozo» для нее",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_591836169713.png",
+    "cdnImage": "https://static.tildacdn.com/stor3338-6161-4339-a432-393665323764/e0d2f6e35108a77ac795a71cccf3efc5.png",
+    "prices": {
+      "3ml": 2790,
+      "5ml": 4400,
+      "10ml": 8300
+    },
+    "oldPrices": {
+      "3ml": 3200,
+      "5ml": 6200,
+      "10ml": 10200
+    },
+    "description": "Аромабокс для нее с самыми красивыми, женственными и запоминающимися ароматами бренда BYBOZO Это подборка композиций, которые раскрываются мягко, дорого и чувственно: от нежных повседневных ароматов до более выразительных, шлейфовых и комплиментарных. Бокс подойдет тем, кто хочет познакомиться с BYB...",
+    "fullDescription": "Аромабокс для нее с самыми красивыми, женственными и запоминающимися ароматами бренда BYBOZO Это подборка композиций, которые раскрываются мягко, дорого и чувственно: от нежных повседневных ароматов до более выразительных, шлейфовых и комплиментарных. Бокс подойдет тем, кто хочет познакомиться с BYBOZO через разные грани женственности — романтичную, чистую, соблазнительную и яркую Ароматы можно носить на каждый день, на свидание, в офис, на вечерний выход или просто тогда, когда хочется чувствовать себя особенно красиво Внутри 5 ароматов: Will You Marry Me? - аромат-признание, созданный для самых важных моментов. В нём — чистая эмоция предложения, трепет и радость «да». Старт — свежие цитрусы и нежная груша, будто первый волнующий вдох перед главным вопросом. В сердце раскрывается букет белых цветов: жасмин и фрезия, словно свадебный букет в дрожащих от волнения руках. База — тёплый мускус, сандал и капля ванили. Это не просто парфюм, а история о самом счастливом «да» в жизни. Идеален для особых случаев и как романтичный подарок. Habibi - тёплый, обволакивающий аромат, чьё название на арабском значит «мой любимый», «дорогой сердцу». В верхних нотах — сочная слива и пряный кардамон: первое впечатление яркое, с восточным характером. Сердце — бархатистая роза и нежный ирис, в которых слышится искреннее чувство. База — глубокая и уютная: амбра, кедр и мягкий мускус создают ощущение объятий, которые не хочется отпускать. Sea Breeze - лёгкий, освежающий аромат, который переносит на берег моря, где ветер играет с волосами, а горизонт кажется бесконечно свободным. Старт — солёный морской аккорд, бергамот и лимон: ощущение прохладного бриза на коже. В сердце — акватические ноты, ландыш и нежная фрезия: чистота и прозрачность, как воздух у воды. База — древесина светлого кедра и лёгкий мускус: тёплый след, который остаётся после прогулки по пляжу. Sea Breeze — для любителей свободы и свежести, для дней, когда хочется дышать полной грудью. Amsterdam Weekdays - городской, непринуждённый аромат, вдохновлённый ритмом будней Амстердама: узкие улочки, велосипеды, кофе с видом на канал и ощущение, что жизнь прекрасна именно в мелочах. Старт — бодрящий грейпфрут и зелёные листья, как глоток свежего воздуха ранним утром. В сердце — тёплый кардамон, фиалка и лёгкая нота какао: уют любимого кафе и неспешная беседа. База — мягкий ветивер, замша и древесные оттенки: след города на одежде и в памяти. Eternal Rainbow - яркий, многогранный аромат, в котором каждая нота — как цвет радуги, а вместе они складываются в ощущение праздника и надежды. Старт — взрыв тропических фруктов: маракуйя, ананас и мандарин, будто первый солнечный луч после дождя. В сердце — букет из пиона, гибискуса и фрезии: нежность и энергия, которые заряжают оптимизмом. База — кремовая ваниль, мускус и амбра: тёплый, сияющий шлейф, который хочется вдыхать снова и снова. Eternal Rainbow — для тех, кто верит, что после дождя всегда появляется радуга. Кому подойдет этот бокс Для тех, кто любит красивые нишевые ароматы, хочет попробовать бренд BYBOZO без покупки полноразмерных флаконов и найти свой личный аромат на разные настроения",
+    "items": [
+      "Это подборка композиций, которые раскрываются мягко, дорого и чувственно: от нежных повседневных ароматов до более выразительных, шлейфовых и комплиментарных. Бокс подойдет тем, кто хочет познакомиться с BYBOZO через разные грани женственности — романтичную, чистую, соблазнительную и яркую",
+      "Will You Marry Me? - аромат-признание, созданный для самых важных моментов. В нём — чистая эмоция предложения, трепет и радость «да». Старт — свежие цитрусы и нежная груша, будто первый волнующий вдох перед главным вопросом. В сердце раскрывается букет белых цветов: жасмин и фрезия, словно свадебный букет в дрожащих от волнения руках. База — тёплый мускус, сандал и капля ванили. Это не просто парфюм, а история о самом счастливом «да» в жизни. Идеален для особых случаев и как романтичный подарок.",
+      "Habibi - тёплый, обволакивающий аромат, чьё название на арабском значит «мой любимый», «дорогой сердцу». В верхних нотах — сочная слива и пряный кардамон: первое впечатление яркое, с восточным характером. Сердце — бархатистая роза и нежный ирис, в которых слышится искреннее чувство. База — глубокая и уютная: амбра, кедр и мягкий мускус создают ощущение объятий, которые не хочется отпускать.",
+      "Sea Breeze - лёгкий, освежающий аромат, который переносит на берег моря, где ветер играет с волосами, а горизонт кажется бесконечно свободным. Старт — солёный морской аккорд, бергамот и лимон: ощущение прохладного бриза на коже. В сердце — акватические ноты, ландыш и нежная фрезия: чистота и прозрачность, как воздух у воды. База — древесина светлого кедра и лёгкий мускус: тёплый след, который остаётся после прогулки по пляжу. Sea Breeze — для любителей свободы и свежести, для дней, когда хочется дышать полной грудью.",
+      "Amsterdam Weekdays - городской, непринуждённый аромат, вдохновлённый ритмом будней Амстердама: узкие улочки, велосипеды, кофе с видом на канал и ощущение, что жизнь прекрасна именно в мелочах. Старт — бодрящий грейпфрут и зелёные листья, как глоток свежего воздуха ранним утром. В сердце — тёплый кардамон, фиалка и лёгкая нота какао: уют любимого кафе и неспешная беседа. База — мягкий ветивер, замша и древесные оттенки: след города на одежде и в памяти."
+    ]
+  },
+  {
+    "id": "box-аромабокс-ароматы-в-необычных-флаконах-для-нее",
+    "uid": 788543720123,
+    "name": "Аромабокс «Ароматы в необычных флаконах» для нее",
+    "category": "box",
+    "image": "assets/img/aromaboxes/box_788543720123.png",
+    "cdnImage": "https://static.tildacdn.com/stor6234-3130-4532-b430-623866333939/06e3250d5f8125cb87e463a4eb9c33bf.png",
+    "prices": {
+      "3ml": 3045,
+      "5ml": 5775,
+      "10ml": 9240
+    },
+    "oldPrices": {},
+    "description": "Пять ароматов из моей коллекции с самыми необычными флаконами! Дракон, античная богиня, Пизанская башня, золотой волк и песочные часы. Каждый из них — настоящее произведение искусства. В этом боксе я собрал композиции, которые привлекают внимание ещё до первого распыления. В набор входят: Lattafa Pe...",
+    "fullDescription": "Пять ароматов из моей коллекции с самыми необычными флаконами! Дракон, античная богиня, Пизанская башня, золотой волк и песочные часы. Каждый из них — настоящее произведение искусства. В этом боксе я собрал композиции, которые привлекают внимание ещё до первого распыления. В набор входят: Lattafa Perfumes Sehr — пряный миндаль, корица, ваниль и тёплая амбра. Насыщенный восточный гурманский аромат. French Avenue Venus de Milo — сочная груша, карамель, молочные ноты и ваниль. Нежная сливочно-фруктовая композиция. Lattafa Perfumes Pisa — бергамот, лимон, мандарин, кедр и сандал. Свежий древесно-цитрусовый аромат. French Avenue Fierté Luna — лаванда, мёд, корица, табак и ваниль. Выразительная сладко-пряная композиция. French Avenue Chronicles — мирра, ирис, ладан, гелиотроп и бобы тонка. Пудровый, смолистый аромат с мягкой сладостью.",
+    "items": [
+      "Дракон, античная богиня, Пизанская башня, золотой волк и песочные часы. Каждый из них — настоящее произведение искусства. В этом боксе я собрал композиции, которые привлекают внимание ещё до первого распыления.",
+      "Lattafa Perfumes Sehr — пряный миндаль, корица, ваниль и тёплая амбра. Насыщенный восточный гурманский аромат.",
+      "French Avenue Venus de Milo — сочная груша, карамель, молочные ноты и ваниль. Нежная сливочно-фруктовая композиция.",
+      "Lattafa Perfumes Pisa — бергамот, лимон, мандарин, кедр и сандал. Свежий древесно-цитрусовый аромат.",
+      "French Avenue Fierté Luna — лаванда, мёд, корица, табак и ваниль. Выразительная сладко-пряная композиция."
+    ]
   }
 ];
 
 const SECRET_BOXES_DATA = [
   {
-    id: "secret-explorer",
-    level: "Исследователь",
-    subtitle: "3 уникальных аромата по 5 мл под ваш характер",
-    price: 3900,
-    oldPrice: 4800,
-    volumeInfo: "3 флакона по 5 мл (хватит на 2-3 месяца)",
-    badge: "Легкий Старт",
-    image: "assets/images/IMG_5711.png",
-    description: "Для тех, кто готов открыть для себя мир нишевой парфюмерии и выйти за рамки привычного люкса. Состав бокса собирается персонально под ваши предпочтения и остается тайной до момента вскрытия посылки!",
-    features: [
-      "3 селективных аромата по 5 мл",
-      "Индивидуальный подбор Владимиром Вациком",
-      "Персональная карточка с описанием нот",
-      "Стильная фирменная подарочная упаковка"
-    ]
+    "id": "secret-исследователь",
+    "uid": 826224487353,
+    "level": "Исследователь",
+    "title": "Секретный бокс «Исследователь»",
+    "price": 4900,
+    "oldPrice": 6125,
+    "image": "assets/img/aromaboxes/box_826224487353.png",
+    "cdnImage": "https://static.tildacdn.com/stor3737-3966-4633-b162-323137623034/311432ab09b4b9bfd7fdf6567ed4f7c3.png",
+    "description": "Быстрый способ познакомиться с ароматами, подобранными специально под вас. Внутри: — от 3 до 5 ароматов; — объем каждого аромата — 5 мл; — индивидуальный подбор по информации, указанной в заказе Вы можете написать, какие ноты вам нравятся, для какого времени года или случая нужен аромат, какое впечатление вы хотите производить Также можно просто описать свою внешность, характер и стиль. Иногда этого достаточно, чтобы подобрать аромат, который будет ощущаться максимально органично Подойдет вам, если: вы хотите попробовать персональный подбор без большого бюджета, открыть для себя несколько новых ароматов или найти неожиданное парфюмерное направление. Как происходит подбор После оформления заказа с вами свяжется менеджер и нужно будет заполнить анкету, это поможет нам наиболее точно определить ваши предпочтения и желания Примеры вопросов: — какие ароматы или ноты вам нравятся и не нравятся; — для каких ситуаций вам нужны новые ароматы; — какой у вас характер, стиль и образ жизни; — какое впечатление вы хотите производить; — какие ароматы уже есть в вашей коллекции. Можно не заполнять каждый пункт. Даже несколько фактов о вас помогут определить направление подбора. Точный состав каждого бокса остается секретом до получения",
+    "badge": "Легкий Старт"
   },
   {
-    id: "secret-collector",
-    level: "Коллекционер",
-    subtitle: "5 редких ароматов по 5 мл + персональная карта стиля",
-    price: 5900,
-    oldPrice: 7200,
-    volumeInfo: "5 флаконов по 5 мл (полноценный гардероб)",
-    badge: "Безусловный Хит",
-    isHit: true,
-    image: "assets/images/6650DBD3-2C0C-4C01-A.png",
-    description: "Самый любимый выбор наших клиентов. Пять редких композиций, подобранных под ваш темперамент, стиль одежды и настроение. Идеальный баланс на каждый день и на вечер.",
-    features: [
-      "5 нишевых ароматов по 5 мл",
-      "Гардероб на все сезоны и поводы",
-      "Подробная расшифровка пирамид и советы по нанесению",
-      "Премиальная подарочная коробка с шелковым ложементом"
-    ]
+    "id": "secret-коллекционер",
+    "uid": 445538548093,
+    "level": "Коллекционер",
+    "title": "Секретный бокс «Коллекционер»",
+    "price": 11900,
+    "oldPrice": 14875,
+    "image": "assets/img/aromaboxes/box_445538548093.png",
+    "cdnImage": "https://static.tildacdn.com/stor3261-3062-4263-a431-663633343463/bbc37dc2ad78fe9efd13edf7fa0f789b.png",
+    "description": "Расширенный персональный аромабокс для тех, кто хочет получить больше вариантов, объемов и приятных сюрпризов. Внутри: — от 5 до 8 ароматов; — ароматы в объемах 5 и 10 мл; — фирменные пробники и сэмплы; — подарки от Владимира; — индивидуальный подбор по вашим пожеланиям, характеру и образу жизни. В этом боксе можно собрать полноценную парфюмерную капсулу: ароматы для повседневной жизни, свиданий, вечера, работы, путешествий или особого настроения. Подойдет вам, если: вы хотите не просто попробовать несколько ароматов, а получить разнообразную персональную подборку с неожиданными находками и подарками Как происходит подбор После оформления заказа с вами свяжется менеджер и нужно будет заполнить анкету, это поможет нам наиболее точно определить ваши предпочтения и желания Примеры вопросов: — какие ароматы или ноты вам нравятся и не нравятся; — для каких ситуаций вам нужны новые ароматы; — какой у вас характер, стиль и образ жизни; — какое впечатление вы хотите производить; — какие ароматы уже есть в вашей коллекции. Можно не заполнять каждый пункт. Даже несколько фактов о вас помогут определить направление подбора. Точный состав каждого бокса остается секретом до получения",
+    "badge": "Безусловный Хит"
   },
   {
-    id: "secret-connoisseur",
-    level: "Ценитель (VIP)",
-    subtitle: "5 эксклюзивных ароматов по 10 мл + тайный подарок",
-    price: 9900,
-    oldPrice: 12500,
-    volumeInfo: "5 флаконов по 10 мл + секретный подарок",
-    badge: "Максимальный сет",
-    image: "assets/images/IMG_5711.png",
-    description: "Расширенный сет: 5 нишевых ароматов по 10 мл в стеклянных атомайзерах плюс секретный парфюмерный презент от Владимира.",
-    features: [
-      "5 эксклюзивных ароматов по 10 мл",
-      "Секретный подарок от Владимира в каждом боксе",
-      "Персональная видео-рекомендация или аудио-гид",
-      "Бесплатная экспресс-доставка СДЭК до двери"
-    ]
+    "id": "secret-одержимость",
+    "uid": 618605553333,
+    "level": "Одержимость",
+    "title": "Секретный бокс «Одержимость»",
+    "price": 19900,
+    "oldPrice": 24875,
+    "image": "assets/img/aromaboxes/box_618605553333.png",
+    "cdnImage": "https://static.tildacdn.com/stor3835-3831-4139-a563-666563303562/7f33623c076aa36d7c7937cf9741061d.png",
+    "description": "Коллекция, собранная вокруг вашей личности, образа и эстетики. Внутри: — от 8 до 10 нишевых ароматов; — интересные, неизбитые и оригинальные парфюмерные композиции; — разные объемы ароматов в зависимости от концепции бокса и запроса; — предмет для ароматизации интерьера; — секретные подарки от Владимира; — расширенный индивидуальный подбор. В бокс могут войти ароматы для разных состояний, событий и образов: от повседневных и комфортных до ярких композиций, которые выгодно подчеркнут вашу индивидуальность и выделят вас среди окружающих. При подборе учитываются ваши привычки, внешность, стиль, характер, любимые места, одежда, профессия, окружение и впечатление, которое вы хотите производить. Подойдет вам, если: вы хотите получить полноценный парфюмерный опыт, редкие ароматические открытия и подборку, которая будет ощущаться неслучайной и по-настоящему личной Как происходит подбор После оформления заказа с вами свяжется менеджер и нужно будет заполнить анкету, это поможет нам наиболее точно определить ваши предпочтения и желания Примеры вопросов: — какие ароматы или ноты вам нравятся и не нравятся; — для каких ситуаций вам нужны новые ароматы; — какой у вас характер, стиль и образ жизни; — какое впечатление вы хотите производить; — какие ароматы уже есть в вашей коллекции. Можно не заполнять каждый пункт. Даже несколько фактов о вас помогут определить направление подбора. Точный состав каждого бокса остается секретом до получения",
+    "badge": "VIP Сет"
   }
-];
-
-const CERTIFICATES_DATA = [
-  { id: "cert-3000", amount: 3000, title: "Знакомство с нишей", desc: "Идеально для заказа аромабокса или нескольких отливантов" },
-  { id: "cert-5000", amount: 5000, title: "Парфюмерный выбор", desc: "Хит подарков: Secret Box или 3-4 премиальных отливанта" },
-  { id: "cert-10000", amount: 10000, title: "Персональный гардероб", desc: "VIP-набор или консультация с Владимиром + бокс" },
-  { id: "cert-15000", amount: 15000, title: "Премиум коллекция", desc: "Большой выбор селектива или полноценный запечатанный флакон" },
-  { id: "cert-20000", amount: 20000, title: "Полный гардероб", desc: "Абсолютная свобода выбора любого парфюмерного сета или флакона" }
 ];

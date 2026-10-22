@@ -43,6 +43,14 @@
     </div>
   </aside>
 
+  <!-- Top Promo Announcement Bar -->
+  <div class="promo-announcement-bar" id="promoTopBar">
+    <div class="container promo-bar-content">
+      <span class="promo-bar-text">✨ Промокод <strong class="promo-highlight">СТАРТ</strong> — скидка 10% на ваш первый заказ</span>
+      <button class="promo-bar-copy-btn" id="btnCopyTopPromo" onclick="copyPromoCode('СТАРТ')">Применить в корзине</button>
+    </div>
+  </div>
+
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
@@ -58,8 +66,6 @@
         <a href="#catalog" class="nav-link">Каталог духов</a>
         <a href="#aroma-boxes" class="nav-link">Аромабоксы</a>
         <a href="#secret-boxes" class="nav-link">Secret Box</a>
-        <a href="#quiz" class="nav-link">Подбор гардероба</a>
-        <a href="#certificates" class="nav-link">Сертификаты</a>
         <a href="#expert" class="nav-link">О стилисте</a>
         <a href="#delivery" class="nav-link">Доставка</a>
       </nav>
@@ -105,11 +111,9 @@
         <button class="btn-icon" id="btnMobileNavClose" aria-label="Закрыть">✕</button>
       </div>
       <div class="mobile-nav-links">
-        <a href="#catalog" class="mobile-nav-link">Каталог духов</a>
+        <a href="#catalog" class="mobile-nav-link">Каталог духов (277+)</a>
         <a href="#aroma-boxes" class="mobile-nav-link">Тематические аромабоксы</a>
         <a href="#secret-boxes" class="mobile-nav-link">Секретные аромабоксы</a>
-        <a href="#quiz" class="mobile-nav-link">Подбор гардероба (Квиз)</a>
-        <a href="#certificates" class="mobile-nav-link">Подарочные сертификаты</a>
         <a href="#expert" class="mobile-nav-link">Об эксперте Владимире</a>
         <a href="#delivery" class="mobile-nav-link">Условия доставки</a>
       </div>
@@ -145,17 +149,17 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#quiz" class="btn-primary">
-            <span>Подобрать аромат за 60 сек</span>
+          <a href="#catalog" class="btn-primary">
+            <span>Каталог духов (277+ ароматов)</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <a href="#catalog" class="btn-secondary">
-            <span>Смотреть каталог</span>
+          <a href="#aroma-boxes" class="btn-secondary">
+            <span>Аромабоксы</span>
           </a>
           <a href="#secret-boxes" class="btn-secondary">
-            <span>Секретные боксы</span>
+            <span>Secret Box</span>
           </a>
         </div>
 
@@ -222,60 +226,6 @@
     </div>
   </section>
 
-  <!-- Interactive Fragrance Quiz Section -->
-  <section class="section-padding quiz-section" id="quiz">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Интерактивный стилист</span>
-        <h2 class="section-title">Подберите свой идеальный гардероб</h2>
-        <p class="section-descr">
-          Ответьте на 4 простых вопроса — алгоритм Владимира Вацика подберет ароматы, которые идеально подчеркнут вашу харизму и соберут сотни комплиментов.
-        </p>
-      </div>
-
-      <div class="quiz-card" id="quizCard">
-        <div class="quiz-progress-bar">
-          <div class="quiz-progress-fill" id="quizProgressFill"></div>
-        </div>
-
-        <div class="quiz-step-indicator">
-          <span id="quizStepNumber">Шаг 1 из 4</span>
-          <span class="text-gold">Экспресс-подбор</span>
-        </div>
-
-        <!-- Dynamic Step Container -->
-        <div id="quizStepContainer"></div>
-
-        <!-- Quiz Result Screen -->
-        <div class="quiz-result-wrap" id="quizResultWrap">
-          <div class="quiz-result-header">
-            <span class="section-tag">Ваш персональный результат</span>
-            <h3 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; margin: 0.5rem 0;">
-              Композиции, созданные для вашего звучания
-            </h3>
-            <p style="color: var(--text-muted); max-width: 580px; margin: 0 auto;">
-              Основываясь на ваших ответах, Владимир Вацик рекомендует начать знакомство с этих ароматов в формате отливантов от 3 мл:
-            </p>
-          </div>
-
-          <div class="quiz-result-cards" id="quizResultCards"></div>
-
-          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
-            <a id="btnQuizTgShare" href="#" target="_blank" class="btn-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-              </svg>
-              <span>Согласовать подборку с Владимиром</span>
-            </a>
-            <button class="btn-secondary" onclick="resetQuiz();">
-              <span>Пройти заново</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Catalog Section -->
   <section class="section-padding catalog-section" id="catalog">
     <div class="container">
@@ -318,6 +268,15 @@
 
       <!-- Products Grid -->
       <div class="perfumes-grid" id="perfumesGrid"></div>
+
+      <!-- Catalog Pagination & Load More -->
+      <div class="catalog-pagination-wrap" id="catalogPagination">
+        <button class="btn-load-more" id="btnLoadMore">
+          <span>Загрузить еще ароматы</span>
+          <span class="load-more-count" id="loadMoreCount">(265)</span>
+        </button>
+        <div class="catalog-loaded-info" id="catalogLoadedInfo">Показано 12 из 277 ароматов</div>
+      </div>
     </div>
   </section>
 
@@ -352,17 +311,17 @@
         <!-- Explorer Box -->
         <div class="secret-card">
           <div class="secret-card-img-wrap">
-            <img src="assets/images/IMG_5711.png" alt="Secret Box Исследователь" loading="lazy">
+            <img src="assets/img/aromaboxes/box_826224487353.png" alt="Secret Box Исследователь" loading="lazy">
           </div>
           <h3 class="secret-card-level">Исследователь</h3>
-          <span class="secret-card-sub">3 аромата по 5 мл под ваш характер</span>
+          <span class="secret-card-sub">3–5 нишевых ароматов под ваш запрос</span>
           <p class="secret-card-desc">
-            Идеальный первый шаг в мир нишевой парфюмерии. Хватит на 2-3 месяца ежедневного знакомства с лучшими композициями.
+            Идеальный первый шаг в мир селективной парфюмерии. Ароматы подбираются по вашей анкете с учетом привычек, стиля и любимых нот.
           </p>
           <ul class="secret-features-list">
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>3 селективных аромата по 5 мл</span>
+              <span>3–5 селективных ароматов</span>
             </li>
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -370,15 +329,14 @@
             </li>
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Фирменная подарочная коробка</span>
+              <span>Фирменная подарочная упаковка</span>
             </li>
           </ul>
           <div class="secret-card-bottom">
             <div class="secret-price-box">
-              <span class="secret-old-price">4 800 ₽</span>
-              <span class="secret-current-price">3 900 ₽</span>
+              <span class="secret-current-price">4 900 ₽</span>
             </div>
-            <button class="btn-primary" onclick="addItemToCartById('secret-explorer', 'стандарт'); playChime(660);">
+            <button class="btn-primary" onclick="addItemToCartById('secret-исследователь', 'стандарт'); playChime(660);">
               Заказать бокс
             </button>
           </div>
@@ -386,23 +344,23 @@
 
         <!-- Collector Box (Hit) -->
         <div class="secret-card hit">
-          <span class="secret-badge-hit">★ Абсолютный Хит ★</span>
+          <span class="secret-badge-hit">★ Безусловный Хит ★</span>
           <div class="secret-card-img-wrap">
-            <img src="assets/images/6650DBD3-2C0C-4C01-A.png" alt="Secret Box Коллекционер" loading="lazy">
+            <img src="assets/img/aromaboxes/box_445538548093.png" alt="Secret Box Коллекционер" loading="lazy">
           </div>
           <h3 class="secret-card-level">Коллекционер</h3>
-          <span class="secret-card-sub">5 редких композиций по 5 мл</span>
+          <span class="secret-card-sub">5–8 нишевых ароматов + подарок для дома</span>
           <p class="secret-card-desc">
-            Полноценный парфюмерный гардероб на все случаи жизни: работа, вечеринки, свидания и путешествия. Персональная карточка стиля.
+            Полноценный парфюмерный гардероб на разные состояния и события. Включает предмет для ароматизации дома и расширенную консультацию.
           </p>
           <ul class="secret-features-list">
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>5 нишевых ароматов по 5 мл</span>
+              <span>5–8 редких композиций в разных объемах</span>
             </li>
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Гардероб на все сезоны и поводы</span>
+              <span>Подарок для ароматизации интерьера</span>
             </li>
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -411,120 +369,45 @@
           </ul>
           <div class="secret-card-bottom">
             <div class="secret-price-box">
-              <span class="secret-old-price">7 200 ₽</span>
-              <span class="secret-current-price">5 900 ₽</span>
+              <span class="secret-current-price">11 900 ₽</span>
             </div>
-            <button class="btn-primary" onclick="addItemToCartById('secret-collector', 'стандарт'); playChime(660);">
+            <button class="btn-primary" onclick="addItemToCartById('secret-коллекционер', 'стандарт'); playChime(660);">
               Заказать бокс
             </button>
           </div>
         </div>
 
-        <!-- Connoisseur Box (VIP) -->
+        <!-- Obsession Box (VIP) -->
         <div class="secret-card">
           <div class="secret-card-img-wrap">
-            <img src="assets/images/IMG_5711.png" alt="Secret Box Ценитель" loading="lazy">
+            <img src="assets/img/aromaboxes/box_618605553333.png" alt="Secret Box Одержимость" loading="lazy">
           </div>
-          <h3 class="secret-card-level">Ценитель (VIP)</h3>
-          <span class="secret-card-sub">5 эксклюзивных ароматов по 10 мл + презент</span>
+          <h3 class="secret-card-level">Одержимость</h3>
+          <span class="secret-card-sub">8–10 редких композиций + подарки от Владимира</span>
           <p class="secret-card-desc">
-            Сет для ценителей: 5 нишевых ароматов по 10 мл для длительного знакомства плюс фирменный презент от Владимира.
+            Максимальный парфюмерный опыт: редкие открытия, ароматы для интерьера и секретные подарки. Собирается вокруг вашей личности и эстетики.
           </p>
           <ul class="secret-features-list">
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>5 эксклюзивных ароматов по 10 мл</span>
+              <span>8–10 неизбитых нишевых ароматов</span>
             </li>
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Тайный подарок-сюрприз в коробке</span>
+              <span>Секретные подарки от Владимира</span>
             </li>
             <li class="secret-feature-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Персональная аудио-рекомендация</span>
+              <span>Расширенный персональный подбор</span>
             </li>
           </ul>
           <div class="secret-card-bottom">
             <div class="secret-price-box">
-              <span class="secret-old-price">12 500 ₽</span>
-              <span class="secret-current-price">9 900 ₽</span>
+              <span class="secret-current-price">19 900 ₽</span>
             </div>
-            <button class="btn-primary" onclick="addItemToCartById('secret-connoisseur', 'стандарт');">
+            <button class="btn-primary" onclick="addItemToCartById('secret-одержимость', 'стандарт');">
               Заказать бокс
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive 3D Gold Foil Certificate Studio -->
-  <section class="section-padding certificate-section" id="certificates">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Безупречный подарок</span>
-        <h2 class="section-title">Интерактивный подарочный сертификат</h2>
-        <p class="section-descr">
-          Вы не угадываете аромат за человека — вы дарите ему незабываемый парфюмерный опыт и свободу выбора. Сертификат действует на отливанты, флаконы и Secret Box.
-        </p>
-      </div>
-
-      <div class="cert-studio-grid">
-        <!-- Live 3D Tilt Card Preview -->
-        <div class="cert-live-card-wrap">
-          <div class="cert-card" id="liveCertCard">
-            <div class="cert-top-row">
-              <div>
-                <div class="cert-brand-name">VOLODIUM</div>
-                <div class="cert-card-tag">GIFT CERTIFICATE</div>
-              </div>
-              <img src="assets/images/E610BB2F-DBAE-4672-9.PNG" alt="VP" style="width: 38px; height: 38px; filter: drop-shadow(0 0 8px rgba(230,202,133,0.5));">
-            </div>
-
-            <div class="cert-mid-content">
-              <div class="cert-to-line">Для кого:</div>
-              <div class="cert-recipient-name" id="certDisplayRecipient">Имя получателя</div>
-              <div class="cert-custom-wish" id="certDisplayWish">«Для самого особенного человека в мире ароматов»</div>
-            </div>
-
-            <div class="cert-bot-row">
-              <div class="cert-code">VP-2026-7841</div>
-              <div class="cert-amount-display" id="certDisplayAmount">5 000 ₽</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Customizer Controls -->
-        <div class="cert-form-box">
-          <div class="form-group">
-            <label class="form-label">Выберите номинал сертификата:</label>
-            <div class="cert-amounts-selector">
-              <button class="cert-amt-btn" data-amt="3000">3 000 ₽</button>
-              <button class="cert-amt-btn active" data-amt="5000">5 000 ₽</button>
-              <button class="cert-amt-btn" data-amt="10000">10 000 ₽</button>
-              <button class="cert-amt-btn" data-amt="15000">15 000 ₽</button>
-              <button class="cert-amt-btn" data-amt="20000">20 000 ₽</button>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="certNameInput">Имя счастливого получателя:</label>
-            <input type="text" id="certNameInput" class="form-input" placeholder="Например: Екатерина">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="certWishInput">Ваше теплое пожелание на сертификате:</label>
-            <input type="text" id="certWishInput" class="form-input" placeholder="Например: Пусть каждый день звучит роскошно!">
-          </div>
-
-          <button class="btn-primary" id="btnOrderCert" style="width: 100%; margin-top: 1rem; padding: 1rem;">
-            <span>Оформить этот сертификат</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
-          <div style="font-size: 0.75rem; color: var(--text-dim); text-align: center; margin-top: 0.75rem;">
-            Моментальная доставка в Telegram в формате подарочного PDF или бумажный конверт
           </div>
         </div>
       </div>
@@ -815,10 +698,10 @@
         <div class="footer-col">
           <h4 class="footer-title">Навигация</h4>
           <ul class="footer-links">
-            <li><a href="#catalog" class="footer-link">Каталог селектива</a></li>
-            <li><a href="#quiz" class="footer-link">Подбор аромата за 60 сек</a></li>
+            <li><a href="#catalog" class="footer-link">Каталог духов (277+)</a></li>
+            <li><a href="#aroma-boxes" class="footer-link">Тематические аромабоксы</a></li>
             <li><a href="#secret-boxes" class="footer-link">Секретные аромабоксы</a></li>
-            <li><a href="#certificates" class="footer-link">Подарочные сертификаты</a></li>
+            <li><a href="#expert" class="footer-link">Об авторе Владимире</a></li>
           </ul>
         </div>
 
@@ -895,8 +778,11 @@
       <!-- Cart Summary & Checkout -->
       <div class="cart-footer">
         <div class="promo-row">
-          <input type="text" id="promoCodeInput" class="promo-input" placeholder="Промокод (при наличии)">
+          <input type="text" id="promoCodeInput" class="promo-input" placeholder="Промокод (например: СТАРТ)">
           <button class="promo-btn" id="btnApplyPromo">Применить</button>
+        </div>
+        <div class="promo-tip">
+          ✨ Введите промокод <strong>СТАРТ</strong> для скидки 10% на ваш заказ!
         </div>
 
         <div class="cart-summary-line">

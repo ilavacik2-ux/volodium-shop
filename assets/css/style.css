@@ -2864,66 +2864,7 @@ img {
   100% { opacity: 0; transform: translate(720px, 0); }
 }
 
-/* Manifesto Words Fade In */
-.monroe-manifesto {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 1.5rem 0 2.5rem;
-}
 
-.m-manifesto-word {
-  font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  font-style: italic;
-  color: var(--text-muted);
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.m-manifesto-word:nth-child(1) {
-  animation: wordFadeUp 0.7s ease-out forwards 1.7s;
-}
-.m-manifesto-word:nth-child(2) {
-  animation: wordFadeUp 0.7s ease-out forwards 2.1s;
-}
-.m-manifesto-word:nth-child(3) {
-  animation: wordFadeUp 0.7s ease-out forwards 2.5s;
-}
-
-@keyframes wordFadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    color: var(--gold-light);
-  }
-}
-
-.monroe-actions {
-  opacity: 0;
-  animation: fadeDown 0.8s ease-out forwards 2.6s;
-}
-
-.btn-enter-boutique {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: var(--gold-gradient);
-  color: #0b0c0e;
-  font-weight: 700;
-  font-size: 1.05rem;
-  padding: 1rem 2.5rem;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 25px rgba(230, 202, 133, 0.4), 0 0 40px rgba(230, 202, 133, 0.2);
-  transition: all var(--transition-fast);
-}
-
-.btn-enter-boutique:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 35px rgba(230, 202, 133, 0.6);
-  color: #000;
-}
 
 /* ==========================================================================
    Hero Section Monroe Cursive Typography

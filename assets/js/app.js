@@ -22,14 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initMonroeIntro() {
   const intro = document.getElementById('monroeIntro');
-  const enterBtn = document.getElementById('btnEnterBoutique');
   const replayBtn = document.getElementById('btnReplayIntro');
   if (!intro) return;
 
+  let autoTimer = null;
+
   function dismissIntro() {
+    if (autoTimer) clearTimeout(autoTimer);
     intro.classList.add('hidden');
     document.body.style.overflow = '';
-    playChime(660);
   }
 
   function playIntro() {
@@ -40,31 +41,28 @@ function initMonroeIntro() {
       const clone = svgWrap.cloneNode(true);
       svgWrap.parentNode.replaceChild(clone, svgWrap);
     }
-    playChime(520);
-    setTimeout(() => playChime(640), 900);
-    setTimeout(() => playChime(780), 1800);
-  }
-
-  if (enterBtn) {
-    enterBtn.addEventListener('click', dismissIntro);
+    // Auto-dismiss smoothly after handwriting completes
+    autoTimer = setTimeout(() => {
+      dismissIntro();
+    }, 2800);
   }
 
   if (replayBtn) {
     replayBtn.addEventListener('click', playIntro);
   }
 
-  // Auto-dismiss after 4.2 seconds
-  const autoTimer = setTimeout(() => {
+  // Initial auto-dismiss after grand cursive handwriting finishes
+  autoTimer = setTimeout(() => {
+    dismissIntro();
+  }, 2800);
+
+  // Click or touch anywhere to immediately enter
+  intro.addEventListener('click', dismissIntro);
+  window.addEventListener('keydown', (e) => {
     if (!intro.classList.contains('hidden')) {
       dismissIntro();
     }
-  }, 4200);
-
-  intro.addEventListener('click', (e) => {
-    if (e.target.closest('#btnEnterBoutique')) return;
-    clearTimeout(autoTimer);
-    dismissIntro();
-  });
+  }, { once: true });
 }
 
 /* ==========================================================================
@@ -446,7 +444,7 @@ function openProductModal(itemId) {
         <img class="modal-main-img" src="${item.image}" alt="${escapeHtml(item.name)}">
         <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.8rem; color: var(--text-dim);">
           <div style="color: var(--gold-light); font-weight: 600; margin-bottom: 0.25rem;">Гарантия оригинальности</div>
-          100% аутентичный парфюмерный сок из оригинального флакона. Разливается в стерильные стеклянные атомайзеры с металлической помпой.
+          100% оригинальный парфюм из официального флакона бренда. Разливается в стерильные стеклянные атомайзеры с металлической помпой.
         </div>
       </div>
       <div class="modal-info-col">

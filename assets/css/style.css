@@ -2563,3 +2563,252 @@ img {
   border-top: 1px solid var(--border-subtle);
 }
 
+/* ==========================================================================
+   Monroe-Style Handwriting Cinematic Intro Overlay
+   ========================================================================== */
+.monroe-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #06070a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s;
+}
+
+.monroe-intro-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.monroe-intro-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(230, 202, 133, 0.15) 0%, rgba(184, 147, 69, 0.05) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulseAura 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseAura {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+.monroe-intro-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 960px;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monroe-badge-top {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+}
+
+@keyframes fadeDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Handwriting SVG */
+.monroe-handwriting-wrap {
+  width: 100%;
+  max-width: 860px;
+  position: relative;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.monroe-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.monroe-svg-title {
+  font-family: 'Pinyon Script', 'Alex Brush', cursive;
+  font-size: 110px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  fill: url(#goldInk);
+  stroke: #fff5db;
+  stroke-width: 1.5px;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  filter: url(#goldGlowFilter);
+  animation: drawHandwriting 2.2s cubic-bezier(0.37, 0, 0.63, 1) forwards 0.4s;
+}
+
+.monroe-svg-sub {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  fill: url(#goldInk);
+  stroke: #e6ca85;
+  stroke-width: 0.8px;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawHandwriting 1.8s cubic-bezier(0.37, 0, 0.63, 1) forwards 1.2s;
+}
+
+@keyframes drawHandwriting {
+  0% {
+    stroke-dashoffset: 1200;
+    fill-opacity: 0;
+  }
+  70% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+    stroke-width: 0.2px;
+  }
+}
+
+/* Golden Sparkle Pen Tip */
+.monroe-pen-sparkle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  box-shadow: 0 0 20px 8px #e6ca85, 0 0 40px 15px rgba(245, 230, 184, 0.8);
+  pointer-events: none;
+  opacity: 0;
+  top: 45%;
+  left: 20%;
+  animation: penTrack 2.2s cubic-bezier(0.37, 0, 0.63, 1) forwards 0.4s;
+}
+
+@keyframes penTrack {
+  0% { opacity: 0; transform: translate(0, 0); }
+  10% { opacity: 1; transform: translate(50px, -15px); }
+  35% { opacity: 1; transform: translate(220px, 15px); }
+  65% { opacity: 1; transform: translate(450px, -20px); }
+  90% { opacity: 1; transform: translate(650px, 10px); }
+  100% { opacity: 0; transform: translate(720px, 0); }
+}
+
+/* Manifesto Words Fade In */
+.monroe-manifesto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.m-manifesto-word {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-style: italic;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.m-manifesto-word:nth-child(1) {
+  animation: wordFadeUp 0.7s ease-out forwards 1.7s;
+}
+.m-manifesto-word:nth-child(2) {
+  animation: wordFadeUp 0.7s ease-out forwards 2.1s;
+}
+.m-manifesto-word:nth-child(3) {
+  animation: wordFadeUp 0.7s ease-out forwards 2.5s;
+}
+
+@keyframes wordFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    color: var(--gold-light);
+  }
+}
+
+.monroe-actions {
+  opacity: 0;
+  animation: fadeDown 0.8s ease-out forwards 2.6s;
+}
+
+.btn-enter-boutique {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--gold-gradient);
+  color: #0b0c0e;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 25px rgba(230, 202, 133, 0.4), 0 0 40px rgba(230, 202, 133, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.btn-enter-boutique:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 35px rgba(230, 202, 133, 0.6);
+  color: #000;
+}
+
+/* ==========================================================================
+   Hero Section Monroe Cursive Typography
+   ========================================================================== */
+.hero-title-top {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 0.2rem;
+}
+
+.hero-title-monroe {
+  display: block;
+  font-family: 'Pinyon Script', 'Alex Brush', cursive;
+  font-size: clamp(3.8rem, 8.5vw, 6.8rem);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #fcedc5 30%, #e6ca85 65%, #c5a059 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(230, 202, 133, 0.4));
+  transform: rotate(-1.5deg);
+  margin: 0.2rem 0;
+  padding: 0.1em 0;
+}
+
+.hero-title-bot {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  line-height: 1.05;
+}
+
+

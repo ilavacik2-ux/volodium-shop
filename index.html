@@ -14,15 +14,68 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/E610BB2F-DBAE-4672-9.PNG">
   <link rel="apple-touch-icon" href="assets/images/E610BB2F-DBAE-4672-9.PNG">
 
-  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Pinyon Script & Marck Script -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Marck+Script&family=Pinyon+Script&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+  <!-- Cinematic Luxury Monroe-Style Handwriting Intro Screen -->
+  <aside class="monroe-intro-overlay" id="monroeIntro">
+    <div class="monroe-intro-glow"></div>
+    <div class="monroe-intro-content">
+      <div class="monroe-badge-top">VOLODIUM • HAUTE PARFUMERIE</div>
+
+      <!-- Handwriting SVG Container with Grand Calligraphic Strokes -->
+      <div class="monroe-handwriting-wrap">
+        <svg class="monroe-svg" viewBox="0 0 920 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldInk" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff5db" />
+              <stop offset="35%" stop-color="#e6ca85" />
+              <stop offset="70%" stop-color="#c5a059" />
+              <stop offset="100%" stop-color="#faecc5" />
+            </linearGradient>
+            <filter id="goldGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="6" result="blur1" />
+              <feGaussianBlur stdDeviation="15" result="blur2" />
+              <feMerge>
+                <feMergeNode in="blur2" />
+                <feMergeNode in="blur1" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Grand Monroe Cursive Stroke Animation -->
+          <text x="50%" y="130" text-anchor="middle" class="monroe-svg-title">Volodium</text>
+          <text x="50%" y="195" text-anchor="middle" class="monroe-svg-sub">PARFUM</text>
+        </svg>
+
+        <!-- Moving Golden Sparkle Pen Tip -->
+        <div class="monroe-pen-sparkle" id="monroePenSparkle"></div>
+      </div>
+
+      <div class="monroe-manifesto" id="monroeManifesto">
+        <span class="m-manifesto-word">Открой.</span>
+        <span class="m-manifesto-word">Вдохни.</span>
+        <span class="m-manifesto-word">Почувствуй.</span>
+      </div>
+
+      <div class="monroe-actions">
+        <button class="btn-enter-boutique" id="btnEnterBoutique">
+          <span>Войти в бутик</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <!-- Top Announcement Bar -->
   <aside class="top-banner">
@@ -55,7 +108,9 @@
         <a href="#delivery" class="nav-link">Доставка</a>
       </nav>
 
-      <div class="header-actions">
+        <button class="btn-icon" id="btnReplayIntro" title="Посмотреть каллиграфическое интро" aria-label="Повторить интро">
+          <span style="font-size: 0.95rem;">✨</span>
+        </button>
         <a href="https://t.me/volodiumparfum" target="_blank" class="btn-icon" title="Связаться в Telegram" aria-label="Связаться в Telegram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
@@ -119,9 +174,9 @@
         </div>
 
         <h1 class="hero-title">
-          СОБЕРЕМ ТВОЙ<br>
-          <span class="gold-gradient-text"><em>ПАРФЮМЕРНЫЙ</em></span><br>
-          ГАРДЕРОБ
+          <span class="hero-title-top">СОБЕРЕМ ТВОЙ</span>
+          <span class="hero-title-monroe">Парфюмерный</span>
+          <span class="hero-title-bot">ГАРДЕРОБ</span>
         </h1>
 
         <p class="hero-description">

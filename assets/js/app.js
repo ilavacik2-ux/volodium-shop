@@ -6,6 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all subsystems
+  initMonroeIntro();
   initHeroCanvas();
   initCatalog();
   initQuiz();
@@ -15,6 +16,56 @@ document.addEventListener('DOMContentLoaded', () => {
   initAmbience();
   initSmoothScroll();
 });
+
+/* ==========================================================================
+   0. Monroe Handwriting Intro Controller
+   ========================================================================== */
+function initMonroeIntro() {
+  const intro = document.getElementById('monroeIntro');
+  const enterBtn = document.getElementById('btnEnterBoutique');
+  const replayBtn = document.getElementById('btnReplayIntro');
+  if (!intro) return;
+
+  function dismissIntro() {
+    intro.classList.add('hidden');
+    document.body.style.overflow = '';
+    playChime(660);
+  }
+
+  function playIntro() {
+    intro.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    const svgWrap = intro.querySelector('.monroe-handwriting-wrap');
+    if (svgWrap) {
+      const clone = svgWrap.cloneNode(true);
+      svgWrap.parentNode.replaceChild(clone, svgWrap);
+    }
+    playChime(520);
+    setTimeout(() => playChime(640), 900);
+    setTimeout(() => playChime(780), 1800);
+  }
+
+  if (enterBtn) {
+    enterBtn.addEventListener('click', dismissIntro);
+  }
+
+  if (replayBtn) {
+    replayBtn.addEventListener('click', playIntro);
+  }
+
+  // Auto-dismiss after 4.2 seconds
+  const autoTimer = setTimeout(() => {
+    if (!intro.classList.contains('hidden')) {
+      dismissIntro();
+    }
+  }, 4200);
+
+  intro.addEventListener('click', (e) => {
+    if (e.target.closest('#btnEnterBoutique')) return;
+    clearTimeout(autoTimer);
+    dismissIntro();
+  });
+}
 
 /* ==========================================================================
    1. Canvas Luxury Scent Particle Animation

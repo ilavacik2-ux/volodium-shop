@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCertificateStudio();
   initCart();
   initFAQ();
-  initAmbience();
+  initCookieBanner();
   initSmoothScroll();
 });
 
@@ -1057,15 +1057,13 @@ function applyPromoCode() {
   if (code === 'СТАРТ' || code === 'START') {
     appliedPromo = { code: code, discountPercent: 10 };
     renderCartDrawer();
-    playChime(880);
-    showToast('🎉 Промокод СТАРТ применен! Скидка 10% на ваш заказ');
+    showToast('Промокод применен: скидка 10% на ваш заказ');
   } else if (code === 'VOLODIUM' || code === 'VOVA') {
     appliedPromo = { code: code, discountPercent: 15 };
     renderCartDrawer();
-    playChime(880);
-    showToast('✨ Специальный промокод от Владимира! Скидка 15%');
+    showToast('Промокод применен: скидка 15%');
   } else {
-    showToast('Неверный промокод. Используйте промокод СТАРТ');
+    showToast('Неверный промокод или срок его действия истек');
   }
 }
 
@@ -1185,50 +1183,162 @@ function initFAQ() {
 }
 
 /* ==========================================================================
-   9. Ambience Sound & Tactile Audio FX (Web Audio API Synthesizer)
+   9. Official Legal Document Modals (152-ФЗ, Public Offer, Returns) & Cookies
    ========================================================================== */
-let audioCtx = null;
-let soundEnabled = true;
-
-function initAmbience() {
-  const toggleBtn = document.getElementById('ambienceToggle');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      toggleBtn.innerHTML = soundEnabled 
-        ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Звук: Вкл`
-        : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg> Звук: Выкл`;
-      if (soundEnabled) playChime(600);
-    });
-  }
+function playChime() {
+  // Silent audio fallback to ensure no synthetic noise
 }
 
-function playChime(freq = 520) {
-  if (!soundEnabled) return;
+window.openLegalDoc = function(type) {
+  const modalBackdrop = document.getElementById('legalModalBackdrop');
+  const modalBody = document.getElementById('legalModalContent');
+  if (!modalBackdrop || !modalBody) return;
+
+  if (type === 'privacy') {
+    modalBody.innerHTML = `
+      <div class="legal-doc-header">
+        <span class="section-tag">Федеральный закон № 152-ФЗ</span>
+        <h3 class="legal-doc-title">Политика обработки персональных данных</h3>
+        <p class="legal-doc-subtitle">Интернет-бутик селективной парфюмерии VOLODIUM PARFUM</p>
+      </div>
+      <div class="legal-doc-content">
+        <h4>1. Общие положения</h4>
+        <p>1.1. Настоящая Политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 г. № 152-ФЗ «О персональных данных» и определяет порядок сбора, систематизации, накопления, хранения и защиты конфиденциальной информации клиентов бутика VOLODIUM PARFUM (далее — «Оператор»).</p>
+        <p>1.2. Оператор ставит важнейшей целью соблюдение прав и свобод человека при обработке его персональных данных, включая защиту прав на неприкосновенность частной жизни, личную и семейную тайну.</p>
+
+        <h4>2. Состав обрабатываемых данных</h4>
+        <p>2.1. Для оформления заказов, экспресс-доставки и индивидуального парфюмерного сопровождения Оператор обрабатывает следующие сведения:</p>
+        <ul>
+          <li>Имя и фамилия покупателя;</li>
+          <li>Контактный номер телефона для связи;</li>
+          <li>Никнейм в мессенджере Telegram (для отправки трек-номеров и подтверждений);</li>
+          <li>Город и адрес доставки (включая выбранный пункт выдачи курьерской службы СДЭК).</li>
+        </ul>
+
+        <h4>3. Цели обработки персональных данных</h4>
+        <p>3.1. Персональные данные используются строго для:</p>
+        <ul>
+          <li>Формирования накладных курьерской службы СДЭК и курьерской доставки по Москве и регионам РФ;</li>
+          <li>Оформления заказа на оригинальную селективную парфюмерию, персональные аромабоксы или подарочные сертификаты;</li>
+          <li>Индивидуального консультирования покупателя основателем бутика Владимиром Вациком;</li>
+          <li>Предоставления информации о статусе отправления и батч-кодах флаконов.</li>
+        </ul>
+
+        <h4>4. Безопасность и локализация данных (242-ФЗ)</h4>
+        <p>4.1. Оператор обеспечивает конфиденциальность данных и принимает необходимые правовые и организационные меры по их защите от неправомерного доступа третьих лиц.</p>
+        <p>4.2. Базы данных с персональной информацией граждан Российской Федерации размещаются на серверах, физически расположенных на территории РФ (в соответствии с Федеральным законом № 242-ФЗ).</p>
+        <p>4.3. Данные не передаются третьим лицам, за исключением логистического партнера (СДЭК) в объеме, необходимом для вручения посылки.</p>
+
+        <h4>5. Файлы Cookie</h4>
+        <p>5.1. Сайт использует исключительно технические файлы cookie для корректной работы корзины и сохранения настроек.</p>
+      </div>
+    `;
+  } else if (type === 'offer') {
+    modalBody.innerHTML = `
+      <div class="legal-doc-header">
+        <span class="section-tag">Статьи 435, 437 ГК РФ</span>
+        <h3 class="legal-doc-title">Публичная оферта интернет-бутика</h3>
+        <p class="legal-doc-subtitle">Условия дистанционной розничной купли-продажи селективной парфюмерии</p>
+      </div>
+      <div class="legal-doc-content">
+        <h4>1. Общие положения</h4>
+        <p>1.1. Настоящий документ является официальным предложением (публичной офертой по ст. 435 и п. 2 ст. 437 Гражданского кодекса РФ) интернет-бутика VOLODIUM PARFUM заключить договор розничной купли-продажи парфюмерной продукции дистанционным способом.</p>
+        <p>1.2. Ознакомительная информация на страницах каталога носит информационно-демонстрационный характер. Моментом заключения договора является подтверждение заказа покупателем и согласование деталей с менеджером бутика.</p>
+
+        <h4>2. Гарантия оригинальности и качество товара</h4>
+        <p>2.1. Продавец гарантирует 100% подлинность и оригинальность всех представленных селективных ароматов, их соответствие стандартам IFRA и возможность проверки батч-кодов перед вскрытием.</p>
+        <p>2.2. Продавец передает Покупателю оригинальную парфюмерную продукцию (селективные духи во флаконах, атомайзерах или фирменных сетах аромабоксов), а Покупатель оплачивает товар по согласованной стоимости.</p>
+
+        <h4>3. Оплата и доставка</h4>
+        <p>3.1. Заказ оформляется через корзину сайта либо посредством прямой коммуникации в официальном канале Telegram @volodiumparfum.</p>
+        <p>3.2. Доставка по территории РФ осуществляется курьерской службой СДЭК (до двери или пункта выдачи) либо специализированной курьерской службой по Москве. При сумме заказа от 5 000 ₽ доставка по РФ до ПВЗ СДЭК бесплатная.</p>
+      </div>
+    `;
+  } else if (type === 'returns') {
+    modalBody.innerHTML = `
+      <div class="legal-doc-header">
+        <span class="section-tag">Постановление Правительства РФ № 55 / № 2463</span>
+        <h3 class="legal-doc-title">Регламент обмена и возврата</h3>
+        <p class="legal-doc-subtitle">Правовые стандарты возврата парфюмерно-косметической продукции</p>
+      </div>
+      <div class="legal-doc-content">
+        <h4>1. Нормативная база</h4>
+        <p>1.1. В соответствии с Законом РФ «О защите прав потребителей» и <strong>Постановлением Правительства РФ № 55 от 19.01.1998 г.</strong> (а также пришедшим ему на смену Постановлением № 2463 от 31.12.2020 г.), <strong>парфюмерно-косметические товары надлежащего качества возврату и обмену на аналогичный товар не подлежат</strong>.</p>
+        <p>1.2. Данное ограничение обусловлено санитарно-гигиеническими нормами, особенностями хранения тонких парфюмерных композиций и защитой покупателей от риска получения вскрытой или подмененной продукции.</p>
+
+        <h4>2. Гарантии целостности при транспортировке</h4>
+        <p>2.1. Бутик VOLODIUM PARFUM использует усиленную многослойную премиальную упаковку, защищающую флаконы от механических повреждений и температурных колебаний в процессе доставки СДЭК.</p>
+        <p>2.2. При получении заказа в пункте выдачи СДЭК или от курьера Покупатель имеет право осмотреть внешнюю упаковку. В случае выявления повреждения транспортной коробки или флакона при доставке Покупатель составляет акт совместно с сотрудником СДЭК, после чего бутик VOLODIUM производит мгновенную бесплатную повторную отправку либо 100% возврат средств.</p>
+
+        <h4>3. Проверка оригинальности и батч-кодов</h4>
+        <p>3.1. До распечатывания слюды на полноразмерных флаконах покупатель может сверить батч-код на дне флакона и коробки через международные базы косметических брендов или обратиться к нам за подтверждением.</p>
+      </div>
+    `;
+  }
+
+  modalBackdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeLegalDoc = function() {
+  const modalBackdrop = document.getElementById('legalModalBackdrop');
+  if (modalBackdrop) {
+    modalBackdrop.classList.remove('active');
+  }
+  document.body.style.overflow = '';
+};
+
+// Close legal modal on backdrop click
+document.addEventListener('click', (e) => {
+  const modalBackdrop = document.getElementById('legalModalBackdrop');
+  if (modalBackdrop && e.target === modalBackdrop) {
+    closeLegalDoc();
+  }
+});
+
+// Close modals on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeLegalDoc();
+    const productModal = document.getElementById('productModalBackdrop');
+    if (productModal && productModal.classList.contains('active')) {
+      productModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    const checkoutModal = document.getElementById('checkoutModalBackdrop');
+    if (checkoutModal && checkoutModal.classList.contains('active')) {
+      checkoutModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+function initCookieBanner() {
   try {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (!localStorage.getItem('volodium_cookie_consent')) {
+      const banner = document.getElementById('volodiumCookieBanner');
+      if (banner) {
+        setTimeout(() => {
+          banner.style.display = 'flex';
+        }, 1200);
+      }
     }
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(freq * 1.5, audioCtx.currentTime + 0.12);
-
-    gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.35);
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.35);
   } catch (e) {}
 }
+
+window.acceptVolodiumCookies = function() {
+  try {
+    localStorage.setItem('volodium_cookie_consent', 'true');
+  } catch (e) {}
+  const banner = document.getElementById('volodiumCookieBanner');
+  if (banner) {
+    banner.style.opacity = '0';
+    banner.style.transform = 'translate(-50%, 20px)';
+    setTimeout(() => {
+      banner.style.display = 'none';
+    }, 300);
+  }
+};
 
 /* ==========================================================================
    10. Helper Utilities & Toast System

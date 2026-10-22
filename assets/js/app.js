@@ -41,10 +41,10 @@ function initMonroeIntro() {
       const clone = svgWrap.cloneNode(true);
       svgWrap.parentNode.replaceChild(clone, svgWrap);
     }
-    // Auto-dismiss smoothly after handwriting completes
+    // Auto-dismiss smoothly after handwriting completes and holds
     autoTimer = setTimeout(() => {
       dismissIntro();
-    }, 4000);
+    }, 7800);
   }
 
   if (replayBtn) {
@@ -54,7 +54,7 @@ function initMonroeIntro() {
   // Initial auto-dismiss after grand cursive handwriting finishes
   autoTimer = setTimeout(() => {
     dismissIntro();
-  }, 4000);
+  }, 7800);
 
   // Click or touch anywhere to immediately enter
   intro.addEventListener('click', dismissIntro);

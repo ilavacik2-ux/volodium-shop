@@ -2830,7 +2830,7 @@ img {
 
 .monroe-svg-title {
   font-family: 'Pinyon Script', 'Alex Brush', cursive;
-  font-size: 150px;
+  font-size: 155px;
   font-weight: 400;
   letter-spacing: 0.03em;
   fill: #0b0c10;
@@ -2838,20 +2838,20 @@ img {
   stroke-width: 1.8px;
   stroke-dasharray: 1500;
   stroke-dashoffset: 1500;
-  animation: drawHandwriting 3.4s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.3s;
+  animation: drawHandwriting 5.8s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.4s;
 }
 
 .monroe-svg-sub {
   font-family: var(--font-serif);
   font-size: 28px;
   font-weight: 600;
-  letter-spacing: 0.55em;
+  letter-spacing: 0.6em;
   fill: #444444;
   stroke: #444444;
   stroke-width: 0.8px;
   stroke-dasharray: 700;
   stroke-dashoffset: 700;
-  animation: drawHandwriting 2.4s cubic-bezier(0.25, 1, 0.5, 1) forwards 1.8s;
+  animation: drawHandwriting 3.2s cubic-bezier(0.25, 1, 0.45, 1) forwards 3.6s;
 }
 
 @keyframes drawHandwriting {
@@ -2859,9 +2859,9 @@ img {
     stroke-dashoffset: 1500;
     fill-opacity: 0;
   }
-  70% {
+  75% {
     stroke-dashoffset: 0;
-    fill-opacity: 0.35;
+    fill-opacity: 0.25;
   }
   100% {
     stroke-dashoffset: 0;
@@ -2882,7 +2882,7 @@ img {
   opacity: 0;
   top: 48%;
   left: 20%;
-  animation: penTrack 3.4s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.3s;
+  animation: penTrack 5.8s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.4s;
 }
 
 @keyframes penTrack {
@@ -2892,6 +2892,23 @@ img {
   65% { opacity: 1; transform: translate(520px, -20px); }
   90% { opacity: 1; transform: translate(750px, 10px); }
   100% { opacity: 0; transform: translate(840px, 0); }
+}
+
+.monroe-skip-hint {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-top: 1.25rem;
+  opacity: 0;
+  animation: fadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 3s;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.monroe-skip-hint:hover {
+  color: #111216;
 }
 
 /* ==========================================================================

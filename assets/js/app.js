@@ -26,14 +26,30 @@ function initMonroeIntro() {
   if (!intro) return;
 
   let autoTimer = null;
+  let canDismiss = false;
+
+  // Lock scroll while intro is playing
+  document.body.style.overflow = 'hidden';
+
+  // Grace period: ignore accidental clicks and reload keystrokes (Cmd+R, Ctrl+R, F5)
+  setTimeout(() => {
+    canDismiss = true;
+  }, 900);
 
   function dismissIntro() {
-    if (autoTimer) clearTimeout(autoTimer);
+    if (autoTimer) {
+      clearTimeout(autoTimer);
+      autoTimer = null;
+    }
     intro.classList.add('hidden');
     document.body.style.overflow = '';
   }
 
   function playIntro() {
+    canDismiss = false;
+    setTimeout(() => {
+      canDismiss = true;
+    }, 900);
     intro.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     const svgWrap = intro.querySelector('.monroe-handwriting-wrap');
@@ -41,7 +57,7 @@ function initMonroeIntro() {
       const clone = svgWrap.cloneNode(true);
       svgWrap.parentNode.replaceChild(clone, svgWrap);
     }
-    // Auto-dismiss smoothly after handwriting completes and holds
+    if (autoTimer) clearTimeout(autoTimer);
     autoTimer = setTimeout(() => {
       dismissIntro();
     }, 7800);
@@ -51,18 +67,27 @@ function initMonroeIntro() {
     replayBtn.addEventListener('click', playIntro);
   }
 
-  // Initial auto-dismiss after grand cursive handwriting finishes
+  // Initial auto-dismiss after grand cursive handwriting finishes (~7.8s)
   autoTimer = setTimeout(() => {
     dismissIntro();
   }, 7800);
 
-  // Click or touch anywhere to immediately enter
-  intro.addEventListener('click', dismissIntro);
-  window.addEventListener('keydown', (e) => {
-    if (!intro.classList.contains('hidden')) {
+  // Click or touch anywhere to enter after grace period
+  intro.addEventListener('click', () => {
+    if (canDismiss) {
       dismissIntro();
     }
-  }, { once: true });
+  });
+
+  // Explicit user keys only (Escape, Enter, Space) after grace period
+  // Completely ignores reload shortcuts (Cmd, Ctrl, Shift, Alt, R, F5)
+  window.addEventListener('keydown', (e) => {
+    if (!intro.classList.contains('hidden') && canDismiss) {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        dismissIntro();
+      }
+    }
+  });
 }
 
 /* ==========================================================================

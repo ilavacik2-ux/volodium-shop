@@ -11,7 +11,7 @@ const PERFUMES_DATA = [
     gender: "unisex",
     category: "perfume",
     notesFamily: "oriental",
-    image: "assets/images/IMG_4802.jpg",
+    image: "assets/images/perfumes/baccarat-540.jpg",
     badge: "Абсолютный Хит",
     prices: {
       "3ml": 1900,
@@ -43,7 +43,7 @@ const PERFUMES_DATA = [
     gender: "unisex",
     category: "perfume",
     notesFamily: "mineral",
-    image: "assets/images/IMG_4805.jpg",
+    image: "assets/images/perfumes/ganymede.jpg",
     badge: "Топ Комплиментов",
     prices: {
       "3ml": 1400,
@@ -75,7 +75,7 @@ const PERFUMES_DATA = [
     gender: "women",
     category: "perfume",
     notesFamily: "gourmand",
-    image: "assets/images/IMG_4806.jpg",
+    image: "assets/images/perfumes/lost-cherry.jpg",
     badge: "Чувственный Соблазн",
     prices: {
       "3ml": 1800,
@@ -107,7 +107,7 @@ const PERFUMES_DATA = [
     gender: "unisex",
     category: "perfume",
     notesFamily: "gourmand",
-    image: "assets/images/IMG_4807.jpg",
+    image: "assets/images/perfumes/angels-share.jpg",
     badge: "Зимний Фаворит",
     prices: {
       "3ml": 1750,
@@ -139,7 +139,7 @@ const PERFUMES_DATA = [
     gender: "women",
     category: "perfume",
     notesFamily: "floral",
-    image: "assets/images/IMG_4804.jpg",
+    image: "assets/images/perfumes/fleur-narcotique.jpg",
     badge: "Бестселлер",
     prices: {
       "3ml": 1650,
@@ -171,7 +171,7 @@ const PERFUMES_DATA = [
     gender: "unisex",
     category: "perfume",
     notesFamily: "oriental",
-    image: "assets/images/IMG_4808.jpg",
+    image: "assets/images/perfumes/tobacco-vanille.jpg",
     badge: "Классика Ниши",
     prices: {
       "3ml": 1700,
@@ -203,7 +203,7 @@ const PERFUMES_DATA = [
     gender: "men",
     category: "perfume",
     notesFamily: "woody",
-    image: "assets/images/IMG_4805.jpg",
+    image: "assets/images/perfumes/aventus.jpg",
     badge: "Мужской Эталон",
     prices: {
       "3ml": 1850,
@@ -235,7 +235,7 @@ const PERFUMES_DATA = [
     gender: "women",
     category: "perfume",
     notesFamily: "fresh",
-    image: "assets/images/IMG_4804.jpg",
+    image: "assets/images/perfumes/blanche.jpg",
     badge: "Эстетика Чистоты",
     prices: {
       "3ml": 1350,
@@ -267,7 +267,7 @@ const PERFUMES_DATA = [
     gender: "women",
     category: "perfume",
     notesFamily: "floral",
-    image: "assets/images/IMG_4806.jpg",
+    image: "assets/images/perfumes/guidance.jpg",
     badge: "Главный Тренд 2026",
     prices: {
       "3ml": 1900,
@@ -299,7 +299,7 @@ const PERFUMES_DATA = [
     gender: "unisex",
     category: "perfume",
     notesFamily: "woody",
-    image: "assets/images/IMG_4808.jpg",
+    image: "assets/images/perfumes/oud-for-greatness.jpg",
     badge: "Черное Золото",
     prices: {
       "3ml": 1950,
@@ -331,7 +331,7 @@ const PERFUMES_DATA = [
     gender: "unisex",
     category: "perfume",
     notesFamily: "oriental",
-    image: "assets/images/IMG_4807.jpg",
+    image: "assets/images/perfumes/naxos.jpg",
     badge: "Итальянское Солнце",
     prices: {
       "3ml": 1600,
@@ -363,7 +363,7 @@ const PERFUMES_DATA = [
     gender: "unisex",
     category: "perfume",
     notesFamily: "fresh",
-    image: "assets/images/IMG_4802.jpg",
+    image: "assets/images/perfumes/bal-dafrique.jpg",
     badge: "Любимец Публики",
     prices: {
       "3ml": 1400,

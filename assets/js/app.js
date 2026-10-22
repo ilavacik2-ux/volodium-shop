@@ -44,7 +44,7 @@ function initMonroeIntro() {
     // Auto-dismiss smoothly after handwriting completes
     autoTimer = setTimeout(() => {
       dismissIntro();
-    }, 2800);
+    }, 4000);
   }
 
   if (replayBtn) {
@@ -54,7 +54,7 @@ function initMonroeIntro() {
   // Initial auto-dismiss after grand cursive handwriting finishes
   autoTimer = setTimeout(() => {
     dismissIntro();
-  }, 2800);
+  }, 4000);
 
   // Click or touch anywhere to immediately enter
   intro.addEventListener('click', dismissIntro);
@@ -91,10 +91,10 @@ function initHeroCanvas() {
       this.y = height + Math.random() * 50;
       this.vx = (Math.random() - 0.5) * 0.4;
       this.vy = -(Math.random() * 0.6 + 0.2);
-      this.size = Math.random() * 2.2 + 0.8;
-      this.alpha = Math.random() * 0.4 + 0.1;
+      this.size = Math.random() * 2 + 0.8;
+      this.alpha = Math.random() * 0.25 + 0.05;
       this.maxAlpha = this.alpha;
-      this.color = Math.random() > 0.3 ? '230, 202, 133' : '245, 230, 184';
+      this.color = Math.random() > 0.4 ? '143, 109, 53' : '180, 175, 165';
     }
     update() {
       this.x += this.vx;
@@ -110,8 +110,8 @@ function initHeroCanvas() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = `rgba(${this.color}, 0.5)`;
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = `rgba(${this.color}, 0.25)`;
       ctx.fill();
     }
   }
@@ -442,14 +442,14 @@ function openProductModal(itemId) {
     <div class="modal-grid">
       <div class="modal-img-col">
         <img class="modal-main-img" src="${item.image}" alt="${escapeHtml(item.name)}">
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.8rem; color: var(--text-dim);">
-          <div style="color: var(--gold-light); font-weight: 600; margin-bottom: 0.25rem;">Гарантия оригинальности</div>
+        <div style="background: #faf9f7; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+          <div style="color: #111216; font-weight: 600; margin-bottom: 0.25rem;">Гарантия оригинальности</div>
           100% оригинальный парфюм из официального флакона бренда. Разливается в стерильные стеклянные атомайзеры с металлической помпой.
         </div>
       </div>
       <div class="modal-info-col">
         <div class="card-brand">${item.brand || 'VOLODIUM PARFUM'}</div>
-        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.4rem;">${item.name}</h2>
+        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: #111216; margin-bottom: 0.4rem;">${item.name}</h2>
         <p style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 1.25rem;">${item.subtitle || ''}</p>
         
         <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
@@ -462,7 +462,7 @@ function openProductModal(itemId) {
 
         <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-top: 1.5rem;">
           <div>
-            <div style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #ffffff;" id="modalPrice">
+            <div style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #111216;" id="modalPrice">
               ${formatPrice(currentPrice)}
             </div>
             <div style="font-size: 0.8rem; color: var(--text-dim);" id="modalVolLabel">
@@ -950,8 +950,8 @@ function renderCartDrawer() {
           <line x1="3" y1="6" x2="21" y2="6"/>
           <path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
-        <p style="font-size: 1.1rem; color: #ffffff;">Ваша парфюмерная корзина пуста</p>
-        <p style="font-size: 0.85rem; max-width: 260px;">Выберите понравившийся аромат в каталоге или закажите персональный Secret Box.</p>
+        <p style="font-size: 1.1rem; color: #111216; font-weight: 600;">Ваша парфюмерная корзина пуста</p>
+        <p style="font-size: 0.85rem; max-width: 260px; color: var(--text-muted);">Выберите понравившийся аромат в каталоге или закажите персональный Secret Box.</p>
         <button class="btn-primary" onclick="closeCart();" style="margin-top: 1rem;">Перейти к ароматам</button>
       </div>
     `;

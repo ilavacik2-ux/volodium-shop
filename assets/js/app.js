@@ -1047,8 +1047,42 @@ ${itemsListText}
 }
 
 /* ==========================================================================
-   8. FAQ Accordion
+   8. Delivery & FAQ Tabs and Accordion
    ========================================================================== */
+window.switchDeliveryTab = function(tabName) {
+  const tabDelivery = document.getElementById('dfTabDelivery');
+  const tabFaq = document.getElementById('dfTabFaq');
+  const panelDelivery = document.getElementById('dfPanelDelivery');
+  const panelFaq = document.getElementById('dfPanelFaq');
+
+  if (!tabDelivery || !tabFaq || !panelDelivery || !panelFaq) return;
+
+  if (tabName === 'faq') {
+    tabDelivery.classList.remove('active');
+    tabDelivery.setAttribute('aria-selected', 'false');
+    tabFaq.classList.add('active');
+    tabFaq.setAttribute('aria-selected', 'true');
+
+    panelDelivery.classList.remove('active');
+    panelFaq.classList.add('active');
+
+    // Recalculate height for open FAQ answer
+    const openItem = panelFaq.querySelector('.faq-item.open');
+    if (openItem) {
+      const ans = openItem.querySelector('.faq-answer');
+      if (ans) ans.style.maxHeight = (ans.scrollHeight || 220) + 'px';
+    }
+  } else {
+    tabFaq.classList.remove('active');
+    tabFaq.setAttribute('aria-selected', 'false');
+    tabDelivery.classList.add('active');
+    tabDelivery.setAttribute('aria-selected', 'true');
+
+    panelFaq.classList.remove('active');
+    panelDelivery.classList.add('active');
+  }
+};
+
 function initFAQ() {
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
@@ -1056,6 +1090,10 @@ function initFAQ() {
     const answer = item.querySelector('.faq-answer');
 
     if (questionBtn && answer) {
+      if (item.classList.contains('open')) {
+        answer.style.maxHeight = answer.scrollHeight ? (answer.scrollHeight + 'px') : '220px';
+      }
+
       questionBtn.addEventListener('click', () => {
         const isOpen = item.classList.contains('open');
         // Close others
@@ -1067,7 +1105,7 @@ function initFAQ() {
 
         if (!isOpen) {
           item.classList.add('open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
+          answer.style.maxHeight = (answer.scrollHeight || 220) + 'px';
           playChime(420);
         }
       });

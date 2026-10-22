@@ -576,89 +576,183 @@
         <span class="section-tag">Сервис и логистика</span>
         <h2 class="section-title">Доставка и частые вопросы</h2>
         <p class="section-descr">
-          Надежная бережная упаковка в пупырчатую пленку и крафтовые коробки с защитой от ударов и перепадов температур.
+          Прозрачные тарифы, бережная отправка оригинальной парфюмерии по России и СНГ и ответы на главные вопросы.
         </p>
       </div>
 
-      <div class="delivery-grid">
-        <!-- Delivery Options -->
-        <div class="delivery-card-list">
-          <div class="delivery-item">
-            <div class="delivery-item-icon">📦</div>
-            <div class="delivery-item-content">
-              <div class="delivery-item-title">СДЭК по всей России</div>
-              <div class="delivery-item-desc">До пункта выдачи или курьером до двери (2-5 дней). При заказе от 5 000 ₽ — бесплатно!</div>
+      <div class="delivery-faq-wrapper">
+        <!-- Segmented Controls / Tabs -->
+        <div class="df-tabs-bar" role="tablist">
+          <button type="button" class="df-tab-btn active" id="dfTabDelivery" role="tab" aria-selected="true" onclick="switchDeliveryTab('delivery')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+            <span>Варианты доставки</span>
+            <span class="df-tab-count">5 способов</span>
+          </button>
+          <button type="button" class="df-tab-btn" id="dfTabFaq" role="tab" aria-selected="false" onclick="switchDeliveryTab('faq')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span>Частые вопросы (FAQ)</span>
+            <span class="df-tab-count">4 ответа</span>
+          </button>
+        </div>
+
+        <!-- Panel 1: Delivery Options -->
+        <div class="df-panel active" id="dfPanelDelivery" role="tabpanel">
+          <div class="delivery-compact-list">
+            <!-- Item 1: СДЭК по РФ -->
+            <div class="delivery-compact-row">
+              <div class="dcr-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="3" width="15" height="13"/>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              </div>
+              <div class="dcr-info">
+                <div class="dcr-header">
+                  <span class="dcr-title">СДЭК по всей России</span>
+                  <span class="dcr-badge-free">Бесплатно от 5 000 ₽</span>
+                </div>
+                <div class="dcr-desc">До пункта выдачи СДЭК или курьером до двери (2–5 рабочих дней)</div>
+              </div>
+              <div class="dcr-price">400 ₽</div>
             </div>
-            <div class="delivery-item-price">400 ₽</div>
+
+            <!-- Item 2: Курьер Москва -->
+            <div class="delivery-compact-row">
+              <div class="dcr-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
+              <div class="dcr-info">
+                <div class="dcr-header">
+                  <span class="dcr-title">Курьер по Москве (до двери)</span>
+                  <span class="dcr-badge-subtle">День-в-день</span>
+                </div>
+                <div class="dcr-desc">Срочная доставка в пределах МКАД по тарифам курьерской службы</div>
+              </div>
+              <div class="dcr-price">По тарифу</div>
+            </div>
+
+            <!-- Item 3: Самовывоз -->
+            <div class="delivery-compact-row">
+              <div class="dcr-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <div class="dcr-info">
+                <div class="dcr-header">
+                  <span class="dcr-title">Самовывоз в Москве</span>
+                  <span class="dcr-badge-subtle">ул. Автозаводская 23к7</span>
+                </div>
+                <div class="dcr-desc">Выдача готовых заказов в шоуруме по предварительному согласованию</div>
+              </div>
+              <div class="dcr-price dcr-price-free">0 ₽</div>
+            </div>
+
+            <!-- Item 4: Беларусь и Казахстан -->
+            <div class="delivery-compact-row">
+              <div class="dcr-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <div class="dcr-info">
+                <div class="dcr-header">
+                  <span class="dcr-title">Беларусь и Казахстан (СНГ)</span>
+                  <span class="dcr-badge-free">Бесплатно от 5 000 ₽</span>
+                </div>
+                <div class="dcr-desc">Экспресс-отправка СДЭК в Минск, Астану, Алматы и другие города ЕАЭС</div>
+              </div>
+              <div class="dcr-price">В чате</div>
+            </div>
+
+            <!-- Item 5: Яндекс Доставка и регионы -->
+            <div class="delivery-compact-row">
+              <div class="dcr-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="dcr-info">
+                <div class="dcr-header">
+                  <span class="dcr-title">Яндекс Доставка и отдаленные регионы РФ</span>
+                  <span class="dcr-badge-subtle">ПВЗ и постаматы</span>
+                </div>
+                <div class="dcr-desc">Индивидуальный подбор оптимального способа и сроков вручения</div>
+              </div>
+              <div class="dcr-price">По тарифу</div>
+            </div>
           </div>
 
-          <div class="delivery-item">
-            <div class="delivery-item-icon">🚀</div>
-            <div class="delivery-item-content">
-              <div class="delivery-item-title">Курьер по Москве (до двери)</div>
-              <div class="delivery-item-desc">Быстрая доставка курьерской службой в пределах МКАД день-в-день.</div>
+          <!-- Reassurance Packaging Box -->
+          <div class="delivery-reassurance-box">
+            <div class="drb-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
             </div>
-            <div class="delivery-item-price">По тарифу</div>
-          </div>
-
-          <div class="delivery-item">
-            <div class="delivery-item-icon">🏢</div>
-            <div class="delivery-item-content">
-              <div class="delivery-item-title">Самовывоз в Москве</div>
-              <div class="delivery-item-desc">Москва, ул. Автозаводская 23к7 (по предварительному согласованию).</div>
+            <div class="drb-text">
+              <strong>Фирменная защита флаконов:</strong> бережная упаковка в многослойную пупырчатую пленку и крафтовые коробки с защитой от ударов и перепадов температур. Минимальный заказ в бутике — <strong>3 000 ₽</strong>.
             </div>
-            <div class="delivery-item-price">0 ₽</div>
-          </div>
-
-          <div class="delivery-item">
-            <div class="delivery-item-icon">🌍</div>
-            <div class="delivery-item-content">
-              <div class="delivery-item-title">Беларусь и Казахстан</div>
-              <div class="delivery-item-desc">Отправка экспресс-СДЭК в Минск, Астану, Алматы и другие города.</div>
-            </div>
-            <div class="delivery-item-price">В чате</div>
           </div>
         </div>
 
-        <!-- FAQ Accordion -->
-        <div class="faq-list">
-          <div class="faq-item open">
-            <button class="faq-question">
-              <span>Как вы гарантируете 100% оригинальность?</span>
-              <span class="faq-icon">▼</span>
-            </button>
-            <div class="faq-answer" style="max-height: 200px;">
-              Мы работаем только с официальными дистрибьюторами и проверенными европейскими бутиками. Все флаконы имеют оригинальные батч-коды, гравировки и пломбы. Мы готовы прислать фото/видео распива конкретного аромата по вашему запросу.
+        <!-- Panel 2: FAQ Accordion -->
+        <div class="df-panel" id="dfPanelFaq" role="tabpanel">
+          <div class="faq-compact-list">
+            <div class="faq-item open">
+              <button type="button" class="faq-question">
+                <span>Как вы гарантируете 100% оригинальность и батч-коды?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer" style="max-height: 220px;">
+                Мы работаем исключительно с официальными дистрибьюторами и проверенными европейскими бутиками. Все флаконы имеют оригинальные батч-коды, лазерные гравировки и фабричные пломбы. Мы готовы прислать фото или видео распива конкретного аромата по вашему первому запросу.
+              </div>
             </div>
-          </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Какая минимальная сумма заказа?</span>
-              <span class="faq-icon">▼</span>
-            </button>
-            <div class="faq-answer">
-              Минимальная сумма заказа в нашем бутике составляет 3 000 ₽. Это позволяет обеспечить бесплатную упаковку премиального уровня и быструю обработку заявок.
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Какая минимальная сумма заказа в бутике?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Минимальная сумма заказа составляет 3 000 ₽. Это позволяет обеспечить бесплатную премиальную крафтовую упаковку и оперативную отправку день-в-день.
+              </div>
             </div>
-          </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Сколько миллилитров во флаконах-отливантах?</span>
-              <span class="faq-icon">▼</span>
-            </button>
-            <div class="faq-answer">
-              Вы можете выбрать 3 мл (~45 распылений, хватает на неделю активной носки), 5 мл (~75 распылений на месяц) или 10 мл (~150 распылений). Также доступны запечатанные фабричные флаконы 50-100 мл.
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Сколько миллилитров во флаконах-отливантах и на сколько их хватает?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Вы можете выбрать 3 мл (~45 распылений, хватает на 1–2 недели регулярной носки), 5 мл (~75 распылений, около месяца носки) или 10 мл (~150 распылений). Также доступны запечатанные фабричные флаконы 50–100 мл в заводской слюде.
+              </div>
             </div>
-          </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              <span>Что если мне не понравится аромат?</span>
-              <span class="faq-icon">▼</span>
-            </button>
-            <div class="faq-answer">
-              Именно для этого и существует формат распива! Вы тратите всего 1 500 – 2 500 ₽ вместо 30 000 ₽ и примеряете парфюм в комфортном для вас ритме. А если заказываете Secret Box — Владимир обязательно учитывает ваши "стоп-ноты", которые вы не любите.
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Что если мне не понравится выбранный аромат?</span>
+                <span class="faq-icon">▼</span>
+              </button>
+              <div class="faq-answer">
+                Именно ради этого существует распив: вы примеряете редкий селективный аромат на коже всего за 1 500 – 2 500 ₽ вместо покупки полноразмерного флакона за 30 000+ ₽. А при заказе Secret Box основатель бутика Владимир обязательно учитывает ваши стоп-ноты, исключая неподходящие аккорды.
+              </div>
             </div>
           </div>
         </div>
@@ -709,9 +803,9 @@
           <h4 class="footer-title">Сервис</h4>
           <ul class="footer-links">
             <li><a href="#expert" class="footer-link">Об авторе Владимире Вацике</a></li>
-            <li><a href="#delivery" class="footer-link">Доставка СДЭК и курьером</a></li>
+            <li><a href="#delivery" onclick="switchDeliveryTab('delivery')" class="footer-link">Доставка СДЭК и курьером</a></li>
+            <li><a href="#delivery" onclick="switchDeliveryTab('faq')" class="footer-link">Частые вопросы (FAQ)</a></li>
             <li><a href="https://t.me/volodiumparfum" target="_blank" class="footer-link">Проверка батч-кодов</a></li>
-            <li><a href="https://t.me/volodiumparfum" target="_blank" class="footer-link">Поиск редких ароматов</a></li>
           </ul>
         </div>
 

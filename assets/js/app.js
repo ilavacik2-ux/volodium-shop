@@ -197,27 +197,26 @@ function initCatalog() {
   }
 
   renderCatalog();
+  renderAromaBoxes();
 }
 
 function renderCatalog() {
   const grid = document.getElementById('perfumesGrid');
   if (!grid) return;
 
-  // Filter items
+  // Filter items (purely perfumes, aromaboxes are in their own dedicated showcase)
   let items = [];
 
   if (currentCategory === 'all') {
-    items = [...PERFUMES_DATA, ...AROMA_BOXES_DATA];
-  } else if (currentCategory === 'boxes') {
-    items = [...AROMA_BOXES_DATA];
-  } else if (currentCategory === 'secrets') {
-    items = [...SECRET_BOXES_DATA];
+    items = [...PERFUMES_DATA];
   } else if (currentCategory === 'men') {
     items = PERFUMES_DATA.filter(p => p.gender === 'men' || p.gender === 'unisex');
   } else if (currentCategory === 'women') {
     items = PERFUMES_DATA.filter(p => p.gender === 'women' || p.gender === 'unisex');
+  } else if (currentCategory === 'unisex') {
+    items = PERFUMES_DATA.filter(p => p.gender === 'unisex');
   } else {
-    items = PERFUMES_DATA.filter(p => p.gender === currentCategory || p.category === currentCategory);
+    items = PERFUMES_DATA.filter(p => p.gender === currentCategory);
   }
 
   // Search filter
@@ -286,6 +285,90 @@ function renderCatalog() {
         playChime(520);
       });
     });
+  });
+}
+
+function renderAromaBoxes() {
+  const grid = document.getElementById('aromaBoxesGrid');
+  if (!grid || typeof AROMA_BOXES_DATA === 'undefined') return;
+
+  grid.innerHTML = AROMA_BOXES_DATA.map(box => {
+    const currentVol = selectedVolumes[box.id] || '3ml';
+    const price = box.prices ? box.prices[currentVol] : 5900;
+    
+    return `
+      <div class="aroma-box-card" id="card-${box.id}">
+        ${box.badge ? `<span class="aroma-box-badge">${box.badge}</span>` : ''}
+        <div class="aroma-box-img-wrap">
+          <img src="${box.image}" alt="${escapeHtml(box.name)}" loading="lazy">
+        </div>
+        <div class="aroma-box-content">
+          <span class="aroma-box-tag">Сет из 5 культовых отливантов</span>
+          <h3 class="aroma-box-title">${box.name}</h3>
+          <p class="aroma-box-desc">${box.subtitle || box.description}</p>
+          
+          <div class="aroma-box-items-list">
+            <span class="box-composition-label">В составе набора:</span>
+            <ul class="box-items-tags">
+              ${(box.items || []).map(it => `<li><span class="dot">✦</span> ${escapeHtml(it)}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="volume-selector aroma-box-vol-selector">
+            <button class="volume-btn vol-btn-${box.id} ${currentVol === '3ml' ? 'active' : ''}" data-vol="3ml">
+              5 шт по 3 мл
+            </button>
+            <button class="volume-btn vol-btn-${box.id} ${currentVol === '5ml' ? 'active' : ''}" data-vol="5ml">
+              5 шт по 5 мл
+            </button>
+          </div>
+
+          <div class="card-footer aroma-box-footer">
+            <div class="price-wrap">
+              <div class="price-current" id="price-${box.id}">${formatPrice(price)}</div>
+              <div class="price-unit">за весь набор (5 ароматов)</div>
+            </div>
+            <button class="btn-primary btn-add-cart add-cart-${box.id}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              В корзину
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Attach event listeners for volume and cart
+  AROMA_BOXES_DATA.forEach(box => {
+    const volBtns = grid.querySelectorAll(`.vol-btn-${box.id}`);
+    volBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const vol = btn.dataset.vol;
+        selectedVolumes[box.id] = vol;
+        const priceEl = document.getElementById(`price-${box.id}`);
+        if (priceEl && box.prices && box.prices[vol]) {
+          priceEl.textContent = formatPrice(box.prices[vol]);
+        }
+        volBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        playChime(440);
+      });
+    });
+
+    const addBtn = grid.querySelector(`.add-cart-${box.id}`);
+    if (addBtn) {
+      addBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const vol = selectedVolumes[box.id] || '3ml';
+        addItemToCart(box, vol);
+        playChime(660);
+      });
+    }
   });
 }
 

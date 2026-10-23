@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initVolodiumDrawer();
   init3DTiltCards();
   initFloatingBackTop();
-  initQuickNav();
 });
 
 /* ==========================================================================
@@ -323,11 +322,11 @@ function updateHeroBgBtnState() {
   const icon = btn.querySelector('.hmb-icon');
   if (heroCinematicMode) {
     if (label) label.textContent = 'Студийный вид';
-    if (icon) icon.textContent = '🖼️';
+    if (icon) icon.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>';
     btn.setAttribute('title', 'Вернуться к студийному виду карточки');
   } else {
     if (label) label.textContent = 'Атмосферный фон';
-    if (icon) icon.textContent = '🌌';
+    if (icon) icon.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
     btn.setAttribute('title', 'Включить атмосферный фон во весь экран');
   }
 }
@@ -1211,11 +1210,35 @@ const FREE_DELIVERY_THRESHOLD = 5000;
 const MIN_ORDER_THRESHOLD = 3000;
 
 function initCart() {
-  // Load from LocalStorage
+  // Load from LocalStorage and sanitize
   try {
     const saved = localStorage.getItem('vp_cart');
-    if (saved) cart = JSON.parse(saved);
-  } catch (e) {}
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed)) {
+        cart = parsed.filter(item => item && typeof item === 'object').map(item => {
+          let resolvedName = item.name;
+          if (!resolvedName || resolvedName === 'undefined' || resolvedName === 'null') {
+            resolvedName = item.title || (item.level ? `Secret Box «${item.level}»` : 'Селективный сет Volodium');
+          }
+          let resolvedVol = item.volume;
+          if (!resolvedVol || resolvedVol === 'undefined' || resolvedVol === 'null') {
+            resolvedVol = 'стандарт';
+          }
+          return {
+            ...item,
+            name: resolvedName,
+            volume: resolvedVol,
+            image: item.image || 'assets/img/aromaboxes/real_box_open_kraft.jpg',
+            price: Number(item.price) || 4900,
+            qty: Math.max(1, Number(item.qty) || 1)
+          };
+        });
+      }
+    }
+  } catch (e) {
+    cart = [];
+  }
 
   const cartTriggers = document.querySelectorAll('.trigger-cart');
   cartTriggers.forEach(btn => {
@@ -1265,23 +1288,32 @@ function closeCart() {
 }
 
 function addItemToCart(item, volume) {
-  const cartId = `${item.id}__${volume}`;
+  if (!item) return;
+  const vol = volume || 'стандарт';
+  const cartId = `${item.id || 'box'}__${vol}`;
   const existing = cart.find(ci => ci.cartId === cartId);
 
-  const price = item.prices ? item.prices[volume] : item.price;
+  const price = item.prices ? (item.prices[vol] || Object.values(item.prices)[0] || item.price || 0) : (item.price || 0);
 
   if (existing) {
     existing.qty += 1;
   } else {
-    const itemName = item.name || item.title || item.level || 'VOLODIUM Парфюм';
+    let itemName = item.name || item.title || item.fullTitle;
+    if (!itemName && item.level) {
+      itemName = `Secret Box «${item.level}»`;
+    }
+    if (!itemName || itemName === 'undefined') {
+      itemName = 'VOLODIUM Парфюм';
+    }
+
     cart.push({
       cartId: cartId,
-      itemId: item.id,
+      itemId: item.id || '',
       name: itemName,
       brand: item.brand || 'VOLODIUM PARFUM',
-      volume: volume,
+      volume: vol,
       price: price,
-      image: item.image,
+      image: item.image || item.cdnImage || 'assets/img/aromaboxes/real_box_open_kraft.jpg',
       qty: 1
     });
   }
@@ -1289,15 +1321,15 @@ function addItemToCart(item, volume) {
   saveCart();
   updateCartBadge();
   renderCartDrawer();
-  const volLabel = (item.category === 'box' || (item.itemId && item.itemId.startsWith('box-'))) ? `5 × ${volume}` : volume;
-  showToast(`«${item.name || item.title || 'Товар'}» (${volLabel}) добавлен в корзину`);
+  const volLabel = (item.category === 'box' || (item.id && item.id.startsWith('box-'))) ? `5 × ${vol}` : vol;
+  showToast(`«${item.name || item.title || 'Товар'}» добавлен в корзину`);
 }
 
-window.addItemToCartById = function(itemId, volume = '3ml') {
+window.addItemToCartById = function(itemId, volume = 'стандарт') {
   const allItems = [...PERFUMES_DATA, ...AROMA_BOXES_DATA, ...SECRET_BOXES_DATA];
   const item = allItems.find(p => p.id === itemId);
   if (item) {
-    const vol = item.prices ? (item.prices[volume] ? volume : Object.keys(item.prices)[0]) : 'стандарт';
+    const vol = item.prices ? (item.prices[volume] ? volume : Object.keys(item.prices)[0]) : volume;
     addItemToCart(item, vol);
   }
 };
@@ -1348,15 +1380,21 @@ function renderCartDrawer() {
     return;
   }
 
-  itemsContainer.innerHTML = cart.map(item => `
+  itemsContainer.innerHTML = cart.map(item => {
+    const rawName = (item.name && item.name !== 'undefined' && item.name !== 'null') ? item.name : (item.title || 'Селективный сет Volodium');
+    const rawVol = (item.volume && item.volume !== 'undefined' && item.volume !== 'null') ? item.volume : 'стандарт';
+    const volMeta = rawVol === 'bottle' ? 'Полноразмерный флакон' : 
+                    (item.itemId && item.itemId.startsWith('box-') ? `Сет из 5 флаконов × ${rawVol}` : rawVol);
+    const imgSrc = item.image || 'assets/img/aromaboxes/real_box_open_kraft.jpg';
+    return `
     <div class="cart-item">
-      <img class="cart-item-img" src="${item.image}" alt="${escapeHtml(item.name)}">
+      <img class="cart-item-img" src="${imgSrc}" alt="${escapeHtml(rawName)}">
       <div class="cart-item-info">
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-          <div class="cart-item-title">${item.name}</div>
+          <div class="cart-item-title">${escapeHtml(rawName)}</div>
           <button class="cart-item-del" onclick="removeCartItem('${item.cartId}');" title="Удалить">✕</button>
         </div>
-        <div class="cart-item-meta">${item.volume === 'bottle' ? 'Полноразмерный флакон' : (item.itemId && item.itemId.startsWith('box-') ? `Сет из 5 флаконов × ${item.volume}` : item.volume)}</div>
+        <div class="cart-item-meta">${escapeHtml(volMeta)}</div>
         <div class="cart-item-bot">
           <div class="cart-item-qty">
             <button class="qty-btn" onclick="changeCartQty('${item.cartId}', -1);">–</button>
@@ -1367,7 +1405,7 @@ function renderCartDrawer() {
         </div>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 
   const subtotal = getCartSubtotal();
   const total = getCartTotal();
@@ -1469,6 +1507,7 @@ window.copyPromoCode = function(code = 'СТАРТ') {
    7. Checkout Form & Telegram Order Forwarding
    ========================================================================== */
 function openCheckoutModal() {
+  closeCart(); // Close cart drawer so it doesn't overlap/block checkout
   const backdrop = document.getElementById('checkoutModalBackdrop');
   if (backdrop) {
     backdrop.classList.add('active');
@@ -1485,11 +1524,30 @@ function closeCheckoutModal() {
     document.body.style.overflow = '';
   }
 }
+window.openCheckoutModal = openCheckoutModal;
+window.closeCheckoutModal = closeCheckoutModal;
 
 function initCheckoutForm() {
   const form = document.getElementById('checkoutForm');
   const msgBtns = document.querySelectorAll('.msg-opt-btn');
+  const closeBtn = document.getElementById('btnCheckoutClose');
+  const checkoutBackdrop = document.getElementById('checkoutModalBackdrop');
   let selectedMessenger = 'Telegram';
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeCheckoutModal();
+    });
+  }
+
+  if (checkoutBackdrop) {
+    checkoutBackdrop.addEventListener('click', (e) => {
+      if (e.target === checkoutBackdrop) {
+        closeCheckoutModal();
+      }
+    });
+  }
 
   msgBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1882,18 +1940,26 @@ function initVolodiumDrawer() {
   }
 
   if (menuBtn) {
-    menuBtn.addEventListener('click', (e) => {
+    menuBtn.onclick = (e) => {
       e.preventDefault();
       e.stopPropagation();
       toggleDrawer();
-    });
+    };
   }
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
+    closeBtn.onclick = (e) => {
       e.preventDefault();
       closeDrawer();
-    });
+    };
+  }
+
+  const drawerBackdrop = drawerOverlay ? drawerOverlay.querySelector('.v-drawer-backdrop') : null;
+  if (drawerBackdrop) {
+    drawerBackdrop.onclick = (e) => {
+      e.preventDefault();
+      closeDrawer();
+    };
   }
 
   if (drawerOverlay) {
@@ -2421,66 +2487,6 @@ function updateCertPrice(amount) {
   }
 }
 
-/* ==========================================================================
-   CONCIERGE QUICK-JUMP BAR CONTROLLER
-   ========================================================================== */
-function initQuickNav() {
-  const pills = document.querySelectorAll('.cqb-pill');
-  if (!pills.length) return;
 
-  // Smooth scroll click with sticky header compensation
-  pills.forEach(pill => {
-    pill.addEventListener('click', (e) => {
-      const targetId = pill.getAttribute('href');
-      if (targetId && targetId.startsWith('#')) {
-        const targetEl = document.querySelector(targetId);
-        if (targetEl) {
-          e.preventDefault();
-          const headerOffset = 135;
-          const elementPosition = targetEl.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-
-          pills.forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-        }
-      }
-    });
-  });
-
-  // Track sections on scroll and highlight current active pill
-  const sectionIds = ['catalog', 'aroma-boxes', 'secret-boxes', 'quiz', 'certificates', 'consultation', 'tester-guide', 'decants', 'reviews'];
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.pageYOffset + 220;
-    let currentId = '';
-
-    sectionIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        const top = el.offsetTop;
-        const height = el.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          currentId = id;
-        }
-      }
-    });
-
-    if (currentId) {
-      pills.forEach(pill => {
-        const matches = pill.getAttribute('href') === `#${currentId}`;
-        pill.classList.toggle('active', matches);
-        if (matches && pill.scrollIntoView && pill.parentElement) {
-          const container = pill.parentElement;
-          const pillOffset = pill.offsetLeft - container.offsetLeft - (container.clientWidth / 2) + (pill.clientWidth / 2);
-          container.scrollTo({ left: pillOffset, behavior: 'smooth' });
-        }
-      });
-    }
-  }, { passive: true });
-}
 
 

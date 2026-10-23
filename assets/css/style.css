@@ -318,83 +318,7 @@ img {
   color: var(--bordo-primary, #812020);
 }
 
-/* Sticky Concierge Quick-Jump Sub-Bar */
-.concierge-quick-bar {
-  position: sticky;
-  top: 72px;
-  z-index: 85;
-  background: rgba(253, 251, 247, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  padding: 0.65rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
-}
 
-.cqb-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cqb-scroll-track {
-  display: flex;
-  gap: 0.65rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  align-items: center;
-  padding: 0.15rem 0.5rem;
-}
-
-.cqb-scroll-track::-webkit-scrollbar {
-  display: none;
-}
-
-.cqb-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 1.05rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: #5C5248;
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle, #E8E4DC);
-  border-radius: 999px;
-  white-space: nowrap;
-  text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-}
-
-.cqb-pill:hover {
-  color: var(--bordo-primary, #812020);
-  border-color: rgba(129, 32, 32, 0.35);
-  transform: translateY(-1px);
-}
-
-.cqb-pill.active {
-  background: var(--bordo-primary, #812020);
-  color: #FFFFFF;
-  border-color: var(--bordo-primary, #812020);
-  box-shadow: 0 4px 14px rgba(129, 32, 32, 0.28);
-}
-
-.cqb-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #D4AF37;
-  transition: background 0.25s ease;
-}
-
-.cqb-pill.active .cqb-dot {
-  background: #FFFFFF;
-}
 
 .nav-link::after {
   content: '';
@@ -790,6 +714,9 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 .hero-bg-mode-btn .hmb-icon {
   font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-badge {
@@ -4661,9 +4588,20 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 /* ==========================================================================
    Checkout Modal Form
    ========================================================================== */
+#checkoutModalBackdrop {
+  z-index: 3000 !important;
+  background: rgba(13, 14, 17, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
 .checkout-modal {
-  max-width: 640px;
+  max-width: 620px;
   background: #ffffff;
+  border-radius: 24px;
+  padding: 2.25rem 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
 }
 
 .messenger-selector {
@@ -7370,6 +7308,10 @@ section[id],
 
 .cert-format-btn .fmt-icon {
   font-size: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bordo-primary, #812020);
 }
 
 .cert-format-btn .fmt-name {

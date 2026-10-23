@@ -63,9 +63,11 @@
       </a>
 
       <nav class="nav-desktop">
-        <a href="#catalog" class="nav-link">Каталог духов</a>
+        <a href="#catalog" class="nav-link">Каталог</a>
         <a href="#aroma-boxes" class="nav-link">Аромабоксы</a>
         <a href="#secret-boxes" class="nav-link">Secret Box</a>
+        <a href="#quiz" class="nav-link">Анкета</a>
+        <a href="#certificates" class="nav-link">Сертификаты</a>
         <a href="#expert" class="nav-link">О стилисте</a>
         <a href="#delivery" class="nav-link">Доставка</a>
       </nav>
@@ -114,6 +116,8 @@
         <a href="#catalog" class="mobile-nav-link">Каталог духов (277+)</a>
         <a href="#aroma-boxes" class="mobile-nav-link">Тематические аромабоксы</a>
         <a href="#secret-boxes" class="mobile-nav-link">Секретные аромабоксы</a>
+        <a href="#quiz" class="mobile-nav-link">Парфюмерная анкета</a>
+        <a href="#certificates" class="mobile-nav-link">Подарочные сертификаты</a>
         <a href="#expert" class="mobile-nav-link">Об эксперте Владимире</a>
         <a href="#delivery" class="mobile-nav-link">Условия доставки</a>
       </div>
@@ -149,16 +153,16 @@
 
         <div class="hero-actions">
           <a href="#catalog" class="btn-primary">
-            <span>Каталог духов (277+ ароматов)</span>
+            <span>Каталог духов (277+)</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <a href="#aroma-boxes" class="btn-secondary">
-            <span>Аромабоксы</span>
+          <a href="#quiz" class="btn-secondary">
+            <span>Парфюмерная анкета</span>
           </a>
-          <a href="#secret-boxes" class="btn-secondary">
-            <span>Secret Box</span>
+          <a href="#certificates" class="btn-secondary">
+            <span>Сертификаты</span>
           </a>
         </div>
 
@@ -460,6 +464,684 @@
             <button class="btn-primary" onclick="addItemToCartById('secret-одержимость', 'стандарт');">
               Заказать бокс
             </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Interactive Perfume Questionnaire Section (Парфюмерная Анкета Владимира Вацика)
+       ========================================================================== -->
+  <section class="section-padding quiz-section" id="quiz">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Индивидуальный подбор</span>
+        <h2 class="section-title">Парфюмерная анкета Владимира Вацика</h2>
+        <p class="section-descr">
+          Ответьте на 11 ключевых вопросов авторской методики подбора. Владимир лично изучит ваши ответы, сформирует персональную ольфакторную карту и подберет идеальный Secret Box или полноразмерный флакон.
+        </p>
+      </div>
+
+      <div class="quiz-container">
+        <!-- Sidebar with Vladimir's cover photo & steps overview -->
+        <aside class="quiz-sidebar">
+          <div class="quiz-author-card">
+            <div class="quiz-cover-wrap">
+              <img src="assets/img/quiz/vladimir_anketa_cover.jpg" alt="Владимир Вацик — Парфюмерная анкета" loading="lazy">
+              <span class="quiz-live-badge">
+                <span class="pulse-dot"></span>
+                Приём анкет открыт
+              </span>
+            </div>
+            <div class="quiz-author-info">
+              <div class="quiz-author-tag">АВТОРСКИЙ ПОДБОР</div>
+              <h3 class="quiz-author-name">Владимир Вацик</h3>
+              <p class="quiz-author-quote">
+                «Я подбираю не просто приятный запах, а ваше невидимое продолжение — аромат, который будет вызывать искренние комплименты и подчеркивать вашу индивидуальность.»
+              </p>
+            </div>
+            <!-- Steps nav indicator -->
+            <div class="quiz-steps-nav">
+              <div class="q-step-nav-item active" data-step-target="1">
+                <span class="q-step-num">01</span>
+                <div class="q-step-text">
+                  <span class="q-step-name">Портрет & Повод</span>
+                  <span class="q-step-sub">Имя, возраст, стиль</span>
+                </div>
+              </div>
+              <div class="q-step-nav-item" data-step-target="2">
+                <span class="q-step-num">02</span>
+                <div class="q-step-text">
+                  <span class="q-step-name">Атмосфера & Шлейф</span>
+                  <span class="q-step-sub">Сезон, сладость, громкость</span>
+                </div>
+              </div>
+              <div class="q-step-nav-item" data-step-target="3">
+                <span class="q-step-num">03</span>
+                <div class="q-step-text">
+                  <span class="q-step-name">Карта нот</span>
+                  <span class="q-step-sub">Любимые аккорды & табу</span>
+                </div>
+              </div>
+              <div class="q-step-nav-item" data-step-target="4">
+                <span class="q-step-num">04</span>
+                <div class="q-step-text">
+                  <span class="q-step-name">Опыт & Отправка</span>
+                  <span class="q-step-sub">Связь с Владимиром</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Wizard Interactive Form -->
+        <div class="quiz-wizard-card">
+          <!-- Progress Header -->
+          <div class="quiz-progress-bar-wrap">
+            <div class="quiz-progress-meta">
+              <span class="quiz-current-step-label" id="quizStepLabel">Шаг 1 из 4: Личный портрет и повод</span>
+              <span class="quiz-progress-percent" id="quizProgressPercent">25%</span>
+            </div>
+            <div class="quiz-progress-track">
+              <div class="quiz-progress-fill" id="quizProgressFill" style="width: 25%;"></div>
+            </div>
+          </div>
+
+          <!-- Wizard Form Body -->
+          <form id="quizForm" class="quiz-form" onsubmit="return false;">
+            <!-- STEP 1 -->
+            <div class="quiz-step active" id="quizStep1" data-step="1">
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 1 ИЗ 11</span>
+                <h3 class="quiz-q-title">Ваше имя и возраст</h3>
+                <p class="quiz-q-desc">Чтобы Владимир знал, как к вам обращаться и учитывал возрастные особенности раскрытия формул.</p>
+                <div class="quiz-fields-row">
+                  <div class="quiz-input-field">
+                    <label for="quizName">Ваше имя</label>
+                    <input type="text" id="quizName" placeholder="Например, Александр или Анна" required>
+                  </div>
+                  <div class="quiz-input-field" style="max-width: 160px;">
+                    <label for="quizAge">Возраст</label>
+                    <input type="number" id="quizAge" placeholder="Лет" min="14" max="100">
+                  </div>
+                </div>
+              </div>
+
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 2 ИЗ 11</span>
+                <h3 class="quiz-q-title">Какой стиль одежды вы предпочитаете?</h3>
+                <p class="quiz-q-desc">Аромат должен гармонично завершать ваш образ и сочетаться с фактурами тканей.</p>
+                <div class="quiz-options-grid" data-question="style">
+                  <button type="button" class="quiz-choice-pill" data-val="Деловой / Классика">
+                    <span class="choice-icon">👔</span>
+                    <span class="choice-text">Деловой / Классика</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Smart Casual">
+                    <span class="choice-icon">🧥</span>
+                    <span class="choice-text">Smart Casual / Городской</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Минимализм / Оверсайз">
+                    <span class="choice-icon">🤍</span>
+                    <span class="choice-text">Минимализм / Оверсайз</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Спортивный / Streetwear">
+                    <span class="choice-icon">👟</span>
+                    <span class="choice-text">Спортивный / Streetwear</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Вечерний / Glamour">
+                    <span class="choice-icon">✨</span>
+                    <span class="choice-text">Вечерний / Sexy Glamour</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Смешанный">
+                    <span class="choice-icon">🔄</span>
+                    <span class="choice-text">Разный под настроение</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 3 ИЗ 11</span>
+                <h3 class="quiz-q-title">Сфера деятельности и ваши увлечения?</h3>
+                <p class="quiz-q-desc">Это помогает понять ритм вашей жизни и социальное окружение.</p>
+                <div class="quiz-input-field">
+                  <input type="text" id="quizOccupation" placeholder="Например: IT, предпринимательство, фитнес, путешествия, искусство...">
+                </div>
+              </div>
+
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 4 ИЗ 11</span>
+                <h3 class="quiz-q-title">На какой случай хочется подобрать аромат?</h3>
+                <p class="quiz-q-desc">Можно выбрать один или несколько ключевых поводов.</p>
+                <div class="quiz-options-grid multi" data-question="occasion">
+                  <button type="button" class="quiz-choice-pill" data-val="Каждый день / Универсальный">
+                    <span class="choice-icon">☀️</span>
+                    <span class="choice-text">Каждый день / Базовый</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Деловые встречи / Офис">
+                    <span class="choice-icon">💼</span>
+                    <span class="choice-text">Деловые встречи / Офис</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Свидания / Вечерний выход (Sexy)">
+                    <span class="choice-icon">🍷</span>
+                    <span class="choice-text">Свидания / Вечерний Sexy</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Отпуск / Пляж / Тепло">
+                    <span class="choice-icon">🏝️</span>
+                    <span class="choice-text">Отпуск / Пляж / Тепло</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Спортзал / Активность">
+                    <span class="choice-icon">⚡</span>
+                    <span class="choice-text">Спортзал / Драйв</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Особое торжество / Свадьба">
+                    <span class="choice-icon">🥂</span>
+                    <span class="choice-text">Особое событие / Свадьба</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="quiz-actions-row">
+                <div></div>
+                <button type="button" class="btn-primary" onclick="window.quizNextStep(1)">
+                  <span>Далее: Атмосфера & Шлейф</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="quiz-step" id="quizStep2" data-step="2">
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 5 ИЗ 11</span>
+                <h3 class="quiz-q-title">Какую атмосферу вы хотели бы создать с помощью аромата?</h3>
+                <p class="quiz-q-desc">Эмоциональный посыл, который транслирует ваш ольфакторный образ.</p>
+                <div class="quiz-options-grid multi" data-question="vibe">
+                  <button type="button" class="quiz-choice-pill" data-val="Романтика, сексуальность, магнетизм">
+                    <span class="choice-icon">🔥</span>
+                    <span class="choice-text">Романтика, сексуальность, магнетизм</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Релаксация, умиротворение, медитативность">
+                    <span class="choice-icon">🌿</span>
+                    <span class="choice-text">Релаксация и умиротворение</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Энергия, драйв, напористость">
+                    <span class="choice-icon">⚡</span>
+                    <span class="choice-text">Энергия, эмоциональный всплеск, драйв</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Статус, серьезность, профессионализм">
+                    <span class="choice-icon">🏛️</span>
+                    <span class="choice-text">Статус, серьезность, профессионализм</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Кристальная чистота и свежесть">
+                    <span class="choice-icon">💧</span>
+                    <span class="choice-text">Кристальная чистота белой рубашки</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 6 ИЗ 11</span>
+                <h3 class="quiz-q-title">Сезонность: на какое время года?</h3>
+                <div class="quiz-options-grid multi" data-question="season">
+                  <button type="button" class="quiz-choice-pill" data-val="Внесезонный">
+                    <span class="choice-icon">♾️</span>
+                    <span class="choice-text">Внесезонный (круглый год)</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Осень-Зима">
+                    <span class="choice-icon">❄️</span>
+                    <span class="choice-text">Осень / Зима (согревающий, густой)</span>
+                  </button>
+                  <button type="button" class="quiz-choice-pill" data-val="Весна-Лето">
+                    <span class="choice-icon">🌸</span>
+                    <span class="choice-text">Весна / Лето (свежий, диффузный)</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 7 ИЗ 11</span>
+                <h3 class="quiz-q-title">Какая реакция окружающих для вас комфортна? (Шлейф)</h3>
+                <div class="quiz-cards-selector" data-question="sillage">
+                  <div class="quiz-select-card" data-val="Только для себя (интимный)">
+                    <div class="q-card-head">
+                      <span class="q-card-badge">Близко к коже</span>
+                      <span class="q-card-icon">🤍</span>
+                    </div>
+                    <h4 class="q-card-title">Только для себя</h4>
+                    <p class="q-card-text">Звучит интимно в зоне объятий, не вторгается в пространство других.</p>
+                  </div>
+                  <div class="quiz-select-card" data-val="Заметен на близкой дистанции">
+                    <div class="q-card-head">
+                      <span class="q-card-badge">Дистанция 1 метр</span>
+                      <span class="q-card-icon">🤝</span>
+                    </div>
+                    <h4 class="q-card-title">Близкая дистанция</h4>
+                    <p class="q-card-text">Слышен при личном общении и рукопожатии, деликатный и элегантный.</p>
+                  </div>
+                  <div class="quiz-select-card" data-val="Интеллигентно заметный">
+                    <div class="q-card-head">
+                      <span class="q-card-badge">Шлейф 2 метра</span>
+                      <span class="q-card-icon">✨</span>
+                    </div>
+                    <h4 class="q-card-title">Интеллигентно заметный</h4>
+                    <p class="q-card-text">Красивый шлейф, привлекает внимание, собирает комплименты.</p>
+                  </div>
+                  <div class="quiz-select-card" data-val="Яркий, запоминающийся, с характером">
+                    <div class="q-card-head">
+                      <span class="q-card-badge">Максимальный шлейф</span>
+                      <span class="q-card-icon">👑</span>
+                    </div>
+                    <h4 class="q-card-title">Яркий с характером</h4>
+                    <p class="q-card-text">Диффузный, заполняет комнату, оставляет незабываемый след в памяти.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quiz-fields-row" style="margin-top: 1.5rem;">
+                <div class="quiz-question-group" style="flex: 1;">
+                  <span class="quiz-q-num">ВОПРОС 8 ИЗ 11</span>
+                  <h4 class="quiz-sub-q-title">Уровень сладости?</h4>
+                  <div class="quiz-options-grid single" data-question="sweetness">
+                    <button type="button" class="quiz-choice-pill" data-val="Совсем не сладкий">Совсем не сладкий</button>
+                    <button type="button" class="quiz-choice-pill" data-val="Средне сладкий">Средне сладкий</button>
+                    <button type="button" class="quiz-choice-pill" data-val="Сладкий / Гурманский">Сладкий / Гурманский</button>
+                  </div>
+                </div>
+
+                <div class="quiz-question-group" style="flex: 1;">
+                  <span class="quiz-q-num">ВОПРОС 9 ИЗ 11</span>
+                  <h4 class="quiz-sub-q-title">Как вы ощущаете себя в ароматах?</h4>
+                  <div class="quiz-options-grid single" data-question="gender">
+                    <button type="button" class="quiz-choice-pill" data-val="Более маскулинно">Более маскулинно</button>
+                    <button type="button" class="quiz-choice-pill" data-val="Более феминно">Более феминно</button>
+                    <button type="button" class="quiz-choice-pill" data-val="Вне гендера / Унисекс">Вне гендера / Унисекс</button>
+                    <button type="button" class="quiz-choice-pill" data-val="Зависит от ситуации">По ситуации</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quiz-actions-row">
+                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                  <span>Назад</span>
+                </button>
+                <button type="button" class="btn-primary" onclick="window.quizNextStep(2)">
+                  <span>Далее: Карта нот</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="quiz-step" id="quizStep3" data-step="3">
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 10 ИЗ 11 (ЧАСТЬ 1)</span>
+                <h3 class="quiz-q-title">Ольфакторная карта: какие ноты должны доминировать?</h3>
+                <p class="quiz-q-desc">Изучите карточки парфюмерных семейств из методики Владимира Вацика и выберите желаемые ноты.</p>
+
+                <!-- Note Family Cards Guide (from Vladimir's real guide slides!) -->
+                <div class="quiz-families-grid">
+                  <div class="quiz-family-card">
+                    <div class="q-fam-header">
+                      <span class="q-fam-icon">🌸</span>
+                      <h4 class="q-fam-title">Белоцветочные</h4>
+                    </div>
+                    <p class="q-fam-desc">Жасмин, гардения, тубероза, тиаре. Сливочно-наркотический, пьянящий, чувственный характер.</p>
+                  </div>
+                  <div class="quiz-family-card">
+                    <div class="q-fam-header">
+                      <span class="q-fam-icon">🌶️</span>
+                      <h4 class="q-fam-title">Пряные</h4>
+                    </div>
+                    <p class="q-fam-desc">Кардамон, корица, мускатный орех, шафран, черный перец. Теплые, согревающие и пикантные.</p>
+                  </div>
+                  <div class="quiz-family-card">
+                    <div class="q-fam-header">
+                      <span class="q-fam-icon">🍮</span>
+                      <h4 class="q-fam-title">Гурманские</h4>
+                    </div>
+                    <p class="q-fam-desc">Ваниль, пралине, карамель, бобы тонка, кофе, шоколад. Самая комплиментарная группа.</p>
+                  </div>
+                  <div class="quiz-family-card">
+                    <div class="q-fam-header">
+                      <span class="q-fam-icon">🪵</span>
+                      <h4 class="q-fam-title">Восточные & Древесные</h4>
+                    </div>
+                    <p class="q-fam-desc">Балтийская амбра, сандал, уд, кедр, ладан, ветивер. Медитативные, глубокие и солидные.</p>
+                  </div>
+                  <div class="quiz-family-card">
+                    <div class="q-fam-header">
+                      <span class="q-fam-icon">🥭</span>
+                      <h4 class="q-fam-title">Тропические & Фруктовые</h4>
+                    </div>
+                    <p class="q-fam-desc">Манго, маракуйя, инжир, персик, черная смородина, кокос. Сочные, солнечные и жизнерадостные.</p>
+                  </div>
+                  <div class="quiz-family-card">
+                    <div class="q-fam-header">
+                      <span class="q-fam-icon">🍋</span>
+                      <h4 class="q-fam-title">Цитрусовые & Свежие</h4>
+                    </div>
+                    <p class="q-fam-desc">Бергамот, грейпфрут, красный апельсин, нероли, морской аккорд. Искрящиеся, бодрящие, чистые.</p>
+                  </div>
+                </div>
+
+                <!-- Multiselect Note Pills -->
+                <div class="quiz-notes-chips-wrap" data-question="dominant_notes">
+                  <button type="button" class="quiz-note-chip" data-note="Белоцветочные (жасмин, тубероза)">🌸 Белоцветочные</button>
+                  <button type="button" class="quiz-note-chip" data-note="Пряности (кардамон, корица, перец)">🌶️ Пряные</button>
+                  <button type="button" class="quiz-note-chip" data-note="Гурманские (ваниль, карамель, бобы тонка)">🍮 Гурманские</button>
+                  <button type="button" class="quiz-note-chip" data-note="Древесные (сандал, кедр, уд)">🪵 Древесные</button>
+                  <button type="button" class="quiz-note-chip" data-note="Смолы и ладан (амбра, бензоин)">🕯️ Смолы & Амбра</button>
+                  <button type="button" class="quiz-note-chip" data-note="Цитрусовые (бергамот, нероли)">🍋 Цитрусовые</button>
+                  <button type="button" class="quiz-note-chip" data-note="Тропические фрукты (манго, маракуйя)">🥭 Тропические фрукты</button>
+                  <button type="button" class="quiz-note-chip" data-note="Ягодные (черная смородина, малина)">🫐 Ягодные</button>
+                  <button type="button" class="quiz-note-chip" data-note="Кожа и замша (дорогой салон)">🧥 Кожа & Замша</button>
+                  <button type="button" class="quiz-note-chip" data-note="Морские и акватические">🌊 Морские / Свежие</button>
+                  <button type="button" class="quiz-note-chip" data-note="Табачные и ромовые">🥃 Табак & Ром</button>
+                  <button type="button" class="quiz-note-chip" data-note="Зеленые и травяные">🌿 Зеленые травы</button>
+                </div>
+              </div>
+
+              <div class="quiz-question-group" style="margin-top: 2rem;">
+                <span class="quiz-q-num">ВОПРОС 10 ИЗ 11 (ЧАСТЬ 2 — ТАБУ)</span>
+                <h3 class="quiz-q-title">Каких нот точно НЕ должно быть?</h3>
+                <p class="quiz-q-desc">Отметьте ноты, которые вызывают у вас неприязнь или головную боль (если ограничений нет — просто пропустите).</p>
+                <div class="quiz-taboo-chips-wrap" data-question="taboo_notes">
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без тяжелого мускуса">✕ Тяжелый мускус</button>
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без удов и анималики">✕ Уд / Животные ноты</button>
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без приторной сладости">✕ Приторная сладость</button>
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без ладана и церкви">✕ Ладан / Церковные ноты</button>
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без розы">✕ Роза</button>
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без резких цитрусов">✕ Резкие одеколоны</button>
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без пудры">✕ Сухая пудра</button>
+                  <button type="button" class="quiz-taboo-chip" data-taboo="Без пачули">✕ Землистые пачули</button>
+                </div>
+                <div class="quiz-input-field" style="margin-top: 0.85rem;">
+                  <input type="text" id="quizTabooCustom" placeholder="Свои ноты-табу (если есть)...">
+                </div>
+              </div>
+
+              <div class="quiz-actions-row">
+                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(3)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                  <span>Назад</span>
+                </button>
+                <button type="button" class="btn-primary" onclick="window.quizNextStep(3)">
+                  <span>Далее: Опыт & Отправка</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="quiz-step" id="quizStep4" data-step="4">
+              <div class="quiz-question-group">
+                <span class="quiz-q-num">ВОПРОС 11 ИЗ 11</span>
+                <h3 class="quiz-q-title">Ваш предыдущий парфюмерный опыт?</h3>
+                <p class="quiz-q-desc">Расскажите о любимых ароматах прошлого или о том, что категорически не подошло. Любые воспоминания или ассоциации.</p>
+                <div class="quiz-input-field">
+                  <textarea id="quizExperience" rows="3" placeholder="Например: носил Baccarat Rouge 540 — слишком йодистый; нравился Tom Ford Tobacco Vanille, но хочется что-то более свежее и современное..."></textarea>
+                </div>
+              </div>
+
+              <div class="quiz-question-group">
+                <h3 class="quiz-q-title">Куда Владимиру отправить готовую карту и подборку?</h3>
+                <div class="quiz-fields-row">
+                  <div class="quiz-input-field">
+                    <label for="quizTelegram">Telegram (@username)</label>
+                    <input type="text" id="quizTelegram" placeholder="@your_nickname" required>
+                  </div>
+                  <div class="quiz-input-field">
+                    <label for="quizPhone">Телефон / WhatsApp</label>
+                    <input type="tel" id="quizPhone" placeholder="+7 (999) 000-00-00">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Thank you & Final Submission Block -->
+              <div class="quiz-final-card">
+                <div class="quiz-final-img-wrap">
+                  <img src="assets/img/quiz/vladimir_anketa_final.jpg" alt="Владимир Вацик подбирает аромат" loading="lazy">
+                </div>
+                <div class="quiz-final-text">
+                  <h4 class="quiz-final-title">Владимир лично изучит вашу анкету</h4>
+                  <p class="quiz-final-desc">
+                    На основе ваших ответов будет составлена индивидуальная карта с пирамидой нот и подобран персональный Secret Box или набор селективных отливантов.
+                  </p>
+                  <div class="quiz-final-buttons">
+                    <button type="button" class="btn-primary" id="btnSubmitQuizTg" onclick="window.submitQuizToTelegram()">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+                      </svg>
+                      <span>Отправить анкету лично Владимиру в TG</span>
+                    </button>
+                    <button type="button" class="btn-secondary" id="btnAttachQuizToBox" onclick="window.attachQuizToSecretBox()">
+                      <span>Прикрепить анкету к заказу Secret Box</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="quiz-actions-row">
+                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(4)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                  <span>Назад</span>
+                </button>
+                <div></div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Gift Certificates Studio (Подарочные сертификаты нового поколения)
+       ========================================================================== -->
+  <section class="section-padding cert-section" id="certificates">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Подарок безупречного вкуса</span>
+        <h2 class="section-title">Подарочный сертификат Volodium</h2>
+        <p class="section-descr">
+          Живой персонализированный сертификат на авторскую аромаконсультацию Владимира Вацика или свободный депозит на любые ароматы из коллекции. Настройте имя, сумму и оформите за пару кликов.
+        </p>
+      </div>
+
+      <div class="cert-studio-grid">
+        <!-- 3D Interactive Live Certificate Display -->
+        <div class="cert-stage-col">
+          <div class="cert-3d-scene" id="cert3dScene">
+            <div class="cert-card-3d" id="certCard3d">
+              <!-- Holographic / Foil Specular Glare -->
+              <div class="cert-foil-glare" id="certFoilGlare"></div>
+
+              <!-- Left Parchment Column (Live Reactive Text) -->
+              <div class="cert-parchment">
+                <div class="cert-parchment-header">
+                  <span class="cert-brand-mono">VOLODIUM HAUTE PARFUMERIE</span>
+                </div>
+
+                <h3 class="cert-main-title">ПОДАРОЧНЫЙ СЕРТИФИКАТ</h3>
+
+                <div class="cert-field-block">
+                  <span class="cert-field-label">На услугу:</span>
+                  <div class="cert-field-service" id="certLiveService">
+                    Аромаконсультация по индивидуальному подбору парфюмерного гардероба / расхламление и систематизация коллекции от аромастилиста
+                  </div>
+                </div>
+
+                <div class="cert-field-block">
+                  <span class="cert-field-label">Кому:</span>
+                  <div class="cert-field-recipient" id="certLiveRecipient">Алисе</div>
+                </div>
+
+                <div class="cert-field-block">
+                  <span class="cert-field-label">Депозит:</span>
+                  <div class="cert-field-deposit" id="certLiveDeposit">5 000 рублей</div>
+                </div>
+
+                <div class="cert-parchment-footer">
+                  <div class="cert-qr-wrap">
+                    <!-- SVG QR Code Icon matching official card -->
+                    <svg class="cert-qr-svg" viewBox="0 0 100 100" fill="currentColor">
+                      <rect x="0" y="0" width="30" height="30" rx="3" fill="#111216"/>
+                      <rect x="6" y="6" width="18" height="18" rx="2" fill="#D2D1CC"/>
+                      <rect x="10" y="10" width="10" height="10" rx="1" fill="#111216"/>
+                      <rect x="70" y="0" width="30" height="30" rx="3" fill="#111216"/>
+                      <rect x="76" y="6" width="18" height="18" rx="2" fill="#D2D1CC"/>
+                      <rect x="80" y="10" width="10" height="10" rx="1" fill="#111216"/>
+                      <rect x="0" y="70" width="30" height="30" rx="3" fill="#111216"/>
+                      <rect x="6" y="76" width="18" height="18" rx="2" fill="#D2D1CC"/>
+                      <rect x="10" y="80" width="10" height="10" rx="1" fill="#111216"/>
+                      <rect x="40" y="10" width="15" height="15" fill="#111216"/>
+                      <rect x="40" y="35" width="20" height="10" fill="#111216"/>
+                      <rect x="70" y="45" width="15" height="20" fill="#111216"/>
+                      <rect x="40" y="65" width="15" height="25" fill="#111216"/>
+                      <rect x="65" y="75" width="25" height="15" fill="#111216"/>
+                    </svg>
+                  </div>
+                  <div class="cert-contacts-wrap">
+                    <div class="cert-contact-item">Контакты TG/INST:</div>
+                    <div class="cert-contact-val">@volodium_parfum</div>
+                    <div class="cert-expiry-row">
+                      <span>Сертификат действует до: </span>
+                      <strong id="certLiveExpiry">01.01.2027</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Photo Column (Vladimir with Atomizer & Vertical VOLODIUM) -->
+              <div class="cert-photo-col">
+                <img src="assets/img/certificates/vladimir_portrait_right.jpg" alt="Владимир Вацик" class="cert-portrait-img">
+              </div>
+            </div>
+          </div>
+
+          <!-- Format Preview & Wax Seal Packaging Notice -->
+          <div class="cert-packaging-preview-box">
+            <div class="cert-pack-thumb">
+              <img src="assets/img/aromaboxes/real_box_wax_seal_stone.jpg" alt="Фирменная упаковка с сургучной печатью" loading="lazy">
+            </div>
+            <div class="cert-pack-text">
+              <span class="cert-pack-title">Подарочное оформление с сургучом</span>
+              <p class="cert-pack-desc">
+                При выборе физического сертификата вы получаете дизайнерский конверт из минеральной бумаги, запечатанный настоящим горячим сургучом с монограммой бренда.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Configurator Studio -->
+        <div class="cert-controls-col">
+          <div class="cert-configurator-card">
+            <h3 class="cert-config-title">Конфигуратор сертификата</h3>
+            <p class="cert-config-sub">Все изменения отображаются на карте в реальном времени</p>
+
+            <!-- 1. Format Choice -->
+            <div class="cert-form-group">
+              <label class="cert-label">1. Формат подарка</label>
+              <div class="cert-format-switcher">
+                <button type="button" class="cert-format-btn active" data-format="digital" onclick="window.setCertFormat('digital')">
+                  <span class="fmt-icon">📱</span>
+                  <div class="fmt-info">
+                    <span class="fmt-name">Электронный</span>
+                    <span class="fmt-desc">Мгновенно в Telegram / PDF для печати</span>
+                  </div>
+                </button>
+                <button type="button" class="cert-format-btn" data-format="physical" onclick="window.setCertFormat('physical')">
+                  <span class="fmt-icon">🎁</span>
+                  <div class="fmt-info">
+                    <span class="fmt-name">Конверт с сургучом</span>
+                    <span class="fmt-desc">Крафтовый конверт + доставка СДЭК</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Recipient Name -->
+            <div class="cert-form-group">
+              <label class="cert-label" for="certRecipientInput">2. Имя получателя (Кому)</label>
+              <div class="cert-input-wrap">
+                <input type="text" id="certRecipientInput" class="cert-input-text" value="Алисе" placeholder="Например: Алисе, Любимой, Максиму">
+              </div>
+            </div>
+
+            <!-- 3. Nominal / Deposit -->
+            <div class="cert-form-group">
+              <label class="cert-label">3. Номинал депозита</label>
+              <div class="cert-presets-grid">
+                <button type="button" class="cert-preset-btn" data-amount="3000" onclick="window.setCertAmount(3000)">3 000 ₽</button>
+                <button type="button" class="cert-preset-btn active" data-amount="5000" onclick="window.setCertAmount(5000)">5 000 ₽ <span class="preset-hit">★ Хит</span></button>
+                <button type="button" class="cert-preset-btn" data-amount="10000" onclick="window.setCertAmount(10000)">10 000 ₽</button>
+                <button type="button" class="cert-preset-btn" data-amount="15000" onclick="window.setCertAmount(15000)">15 000 ₽</button>
+                <button type="button" class="cert-preset-btn" data-amount="25000" onclick="window.setCertAmount(25000)">25 000 ₽</button>
+              </div>
+              <div class="cert-custom-deposit-row">
+                <input type="number" id="certCustomAmount" class="cert-input-text" placeholder="Или укажите свою сумму в рублях" min="1000" max="100000" step="500">
+              </div>
+            </div>
+
+            <!-- 4. Service Selection -->
+            <div class="cert-form-group">
+              <label class="cert-label">4. Назначение сертификата</label>
+              <div class="cert-services-list">
+                <label class="cert-service-opt active">
+                  <input type="radio" name="certServiceRadio" value="consultation" checked onchange="window.setCertService('consultation')">
+                  <div class="service-opt-body">
+                    <span class="service-opt-title">Аромаконсультация и гардероб</span>
+                    <span class="service-opt-desc">Индивидуальный подбор гардероба, расхламление и систематизация коллекции от Владимира Вацика</span>
+                  </div>
+                </label>
+                <label class="cert-service-opt">
+                  <input type="radio" name="certServiceRadio" value="deposit" onchange="window.setCertService('deposit')">
+                  <div class="service-opt-body">
+                    <span class="service-opt-title">Свободный депозит на любые духи</span>
+                    <span class="service-opt-desc">Получатель сможет выбрать любые оригинальные отливанты и флаконы в каталоге</span>
+                  </div>
+                </label>
+                <label class="cert-service-opt">
+                  <input type="radio" name="certServiceRadio" value="secret_box" onchange="window.setCertService('secret_box')">
+                  <div class="service-opt-body">
+                    <span class="service-opt-title">Персональный Secret Box</span>
+                    <span class="service-opt-desc">Эксклюзивный бокс-сюрприз, собранный под предпочтения получателя с подарками</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- 5. Optional Greeting Message -->
+            <div class="cert-form-group">
+              <label class="cert-label" for="certGreetingInput">5. Пожелание получателю (по желанию)</label>
+              <textarea id="certGreetingInput" class="cert-input-text" rows="2" placeholder="Напишите теплые слова, которые мы добавим на вкладыш сертификата..."></textarea>
+            </div>
+
+            <!-- Configurator Summary & Action Buttons -->
+            <div class="cert-summary-box">
+              <div class="cert-sum-row">
+                <span class="cert-sum-label">Итого к оплате:</span>
+                <span class="cert-sum-val" id="certSumDisplay">5 000 ₽</span>
+              </div>
+              <div class="cert-action-buttons">
+                <button type="button" class="btn-primary cert-btn-cart" id="btnAddToCartCert" onclick="window.addCertificateToCart()">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                  </svg>
+                  <span>Добавить сертификат в корзину</span>
+                </button>
+                <button type="button" class="btn-secondary cert-btn-tg" onclick="window.orderCertInTelegram()">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+                  </svg>
+                  <span>Оформить лично в Telegram</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

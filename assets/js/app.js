@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroCanvas();
   initCatalog();
   initCart();
+  initQuiz();
+  initCertificates();
   initFAQ();
   initCookieBanner();
   initSmoothScroll();
@@ -1639,3 +1641,447 @@ function initSmoothScroll() {
     });
   }
 }
+
+/* ==========================================================================
+   PERFUME QUESTIONNAIRE CONTROLLER (Парфюмерная Анкета Владимира Вацика)
+   ========================================================================== */
+let currentQuizStep = 1;
+const quizState = {
+  name: '',
+  age: '',
+  style: 'Smart Casual',
+  occupation: '',
+  occasions: [],
+  vibes: [],
+  seasons: [],
+  sillage: 'Интеллигентно заметный',
+  sweetness: 'Средне сладкий',
+  gender: 'Вне гендера / Унисекс',
+  dominantNotes: [],
+  tabooNotes: [],
+  tabooCustom: '',
+  experience: '',
+  telegram: '',
+  phone: ''
+};
+
+function initQuiz() {
+  const quizForm = document.getElementById('quizForm');
+  if (!quizForm) return;
+
+  // Setup choice pills click handlers
+  document.querySelectorAll('.quiz-choice-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const container = btn.closest('.quiz-options-grid');
+      const isMulti = container && container.classList.contains('multi');
+
+      if (isMulti) {
+        btn.classList.toggle('selected');
+      } else {
+        container.querySelectorAll('.quiz-choice-pill').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      }
+      playChime(520);
+    });
+  });
+
+  // Setup sillage cards
+  document.querySelectorAll('.quiz-select-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.quiz-select-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      quizState.sillage = card.dataset.val;
+      playChime(560);
+    });
+  });
+  // Default select 3rd card (Интеллигентно заметный)
+  const defaultSillageCard = document.querySelector('.quiz-select-card[data-val="Интеллигентно заметный"]');
+  if (defaultSillageCard) defaultSillageCard.classList.add('selected');
+
+  // Setup dominant notes chips
+  document.querySelectorAll('.quiz-note-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('selected');
+      playChime(600);
+    });
+  });
+
+  // Setup taboo notes chips
+  document.querySelectorAll('.quiz-taboo-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('selected');
+      playChime(420);
+    });
+  });
+
+  // Sidebar step navigation click
+  document.querySelectorAll('.q-step-nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const targetStep = parseInt(item.dataset.stepTarget, 10);
+      if (targetStep) goToQuizStep(targetStep);
+    });
+  });
+
+  // Global methods
+  window.quizNextStep = function(fromStep) {
+    if (fromStep === 1) {
+      const nameInput = document.getElementById('quizName');
+      if (nameInput && !nameInput.value.trim()) {
+        showToast('Пожалуйста, укажите ваше имя');
+        nameInput.focus();
+        return;
+      }
+    }
+    goToQuizStep(fromStep + 1);
+  };
+
+  window.quizPrevStep = function(fromStep) {
+    goToQuizStep(fromStep - 1);
+  };
+}
+
+function goToQuizStep(step) {
+  if (step < 1 || step > 4) return;
+  currentQuizStep = step;
+
+  // Toggle active step
+  document.querySelectorAll('.quiz-step').forEach(s => {
+    const sNum = parseInt(s.dataset.step, 10);
+    s.classList.toggle('active', sNum === step);
+  });
+
+  // Update progress
+  const stepLabels = {
+    1: 'Шаг 1 из 4: Личный портрет и повод',
+    2: 'Шаг 2 из 4: Атмосфера, сезон и шлейф',
+    3: 'Шаг 3 из 4: Ольфакторная карта и ноты',
+    4: 'Шаг 4 из 4: Опыт и отправка Владимиру'
+  };
+  const percentages = { 1: '25%', 2: '50%', 3: '75%', 4: '100%' };
+
+  const labelEl = document.getElementById('quizStepLabel');
+  const percentEl = document.getElementById('quizProgressPercent');
+  const fillEl = document.getElementById('quizProgressFill');
+
+  if (labelEl) labelEl.textContent = stepLabels[step];
+  if (percentEl) percentEl.textContent = percentages[step];
+  if (fillEl) fillEl.style.width = percentages[step];
+
+  // Update sidebar nav items
+  document.querySelectorAll('.q-step-nav-item').forEach(item => {
+    const sNum = parseInt(item.dataset.stepTarget, 10);
+    item.classList.toggle('active', sNum === step);
+    item.classList.toggle('completed', sNum < step);
+  });
+
+  playChime(480 + step * 40);
+
+  // Smooth scroll quiz card into view if needed
+  const quizSection = document.getElementById('quiz');
+  if (quizSection) {
+    const rect = quizSection.getBoundingClientRect();
+    if (rect.top < -50 || rect.top > 300) {
+      quizSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+
+function collectQuizData() {
+  const name = document.getElementById('quizName')?.value.trim() || 'Гость';
+  const age = document.getElementById('quizAge')?.value.trim() || 'не указан';
+  
+  // Style
+  const selectedStyle = document.querySelector('.quiz-options-grid[data-question="style"] .quiz-choice-pill.selected')?.dataset.val || 'Не указан';
+  const occupation = document.getElementById('quizOccupation')?.value.trim() || 'не указано';
+  
+  // Occasion
+  const occasions = Array.from(document.querySelectorAll('.quiz-options-grid[data-question="occasion"] .quiz-choice-pill.selected'))
+    .map(b => b.dataset.val);
+  
+  // Vibe
+  const vibes = Array.from(document.querySelectorAll('.quiz-options-grid[data-question="vibe"] .quiz-choice-pill.selected'))
+    .map(b => b.dataset.val);
+  
+  // Season
+  const seasons = Array.from(document.querySelectorAll('.quiz-options-grid[data-question="season"] .quiz-choice-pill.selected'))
+    .map(b => b.dataset.val);
+  
+  // Sillage
+  const sillage = document.querySelector('.quiz-select-card.selected')?.dataset.val || 'Интеллигентно заметный';
+  
+  // Sweetness
+  const sweetness = document.querySelector('.quiz-options-grid[data-question="sweetness"] .quiz-choice-pill.selected')?.dataset.val || 'Средне сладкий';
+  
+  // Gender
+  const gender = document.querySelector('.quiz-options-grid[data-question="gender"] .quiz-choice-pill.selected')?.dataset.val || 'Вне гендера / Унисекс';
+  
+  // Dominant notes
+  const dominantNotes = Array.from(document.querySelectorAll('.quiz-note-chip.selected'))
+    .map(c => c.dataset.note);
+  
+  // Taboo notes
+  const tabooNotes = Array.from(document.querySelectorAll('.quiz-taboo-chip.selected'))
+    .map(c => c.dataset.taboo);
+  const tabooCustom = document.getElementById('quizTabooCustom')?.value.trim();
+  if (tabooCustom) tabooNotes.push(tabooCustom);
+  
+  // Experience
+  const experience = document.getElementById('quizExperience')?.value.trim() || 'Нет опыта';
+  
+  // Contact
+  const telegram = document.getElementById('quizTelegram')?.value.trim() || '';
+  const phone = document.getElementById('quizPhone')?.value.trim() || '';
+
+  return {
+    name, age, selectedStyle, occupation, occasions, vibes, seasons,
+    sillage, sweetness, gender, dominantNotes, tabooNotes,
+    experience, telegram, phone
+  };
+}
+
+window.submitQuizToTelegram = function() {
+  const data = collectQuizData();
+  if (!data.telegram && !data.phone) {
+    showToast('Пожалуйста, укажите ваш Telegram или телефон для отправки подборки');
+    const tgInput = document.getElementById('quizTelegram');
+    if (tgInput) tgInput.focus();
+    return;
+  }
+
+  const lines = [
+    `✨ *ПАРФЮМЕРНАЯ АНКЕТА VOLODIUM* ✨`,
+    ``,
+    `👤 *Имя:* ${data.name} (возраст: ${data.age})`,
+    `👔 *Стиль в одежде:* ${data.selectedStyle}`,
+    `💼 *Деятельность:* ${data.occupation}`,
+    `🎯 *Повод:* ${data.occasions.length > 0 ? data.occasions.join(', ') : 'На каждый день'}`,
+    `🔥 *Желаемая атмосфера:* ${data.vibes.length > 0 ? data.vibes.join(', ') : 'Индивидуальность'}`,
+    `❄️ *Сезонность:* ${data.seasons.length > 0 ? data.seasons.join(', ') : 'Внесезонный'}`,
+    `💨 *Шлейф / Реакция:* ${data.sillage}`,
+    `🍬 *Сладость:* ${data.sweetness}`,
+    `⚧ *Звучание:* ${data.gender}`,
+    `🌸 *Любимые ноты:* ${data.dominantNotes.length > 0 ? data.dominantNotes.join(', ') : 'Доверяю вкусу эксперта'}`,
+    `🚫 *Исключить ноты:* ${data.tabooNotes.length > 0 ? data.tabooNotes.join(', ') : 'Нет табу'}`,
+    `💭 *Предыдущий опыт:* ${data.experience}`,
+    ``,
+    `📱 *Контакт:* ${data.telegram} ${data.phone ? ' / ' + data.phone : ''}`
+  ];
+
+  const fullText = lines.join('\n');
+  const encoded = encodeURIComponent(fullText);
+  const tgUrl = `https://t.me/volodiumparfum?text=${encoded}`;
+
+  playChime(660);
+  showToast('Анкета сформирована! Переходим в диалог с Владимиром...');
+
+  setTimeout(() => {
+    window.open(tgUrl, '_blank');
+  }, 400);
+};
+
+window.attachQuizToSecretBox = function() {
+  const data = collectQuizData();
+  try {
+    sessionStorage.setItem('vp_quiz_answers', JSON.stringify(data));
+  } catch (e) {}
+
+  playChime(580);
+  showToast('Анкета успешно прикреплена! Выберите подходящий Secret Box');
+
+  const secretSection = document.getElementById('secret-boxes');
+  if (secretSection) {
+    secretSection.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+/* ==========================================================================
+   GIFT CERTIFICATES STUDIO CONTROLLER (Подарочные сертификаты)
+   ========================================================================== */
+let certState = {
+  format: 'digital', // 'digital' or 'physical'
+  recipient: 'Алисе',
+  amount: 5000,
+  serviceKey: 'consultation',
+  serviceTitle: 'Аромаконсультация по индивидуальному подбору парфюмерного гардероба / расхламление и систематизация коллекции от аромастилиста',
+  greeting: '',
+  code: 'VP-2026-' + Math.floor(1000 + Math.random() * 9000)
+};
+
+function initCertificates() {
+  const scene = document.getElementById('cert3dScene');
+  const card = document.getElementById('certCard3d');
+  const glare = document.getElementById('certFoilGlare');
+
+  if (!card) return;
+
+  // 1. 3D Perspective Tilt on Mousemove
+  if (scene) {
+    scene.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = -((y - centerY) / centerY) * 12;
+      const rotateY = ((x - centerX) / centerX) * 12;
+
+      card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+      if (glare) {
+        const glareX = (x / rect.width) * 100;
+        const glareY = (y / rect.height) * 100;
+        glare.style.setProperty('--glare-x', `${glareX}%`);
+        glare.style.setProperty('--glare-y', `${glareY}%`);
+        glare.style.opacity = '1';
+      }
+    });
+
+    scene.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      if (glare) {
+        glare.style.opacity = '0';
+      }
+    });
+  }
+
+  // 2. Gyroscope support for mobile tilt
+  if (window.DeviceOrientationEvent && window.innerWidth <= 768) {
+    window.addEventListener('deviceorientation', (e) => {
+      if (e.beta !== null && e.gamma !== null) {
+        const tiltX = Math.min(Math.max((e.beta - 45) * 0.4, -10), 10);
+        const tiltY = Math.min(Math.max(e.gamma * 0.4, -10), 10);
+        card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
+      }
+    });
+  }
+
+  // 3. Recipient Name Live Sync
+  const recipientInput = document.getElementById('certRecipientInput');
+  if (recipientInput) {
+    recipientInput.addEventListener('input', (e) => {
+      const val = e.target.value.trim() || 'Для тебя';
+      certState.recipient = val;
+      const displayEl = document.getElementById('certLiveRecipient');
+      if (displayEl) displayEl.textContent = val;
+    });
+  }
+
+  // 4. Custom Amount Input Live Sync
+  const customAmountInput = document.getElementById('certCustomAmount');
+  if (customAmountInput) {
+    customAmountInput.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value, 10);
+      if (val && val >= 500) {
+        document.querySelectorAll('.cert-preset-btn').forEach(btn => btn.classList.remove('active'));
+        updateCertPrice(val);
+      }
+    });
+  }
+
+  // 5. Service Radio Options
+  document.querySelectorAll('.cert-service-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.cert-service-opt').forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      const radio = opt.querySelector('input[type="radio"]');
+      if (radio) {
+        radio.checked = true;
+        window.setCertService(radio.value);
+      }
+    });
+  });
+
+  // Global methods
+  window.setCertFormat = function(fmt) {
+    certState.format = fmt;
+    document.querySelectorAll('.cert-format-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.format === fmt);
+    });
+    playChime(500);
+  };
+
+  window.setCertAmount = function(amount) {
+    certState.amount = amount;
+    document.querySelectorAll('.cert-preset-btn').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.amount, 10) === amount);
+    });
+    const customInput = document.getElementById('certCustomAmount');
+    if (customInput) customInput.value = '';
+    updateCertPrice(amount);
+    playChime(560);
+  };
+
+  window.setCertService = function(serviceKey) {
+    certState.serviceKey = serviceKey;
+    const services = {
+      consultation: 'Аромаконсультация по индивидуальному подбору парфюмерного гардероба / расхламление и систематизация коллекции от аромастилиста',
+      deposit: 'Свободный депозит на любые селективные ароматы и отливанты из каталога бутика Volodium',
+      secret_box: 'Индивидуальный Secret Box от Владимира Вацика с эксклюзивным подбором и подарками'
+    };
+    certState.serviceTitle = services[serviceKey] || services.consultation;
+    const displayEl = document.getElementById('certLiveService');
+    if (displayEl) displayEl.textContent = certState.serviceTitle;
+    playChime(520);
+  };
+
+  window.addCertificateToCart = function() {
+    const greeting = document.getElementById('certGreetingInput')?.value.trim() || '';
+    const certItem = {
+      id: `cert-${Date.now()}`,
+      name: `Подарочный сертификат «${certState.recipient}»`,
+      brand: 'VOLODIUM HAUTE PARFUMERIE',
+      category: 'certificate',
+      price: certState.amount,
+      prices: { standard: certState.amount },
+      image: 'assets/img/certificates/cert_vladimir_official.jpg',
+      format: certState.format === 'digital' ? 'Электронный' : 'Фирменный тубус с сургучом',
+      recipient: certState.recipient,
+      service: certState.serviceTitle,
+      greeting: greeting,
+      code: certState.code
+    };
+
+    addItemToCart(certItem, certState.format === 'digital' ? 'электронный' : 'тубус с сургучом');
+    openCart();
+    playChime(660);
+  };
+
+  window.orderCertInTelegram = function() {
+    const greeting = document.getElementById('certGreetingInput')?.value.trim();
+    const fmtLabel = certState.format === 'digital' ? 'Электронный (Telegram / PDF)' : 'Фирменный конверт/тубус с сургучной печатью';
+
+    const text = [
+      `🎁 *ЗАКАЗ ПОДАРОЧНОГО СЕРТИФИКАТА VOLODIUM* 🎁`,
+      ``,
+      `👤 *Кому:* ${certState.recipient}`,
+      `💰 *Сумма депозита:* ${formatPrice(certState.amount)}`,
+      `📦 *Формат:* ${fmtLabel}`,
+      `🎯 *На услугу:* ${certState.serviceTitle}`,
+      greeting ? `💌 *Пожелание на вкладыше:* ${greeting}` : '',
+      `🔑 *Код активации:* ${certState.code}`
+    ].filter(Boolean).join('\n');
+
+    const tgUrl = `https://t.me/volodiumparfum?text=${encodeURIComponent(text)}`;
+    playChime(660);
+    showToast('Переходим в Telegram для оформления сертификата...');
+    setTimeout(() => {
+      window.open(tgUrl, '_blank');
+    }, 400);
+  };
+}
+
+function updateCertPrice(amount) {
+  certState.amount = amount;
+  const depositLiveEl = document.getElementById('certLiveDeposit');
+  const sumDisplayEl = document.getElementById('certSumDisplay');
+
+  if (depositLiveEl) {
+    depositLiveEl.textContent = `${amount.toLocaleString('ru-RU')} рублей`;
+  }
+  if (sumDisplayEl) {
+    sumDisplayEl.textContent = formatPrice(amount);
+  }
+}
+

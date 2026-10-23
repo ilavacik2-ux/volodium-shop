@@ -56,15 +56,15 @@ function initMonroeIntro() {
     }, 200);
     intro.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
-    const svgWrap = intro.querySelector('.monroe-handwriting-wrap');
-    if (svgWrap) {
-      const clone = svgWrap.cloneNode(true);
-      svgWrap.parentNode.replaceChild(clone, svgWrap);
+    const stage = intro.querySelector('.monroe-brand-stage');
+    if (stage) {
+      const clone = stage.cloneNode(true);
+      stage.parentNode.replaceChild(clone, stage);
     }
     if (autoTimer) clearTimeout(autoTimer);
     autoTimer = setTimeout(() => {
       dismissIntro();
-    }, 2700);
+    }, 2800);
   }
 
   if (replayBtn) {

@@ -20,26 +20,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024_01">
 </head>
 <body>
 
-  <!-- Cinematic Luxury Monroe-Style Handwriting Intro Screen (Pure White & Ink Black) -->
-  <aside class="monroe-intro-overlay" id="monroeIntro">
-    <div class="monroe-intro-glow"></div>
+  <!-- Cinematic Luxury Intro Screen (Pure Minimalist White & Grand Animated Ink Typography) -->
+  <aside class="monroe-intro-overlay" id="monroeIntro" role="dialog" aria-modal="true" aria-label="Volodium Parfum">
     <div class="monroe-intro-content">
-      <div class="monroe-badge-top">VOLODIUM • HAUTE PARFUMERIE</div>
-
-      <!-- Handwriting SVG Container with Grand Calligraphic Strokes -->
-      <div class="monroe-handwriting-wrap">
-        <svg class="monroe-svg" viewBox="0 0 1000 270" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Grand Monroe Cursive Stroke Animation in Velvet Ink Black -->
-          <text x="50%" y="150" text-anchor="middle" class="monroe-svg-title">Volodium</text>
-          <text x="50%" y="230" text-anchor="middle" class="monroe-svg-sub">PARFUM</text>
-        </svg>
+      <div class="monroe-brand-stage" id="monroeBrandStage">
+        <!-- Monumental Letter-by-Letter Drawing Title -->
+        <h1 class="monroe-grand-title" id="monroeGrandTitle" aria-label="VOLODIUM">
+          <span class="draw-char" style="--char-i: 0">V</span>
+          <span class="draw-char" style="--char-i: 1">O</span>
+          <span class="draw-char" style="--char-i: 2">L</span>
+          <span class="draw-char" style="--char-i: 3">O</span>
+          <span class="draw-char" style="--char-i: 4">D</span>
+          <span class="draw-char" style="--char-i: 5">I</span>
+          <span class="draw-char" style="--char-i: 6">U</span>
+          <span class="draw-char" style="--char-i: 7">M</span>
+          <span class="draw-pen-nib" id="drawPenNib" aria-hidden="true"></span>
+        </h1>
+        
+        <!-- Grand Subtitle 'PARFUM' Drawing in Wine Silk -->
+        <div class="monroe-grand-sub" id="monroeGrandSub" aria-label="PARFUM">
+          <span class="draw-sub-char" style="--sub-i: 0">P</span>
+          <span class="draw-sub-char" style="--sub-i: 1">A</span>
+          <span class="draw-sub-char" style="--sub-i: 2">R</span>
+          <span class="draw-sub-char" style="--sub-i: 3">F</span>
+          <span class="draw-sub-char" style="--sub-i: 4">U</span>
+          <span class="draw-sub-char" style="--sub-i: 5">M</span>
+        </div>
       </div>
-
-      <div class="monroe-skip-hint">Нажмите в любое место, чтобы войти</div>
     </div>
   </aside>
 
@@ -2701,7 +2712,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js"></script>
-  <script src="assets/js/app.js"></script>
+  <script src="assets/data/perfumes.js?v=20261024_01"></script>
+  <script src="assets/js/app.js?v=20261024_01"></script>
 </body>
 </html>

@@ -161,6 +161,7 @@ function initHeroCanvas() {
    2. Catalog Engine with Filter, Volume Selector & Modals
    ========================================================================== */
 let currentCategory = 'all';
+let currentBoxGender = 'all';
 let currentSearch = '';
 let currentSort = 'popular';
 const selectedVolumes = {}; // map of perfumeId -> selected volume string ('3ml', '5ml', '10ml', 'bottle')
@@ -174,6 +175,7 @@ function initCatalog() {
   const sortSelect = document.getElementById('catalogSort');
   const tabBtns = document.querySelectorAll('.catalog-tabs .tab-btn');
   const btnLoadMore = document.getElementById('btnLoadMore');
+  const boxFilterBtns = document.querySelectorAll('.box-filter-bar .box-filter-btn');
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -182,6 +184,16 @@ function initCatalog() {
       currentCategory = btn.dataset.category;
       catalogVisibleCount = CATALOG_PAGE_SIZE;
       renderCatalog(true);
+    });
+  });
+
+  boxFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      boxFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentBoxGender = btn.dataset.boxGender || 'all';
+      renderAromaBoxes();
+      playChime(500);
     });
   });
 
@@ -329,40 +341,99 @@ function renderAromaBoxes() {
   if (!grid || typeof AROMA_BOXES_DATA === 'undefined') return;
 
   const volLabels = {
-    '3ml': '5 шт по 3 мл',
-    '5ml': '5 шт по 5 мл',
-    '10ml': '5 шт по 10 мл'
+    '3ml': '5 × 3 мл',
+    '5ml': '5 × 5 мл',
+    '10ml': '5 × 10 мл'
   };
 
-  grid.innerHTML = AROMA_BOXES_DATA.map(box => {
+  const sprayHints = {
+    '3ml': '~45 распылений на флакон (225 всего)',
+    '5ml': '~75 распылений на флакон (375 всего)',
+    '10ml': '~150 распылений на флакон (750 всего)'
+  };
+
+  const filteredBoxes = currentBoxGender === 'all'
+    ? AROMA_BOXES_DATA
+    : AROMA_BOXES_DATA.filter(b => b.gender === currentBoxGender);
+
+  if (filteredBoxes.length === 0) {
+    grid.innerHTML = `
+      <div class="catalog-empty-state" style="grid-column: 1 / -1; padding: 4rem 1rem; text-align: center;">
+        <p style="font-size: 1.1rem; color: var(--text-muted);">В выбранной категории сейчас нет аромабоксов.</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = filteredBoxes.map(box => {
     const availableVols = box.prices ? Object.keys(box.prices) : ['3ml'];
     const currentVol = selectedVolumes[box.id] || availableVols[0];
     const price = box.prices ? box.prices[currentVol] : 3240;
     const oldPrice = box.oldPrices ? box.oldPrices[currentVol] : null;
-    
+    const discountPct = (oldPrice && price && oldPrice > price)
+      ? Math.round((1 - price / oldPrice) * 100)
+      : null;
+
     return `
       <div class="aroma-box-card" id="card-${box.id}">
-        <div class="aroma-box-img-wrap">
+        <div class="aroma-box-img-wrap box-open-modal" data-box-id="${box.id}" role="button" tabindex="0" title="Нажмите, чтобы изучить подробный состав">
           <img src="${box.image}" alt="${escapeHtml(box.name)}" loading="lazy" onerror="this.src='${box.cdnImage || box.image}'">
-        </div>
-        <div class="aroma-box-content">
-          <span class="aroma-box-tag">Аромабокс • 5 композиций</span>
-          <h3 class="aroma-box-title">${box.name}</h3>
-          <p class="aroma-box-desc">${box.subtitle || box.description}</p>
           
-          <div class="aroma-box-items-list">
-            <span class="box-composition-label">В составе набора:</span>
-            <ul class="box-items-tags">
-              ${(box.items || []).map(it => `<li><span class="dot">✦</span> ${escapeHtml(it)}</li>`).join('')}
+          <div class="aroma-box-badges-overlay">
+            <span class="aroma-box-gender-badge gender-${box.gender}">${escapeHtml(box.genderLabel || 'Сет')}</span>
+            ${discountPct ? `<span class="aroma-box-discount-badge">-${discountPct}%</span>` : ''}
+          </div>
+
+          ${box.badge ? `<span class="aroma-box-hit-badge">${escapeHtml(box.badge)}</span>` : ''}
+          
+          <div class="aroma-box-img-hover-hint">
+            <span>Изучить состав</span>
+          </div>
+        </div>
+
+        <div class="aroma-box-content">
+          <div class="aroma-box-top-meta">
+            <span class="aroma-box-tag">5 нишевых композиций</span>
+            <span class="aroma-box-original-tag">100% оригинал</span>
+          </div>
+
+          <h3 class="aroma-box-title box-open-modal" data-box-id="${box.id}" role="button" tabindex="0">${escapeHtml(box.name)}</h3>
+          <p class="aroma-box-short-subtitle">${escapeHtml(box.shortSubtitle || '')}</p>
+
+          <div class="box-composition-box box-open-modal" data-box-id="${box.id}" role="button" tabindex="0" title="Посмотреть подробное описание сета">
+            <div class="box-composition-head">
+              <span class="bch-icon">✦</span>
+              <span>Состав сета (5 композиций):</span>
+            </div>
+            <ul class="box-perfumes-list">
+              ${(box.perfumes || []).map(perfume => {
+                const parts = perfume.split('—');
+                const brand = parts[0]?.trim() || '';
+                const pName = parts[1]?.trim() || perfume;
+                return `
+                  <li class="bpl-item">
+                    <span class="bpl-dot">•</span>
+                    <strong class="bpl-brand">${escapeHtml(brand)}</strong>
+                    <span class="bpl-sep">—</span>
+                    <span class="bpl-name">${escapeHtml(pName)}</span>
+                  </li>
+                `;
+              }).join('')}
             </ul>
           </div>
 
-          <div class="volume-selector aroma-box-vol-selector">
-            ${availableVols.map(v => `
-              <button class="volume-btn vol-btn-${box.id} ${currentVol === v ? 'active' : ''}" data-vol="${v}">
-                ${volLabels[v] || v}
-              </button>
-            `).join('')}
+          <div class="aroma-box-vol-block">
+            <div class="aroma-box-vol-header">
+              <span class="aroma-box-vol-title">Выберите объем сета:</span>
+              <span class="box-spray-hint" id="spray-hint-${box.id}">${sprayHints[currentVol] || '~45 распылений'}</span>
+            </div>
+            <div class="volume-selector aroma-box-vol-selector">
+              ${availableVols.map(v => `
+                <button type="button" class="volume-btn vol-btn-${box.id} ${currentVol === v ? 'active' : ''}" data-vol="${v}">
+                  ${volLabels[v] || v}
+                </button>
+              `).join('')}
+            </div>
           </div>
 
           <div class="card-footer aroma-box-footer">
@@ -371,15 +442,15 @@ function renderAromaBoxes() {
                 <span class="price-old" id="old-price-${box.id}" style="${oldPrice ? '' : 'display:none;'}">${oldPrice ? formatPrice(oldPrice) : ''}</span>
                 <div class="price-current" id="price-${box.id}">${formatPrice(price)}</div>
               </div>
-              <div class="price-unit">за весь набор (5 флаконов)</div>
+              <div class="price-unit">за сет из 5 флаконов</div>
             </div>
-            <button class="btn-primary btn-add-cart add-cart-${box.id}">
+            <button type="button" class="btn-primary btn-add-cart add-cart-${box.id}" aria-label="Добавить сет ${escapeHtml(box.name)} в корзину">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <path d="M16 10a4 4 0 0 1-8 0"/>
               </svg>
-              В корзину
+              <span>В корзину</span>
             </button>
           </div>
         </div>
@@ -387,8 +458,9 @@ function renderAromaBoxes() {
     `;
   }).join('');
 
-  // Attach event listeners for volume and cart
-  AROMA_BOXES_DATA.forEach(box => {
+  // Attach event listeners for each box
+  filteredBoxes.forEach(box => {
+    // Volume buttons
     const volBtns = grid.querySelectorAll(`.vol-btn-${box.id}`);
     volBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -397,6 +469,8 @@ function renderAromaBoxes() {
         selectedVolumes[box.id] = vol;
         const priceEl = document.getElementById(`price-${box.id}`);
         const oldPriceEl = document.getElementById(`old-price-${box.id}`);
+        const sprayHintEl = document.getElementById(`spray-hint-${box.id}`);
+
         if (priceEl && box.prices && box.prices[vol]) {
           priceEl.textContent = formatPrice(box.prices[vol]);
         }
@@ -408,12 +482,17 @@ function renderAromaBoxes() {
             oldPriceEl.style.display = 'none';
           }
         }
+        if (sprayHintEl && sprayHints[vol]) {
+          sprayHintEl.textContent = sprayHints[vol];
+        }
+
         volBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         playChime(440);
       });
     });
 
+    // Add to cart button
     const addBtn = grid.querySelector(`.add-cart-${box.id}`);
     if (addBtn) {
       addBtn.addEventListener('click', (e) => {
@@ -422,6 +501,26 @@ function renderAromaBoxes() {
         const vol = selectedVolumes[box.id] || availableVols[0];
         addItemToCart(box, vol);
         playChime(660);
+      });
+    }
+
+    // Modal triggers on card elements
+    const cardEl = document.getElementById(`card-${box.id}`);
+    if (cardEl) {
+      const modalOpeners = cardEl.querySelectorAll('.box-open-modal');
+      modalOpeners.forEach(opener => {
+        opener.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openProductModal(box.id);
+          playChime(520);
+        });
+        opener.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openProductModal(box.id);
+            playChime(520);
+          }
+        });
       });
     }
   });
@@ -507,8 +606,36 @@ function updateCardPrice(itemId, vol) {
   if (!item || !item.prices) return;
 
   const priceEl = document.getElementById(`price-${itemId}`);
-  if (priceEl) {
+  if (priceEl && item.prices[vol]) {
     priceEl.textContent = formatPrice(item.prices[vol]);
+  }
+
+  const oldPriceEl = document.getElementById(`old-price-${itemId}`);
+  if (oldPriceEl) {
+    if (item.oldPrices && item.oldPrices[vol]) {
+      oldPriceEl.textContent = formatPrice(item.oldPrices[vol]);
+      oldPriceEl.style.display = 'inline';
+    } else {
+      oldPriceEl.style.display = 'none';
+    }
+  }
+
+  const sprayHintEl = document.getElementById(`spray-hint-${itemId}`);
+  const sprayHints = {
+    '3ml': '~45 распылений на флакон (225 всего)',
+    '5ml': '~75 распылений на флакон (375 всего)',
+    '10ml': '~150 распылений на флакон (750 всего)'
+  };
+  if (sprayHintEl && sprayHints[vol]) {
+    sprayHintEl.textContent = sprayHints[vol];
+  }
+
+  const card = document.getElementById(`card-${itemId}`);
+  if (card) {
+    const volBtns = card.querySelectorAll(`.vol-btn-${itemId}`);
+    volBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.vol === vol);
+    });
   }
 }
 
@@ -523,6 +650,162 @@ function openProductModal(itemId) {
   const modalBackdrop = document.getElementById('productModalBackdrop');
   const modalContent = document.getElementById('productModalContent');
   if (!modalBackdrop || !modalContent) return;
+
+  // Custom dedicated modal layout for Aromaboxes
+  if (item.category === 'box') {
+    const availableVols = item.prices ? Object.keys(item.prices) : ['3ml'];
+    let activeModalVol = selectedVolumes[item.id] || availableVols[0];
+    const currentPrice = item.prices ? item.prices[activeModalVol] : 3240;
+    const oldPrice = item.oldPrices ? item.oldPrices[activeModalVol] : null;
+
+    const volLabels = {
+      '3ml': '5 × 3 мл',
+      '5ml': '5 × 5 мл',
+      '10ml': '5 × 10 мл'
+    };
+
+    const sprayHints = {
+      '3ml': '~45 распылений на флакон (225 всего)',
+      '5ml': '~75 распылений на флакон (375 всего)',
+      '10ml': '~150 распылений на флакон (750 всего)'
+    };
+
+    modalContent.innerHTML = `
+      <div class="modal-grid modal-box-layout">
+        <div class="modal-img-col">
+          <div class="modal-box-img-wrap">
+            <img class="modal-main-img" src="${item.image}" alt="${escapeHtml(item.name)}" onerror="this.src='${item.cdnImage || item.image}'">
+          </div>
+          <div class="modal-guarantee-card">
+            <div class="mg-head">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>100% гарантия подлинности</span>
+            </div>
+            <p>Все ароматы разливаются исключительно из оригинальных флаконов нишевых брендов в стерильные стеклянные атомайзеры с металлической помпой и герметичной крышкой.</p>
+          </div>
+        </div>
+
+        <div class="modal-info-col">
+          <div class="modal-box-badges">
+            <span class="aroma-box-gender-badge gender-${item.gender}">${escapeHtml(item.genderLabel || 'Коллекция')}</span>
+            <span class="modal-box-tag">Тематический сет • 5 ароматов</span>
+            ${item.badge ? `<span class="aroma-box-hit-badge-inline">${escapeHtml(item.badge)}</span>` : ''}
+          </div>
+
+          <h2 class="modal-box-title">${escapeHtml(item.name)}</h2>
+          <p class="modal-box-subtitle">${escapeHtml(item.shortSubtitle || '')}</p>
+
+          <div class="modal-box-description-block">
+            <h4 class="mbd-heading">Концепция сета:</h4>
+            <p class="mbd-text">${escapeHtml(item.fullDescription || item.description || '')}</p>
+          </div>
+
+          <div class="modal-box-perfumes-block">
+            <h4 class="mbp-heading">
+              <span style="color:var(--bordo-primary);">✦</span>
+              <span>В наборе 5 оригинальных композиций:</span>
+            </h4>
+            <div class="modal-box-perfumes-grid">
+              ${(item.perfumes || []).map((perfume, idx) => {
+                const parts = perfume.split('—');
+                const brand = parts[0]?.trim() || '';
+                const pName = parts[1]?.trim() || perfume;
+                return `
+                  <div class="mbp-card">
+                    <span class="mbp-num">0${idx + 1}</span>
+                    <div class="mbp-details">
+                      <strong class="mbp-brand">${escapeHtml(brand)}</strong>
+                      <span class="mbp-name">${escapeHtml(pName)}</span>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <div class="modal-box-vol-block">
+            <div class="mbv-header">
+              <label class="mbv-label">Выберите объем атомайзеров:</label>
+              <span class="mbv-hint" id="modalBoxSprayHint">${sprayHints[activeModalVol] || ''}</span>
+            </div>
+            <div class="volume-selector" id="modalBoxVolumeSelector">
+              ${availableVols.map(v => `
+                <button type="button" class="volume-btn modal-vol-btn ${v === activeModalVol ? 'active' : ''}" data-vol="${v}">
+                  ${volLabels[v] || v}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="modal-footer-cta">
+            <div class="modal-price-wrap">
+              <div class="modal-price-row">
+                <span class="price-old" id="modalBoxOldPrice" style="${oldPrice ? '' : 'display:none;'}">${oldPrice ? formatPrice(oldPrice) : ''}</span>
+                <div class="modal-price-val" id="modalBoxPrice">${formatPrice(currentPrice)}</div>
+              </div>
+              <div class="modal-price-sub">за комплект из 5 флаконов в подарочном боксе</div>
+            </div>
+
+            <button type="button" class="btn-primary modal-cta-btn" id="modalAddToCartBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              <span>В корзину</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Wire up modal volume buttons
+    const modalVolBtns = modalContent.querySelectorAll('.modal-vol-btn');
+    modalVolBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modalVolBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeModalVol = btn.dataset.vol;
+        selectedVolumes[item.id] = activeModalVol;
+        updateCardPrice(item.id, activeModalVol);
+
+        const price = item.prices[activeModalVol];
+        const oldP = item.oldPrices ? item.oldPrices[activeModalVol] : null;
+
+        const pEl = document.getElementById('modalBoxPrice');
+        if (pEl) pEl.textContent = formatPrice(price);
+
+        const oldPEl = document.getElementById('modalBoxOldPrice');
+        if (oldPEl) {
+          if (oldP) {
+            oldPEl.textContent = formatPrice(oldP);
+            oldPEl.style.display = 'inline';
+          } else {
+            oldPEl.style.display = 'none';
+          }
+        }
+
+        const hintEl = document.getElementById('modalBoxSprayHint');
+        if (hintEl && sprayHints[activeModalVol]) {
+          hintEl.textContent = sprayHints[activeModalVol];
+        }
+
+        playChime(440);
+      });
+    });
+
+    document.getElementById('modalAddToCartBtn').addEventListener('click', () => {
+      addItemToCart(item, activeModalVol);
+      closeProductModal();
+      playChime(660);
+    });
+
+    modalBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    return;
+  }
 
   const currentVol = selectedVolumes[item.id] || getDefaultVolume(item);
   const currentPrice = item.prices ? item.prices[currentVol] : item.price;
@@ -785,7 +1068,8 @@ function addItemToCart(item, volume) {
   saveCart();
   updateCartBadge();
   renderCartDrawer();
-  showToast(`«${item.name || item.title || 'Товар'}» (${volume}) добавлен в корзину`);
+  const volLabel = (item.category === 'box' || (item.itemId && item.itemId.startsWith('box-'))) ? `5 × ${volume}` : volume;
+  showToast(`«${item.name || item.title || 'Товар'}» (${volLabel}) добавлен в корзину`);
 }
 
 window.addItemToCartById = function(itemId, volume = '3ml') {
@@ -851,7 +1135,7 @@ function renderCartDrawer() {
           <div class="cart-item-title">${item.name}</div>
           <button class="cart-item-del" onclick="removeCartItem('${item.cartId}');" title="Удалить">✕</button>
         </div>
-        <div class="cart-item-meta">${item.volume === 'bottle' ? 'Полноразмерный флакон' : item.volume}</div>
+        <div class="cart-item-meta">${item.volume === 'bottle' ? 'Полноразмерный флакон' : (item.itemId && item.itemId.startsWith('box-') ? `Сет из 5 флаконов × ${item.volume}` : item.volume)}</div>
         <div class="cart-item-bot">
           <div class="cart-item-qty">
             <button class="qty-btn" onclick="changeCartQty('${item.cartId}', -1);">–</button>

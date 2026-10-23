@@ -1736,6 +1736,64 @@ img {
   min-height: 2.45rem;
 }
 
+/* Clean & Compact 5 Perfumes Teaser (Reduces Visual Noise) */
+.box-composition-preview {
+  background: #FAF8F5;
+  border: 1px solid #ECE7DE;
+  border-radius: 10px;
+  padding: 0.75rem 0.95rem;
+  margin-bottom: 1.15rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: all 0.25s ease;
+}
+
+.box-composition-preview:hover {
+  background: #FFFFFF;
+  border-color: rgba(129, 32, 32, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(129, 32, 32, 0.08);
+}
+
+.bcp-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.bcp-sparkle {
+  color: var(--bordo-primary, #812020);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.bcp-summary {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #111216;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bcp-action {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--bordo-primary, #812020);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.box-composition-preview:hover .bcp-action {
+  transform: translateX(2px);
+}
+
 /* Structured 5 Perfumes Box */
 .box-composition-box {
   background: #fbf9f6;
@@ -4671,21 +4729,24 @@ img {
 /* ==========================================================================
    Saisei Full-Screen Split Editorial Menu Overlay
    ========================================================================== */
+/* ==========================================================================
+   Saisei Clean Haute Parfumerie Editorial Overlay (Lightweight & Minimal)
+   ========================================================================== */
 .saisei-menu-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100vh;
   z-index: 1001;
-  background: rgba(17, 18, 22, 0.7);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(248, 245, 239, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .saisei-menu-overlay.is-open {
@@ -4694,469 +4755,262 @@ img {
   pointer-events: auto;
 }
 
-.smo-container {
-  display: grid;
-  grid-template-columns: 56% 44%;
+.smo-clean-wrapper {
+  max-width: 900px;
   min-height: 100vh;
-  width: 100%;
-}
-
-/* Left Panel: Warm Linen Stone (#F4EFE6) */
-.smo-panel-left {
-  background-color: #F4EFE6;
-  color: #111216;
-  padding: 4.5rem 5rem 4rem 5.5rem;
+  margin: 0 auto;
+  padding: 3.5rem 2.5rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid rgba(129, 32, 32, 0.12);
-  transform: translateX(-30px);
-  opacity: 0;
-  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
-.saisei-menu-overlay.is-open .smo-panel-left {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.smo-panel-header {
+.smo-clean-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(17, 18, 22, 0.1);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
-.smo-brand-tag {
+.smo-clean-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.smo-clean-monogram {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bordo-primary, #812020);
+  color: #FFFFFF;
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(129, 32, 32, 0.25);
+}
+
+.smo-clean-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.smo-clean-brand-title {
   font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--bordo-primary, #812020);
+  color: #111216;
 }
 
-.smo-edition {
+.smo-clean-brand-sub {
   font-family: var(--font-sans, 'Montserrat', sans-serif);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: #767471;
+  text-transform: uppercase;
 }
 
-.smo-nav-list {
+.smo-clean-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 18, 22, 0.12);
+  border-radius: 999px;
+  padding: 0.55rem 1.25rem;
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #111216;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.smo-clean-close-btn:hover {
+  background: var(--bordo-primary, #812020);
+  color: #FFFFFF;
+  border-color: var(--bordo-primary, #812020);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(129, 32, 32, 0.25);
+}
+
+.smo-clean-close-btn .scc-icon {
+  font-size: 0.9rem;
+}
+
+/* Main Clean Nav List */
+.smo-clean-nav {
   display: flex;
   flex-direction: column;
   gap: 0;
   flex: 1;
   justify-content: center;
+  margin: 1.5rem 0 3rem;
 }
 
-.smo-nav-item {
-  position: relative;
+.smo-clean-item {
+  border-bottom: 1px solid rgba(17, 18, 22, 0.08);
 }
 
-.smo-nav-link {
+.smo-clean-link {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  padding: 1.15rem 0.5rem;
   text-decoration: none;
-  padding: 0.95rem 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   color: #111216;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.smo-nav-num {
+.smo-clean-link:hover {
+  padding-left: 1.25rem;
+  background: rgba(129, 32, 32, 0.03);
+}
+
+.scl-num {
   font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
   color: var(--bordo-primary, #812020);
-  letter-spacing: 0.08em;
-  min-width: 38px;
-  transition: transform 0.3s ease;
+  min-width: 32px;
 }
 
-.smo-nav-titles {
+.scl-content {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
   flex: 1;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.smo-nav-title {
+.scl-title {
   font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
-  font-size: clamp(1.4rem, 2.1vw, 2.05rem);
+  font-size: clamp(1.4rem, 2.4vw, 2.1rem);
   font-weight: 600;
-  line-height: 1.15;
   color: #111216;
-  transition: color 0.3s ease;
-}
-
-.smo-nav-note {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.78rem;
-  color: #767471;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  transition: color 0.3s ease;
-}
-
-.smo-nav-arrow {
-  font-size: 1.35rem;
-  color: var(--bordo-primary, #812020);
-  opacity: 0;
-  transform: translateX(-12px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.smo-nav-rule {
-  height: 1px;
-  width: 100%;
-  background: rgba(17, 18, 22, 0.08);
-  transform-origin: left;
-  transition: background-color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Hover Effects on Link */
-.smo-nav-link:hover .smo-nav-num {
-  transform: translateX(3px);
-}
-
-.smo-nav-link:hover .smo-nav-titles {
-  transform: translateX(8px);
-}
-
-.smo-nav-link:hover .smo-nav-title {
-  color: var(--bordo-primary, #812020);
-}
-
-.smo-nav-link:hover .smo-nav-note {
-  color: #4a4b4e;
-}
-
-.smo-nav-link:hover .smo-nav-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.smo-nav-item:hover .smo-nav-rule {
-  background: var(--bordo-primary, #812020);
-  transform: scaleY(1.5);
-}
-
-.smo-panel-footer-left {
-  padding-top: 2.25rem;
-  border-top: 1px solid rgba(17, 18, 22, 0.1);
-  margin-top: 2rem;
-}
-
-.smo-quote {
-  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: #4a4b4e;
-  line-height: 1.45;
-  max-width: 520px;
-}
-
-.smo-author {
-  display: block;
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--bordo-primary, #812020);
-  margin-top: 0.4rem;
-}
-
-/* Right Panel: Deep Velvet Espresso Noir (#141210) */
-.smo-panel-right {
-  background-color: #141210;
-  color: #ffffff;
-  padding: 4.5rem 4.5rem 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transform: translateX(30px);
-  opacity: 0;
-  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
-}
-
-.saisei-menu-overlay.is-open .smo-panel-right {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* Rotating Gold Seal */
-.smo-seal-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 2rem;
-}
-
-.smo-rotating-seal {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.smo-seal-svg {
-  animation: smoRotateSeal 26s linear infinite;
-  transform-origin: center center;
-}
-
-@keyframes smoRotateSeal {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.smo-seal-text {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 9px;
-  font-weight: 600;
-  fill: #E5C378;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-}
-
-.smo-seal-center-letter {
-  position: absolute;
-  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
-  font-size: 2.3rem;
-  font-weight: 700;
-  color: #E5C378;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.smo-boutique-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.smo-boutique-tag {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  color: #E5C378;
-  text-transform: uppercase;
-}
-
-.smo-boutique-title {
-  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
-  font-size: 2.1rem;
-  font-weight: 600;
-  color: #ffffff;
   line-height: 1.15;
-  margin: 0;
-}
-
-.smo-boutique-desc {
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.55;
-  max-width: 440px;
-  margin: 0;
-}
-
-.smo-contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.smo-contact-col {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.smo-contact-label {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #E5C378;
-  text-transform: uppercase;
-}
-
-.smo-contact-link {
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  font-size: 0.88rem;
   transition: color 0.25s ease;
 }
 
-.smo-contact-link:hover {
-  color: #E5C378;
+.smo-clean-link:hover .scl-title {
+  color: var(--bordo-primary, #812020);
 }
 
-.smo-contact-link.highlight {
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.smo-contact-val {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-/* Business Card QR Preview Box */
-.smo-qr-card-box {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(229, 195, 120, 0.25);
-  border-radius: var(--radius-md, 12px);
-  padding: 1.25rem 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  backdrop-filter: blur(10px);
-  transition: border-color 0.3s ease, background 0.3s ease;
-}
-
-.smo-qr-card-box:hover {
-  border-color: #E5C378;
-  background: rgba(255, 255, 255, 0.07);
-}
-
-.smo-qr-card-preview {
-  width: 72px;
-  height: 72px;
-  flex-shrink: 0;
-  background: #D2D1CC;
-  border-radius: 8px;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.smo-qr-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.smo-qr-card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  flex: 1;
-}
-
-.smo-qr-badge {
+.scl-desc {
   font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  color: #E5C378;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #767471;
+  letter-spacing: 0.02em;
 }
 
-.smo-qr-card-title {
-  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.smo-qr-card-desc {
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.35;
-  margin: 0;
-}
-
-.smo-qr-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: rgba(129, 32, 32, 0.85);
-  color: #ffffff;
-  border: 1px solid rgba(229, 195, 120, 0.35);
-  border-radius: 6px;
-  padding: 0.45rem 0.85rem;
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  margin-top: 0.35rem;
-  align-self: flex-start;
+.scl-arrow {
+  font-size: 1.4rem;
+  color: var(--bordo-primary, #812020);
+  opacity: 0;
+  transform: translateX(-10px);
   transition: all 0.25s ease;
 }
 
-.smo-qr-btn:hover {
-  background: var(--bordo-primary, #812020);
-  border-color: #E5C378;
-  box-shadow: 0 4px 14px rgba(129, 32, 32, 0.4);
-  transform: translateY(-1px);
+.smo-clean-link:hover .scl-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-/* Socials row */
-.smo-socials-row {
+/* Clean Footer */
+.smo-clean-footer {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(17, 18, 22, 0.1);
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.smo-clean-direct {
+  display: flex;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.smo-soc-btn {
+.scd-hint {
+  font-size: 0.82rem;
+  color: #767471;
+}
+
+.scd-tg-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-  padding: 0.55rem 1.15rem;
-  color: #ffffff;
+  gap: 0.45rem;
+  background: var(--bordo-primary, #812020);
+  color: #FFFFFF;
   text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
   transition: all 0.25s ease;
 }
 
-.smo-soc-btn:hover {
-  background: #ffffff;
+.scd-tg-link:hover {
+  background: #A82E2E;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(129, 32, 32, 0.25);
+}
+
+.scd-tel-link {
   color: #111216;
-  border-color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: color 0.2s ease;
 }
 
-/* Responsive Breakpoints for Saisei Split Menu */
-@media (max-width: 991px) {
-  .smo-container {
-    grid-template-columns: 1fr;
+.scd-tel-link:hover {
+  color: var(--bordo-primary, #812020);
+}
+
+.smo-clean-note {
+  font-size: 0.8rem;
+  color: #767471;
+}
+
+@media (max-width: 768px) {
+  .smo-clean-wrapper {
+    padding: 2rem 1.25rem;
   }
-  .smo-panel-left {
-    padding: 3rem 1.75rem 2.5rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(129, 32, 32, 0.15);
+  .smo-clean-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
   }
-  .smo-panel-right {
-    padding: 2.75rem 1.75rem 4rem;
+  .smo-clean-link {
+    gap: 1rem;
+    padding: 0.95rem 0.25rem;
   }
-  .smo-seal-container {
-    justify-content: flex-start;
+  .scl-title {
+    font-size: 1.35rem;
+  }
+  .scl-desc {
+    font-size: 0.74rem;
+  }
+  .smo-clean-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-/* ==========================================================================
-   Business Card Print Center Modal (#businessCardModalBackdrop)
-   ========================================================================== */
 .business-card-modal {
   max-width: 920px;
   width: 94%;
@@ -8049,3 +7903,498 @@ img {
 
 
 
+
+
+/* ==========================================================================
+   PROGRESSIVE CONCIERGE QUIZ STYLING (WARM CASHMERE & SOFT LAYERED SHADOWS)
+   ========================================================================== */
+.quiz-section {
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 65%),
+              linear-gradient(180deg, #FBF8F3 0%, #F5EFE6 50%, #ECE4D6 100%) !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-concierge-wrap {
+  max-width: 860px;
+  margin: 1.5rem auto 0;
+}
+
+.quiz-wizard-card {
+  background: #FDFCF9 !important;
+  border: 1px solid rgba(212, 175, 55, 0.25) !important;
+  border-radius: 24px !important;
+  padding: 3rem 3rem 2.75rem !important;
+  box-shadow: 0 25px 70px -15px rgba(35, 27, 22, 0.08),
+              0 8px 24px -5px rgba(129, 32, 32, 0.04),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .quiz-wizard-card {
+    padding: 2rem 1.25rem 1.75rem !important;
+    border-radius: 18px !important;
+  }
+}
+
+.quiz-progress-bar-wrap {
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(17, 18, 22, 0.08);
+}
+
+.quiz-current-step-label {
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111216;
+  letter-spacing: 0.02em;
+}
+
+.quiz-progress-percent {
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--bordo-primary, #812020);
+}
+
+.quiz-progress-track {
+  width: 100%;
+  height: 6px;
+  background: #EAE4D8;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.65rem;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #812020 0%, #D4AF37 100%);
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Step Header */
+.quiz-step-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.quiz-step-badge {
+  display: inline-block;
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bordo-primary, #812020);
+  background: rgba(129, 32, 32, 0.08);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.85rem;
+  border: 1px solid rgba(129, 32, 32, 0.15);
+}
+
+.quiz-step-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 600;
+  color: #111216;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.quiz-step-sub {
+  font-size: 0.92rem;
+  color: #6C6A66;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Tactile Cards for Steps 1, 2, 3 */
+.quiz-tactile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 680px) {
+  .quiz-tactile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quiz-tactile-card {
+  background: #FAF8F4;
+  border: 1.5px solid #EAE4D8;
+  border-radius: 16px;
+  padding: 1.45rem 1.35rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.quiz-tactile-card:hover {
+  background: #FFFFFF;
+  border-color: rgba(129, 32, 32, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(129, 32, 32, 0.09);
+}
+
+.quiz-tactile-card.selected {
+  background: #FFFFFF;
+  border-color: var(--bordo-primary, #812020);
+  box-shadow: 0 8px 24px rgba(129, 32, 32, 0.15), 0 0 0 1px var(--bordo-primary, #812020);
+}
+
+.qtc-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  padding-top: 0.15rem;
+}
+
+.qtc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.qtc-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111216;
+  line-height: 1.2;
+}
+
+.qtc-desc {
+  font-size: 0.84rem;
+  color: #6C6A66;
+  line-height: 1.45;
+}
+
+.qtc-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #D6D0C5;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.quiz-tactile-card.selected .qtc-check {
+  background: var(--bordo-primary, #812020);
+  border-color: var(--bordo-primary, #812020);
+  color: #FFFFFF;
+}
+
+/* Step 5 Meter Cards Warm Cashmere Look */
+.quiz-meter-card {
+  background: #FAF8F4;
+  border: 1.5px solid #EAE4D8;
+  border-radius: 16px;
+  padding: 1.5rem 1.4rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+}
+
+.quiz-meter-card:hover {
+  background: #FFFFFF;
+  border-color: rgba(129, 32, 32, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(129, 32, 32, 0.09);
+}
+
+.quiz-meter-card.selected {
+  background: #FFFFFF;
+  border-color: var(--bordo-primary, #812020);
+  box-shadow: 0 8px 24px rgba(129, 32, 32, 0.15), 0 0 0 1px var(--bordo-primary, #812020);
+}
+
+/* Step 6 Family Cards Grid */
+.quiz-families-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.15rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .quiz-families-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .quiz-families-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quiz-family-card {
+  background: #FAF8F4;
+  border: 1.5px solid #EAE4D8;
+  border-radius: 14px;
+  padding: 1.25rem 1.15rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+}
+
+.quiz-family-card:hover {
+  background: #FFFFFF;
+  border-color: rgba(129, 32, 32, 0.4);
+  transform: translateY(-2px);
+}
+
+.quiz-family-card.selected {
+  background: #FFFFFF;
+  border-color: var(--bordo-primary, #812020);
+  box-shadow: 0 6px 20px rgba(129, 32, 32, 0.12), 0 0 0 1px var(--bordo-primary, #812020);
+}
+
+.q-fam-check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #D6D0C5;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.quiz-family-card.selected .q-fam-check {
+  background: var(--bordo-primary, #812020);
+  border-color: var(--bordo-primary, #812020);
+  color: #FFFFFF;
+}
+
+/* Step 7 Inputs Stack */
+.quiz-inputs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin-bottom: 2.5rem;
+}
+
+.quiz-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz-field-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111216;
+}
+
+.quiz-text-input {
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  background: #FAF8F4;
+  border: 1.5px solid #EAE4D8;
+  border-radius: 12px;
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.95rem;
+  color: #111216;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.quiz-text-input:focus {
+  background: #FFFFFF;
+  border-color: var(--bordo-primary, #812020);
+  box-shadow: 0 0 0 3px rgba(129, 32, 32, 0.1);
+}
+
+.quiz-field-hint {
+  font-size: 0.78rem;
+  color: #767471;
+  line-height: 1.4;
+}
+
+/* Step 8 Result Card */
+.quiz-result-card {
+  background: #FAF8F4;
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem 2.25rem;
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.08);
+  margin-bottom: 2rem;
+}
+
+.qrc-seal-header {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(17, 18, 22, 0.08);
+  margin-bottom: 1.75rem;
+}
+
+.qrc-seal-badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bordo-primary, #812020);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(129, 32, 32, 0.3);
+  flex-shrink: 0;
+}
+
+.qrc-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--bordo-primary, #812020);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.qrc-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #111216;
+  margin: 0 0 0.25rem;
+}
+
+.qrc-subtitle {
+  font-size: 0.85rem;
+  color: #767471;
+  margin: 0;
+}
+
+.qrc-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(17, 18, 22, 0.08);
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 680px) {
+  .qrc-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}
+
+.qrc-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.qrc-item-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #767471;
+  text-transform: uppercase;
+}
+
+.qrc-item-val {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111216;
+}
+
+.qrc-action-heading {
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111216;
+  margin-bottom: 1rem;
+}
+
+.qrc-buttons-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.qrc-tg-btn {
+  flex: 1.2;
+  min-width: 260px;
+}
+
+.qrc-box-btn {
+  flex: 1;
+  min-width: 240px;
+}
+
+/* Certificate authentic envelope showcase styling */
+.cert-pack-thumb-luxury {
+  width: 140px;
+  height: 140px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.cert-pack-thumb-luxury img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cert-pack-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #D4AF37;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+
+/* Compact, clean aromabox styling to eliminate noise */
+.aroma-box-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.aroma-box-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -10px rgba(35, 27, 22, 0.1);
+}

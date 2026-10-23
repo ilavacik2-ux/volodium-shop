@@ -638,26 +638,12 @@ function renderAromaBoxes() {
           <h3 class="aroma-box-title box-open-modal" data-box-id="${box.id}" role="button" tabindex="0">${escapeHtml(box.name)}</h3>
           <p class="aroma-box-short-subtitle">${escapeHtml(box.shortSubtitle || '')}</p>
 
-          <div class="box-composition-box box-open-modal" data-box-id="${box.id}" role="button" tabindex="0" title="Посмотреть подробное описание сета">
-            <div class="box-composition-head">
-              <span class="bch-icon">✦</span>
-              <span>Состав сета (5 композиций):</span>
+          <div class="box-composition-preview box-open-modal" data-box-id="${box.id}" role="button" tabindex="0" title="Нажмите, чтобы открыть подробный состав и ноты сета">
+            <div class="bcp-row">
+              <span class="bcp-sparkle">✦</span>
+              <span class="bcp-summary">5 композиций: ${(box.perfumes || []).slice(0, 2).map(p => p.split('—')[0]?.trim()).join(', ')} + еще 3</span>
             </div>
-            <ul class="box-perfumes-list">
-              ${(box.perfumes || []).map(perfume => {
-                const parts = perfume.split('—');
-                const brand = parts[0]?.trim() || '';
-                const pName = parts[1]?.trim() || perfume;
-                return `
-                  <li class="bpl-item">
-                    <span class="bpl-dot">•</span>
-                    <strong class="bpl-brand">${escapeHtml(brand)}</strong>
-                    <span class="bpl-sep">—</span>
-                    <span class="bpl-name">${escapeHtml(pName)}</span>
-                  </li>
-                `;
-              }).join('')}
-            </ul>
+            <span class="bcp-action">Состав сета & пирамиды →</span>
           </div>
 
           <div class="aroma-box-vol-block">
@@ -1901,9 +1887,18 @@ function initSaiseiMenu() {
     });
   }
 
+  // Close when clicking clean close button
+  const cleanCloseBtn = document.getElementById('smoCleanCloseBtn');
+  if (cleanCloseBtn) {
+    cleanCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMenu();
+    });
+  }
+
   // Close when clicking nav links inside overlay
   if (menuOverlay) {
-    menuOverlay.querySelectorAll('.smo-nav-link').forEach(link => {
+    menuOverlay.querySelectorAll('.smo-clean-link, .smo-nav-link').forEach(link => {
       link.addEventListener('click', () => {
         closeMenu();
       });
@@ -1981,126 +1976,122 @@ window.switchCardPreview = switchCardPreview;
    ========================================================================== */
 let currentQuizStep = 1;
 const quizState = {
+  gender: 'Девушке / Женщине',
+  occasion: 'Каждый день & Офис',
+  vibe: 'Чувственность & Магнетизм',
+  sillage: 'Интеллигентный шлейф (2.0 м)',
+  sweetness: 'Умеренная сладость (50%)',
+  families: ['Белоцветочные', 'Древесные & Уд'],
   name: '',
-  age: '',
-  style: 'Smart Casual',
-  occupation: '',
-  occasions: [],
-  vibes: [],
-  seasons: [],
-  sillage: 'Интеллигентно заметный',
-  sweetness: 'Средне сладкий',
-  gender: 'Вне гендера / Унисекс',
-  dominantNotes: [],
-  tabooNotes: [],
-  tabooCustom: '',
-  experience: '',
   telegram: '',
-  phone: ''
+  tabooCustom: ''
 };
 
 function initQuiz() {
   const quizForm = document.getElementById('quizForm');
   if (!quizForm) return;
 
-  // Setup choice pills click handlers (Step 1)
-  document.querySelectorAll('.quiz-choice-pill').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const container = btn.closest('.quiz-options-grid');
-      const isMulti = container && container.classList.contains('multi');
-
-      if (isMulti) {
-        btn.classList.toggle('selected');
-      } else {
-        container.querySelectorAll('.quiz-choice-pill').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-      }
-      playChime(520);
-    });
-  });
-
-  // Setup luxury cards (Questions 5 & 6)
-  document.querySelectorAll('.quiz-luxury-card').forEach(card => {
+  // Setup tactile cards (Steps 1, 2, 3)
+  document.querySelectorAll('.quiz-tactile-card').forEach(card => {
     card.addEventListener('click', () => {
-      const grid = card.closest('.quiz-luxury-grid');
-      const isMulti = grid && (grid.classList.contains('multi') || grid.dataset.question === 'vibe' || grid.dataset.question === 'season');
-      
-      if (isMulti) {
-        card.classList.toggle('selected');
-      } else {
-        if (grid) grid.querySelectorAll('.quiz-luxury-card').forEach(c => c.classList.remove('selected'));
+      const parentGrid = card.closest('.quiz-tactile-grid');
+      if (parentGrid) {
+        parentGrid.querySelectorAll('.quiz-tactile-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
+        const qKey = parentGrid.dataset.question;
+        if (qKey && card.dataset.val) {
+          quizState[qKey] = card.dataset.val;
+        }
       }
-      playChime(540);
+      if (typeof playChime === 'function') playChime(520);
     });
   });
 
-  // Setup sillage radar cards (Question 7)
+  // Setup sillage radar cards (Step 4)
   document.querySelectorAll('.quiz-sillage-card').forEach(card => {
     card.addEventListener('click', () => {
       document.querySelectorAll('.quiz-sillage-card').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
-      quizState.sillage = card.dataset.val;
-      playChime(580);
+      if (card.dataset.val) quizState.sillage = card.dataset.val;
+      if (typeof playChime === 'function') playChime(580);
     });
   });
 
-  // Setup meter cards (Questions 8 & 9)
-  document.querySelectorAll('.quiz-meter-card').forEach(card => {
+  // Setup sweetness meter cards (Step 5)
+  document.querySelectorAll('.quiz-sweetness-cards .quiz-meter-card').forEach(card => {
     card.addEventListener('click', () => {
-      const container = card.closest('.quiz-sweetness-cards, .quiz-gender-cards');
-      if (container) {
-        container.querySelectorAll('.quiz-meter-card').forEach(c => c.classList.remove('selected'));
-      }
+      document.querySelectorAll('.quiz-sweetness-cards .quiz-meter-card').forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
-      playChime(500);
+      if (card.dataset.val) quizState.sweetness = card.dataset.val;
+      if (typeof playChime === 'function') playChime(500);
     });
   });
 
-  // Setup dominant notes chips (Step 3)
-  document.querySelectorAll('.quiz-note-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('selected');
-      playChime(600);
-    });
-  });
-
-  // Setup taboo notes chips (Step 3)
-  document.querySelectorAll('.quiz-taboo-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('selected');
-      playChime(420);
-    });
-  });
-
-  // Sidebar step navigation click
-  document.querySelectorAll('.q-step-nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const targetStep = parseInt(item.dataset.stepTarget, 10);
-      if (targetStep) goToQuizStep(targetStep);
+  // Setup family cards (Step 6 - Multi-select)
+  document.querySelectorAll('.quiz-family-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('selected');
+      const selectedFamilies = Array.from(document.querySelectorAll('.quiz-family-card.selected'))
+        .map(c => c.dataset.family)
+        .filter(Boolean);
+      quizState.families = selectedFamilies;
+      if (typeof playChime === 'function') playChime(600);
     });
   });
 
   // Global step navigation methods
   window.quizNextStep = function(fromStep) {
-    if (fromStep === 1) {
-      const nameInput = document.getElementById('quizName');
-      if (nameInput && !nameInput.value.trim()) {
-        showToast('Пожалуйста, укажите ваше имя');
-        nameInput.focus();
-        return;
-      }
-    }
     goToQuizStep(fromStep + 1);
   };
 
   window.quizPrevStep = function(fromStep) {
     goToQuizStep(fromStep - 1);
   };
+
+  window.finishQuizAndShowResult = function() {
+    const nameInput = document.getElementById('quizName');
+    const tgInput = document.getElementById('quizTelegram');
+
+    if (nameInput && !nameInput.value.trim()) {
+      showToast('Пожалуйста, укажите ваше имя');
+      nameInput.focus();
+      return;
+    }
+
+    if (tgInput && !tgInput.value.trim()) {
+      showToast('Пожалуйста, укажите Telegram или телефон для связи');
+      tgInput.focus();
+      return;
+    }
+
+    quizState.name = nameInput ? nameInput.value.trim() : 'Гость';
+    quizState.telegram = tgInput ? tgInput.value.trim() : '';
+    const tabooInput = document.getElementById('quizTabooCustom');
+    quizState.tabooCustom = tabooInput ? tabooInput.value.trim() : '';
+
+    // Populate result card summary items
+    const elGender = document.getElementById('resSummaryGender');
+    const elOccasion = document.getElementById('resSummaryOccasion');
+    const elVibe = document.getElementById('resSummaryVibe');
+    const elSillage = document.getElementById('resSummarySillage');
+    const elSweetness = document.getElementById('resSummarySweetness');
+    const elFamilies = document.getElementById('resSummaryFamilies');
+    const elTitle = document.getElementById('quizSummaryTitle');
+
+    if (elGender) elGender.textContent = quizState.gender;
+    if (elOccasion) elOccasion.textContent = quizState.occasion;
+    if (elVibe) elVibe.textContent = quizState.vibe;
+    if (elSillage) elSillage.textContent = quizState.sillage;
+    if (elSweetness) elSweetness.textContent = quizState.sweetness;
+    if (elFamilies) elFamilies.textContent = quizState.families.length > 0 ? quizState.families.join(', ') : 'Индивидуально';
+    if (elTitle) elTitle.textContent = `Карта звучания для ${quizState.name}`;
+
+    goToQuizStep(8);
+  };
 }
 
 function goToQuizStep(step) {
-  if (step < 1 || step > 4) return;
+  if (step < 1 || step > 8) return;
   currentQuizStep = step;
 
   // Toggle active step
@@ -2109,31 +2100,37 @@ function goToQuizStep(step) {
     s.classList.toggle('active', sNum === step);
   });
 
-  // Update progress
+  // Step labels and percentages
   const stepLabels = {
-    1: 'Шаг 1 из 4: Личный портрет и повод',
-    2: 'Шаг 2 из 4: Атмосфера, сезон и шлейф',
-    3: 'Шаг 3 из 4: Ольфакторная карта и ноты',
-    4: 'Шаг 4 из 4: Опыт и отправка Владимиру'
+    1: 'Вопрос 1 из 7: Кому подбираем аромат?',
+    2: 'Вопрос 2 из 7: Главный повод и обстановка',
+    3: 'Вопрос 3 из 7: Желаемое впечатление и шлейф',
+    4: 'Вопрос 4 из 7: Комфортная дистанция (Sillage)',
+    5: 'Вопрос 5 из 7: Уровень сладости в композиции',
+    6: 'Вопрос 6 из 7: Любимые семейства нот',
+    7: 'Вопрос 7 из 7: Ваши контакты и пожелания',
+    8: 'Ваш ольфакторный профиль сформирован'
   };
-  const percentages = { 1: '25%', 2: '50%', 3: '75%', 4: '100%' };
+  const percentages = {
+    1: '14%',
+    2: '28%',
+    3: '42%',
+    4: '57%',
+    5: '71%',
+    6: '85%',
+    7: '100%',
+    8: '100%'
+  };
 
   const labelEl = document.getElementById('quizStepLabel');
   const percentEl = document.getElementById('quizProgressPercent');
   const fillEl = document.getElementById('quizProgressFill');
 
-  if (labelEl) labelEl.textContent = stepLabels[step];
-  if (percentEl) percentEl.textContent = percentages[step];
-  if (fillEl) fillEl.style.width = percentages[step];
+  if (labelEl) labelEl.textContent = stepLabels[step] || '';
+  if (percentEl) percentEl.textContent = percentages[step] || '100%';
+  if (fillEl) fillEl.style.width = percentages[step] || '100%';
 
-  // Update sidebar nav items
-  document.querySelectorAll('.q-step-nav-item').forEach(item => {
-    const sNum = parseInt(item.dataset.stepTarget, 10);
-    item.classList.toggle('active', sNum === step);
-    item.classList.toggle('completed', sNum < step);
-  });
-
-  playChime(480 + step * 40);
+  if (typeof playChime === 'function') playChime(460 + step * 35);
 
   // Smooth scroll quiz card into view
   const wizardCard = document.querySelector('.quiz-wizard-card');
@@ -2146,62 +2143,35 @@ function goToQuizStep(step) {
 }
 
 function collectQuizData() {
-  const name = document.getElementById('quizName')?.value.trim() || 'Гость';
-  const age = document.getElementById('quizAge')?.value.trim() || 'не указан';
-  
-  // Style
-  const selectedStyle = document.querySelector('.quiz-options-grid[data-question="style"] .quiz-choice-pill.selected')?.dataset.val || 'Не указан';
-  const occupation = document.getElementById('quizOccupation')?.value.trim() || 'не указано';
-  
-  // Occasion
-  const occasions = Array.from(document.querySelectorAll('.quiz-options-grid[data-question="occasion"] .quiz-choice-pill.selected'))
-    .map(b => b.dataset.val);
-  
-  // Vibe (Step 2 Question 5)
-  const vibes = Array.from(document.querySelectorAll('.quiz-luxury-grid[data-question="vibe"] .quiz-luxury-card.selected'))
-    .map(b => b.dataset.val);
-  
-  // Season (Step 2 Question 6)
-  const seasons = Array.from(document.querySelectorAll('.quiz-luxury-grid[data-question="season"] .quiz-luxury-card.selected'))
-    .map(b => b.dataset.val);
-  
-  // Sillage (Step 2 Question 7)
-  const sillage = document.querySelector('.quiz-sillage-card.selected')?.dataset.val || 'Интеллигентно заметный';
-  
-  // Sweetness (Step 2 Question 8)
-  const sweetness = document.querySelector('.quiz-sweetness-cards .quiz-meter-card.selected')?.dataset.val || 'Средне сладкий';
-  
-  // Gender (Step 2 Question 9)
-  const gender = document.querySelector('.quiz-gender-cards .quiz-meter-card.selected')?.dataset.val || 'Вне гендера / Унисекс';
-  
-  // Dominant notes
-  const dominantNotes = Array.from(document.querySelectorAll('.quiz-note-chip.selected'))
-    .map(c => c.dataset.note);
-  
-  // Taboo notes
-  const tabooNotes = Array.from(document.querySelectorAll('.quiz-taboo-chip.selected'))
-    .map(c => c.dataset.taboo);
-  const tabooCustom = document.getElementById('quizTabooCustom')?.value.trim();
-  if (tabooCustom) tabooNotes.push(tabooCustom);
-  
-  // Experience
-  const experience = document.getElementById('quizExperience')?.value.trim() || 'Нет опыта';
-  
-  // Contact
-  const telegram = document.getElementById('quizTelegram')?.value.trim() || '';
-  const phone = document.getElementById('quizPhone')?.value.trim() || '';
+  const genderEl = document.querySelector('.quiz-tactile-grid[data-question="gender"] .quiz-tactile-card.selected');
+  const occasionEl = document.querySelector('.quiz-tactile-grid[data-question="occasion"] .quiz-tactile-card.selected');
+  const vibeEl = document.querySelector('.quiz-tactile-grid[data-question="vibe"] .quiz-tactile-card.selected');
+  const sillageEl = document.querySelector('.quiz-sillage-card.selected');
+  const sweetnessEl = document.querySelector('.quiz-sweetness-cards .quiz-meter-card.selected');
+  const familyEls = Array.from(document.querySelectorAll('.quiz-family-card.selected')).map(c => c.dataset.family).filter(Boolean);
+
+  const name = document.getElementById('quizName')?.value.trim() || quizState.name || 'Гость';
+  const telegram = document.getElementById('quizTelegram')?.value.trim() || quizState.telegram || '';
+  const taboo = document.getElementById('quizTabooCustom')?.value.trim() || quizState.tabooCustom || 'Нет табу';
 
   return {
-    name, age, selectedStyle, occupation, occasions, vibes, seasons,
-    sillage, sweetness, gender, dominantNotes, tabooNotes,
-    experience, telegram, phone
+    name,
+    gender: genderEl?.dataset.val || quizState.gender,
+    occasion: occasionEl?.dataset.val || quizState.occasion,
+    vibe: vibeEl?.dataset.val || quizState.vibe,
+    sillage: sillageEl?.dataset.val || quizState.sillage,
+    sweetness: sweetnessEl?.dataset.val || quizState.sweetness,
+    families: familyEls.length > 0 ? familyEls : quizState.families,
+    taboo,
+    telegram
   };
 }
 
 window.submitQuizToTelegram = function() {
   const data = collectQuizData();
-  if (!data.telegram && !data.phone) {
-    showToast('Пожалуйста, укажите ваш Telegram или телефон для отправки подборки');
+  if (!data.telegram) {
+    showToast('Пожалуйста, укажите ваш Telegram или телефон');
+    goToQuizStep(7);
     const tgInput = document.getElementById('quizTelegram');
     if (tgInput) tgInput.focus();
     return;
@@ -2210,28 +2180,24 @@ window.submitQuizToTelegram = function() {
   const lines = [
     `✨ *ПАРФЮМЕРНАЯ АНКЕТА VOLODIUM* ✨`,
     ``,
-    `👤 *Имя:* ${data.name} (возраст: ${data.age})`,
-    `👔 *Стиль в одежде:* ${data.selectedStyle}`,
-    `💼 *Деятельность:* ${data.occupation}`,
-    `🎯 *Повод:* ${data.occasions.length > 0 ? data.occasions.join(', ') : 'На каждый день'}`,
-    `🔥 *Желаемая атмосфера:* ${data.vibes.length > 0 ? data.vibes.join(', ') : 'Индивидуальность'}`,
-    `❄️ *Сезонность:* ${data.seasons.length > 0 ? data.seasons.join(', ') : 'Внесезонный'}`,
-    `💨 *Шлейф / Реакция:* ${data.sillage}`,
+    `👤 *Имя:* ${data.name}`,
+    `💎 *Профиль:* ${data.gender}`,
+    `🎯 *Главный повод:* ${data.occasion}`,
+    `🔥 *Атмосфера / Шлейф:* ${data.vibe}`,
+    `💨 *Дистанция шлейфа:* ${data.sillage}`,
     `🍬 *Сладость:* ${data.sweetness}`,
-    `⚧ *Звучание:* ${data.gender}`,
-    `🌸 *Любимые ноты:* ${data.dominantNotes.length > 0 ? data.dominantNotes.join(', ') : 'Доверяю вкусу эксперта'}`,
-    `🚫 *Исключить ноты:* ${data.tabooNotes.length > 0 ? data.tabooNotes.join(', ') : 'Нет табу'}`,
-    `💭 *Предыдущий опыт:* ${data.experience}`,
+    `🌸 *Любимые семейства нот:* ${data.families.join(', ')}`,
+    `🚫 *Ноты-табу (исключить):* ${data.taboo}`,
     ``,
-    `📱 *Контакт:* ${data.telegram} ${data.phone ? ' / ' + data.phone : ''}`
+    `📱 *Контакт:* ${data.telegram}`
   ];
 
   const fullText = lines.join('\n');
   const encoded = encodeURIComponent(fullText);
   const tgUrl = `https://t.me/volodiumparfum?text=${encoded}`;
 
-  playChime(660);
-  showToast('Анкета сформирована! Переходим в диалог с Владимиром...');
+  if (typeof playChime === 'function') playChime(660);
+  showToast('Ольфакторный паспорт сформирован! Открываем диалог с Владимиром...');
 
   setTimeout(() => {
     window.open(tgUrl, '_blank');
@@ -2244,8 +2210,8 @@ window.attachQuizToSecretBox = function() {
     sessionStorage.setItem('vp_quiz_answers', JSON.stringify(data));
   } catch (e) {}
 
-  playChime(580);
-  showToast('Анкета успешно прикреплена! Выберите подходящий Secret Box');
+  if (typeof playChime === 'function') playChime(580);
+  showToast('Анкета прикреплена к Secret Box! Выберите подходящий объем сета');
 
   const secretSection = document.getElementById('secret-boxes');
   if (secretSection) {

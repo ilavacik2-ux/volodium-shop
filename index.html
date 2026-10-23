@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024_04">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024_05">
 </head>
 <body>
 
@@ -78,6 +78,10 @@
         <a href="#aroma-boxes" class="nav-link">Аромабоксы</a>
         <a href="#secret-boxes" class="nav-link">Secret Box</a>
         <a href="#quiz" class="nav-link">Анкета</a>
+        <a href="#certificates" class="nav-link">Сертификаты</a>
+        <a href="#consultation" class="nav-link">Консультация</a>
+        <a href="#tester-guide" class="nav-link">Тестеры</a>
+        <a href="#reviews" class="nav-link">Отзывы</a>
       </nav>
 
       <div class="header-actions">
@@ -396,6 +400,50 @@
       <div class="marquee-item"><span class="sep">✦</span> АВТОРСКИЕ SECRET BOX ВЛАДИМИРА ВАЦИКА</div>
     </div>
   </section>
+
+  <!-- Sticky Concierge Quick-Jump Navigation Hub (С чего начать знакомство?) -->
+  <nav class="concierge-quick-bar" id="conciergeQuickBar" aria-label="Быстрый выбор раздела бутика">
+    <div class="container cqb-container">
+      <div class="cqb-scroll-track">
+        <a href="#catalog" class="cqb-pill active" data-section="catalog">
+          <span class="cqb-dot"></span>
+          <span>💎 Коллекция</span>
+        </a>
+        <a href="#aroma-boxes" class="cqb-pill" data-section="aroma-boxes">
+          <span class="cqb-dot"></span>
+          <span>🎁 Аромабоксы</span>
+        </a>
+        <a href="#secret-boxes" class="cqb-pill" data-section="secret-boxes">
+          <span class="cqb-dot"></span>
+          <span>🖤 Secret Box</span>
+        </a>
+        <a href="#quiz" class="cqb-pill" data-section="quiz">
+          <span class="cqb-dot"></span>
+          <span>📋 Подбор (Анкета)</span>
+        </a>
+        <a href="#certificates" class="cqb-pill" data-section="certificates">
+          <span class="cqb-dot"></span>
+          <span>📜 Сертификаты</span>
+        </a>
+        <a href="#consultation" class="cqb-pill" data-section="consultation">
+          <span class="cqb-dot"></span>
+          <span>🤝 Консультация</span>
+        </a>
+        <a href="#tester-guide" class="cqb-pill" data-section="tester-guide">
+          <span class="cqb-dot"></span>
+          <span>🔬 Тестеры</span>
+        </a>
+        <a href="#decants" class="cqb-pill" data-section="decants">
+          <span class="cqb-dot"></span>
+          <span>🧪 Распив</span>
+        </a>
+        <a href="#reviews" class="cqb-pill" data-section="reviews">
+          <span class="cqb-dot"></span>
+          <span>💬 Отзывы 1 200+</span>
+        </a>
+      </div>
+    </div>
+  </nav>
 
   <!-- Catalog Section -->
   <section class="section-padding catalog-section" id="catalog">
@@ -1705,10 +1753,6 @@
             </ul>
           </div>
         </div>
-
-        <div class="tester-when-preview-img">
-          <img src="assets/img/tester_guide/slide5_when_to_buy.png" alt="Byredo Blanche — пример тестера" loading="lazy">
-        </div>
       </div>
 
       <!-- Trust Note & Telegram Check CTA -->
@@ -1737,7 +1781,7 @@
   </section>
 
   <!-- Educational Decants Guide -->
-  <section class="section-padding decants-section">
+  <section class="section-padding decants-section" id="decants">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Культура парфюмерии</span>
@@ -1750,7 +1794,9 @@
       <div class="decants-editorial-layout">
         <div class="decants-grid">
           <div class="decant-feature-box">
-            <div class="decant-feature-icon">💎</div>
+            <div class="decant-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+            </div>
             <h3 class="decant-feature-title">Экономия до 85%</h3>
             <p class="decant-feature-text">
               Вместо покупки одного полноразмерного флакона за 35 000 ₽, возьмите 5 разных ароматов по 5 мл и меняйте образ каждый день.
@@ -1758,7 +1804,9 @@
           </div>
 
           <div class="decant-feature-box">
-            <div class="decant-feature-icon">🧪</div>
+            <div class="decant-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
             <h3 class="decant-feature-title">100% Оригинальный парфюм</h3>
             <p class="decant-feature-text">
               Мы не продаем копии, реплики или «эмираты». Строго аутентичный парфюм из запечатанных флаконов мировых нишевых домов с контролем батч-кодов.
@@ -1766,7 +1814,9 @@
           </div>
 
           <div class="decant-feature-box">
-            <div class="decant-feature-icon">✈️</div>
+            <div class="decant-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
             <h3 class="decant-feature-title">Удобный тревел-формат</h3>
             <p class="decant-feature-text">
               Герметичные стеклянные атомайзеры с металлической помпой помещаются в любой карман, клатч или салон самолета. Любимый парфюм всегда с вами.
@@ -1774,13 +1824,13 @@
           </div>
         </div>
 
-        <!-- Founder Editorial Card with Gold Travel Atomizer -->
+        <!-- Founder Editorial Card with Gold Travel Atomizer (Full Portrait) -->
         <div class="decants-portrait-card">
           <div class="dpc-img-wrap">
             <img src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик с премиальным атомайзером" loading="lazy">
           </div>
           <div class="dpc-content">
-            <span class="dpc-badge">ЗОЛОТОЙ СТАНДАРТ РАСПИВА</span>
+            <span class="dpc-badge">★ ЗОЛОТОЙ СТАНДАРТ РАСПИВА ★</span>
             <h4 class="dpc-title">Премиальные стеклянные атомайзеры</h4>
             <p class="dpc-quote">
               «Мы используем исключительно герметичные стеклянные колбы с металлической микропомпой. Никакого дешевого пластика: аромат не окисляется и звучит ровно так, как задумал парфюмер.»
@@ -2436,7 +2486,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js?v=20261024_04"></script>
-  <script src="assets/js/app.js?v=20261024_04"></script>
+  <script src="assets/data/perfumes.js?v=20261024_05"></script>
+  <script src="assets/js/app.js?v=20261024_05"></script>
 </body>
 </html>

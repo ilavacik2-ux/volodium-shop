@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSaiseiMenu();
   init3DTiltCards();
   initFloatingBackTop();
+  initQuickNav();
 });
 
 /* ==========================================================================
@@ -2409,4 +2410,67 @@ function updateCertPrice(amount) {
     sumDisplayEl.textContent = formatPrice(amount);
   }
 }
+
+/* ==========================================================================
+   CONCIERGE QUICK-JUMP BAR CONTROLLER
+   ========================================================================== */
+function initQuickNav() {
+  const pills = document.querySelectorAll('.cqb-pill');
+  if (!pills.length) return;
+
+  // Smooth scroll click with sticky header compensation
+  pills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      const targetId = pill.getAttribute('href');
+      if (targetId && targetId.startsWith('#')) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const headerOffset = 135;
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          pills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+        }
+      }
+    });
+  });
+
+  // Track sections on scroll and highlight current active pill
+  const sectionIds = ['catalog', 'aroma-boxes', 'secret-boxes', 'quiz', 'certificates', 'consultation', 'tester-guide', 'decants', 'reviews'];
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.pageYOffset + 220;
+    let currentId = '';
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentId = id;
+        }
+      }
+    });
+
+    if (currentId) {
+      pills.forEach(pill => {
+        const matches = pill.getAttribute('href') === `#${currentId}`;
+        pill.classList.toggle('active', matches);
+        if (matches && pill.scrollIntoView && pill.parentElement) {
+          const container = pill.parentElement;
+          const pillOffset = pill.offsetLeft - container.offsetLeft - (container.clientWidth / 2) + (pill.clientWidth / 2);
+          container.scrollTo({ left: pillOffset, behavior: 'smooth' });
+        }
+      });
+    }
+  }, { passive: true });
+}
+
 

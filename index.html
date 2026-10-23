@@ -236,22 +236,27 @@
             <button type="button" class="hlb-btn active" data-index="0" onclick="window.switchHeroLookbook(0)" title="Владимир с фирменным сургучным боксом Volodium">
               <span class="hlb-num">01</span>
               <span class="hlb-name">Бокс Volodium</span>
+              <span class="hlb-progress"></span>
             </button>
             <button type="button" class="hlb-btn" data-index="1" onclick="window.switchHeroLookbook(1)" title="Черно-белая фотосессия в нишевом салоне Orto Parisi">
               <span class="hlb-num">02</span>
               <span class="hlb-name">Салон Orto Parisi</span>
+              <span class="hlb-progress"></span>
             </button>
             <button type="button" class="hlb-btn" data-index="2" onclick="window.switchHeroLookbook(2)" title="Частная селективная коллекция">
               <span class="hlb-num">03</span>
               <span class="hlb-name">Коллекция</span>
+              <span class="hlb-progress"></span>
             </button>
             <button type="button" class="hlb-btn" data-index="3" onclick="window.switchHeroLookbook(3)" title="Экспертный распив и золотой атомайзер">
               <span class="hlb-num">04</span>
               <span class="hlb-name">Атомайзер</span>
+              <span class="hlb-progress"></span>
             </button>
             <button type="button" class="hlb-btn" data-index="4" onclick="window.switchHeroLookbook(4)" title="Арт-эстетика Parfoholic">
               <span class="hlb-num">05</span>
               <span class="hlb-name">Эстетика</span>
+              <span class="hlb-progress"></span>
             </button>
           </div>
         </div>
@@ -2283,6 +2288,62 @@
 
   <!-- Toast Notification Root -->
   <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Modern Mobile Luxury Floating Dock (Visible on Mobile Devices <= 768px) -->
+  <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Быстрая мобильная навигация">
+    <a href="#catalog" class="dock-item" title="Каталог парфюмерии">
+      <span class="dock-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+      </span>
+      <span class="dock-label">Каталог</span>
+    </a>
+
+    <a href="#quiz" class="dock-item" title="Парфюмерная анкета">
+      <span class="dock-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </span>
+      <span class="dock-label">Анкета</span>
+    </a>
+
+    <a href="#tester-guide" class="dock-item" title="Гид по тестерам">
+      <span class="dock-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L18 2M12 2L12 6M7 6L17 6C18.1 6 19 6.9 19 8L19 20C19 21.1 18.1 22 17 22L7 22C5.9 22 5 21.1 5 20L5 8C5 6.9 5.9 6 7 6Z"/>
+        </svg>
+      </span>
+      <span class="dock-label">Тестеры</span>
+    </a>
+
+    <button type="button" class="dock-item dock-cart-btn" onclick="openCart();" title="Корзина">
+      <span class="dock-icon dock-cart-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="dock-cart-badge cart-count-badge">0</span>
+      </span>
+      <span class="dock-label">Корзина</span>
+    </button>
+
+    <a href="https://t.me/volodiumparfum" target="_blank" class="dock-item dock-tg-btn" title="Написать в Telegram Владимиру">
+      <span class="dock-icon tg-icon-color">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+        </svg>
+      </span>
+      <span class="dock-label">Telegram</span>
+    </a>
+  </nav>
+
+  <!-- Desktop Floating Quick Return Button -->
+  <button type="button" class="floating-back-top" id="floatingBackTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Вернуться наверх" title="Наверх">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
 
   <!-- Scripts -->
   <script src="assets/data/perfumes.js"></script>

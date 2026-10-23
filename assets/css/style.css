@@ -6726,6 +6726,201 @@ img {
   }
 }
 
+/* ==========================================================================
+   Modern Mobile Luxury Floating Dock (<= 768px)
+   ========================================================================== */
+.mobile-bottom-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-dock {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-subtle);
+    padding: 0.5rem 0.75rem max(0.5rem, env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  body {
+    padding-bottom: 72px;
+  }
+
+  .dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--radius-sm);
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .dock-item:hover,
+  .dock-item:active {
+    color: var(--bordo-primary);
+    transform: translateY(-2px);
+  }
+
+  .dock-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+  }
+
+  .dock-cart-icon-wrap {
+    position: relative;
+  }
+
+  .dock-cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: var(--bordo-primary);
+    color: #ffffff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+    box-shadow: 0 2px 6px rgba(129, 32, 32, 0.3);
+  }
+
+  .tg-icon-color {
+    color: #24A1DE;
+  }
+}
+
+/* ==========================================================================
+   Desktop Floating Quick Return Button
+   ========================================================================== */
+.floating-back-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--bordo-primary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 800;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.floating-back-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floating-back-top:hover {
+  background: var(--bordo-primary);
+  color: #ffffff;
+  border-color: var(--bordo-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(129, 32, 32, 0.3);
+}
+
+@media (max-width: 768px) {
+  .floating-back-top {
+    bottom: 5.5rem;
+    right: 1.25rem;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ==========================================================================
+   Core Web Vitals & 120 FPS High-Performance Optimizations
+   ========================================================================== */
+.catalog-section,
+.aroma-boxes-section,
+.tester-section,
+.custom-order-section,
+.consultation-section,
+.reviews-section,
+.certificates-section,
+.quiz-section,
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+/* Hardware GPU acceleration for ultra-smooth rendering */
+.hero-card-main,
+.hero-lookbook-frame,
+.tester-compare-card,
+.decants-portrait-card,
+.secret-card,
+.perfume-card,
+.cert-3d-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Story Lookbook Progress Bar */
+.hlb-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.hlb-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.hlb-btn.active .hlb-progress {
+  animation: hlbProgressFill 7s linear forwards;
+}
+
+.hero-lookbook-frame:hover .hlb-btn.active .hlb-progress {
+  animation-play-state: paused;
+}
+
+@keyframes hlbProgressFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
 
 
 

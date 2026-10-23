@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initCookieBanner();
   initSmoothScroll();
+  init3DTiltCards();
+  initFloatingBackTop();
 });
 
 /* ==========================================================================
@@ -225,6 +227,30 @@ function initHeroLookbook() {
   frame.addEventListener('mouseleave', () => {
     startHeroLookbookAutoTimer();
   });
+
+  // Mobile Touch Swipe Gesture Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  frame.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  frame.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        // Swipe Left -> Next
+        const nextIdx = (heroLookbookIndex + 1) % HERO_LOOKBOOK_ITEMS.length;
+        window.switchHeroLookbook(nextIdx);
+      } else {
+        // Swipe Right -> Prev
+        const prevIdx = (heroLookbookIndex - 1 + HERO_LOOKBOOK_ITEMS.length) % HERO_LOOKBOOK_ITEMS.length;
+        window.switchHeroLookbook(prevIdx);
+      }
+    }
+  }, { passive: true });
 }
 
 function startHeroLookbookAutoTimer() {
@@ -271,16 +297,21 @@ window.switchHeroLookbook = function(index) {
     backdropImg.style.backgroundImage = `url('${item.image}')`;
   }
 
-  // Update active state on lookbook buttons
+  // Update active state on lookbook buttons and reset progress bar animation
   const btns = document.querySelectorAll('.hero-lookbook-nav .hlb-btn');
   btns.forEach(btn => {
     const btnIdx = parseInt(btn.getAttribute('data-index'), 10);
     if (btnIdx === index) {
+      btn.classList.remove('active');
+      void btn.offsetWidth; // Trigger reflow to restart CSS animation
       btn.classList.add('active');
     } else {
       btn.classList.remove('active');
     }
   });
+
+  // Restart auto timer so active slide gets full 7 seconds
+  startHeroLookbookAutoTimer();
 };
 
 function updateHeroBgBtnState() {
@@ -321,6 +352,53 @@ window.toggleHeroBgMode = function() {
     localStorage.setItem('volodium_hero_cinematic', heroCinematicMode ? 'true' : 'false');
   } catch (e) {}
 };
+
+/* ==========================================================================
+   1.2 Interactive 3D Perspective Card Tilt (Desktop)
+   ========================================================================== */
+function init3DTiltCards() {
+  if (window.matchMedia('(pointer: coarse)').matches) return; // Skip touch devices
+
+  const tiltCards = document.querySelectorAll('.hero-lookbook-frame, .tester-compare-card, .decants-portrait-card, .pes-photo-card');
+
+  tiltCards.forEach(card => {
+    card.style.transformStyle = 'preserve-3d';
+    card.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease';
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -3.5;
+      const rotateY = ((x - centerX) / centerX) * 3.5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
+  });
+}
+
+/* ==========================================================================
+   1.3 Desktop Floating Quick Return Button
+   ========================================================================== */
+function initFloatingBackTop() {
+  const btn = document.getElementById('floatingBackTop');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 450) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+}
 
 /* ==========================================================================
    2. Catalog Engine with Filter, Volume Selector & Modals

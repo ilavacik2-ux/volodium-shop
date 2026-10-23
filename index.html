@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024_06">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024_07">
 </head>
 <body>
 
@@ -119,155 +119,100 @@
           <span class="cart-badge-count" style="display: none;">0</span>
         </button>
 
-        <button class="saisei-menu-trigger" id="saiseiMenuBtn" aria-label="Открыть навигационное меню бутика" type="button">
-          <span class="smt-label">МЕНЮ</span>
-          <span class="smt-burger" aria-hidden="true">
-            <span class="smt-line-track">
-              <span class="smt-line line-rel"></span>
-              <span class="smt-line line-abs"></span>
-            </span>
-            <span class="smt-line-track">
-              <span class="smt-line line-rel"></span>
-              <span class="smt-line line-abs"></span>
-            </span>
-            <span class="smt-line-track">
-              <span class="smt-line line-rel"></span>
-              <span class="smt-line line-abs"></span>
-            </span>
+        <button class="volodium-menu-trigger" id="volodiumMenuBtn" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu()" aria-label="Открыть меню бутика" type="button">
+          <span class="vmt-label">МЕНЮ</span>
+          <span class="vmt-burger" aria-hidden="true">
+            <span class="vmt-line"></span>
+            <span class="vmt-line"></span>
           </span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Saisei Full-Screen Editorial Menu Overlay (Clean Haute Parfumerie Edition) -->
-  <div class="saisei-menu-overlay" id="saiseiMenuOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Навигационное меню бутика">
-    <div class="smo-clean-wrapper">
-      
-      <!-- Top Bar: Monogram & Close Button -->
-      <div class="smo-clean-header">
-        <div class="smo-clean-brand">
-          <span class="smo-clean-monogram">VP</span>
-          <div class="smo-clean-brand-text">
-            <span class="smo-clean-brand-title">VOLODIUM</span>
-            <span class="smo-clean-brand-sub">Haute Parfumerie • 2026</span>
+  <!-- Bespoke Volodium Boutique Drawer (Right-Slide Atelier Panel) -->
+  <div class="volodium-drawer-overlay" id="volodiumDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Навигация по бутику">
+    <div class="v-drawer-backdrop" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)"></div>
+    <aside class="v-drawer-panel">
+      <!-- Drawer Header -->
+      <div class="v-drawer-header">
+        <div class="v-drawer-brand">
+          <div class="v-drawer-crest">V</div>
+          <div class="v-drawer-brand-text">
+            <span class="v-drawer-brand-name">VOLODIUM</span>
+            <span class="v-drawer-brand-sub">Haute Parfumerie</span>
           </div>
         </div>
-        <button class="smo-clean-close-btn" id="smoCleanCloseBtn" aria-label="Закрыть меню" type="button">
-          <span class="scc-label">ЗАКРЫТЬ</span>
-          <span class="scc-icon" aria-hidden="true">✕</span>
+        <button type="button" class="v-drawer-close-btn" id="vDrawerCloseBtn" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)" aria-label="Закрыть меню">
+          <span>Закрыть</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
 
-      <!-- Main Navigation Links: Pure Editorial Elegance -->
-      <nav class="smo-clean-nav" aria-label="Главные разделы бутика">
-        <div class="smo-clean-item">
-          <a href="#catalog" class="smo-clean-link" data-index="01">
-            <span class="scl-num">01</span>
-            <div class="scl-content">
-              <span class="scl-title">Коллекция духов</span>
-              <span class="scl-desc">277+ нишевых композиций и селективных отливантов</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
+      <!-- Drawer Body -->
+      <div class="v-drawer-body">
+        <div class="v-drawer-group">
+          <span class="v-drawer-group-title">Коллекция & Выбор</span>
+          <nav class="v-drawer-nav">
+            <a href="#catalog" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Коллекция духов</span>
+              <span class="vdl-badge">277+</span>
+            </a>
+            <a href="#aroma-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Тематические аромабоксы</span>
+              <span class="vdl-note">Сеты из 5 ароматов</span>
+            </a>
+            <a href="#secret-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Secret Box Вацика</span>
+              <span class="vdl-tag">Слепой подбор</span>
+            </a>
+            <a href="#quiz" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Парфюмерная анкета</span>
+              <span class="vdl-note">Подбор за 1 мин</span>
+            </a>
+          </nav>
         </div>
 
-        <div class="smo-clean-item">
-          <a href="#aroma-boxes" class="smo-clean-link" data-index="02">
-            <span class="scl-num">02</span>
-            <div class="scl-content">
-              <span class="scl-title">Тематические аромабоксы</span>
-              <span class="scl-desc">Авторские сеты из 5 ароматов по 3 / 5 / 10 мл</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="smo-clean-item">
-          <a href="#secret-boxes" class="smo-clean-link" data-index="03">
-            <span class="scl-num">03</span>
-            <div class="scl-content">
-              <span class="scl-title">Secret Box Владимира Вацика</span>
-              <span class="scl-desc">Главный эксклюзив: слепой персональный подбор</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="smo-clean-item">
-          <a href="#quiz" class="smo-clean-link" data-index="04">
-            <span class="scl-num">04</span>
-            <div class="scl-content">
-              <span class="scl-title">Парфюмерная анкета</span>
-              <span class="scl-desc">Пошаговый подбор вашего звучания за 1 минуту</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="smo-clean-item">
-          <a href="#certificates" class="smo-clean-link" data-index="05">
-            <span class="scl-num">05</span>
-            <div class="scl-content">
-              <span class="scl-title">Подарочные сертификаты</span>
-              <span class="scl-desc">Именные карты в крафтовом конверте с сургучом</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="smo-clean-item">
-          <a href="#consultation" class="smo-clean-link" data-index="06">
-            <span class="scl-num">06</span>
-            <div class="scl-content">
-              <span class="scl-title">Консультация с основателем</span>
-              <span class="scl-desc">Индивидуальный разбор и аудит гардероба</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="smo-clean-item">
-          <a href="#tester-guide" class="smo-clean-link" data-index="07">
-            <span class="scl-num">07</span>
-            <div class="scl-content">
-              <span class="scl-title">Что такое тестер?</span>
-              <span class="scl-desc">Гид от эксперта & выгода до 40% на оригинале</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="smo-clean-item">
-          <a href="#reviews" class="smo-clean-link" data-index="08">
-            <span class="scl-num">08</span>
-            <div class="scl-content">
-              <span class="scl-title">Отзывы & Распаковки</span>
-              <span class="scl-desc">1 200+ живых историй и фото клиентов</span>
-            </div>
-            <span class="scl-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </nav>
-
-      <!-- Minimal Refined Footer -->
-      <div class="smo-clean-footer">
-        <div class="smo-clean-direct">
-          <span class="scd-hint">Связь с Владимиром:</span>
-          <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="scd-tg-link">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-            </svg>
-            <span>@volodiumparfum</span>
-          </a>
-          <a href="tel:+79951541544" class="scd-tel-link">+7 (995) 154-15-44</a>
-        </div>
-        <div class="smo-clean-note">
-          <span>Москва • Доставка СДЭК по всей России</span>
+        <div class="v-drawer-group">
+          <span class="v-drawer-group-title">Экспертиза & Сервис</span>
+          <nav class="v-drawer-nav">
+            <a href="#consultation" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Консультация Владимира</span>
+              <span class="vdl-note">Очно в Москве / Онлайн</span>
+            </a>
+            <a href="#tester-guide" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Что такое тестер?</span>
+              <span class="vdl-note">Гид эксперта & выгода</span>
+            </a>
+            <a href="#certificates" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Подарочные сертификаты</span>
+              <span class="vdl-note">Сургучная печать</span>
+            </a>
+            <a href="#reviews" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-title">Отзывы & Распаковки</span>
+              <span class="vdl-note">Опыт клиентов</span>
+            </a>
+          </nav>
         </div>
       </div>
 
-    </div>
+      <!-- Drawer Footer -->
+      <div class="v-drawer-footer">
+        <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="v-drawer-tg-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+          </svg>
+          <span>Написать Владимиру в Telegram</span>
+        </a>
+        <div class="v-drawer-contact-line">
+          <a href="tel:+79951541544" class="v-drawer-phone">+7 (995) 154-15-44</a>
+          <span class="v-drawer-loc">Москва, Тверская • Доставка по всей РФ</span>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <!-- Hero Section -->
@@ -1422,39 +1367,35 @@
         <!-- 1 СПОСОБ: Подбор онлайн -->
         <div class="consult-method-card">
           <div class="method-card-media">
-            <img src="assets/img/consultation/consult_online_mandarin.png" alt="Подбор ароматов онлайн" loading="lazy">
-            <span class="method-card-badge">ОНЛАЙН-ФОРМАТ</span>
+            <img src="assets/img/consultation/consult_online_box.jpg" alt="Онлайн-подбор парфюмерного гардероба" loading="lazy">
+            <span class="method-card-badge">ОНЛАЙН-ПОДБОР</span>
           </div>
 
           <div class="method-card-body">
             <div class="method-card-header-block">
-              <h3 class="method-card-heading">Подбор ароматов онлайн</h3>
-              <span class="method-card-subheading">Индивидуальный разбор по парфюмерной анкете</span>
-            </div>
-
-            <div class="method-card-quote">
-              «Глубокий психологический анализ и авторская анкета позволяют с точностью до ноты подобрать композиции, которые вызовут у вас искренний вау-эффект.»
+              <h3 class="method-card-heading">Подбор по парфюмерной анкете</h3>
+              <span class="method-card-subheading">Персональный разбор ольфакторного профиля за 1 минуту</span>
             </div>
 
             <ul class="method-checklist">
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Психологический разбор ольфакторных предпочтений</span>
+                <span>Анализ ваших предпочтений, характера и желаемого шлейфа</span>
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Личная связь и консультация через Telegram</span>
+                <span>Прямой контакт и рекомендации основателя в Telegram</span>
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Сборка персонального Secret Box или сета отливантов</span>
+                <span>Сборка персонального сета отливантов или Secret Box</span>
               </li>
             </ul>
 
             <div class="method-footer-row">
               <div class="method-price-box">
                 <span class="method-price-amount">0 ₽</span>
-                <span class="method-price-note">Бесплатно при заказе</span>
+                <span class="method-price-note">Входит в стоимость сета</span>
               </div>
               <div class="method-btns-wrap">
                 <a href="#quiz" class="btn-primary method-action-btn">Заполнить анкету →</a>
@@ -1466,24 +1407,20 @@
         <!-- 2 СПОСОБ: Офлайн в Москве -->
         <div class="consult-method-card hit">
           <div class="method-card-media">
-            <img src="assets/img/consultation/consult_offline_leather_case.png" alt="Офлайн подбор парфюмерного гардероба в Москве" loading="lazy">
+            <img src="assets/img/consultation/consult_offline_session.jpg" alt="Очная консультация в Москве с чемоданом селектива" loading="lazy">
             <span class="method-card-badge gold-badge">★ ОЧНАЯ ВСТРЕЧА В МОСКВЕ ★</span>
           </div>
 
           <div class="method-card-body">
             <div class="method-card-header-block">
-              <h3 class="method-card-heading">Офлайн подбор в Москве</h3>
-              <span class="method-card-subheading">Личная сессия с чемоданом на 150+ редких распивов</span>
-            </div>
-
-            <div class="method-card-quote">
-              «45–60 минут в уютной обстановке в центре Москвы. Встреча проходит с профессиональной аромапапкой редких нишевых шедевров.»
+              <h3 class="method-card-heading">Личная сессия в Москве</h3>
+              <span class="method-card-subheading">Индивидуальный разбор гардероба с чемоданом на 150+ ароматов</span>
             </div>
 
             <ul class="method-checklist">
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Профессиональная аромапапка с 150+ редкими ароматами</span>
+                <span>Чемодан с аромапапкой на 150+ селективных композиций</span>
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1491,14 +1428,14 @@
               </li>
               <li>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Полная ревизия и систематизация вашего гардероба</span>
+                <span>45–60 минут в уютной атмосфере в центре Москвы</span>
               </li>
             </ul>
 
             <div class="method-footer-row">
               <div class="method-price-box">
                 <span class="method-price-amount">5 000 ₽</span>
-                <span class="method-price-note">45–60 минут личной сессии</span>
+                <span class="method-price-note">45–60 минут индивидуально</span>
               </div>
               <div class="method-btns-wrap">
                 <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20%D0%B2%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B5%20(5%20000%20%D1%80%D1%83%D0%B1)" target="_blank" class="btn-primary method-action-btn">Записаться на встречу →</a>
@@ -1515,27 +1452,74 @@
   <section class="section-padding reviews-section" id="reviews">
     <div class="container">
       <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
-        <span class="section-tag">Реальный опыт клиентов</span>
-        <h2 class="section-title">«Мои слова не голословны»</h2>
+        <span class="section-tag">Живой опыт</span>
+        <h2 class="section-title">Распаковки и отзывы</h2>
         <p class="section-descr">
-          Живые скриншоты переписок, распаковок и искренних эмоций из нашего Telegram-канала. Более 1 200 клиентов уже доверили свой парфюмерный гардероб Владимиру Вацику.
+          Честные впечатления клиентов о стойкости, подборе ароматов и авторской упаковке заказов.
         </p>
       </div>
 
-      <!-- Authentic Telegram Unboxing & Reviews Board Showcase (Compact & Framed) -->
-      <div class="reviews-compact-showcase">
-        <div class="reviews-compact-frame">
-          <img src="assets/img/reviews/reviews_board_real.png" alt="Реальные отзывы и распаковки клиентов Volodium Parfum" loading="lazy">
-        </div>
-        
-        <div class="reviews-compact-footer">
-          <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="btn-primary reviews-channel-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-            </svg>
-            <span>Читать все 1 200+ отзывов в Telegram-канале @volodiumparfum →</span>
-          </a>
-        </div>
+      <!-- Symmetrical Haute Parfumerie Review Gallery -->
+      <div class="reviews-editorial-grid">
+        <article class="review-editorial-card">
+          <div class="rec-top">
+            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <span class="rec-tag">Secret Box</span>
+          </div>
+          <div class="rec-client">
+            <span class="rec-name">Кристина С.</span>
+            <span class="rec-city">Москва</span>
+          </div>
+          <p class="rec-text">
+            «Упаковка просто восторг! Сургучная печать, крафтовый конверт с подробным описанием каждого аромата. Из пяти нот три сразу стали любимыми на каждый день. Спасибо Владимиру за точное попадание!»
+          </p>
+          <div class="rec-photo-thumb">
+            <img src="assets/img/aromaboxes/real_box_open_kraft.jpg" alt="Распаковка Secret Box Volodium" loading="lazy">
+          </div>
+        </article>
+
+        <article class="review-editorial-card">
+          <div class="rec-top">
+            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <span class="rec-tag">Очная встреча</span>
+          </div>
+          <div class="rec-client">
+            <span class="rec-name">Артем Д.</span>
+            <span class="rec-city">Санкт-Петербург</span>
+          </div>
+          <p class="rec-text">
+            «Пришел без четкого понимания, чего именно хочу. Владимир за час продегустировал со мной около 20 редких селективных композиций и подобрал гардероб под костюм и отдых. Настоящий эксперт своего дела.»
+          </p>
+          <div class="rec-photo-thumb">
+            <img src="assets/img/consultation/consult_offline_session.jpg" alt="Очная консультация с Владимиром Вациком" loading="lazy">
+          </div>
+        </article>
+
+        <article class="review-editorial-card">
+          <div class="rec-top">
+            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <span class="rec-tag">Аромабокс</span>
+          </div>
+          <div class="rec-client">
+            <span class="rec-name">Мария Л.</span>
+            <span class="rec-city">Казань</span>
+          </div>
+          <p class="rec-text">
+            «Стойкость потрясающая — шлейф держится с утра до вечера. Очень удобно сначала примерить итальянские отливанты перед заказом полного флакона. Заказываю уже третий сет.»
+          </p>
+          <div class="rec-photo-thumb">
+            <img src="assets/img/aromaboxes/real_box_white_closed.jpg" alt="Фирменный бокс Volodium с лентой" loading="lazy">
+          </div>
+        </article>
+      </div>
+
+      <div class="reviews-concierge-footer">
+        <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="reviews-tg-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+          </svg>
+          <span>Telegram-канал бутика: распаковки и свежие поступления</span>
+        </a>
       </div>
     </div>
   </section>
@@ -2499,7 +2483,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js?v=20261024_06"></script>
-  <script src="assets/js/app.js?v=20261024_06"></script>
+  <script src="assets/data/perfumes.js?v=20261024_07"></script>
+  <script src="assets/js/app.js?v=20261024_07"></script>
 </body>
 </html>

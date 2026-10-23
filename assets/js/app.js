@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initCookieBanner();
   initSmoothScroll();
-  initSaiseiMenu();
+  initVolodiumDrawer();
   init3DTiltCards();
   initFloatingBackTop();
   initQuickNav();
@@ -640,31 +640,18 @@ function renderAromaBoxes() {
         </div>
 
         <div class="aroma-box-content">
-          <div class="aroma-box-top-meta">
-            <span class="aroma-box-tag">5 нишевых композиций</span>
-            <span class="aroma-box-original-tag">100% оригинал</span>
-          </div>
-
           <h3 class="aroma-box-title box-open-modal" data-box-id="${box.id}" role="button" tabindex="0">${escapeHtml(box.name)}</h3>
           <p class="aroma-box-short-subtitle">${escapeHtml(box.shortSubtitle || '')}</p>
 
           <div class="box-composition-preview box-open-modal" data-box-id="${box.id}" role="button" tabindex="0" title="Нажмите, чтобы открыть подробный состав и ноты сета">
-            <div class="bcp-row">
-              <span class="bcp-sparkle">✦</span>
-              <span class="bcp-summary">5 композиций: ${(box.perfumes || []).slice(0, 2).map(p => p.split('—')[0]?.trim()).join(', ')} + еще 3</span>
-            </div>
-            <span class="bcp-action">Состав сета & пирамиды →</span>
+            <span class="bcp-action">✦ Состав сета (5 ароматов) →</span>
           </div>
 
           <div class="aroma-box-vol-block">
-            <div class="aroma-box-vol-header">
-              <span class="aroma-box-vol-title">Выберите объем сета:</span>
-              <span class="box-spray-hint" id="spray-hint-${box.id}">${sprayHints[currentVol] || '~45 распылений'}</span>
-            </div>
             <div class="volume-selector aroma-box-vol-selector">
               ${availableVols.map(v => `
                 <button type="button" class="volume-btn vol-btn-${box.id} ${currentVol === v ? 'active' : ''}" data-vol="${v}">
-                  ${volLabels[v] || v}
+                  ${v === '3ml' ? '5 x 3 мл' : v === '5ml' ? '5 x 5 мл' : v === '10ml' ? '5 x 10 мл' : v}
                 </button>
               `).join('')}
             </div>
@@ -1849,30 +1836,30 @@ function initSmoothScroll() {
 }
 
 /* ==========================================================================
-   Saisei 3-Line Menu & Split Editorial Overlay Controller
+   Bespoke Volodium Boutique Drawer Controller (100% Volodium Identity)
    ========================================================================== */
-function initSaiseiMenu() {
-  const menuBtn = document.getElementById('saiseiMenuBtn');
-  const menuOverlay = document.getElementById('saiseiMenuOverlay');
-  const labelEl = menuBtn ? menuBtn.querySelector('.smt-label') : null;
+function initVolodiumDrawer() {
+  const menuBtn = document.getElementById('volodiumMenuBtn') || document.getElementById('saiseiMenuBtn');
+  const drawerOverlay = document.getElementById('volodiumDrawer') || document.getElementById('saiseiMenuOverlay');
+  const closeBtn = document.getElementById('vDrawerCloseBtn') || document.getElementById('smoCleanCloseBtn');
+  const labelEl = menuBtn ? menuBtn.querySelector('.vmt-label, .smt-label') : null;
 
-  function openMenu() {
-    if (!menuOverlay) return;
-    menuOverlay.classList.add('is-open');
-    menuOverlay.setAttribute('aria-hidden', 'false');
+  function openDrawer() {
+    if (!drawerOverlay) return;
+    drawerOverlay.classList.add('is-open');
+    drawerOverlay.setAttribute('aria-hidden', 'false');
     if (menuBtn) {
       menuBtn.classList.add('is-active');
       menuBtn.setAttribute('aria-expanded', 'true');
       if (labelEl) labelEl.textContent = 'ЗАКРЫТЬ';
     }
     document.body.style.overflow = 'hidden';
-    if (typeof playChime === 'function') playChime(520);
   }
 
-  function closeMenu() {
-    if (!menuOverlay) return;
-    menuOverlay.classList.remove('is-open');
-    menuOverlay.setAttribute('aria-hidden', 'true');
+  function closeDrawer() {
+    if (!drawerOverlay) return;
+    drawerOverlay.classList.remove('is-open');
+    drawerOverlay.setAttribute('aria-hidden', 'true');
     if (menuBtn) {
       menuBtn.classList.remove('is-active');
       menuBtn.setAttribute('aria-expanded', 'false');
@@ -1881,11 +1868,16 @@ function initSaiseiMenu() {
     document.body.style.overflow = '';
   }
 
-  function toggleMenu() {
-    if (menuOverlay && menuOverlay.classList.contains('is-open')) {
-      closeMenu();
+  function toggleDrawer(force) {
+    if (typeof force === 'boolean') {
+      if (force) openDrawer();
+      else closeDrawer();
+      return;
+    }
+    if (drawerOverlay && drawerOverlay.classList.contains('is-open')) {
+      closeDrawer();
     } else {
-      openMenu();
+      openDrawer();
     }
   }
 
@@ -1893,48 +1885,42 @@ function initSaiseiMenu() {
     menuBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      toggleMenu();
+      toggleDrawer();
     });
   }
 
-  // Close when clicking clean close button
-  const cleanCloseBtn = document.getElementById('smoCleanCloseBtn');
-  if (cleanCloseBtn) {
-    cleanCloseBtn.addEventListener('click', (e) => {
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      closeMenu();
+      closeDrawer();
     });
   }
 
-  // Close when clicking nav links inside overlay
-  if (menuOverlay) {
-    menuOverlay.querySelectorAll('.smo-clean-link, .smo-nav-link').forEach(link => {
+  if (drawerOverlay) {
+    drawerOverlay.querySelectorAll('.v-drawer-link, .smo-clean-link').forEach(link => {
       link.addEventListener('click', () => {
-        closeMenu();
+        closeDrawer();
       });
-    });
-
-    // Close on backdrop click (click outside panels)
-    menuOverlay.addEventListener('click', (e) => {
-      if (e.target === menuOverlay) {
-        closeMenu();
-      }
     });
   }
 
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (menuOverlay && menuOverlay.classList.contains('is-open')) {
-        closeMenu();
+      if (drawerOverlay && drawerOverlay.classList.contains('is-open')) {
+        closeDrawer();
       }
       closeBusinessCardModal();
     }
   });
 
-  window.openSaiseiMenu = openMenu;
-  window.closeSaiseiMenu = closeMenu;
-  window.toggleSaiseiMenu = toggleMenu;
+  window.toggleVolodiumMenu = toggleDrawer;
+  window.openVolodiumMenu = openDrawer;
+  window.closeVolodiumMenu = closeDrawer;
+  // Backward compatibility aliases
+  window.openSaiseiMenu = openDrawer;
+  window.closeSaiseiMenu = closeDrawer;
+  window.toggleSaiseiMenu = toggleDrawer;
 }
 
 /* ==========================================================================

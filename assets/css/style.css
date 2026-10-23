@@ -5539,39 +5539,36 @@ img {
 }
 
 /* ==========================================================================
-   Hero Section Unified Brand Typography ("Ты пахнешь SEXY")
+   Hero Section Unified Brand Typography (Haute Parfumerie Editorial)
    ========================================================================== */
 .hero-title-top {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
-  letter-spacing: 0.25em;
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  letter-spacing: 0.24em;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--bordo-primary);
-  margin-bottom: 0.6rem;
+  color: var(--bordo-primary, #812020);
+  margin-bottom: 0.75rem;
 }
 
 .hero-title-main {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6.5vw, 5.2rem);
-  line-height: 1.08;
+  font-size: clamp(2.8rem, 5.8vw, 4.8rem);
+  line-height: 1.1;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: #111216;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.hero-sexy-word {
+.hero-serif-accent {
   font-family: var(--font-serif);
-  font-weight: 700;
-  color: var(--bordo-primary);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  display: inline-block;
-  font-style: normal;
-  position: relative;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--bordo-primary, #812020);
+  letter-spacing: 0.01em;
 }
 
 

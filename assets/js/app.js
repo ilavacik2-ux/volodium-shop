@@ -1923,6 +1923,21 @@ function initVolodiumDrawer() {
   window.toggleSaiseiMenu = toggleDrawer;
 }
 
+function switchTesterExpertImg(btn, src) {
+  const img = document.getElementById('testerExpertImg');
+  if (img) {
+    img.style.opacity = '0.3';
+    setTimeout(() => {
+      img.src = src;
+      img.style.opacity = '1';
+    }, 140);
+  }
+  const tabs = btn && btn.parentElement ? btn.parentElement.querySelectorAll('.tec-tab') : [];
+  tabs.forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+window.switchTesterExpertImg = switchTesterExpertImg;
+
 /* ==========================================================================
    Business Card Print Center & QR Modal Controller
    ========================================================================== */

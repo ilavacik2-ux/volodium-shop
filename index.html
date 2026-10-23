@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024_07">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024_08">
 </head>
 <body>
 
@@ -1629,71 +1629,116 @@
         </div>
       </div>
 
-      <!-- 4 Key Differences Cards (Отличия тестера от товарной версии) -->
+      <!-- 4 Key Differences Section (Split Editorial: Vladimir Card + 4 Differences) -->
       <div class="tester-diff-header">
         <span class="section-tag">Детальный разбор</span>
         <h3 class="section-title">4 ключевых отличия тестера от товарного флакона</h3>
         <p class="section-descr">Никаких секретов: наглядно показываем, на чём экономит производитель при производстве демонстрационных образцов.</p>
       </div>
 
-      <div class="tester-diff-grid">
-        <!-- Diff 1: Упаковка -->
-        <div class="tester-diff-card">
-          <div class="tdc-card-top">
-            <span class="tdc-step-num">01</span>
-            <span class="tdc-badge">УПАКОВКА</span>
+      <div class="tester-diff-layout">
+        <!-- Left: Vladimir Vatsik Expert Editorial Card -->
+        <aside class="tester-expert-card">
+          <div class="tec-header">
+            <div class="tec-brand">
+              <span class="tec-monogram">[ V ]</span>
+              <span class="tec-sub">ЭКСПЕРТИЗА BURO</span>
+            </div>
+            <span class="tec-status-badge">100% ОРИГИНАЛ</span>
           </div>
-          <h4 class="tdc-title">Транспортный картон</h4>
-          <p class="tdc-text">
-            Более простой материал упаковки — так называемая <strong>«техническая (транспортная) коробка»</strong> из белого или крафтового картона. Создана для безопасной транспортировки флакона без затрат на глянец, тиснение золотом и слюду.
-          </p>
-          <div class="tdc-card-footer">
-            <span class="tdc-footer-highlight">✓ Экономия: до 15% себестоимости</span>
-          </div>
-        </div>
 
-        <!-- Diff 2: Крышка -->
-        <div class="tester-diff-card">
-          <div class="tdc-card-top">
-            <span class="tdc-step-num">02</span>
-            <span class="tdc-badge">КРЫШКА</span>
+          <div class="tec-photo-wrap">
+            <img id="testerExpertImg" src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик — эксперт по нишевой парфюмерии Volodium" loading="lazy">
+            <div class="tec-tabs">
+              <button type="button" class="tec-tab active" data-img="assets/img/editorial/vladimir_atomizer_portrait.jpg" onclick="switchTesterExpertImg(this, 'assets/img/editorial/vladimir_atomizer_portrait.jpg')">01 Атомайзер</button>
+              <button type="button" class="tec-tab" data-img="assets/img/editorial/vladimir_flacon_chair.jpg" onclick="switchTesterExpertImg(this, 'assets/img/editorial/vladimir_flacon_chair.jpg')">02 С флаконом</button>
+            </div>
           </div>
-          <h4 class="tdc-title">Колпачок распылителя</h4>
-          <p class="tdc-text">
-            В большинстве случаев тестер поставляется <strong>без тяжелой дизайнерской крышечки</strong> или с пластиковым транспортировочным колпачком, так как в парфюмерных бутиках флакон постоянно используют для демонстрации на блоттерах.
-          </p>
-          <div class="tdc-card-footer">
-            <span class="tdc-footer-highlight">✓ Функция распыления сохранена на 100%</span>
-          </div>
-        </div>
 
-        <!-- Diff 3: Маркировка -->
-        <div class="tester-diff-card">
-          <div class="tdc-card-top">
-            <span class="tdc-step-num">03</span>
-            <span class="tdc-badge">МАРКИРОВКА</span>
+          <div class="tec-bio">
+            <h4 class="tec-name">Владимир Вацик</h4>
+            <span class="tec-role">Основатель Volodium Parfum & байер нишевых домов</span>
+            <p class="tec-quote">
+              «Тестер — это главный секрет парфюмерных коллекционеров. Тот же благородный концентрат из тех же чанов фабрики, но без переплаты за подарочный глянец, который всё равно выбрасывается.»
+            </p>
+            <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D0%BB%D0%B8%D1%87%D0%B8%D1%8E%20%D1%82%D0%B5%D1%81%D1%82%D0%B5%D1%80%D0%B0..." target="_blank" class="tec-tg-action">
+              <span>Спросить Владимира о тестере в TG →</span>
+            </a>
           </div>
-          <h4 class="tdc-title">Заводской штамп</h4>
-          <p class="tdc-text">
-            У горлышка, на стекле, на наклейке или на дне присутствует фирменная гравировка или надпись <strong>«DEMONSTRATION TESTER»</strong> и/или <strong>«NOT FOR SALE»</strong> — официальный признак заводского демонстрационного образца.
-          </p>
-          <div class="tdc-card-footer">
-            <span class="tdc-footer-highlight">✓ 100% гарантия подлинности бренда</span>
-          </div>
-        </div>
+        </aside>
 
-        <!-- Diff 4: Объем -->
-        <div class="tester-diff-card">
-          <div class="tdc-card-top">
-            <span class="tdc-step-num">04</span>
-            <span class="tdc-badge">ОБЪЕМ</span>
+        <!-- Right: 4 Key Differences Cards with Authentic Evidence Thumbs -->
+        <div class="tester-diff-grid">
+          <!-- Diff 1: Упаковка -->
+          <div class="tester-diff-card">
+            <div class="tdc-card-top">
+              <span class="tdc-step-num">01</span>
+              <span class="tdc-badge">УПАКОВКА</span>
+            </div>
+            <div class="tdc-thumb">
+              <img src="assets/img/tester_guide/diff_packaging_box.jpg" alt="Транспортная техническая коробка тестера" loading="lazy">
+            </div>
+            <h4 class="tdc-title">Транспортный картон</h4>
+            <p class="tdc-text">
+              Более простой материал упаковки — так называемая <strong>«техническая коробка»</strong> из белого или крафтового картона. Создана для безопасной доставки флакона без затрат на глянец, тиснение фольгой и слюду.
+            </p>
+            <div class="tdc-card-footer">
+              <span class="tdc-footer-highlight">✓ Экономия: до 15% себестоимости</span>
+            </div>
           </div>
-          <h4 class="tdc-title">Максимальный литраж</h4>
-          <p class="tdc-text">
-            Производители выпускают тестеры преимущественно <strong>в максимальных объемах — 90, 100 или 125 мл</strong>. Для покупателя это двойная выгода: максимальное количество драгоценных миллилитров по минимальной цене за 1 мл.
-          </p>
-          <div class="tdc-card-footer">
-            <span class="tdc-footer-highlight">✓ Минимальная стоимость за 1 мл</span>
+
+          <!-- Diff 2: Крышка -->
+          <div class="tester-diff-card">
+            <div class="tdc-card-top">
+              <span class="tdc-step-num">02</span>
+              <span class="tdc-badge">КРЫШКА</span>
+            </div>
+            <div class="tdc-thumb">
+              <img src="assets/img/tester_guide/diff_cap_spray.jpg" alt="Колпачок распылителя тестера" loading="lazy">
+            </div>
+            <h4 class="tdc-title">Колпачок распылителя</h4>
+            <p class="tdc-text">
+              В большинстве случаев тестер поставляется <strong>без тяжелой дизайнерской крышечки</strong> или с защитным колпачком, так как в бутиках флакон постоянно используют для демонстрации на блоттерах.
+            </p>
+            <div class="tdc-card-footer">
+              <span class="tdc-footer-highlight">✓ Функция распыления на 100%</span>
+            </div>
+          </div>
+
+          <!-- Diff 3: Маркировка -->
+          <div class="tester-diff-card">
+            <div class="tdc-card-top">
+              <span class="tdc-step-num">03</span>
+              <span class="tdc-badge">МАРКИРОВКА</span>
+            </div>
+            <div class="tdc-thumb">
+              <img src="assets/img/tester_guide/diff_marking_stamp.jpg" alt="Заводской штамп TESTER NOT FOR SALE" loading="lazy">
+            </div>
+            <h4 class="tdc-title">Заводской штамп</h4>
+            <p class="tdc-text">
+              У горлышка, на стекле, на наклейке или коробке присутствует фирменная гравировка или надпись <strong>«DEMONSTRATION TESTER»</strong> / <strong>«NOT FOR SALE»</strong> — признак заводского демонстрационного образца.
+            </p>
+            <div class="tdc-card-footer">
+              <span class="tdc-footer-highlight">✓ 100% гарантия подлинности бренда</span>
+            </div>
+          </div>
+
+          <!-- Diff 4: Объем -->
+          <div class="tester-diff-card">
+            <div class="tdc-card-top">
+              <span class="tdc-step-num">04</span>
+              <span class="tdc-badge">ОБЪЕМ</span>
+            </div>
+            <div class="tdc-thumb">
+              <img src="assets/img/tester_guide/diff_volume_flacon.jpg" alt="Флакон тестера максимального объема 100 мл" loading="lazy">
+            </div>
+            <h4 class="tdc-title">Максимальный литраж</h4>
+            <p class="tdc-text">
+              Производители выпускают тестеры преимущественно <strong>в максимальных объемах — 90, 100 или 125 мл</strong>. Для покупателя это двойная выгода: максимальное количество драгоценных миллилитров по минимальной цене за 1 мл.
+            </p>
+            <div class="tdc-card-footer">
+              <span class="tdc-footer-highlight">✓ Минимальная стоимость за 1 мл</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2483,7 +2528,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js?v=20261024_07"></script>
-  <script src="assets/js/app.js?v=20261024_07"></script>
+  <script src="assets/data/perfumes.js?v=20261024_08"></script>
+  <script src="assets/js/app.js?v=20261024_08"></script>
 </body>
 </html>

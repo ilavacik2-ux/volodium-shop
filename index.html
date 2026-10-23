@@ -20,36 +20,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024_05">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024_06">
 </head>
 <body>
 
-  <!-- Cinematic Luxury Intro Screen (Pure Minimalist White & Grand Animated Ink Typography) -->
+  <!-- Cinematic Luxury Intro Screen (Haute Parfumerie Gold Shimmer & Monogram Crest) -->
   <aside class="monroe-intro-overlay" id="monroeIntro" role="dialog" aria-modal="true" aria-label="Volodium Parfum">
+    <div class="monroe-intro-frame-border" aria-hidden="true"></div>
     <div class="monroe-intro-content">
       <div class="monroe-brand-stage" id="monroeBrandStage">
-        <!-- Monumental Letter-by-Letter Drawing Title -->
+        <!-- Atelier Crest Monogram [ V ] -->
+        <div class="monroe-intro-crest">
+          <span class="mic-wing left" aria-hidden="true"></span>
+          <div class="mic-emblem" aria-label="Volodium Monogram">
+            <span class="mic-v">V</span>
+          </div>
+          <span class="mic-wing right" aria-hidden="true"></span>
+        </div>
+
+        <!-- Monumental Liquid Gold Shimmer Brand Name -->
         <h1 class="monroe-grand-title" id="monroeGrandTitle" aria-label="VOLODIUM">
-          <span class="draw-char" style="--char-i: 0">V</span>
-          <span class="draw-char" style="--char-i: 1">O</span>
-          <span class="draw-char" style="--char-i: 2">L</span>
-          <span class="draw-char" style="--char-i: 3">O</span>
-          <span class="draw-char" style="--char-i: 4">D</span>
-          <span class="draw-char" style="--char-i: 5">I</span>
-          <span class="draw-char" style="--char-i: 6">U</span>
-          <span class="draw-char" style="--char-i: 7">M</span>
-          <span class="draw-pen-nib" id="drawPenNib" aria-hidden="true"></span>
+          <span class="monroe-title-letter" style="--l-idx: 0">V</span>
+          <span class="monroe-title-letter" style="--l-idx: 1">O</span>
+          <span class="monroe-title-letter" style="--l-idx: 2">L</span>
+          <span class="monroe-title-letter" style="--l-idx: 3">O</span>
+          <span class="monroe-title-letter" style="--l-idx: 4">D</span>
+          <span class="monroe-title-letter" style="--l-idx: 5">I</span>
+          <span class="monroe-title-letter" style="--l-idx: 6">U</span>
+          <span class="monroe-title-letter" style="--l-idx: 7">M</span>
         </h1>
         
-        <!-- Grand Subtitle 'PARFUM' Drawing in Wine Silk -->
-        <div class="monroe-grand-sub" id="monroeGrandSub" aria-label="PARFUM">
-          <span class="draw-sub-char" style="--sub-i: 0">P</span>
-          <span class="draw-sub-char" style="--sub-i: 1">A</span>
-          <span class="draw-sub-char" style="--sub-i: 2">R</span>
-          <span class="draw-sub-char" style="--sub-i: 3">F</span>
-          <span class="draw-sub-char" style="--sub-i: 4">U</span>
-          <span class="draw-sub-char" style="--sub-i: 5">M</span>
+        <!-- Grand Subtitle 'HAUTE PARFUMERIE' -->
+        <div class="monroe-grand-sub" id="monroeGrandSub" aria-label="Haute Parfumerie">
+          <span class="mgs-word">HAUTE</span>
+          <span class="mgs-dot" aria-hidden="true">•</span>
+          <span class="mgs-word">PARFUMERIE</span>
         </div>
+
+        <button type="button" class="monroe-enter-btn" id="monroeEnterBtn" onclick="window.dismissMonroeIntro && window.dismissMonroeIntro()">
+          <span>Войти в бутик</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
       </div>
     </div>
   </aside>
@@ -274,9 +287,9 @@
           </div>
 
           <!-- Quick Toggle for Full Background Mode -->
-          <button type="button" class="hero-bg-mode-btn" id="heroBgModeBtn" onclick="window.toggleHeroBgMode()" title="Переключить в режим большого фона">
+          <button type="button" class="hero-bg-mode-btn" id="heroBgModeBtn" onclick="window.toggleHeroBgMode()" title="Включить атмосферный фон во весь экран">
             <span class="hmb-icon">🌌</span>
-            <span class="hmb-label">Большой фон экрана</span>
+            <span class="hmb-label">Атмосферный фон</span>
           </button>
         </div>
 
@@ -2486,7 +2499,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js?v=20261024_05"></script>
-  <script src="assets/js/app.js?v=20261024_05"></script>
+  <script src="assets/data/perfumes.js?v=20261024_06"></script>
+  <script src="assets/js/app.js?v=20261024_06"></script>
 </body>
 </html>

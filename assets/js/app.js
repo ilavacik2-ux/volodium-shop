@@ -39,7 +39,7 @@ function initMonroeIntro() {
   // Grace period: ignore accidental clicks and reload keystrokes (Cmd+R, Ctrl+R, F5)
   setTimeout(() => {
     canDismiss = true;
-  }, 200);
+  }, 150);
 
   function dismissIntro() {
     if (autoTimer) {
@@ -49,12 +49,13 @@ function initMonroeIntro() {
     intro.classList.add('hidden');
     document.body.style.overflow = '';
   }
+  window.dismissMonroeIntro = dismissIntro;
 
   function playIntro() {
     canDismiss = false;
     setTimeout(() => {
       canDismiss = true;
-    }, 200);
+    }, 150);
     intro.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     const stage = intro.querySelector('.monroe-brand-stage');
@@ -65,27 +66,26 @@ function initMonroeIntro() {
     if (autoTimer) clearTimeout(autoTimer);
     autoTimer = setTimeout(() => {
       dismissIntro();
-    }, 2800);
+    }, 2400);
   }
 
   if (replayBtn) {
     replayBtn.addEventListener('click', playIntro);
   }
 
-  // Initial auto-dismiss after calligraphic handwriting finishes (~2.7s total)
+  // Initial auto-dismiss after Haute Parfumerie golden foil shimmer (~2.4s)
   autoTimer = setTimeout(() => {
     dismissIntro();
-  }, 2700);
+  }, 2400);
 
   // Click or touch anywhere to enter after grace period
-  intro.addEventListener('click', () => {
+  intro.addEventListener('click', (e) => {
     if (canDismiss) {
       dismissIntro();
     }
   });
 
   // Explicit user keys only (Escape, Enter, Space) after grace period
-  // Completely ignores reload shortcuts (Cmd, Ctrl, Shift, Alt, R, F5)
   window.addEventListener('keydown', (e) => {
     if (!intro.classList.contains('hidden') && canDismiss) {
       if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
@@ -209,6 +209,12 @@ function initHeroLookbook() {
       heroCinematicMode = true;
       const hero = document.getElementById('hero');
       if (hero) hero.classList.add('hero-cinematic-mode');
+      document.body.classList.add('hero-cinematic-active');
+      const item = HERO_LOOKBOOK_ITEMS[heroLookbookIndex];
+      const backdropImg = document.getElementById('heroBackdropImg');
+      if (backdropImg && item) {
+        backdropImg.style.backgroundImage = `url('${item.image}')`;
+      }
       updateHeroBgBtnState();
     }
   } catch (e) {}
@@ -320,7 +326,7 @@ function updateHeroBgBtnState() {
     if (icon) icon.textContent = '🖼️';
     btn.setAttribute('title', 'Вернуться к студийному виду карточки');
   } else {
-    if (label) label.textContent = 'Большой фон экрана';
+    if (label) label.textContent = 'Атмосферный фон';
     if (icon) icon.textContent = '🌌';
     btn.setAttribute('title', 'Включить атмосферный фон во весь экран');
   }
@@ -331,15 +337,18 @@ window.toggleHeroBgMode = function() {
   if (!hero) return;
   heroCinematicMode = !heroCinematicMode;
 
+  const item = HERO_LOOKBOOK_ITEMS[heroLookbookIndex];
+  const backdropImg = document.getElementById('heroBackdropImg');
+
   if (heroCinematicMode) {
     hero.classList.add('hero-cinematic-mode');
-    const item = HERO_LOOKBOOK_ITEMS[heroLookbookIndex];
-    const backdropImg = document.getElementById('heroBackdropImg');
+    document.body.classList.add('hero-cinematic-active');
     if (backdropImg && item) {
       backdropImg.style.backgroundImage = `url('${item.image}')`;
     }
   } else {
     hero.classList.remove('hero-cinematic-mode');
+    document.body.classList.remove('hero-cinematic-active');
   }
 
   updateHeroBgBtnState();

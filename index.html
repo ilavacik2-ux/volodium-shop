@@ -62,16 +62,11 @@
         </div>
       </a>
 
-      <nav class="nav-desktop">
-        <a href="#catalog" class="nav-link">Каталог</a>
+      <nav class="nav-desktop" aria-label="Основная навигация">
+        <a href="#catalog" class="nav-link">Коллекция</a>
         <a href="#aroma-boxes" class="nav-link">Аромабоксы</a>
         <a href="#secret-boxes" class="nav-link">Secret Box</a>
         <a href="#quiz" class="nav-link">Анкета</a>
-        <a href="#certificates" class="nav-link">Сертификаты</a>
-        <a href="#consultation" class="nav-link">Консультация</a>
-        <a href="#tester-guide" class="nav-link">О тестерах</a>
-        <a href="#reviews" class="nav-link">Отзывы</a>
-        <a href="#delivery" class="nav-link">Доставка</a>
       </nav>
 
       <div class="header-actions">
@@ -320,11 +315,10 @@
   <section class="hero" id="hero">
     <!-- Ambient Grand Backdrop Layer (Used in Full-Background Mode) -->
     <div class="hero-backdrop-layer" id="heroBackdropLayer">
-      <div class="hero-backdrop-img" id="heroBackdropImg" style="background-image: url('assets/img/editorial/vladimir_volodium_box.jpg');"></div>
+      <div class="hero-backdrop-img" id="heroBackdropImg" style="background-image: url('assets/img/editorial/vladimir_atomizer_portrait.jpg');"></div>
       <div class="hero-backdrop-gradient"></div>
     </div>
 
-    <canvas id="heroCanvas" class="hero-canvas"></canvas>
     <div class="container hero-grid">
       <div class="hero-content">
         <div class="hero-top-meta">
@@ -346,7 +340,7 @@
         </h1>
 
         <p class="hero-description">
-          Селективная и нишевая парфюмерия, авторские Secret Box и персональный подбор гардероба от эксперта Владимира Вацика. Отливанты от 3 мл для примерки перед покупкой полного флакона.
+          Селективная и нишевая парфюмерия, авторские Secret Box и персональный подбор гардероба от эксперта Владимира Вацика. Отливанты от 3 мл в итальянских тревел-атомайзерах для примерки перед покупкой полного флакона.
         </p>
 
         <div class="hero-actions">
@@ -359,8 +353,8 @@
           <a href="#quiz" class="btn-secondary">
             <span>Парфюмерная анкета</span>
           </a>
-          <a href="#certificates" class="btn-secondary">
-            <span>Сертификаты</span>
+          <a href="#secret-boxes" class="btn-secondary">
+            <span>Secret Box Вацика</span>
           </a>
         </div>
 
@@ -387,39 +381,34 @@
       <!-- Hero Visual Big-Screen Presentation Card & Interactive Lookbook -->
       <div class="hero-visual">
         <div class="hero-lookbook-frame" id="heroLookbookFrame">
-          <!-- Active Photo Stage -->
+          <!-- Active Photo Stage (Clean original photo, no text overlay across face) -->
           <div class="hero-card-img-wrap">
-            <img id="heroLookbookImg" src="assets/img/editorial/vladimir_volodium_box.jpg" alt="Владимир Вацик — Основатель Volodium Parfum" fetchpriority="high">
+            <img id="heroLookbookImg" src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик — Основатель Volodium Parfum" fetchpriority="high">
+            <div class="hero-monogram-emblem" aria-hidden="true" title="Volodium Haute Parfumerie">
+              <span class="hme-v">V</span>
+            </div>
           </div>
 
-          <div class="hero-card-overlay">
-            <span class="hero-card-tag" id="heroLookbookTag">ОСНОВАТЕЛЬ & АВТОРСКИЙ СУРГУЧНЫЙ БОКС</span>
-            <h3 class="hero-card-title" id="heroLookbookTitle">ВЛАДИМИР ВАЦИК</h3>
-            <span class="hero-card-sub" id="heroLookbookSub">«Влюблен в парфюмерию и вдохновляю этой любовью других!»</span>
+          <!-- Architectural Museum Caption Block (Neatly positioned below photo) -->
+          <div class="hero-lookbook-caption">
+            <div class="hlc-meta">
+              <span class="hlc-tag" id="heroLookbookTag">STUDIO EDITORIAL • 01</span>
+              <span class="hlc-edition">HAUTE PARFUMERIE</span>
+            </div>
+            <h3 class="hlc-title" id="heroLookbookTitle">ВЛАДИМИР ВАЦИК</h3>
+            <p class="hlc-sub" id="heroLookbookSub">«Парфюм как чувственное продолжение вашей индивидуальности»</p>
           </div>
 
-          <!-- Floating Stat Badge 1 -->
-          <div class="hero-float-stat-badge badge-top-right">
-            <span class="hfs-num">1 200</span>
-            <span class="hfs-label">довольных клиентов</span>
-          </div>
-
-          <!-- Floating Stat Badge 2 -->
-          <div class="hero-float-stat-badge badge-mid-left">
-            <span class="hfs-num">300+</span>
-            <span class="hfs-label">ароматов в коллекции</span>
-          </div>
-
-          <!-- Lookbook Interactive Controls / Photo Switcher -->
-          <div class="hero-lookbook-nav" id="heroLookbookNav">
-            <button type="button" class="hlb-btn active" data-index="0" onclick="window.switchHeroLookbook(0)" title="Владимир с фирменным сургучным боксом Volodium">
+          <!-- Lookbook Interactive Controls / 4 Curated Photo Switches -->
+          <div class="hero-lookbook-nav" id="heroLookbookNav" role="tablist" aria-label="Смена фотосессии">
+            <button type="button" class="hlb-btn active" data-index="0" onclick="window.switchHeroLookbook(0)" title="Владимир Вацик — студийный портрет с атомайзером">
               <span class="hlb-num">01</span>
-              <span class="hlb-name">Бокс Volodium</span>
+              <span class="hlb-name">Атомайзер</span>
               <span class="hlb-progress"></span>
             </button>
-            <button type="button" class="hlb-btn" data-index="1" onclick="window.switchHeroLookbook(1)" title="Черно-белая фотосессия в нишевом салоне Orto Parisi">
+            <button type="button" class="hlb-btn" data-index="1" onclick="window.switchHeroLookbook(1)" title="С фирменным боксом Volodium">
               <span class="hlb-num">02</span>
-              <span class="hlb-name">Салон Orto Parisi</span>
+              <span class="hlb-name">Бокс Volodium</span>
               <span class="hlb-progress"></span>
             </button>
             <button type="button" class="hlb-btn" data-index="2" onclick="window.switchHeroLookbook(2)" title="Частная селективная коллекция">
@@ -427,26 +416,22 @@
               <span class="hlb-name">Коллекция</span>
               <span class="hlb-progress"></span>
             </button>
-            <button type="button" class="hlb-btn" data-index="3" onclick="window.switchHeroLookbook(3)" title="Экспертный распив и золотой атомайзер">
+            <button type="button" class="hlb-btn" data-index="3" onclick="window.switchHeroLookbook(3)" title="Ателье распива Orto Parisi">
               <span class="hlb-num">04</span>
-              <span class="hlb-name">Атомайзер</span>
-              <span class="hlb-progress"></span>
-            </button>
-            <button type="button" class="hlb-btn" data-index="4" onclick="window.switchHeroLookbook(4)" title="Арт-эстетика Parfoholic">
-              <span class="hlb-num">05</span>
-              <span class="hlb-name">Эстетика</span>
+              <span class="hlb-name">Monochrome</span>
               <span class="hlb-progress"></span>
             </button>
           </div>
         </div>
 
-        <!-- Floating VIP Pill -->
-        <a href="#consultation" class="hero-float-pill" title="Записаться на консультацию">
-          <img src="assets/img/editorial/vladimir_blotters_monochrome.jpg" alt="Владимир Вацик" class="float-pill-avatar" style="border-radius: 8px;">
-          <div class="float-pill-text">
-            <span class="float-pill-title">Парфюмерная консультация</span>
-            <span class="float-pill-desc">2 способа: онлайн или встреча в Москве</span>
+        <!-- Clean Architectural Consultation Invite (Neatly below frame) -->
+        <a href="#consultation" class="hero-consult-invite-card" title="Записаться на очную консультацию или онлайн-подбор">
+          <div class="hcic-icon-wrap" aria-hidden="true">✦</div>
+          <div class="hcic-body">
+            <span class="hcic-title">Парфюмерная консультация Владимира</span>
+            <span class="hcic-sub">Личная встреча в Москве или персональный разбор онлайн</span>
           </div>
+          <span class="hcic-arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>

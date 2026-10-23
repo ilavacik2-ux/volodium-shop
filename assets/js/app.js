@@ -168,34 +168,28 @@ function initHeroCanvas() {
    ========================================================================== */
 const HERO_LOOKBOOK_ITEMS = [
   {
-    image: 'assets/img/editorial/vladimir_volodium_box.jpg',
-    tag: 'ОСНОВАТЕЛЬ & АВТОРСКИЙ СУРГУЧНЫЙ БОКС',
-    title: 'ВЛАДИМИР ВАЦИК',
-    sub: '«Влюблен в парфюмерию и вдохновляю этой любовью других!»'
-  },
-  {
-    image: 'assets/img/editorial/vladimir_blotters_monochrome.jpg',
-    tag: 'НИШЕВЫЙ БУТИК • ORTO PARISI SALON',
-    title: 'ИСКУССТВО ПОДБОРА',
-    sub: '«Более 150+ ароматов в коллекции и очные встречи в Москве»'
-  },
-  {
-    image: 'assets/img/editorial/vladimir_flacon_chair.jpg',
-    tag: 'ЧАСТНАЯ КОЛЛЕКЦИЯ • HAUTE PARFUMERIE',
-    title: 'СЕЛЕКТИВНЫЙ ГАРДЕРОБ',
-    sub: '«Нишевые редкости, оригинальные флаконы и батч-код контроль»'
-  },
-  {
     image: 'assets/img/editorial/vladimir_atomizer_portrait.jpg',
-    tag: 'РАСПИВ ОТ 3 МЛ • СТЕКЛЯННЫЙ АТОМАЙЗЕР',
-    title: 'ЗОЛОТОЙ СТАНДАРТ РАСПИВА',
-    sub: '«Металлическая помпа без окисления и удобный тревел-формат»'
+    tag: 'STUDIO EDITORIAL • 01',
+    title: 'ВЛАДИМИР ВАЦИК',
+    sub: '«Парфюм как чувственное продолжение вашей индивидуальности»'
   },
   {
     image: 'assets/img/editorial/vladimir_box_shoulder.jpg',
-    tag: 'EDITORIAL CAMPAIGN • ЧИСТАЯ ЭСТЕТИКА',
-    title: 'ТЫ ПАХНЕШЬ SEXY',
-    sub: '«Парфюм как чувственное продолжение вашей индивидуальности»'
+    tag: 'HAUTE PARFUMERIE • 02',
+    title: 'СЕЛЕКТИВНЫЙ БОКС',
+    sub: '«Каждый сет собирается вручную и сопровождается личным посланием»'
+  },
+  {
+    image: 'assets/img/editorial/vladimir_flacon_chair.jpg',
+    tag: 'PRIVATE SALON • 03',
+    title: 'НИШЕВАЯ КОЛЛЕКЦИЯ',
+    sub: '«Более 277+ редких композиций и очные встречи в Москве»'
+  },
+  {
+    image: 'assets/img/editorial/vladimir_blotters_monochrome.jpg',
+    tag: 'ATELIER NOIR • 04',
+    title: 'ИСКУССТВО РАСПИВА',
+    sub: '«Итальянские стеклянные флаконы и батч-код верификация»'
   }
 ];
 

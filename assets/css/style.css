@@ -249,18 +249,24 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.5rem;
+  gap: 2.5rem;
+  height: 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
+  flex-shrink: 0;
+  min-width: 210px;
+  text-decoration: none;
 }
 
 .brand-logo-img {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
@@ -272,36 +278,44 @@ img {
 .brand-title {
   font-family: var(--font-serif);
   font-size: 1.45rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   color: #111216;
   line-height: 1;
 }
 
 .brand-sub {
   font-size: 0.65rem;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold-primary);
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
+  font-weight: 600;
 }
 
 .nav-desktop {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  gap: 2.75rem;
+  flex: 1;
 }
 
 .nav-link {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #383A42;
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.2rem;
+  transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
-  color: #111216;
+  color: var(--bordo-primary, #812020);
 }
 
 .nav-link::after {
@@ -311,7 +325,7 @@ img {
   left: 0;
   width: 0%;
   height: 2px;
-  background: #111216;
+  background: var(--bordo-primary, #812020);
   transition: width var(--transition-smooth);
 }
 
@@ -322,7 +336,8 @@ img {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .hdr-action-btn, .btn-icon {
@@ -383,7 +398,8 @@ img {
   min-height: calc(100vh - 7rem);
   display: flex;
   align-items: center;
-  padding: 3rem 0 5rem;
+  padding: 3.5rem 0 5rem;
+  background: radial-gradient(circle at 75% 30%, rgba(247, 243, 235, 0.85) 0%, rgba(253, 251, 247, 0.95) 50%, #FAF8F5 100%);
   overflow: hidden;
   transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s ease;
 }
@@ -670,8 +686,10 @@ img {
 .hero-visual {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .hero-lookbook-frame,
@@ -680,24 +698,28 @@ img {
   width: 100%;
   max-width: 480px;
   background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: 22px;
-  padding: 1.25rem;
-  box-shadow: var(--shadow-luxury);
+  border: 1px solid rgba(17, 18, 22, 0.08);
+  border-radius: 24px;
+  padding: 1.15rem;
+  box-shadow: 0 24px 60px rgba(17, 18, 22, 0.08), 0 4px 16px rgba(129, 32, 32, 0.04);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-lookbook-frame:hover {
+  box-shadow: 0 32px 70px rgba(17, 18, 22, 0.12), 0 6px 22px rgba(129, 32, 32, 0.08);
 }
 
 .hero-lookbook-frame .hero-card-img-wrap,
 .hero-card-img-wrap {
   width: 100%;
-  height: 410px;
-  border-radius: 16px;
+  height: 440px;
+  border-radius: 18px;
   overflow: hidden;
   position: relative;
-  background: #111216;
+  background: #15161a;
 }
 
 .hero-lookbook-frame .hero-card-img-wrap img,
@@ -706,106 +728,140 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  transition: opacity 0.4s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+  transition: opacity 0.35s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-lookbook-frame:hover .hero-card-img-wrap img,
-.hero-card-main:hover .hero-card-img-wrap img {
-  transform: scale(1.03);
+.hero-lookbook-frame:hover .hero-card-img-wrap img {
+  transform: scale(1.025);
 }
 
-.hero-card-overlay {
+/* Subtle Gold Monogram Emblem in Corner (no face obstruction) */
+.hero-monogram-emblem {
   position: absolute;
-  bottom: 0;
-  inset-inline: 0;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.7) 60%, transparent 100%);
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(17, 18, 22, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-monogram-emblem .hme-v {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #D4AF37;
+  line-height: 1;
+}
+
+/* Architectural Museum Caption Below Photo */
+.hero-lookbook-caption {
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
   display: flex;
   flex-direction: column;
-  pointer-events: none;
+  gap: 0.35rem;
 }
 
-.hero-card-tag {
+.hlc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hlc-tag {
   font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold-primary);
-  margin-bottom: 0.25rem;
+  color: var(--gold-primary, #8F6D35);
+  font-weight: 700;
+}
+
+.hlc-edition {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8C8E96;
   font-weight: 600;
 }
 
-.hero-card-title {
+.hlc-title {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 600;
+  letter-spacing: 0.08em;
   color: #111216;
+  margin: 0;
+  line-height: 1.15;
 }
 
-.hero-card-sub {
+.hlc-sub {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #555861;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
 }
 
-/* Lookbook Interactive Photo Switcher */
+/* Lookbook Interactive Controls */
 .hero-lookbook-nav {
   display: flex;
-  gap: 0.4rem;
-  margin-top: 1rem;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
   padding-top: 0.85rem;
   border-top: 1px solid rgba(17, 18, 22, 0.06);
   width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.hero-lookbook-nav::-webkit-scrollbar {
-  display: none;
 }
 
 .hlb-btn {
   flex: 1;
-  min-width: 68px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 0.35rem;
+  padding: 0.6rem 0.4rem;
   border-radius: 10px;
-  background: #f7f6f2;
-  border: 1px solid transparent;
+  background: #FAF9F5;
+  border: 1px solid rgba(17, 18, 22, 0.06);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .hlb-btn:hover {
-  background: #ede9df;
-  border-color: rgba(129, 32, 32, 0.15);
+  background: #F0EDE4;
+  border-color: rgba(129, 32, 32, 0.2);
 }
 
 .hlb-btn .hlb-num {
   font-family: var(--font-serif);
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--bordo-primary);
+  color: var(--bordo-primary, #812020);
   line-height: 1;
   margin-bottom: 0.2rem;
 }
 
 .hlb-btn .hlb-name {
-  font-size: 0.65rem;
-  color: var(--text-muted);
+  font-size: 0.68rem;
+  color: #555861;
   font-weight: 600;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  max-width: 100%;
-  text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .hlb-btn.active {
-  background: var(--bordo-primary);
-  border-color: var(--bordo-deep);
-  box-shadow: 0 4px 12px rgba(129, 32, 32, 0.3);
+  background: var(--bordo-primary, #812020);
+  border-color: var(--bordo-deep, #4A0E17);
+  box-shadow: 0 4px 14px rgba(129, 32, 32, 0.25);
 }
 
 .hlb-btn.active .hlb-num,
@@ -813,50 +869,71 @@ img {
   color: #ffffff;
 }
 
-/* Floating interactive pill */
-.hero-float-pill {
-  position: absolute;
-  bottom: -1rem;
-  right: -1rem;
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  padding: 0.75rem 1.25rem;
+/* Architectural Consultation Invite Card Below Frame */
+.hero-consult-invite-card {
+  width: 100%;
+  max-width: 480px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  animation: floatSlow 4s ease-in-out infinite;
+  gap: 0.85rem;
+  padding: 0.85rem 1.15rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(17, 18, 22, 0.08);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+.hero-consult-invite-card:hover {
+  background: #ffffff;
+  border-color: var(--bordo-primary, #812020);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(129, 32, 32, 0.12);
 }
 
-.float-pill-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  border: 1.5px solid var(--border-subtle);
+.hcic-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(129, 32, 32, 0.08);
+  color: var(--bordo-primary, #812020);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }
 
-.float-pill-text {
+.hcic-body {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.float-pill-title {
+.hcic-title {
   font-size: 0.85rem;
   font-weight: 600;
   color: #111216;
+  line-height: 1.25;
 }
 
-.float-pill-desc {
-  font-size: 0.7rem;
-  color: var(--gold-primary);
-  font-weight: 500;
+.hcic-sub {
+  font-size: 0.72rem;
+  color: #70737C;
+  line-height: 1.2;
+}
+
+.hcic-arrow {
+  color: var(--bordo-primary, #812020);
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.hero-consult-invite-card:hover .hcic-arrow {
+  transform: translateX(4px);
 }
 
 /* ==========================================================================

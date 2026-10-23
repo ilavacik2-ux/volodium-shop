@@ -137,13 +137,28 @@
   </div>
 
   <!-- Hero Section -->
+  <!-- Hero Section -->
   <section class="hero" id="hero">
+    <!-- Ambient Grand Backdrop Layer (Used in Full-Background Mode) -->
+    <div class="hero-backdrop-layer" id="heroBackdropLayer">
+      <div class="hero-backdrop-img" id="heroBackdropImg" style="background-image: url('assets/img/editorial/vladimir_volodium_box.jpg');"></div>
+      <div class="hero-backdrop-gradient"></div>
+    </div>
+
     <canvas id="heroCanvas" class="hero-canvas"></canvas>
     <div class="container hero-grid">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="sparkle">✦</span>
-          <span>100% Оригинальная селективная парфюмерия</span>
+        <div class="hero-top-meta">
+          <div class="hero-badge">
+            <span class="sparkle">✦</span>
+            <span>100% Оригинальная селективная парфюмерия</span>
+          </div>
+
+          <!-- Quick Toggle for Full Background Mode -->
+          <button type="button" class="hero-bg-mode-btn" id="heroBgModeBtn" onclick="window.toggleHeroBgMode()" title="Переключить в режим большого фона">
+            <span class="hmb-icon">🌌</span>
+            <span class="hmb-label">Большой фон экрана</span>
+          </button>
         </div>
 
         <h1 class="hero-title">
@@ -190,16 +205,18 @@
         </div>
       </div>
 
-      <!-- Hero Visual Big-Screen Presentation Card -->
+      <!-- Hero Visual Big-Screen Presentation Card & Interactive Lookbook -->
       <div class="hero-visual">
-        <div class="hero-card-main hero-stats-main-card">
+        <div class="hero-lookbook-frame" id="heroLookbookFrame">
+          <!-- Active Photo Stage -->
           <div class="hero-card-img-wrap">
-            <img src="assets/img/hero/vladimir_stats_hero.jpg" alt="Владимир Вацик — Основатель Volodium Parfum" fetchpriority="high">
+            <img id="heroLookbookImg" src="assets/img/editorial/vladimir_volodium_box.jpg" alt="Владимир Вацик — Основатель Volodium Parfum" fetchpriority="high">
           </div>
+
           <div class="hero-card-overlay">
-            <span class="hero-card-tag">ОСНОВАТЕЛЬ & АРОМАСТИЛИСТ</span>
-            <h3 class="hero-card-title">ВЛАДИМИР ВАЦИК</h3>
-            <span class="hero-card-sub">«Влюблен в парфюмерию и вдохновляю этой любовью других!»</span>
+            <span class="hero-card-tag" id="heroLookbookTag">ОСНОВАТЕЛЬ & АВТОРСКИЙ СУРГУЧНЫЙ БОКС</span>
+            <h3 class="hero-card-title" id="heroLookbookTitle">ВЛАДИМИР ВАЦИК</h3>
+            <span class="hero-card-sub" id="heroLookbookSub">«Влюблен в парфюмерию и вдохновляю этой любовью других!»</span>
           </div>
 
           <!-- Floating Stat Badge 1 -->
@@ -213,11 +230,35 @@
             <span class="hfs-num">300+</span>
             <span class="hfs-label">ароматов в коллекции</span>
           </div>
+
+          <!-- Lookbook Interactive Controls / Photo Switcher -->
+          <div class="hero-lookbook-nav" id="heroLookbookNav">
+            <button type="button" class="hlb-btn active" data-index="0" onclick="window.switchHeroLookbook(0)" title="Владимир с фирменным сургучным боксом Volodium">
+              <span class="hlb-num">01</span>
+              <span class="hlb-name">Бокс Volodium</span>
+            </button>
+            <button type="button" class="hlb-btn" data-index="1" onclick="window.switchHeroLookbook(1)" title="Черно-белая фотосессия в нишевом салоне Orto Parisi">
+              <span class="hlb-num">02</span>
+              <span class="hlb-name">Салон Orto Parisi</span>
+            </button>
+            <button type="button" class="hlb-btn" data-index="2" onclick="window.switchHeroLookbook(2)" title="Частная селективная коллекция">
+              <span class="hlb-num">03</span>
+              <span class="hlb-name">Коллекция</span>
+            </button>
+            <button type="button" class="hlb-btn" data-index="3" onclick="window.switchHeroLookbook(3)" title="Экспертный распив и золотой атомайзер">
+              <span class="hlb-num">04</span>
+              <span class="hlb-name">Атомайзер</span>
+            </button>
+            <button type="button" class="hlb-btn" data-index="4" onclick="window.switchHeroLookbook(4)" title="Арт-эстетика Parfoholic">
+              <span class="hlb-num">05</span>
+              <span class="hlb-name">Эстетика</span>
+            </button>
+          </div>
         </div>
 
         <!-- Floating VIP Pill -->
         <a href="#consultation" class="hero-float-pill" title="Записаться на консультацию">
-          <img src="assets/img/consultation/vladimir_consult_boutique.jpg" alt="Владимир Вацик" class="float-pill-avatar" style="border-radius: 8px;">
+          <img src="assets/img/editorial/vladimir_blotters_monochrome.jpg" alt="Владимир Вацик" class="float-pill-avatar" style="border-radius: 8px;">
           <div class="float-pill-text">
             <span class="float-pill-title">Парфюмерная консультация</span>
             <span class="float-pill-desc">2 способа: онлайн или встреча в Москве</span>
@@ -313,6 +354,13 @@
       <!-- Real Packaging Showcase Above Aroma Boxes Grid -->
       <div class="packaging-editorial-showcase">
         <div class="pes-visual-grid">
+          <div class="pes-photo-card pes-photo-founder">
+            <img src="assets/img/editorial/vladimir_volodium_box.jpg" alt="Владимир Вацик с фирменным боксом Volodium Parfum" loading="lazy">
+            <div class="pes-badge">
+              <span class="pes-tag">Основатель бутика</span>
+              <span class="pes-sub">Каждый бокс запечатывается сургучом лично</span>
+            </div>
+          </div>
           <div class="pes-photo-card">
             <img src="assets/img/aromaboxes/real_box_white_closed.jpg" alt="Белый подарочный бокс Volodium Parfum с черной хлопковой лентой" loading="lazy">
             <div class="pes-badge">
@@ -1172,7 +1220,7 @@
       <!-- Big Boutique Consultation Header Banner -->
       <div class="consult-banner-wrap">
         <div class="consult-banner-img-box">
-          <img src="assets/img/consultation/vladimir_consult_boutique.jpg" alt="Парфюмерная консультация Владимира Вацика" loading="lazy">
+          <img src="assets/img/editorial/vladimir_blotters_monochrome.jpg" alt="Парфюмерная консультация Владимира Вацика" loading="lazy">
         </div>
         <div class="consult-banner-content">
           <span class="consult-tag">ПРОФЕССИОНАЛЬНЫЙ ПОДБОР ПАРФЮМА</span>
@@ -1696,29 +1744,46 @@
         </p>
       </div>
 
-      <div class="decants-grid">
-        <div class="decant-feature-box">
-          <div class="decant-feature-icon">💎</div>
-          <h3 class="decant-feature-title">Экономия до 85%</h3>
-          <p class="decant-feature-text">
-            Вместо покупки одного полноразмерного флакона за 35 000 ₽, возьмите 5 разных ароматов по 5 мл и меняйте образ каждый день.
-          </p>
+      <div class="decants-editorial-layout">
+        <div class="decants-grid">
+          <div class="decant-feature-box">
+            <div class="decant-feature-icon">💎</div>
+            <h3 class="decant-feature-title">Экономия до 85%</h3>
+            <p class="decant-feature-text">
+              Вместо покупки одного полноразмерного флакона за 35 000 ₽, возьмите 5 разных ароматов по 5 мл и меняйте образ каждый день.
+            </p>
+          </div>
+
+          <div class="decant-feature-box">
+            <div class="decant-feature-icon">🧪</div>
+            <h3 class="decant-feature-title">100% Оригинальный парфюм</h3>
+            <p class="decant-feature-text">
+              Мы не продаем копии, реплики или «эмираты». Строго аутентичный парфюм из запечатанных флаконов мировых нишевых домов с контролем батч-кодов.
+            </p>
+          </div>
+
+          <div class="decant-feature-box">
+            <div class="decant-feature-icon">✈️</div>
+            <h3 class="decant-feature-title">Удобный тревел-формат</h3>
+            <p class="decant-feature-text">
+              Герметичные стеклянные атомайзеры с металлической помпой помещаются в любой карман, клатч или салон самолета. Любимый парфюм всегда с вами.
+            </p>
+          </div>
         </div>
 
-        <div class="decant-feature-box">
-          <div class="decant-feature-icon">🧪</div>
-          <h3 class="decant-feature-title">100% Оригинальный парфюм</h3>
-          <p class="decant-feature-text">
-            Мы не продаем копии, реплики или «эмираты». Строго аутентичный парфюм из запечатанных флаконов мировых нишевых домов с контролем батч-кодов.
-          </p>
-        </div>
-
-        <div class="decant-feature-box">
-          <div class="decant-feature-icon">✈️</div>
-          <h3 class="decant-feature-title">Удобный тревел-формат</h3>
-          <p class="decant-feature-text">
-            Герметичные стеклянные атомайзеры с металлической помпой помещаются в любой карман, клатч или салон самолета. Любимый парфюм всегда с вами.
-          </p>
+        <!-- Founder Editorial Card with Gold Travel Atomizer -->
+        <div class="decants-portrait-card">
+          <div class="dpc-img-wrap">
+            <img src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик с премиальным атомайзером" loading="lazy">
+          </div>
+          <div class="dpc-content">
+            <span class="dpc-badge">ЗОЛОТОЙ СТАНДАРТ РАСПИВА</span>
+            <h4 class="dpc-title">Премиальные стеклянные атомайзеры</h4>
+            <p class="dpc-quote">
+              «Мы используем исключительно герметичные стеклянные колбы с металлической микропомпой. Никакого дешевого пластика: аромат не окисляется и звучит ровно так, как задумал парфюмер.»
+            </p>
+            <span class="dpc-author">— Владимир Вацик, основатель Volodium Parfum</span>
+          </div>
         </div>
       </div>
     </div>

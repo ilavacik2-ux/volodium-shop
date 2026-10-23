@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize all subsystems
   initMonroeIntro();
   initHeroCanvas();
+  initHeroLookbook();
   initCatalog();
   initCart();
   initQuiz();
@@ -158,6 +159,168 @@ function initHeroCanvas() {
   }
   loop();
 }
+
+/* ==========================================================================
+   1.1 Hero Editorial Lookbook & Cinematic Background Mode
+   ========================================================================== */
+const HERO_LOOKBOOK_ITEMS = [
+  {
+    image: 'assets/img/editorial/vladimir_volodium_box.jpg',
+    tag: 'ОСНОВАТЕЛЬ & АВТОРСКИЙ СУРГУЧНЫЙ БОКС',
+    title: 'ВЛАДИМИР ВАЦИК',
+    sub: '«Влюблен в парфюмерию и вдохновляю этой любовью других!»'
+  },
+  {
+    image: 'assets/img/editorial/vladimir_blotters_monochrome.jpg',
+    tag: 'НИШЕВЫЙ БУТИК • ORTO PARISI SALON',
+    title: 'ИСКУССТВО ПОДБОРА',
+    sub: '«Более 150+ ароматов в коллекции и очные встречи в Москве»'
+  },
+  {
+    image: 'assets/img/editorial/vladimir_flacon_chair.jpg',
+    tag: 'ЧАСТНАЯ КОЛЛЕКЦИЯ • HAUTE PARFUMERIE',
+    title: 'СЕЛЕКТИВНЫЙ ГАРДЕРОБ',
+    sub: '«Нишевые редкости, оригинальные флаконы и батч-код контроль»'
+  },
+  {
+    image: 'assets/img/editorial/vladimir_atomizer_portrait.jpg',
+    tag: 'РАСПИВ ОТ 3 МЛ • СТЕКЛЯННЫЙ АТОМАЙЗЕР',
+    title: 'ЗОЛОТОЙ СТАНДАРТ РАСПИВА',
+    sub: '«Металлическая помпа без окисления и удобный тревел-формат»'
+  },
+  {
+    image: 'assets/img/editorial/vladimir_box_shoulder.jpg',
+    tag: 'EDITORIAL CAMPAIGN • ЧИСТАЯ ЭСТЕТИКА',
+    title: 'ТЫ ПАХНЕШЬ SEXY',
+    sub: '«Парфюм как чувственное продолжение вашей индивидуальности»'
+  }
+];
+
+let heroLookbookIndex = 0;
+let heroLookbookTimer = null;
+let heroCinematicMode = false;
+
+function initHeroLookbook() {
+  const frame = document.getElementById('heroLookbookFrame');
+  if (!frame) return;
+
+  // Restore saved cinematic mode from localStorage
+  try {
+    const savedMode = localStorage.getItem('volodium_hero_cinematic');
+    if (savedMode === 'true') {
+      heroCinematicMode = true;
+      const hero = document.getElementById('hero');
+      if (hero) hero.classList.add('hero-cinematic-mode');
+      updateHeroBgBtnState();
+    }
+  } catch (e) {}
+
+  // Auto-rotation every 7 seconds, pauses on hover
+  startHeroLookbookAutoTimer();
+
+  frame.addEventListener('mouseenter', () => {
+    stopHeroLookbookAutoTimer();
+  });
+
+  frame.addEventListener('mouseleave', () => {
+    startHeroLookbookAutoTimer();
+  });
+}
+
+function startHeroLookbookAutoTimer() {
+  stopHeroLookbookAutoTimer();
+  heroLookbookTimer = setInterval(() => {
+    const nextIdx = (heroLookbookIndex + 1) % HERO_LOOKBOOK_ITEMS.length;
+    window.switchHeroLookbook(nextIdx);
+  }, 7000);
+}
+
+function stopHeroLookbookAutoTimer() {
+  if (heroLookbookTimer) {
+    clearInterval(heroLookbookTimer);
+    heroLookbookTimer = null;
+  }
+}
+
+window.switchHeroLookbook = function(index) {
+  if (index < 0 || index >= HERO_LOOKBOOK_ITEMS.length) return;
+  heroLookbookIndex = index;
+  const item = HERO_LOOKBOOK_ITEMS[index];
+
+  const img = document.getElementById('heroLookbookImg');
+  const tag = document.getElementById('heroLookbookTag');
+  const title = document.getElementById('heroLookbookTitle');
+  const sub = document.getElementById('heroLookbookSub');
+  const backdropImg = document.getElementById('heroBackdropImg');
+
+  // Fade transition on card image
+  if (img) {
+    img.style.opacity = '0.3';
+    setTimeout(() => {
+      img.src = item.image;
+      img.style.opacity = '1';
+    }, 150);
+  }
+
+  if (tag) tag.textContent = item.tag;
+  if (title) title.textContent = item.title;
+  if (sub) sub.textContent = item.sub;
+
+  // Update backdrop image for cinematic mode
+  if (backdropImg) {
+    backdropImg.style.backgroundImage = `url('${item.image}')`;
+  }
+
+  // Update active state on lookbook buttons
+  const btns = document.querySelectorAll('.hero-lookbook-nav .hlb-btn');
+  btns.forEach(btn => {
+    const btnIdx = parseInt(btn.getAttribute('data-index'), 10);
+    if (btnIdx === index) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+};
+
+function updateHeroBgBtnState() {
+  const btn = document.getElementById('heroBgModeBtn');
+  if (!btn) return;
+  const label = btn.querySelector('.hmb-label');
+  const icon = btn.querySelector('.hmb-icon');
+  if (heroCinematicMode) {
+    if (label) label.textContent = 'Студийный вид';
+    if (icon) icon.textContent = '🖼️';
+    btn.setAttribute('title', 'Вернуться к студийному виду карточки');
+  } else {
+    if (label) label.textContent = 'Большой фон экрана';
+    if (icon) icon.textContent = '🌌';
+    btn.setAttribute('title', 'Включить атмосферный фон во весь экран');
+  }
+}
+
+window.toggleHeroBgMode = function() {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  heroCinematicMode = !heroCinematicMode;
+
+  if (heroCinematicMode) {
+    hero.classList.add('hero-cinematic-mode');
+    const item = HERO_LOOKBOOK_ITEMS[heroLookbookIndex];
+    const backdropImg = document.getElementById('heroBackdropImg');
+    if (backdropImg && item) {
+      backdropImg.style.backgroundImage = `url('${item.image}')`;
+    }
+  } else {
+    hero.classList.remove('hero-cinematic-mode');
+  }
+
+  updateHeroBgBtnState();
+
+  try {
+    localStorage.setItem('volodium_hero_cinematic', heroCinematicMode ? 'true' : 'false');
+  } catch (e) {}
+};
 
 /* ==========================================================================
    2. Catalog Engine with Filter, Volume Selector & Modals

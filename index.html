@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024_02">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024_03">
 </head>
 <body>
 
@@ -1165,55 +1165,42 @@
               <!-- Left Parchment Column (Live Reactive Text) -->
               <div class="cert-parchment">
                 <div class="cert-parchment-header">
-                  <span class="cert-brand-mono">VOLODIUM HAUTE PARFUMERIE</span>
-                </div>
-
-                <h3 class="cert-main-title">ПОДАРОЧНЫЙ СЕРТИФИКАТ</h3>
-
-                <div class="cert-field-block">
-                  <span class="cert-field-label">На услугу:</span>
-                  <div class="cert-field-service" id="certLiveService">
-                    Аромаконсультация по индивидуальному подбору парфюмерного гардероба / расхламление и систематизация коллекции от аромастилиста
+                  <div class="cert-gold-monogram">VP</div>
+                  <div class="cert-brand-wrap">
+                    <span class="cert-brand-mono">VOLODIUM HAUTE PARFUMERIE</span>
+                    <span class="cert-edition-sub">EDITION 2026 • PARIS — MOSCOW</span>
                   </div>
                 </div>
 
-                <div class="cert-field-block">
-                  <span class="cert-field-label">Кому:</span>
-                  <div class="cert-field-recipient" id="certLiveRecipient">Алисе</div>
+                <div class="cert-title-wrap">
+                  <h3 class="cert-main-title">ПОДАРОЧНЫЙ СЕРТИФИКАТ</h3>
+                  <div class="cert-gold-rule"></div>
                 </div>
 
-                <div class="cert-field-block">
-                  <span class="cert-field-label">Депозит:</span>
-                  <div class="cert-field-deposit" id="certLiveDeposit">5 000 рублей</div>
+                <div class="cert-service-tag-box">
+                  <span class="cert-field-label">НАЗНАЧЕНИЕ:</span>
+                  <div class="cert-field-service" id="certLiveService">Индивидуальный парфюмерный гардероб</div>
+                </div>
+
+                <div class="cert-recipient-deposit-row">
+                  <div class="cert-field-block">
+                    <span class="cert-field-label">КОМУ:</span>
+                    <div class="cert-field-recipient" id="certLiveRecipient">Алисе</div>
+                  </div>
+
+                  <div class="cert-field-block">
+                    <span class="cert-field-label">НОМИНАЛ:</span>
+                    <div class="cert-field-deposit" id="certLiveDeposit">5 000 ₽</div>
+                  </div>
                 </div>
 
                 <div class="cert-parchment-footer">
-                  <div class="cert-qr-wrap">
-                    <!-- SVG QR Code Icon matching official card -->
-                    <svg class="cert-qr-svg" viewBox="0 0 100 100" fill="currentColor">
-                      <rect x="0" y="0" width="30" height="30" rx="3" fill="#111216"/>
-                      <rect x="6" y="6" width="18" height="18" rx="2" fill="#D2D1CC"/>
-                      <rect x="10" y="10" width="10" height="10" rx="1" fill="#111216"/>
-                      <rect x="70" y="0" width="30" height="30" rx="3" fill="#111216"/>
-                      <rect x="76" y="6" width="18" height="18" rx="2" fill="#D2D1CC"/>
-                      <rect x="80" y="10" width="10" height="10" rx="1" fill="#111216"/>
-                      <rect x="0" y="70" width="30" height="30" rx="3" fill="#111216"/>
-                      <rect x="6" y="76" width="18" height="18" rx="2" fill="#D2D1CC"/>
-                      <rect x="10" y="80" width="10" height="10" rx="1" fill="#111216"/>
-                      <rect x="40" y="10" width="15" height="15" fill="#111216"/>
-                      <rect x="40" y="35" width="20" height="10" fill="#111216"/>
-                      <rect x="70" y="45" width="15" height="20" fill="#111216"/>
-                      <rect x="40" y="65" width="15" height="25" fill="#111216"/>
-                      <rect x="65" y="75" width="25" height="15" fill="#111216"/>
-                    </svg>
+                  <div class="cert-seal-serial">
+                    <span class="cert-serial-tag" id="certLiveSerial">№ VP-2026-8812</span>
+                    <span class="cert-valid-text">Действителен до <strong id="certLiveExpiry">01.01.2027</strong></span>
                   </div>
-                  <div class="cert-contacts-wrap">
-                    <div class="cert-contact-item">Контакты TG/INST:</div>
-                    <div class="cert-contact-val">@volodium_parfum</div>
-                    <div class="cert-expiry-row">
-                      <span>Сертификат действует до: </span>
-                      <strong id="certLiveExpiry">01.01.2027</strong>
-                    </div>
+                  <div class="cert-contact-tag">
+                    <span>Бутик: <strong>@volodiumparfum</strong></span>
                   </div>
                 </div>
               </div>
@@ -1358,295 +1345,140 @@
        ========================================================================== -->
   <section class="section-padding consultation-section" id="consultation">
     <div class="container">
-      <!-- Big Boutique Consultation Header Banner -->
-      <div class="consult-banner-wrap">
-        <div class="consult-banner-img-box">
-          <img src="assets/img/editorial/vladimir_blotters_monochrome.jpg" alt="Парфюмерная консультация Владимира Вацика" loading="lazy">
-        </div>
-        <div class="consult-banner-content">
-          <span class="consult-tag">ПРОФЕССИОНАЛЬНЫЙ ПОДБОР ПАРФЮМА</span>
-          <h2 class="consult-banner-title">Парфюмерная консультация</h2>
-          <p class="consult-banner-desc">
-            Индивидуальный подбор парфюмерного гардероба от основателя бутика Volodium Parfum, аромастилиста и лектора Владимира Вацика.
-          </p>
-          <div class="consult-banner-features">
-            <div class="cbf-item">
-              <span class="cbf-icon">🏛️</span>
-              <span>Коллекция более 300+ редких нишевых флаконов</span>
-            </div>
-            <div class="cbf-item">
-              <span class="cbf-icon">💎</span>
-              <span>1 200+ довольных клиентов по всей России и миру</span>
-            </div>
-            <div class="cbf-item">
-              <span class="cbf-icon">⭐</span>
-              <span>Более 7 лет глубокой практики и парфюмерного байерства</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Expert Quote -->
-      <div class="consult-quote-box">
-        <div class="consult-quote-symbol">“</div>
-        <p class="consult-quote-text">
-          «Аромат — это не просто приятный запах. Это ваша невидимая одежда, эмоция и шлейф уверенности, который врезается в память людей навсегда. Я помогаю перестать покупать духи вслепую и найти формулы, которые вызывают неподдельный эффект «ВАУ».»
+      
+      <!-- Section Header -->
+      <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-tag">Индивидуальный разбор</span>
+        <h2 class="section-title">Парфюмерная консультация Владимира Вацика</h2>
+        <p class="section-descr">
+          Профессиональный аудит и подбор гардероба от основателя бутика. Выберите комфортный формат: онлайн-разбор по анкете или очная встреча в центре Москвы с чемоданом на 150+ селективных ароматов.
         </p>
-        <span class="consult-quote-author">— Владимир Вацик, основатель бутика Volodium Parfum</span>
       </div>
 
-      <!-- The 2 Official Consultation Methods: "КОНСУЛЬТИРУЮ 2 СПОСОБАМИ" -->
-      <div class="consult-ways-container">
-        <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
-          <span class="section-tag">Форматы работы</span>
-          <h3 class="section-title">Консультирую 2 способами</h3>
-          <p class="section-descr">
-            Выберите формат, который подходит именно вам: глубокий психологический онлайн-анализ по анкете или личная встреча в центре Москвы с чемоданом редких распивов.
-          </p>
-        </div>
-
-        <div class="consult-methods-grid">
-          <!-- 1 СПОСОБ: Подбор онлайн -->
-          <div class="consult-method-card">
-            <div class="method-card-media">
-              <img src="assets/img/consultation/consult_online_mandarin.png" alt="1 Способ: Подбор ароматов онлайн" loading="lazy">
-              <span class="method-step-badge">1 СПОСОБ</span>
-            </div>
-            <div class="method-card-body">
-              <h4 class="method-card-heading">Подбор ароматов онлайн</h4>
-              <div class="method-card-quote">
-                «Такой вид консультации не менее точный, чем очный формат, так как опыт моей работы и психологический подход со стороны глубокого анализа позволяют мне подбирать ароматы, которые вызовут у вас эффект «ВАУ».»
-              </div>
-
-              <div class="method-format-info">
-                <span class="mfi-label">ФОРМАТ КОНСУЛЬТАЦИИ:</span>
-                <p class="mfi-text">
-                  Консультация проходит с опорой на <strong>парфюмерную анкету</strong>. 10 важных пунктов и мои дополнительные вопросы позволят нам понять ваши вкусы и сегодняшний запрос. После анализа составляем ваш персональный парфюмерный гардероб.
-                </p>
-              </div>
-
-              <ul class="method-checklist">
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Глубокий психологический разбор ольфакторных предпочтений</span>
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Доступно в любой точке мира через Telegram</span>
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Сборка индивидуального Secret Box или сета отливантов</span>
-                </li>
-              </ul>
-
-              <div class="method-footer-row">
-                <div class="method-price-box">
-                  <span class="method-price-amount">Бесплатно</span>
-                  <span class="method-price-note">при заказе бокса или распива</span>
-                </div>
-                <div class="method-btns-wrap">
-                  <a href="#quiz" class="btn-primary">Заполнить анкету</a>
-                  <a href="https://t.me/volodiumparfum" target="_blank" class="btn-secondary">В Telegram</a>
-                </div>
-              </div>
-            </div>
+      <!-- 2 Clean, Perfectly Symmetrical Consultation Cards -->
+      <div class="consult-methods-grid">
+        
+        <!-- 1 СПОСОБ: Подбор онлайн -->
+        <div class="consult-method-card">
+          <div class="method-card-media">
+            <img src="assets/img/consultation/consult_online_mandarin.png" alt="Подбор ароматов онлайн" loading="lazy">
+            <span class="method-card-badge">ОНЛАЙН-ФОРМАТ</span>
           </div>
 
-          <!-- 2 СПОСОБ: Офлайн в Москве -->
-          <div class="consult-method-card hit">
-            <span class="method-hit-ribbon">★ Эксклюзивный опыт ★</span>
-            <div class="method-card-media">
-              <img src="assets/img/consultation/consult_offline_leather_case.png" alt="2 Способ: Офлайн подбор парфюмерного гардероба" loading="lazy">
-              <span class="method-step-badge">2 СПОСОБ</span>
+          <div class="method-card-body">
+            <div class="method-card-header-block">
+              <h3 class="method-card-heading">Подбор ароматов онлайн</h3>
+              <span class="method-card-subheading">Индивидуальный разбор по парфюмерной анкете</span>
             </div>
-            <div class="method-card-body">
-              <h4 class="method-card-heading">Офлайн подбор в Москве</h4>
-              <div class="method-card-quote">
-                «45–60 минут в приятной обстановке подбираю ароматы конкретно под вас! Встреча проходит с аромапапкой, в которой более 150+ редких нишевых ароматов.»
+
+            <div class="method-card-quote">
+              «Глубокий психологический анализ и авторская анкета позволяют с точностью до ноты подобрать композиции, которые вызовут у вас искренний вау-эффект.»
+            </div>
+
+            <ul class="method-checklist">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Психологический разбор ольфакторных предпочтений</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Личная связь и консультация через Telegram</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Сборка персонального Secret Box или сета отливантов</span>
+              </li>
+            </ul>
+
+            <div class="method-footer-row">
+              <div class="method-price-box">
+                <span class="method-price-amount">0 ₽</span>
+                <span class="method-price-note">Бесплатно при заказе</span>
               </div>
-
-              <div class="method-format-info">
-                <span class="mfi-label">ФОРМАТ ВСТРЕЧИ:</span>
-                <p class="mfi-text">
-                  Встречаемся в центре Москвы в удобном для вас заведении, где вам комфортно и спокойно, либо в одном из тех, где меня знают и есть возможность провести консультацию не торопясь и в приятной обстановке. В течение консультации мы пробуем <strong>от 10 до 25 ароматов</strong> (в зависимости от восприимчивости вашего носа).
-                </p>
-              </div>
-
-              <ul class="method-checklist">
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Профессиональная аромапапка с 150+ ароматами</span>
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Дегустация 10–25 композиций на блоттерах и вашей коже</span>
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Полное расхламление и систематизация парфюмерной коллекции</span>
-                </li>
-              </ul>
-
-              <div class="method-footer-row">
-                <div class="method-price-box">
-                  <span class="method-price-amount">5 000 ₽</span>
-                  <span class="method-price-note">45–60 минут личной сессии</span>
-                </div>
-                <div class="method-btns-wrap">
-                  <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20%D0%B2%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B5%20(5%20000%20%D1%80%D1%83%D0%B1)" target="_blank" class="btn-primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/></svg>
-                    <span>Записаться на встречу</span>
-                  </a>
-                </div>
+              <div class="method-btns-wrap">
+                <a href="#quiz" class="btn-primary method-action-btn">Заполнить анкету →</a>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- 2 СПОСОБ: Офлайн в Москве -->
+        <div class="consult-method-card hit">
+          <div class="method-card-media">
+            <img src="assets/img/consultation/consult_offline_leather_case.png" alt="Офлайн подбор парфюмерного гардероба в Москве" loading="lazy">
+            <span class="method-card-badge gold-badge">★ ОЧНАЯ ВСТРЕЧА В МОСКВЕ ★</span>
+          </div>
+
+          <div class="method-card-body">
+            <div class="method-card-header-block">
+              <h3 class="method-card-heading">Офлайн подбор в Москве</h3>
+              <span class="method-card-subheading">Личная сессия с чемоданом на 150+ редких распивов</span>
+            </div>
+
+            <div class="method-card-quote">
+              «45–60 минут в уютной обстановке в центре Москвы. Встреча проходит с профессиональной аромапапкой редких нишевых шедевров.»
+            </div>
+
+            <ul class="method-checklist">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Профессиональная аромапапка с 150+ редкими ароматами</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Дегустация 10–25 композиций на блоттерах и коже</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Полная ревизия и систематизация вашего гардероба</span>
+              </li>
+            </ul>
+
+            <div class="method-footer-row">
+              <div class="method-price-box">
+                <span class="method-price-amount">5 000 ₽</span>
+                <span class="method-price-note">45–60 минут личной сессии</span>
+              </div>
+              <div class="method-btns-wrap">
+                <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20%D0%B2%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B5%20(5%20000%20%D1%80%D1%83%D0%B1)" target="_blank" class="btn-primary method-action-btn">Записаться на встречу →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- ==========================================================================
-       Client Reviews Section (Мои слова не голословны)
-       ========================================================================== -->
   <section class="section-padding reviews-section" id="reviews">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
         <span class="section-tag">Реальный опыт клиентов</span>
         <h2 class="section-title">«Мои слова не голословны»</h2>
         <p class="section-descr">
-          Ознакомьтесь с отзывами о моей работе ниже. Более 1 200 клиентов уже нашли свой аромат вместе с Volodium Parfum.
+          Живые скриншоты переписок, распаковок и искренних эмоций из нашего Telegram-канала. Более 1 200 клиентов уже доверили свой парфюмерный гардероб Владимиру Вацику.
         </p>
       </div>
 
-      <!-- Real Client Quotes Grid -->
-      <div class="reviews-quotes-grid">
-        <!-- Review 1: Михаил Клиент -->
-        <div class="review-quote-card">
-          <div class="review-card-head">
-            <div class="review-author-meta">
-              <span class="review-author-avatar">М</span>
-              <div>
-                <span class="review-author-name">Михаил (Клиент)</span>
-                <span class="review-author-badge">Заказ сета распивов</span>
-              </div>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-          <p class="review-quote-body">
-            «Владимир, приветствую!! Получил посылку! Спасибо огромное! <strong>Вот это я понимаю упаковка! Бутыльки стильнее, чем у килиана!</strong> Ну кстати маленький крутой какой а... Кароч, я в шоке! Просто вау! (Естественно выражаюсь другими словами нецензурного производства в контексте крутости). На коже ваще по-другому раскрываются. Cocaine мятой прям так ярко пахнет... Qiam не понял пока чем, но чем-то бесподобным 🔥»
-          </p>
-          <div class="review-card-footer">
-            <span class="review-verified">✓ Проверенный заказ Telegram</span>
-          </div>
+      <!-- Authentic Telegram Unboxing & Reviews Board Showcase (Compact & Framed) -->
+      <div class="reviews-compact-showcase">
+        <div class="reviews-compact-frame">
+          <img src="assets/img/reviews/reviews_board_real.png" alt="Реальные отзывы и распаковки клиентов Volodium Parfum" loading="lazy">
         </div>
-
-        <!-- Review 2: Консультация и гардероб -->
-        <div class="review-quote-card featured">
-          <div class="review-card-head">
-            <div class="review-author-meta">
-              <span class="review-author-avatar">А</span>
-              <div>
-                <span class="review-author-name">Клиент аромаконсультации</span>
-                <span class="review-author-badge">Индивидуальный подбор</span>
-              </div>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-          <p class="review-quote-body">
-            «<strong>А по консультации вообще вопрос глубокий. Это не просто рекомендация, как в магазине, скажем.</strong> Твои вопросы заставляют задуматься, что заставляет по-другому посмотреть на ароматы и на себя! На консультации ты спрашивал про состояние и настроение. У меня теперь строгое разделение: <em>на работу беру маракую и догоняюсь рефлекшн, ангелы — это праздник, субботний вечер прогулки — праздник.</em> А кокаин — без направления деятельности. Но отсутствие направления — не повод пахнуть без акцентов! 👏»
-          </p>
-          <div class="review-card-footer">
-            <span class="review-verified">✓ Индивидуальная консультация</span>
-          </div>
-        </div>
-
-        <!-- Review 3: Подарок молодому человеку -->
-        <div class="review-quote-card">
-          <div class="review-card-head">
-            <div class="review-author-meta">
-              <span class="review-author-avatar">Е</span>
-              <div>
-                <span class="review-author-name">Елена</span>
-                <span class="review-author-badge">Подарок молодому человеку</span>
-              </div>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-          <p class="review-quote-body">
-            «Большое тебе спасибо за парфюм и твой подход! 🙏 От заказа до его получения мы остались под впечатлением! <strong>Быстрая отправка, аккуратная красивая упаковка, молодой человек в восторге</strong>, Boss Unlimited — его любимый парфюм, и он теперь снова каждый день им пользуется! Обязательно буду обращаться еще! Спасибо за твой труд 🫶»
-          </p>
-          <div class="review-card-footer">
-            <span class="review-verified">✓ Доставка СДЭК</span>
-          </div>
-        </div>
-
-        <!-- Review 4: Распаковка и эмоции -->
-        <div class="review-quote-card">
-          <div class="review-card-head">
-            <div class="review-author-meta">
-              <span class="review-author-avatar">Д</span>
-              <div>
-                <span class="review-author-name">Дарья</span>
-                <span class="review-author-badge">Фирменный бокс</span>
-              </div>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-          <p class="review-quote-body">
-            «Все получила ❤️❤️❤️❤️ <strong>Упаковка конечно каждый раз ВАУ 😅</strong> Оформление коробки, все детали, мишура, маска в подарок креативно и приятно! В коробке запах был приятный, мне показалось что-то очень знакомое из женских парфюмов. Спасибо большое!»
-          </p>
-          <div class="review-card-footer">
-            <span class="review-verified">✓ Проверенный отзыв</span>
-          </div>
-        </div>
-
-        <!-- Review 5: Белая коробка и распивы -->
-        <div class="review-quote-card">
-          <div class="review-card-head">
-            <div class="review-author-meta">
-              <span class="review-author-avatar">К</span>
-              <div>
-                <span class="review-author-name">Константин</span>
-                <span class="review-author-badge">Набор распивов</span>
-              </div>
-            </div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-          <p class="review-quote-body">
-            «Привет. Огромное спасибо, что помог с выбором ароматов. Все они прекрасны и все уже успел попробовать, не пожалел, что купил. <strong>Когда открыл эту белую коробку, был очень взволнован и приятно удивлен</strong>, а когда увидел эти вожделенные распивы — был в восторге, очень аккуратно и красиво упаковали. И прекрасный подарок в виде маски. Уверен, что вернусь ещё!»
-          </p>
-          <div class="review-card-footer">
-            <span class="review-verified">✓ Проверенный заказ</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Real Feedback Collage Board Presentation -->
-      <div class="reviews-board-showcase">
-        <div class="reviews-board-header">
-          <div class="rb-title-wrap">
-            <span class="rb-tag">СКРИНШОТЫ ИЗ НАШЕГО TELEGRAM</span>
-            <h3 class="rb-title">Оригинальные переписки и фото распаковок</h3>
-            <p class="rb-sub">Прямые скриншоты переписок и распаковок от клиентов Владимира</p>
-          </div>
-          <a href="https://t.me/volodiumparfum" target="_blank" class="btn-secondary rb-btn-tg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/></svg>
-            <span>Канал с отзывами</span>
+        
+        <div class="reviews-compact-footer">
+          <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="btn-primary reviews-channel-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+            </svg>
+            <span>Читать все 1 200+ отзывов в Telegram-канале @volodiumparfum →</span>
           </a>
-        </div>
-
-        <div class="reviews-board-img-frame">
-          <img src="assets/img/reviews/reviews_board_real.png" alt="Реальные отзывы клиентов Volodium Parfum" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       Tester vs Retail Guide (Товарный вид или Тестер: в чём разница?)
-       ========================================================================== -->
   <section class="section-padding tester-section" id="tester-guide">
     <div class="container">
       <div class="section-header">
@@ -2574,7 +2406,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js?v=20261024_02"></script>
-  <script src="assets/js/app.js?v=20261024_02"></script>
+  <script src="assets/data/perfumes.js?v=20261024_03"></script>
+  <script src="assets/js/app.js?v=20261024_03"></script>
 </body>
 </html>

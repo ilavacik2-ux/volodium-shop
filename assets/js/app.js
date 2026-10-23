@@ -2227,7 +2227,7 @@ let certState = {
   recipient: 'Алисе',
   amount: 5000,
   serviceKey: 'consultation',
-  serviceTitle: 'Аромаконсультация по индивидуальному подбору парфюмерного гардероба / расхламление и систематизация коллекции от аромастилиста',
+  serviceTitle: 'Индивидуальный парфюмерный гардероб',
   greeting: '',
   code: 'VP-2026-' + Math.floor(1000 + Math.random() * 9000)
 };
@@ -2341,9 +2341,9 @@ function initCertificates() {
   window.setCertService = function(serviceKey) {
     certState.serviceKey = serviceKey;
     const services = {
-      consultation: 'Аромаконсультация по индивидуальному подбору парфюмерного гардероба / расхламление и систематизация коллекции от аромастилиста',
-      deposit: 'Свободный депозит на любые селективные ароматы и отливанты из каталога бутика Volodium',
-      secret_box: 'Индивидуальный Secret Box от Владимира Вацика с эксклюзивным подбором и подарками'
+      consultation: 'Индивидуальный парфюмерный гардероб',
+      deposit: 'Депозит на селективную коллекцию бутика',
+      secret_box: 'Персональный Secret Box Владимира Вацика'
     };
     certState.serviceTitle = services[serviceKey] || services.consultation;
     const displayEl = document.getElementById('certLiveService');
@@ -2403,7 +2403,7 @@ function updateCertPrice(amount) {
   const sumDisplayEl = document.getElementById('certSumDisplay');
 
   if (depositLiveEl) {
-    depositLiveEl.textContent = `${amount.toLocaleString('ru-RU')} рублей`;
+    depositLiveEl.textContent = `${amount.toLocaleString('ru-RU')} ₽`;
   }
   if (sumDisplayEl) {
     sumDisplayEl.textContent = formatPrice(amount);

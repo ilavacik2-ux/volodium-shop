@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 50" width="90mm" height="50mm">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap');
+      .bg { fill: #D2D1CC; }
+      .border { fill: none; stroke: #812020; stroke-width: 0.35; stroke-opacity: 0.45; }
+      .inner-border { fill: none; stroke: #812020; stroke-width: 0.15; stroke-opacity: 0.3; stroke-dasharray: 1, 0.6; }
+      .brand-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 5.2px; font-weight: 700; fill: #812020; letter-spacing: 0.35em; text-anchor: middle; }
+      .brand-sub { font-family: 'Montserrat', sans-serif; font-size: 1.65px; font-weight: 500; fill: #111216; letter-spacing: 0.32em; text-anchor: middle; text-transform: uppercase; }
+      .qr-caption { font-family: 'Montserrat', sans-serif; font-size: 1.55px; font-weight: 600; fill: #812020; letter-spacing: 0.18em; text-anchor: middle; text-transform: uppercase; }
+      .qr-url { font-family: 'Montserrat', sans-serif; font-size: 1.35px; font-weight: 400; fill: #333336; letter-spacing: 0.14em; text-anchor: middle; }
+      .monogram { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.3px; font-weight: 700; fill: #812020; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Background in Limestone Card Tone (#D2D1CC) -->
+  <rect width="90" height="50" class="bg" />
+
+  <!-- Elegant Double Framing -->
+  <rect x="2.5" y="2.5" width="85" height="45" class="border" />
+  <rect x="3.5" y="3.5" width="83" height="43" class="inner-border" />
+
+  <!-- Corner Flourishes -->
+  <path d="M 2.5 6.5 L 6.5 2.5" stroke="#812020" stroke-width="0.35" stroke-opacity="0.5" fill="none" />
+  <path d="M 87.5 6.5 L 83.5 2.5" stroke="#812020" stroke-width="0.35" stroke-opacity="0.5" fill="none" />
+  <path d="M 2.5 43.5 L 6.5 47.5" stroke="#812020" stroke-width="0.35" stroke-opacity="0.5" fill="none" />
+  <path d="M 87.5 43.5 L 83.5 47.5" stroke="#812020" stroke-width="0.35" stroke-opacity="0.5" fill="none" />
+
+  <!-- Brand Header -->
+  <text x="45" y="10.2" class="brand-title">VOLODIUM</text>
+  <text x="45" y="12.8" class="brand-sub">HAUTE PARFUMERIE • MOSCOW</text>
+  <line x1="32" y1="14.2" x2="58" y2="14.2" stroke="#812020" stroke-width="0.2" stroke-opacity="0.4" />
+
+  <!-- QR Code Section in Center -->
+  <g transform="translate(34.5, 15.8)">
+    <rect x="-0.8" y="-0.8" width="22.6" height="22.6" fill="#F4EFE6" rx="0.5" stroke="#812020" stroke-width="0.25" stroke-opacity="0.3" />
+    <svg x="0" y="0" width="21" height="21" viewBox="0 0 31 31">
+      <path d="M1,1h1v1h-1zM2,1h1v1h-1zM3,1h1v1h-1zM4,1h1v1h-1zM5,1h1v1h-1zM6,1h1v1h-1zM7,1h1v1h-1zM23,1h1v1h-1zM24,1h1v1h-1zM25,1h1v1h-1zM26,1h1v1h-1zM27,1h1v1h-1zM28,1h1v1h-1zM29,1h1v1h-1zM1,2h1v1h-1zM7,2h1v1h-1zM23,2h1v1h-1zM29,2h1v1h-1zM1,3h1v1h-1zM3,3h1v1h-1zM4,3h1v1h-1zM5,3h1v1h-1zM7,3h1v1h-1zM23,3h1v1h-1zM25,3h1v1h-1zM26,3h1v1h-1zM27,3h1v1h-1zM29,3h1v1h-1zM1,4h1v1h-1zM3,4h1v1h-1zM4,4h1v1h-1zM5,4h1v1h-1zM7,4h1v1h-1zM23,4h1v1h-1zM25,4h1v1h-1zM26,4h1v1h-1zM27,4h1v1h-1zM29,4h1v1h-1zM1,5h1v1h-1zM3,5h1v1h-1zM4,5h1v1h-1zM5,5h1v1h-1zM7,5h1v1h-1zM23,5h1v1h-1zM25,5h1v1h-1zM26,5h1v1h-1zM27,5h1v1h-1zM29,5h1v1h-1zM1,6h1v1h-1zM7,6h1v1h-1zM23,6h1v1h-1zM29,6h1v1h-1zM1,7h1v1h-1zM2,7h1v1h-1zM3,7h1v1h-1zM4,7h1v1h-1zM5,7h1v1h-1zM6,7h1v1h-1zM7,7h1v1h-1zM9,7h1v1h-1zM11,7h1v1h-1zM13,7h1v1h-1zM15,7h1v1h-1zM17,7h1v1h-1zM19,7h1v1h-1zM21,7h1v1h-1zM23,7h1v1h-1zM24,7h1v1h-1zM25,7h1v1h-1zM26,7h1v1h-1zM27,7h1v1h-1zM28,7h1v1h-1zM29,7h1v1h-1zM7,9h1v1h-1zM7,11h1v1h-1zM7,13h1v1h-1zM7,15h1v1h-1zM7,17h1v1h-1zM7,19h1v1h-1zM7,21h1v1h-1zM21,21h1v1h-1zM22,21h1v1h-1zM23,21h1v1h-1zM24,21h1v1h-1zM25,21h1v1h-1zM9,22h1v1h-1zM21,22h1v1h-1zM25,22h1v1h-1zM1,23h1v1h-1zM2,23h1v1h-1zM3,23h1v1h-1zM4,23h1v1h-1zM5,23h1v1h-1zM6,23h1v1h-1zM7,23h1v1h-1zM21,23h1v1h-1zM23,23h1v1h-1zM25,23h1v1h-1zM1,24h1v1h-1zM7,24h1v1h-1zM21,24h1v1h-1zM25,24h1v1h-1zM1,25h1v1h-1zM3,25h1v1h-1zM4,25h1v1h-1zM5,25h1v1h-1zM7,25h1v1h-1zM21,25h1v1h-1zM22,25h1v1h-1zM23,25h1v1h-1zM24,25h1v1h-1zM25,25h1v1h-1zM1,26h1v1h-1zM3,26h1v1h-1zM4,26h1v1h-1zM5,26h1v1h-1zM7,26h1v1h-1zM1,27h1v1h-1zM3,27h1v1h-1zM4,27h1v1h-1zM5,27h1v1h-1zM7,27h1v1h-1zM1,28h1v1h-1zM7,28h1v1h-1zM1,29h1v1h-1zM2,29h1v1h-1zM3,29h1v1h-1zM4,29h1v1h-1zM5,29h1v1h-1zM6,29h1v1h-1zM7,29h1v1h-1z" fill="#812020" />
+      <!-- Center Monogram -->
+      <circle cx="15.5" cy="15.5" r="3.6" fill="#F4EFE6" stroke="#812020" stroke-width="0.35" />
+      <text x="15.5" y="16.7" class="monogram">V</text>
+    </svg>
+  </g>
+
+  <!-- Bottom CTA & Brand URL -->
+  <text x="45" y="42.5" class="qr-caption">СКАНИРУЙТЕ ДЛЯ ПЕРЕХОДА В БУТИК</text>
+  <text x="45" y="45.2" class="qr-url">volodiumparfum.ru • @volodiumparfum</text>
+</svg>

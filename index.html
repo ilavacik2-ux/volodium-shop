@@ -96,47 +96,226 @@
           <span class="cart-badge-count" style="display: none;">0</span>
         </button>
 
-        <button class="hdr-action-btn btn-mobile-menu" id="btnMobileMenu" aria-label="Меню">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
+        <button class="saisei-menu-trigger" id="saiseiMenuBtn" aria-label="Открыть навигационное меню бутика" type="button">
+          <span class="smt-label">МЕНЮ</span>
+          <span class="smt-burger" aria-hidden="true">
+            <span class="smt-line-track">
+              <span class="smt-line line-rel"></span>
+              <span class="smt-line line-abs"></span>
+            </span>
+            <span class="smt-line-track">
+              <span class="smt-line line-rel"></span>
+              <span class="smt-line line-abs"></span>
+            </span>
+            <span class="smt-line-track">
+              <span class="smt-line line-rel"></span>
+              <span class="smt-line line-abs"></span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
-  <div class="mobile-nav" id="mobileNav">
-    <div class="mobile-nav-inner">
-      <div class="mobile-nav-header">
-        <span class="brand-title">VOLODIUM</span>
-        <button class="btn-icon" id="btnMobileNavClose" aria-label="Закрыть">✕</button>
+  <!-- Saisei Full-Screen Split Editorial Menu Overlay -->
+  <div class="saisei-menu-overlay" id="saiseiMenuOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Навигационное меню бутика">
+    <div class="smo-container">
+      
+      <!-- Left Panel: Warm Linen Stone with Numbered Editorial Links -->
+      <div class="smo-panel smo-panel-left">
+        <div class="smo-panel-header">
+          <span class="smo-brand-tag">VOLODIUM • HAUTE PARFUMERIE</span>
+          <span class="smo-edition">EDITION 2026</span>
+        </div>
+
+        <nav class="smo-nav-list" aria-label="Главные разделы бутика">
+          <div class="smo-nav-item">
+            <a href="#catalog" class="smo-nav-link" data-index="01">
+              <span class="smo-nav-num">(01)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Коллекция духов</span>
+                <span class="smo-nav-note">277+ нишевых композиций</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+
+          <div class="smo-nav-item">
+            <a href="#aroma-boxes" class="smo-nav-link" data-index="02">
+              <span class="smo-nav-num">(02)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Тематические аромабоксы</span>
+                <span class="smo-nav-note">Сеты из 5 ароматов по 3 / 5 мл</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+
+          <div class="smo-nav-item">
+            <a href="#secret-boxes" class="smo-nav-link" data-index="03">
+              <span class="smo-nav-num">(03)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Secret Box Владимира Вацика</span>
+                <span class="smo-nav-note">Главный авторский эксклюзив</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+
+          <div class="smo-nav-item">
+            <a href="#quiz" class="smo-nav-link" data-index="04">
+              <span class="smo-nav-num">(04)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Парфюмерная анкета</span>
+                <span class="smo-nav-note">Индивидуальный подбор за 6 шагов</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+
+          <div class="smo-nav-item">
+            <a href="#certificates" class="smo-nav-link" data-index="05">
+              <span class="smo-nav-num">(05)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Подарочные сертификаты</span>
+                <span class="smo-nav-note">Люксовые карты & сургуч</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+
+          <div class="smo-nav-item">
+            <a href="#consultation" class="smo-nav-link" data-index="06">
+              <span class="smo-nav-num">(06)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Парфюмерная консультация</span>
+                <span class="smo-nav-note">Личный разбор с основателем</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+
+          <div class="smo-nav-item">
+            <a href="#tester-guide" class="smo-nav-link" data-index="07">
+              <span class="smo-nav-num">(07)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Что такое тестер?</span>
+                <span class="smo-nav-note">Экспертный гид & экономия до 40%</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+
+          <div class="smo-nav-item">
+            <a href="#reviews" class="smo-nav-link" data-index="08">
+              <span class="smo-nav-num">(08)</span>
+              <div class="smo-nav-titles">
+                <span class="smo-nav-title">Отзывы & Распаковки</span>
+                <span class="smo-nav-note">1 200+ историй и фото клиентов</span>
+              </div>
+              <span class="smo-nav-arrow" aria-hidden="true">→</span>
+            </a>
+            <div class="smo-nav-rule"></div>
+          </div>
+        </nav>
+
+        <div class="smo-panel-footer-left">
+          <div class="smo-quote">«Настоящий аромат — это не просто шлейф. Это ваше невидимое послание миру.»</div>
+          <span class="smo-author">— Владимир Вацик</span>
+        </div>
       </div>
-      <div class="mobile-nav-links">
-        <a href="#catalog" class="mobile-nav-link">Каталог духов (277+)</a>
-        <a href="#aroma-boxes" class="mobile-nav-link">Тематические аромабоксы</a>
-        <a href="#secret-boxes" class="mobile-nav-link">Секретные аромабоксы</a>
-        <a href="#quiz" class="mobile-nav-link">Парфюмерная анкета</a>
-        <a href="#certificates" class="mobile-nav-link">Подарочные сертификаты</a>
-        <a href="#consultation" class="mobile-nav-link">Парфюмерная консультация</a>
-        <a href="#tester-guide" class="mobile-nav-link">Что такое тестер? (Гид)</a>
-        <a href="#reviews" class="mobile-nav-link">Отзывы клиентов (1 200+)</a>
-        <a href="#delivery" class="mobile-nav-link">Условия доставки</a>
+
+      <!-- Right Panel: Deep Velvet Espresso Noir with Rotating Gold Seal & Contacts -->
+      <div class="smo-panel smo-panel-right">
+        
+        <!-- Rotating Gold Seal -->
+        <div class="smo-seal-container">
+          <div class="smo-rotating-seal">
+            <svg viewBox="0 0 160 160" width="130" height="130" class="smo-seal-svg">
+              <path id="smoSealCircle" d="M 80, 80 m -60, 0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0" fill="none"/>
+              <text class="smo-seal-text">
+                <textPath href="#smoSealCircle" startOffset="50%" text-anchor="middle">
+                  VOLODIUM VACIK • HAUTE PARFUMERIE • 2026 •
+                </textPath>
+              </text>
+              <circle cx="80" cy="80" r="48" fill="none" stroke="#E5C378" stroke-width="1" stroke-dasharray="2, 2" opacity="0.65"/>
+              <circle cx="80" cy="80" r="42" fill="none" stroke="#E5C378" stroke-width="0.8" opacity="0.8"/>
+            </svg>
+            <div class="smo-seal-center-letter">V</div>
+          </div>
+        </div>
+
+        <div class="smo-boutique-info">
+          <span class="smo-boutique-tag">АТЕЛЬЕ & ЗАКРЫТЫЙ ШОУРУМ</span>
+          <h3 class="smo-boutique-title">Volodium Haute Parfumerie</h3>
+          <p class="smo-boutique-desc">
+            Москва • Личные сессии парфюмерного гардероба, аутентичные флаконы от официальных дистрибьюторов Европы и Ближнего Востока.
+          </p>
+
+          <div class="smo-contact-grid">
+            <div class="smo-contact-col">
+              <span class="smo-contact-label">СВЯЗЬ С ОСНОВАТЕЛЕМ</span>
+              <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="smo-contact-link highlight">@volodiumparfum</a>
+              <a href="tel:+79951541544" class="smo-contact-link">+7 (995) 154-15-44</a>
+            </div>
+
+            <div class="smo-contact-col">
+              <span class="smo-contact-label">РЕЖИМ РАБОТЫ</span>
+              <span class="smo-contact-val">Пн — Вс: 10:00 — 22:00</span>
+              <span class="smo-contact-val">Доставка: СДЭК / Достависта</span>
+            </div>
+          </div>
+
+          <!-- Business Card & QR Section -->
+          <div class="smo-qr-card-box">
+            <div class="smo-qr-card-preview">
+              <img src="assets/img/qr/volodium_qr_website_limestone.svg" alt="QR-код бутика Volodium Parfum" class="smo-qr-img">
+            </div>
+            <div class="smo-qr-card-info">
+              <span class="smo-qr-badge">ВИЗИТКА БРЕНДА</span>
+              <div class="smo-qr-card-title">Фирменный QR-код бутика</div>
+              <p class="smo-qr-card-desc">Векторный SVG и 300 DPI макет для печати визиток Владимира Вацика (90×50 мм).</p>
+              <button type="button" class="smo-qr-btn" onclick="openBusinessCardModal();">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Открыть макет визитки & QR
+              </button>
+            </div>
+          </div>
+
+          <!-- Socials row -->
+          <div class="smo-socials-row">
+            <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="smo-soc-btn" title="Telegram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+              </svg>
+              <span>Telegram канал</span>
+            </a>
+            <a href="https://www.youtube.com/@vatsiik" target="_blank" rel="noopener noreferrer" class="smo-soc-btn" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>YouTube @vatsiik</span>
+            </a>
+          </div>
+
+        </div>
+
       </div>
-      <div class="mobile-nav-footer">
-        <a href="https://t.me/volodiumparfum" target="_blank" class="btn-primary" style="width: 100%; justify-content: center;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-          </svg>
-          Написать в Telegram
-        </a>
-      </div>
+
     </div>
   </div>
 
-  <!-- Hero Section -->
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <!-- Ambient Grand Backdrop Layer (Used in Full-Background Mode) -->
@@ -354,46 +533,6 @@
         <p class="section-descr">
           Сеты из 5 культовых нишевых композиций в атомайзерах по 3 мл или 5 мл. Идеальный способ примерить главные мировые шедевры перед покупкой полного флакона.
         </p>
-      </div>
-
-      <!-- Real Packaging Showcase Above Aroma Boxes Grid -->
-      <div class="packaging-editorial-showcase">
-        <div class="pes-visual-grid">
-          <div class="pes-photo-card pes-photo-founder">
-            <img src="assets/img/editorial/vladimir_volodium_box.jpg" alt="Владимир Вацик с фирменным боксом Volodium Parfum" loading="lazy">
-            <div class="pes-badge">
-              <span class="pes-tag">Основатель бутика</span>
-              <span class="pes-sub">Каждый бокс запечатывается сургучом лично</span>
-            </div>
-          </div>
-          <div class="pes-photo-card">
-            <img src="assets/img/aromaboxes/real_box_white_closed.jpg" alt="Белый подарочный бокс Volodium Parfum с черной хлопковой лентой" loading="lazy">
-            <div class="pes-badge">
-              <span class="pes-tag">Подарочный бокс</span>
-              <span class="pes-sub">Белая фактурная коробка с черной репсовой лентой</span>
-            </div>
-          </div>
-          <div class="pes-photo-card">
-            <img src="assets/img/aromaboxes/real_box_open_kraft.jpg" alt="Открытый крафтовый бокс с карточкой Ты пахнешь SEXY" loading="lazy">
-            <div class="pes-badge">
-              <span class="pes-tag">Фирменная распаковка</span>
-              <span class="pes-sub">Черная тишью & открытка «ТЫ ПАХНЕШЬ SEXY»</span>
-            </div>
-          </div>
-          <div class="pes-photo-card">
-            <img src="assets/img/aromaboxes/real_box_open_marble.jpg" alt="Мраморные и деревянные тревел-атомайзеры" loading="lazy">
-            <div class="pes-badge">
-              <span class="pes-tag">Премиум-атомайзеры</span>
-              <span class="pes-sub">Мраморная текстура & металлическая помпа</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pes-signature-banner">
-          <div class="pes-sig-brand">VOLODIUM PARFUM • АРОМАСТИЛИСТ ВЛАДИМИР ВАЦИК</div>
-          <div class="pes-sig-slogan">ТЫ ПАХНЕШЬ <span class="pes-sexy-red">SEXY</span></div>
-          <div class="pes-sig-sub">Каждый сет собирается вручную, бережно упаковывается и сопровождается персональной открыткой</div>
-        </div>
       </div>
 
       <!-- Aroma Boxes Filter Bar -->
@@ -2257,6 +2396,98 @@
           </svg>
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- Business Card & QR Code Print Center Modal -->
+  <div class="modal-backdrop" id="businessCardModalBackdrop" style="display: none;">
+    <div class="product-modal business-card-modal">
+      <button class="btn-modal-close" onclick="closeBusinessCardModal();" aria-label="Закрыть окно визитки">✕</button>
+      
+      <div class="bcm-header">
+        <span class="bcm-tag">ТИПОГРАФИЯ & ФИРМЕННЫЙ СТИЛЬ</span>
+        <h2 class="bcm-title">Фирменная визитка & QR-коды Volodium</h2>
+        <p class="bcm-sub">Оригинальный макет визитки Владимира Вацика (90×50 мм) и сгенерированные векторные QR-коды для типографии.</p>
+      </div>
+
+      <div class="bcm-grid">
+        <!-- Interactive Card Preview -->
+        <div class="bcm-card-preview-wrap">
+          <div class="bcm-card-tab-btns">
+            <button type="button" class="bcm-tab-btn active" id="btnCardBackTab" onclick="switchCardPreview('back')">Оборот с QR (90×50 мм)</button>
+            <button type="button" class="bcm-tab-btn" id="btnCardFrontTab" onclick="switchCardPreview('front')">Лицевая сторона</button>
+          </div>
+          
+          <div class="bcm-card-stage">
+            <div class="bcm-card-render bcm-card-back active" id="cardBackView">
+              <img src="assets/img/qr/business_card_back_print.svg" alt="Оборот визитки Владимира Вацика с QR-кодом" class="bcm-card-img">
+            </div>
+            <div class="bcm-card-render bcm-card-front" id="cardFrontView" style="display: none;">
+              <img src="assets/img/branding/card_front_sexy.jpg" alt="Лицевая сторона визитки Владимира Вацика" class="bcm-card-img">
+            </div>
+          </div>
+
+          <div class="bcm-card-dims">
+            <span>Стандарт: <strong>90 × 50 мм</strong></span>
+            <span>Палитра: <strong>Limestone #D2D1CC / Bordo #812020 / Velvet Noir #111216</strong></span>
+          </div>
+        </div>
+
+        <!-- Downloads & Formats List -->
+        <div class="bcm-downloads-wrap">
+          <h4 class="bcm-downloads-heading">Готовые файлы для печати и размещения:</h4>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon svg-icon">SVG</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">Макет визитки (Оборот, вектор 90×50 мм)</span>
+              <span class="bcm-file-desc">Векторный SVG для офсетной печати, шелкографии и тиснения</span>
+            </div>
+            <a href="assets/img/qr/business_card_back_print.svg" download="volodium_business_card_90x50mm.svg" class="bcm-download-link">Скачать</a>
+          </div>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon qr-icon">QR</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">QR-код сайта (Limestone Tone)</span>
+              <span class="bcm-file-desc">Цвет #812020 на фоне визитки #D2D1CC с монограммой</span>
+            </div>
+            <div class="bcm-file-actions">
+              <a href="assets/img/qr/volodium_qr_website_limestone.svg" download="volodium_qr_website_limestone.svg" class="bcm-download-link">SVG</a>
+              <a href="assets/img/qr/volodium_qr_website_limestone.png" download="volodium_qr_website_limestone.png" class="bcm-download-link">PNG</a>
+            </div>
+          </div>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon qr-icon">QR</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">QR-код сайта (Burgundy Wine)</span>
+              <span class="bcm-file-desc">Фирменный бордо #812020 на белом/прозрачном фоне</span>
+            </div>
+            <div class="bcm-file-actions">
+              <a href="assets/img/qr/volodium_qr_website_wine.svg" download="volodium_qr_website_wine.svg" class="bcm-download-link">SVG</a>
+              <a href="assets/img/qr/volodium_qr_website_wine.png" download="volodium_qr_website_wine.png" class="bcm-download-link">PNG</a>
+            </div>
+          </div>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon tg-icon">TG</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">QR-код Telegram канала (@volodiumparfum)</span>
+              <span class="bcm-file-desc">Прямой переход в закрытый клуб и консультации</span>
+            </div>
+            <div class="bcm-file-actions">
+              <a href="assets/img/qr/volodium_qr_telegram_wine.svg" download="volodium_qr_telegram_wine.svg" class="bcm-download-link">SVG</a>
+              <a href="assets/img/qr/volodium_qr_telegram_wine.png" download="volodium_qr_telegram_wine.png" class="bcm-download-link">PNG</a>
+            </div>
+          </div>
+
+          <div class="bcm-tip-box">
+            <span class="bcm-tip-icon">💡</span>
+            <p class="bcm-tip-text">Файлы SVG можно напрямую передать в типографию. Векторные кривые масштабируются без потери качества при любом методе печати (УФ-печать, шелкография, лакирование).</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initCookieBanner();
   initSmoothScroll();
+  initSaiseiMenu();
   init3DTiltCards();
   initFloatingBackTop();
 });
@@ -1845,43 +1846,141 @@ function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
-      if (targetId === '#' || targetId === '#opencart') return;
+      if (!targetId || targetId === '#' || targetId === '#opencart') return;
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
         targetEl.scrollIntoView({ behavior: 'smooth' });
-        // Close mobile menu if open
-        const mobileNav = document.getElementById('mobileNav');
-        if (mobileNav) mobileNav.classList.remove('active');
+        // Close Saisei menu if open
+        if (typeof closeSaiseiMenu === 'function') closeSaiseiMenu();
       }
     });
   });
+}
 
-  const mobileMenuBtn = document.getElementById('btnMobileMenu');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileNavClose = document.getElementById('btnMobileNavClose');
-  if (mobileMenuBtn && mobileNav) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileNav.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      playChime(480);
+/* ==========================================================================
+   Saisei 3-Line Menu & Split Editorial Overlay Controller
+   ========================================================================== */
+function initSaiseiMenu() {
+  const menuBtn = document.getElementById('saiseiMenuBtn');
+  const menuOverlay = document.getElementById('saiseiMenuOverlay');
+  const labelEl = menuBtn ? menuBtn.querySelector('.smt-label') : null;
+
+  function openMenu() {
+    if (!menuOverlay) return;
+    menuOverlay.classList.add('is-open');
+    menuOverlay.setAttribute('aria-hidden', 'false');
+    if (menuBtn) {
+      menuBtn.classList.add('is-active');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      if (labelEl) labelEl.textContent = 'ЗАКРЫТЬ';
+    }
+    document.body.style.overflow = 'hidden';
+    if (typeof playChime === 'function') playChime(520);
+  }
+
+  function closeMenu() {
+    if (!menuOverlay) return;
+    menuOverlay.classList.remove('is-open');
+    menuOverlay.setAttribute('aria-hidden', 'true');
+    if (menuBtn) {
+      menuBtn.classList.remove('is-active');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      if (labelEl) labelEl.textContent = 'МЕНЮ';
+    }
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu() {
+    if (menuOverlay && menuOverlay.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
     });
   }
-  if (mobileNavClose && mobileNav) {
-    mobileNavClose.addEventListener('click', () => {
-      mobileNav.classList.remove('active');
-      document.body.style.overflow = '';
+
+  // Close when clicking nav links inside overlay
+  if (menuOverlay) {
+    menuOverlay.querySelectorAll('.smo-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
     });
-  }
-  if (mobileNav) {
-    mobileNav.addEventListener('click', (e) => {
-      if (e.target === mobileNav) {
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
+
+    // Close on backdrop click (click outside panels)
+    menuOverlay.addEventListener('click', (e) => {
+      if (e.target === menuOverlay) {
+        closeMenu();
       }
     });
   }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (menuOverlay && menuOverlay.classList.contains('is-open')) {
+        closeMenu();
+      }
+      closeBusinessCardModal();
+    }
+  });
+
+  window.openSaiseiMenu = openMenu;
+  window.closeSaiseiMenu = closeMenu;
+  window.toggleSaiseiMenu = toggleMenu;
 }
+
+/* ==========================================================================
+   Business Card Print Center & QR Modal Controller
+   ========================================================================== */
+function openBusinessCardModal() {
+  if (typeof closeSaiseiMenu === 'function') closeSaiseiMenu();
+  const backdrop = document.getElementById('businessCardModalBackdrop');
+  if (backdrop) {
+    backdrop.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    if (typeof playChime === 'function') playChime(640);
+  }
+}
+
+function closeBusinessCardModal() {
+  const backdrop = document.getElementById('businessCardModalBackdrop');
+  if (backdrop) {
+    backdrop.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+function switchCardPreview(side) {
+  const backView = document.getElementById('cardBackView');
+  const frontView = document.getElementById('cardFrontView');
+  const btnBack = document.getElementById('btnCardBackTab');
+  const btnFront = document.getElementById('btnCardFrontTab');
+
+  if (side === 'front') {
+    if (backView) backView.style.display = 'none';
+    if (frontView) frontView.style.display = 'block';
+    if (btnBack) btnBack.classList.remove('active');
+    if (btnFront) btnFront.classList.add('active');
+  } else {
+    if (frontView) frontView.style.display = 'none';
+    if (backView) backView.style.display = 'block';
+    if (btnFront) btnFront.classList.remove('active');
+    if (btnBack) btnBack.classList.add('active');
+  }
+}
+
+window.openBusinessCardModal = openBusinessCardModal;
+window.closeBusinessCardModal = closeBusinessCardModal;
+window.switchCardPreview = switchCardPreview;
 
 /* ==========================================================================
    PERFUME QUESTIONNAIRE CONTROLLER (Парфюмерная Анкета Владимира Вацика)

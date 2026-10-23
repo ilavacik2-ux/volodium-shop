@@ -1605,7 +1605,7 @@ ${itemsListText}
     const tgUrl = `https://t.me/volodiumparfum?text=${encodeURIComponent(orderText)}`;
     window.open(tgUrl, '_blank');
 
-    showToast('🎉 Заказ сформирован! Перенаправляем в Telegram к менеджеру...', 6000);
+    showToast('✦ Заказ сформирован! Перенаправляем в Telegram к менеджеру...', 6000);
   });
 }
 

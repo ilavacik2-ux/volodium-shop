@@ -2009,7 +2009,7 @@ function initQuiz() {
   const quizForm = document.getElementById('quizForm');
   if (!quizForm) return;
 
-  // Setup choice pills click handlers
+  // Setup choice pills click handlers (Step 1)
   document.querySelectorAll('.quiz-choice-pill').forEach(btn => {
     btn.addEventListener('click', () => {
       const container = btn.closest('.quiz-options-grid');
@@ -2025,20 +2025,45 @@ function initQuiz() {
     });
   });
 
-  // Setup sillage cards
-  document.querySelectorAll('.quiz-select-card').forEach(card => {
+  // Setup luxury cards (Questions 5 & 6)
+  document.querySelectorAll('.quiz-luxury-card').forEach(card => {
     card.addEventListener('click', () => {
-      document.querySelectorAll('.quiz-select-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      quizState.sillage = card.dataset.val;
-      playChime(560);
+      const grid = card.closest('.quiz-luxury-grid');
+      const isMulti = grid && (grid.classList.contains('multi') || grid.dataset.question === 'vibe' || grid.dataset.question === 'season');
+      
+      if (isMulti) {
+        card.classList.toggle('selected');
+      } else {
+        if (grid) grid.querySelectorAll('.quiz-luxury-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+      }
+      playChime(540);
     });
   });
-  // Default select 3rd card (Интеллигентно заметный)
-  const defaultSillageCard = document.querySelector('.quiz-select-card[data-val="Интеллигентно заметный"]');
-  if (defaultSillageCard) defaultSillageCard.classList.add('selected');
 
-  // Setup dominant notes chips
+  // Setup sillage radar cards (Question 7)
+  document.querySelectorAll('.quiz-sillage-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.quiz-sillage-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      quizState.sillage = card.dataset.val;
+      playChime(580);
+    });
+  });
+
+  // Setup meter cards (Questions 8 & 9)
+  document.querySelectorAll('.quiz-meter-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const container = card.closest('.quiz-sweetness-cards, .quiz-gender-cards');
+      if (container) {
+        container.querySelectorAll('.quiz-meter-card').forEach(c => c.classList.remove('selected'));
+      }
+      card.classList.add('selected');
+      playChime(500);
+    });
+  });
+
+  // Setup dominant notes chips (Step 3)
   document.querySelectorAll('.quiz-note-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       chip.classList.toggle('selected');
@@ -2046,7 +2071,7 @@ function initQuiz() {
     });
   });
 
-  // Setup taboo notes chips
+  // Setup taboo notes chips (Step 3)
   document.querySelectorAll('.quiz-taboo-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       chip.classList.toggle('selected');
@@ -2062,7 +2087,7 @@ function initQuiz() {
     });
   });
 
-  // Global methods
+  // Global step navigation methods
   window.quizNextStep = function(fromStep) {
     if (fromStep === 1) {
       const nameInput = document.getElementById('quizName');
@@ -2116,12 +2141,12 @@ function goToQuizStep(step) {
 
   playChime(480 + step * 40);
 
-  // Smooth scroll quiz card into view if needed
-  const quizSection = document.getElementById('quiz');
-  if (quizSection) {
-    const rect = quizSection.getBoundingClientRect();
-    if (rect.top < -50 || rect.top > 300) {
-      quizSection.scrollIntoView({ behavior: 'smooth' });
+  // Smooth scroll quiz card into view
+  const wizardCard = document.querySelector('.quiz-wizard-card');
+  if (wizardCard) {
+    const rect = wizardCard.getBoundingClientRect();
+    if (rect.top < 0 || rect.top > 250) {
+      wizardCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 }
@@ -2138,22 +2163,22 @@ function collectQuizData() {
   const occasions = Array.from(document.querySelectorAll('.quiz-options-grid[data-question="occasion"] .quiz-choice-pill.selected'))
     .map(b => b.dataset.val);
   
-  // Vibe
-  const vibes = Array.from(document.querySelectorAll('.quiz-options-grid[data-question="vibe"] .quiz-choice-pill.selected'))
+  // Vibe (Step 2 Question 5)
+  const vibes = Array.from(document.querySelectorAll('.quiz-luxury-grid[data-question="vibe"] .quiz-luxury-card.selected'))
     .map(b => b.dataset.val);
   
-  // Season
-  const seasons = Array.from(document.querySelectorAll('.quiz-options-grid[data-question="season"] .quiz-choice-pill.selected'))
+  // Season (Step 2 Question 6)
+  const seasons = Array.from(document.querySelectorAll('.quiz-luxury-grid[data-question="season"] .quiz-luxury-card.selected'))
     .map(b => b.dataset.val);
   
-  // Sillage
-  const sillage = document.querySelector('.quiz-select-card.selected')?.dataset.val || 'Интеллигентно заметный';
+  // Sillage (Step 2 Question 7)
+  const sillage = document.querySelector('.quiz-sillage-card.selected')?.dataset.val || 'Интеллигентно заметный';
   
-  // Sweetness
-  const sweetness = document.querySelector('.quiz-options-grid[data-question="sweetness"] .quiz-choice-pill.selected')?.dataset.val || 'Средне сладкий';
+  // Sweetness (Step 2 Question 8)
+  const sweetness = document.querySelector('.quiz-sweetness-cards .quiz-meter-card.selected')?.dataset.val || 'Средне сладкий';
   
-  // Gender
-  const gender = document.querySelector('.quiz-options-grid[data-question="gender"] .quiz-choice-pill.selected')?.dataset.val || 'Вне гендера / Унисекс';
+  // Gender (Step 2 Question 9)
+  const gender = document.querySelector('.quiz-gender-cards .quiz-meter-card.selected')?.dataset.val || 'Вне гендера / Унисекс';
   
   // Dominant notes
   const dominantNotes = Array.from(document.querySelectorAll('.quiz-note-chip.selected'))

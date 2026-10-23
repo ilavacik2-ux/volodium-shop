@@ -858,124 +858,263 @@
               </div>
             </div>
 
-            <!-- STEP 2 -->
+            <!-- STEP 2: АТМОСФЕРА, ШЛЕЙФ И РАСКРЫТИЕ -->
             <div class="quiz-step" id="quizStep2" data-step="2">
+              <div class="quiz-step-header">
+                <span class="quiz-q-num">ШАГ 2 ИЗ 4 • ХАРАКТЕР И ЗВУЧАНИЕ</span>
+                <h3 class="quiz-q-title">Шлейф, атмосфера и раскрытие аромата</h3>
+                <p class="quiz-q-desc">Определяем, как парфюм будет вести себя в пространстве и какой эмоциональный след оставлять за вами.</p>
+              </div>
+
+              <!-- ВОПРОС 5: АТМОСФЕРА -->
               <div class="quiz-question-group">
-                <span class="quiz-q-num">ВОПРОС 5 ИЗ 11</span>
-                <h3 class="quiz-q-title">Какую атмосферу вы хотели бы создать с помощью аромата?</h3>
-                <p class="quiz-q-desc">Эмоциональный посыл, который транслирует ваш ольфакторный образ.</p>
-                <div class="quiz-options-grid multi" data-question="vibe">
-                  <button type="button" class="quiz-choice-pill" data-val="Романтика, сексуальность, магнетизм">
-                    <span class="choice-icon">🔥</span>
-                    <span class="choice-text">Романтика, сексуальность, магнетизм</span>
+                <div class="quiz-q-meta">
+                  <span class="quiz-q-badge">ВОПРОС 5 ИЗ 11</span>
+                  <span class="quiz-q-hint">Можно выбрать несколько настроений</span>
+                </div>
+                <h4 class="quiz-luxury-q-title">Какую атмосферу и посыл вы хотите транслировать?</h4>
+                <div class="quiz-luxury-grid mood-grid" data-question="vibe">
+                  <button type="button" class="quiz-luxury-card selected" data-val="Романтика, сексуальность, магнетизм">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">🔥</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Sexy & Магнетизм</div>
+                    <div class="qlc-desc">Чувственный, притягательный вечерний шлейф. Привлекает взгляды и восторг.</div>
                   </button>
-                  <button type="button" class="quiz-choice-pill" data-val="Релаксация, умиротворение, медитативность">
-                    <span class="choice-icon">🌿</span>
-                    <span class="choice-text">Релаксация и умиротворение</span>
+
+                  <button type="button" class="quiz-luxury-card" data-val="Релаксация, умиротворение, медитативность">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">🌿</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Релакс & Спокойствие</div>
+                    <div class="qlc-desc">Медитативный гармоничный дзен. Чистота хвои, зеленого чая и сандала.</div>
                   </button>
-                  <button type="button" class="quiz-choice-pill" data-val="Энергия, драйв, напористость">
-                    <span class="choice-icon">⚡</span>
-                    <span class="choice-text">Энергия, эмоциональный всплеск, драйв</span>
+
+                  <button type="button" class="quiz-luxury-card" data-val="Энергия, драйв, напористость">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">⚡</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Энергия & Драйв</div>
+                    <div class="qlc-desc">Высокий темп, бодрость и эмоциональный импульс. Сочные цитрусы и минералы.</div>
                   </button>
-                  <button type="button" class="quiz-choice-pill" data-val="Статус, серьезность, профессионализм">
-                    <span class="choice-icon">🏛️</span>
-                    <span class="choice-text">Статус, серьезность, профессионализм</span>
+
+                  <button type="button" class="quiz-luxury-card" data-val="Статус, серьезность, профессионализм">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">🏛️</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Статус & Авторитет</div>
+                    <div class="qlc-desc">Деловой, солидный образ. Дорогая кожа, благородный табак и весомость.</div>
                   </button>
-                  <button type="button" class="quiz-choice-pill" data-val="Кристальная чистота и свежесть">
-                    <span class="choice-icon">💧</span>
-                    <span class="choice-text">Кристальная чистота белой рубашки</span>
+
+                  <button type="button" class="quiz-luxury-card" data-val="Кристальная чистота и свежесть">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">💧</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Чистота белой рубашки</div>
+                    <div class="qlc-desc">Безупречные альдегиды, хрустящий хлопок и аристократичная свежесть.</div>
                   </button>
                 </div>
               </div>
 
+              <!-- ВОПРОС 6: СЕЗОННОСТЬ -->
               <div class="quiz-question-group">
-                <span class="quiz-q-num">ВОПРОС 6 ИЗ 11</span>
-                <h3 class="quiz-q-title">Сезонность: на какое время года?</h3>
-                <div class="quiz-options-grid multi" data-question="season">
-                  <button type="button" class="quiz-choice-pill" data-val="Внесезонный">
-                    <span class="choice-icon">♾️</span>
-                    <span class="choice-text">Внесезонный (круглый год)</span>
+                <div class="quiz-q-meta">
+                  <span class="quiz-q-badge">ВОПРОС 6 ИЗ 11</span>
+                  <span class="quiz-q-hint">Время года</span>
+                </div>
+                <h4 class="quiz-luxury-q-title">Сезонность: когда вы планируете носить аромат?</h4>
+                <div class="quiz-luxury-grid seasons-grid" data-question="season">
+                  <button type="button" class="quiz-luxury-card selected" data-val="Внесезонный">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">♾️</span>
+                      <span class="qlc-badge-sub">365 дней</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Всесезонный Signature</div>
+                    <div class="qlc-desc">Универсальная формула, одинаково гармоничная и летом, и в зимние морозы.</div>
                   </button>
-                  <button type="button" class="quiz-choice-pill" data-val="Осень-Зима">
-                    <span class="choice-icon">❄️</span>
-                    <span class="choice-text">Осень / Зима (согревающий, густой)</span>
+
+                  <button type="button" class="quiz-luxury-card" data-val="Осень-Зима">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">❄️</span>
+                      <span class="qlc-badge-sub">Холодное время</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Осень — Зима</div>
+                    <div class="qlc-desc">Плотные согревающие смолы, пряная корица, густая амбра и уютный шлейф.</div>
                   </button>
-                  <button type="button" class="quiz-choice-pill" data-val="Весна-Лето">
-                    <span class="choice-icon">🌸</span>
-                    <span class="choice-text">Весна / Лето (свежий, диффузный)</span>
+
+                  <button type="button" class="quiz-luxury-card" data-val="Весна-Лето">
+                    <div class="qlc-top">
+                      <span class="qlc-icon">🌸</span>
+                      <span class="qlc-badge-sub">Теплый сезон</span>
+                      <span class="qlc-check">✓</span>
+                    </div>
+                    <div class="qlc-title">Весна — Лето</div>
+                    <div class="qlc-desc">Искрящийся диффузный бриз, легкие цветы, сочный бергамот и воздух.</div>
                   </button>
                 </div>
               </div>
 
-              <div class="quiz-question-group">
-                <span class="quiz-q-num">ВОПРОС 7 ИЗ 11</span>
-                <h3 class="quiz-q-title">Какая реакция окружающих для вас комфортна? (Шлейф)</h3>
-                <div class="quiz-cards-selector" data-question="sillage">
-                  <div class="quiz-select-card" data-val="Только для себя (интимный)">
-                    <div class="q-card-head">
-                      <span class="q-card-badge">Близко к коже</span>
-                      <span class="q-card-icon">🤍</span>
+              <!-- ВОПРОС 7: РАДИУС ШЛЕЙФА (SILLAGE RADAR) -->
+              <div class="quiz-question-group sillage-highlight-group">
+                <div class="quiz-q-meta">
+                  <span class="quiz-q-badge highlight">ВОПРОС 7 ИЗ 11 • КЛЮЧЕВОЙ ПАРАМЕТР</span>
+                  <span class="quiz-q-hint">Радиус проекции аромата в метрах</span>
+                </div>
+                <h4 class="quiz-luxury-q-title">Какая реакция окружающих и дистанция шлейфа для вас комфортна?</h4>
+                <div class="quiz-sillage-cards-grid" data-question="sillage">
+                  
+                  <div class="quiz-sillage-card" data-val="Только для себя (интимный)">
+                    <div class="qsc-radar-indicator">
+                      <span class="qsc-radar-circle circle-1"></span>
+                      <span class="qsc-radar-center"></span>
                     </div>
-                    <h4 class="q-card-title">Только для себя</h4>
-                    <p class="q-card-text">Звучит интимно в зоне объятий, не вторгается в пространство других.</p>
+                    <div class="qsc-distance-pill">0.5 метра</div>
+                    <h5 class="qsc-title">Только для себя</h5>
+                    <span class="qsc-subtitle">Интимный кокон</span>
+                    <p class="qsc-desc">Звучит близко к коже в зоне объятий. Не вторгается в чужое пространство.</p>
+                    <div class="qsc-meter-track"><span style="width: 25%;"></span></div>
                   </div>
-                  <div class="quiz-select-card" data-val="Заметен на близкой дистанции">
-                    <div class="q-card-head">
-                      <span class="q-card-badge">Дистанция 1 метр</span>
-                      <span class="q-card-icon">🤝</span>
+
+                  <div class="quiz-sillage-card" data-val="Заметен на близкой дистанции">
+                    <div class="qsc-radar-indicator">
+                      <span class="qsc-radar-circle circle-2"></span>
+                      <span class="qsc-radar-circle circle-1"></span>
+                      <span class="qsc-radar-center"></span>
                     </div>
-                    <h4 class="q-card-title">Близкая дистанция</h4>
-                    <p class="q-card-text">Слышен при личном общении и рукопожатии, деликатный и элегантный.</p>
+                    <div class="qsc-distance-pill">1.0 метр</div>
+                    <h5 class="qsc-title">Близкая дистанция</h5>
+                    <span class="qsc-subtitle">Зона рукопожатия</span>
+                    <p class="qsc-desc">Слышен при личном общении и за одним столом. Безупречный деловой этикет.</p>
+                    <div class="qsc-meter-track"><span style="width: 50%;"></span></div>
                   </div>
-                  <div class="quiz-select-card" data-val="Интеллигентно заметный">
-                    <div class="q-card-head">
-                      <span class="q-card-badge">Шлейф 2 метра</span>
-                      <span class="q-card-icon">✨</span>
+
+                  <div class="quiz-sillage-card selected" data-val="Интеллигентно заметный">
+                    <div class="qsc-recommend-tag">ВЫБОР ВЛАДИМИРА</div>
+                    <div class="qsc-radar-indicator">
+                      <span class="qsc-radar-circle circle-3"></span>
+                      <span class="qsc-radar-circle circle-2"></span>
+                      <span class="qsc-radar-circle circle-1"></span>
+                      <span class="qsc-radar-center"></span>
                     </div>
-                    <h4 class="q-card-title">Интеллигентно заметный</h4>
-                    <p class="q-card-text">Красивый шлейф, привлекает внимание, собирает комплименты.</p>
+                    <div class="qsc-distance-pill gold-pill">2.0 метра</div>
+                    <h5 class="qsc-title">Интеллигентный шлейф</h5>
+                    <span class="qsc-subtitle">Идеальный баланс</span>
+                    <p class="qsc-desc">Тонкий красивый след в воздухе. Собирает искренние комплименты окружающих.</p>
+                    <div class="qsc-meter-track"><span style="width: 75%;"></span></div>
                   </div>
-                  <div class="quiz-select-card" data-val="Яркий, запоминающийся, с характером">
-                    <div class="q-card-head">
-                      <span class="q-card-badge">Максимальный шлейф</span>
-                      <span class="q-card-icon">👑</span>
+
+                  <div class="quiz-sillage-card" data-val="Яркий, запоминающийся, с характером">
+                    <div class="qsc-radar-indicator">
+                      <span class="qsc-radar-circle circle-4"></span>
+                      <span class="qsc-radar-circle circle-3"></span>
+                      <span class="qsc-radar-circle circle-2"></span>
+                      <span class="qsc-radar-circle circle-1"></span>
+                      <span class="qsc-radar-center"></span>
                     </div>
-                    <h4 class="q-card-title">Яркий с характером</h4>
-                    <p class="q-card-text">Диффузный, заполняет комнату, оставляет незабываемый след в памяти.</p>
+                    <div class="qsc-distance-pill">3.0+ метра</div>
+                    <h5 class="qsc-title">Maximum Impact</h5>
+                    <span class="qsc-subtitle">Диффузный шлейф</span>
+                    <p class="qsc-desc">Заполняет собой пространство, заявляет о вашем появлении и запоминается навсегда.</p>
+                    <div class="qsc-meter-track"><span style="width: 100%;"></span></div>
                   </div>
+
                 </div>
               </div>
 
-              <div class="quiz-fields-row" style="margin-top: 1.5rem;">
-                <div class="quiz-question-group" style="flex: 1;">
-                  <span class="quiz-q-num">ВОПРОС 8 ИЗ 11</span>
-                  <h4 class="quiz-sub-q-title">Уровень сладости?</h4>
-                  <div class="quiz-options-grid single" data-question="sweetness">
-                    <button type="button" class="quiz-choice-pill" data-val="Совсем не сладкий">Совсем не сладкий</button>
-                    <button type="button" class="quiz-choice-pill" data-val="Средне сладкий">Средне сладкий</button>
-                    <button type="button" class="quiz-choice-pill" data-val="Сладкий / Гурманский">Сладкий / Гурманский</button>
+              <!-- ВОПРОС 8 & 9: СЛАДОСТЬ И ГЕНДЕР -->
+              <div class="quiz-duo-row">
+                
+                <!-- ВОПРОС 8: СЛАДОСТЬ -->
+                <div class="quiz-duo-col">
+                  <div class="quiz-q-meta">
+                    <span class="quiz-q-badge">ВОПРОС 8 ИЗ 11</span>
+                  </div>
+                  <h4 class="quiz-luxury-q-title">Уровень сладости в пирамиде</h4>
+                  <div class="quiz-sweetness-cards" data-question="sweetness">
+                    <button type="button" class="quiz-meter-card" data-val="Совсем не сладкий">
+                      <div class="qmc-top">
+                        <span class="qmc-gauge">0%</span>
+                        <span class="qmc-val">Сухой / Без сахара</span>
+                      </div>
+                      <p class="qmc-desc">Горькие травы, мох, ветивер, минералы, сухая замша.</p>
+                    </button>
+
+                    <button type="button" class="quiz-meter-card selected" data-val="Средне сладкий">
+                      <div class="qmc-top">
+                        <span class="qmc-gauge gold">50%</span>
+                        <span class="qmc-val">Умеренная сладость</span>
+                      </div>
+                      <p class="qmc-desc">Баланс: легкий акцент бобов тонка или ягод без приторности.</p>
+                    </button>
+
+                    <button type="button" class="quiz-meter-card" data-val="Сладкий / Гурманский">
+                      <div class="qmc-top">
+                        <span class="qmc-gauge">100%</span>
+                        <span class="qmc-val">Гурманский десерт</span>
+                      </div>
+                      <p class="qmc-desc">Сливочное пралине, шоколад, карамель и бурбонская ваниль.</p>
+                    </button>
                   </div>
                 </div>
 
-                <div class="quiz-question-group" style="flex: 1;">
-                  <span class="quiz-q-num">ВОПРОС 9 ИЗ 11</span>
-                  <h4 class="quiz-sub-q-title">Как вы ощущаете себя в ароматах?</h4>
-                  <div class="quiz-options-grid single" data-question="gender">
-                    <button type="button" class="quiz-choice-pill" data-val="Более маскулинно">Более маскулинно</button>
-                    <button type="button" class="quiz-choice-pill" data-val="Более феминно">Более феминно</button>
-                    <button type="button" class="quiz-choice-pill" data-val="Вне гендера / Унисекс">Вне гендера / Унисекс</button>
-                    <button type="button" class="quiz-choice-pill" data-val="Зависит от ситуации">По ситуации</button>
+                <!-- ВОПРОС 9: ГЕНДЕРНЫЙ БАЛАНС -->
+                <div class="quiz-duo-col">
+                  <div class="quiz-q-meta">
+                    <span class="quiz-q-badge">ВОПРОС 9 ИЗ 11</span>
+                  </div>
+                  <h4 class="quiz-luxury-q-title">Гендерный характер звучания</h4>
+                  <div class="quiz-gender-cards" data-question="gender">
+                    <button type="button" class="quiz-meter-card" data-val="Более маскулинно">
+                      <div class="qmc-top">
+                        <span class="qmc-icon">🎩</span>
+                        <span class="qmc-val">Маскулинный</span>
+                      </div>
+                      <p class="qmc-desc">Строгие древесные, табачные и пряные грани со стержнем.</p>
+                    </button>
+
+                    <button type="button" class="quiz-meter-card" data-val="Более феминно">
+                      <div class="qmc-top">
+                        <span class="qmc-icon">✨</span>
+                        <span class="qmc-val">Феминный</span>
+                      </div>
+                      <p class="qmc-desc">Мягкие пудровые, сливочные и чувственные цветочные тона.</p>
+                    </button>
+
+                    <button type="button" class="quiz-meter-card selected" data-val="Вне гендера / Унисекс">
+                      <div class="qmc-top">
+                        <span class="qmc-icon">⚖️</span>
+                        <span class="qmc-val">Чистый Унисекс</span>
+                      </div>
+                      <p class="qmc-desc">Вне рамок. Концептуальная селективная ниша для ценителей.</p>
+                    </button>
+
+                    <button type="button" class="quiz-meter-card" data-val="Зависит от ситуации">
+                      <div class="qmc-top">
+                        <span class="qmc-icon">🎭</span>
+                        <span class="qmc-val">По ситуации</span>
+                      </div>
+                      <p class="qmc-desc">Готов к неожиданным сочетаниям и экспериментам.</p>
+                    </button>
                   </div>
                 </div>
+
               </div>
 
+              <!-- ACTIONS ROW -->
               <div class="quiz-actions-row">
                 <button type="button" class="btn-secondary" onclick="window.quizPrevStep(2)">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Назад</span>
+                  <span>Назад к портрету</span>
                 </button>
                 <button type="button" class="btn-primary" onclick="window.quizNextStep(2)">
-                  <span>Далее: Карта нот</span>
+                  <span>Далее: Ольфакторная карта</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
               </div>

@@ -2973,19 +2973,20 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 .tcc-media {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 290px;
   background: #FAF8F5;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1.25rem 1.75rem;
   border-bottom: 1px solid var(--border-subtle, #E8E4DC);
 }
 
 .tcc-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -3003,17 +3004,21 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 .tcc-def {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: #1C1612;
+  display: block;
+  font-size: 0.90rem;
+  line-height: 1.65;
+  color: #2C2622;
   padding: 1.15rem 1.35rem;
   background: #FAF8F5;
   border-radius: var(--radius-md, 14px);
   margin-bottom: 1.75rem;
   border-left: 3px solid #D4AF37;
-  min-height: 84px;
-  display: flex;
-  align-items: center;
+}
+
+.tcc-def strong {
+  display: inline;
+  font-weight: 700;
+  color: #111216;
 }
 
 .tester-compare-card.retail .tcc-def {
@@ -7860,10 +7865,10 @@ section[id],
 }
 
 .method-card-media {
-  height: 260px;
+  height: 380px;
   position: relative;
   overflow: hidden;
-  background: #1A1A1A;
+  background: #0f1013;
   border-bottom: 1px solid var(--border-subtle, #E8E4DC);
 }
 
@@ -7874,6 +7879,14 @@ section[id],
   object-position: center 20%;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.consult-method-card:first-child .method-card-media img {
+  object-position: center 35%;
+}
+
+.consult-method-card.hit .method-card-media img {
+  object-position: center 15%;
 }
 
 .consult-method-card:hover .method-card-media img {

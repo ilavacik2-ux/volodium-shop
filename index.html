@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024_13">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261025_01">
 </head>
 <body>
 
@@ -75,10 +75,32 @@
         <a href="#aroma-boxes" class="nav-link">Аромабоксы</a>
         <a href="#secret-boxes" class="nav-link">Secret Box</a>
         <a href="#quiz" class="nav-link">Анкета</a>
-        <a href="#certificates" class="nav-link">Сертификаты</a>
-        <a href="#consultation" class="nav-link">Консультация</a>
-        <a href="#tester-guide" class="nav-link">Тестеры</a>
-        <a href="#reviews" class="nav-link">Отзывы</a>
+        <div class="nav-dropdown-wrap" id="navServicesWrap">
+          <button type="button" class="nav-link nav-dropdown-btn" id="navServicesBtn" aria-expanded="false" aria-haspopup="true">
+            <span>Сервис</span>
+            <svg class="ndb-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M1 1L5 5L9 1"/>
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" id="navServicesMenu" role="menu">
+            <a href="#consultation" class="nav-dropdown-item" role="menuitem">
+              <span class="ndi-title">Консультация Владимира</span>
+              <span class="ndi-sub">Очно в Москве / Онлайн-разбор</span>
+            </a>
+            <a href="#tester-guide" class="nav-dropdown-item" role="menuitem">
+              <span class="ndi-title">Что такое тестер?</span>
+              <span class="ndi-sub">Гид эксперта & выгода до 35%</span>
+            </a>
+            <a href="#certificates" class="nav-dropdown-item" role="menuitem">
+              <span class="ndi-title">Подарочные сертификаты</span>
+              <span class="ndi-sub">Сургучная авторская печать</span>
+            </a>
+            <a href="#reviews" class="nav-dropdown-item" role="menuitem">
+              <span class="ndi-title">Отзывы & Распаковки</span>
+              <span class="ndi-sub">Опыт и впечатления клиентов</span>
+            </a>
+          </div>
+        </div>
       </nav>
 
       <div class="header-actions">
@@ -121,15 +143,14 @@
       <!-- Drawer Header -->
       <div class="v-drawer-header">
         <div class="v-drawer-brand">
-          <div class="v-drawer-crest">V</div>
           <div class="v-drawer-brand-text">
             <span class="v-drawer-brand-name">VOLODIUM</span>
-            <span class="v-drawer-brand-sub">Haute Parfumerie</span>
+            <span class="v-drawer-brand-sub">Haute Parfumerie Atelier</span>
           </div>
         </div>
         <button type="button" class="v-drawer-close-btn" id="vDrawerCloseBtn" aria-label="Закрыть меню">
           <span>Закрыть</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -142,19 +163,31 @@
           <span class="v-drawer-group-title">Коллекция & Выбор</span>
           <nav class="v-drawer-nav">
             <a href="#catalog" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Коллекция духов</span>
+              <div class="vdl-left">
+                <span class="vdl-num">01</span>
+                <span class="vdl-title">Коллекция духов</span>
+              </div>
               <span class="vdl-badge">277+</span>
             </a>
             <a href="#aroma-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Тематические аромабоксы</span>
+              <div class="vdl-left">
+                <span class="vdl-num">02</span>
+                <span class="vdl-title">Тематические аромабоксы</span>
+              </div>
               <span class="vdl-note">Сеты из 5 ароматов</span>
             </a>
             <a href="#secret-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Secret Box Вацика</span>
+              <div class="vdl-left">
+                <span class="vdl-num">03</span>
+                <span class="vdl-title">Secret Box Вацика</span>
+              </div>
               <span class="vdl-tag">Слепой подбор</span>
             </a>
             <a href="#quiz" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Парфюмерная анкета</span>
+              <div class="vdl-left">
+                <span class="vdl-num">04</span>
+                <span class="vdl-title">Парфюмерная анкета</span>
+              </div>
               <span class="vdl-note">Подбор за 1 мин</span>
             </a>
           </nav>
@@ -164,19 +197,31 @@
           <span class="v-drawer-group-title">Экспертиза & Сервис</span>
           <nav class="v-drawer-nav">
             <a href="#consultation" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Консультация Владимира</span>
-              <span class="vdl-note">Очно в Москве / Онлайн</span>
+              <div class="vdl-left">
+                <span class="vdl-num">05</span>
+                <span class="vdl-title">Консультация Владимира</span>
+              </div>
+              <span class="vdl-note">Очно / Онлайн</span>
             </a>
             <a href="#tester-guide" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Что такое тестер?</span>
-              <span class="vdl-note">Гид эксперта & выгода</span>
+              <div class="vdl-left">
+                <span class="vdl-num">06</span>
+                <span class="vdl-title">Что такое тестер?</span>
+              </div>
+              <span class="vdl-note">Выгода до 35%</span>
             </a>
             <a href="#certificates" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Подарочные сертификаты</span>
+              <div class="vdl-left">
+                <span class="vdl-num">07</span>
+                <span class="vdl-title">Подарочные сертификаты</span>
+              </div>
               <span class="vdl-note">Сургучная печать</span>
             </a>
             <a href="#reviews" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
-              <span class="vdl-title">Отзывы & Распаковки</span>
+              <div class="vdl-left">
+                <span class="vdl-num">08</span>
+                <span class="vdl-title">Отзывы & Распаковки</span>
+              </div>
               <span class="vdl-note">Опыт клиентов</span>
             </a>
           </nav>
@@ -200,8 +245,8 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <!-- Ambient Grand Backdrop Layer (Used in Full-Background Mode) -->
+  <section class="hero hero-cinematic-mode" id="hero">
+    <!-- Ambient Grand Backdrop Layer (Permanent Atmospheric Mode) -->
     <div class="hero-backdrop-layer" id="heroBackdropLayer">
       <div class="hero-backdrop-img" id="heroBackdropImg" style="background-image: url('assets/img/editorial/vladimir_atomizer_portrait.jpg');"></div>
       <div class="hero-backdrop-gradient"></div>
@@ -214,16 +259,6 @@
             <span class="sparkle">✦</span>
             <span>100% Оригинальная селективная парфюмерия</span>
           </div>
-
-          <!-- Quick Toggle for Full Background Mode -->
-          <button type="button" class="hero-bg-mode-btn" id="heroBgModeBtn" onclick="window.toggleHeroBgMode()" title="Включить атмосферный фон во весь экран">
-            <span class="hmb-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-              </svg>
-            </span>
-            <span class="hmb-label">Атмосферный фон</span>
-          </button>
         </div>
 
         <h1 class="hero-title">
@@ -270,49 +305,22 @@
         </div>
       </div>
 
-      <!-- Hero Visual Big-Screen Presentation Card & Interactive Lookbook -->
+      <!-- Hero Visual Big-Screen Signature Card -->
       <div class="hero-visual">
         <div class="hero-lookbook-frame" id="heroLookbookFrame">
-          <!-- Active Photo Stage (Clean original photo, no text overlay across face) -->
+          <!-- Active Signature Portrait Stage -->
           <div class="hero-card-img-wrap">
             <img id="heroLookbookImg" src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик — Основатель Volodium Parfum" fetchpriority="high">
-            <div class="hero-monogram-emblem" aria-hidden="true" title="Volodium Haute Parfumerie">
-              <span class="hme-v">V</span>
-            </div>
           </div>
 
-          <!-- Architectural Museum Caption Block (Neatly positioned below photo) -->
+          <!-- Architectural Museum Caption Block -->
           <div class="hero-lookbook-caption">
             <div class="hlc-meta">
-              <span class="hlc-tag" id="heroLookbookTag">STUDIO EDITORIAL • 01</span>
+              <span class="hlc-tag" id="heroLookbookTag">STUDIO EDITORIAL</span>
               <span class="hlc-edition">HAUTE PARFUMERIE</span>
             </div>
             <h3 class="hlc-title" id="heroLookbookTitle">ВЛАДИМИР ВАЦИК</h3>
             <p class="hlc-sub" id="heroLookbookSub">«Парфюм как чувственное продолжение вашей индивидуальности»</p>
-          </div>
-
-          <!-- Lookbook Interactive Controls / 4 Curated Photo Switches -->
-          <div class="hero-lookbook-nav" id="heroLookbookNav" role="tablist" aria-label="Смена фотосессии">
-            <button type="button" class="hlb-btn active" data-index="0" onclick="window.switchHeroLookbook(0)" title="Владимир Вацик — студийный портрет с атомайзером">
-              <span class="hlb-num">01</span>
-              <span class="hlb-name">Атомайзер</span>
-              <span class="hlb-progress"></span>
-            </button>
-            <button type="button" class="hlb-btn" data-index="1" onclick="window.switchHeroLookbook(1)" title="С фирменным боксом Volodium">
-              <span class="hlb-num">02</span>
-              <span class="hlb-name">Бокс Volodium</span>
-              <span class="hlb-progress"></span>
-            </button>
-            <button type="button" class="hlb-btn" data-index="2" onclick="window.switchHeroLookbook(2)" title="Частная селективная коллекция">
-              <span class="hlb-num">03</span>
-              <span class="hlb-name">Коллекция</span>
-              <span class="hlb-progress"></span>
-            </button>
-            <button type="button" class="hlb-btn" data-index="3" onclick="window.switchHeroLookbook(3)" title="Ателье распива Orto Parisi">
-              <span class="hlb-num">04</span>
-              <span class="hlb-name">Monochrome</span>
-              <span class="hlb-progress"></span>
-            </button>
           </div>
         </div>
 
@@ -1364,7 +1372,7 @@
         <!-- 2 СПОСОБ: Офлайн в Москве -->
         <div class="consult-method-card hit">
           <div class="method-card-media">
-            <img src="assets/img/consultation/consult_offline_session.jpg" alt="Очная консультация в Москве с чемоданом селектива" loading="lazy">
+            <img src="assets/img/consultation/vladimir_case_blotters_real.jpg" alt="Очная консультация в Москве с чемоданом селектива и блоттерами" loading="lazy">
             <span class="method-card-badge gold-badge">★ ОЧНАЯ ВСТРЕЧА В МОСКВЕ ★</span>
           </div>
 
@@ -2479,7 +2487,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js?v=20261024_13"></script>
-  <script src="assets/js/app.js?v=20261024_13"></script>
+  <script src="assets/data/perfumes.js?v=20261025_01"></script>
+  <script src="assets/js/app.js?v=20261025_01"></script>
 </body>
 </html>

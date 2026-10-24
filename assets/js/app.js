@@ -4,11 +4,25 @@
  * interactive fragrance quiz, 3D certificate studio, and real-time cart.
  */
 
+// Force browser to always restore to top of homepage on page reload
+if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+  if (!window.location.hash) {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }
+
   // Initialize all subsystems
   initMonroeIntro();
   initHeroCanvas();
   initHeroLookbook();
+  initNavServicesDropdown();
   initCatalog();
   initCart();
   initQuiz();
@@ -19,6 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initVolodiumDrawer();
   init3DTiltCards();
   initFloatingBackTop();
+});
+
+window.addEventListener('load', () => {
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 });
 
 /* ==========================================================================
@@ -164,198 +184,69 @@ function initHeroCanvas() {
 }
 
 /* ==========================================================================
-   1.1 Hero Editorial Lookbook & Cinematic Background Mode
+   1.1 Hero Signature Portrait & Atmospheric Background
    ========================================================================== */
-const HERO_LOOKBOOK_ITEMS = [
-  {
-    image: 'assets/img/editorial/vladimir_atomizer_portrait.jpg',
-    tag: 'STUDIO EDITORIAL • 01',
-    title: 'ВЛАДИМИР ВАЦИК',
-    sub: '«Парфюм как чувственное продолжение вашей индивидуальности»'
-  },
-  {
-    image: 'assets/img/editorial/vladimir_box_shoulder.jpg',
-    tag: 'HAUTE PARFUMERIE • 02',
-    title: 'СЕЛЕКТИВНЫЙ БОКС',
-    sub: '«Каждый сет собирается вручную и сопровождается личным посланием»'
-  },
-  {
-    image: 'assets/img/editorial/vladimir_flacon_chair.jpg',
-    tag: 'PRIVATE SALON • 03',
-    title: 'НИШЕВАЯ КОЛЛЕКЦИЯ',
-    sub: '«Более 277+ редких композиций и очные встречи в Москве»'
-  },
-  {
-    image: 'assets/img/editorial/vladimir_blotters_monochrome.jpg',
-    tag: 'ATELIER NOIR • 04',
-    title: 'ИСКУССТВО РАСПИВА',
-    sub: '«Итальянские стеклянные флаконы и батч-код верификация»'
-  }
-];
+const HERO_PORTRAIT = {
+  image: 'assets/img/editorial/vladimir_atomizer_portrait.jpg',
+  tag: 'STUDIO EDITORIAL',
+  title: 'ВЛАДИМИР ВАЦИК',
+  sub: '«Парфюм как чувственное продолжение вашей индивидуальности»'
+};
 
-let heroLookbookIndex = 0;
-let heroLookbookTimer = null;
-let heroCinematicMode = false;
+let heroCinematicMode = true;
 
 function initHeroLookbook() {
-  const frame = document.getElementById('heroLookbookFrame');
-  if (!frame) return;
-
-  // Restore saved cinematic mode from localStorage
-  try {
-    const savedMode = localStorage.getItem('volodium_hero_cinematic');
-    if (savedMode === 'true') {
-      heroCinematicMode = true;
-      const hero = document.getElementById('hero');
-      if (hero) hero.classList.add('hero-cinematic-mode');
-      document.body.classList.add('hero-cinematic-active');
-      const item = HERO_LOOKBOOK_ITEMS[heroLookbookIndex];
-      const backdropImg = document.getElementById('heroBackdropImg');
-      if (backdropImg && item) {
-        backdropImg.style.backgroundImage = `url('${item.image}')`;
-      }
-      updateHeroBgBtnState();
-    }
-  } catch (e) {}
-
-  // Auto-rotation every 7 seconds, pauses on hover
-  startHeroLookbookAutoTimer();
-
-  frame.addEventListener('mouseenter', () => {
-    stopHeroLookbookAutoTimer();
-  });
-
-  frame.addEventListener('mouseleave', () => {
-    startHeroLookbookAutoTimer();
-  });
-
-  // Mobile Touch Swipe Gesture Support
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  frame.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  frame.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        // Swipe Left -> Next
-        const nextIdx = (heroLookbookIndex + 1) % HERO_LOOKBOOK_ITEMS.length;
-        window.switchHeroLookbook(nextIdx);
-      } else {
-        // Swipe Right -> Prev
-        const prevIdx = (heroLookbookIndex - 1 + HERO_LOOKBOOK_ITEMS.length) % HERO_LOOKBOOK_ITEMS.length;
-        window.switchHeroLookbook(prevIdx);
-      }
-    }
-  }, { passive: true });
-}
-
-function startHeroLookbookAutoTimer() {
-  stopHeroLookbookAutoTimer();
-  heroLookbookTimer = setInterval(() => {
-    const nextIdx = (heroLookbookIndex + 1) % HERO_LOOKBOOK_ITEMS.length;
-    window.switchHeroLookbook(nextIdx);
-  }, 7000);
-}
-
-function stopHeroLookbookAutoTimer() {
-  if (heroLookbookTimer) {
-    clearInterval(heroLookbookTimer);
-    heroLookbookTimer = null;
-  }
-}
-
-window.switchHeroLookbook = function(index) {
-  if (index < 0 || index >= HERO_LOOKBOOK_ITEMS.length) return;
-  heroLookbookIndex = index;
-  const item = HERO_LOOKBOOK_ITEMS[index];
-
-  const img = document.getElementById('heroLookbookImg');
-  const tag = document.getElementById('heroLookbookTag');
-  const title = document.getElementById('heroLookbookTitle');
-  const sub = document.getElementById('heroLookbookSub');
-  const backdropImg = document.getElementById('heroBackdropImg');
-
-  // Fade transition on card image
-  if (img) {
-    img.style.opacity = '0.3';
-    setTimeout(() => {
-      img.src = item.image;
-      img.style.opacity = '1';
-    }, 150);
-  }
-
-  if (tag) tag.textContent = item.tag;
-  if (title) title.textContent = item.title;
-  if (sub) sub.textContent = item.sub;
-
-  // Update backdrop image for cinematic mode
-  if (backdropImg) {
-    backdropImg.style.backgroundImage = `url('${item.image}')`;
-  }
-
-  // Update active state on lookbook buttons and reset progress bar animation
-  const btns = document.querySelectorAll('.hero-lookbook-nav .hlb-btn');
-  btns.forEach(btn => {
-    const btnIdx = parseInt(btn.getAttribute('data-index'), 10);
-    if (btnIdx === index) {
-      btn.classList.remove('active');
-      void btn.offsetWidth; // Trigger reflow to restart CSS animation
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
-
-  // Restart auto timer so active slide gets full 7 seconds
-  startHeroLookbookAutoTimer();
-};
-
-function updateHeroBgBtnState() {
-  const btn = document.getElementById('heroBgModeBtn');
-  if (!btn) return;
-  const label = btn.querySelector('.hmb-label');
-  const icon = btn.querySelector('.hmb-icon');
-  if (heroCinematicMode) {
-    if (label) label.textContent = 'Студийный вид';
-    if (icon) icon.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>';
-    btn.setAttribute('title', 'Вернуться к студийному виду карточки');
-  } else {
-    if (label) label.textContent = 'Атмосферный фон';
-    if (icon) icon.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
-    btn.setAttribute('title', 'Включить атмосферный фон во весь экран');
-  }
-}
-
-window.toggleHeroBgMode = function() {
   const hero = document.getElementById('hero');
-  if (!hero) return;
-  heroCinematicMode = !heroCinematicMode;
+  if (hero) hero.classList.add('hero-cinematic-mode');
+  document.body.classList.add('hero-cinematic-active');
 
-  const item = HERO_LOOKBOOK_ITEMS[heroLookbookIndex];
   const backdropImg = document.getElementById('heroBackdropImg');
-
-  if (heroCinematicMode) {
-    hero.classList.add('hero-cinematic-mode');
-    document.body.classList.add('hero-cinematic-active');
-    if (backdropImg && item) {
-      backdropImg.style.backgroundImage = `url('${item.image}')`;
-    }
-  } else {
-    hero.classList.remove('hero-cinematic-mode');
-    document.body.classList.remove('hero-cinematic-active');
+  if (backdropImg) {
+    backdropImg.style.backgroundImage = `url('${HERO_PORTRAIT.image}')`;
   }
+}
 
-  updateHeroBgBtnState();
+// Safe fallback no-op handlers
+window.switchHeroLookbook = function(index) {};
+window.toggleHeroBgMode = function() {};
 
-  try {
-    localStorage.setItem('volodium_hero_cinematic', heroCinematicMode ? 'true' : 'false');
-  } catch (e) {}
-};
+/* ==========================================================================
+   1.2 Header Services Dropdown Controller
+   ========================================================================== */
+function initNavServicesDropdown() {
+  const wrap = document.getElementById('navServicesWrap');
+  const btn = document.getElementById('navServicesBtn');
+  const menu = document.getElementById('navServicesMenu');
+  if (!wrap || !btn || !menu) return;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = wrap.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!wrap.contains(e.target)) {
+      wrap.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && wrap.classList.contains('is-open')) {
+      wrap.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
+    }
+  });
+
+  menu.querySelectorAll('.nav-dropdown-item').forEach(item => {
+    item.addEventListener('click', () => {
+      wrap.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 /* ==========================================================================
    1.2 Interactive 3D Perspective Card Tilt (Desktop)

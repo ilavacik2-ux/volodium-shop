@@ -54,7 +54,8 @@ function initMonroeIntro() {
   let autoTimer = null;
   let canDismiss = false;
 
-  // Lock scroll while intro is playing
+  // Lock scroll while intro is playing on both html and body
+  document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
 
   // Grace period: ignore accidental clicks and reload keystrokes (Cmd+R, Ctrl+R, F5)
@@ -68,6 +69,7 @@ function initMonroeIntro() {
       autoTimer = null;
     }
     intro.classList.add('hidden');
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
   }
   window.dismissMonroeIntro = dismissIntro;
@@ -78,6 +80,7 @@ function initMonroeIntro() {
       canDismiss = true;
     }, 150);
     intro.classList.remove('hidden');
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     const stage = intro.querySelector('.monroe-brand-stage');
     if (stage) {

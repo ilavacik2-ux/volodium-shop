@@ -557,22 +557,29 @@ img {
 
 .hero.hero-cinematic-mode .hero-title-main {
   color: #FAF8F5 !important;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+  text-shadow: none !important;
+  font-family: var(--font-serif);
+  letter-spacing: 0.02em;
 }
 
 .hero.hero-cinematic-mode .hero-title-top {
-  color: #dfb288 !important;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  color: #D4AF37 !important;
+  text-shadow: none !important;
+  letter-spacing: 0.22em;
+  font-weight: 500;
 }
 
 .hero.hero-cinematic-mode .hero-serif-accent {
-  color: #E25B5B !important;
-  text-shadow: 0 2px 20px rgba(226, 91, 91, 0.4);
+  color: #C87A7A !important;
+  text-shadow: none !important;
+  font-style: italic;
+  font-weight: 600;
 }
 
 .hero.hero-cinematic-mode .hero-description {
-  color: rgba(250, 248, 245, 0.9) !important;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+  color: rgba(250, 248, 245, 0.85) !important;
+  text-shadow: none !important;
+  font-weight: 400;
 }
 
 .hero.hero-cinematic-mode .hero-badge {
@@ -5759,21 +5766,24 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     margin-bottom: 0.75rem;
   }
   .hero-title-top {
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    font-weight: 600;
     margin-bottom: 0.35rem;
   }
   .hero-title-main {
-    font-size: clamp(2rem, 8vw, 2.5rem);
+    font-size: clamp(1.75rem, 6.8vw, 2.2rem);
     line-height: 1.15;
-    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.45rem;
   }
   .hero-description {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    max-width: 92%;
-    margin-bottom: 1.35rem;
-    color: rgba(250, 248, 245, 0.88) !important;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    max-width: 95%;
+    margin-bottom: 1.15rem;
+    color: rgba(250, 248, 245, 0.82) !important;
   }
   .hero-actions {
     gap: 0.6rem;
@@ -5882,39 +5892,82 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     -webkit-line-clamp: 2;
   }
   .volume-selector {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     gap: 0.2rem;
-    padding: 0.15rem;
-    margin-bottom: 0.65rem;
+    padding: 0.15rem 0;
+    margin-bottom: 0.55rem;
+  }
+  .volume-selector::-webkit-scrollbar {
+    display: none;
   }
   .volume-btn {
-    padding: 0.25rem 0.1rem;
+    flex: 1;
+    min-width: 25px;
+    padding: 0.28rem 0.15rem;
     font-size: 0.68rem;
+    white-space: nowrap;
+    text-align: center;
   }
   .card-footer {
-    padding-top: 0.65rem;
-    gap: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid #f0eee9;
+  }
+  .price-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
   }
   .price-current {
-    font-size: 1.15rem;
+    font-family: var(--font-sans), -apple-system, sans-serif !important;
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1;
+    white-space: nowrap !important;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums lining-nums !important;
+    font-feature-settings: "lnum" 1, "tnum" 1 !important;
   }
   .price-unit {
-    font-size: 0.62rem;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 0;
+    white-space: nowrap;
   }
   .card-actions-row {
+    display: flex;
+    align-items: center;
     gap: 0.35rem;
+    width: 100%;
   }
   .btn-details {
-    width: 1.95rem;
-    height: 1.95rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .btn-details svg {
     width: 15px;
     height: 15px;
   }
   .btn-add-cart {
-    padding: 0.45rem 0.7rem;
-    font-size: 0.75rem;
+    flex: 1;
+    justify-content: center;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.76rem;
+    border-radius: 8px;
     gap: 0.25rem;
     white-space: nowrap;
   }
@@ -7370,9 +7423,16 @@ section[id],
    ========================================================================== */
 .monroe-intro-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: radial-gradient(ellipse at 50% 48%, #FFFFFF 0%, #FAF8F5 55%, #F2EEE7 100%);
+  top: -120px;
+  bottom: -120px;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: calc(100vh + 240px);
+  height: calc(100dvh + 240px);
+  z-index: 999999;
+  background: #FAF8F5;
+  background: radial-gradient(ellipse at 50% 50%, #FFFFFF 0%, #FAF8F5 55%, #F0EAE1 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7393,8 +7453,11 @@ section[id],
 /* Delicate Gold Atelier Framing Border */
 .monroe-intro-frame-border {
   position: absolute;
-  inset: 24px;
-  border: 1px solid rgba(212, 175, 55, 0.22);
+  top: calc(120px + 20px);
+  bottom: calc(120px + 20px);
+  left: 20px;
+  right: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 12px;
   pointer-events: none;
   z-index: 1;
@@ -8945,22 +9008,25 @@ section[id],
 .cert-field-recipient {
   font-family: var(--font-serif);
   font-size: 1.55rem;
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
+  letter-spacing: 0.02em;
   color: #812020;
   line-height: 1.15;
-  border-bottom: 1px dashed rgba(129, 32, 32, 0.35);
+  border-bottom: 1.5px dashed rgba(129, 32, 32, 0.35);
   padding-bottom: 0.25rem;
 }
 
 .cert-field-deposit {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #1C1612;
   line-height: 1.15;
-  border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
+  border-bottom: 1.5px dashed rgba(212, 175, 55, 0.5);
   padding-bottom: 0.25rem;
+  font-variant-numeric: tabular-nums lining-nums !important;
+  letter-spacing: -0.01em;
 }
 
 .cert-parchment-footer {
@@ -9420,47 +9486,55 @@ section[id],
 
   /* Compact Certificate 3D Card on mobile — NO CLIPPING */
   .cert-card-3d {
-    min-height: 295px;
-    height: 300px;
+    min-height: 335px;
+    height: 335px;
+    max-height: 350px;
     aspect-ratio: auto;
   }
   .cert-parchment {
     padding: 0.95rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
   }
   .cert-parchment-header {
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.45rem;
   }
   .cert-gold-monogram {
-    width: 28px;
-    height: 28px;
-    font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
   }
   .cert-brand-mono {
-    font-size: 0.55rem;
-    letter-spacing: 0.14em;
+    font-size: 0.56rem;
+    letter-spacing: 0.18em;
   }
   .cert-edition-sub {
     font-size: 0.48rem;
   }
   .cert-title-wrap {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.45rem;
   }
   .cert-main-title {
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
+    font-family: var(--font-serif);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
   }
   .cert-gold-rule {
-    width: 36px;
+    width: 38px;
     margin-top: 0.25rem;
   }
   .cert-service-tag-box {
     padding: 0.35rem 0.6rem;
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.5rem;
     border-radius: 6px;
   }
   .cert-field-label {
     font-size: 0.54rem;
+    letter-spacing: 0.14em;
     margin-bottom: 0.15rem;
   }
   .cert-field-service {
@@ -9471,17 +9545,33 @@ section[id],
     grid-template-columns: 1fr 1fr;
     gap: 0.65rem;
     margin-bottom: 0.55rem;
+    align-items: baseline;
   }
   .cert-field-recipient {
-    font-size: 1.15rem;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #812020;
     padding-bottom: 0.15rem;
   }
   .cert-field-deposit {
-    font-size: 1.15rem;
+    font-family: var(--font-sans), 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1C1612;
     padding-bottom: 0.15rem;
+    font-variant-numeric: tabular-nums lining-nums !important;
+    letter-spacing: -0.01em;
   }
   .cert-parchment-footer {
-    padding-top: 0.45rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+    padding-top: 0.5rem;
+    margin-top: auto;
   }
   .cert-serial-tag {
     font-size: 0.65rem;
@@ -10851,6 +10941,7 @@ section[id],
 .cart-item-price,
 .cart-summary-line.total,
 .cert-sum-val,
+.cert-field-deposit,
 .method-price-amount,
 .price-val,
 .badge-price,
@@ -10864,6 +10955,7 @@ section[id],
   font-family: var(--font-sans), 'Plus Jakarta Sans', -apple-system, sans-serif !important;
   font-variant-numeric: lining-nums tabular-nums !important;
   font-feature-settings: "lnum" 1, "tnum" 1 !important;
+  white-space: nowrap !important;
 }
 
 h1, h2, h3, h4,
@@ -10875,4 +10967,6 @@ h1, h2, h3, h4,
 .monroe-grand-title,
 .hero-title-main {
   font-feature-settings: "lnum" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

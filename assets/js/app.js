@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DTiltCards();
   initFloatingBackTop();
   initSecretBoxesCarousel();
+  initReviewsCarousel();
 });
 
 window.addEventListener('load', () => {
@@ -1807,6 +1808,49 @@ function initSecretBoxesCarousel() {
           const isActive = idx === closestIndex;
           tab.classList.toggle('active', isActive);
           tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === closestIndex);
+        });
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+function initReviewsCarousel() {
+  const grid = document.querySelector('.reviews-editorial-grid');
+  if (!grid) return;
+  const cards = grid.querySelectorAll('.review-editorial-card');
+  const dots = document.querySelectorAll('.reviews-dot');
+  if (!dots.length) return;
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      if (cards[idx]) {
+        cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    });
+  });
+
+  let ticking = false;
+  grid.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const gridCenter = grid.scrollLeft + grid.clientWidth / 2;
+        let closestIndex = 0;
+        let minDistance = Infinity;
+
+        cards.forEach((card, idx) => {
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const dist = Math.abs(gridCenter - cardCenter);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIndex = idx;
+          }
         });
 
         dots.forEach((dot, idx) => {

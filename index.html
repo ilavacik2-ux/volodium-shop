@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261101_03">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261101_04">
 </head>
 <body>
 
@@ -452,6 +452,19 @@
         </p>
       </div>
 
+      <!-- Mobile Segmented Controller for Secret Boxes -->
+      <div class="secret-tabs-nav" id="secretTabsNav" role="tablist" aria-label="Секретные боксы">
+        <button type="button" class="secret-tab-btn active" role="tab" aria-selected="true" data-index="0" onclick="window.scrollToSecretCard(0)">
+          <span>Исследователь</span>
+        </button>
+        <button type="button" class="secret-tab-btn" role="tab" aria-selected="false" data-index="1" onclick="window.scrollToSecretCard(1)">
+          <span>★ Коллекционер</span>
+        </button>
+        <button type="button" class="secret-tab-btn" role="tab" aria-selected="false" data-index="2" onclick="window.scrollToSecretCard(2)">
+          <span>Одержимость</span>
+        </button>
+      </div>
+
       <div class="secret-grid">
         <!-- Explorer Box -->
         <div class="secret-card">
@@ -555,6 +568,13 @@
             </button>
           </div>
         </div>
+      </div>
+
+      <!-- Mobile Pagination Dots -->
+      <div class="secret-dots-nav" id="secretDotsNav" aria-hidden="true">
+        <span class="secret-dot active" data-index="0" onclick="window.scrollToSecretCard(0)"></span>
+        <span class="secret-dot" data-index="1" onclick="window.scrollToSecretCard(1)"></span>
+        <span class="secret-dot" data-index="2" onclick="window.scrollToSecretCard(2)"></span>
       </div>
     </div>
   </section>
@@ -2484,6 +2504,6 @@
 
   <!-- Scripts -->
   <script src="assets/data/perfumes.js?v=20261101_02"></script>
-  <script src="assets/js/app.js?v=20261101_02"></script>
+  <script src="assets/js/app.js?v=20261101_04"></script>
 </body>
 </html>

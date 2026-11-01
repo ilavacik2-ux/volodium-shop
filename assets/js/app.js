@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVolodiumDrawer();
   init3DTiltCards();
   initFloatingBackTop();
+  initSecretBoxesCarousel();
 });
 
 window.addEventListener('load', () => {
@@ -1755,17 +1756,68 @@ function showToast(msg, duration = 3500) {
   const toast = document.createElement('div');
   toast.className = 'toast';
   toast.innerHTML = `
-    <span style="color: var(--gold-primary);">✦</span>
-    <span>${escapeHtml(msg)}</span>
+    <span class="toast-sparkle" style="color: var(--gold-primary);">✦</span>
+    <span class="toast-text">${escapeHtml(msg)}</span>
   `;
   container.appendChild(toast);
 
   setTimeout(() => {
     toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
+    toast.style.transform = window.innerWidth <= 768 ? 'translateY(-16px)' : 'translateY(10px)';
     toast.style.transition = 'all 0.3s ease';
     setTimeout(() => toast.remove(), 300);
   }, duration);
+}
+
+// Secret Boxes Mobile Carousel Sync
+window.scrollToSecretCard = function(index) {
+  const grid = document.querySelector('.secret-grid');
+  if (!grid) return;
+  const cards = grid.querySelectorAll('.secret-card');
+  if (cards[index]) {
+    cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+};
+
+function initSecretBoxesCarousel() {
+  const grid = document.querySelector('.secret-grid');
+  if (!grid) return;
+  const cards = grid.querySelectorAll('.secret-card');
+  const tabs = document.querySelectorAll('.secret-tab-btn');
+  const dots = document.querySelectorAll('.secret-dot');
+
+  let ticking = false;
+  grid.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const gridCenter = grid.scrollLeft + grid.clientWidth / 2;
+        let closestIndex = 0;
+        let minDistance = Infinity;
+
+        cards.forEach((card, idx) => {
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const dist = Math.abs(gridCenter - cardCenter);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIndex = idx;
+          }
+        });
+
+        tabs.forEach((tab, idx) => {
+          const isActive = idx === closestIndex;
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === closestIndex);
+        });
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 function initSmoothScroll() {

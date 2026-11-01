@@ -9325,6 +9325,34 @@ section[id],
   padding: 0.9rem 1.5rem;
 }
 
+/* Instant Touch Feedback and Zero-Latency Tap Handling */
+.quiz-tactile-card,
+.quiz-family-card,
+.quiz-sillage-card,
+.quiz-meter-card,
+.quiz-choice-pill,
+.cert-format-btn,
+.cert-preset-btn,
+.cert-service-opt,
+.cert-flip-chip,
+.cert-flip-back-btn,
+.cert-card-3d {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.quiz-tactile-card:active,
+.quiz-family-card:active,
+.quiz-sillage-card:active,
+.quiz-meter-card:active,
+.cert-preset-btn:active,
+.cert-format-btn:active {
+  transform: scale(0.97);
+  transition: transform 0.05s ease;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 1024px) {
   .quiz-container {
@@ -9349,7 +9377,7 @@ section[id],
 
 @media (max-width: 768px) {
   .quiz-wizard-card {
-    padding: 1.5rem;
+    padding: 1.35rem 1rem;
   }
   .quiz-author-card {
     display: flex;
@@ -9371,39 +9399,165 @@ section[id],
   .quiz-final-card {
     grid-template-columns: 1fr;
   }
-  .cert-configurator-card {
-    padding: 1.5rem;
+
+  /* Compact Quiz Step 7 inputs on mobile */
+  .quiz-inputs-stack {
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
   }
-  .cert-presets-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .quiz-text-input {
+    padding: 0.75rem 0.95rem;
+    font-size: 0.88rem;
+  }
+  .quiz-field-label {
+    font-size: 0.78rem;
+    margin-bottom: 0.35rem;
+  }
+  .quiz-field-hint {
+    font-size: 0.68rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Compact Certificate 3D Card on mobile — NO CLIPPING */
+  .cert-card-3d {
+    min-height: 295px;
+    height: 300px;
+    aspect-ratio: auto;
+  }
+  .cert-parchment {
+    padding: 0.95rem 0.85rem;
+  }
+  .cert-parchment-header {
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .cert-gold-monogram {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+  .cert-brand-mono {
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+  }
+  .cert-edition-sub {
+    font-size: 0.48rem;
+  }
+  .cert-title-wrap {
+    margin-bottom: 0.5rem;
+  }
+  .cert-main-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+  }
+  .cert-gold-rule {
+    width: 36px;
+    margin-top: 0.25rem;
+  }
+  .cert-service-tag-box {
+    padding: 0.35rem 0.6rem;
+    margin-bottom: 0.55rem;
+    border-radius: 6px;
+  }
+  .cert-field-label {
+    font-size: 0.54rem;
+    margin-bottom: 0.15rem;
+  }
+  .cert-field-service {
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+  .cert-recipient-deposit-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    margin-bottom: 0.55rem;
+  }
+  .cert-field-recipient {
+    font-size: 1.15rem;
+    padding-bottom: 0.15rem;
+  }
+  .cert-field-deposit {
+    font-size: 1.15rem;
+    padding-bottom: 0.15rem;
+  }
+  .cert-parchment-footer {
+    padding-top: 0.45rem;
+  }
+  .cert-serial-tag {
+    font-size: 0.65rem;
+  }
+  .cert-valid-text {
+    font-size: 0.55rem;
+  }
+  .cert-contact-tag {
+    font-size: 0.58rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  /* Compact Configurator Controls on mobile */
+  .cert-configurator-card {
+    padding: 1.25rem 1rem;
+  }
+  .cert-config-title {
+    font-size: 1.35rem;
+  }
+  .cert-config-sub {
+    font-size: 0.78rem;
+    margin-bottom: 1.25rem;
+  }
+  .cert-form-group {
+    margin-bottom: 1.25rem;
   }
   .cert-format-switcher {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
-  .cert-card-3d {
-    aspect-ratio: 1024 / 791;
+  .cert-format-btn {
+    padding: 0.65rem 0.85rem;
   }
-  .cert-parchment {
-    padding: 1.25rem 1rem;
+  .cert-presets-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.45rem;
+    margin-bottom: 0.45rem;
   }
-  .cert-main-title {
-    font-size: 1.05rem;
+  .cert-preset-btn {
+    padding: 0.6rem 0.3rem;
+    font-size: 0.82rem;
   }
-  .cert-field-service {
-    font-size: 0.68rem;
+  .cert-services-list {
+    gap: 0.45rem;
   }
-  .cert-field-recipient {
-    font-size: 1.05rem;
+  .cert-service-opt {
+    padding: 0.65rem 0.75rem;
+    gap: 0.65rem;
   }
-  .cert-field-deposit {
-    font-size: 0.95rem;
+  .service-opt-title {
+    font-size: 0.82rem;
+    margin-bottom: 0.15rem;
   }
-  .cert-qr-wrap {
-    width: 42px;
-    height: 42px;
+  .service-opt-desc {
+    font-size: 0.72rem;
+    line-height: 1.35;
   }
-  .cert-contacts-wrap {
-    font-size: 0.62rem;
+  .cert-textarea-compact {
+    min-height: 54px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+  }
+  .cert-summary-box {
+    padding: 1.15rem 1rem;
+    margin-top: 1.25rem;
+  }
+  .cert-sum-val {
+    font-size: 1.6rem;
+  }
+  .cert-btn-cart {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.92rem;
+  }
+  .cert-btn-tg {
+    padding: 0.75rem 1.15rem;
+    font-size: 0.86rem;
   }
 }
 

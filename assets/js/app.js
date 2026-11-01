@@ -2451,7 +2451,7 @@ function initCertificates() {
     const certItem = {
       id: `cert-${Date.now()}`,
       name: `Подарочный сертификат «${certState.recipient}»`,
-      brand: 'VOLODIUM HAUTE PARFUMERIE',
+      brand: 'VOLODIUM PARFUM',
       category: 'certificate',
       price: certState.amount,
       prices: { standard: certState.amount },

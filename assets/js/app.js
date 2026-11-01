@@ -2296,6 +2296,27 @@ let certState = {
   code: 'VP-2026-' + Math.floor(1000 + Math.random() * 9000)
 };
 
+let certIsFlipped = false;
+
+window.toggleCertFlip = function(e) {
+  if (e) {
+    e.stopPropagation();
+  }
+  const card = document.getElementById('certCard3d');
+  if (!card) return;
+
+  certIsFlipped = !certIsFlipped;
+  card.classList.toggle('flipped', certIsFlipped);
+
+  const baseRotY = certIsFlipped ? 180 : 0;
+  card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(${baseRotY}deg) scale3d(1, 1, 1)`;
+
+  const glare = document.getElementById('certFoilGlare');
+  if (glare) {
+    glare.style.opacity = '0';
+  }
+};
+
 function initCertificates() {
   const scene = document.getElementById('cert3dScene');
   const card = document.getElementById('certCard3d');
@@ -2303,7 +2324,7 @@ function initCertificates() {
 
   if (!card) return;
 
-  // 1. 3D Perspective Tilt on Mousemove
+  // 1. 3D Perspective Tilt on Mousemove with Flip Awareness
   if (scene) {
     scene.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -2313,35 +2334,42 @@ function initCertificates() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      const rotateX = -((y - centerY) / centerY) * 12;
-      const rotateY = ((x - centerX) / centerX) * 12;
+      const rotateX = -((y - centerY) / centerY) * 10;
+      const tiltY = ((x - centerX) / centerX) * 10;
+      const baseRotY = certIsFlipped ? 180 : 0;
+      const finalRotY = certIsFlipped ? baseRotY - tiltY : tiltY;
 
-      card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+      card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${finalRotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
 
-      if (glare) {
+      if (glare && !certIsFlipped) {
         const glareX = (x / rect.width) * 100;
         const glareY = (y / rect.height) * 100;
         glare.style.setProperty('--glare-x', `${glareX}%`);
         glare.style.setProperty('--glare-y', `${glareY}%`);
         glare.style.opacity = '1';
+      } else if (glare) {
+        glare.style.opacity = '0';
       }
     });
 
     scene.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      const baseRotY = certIsFlipped ? 180 : 0;
+      card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(${baseRotY}deg) scale3d(1, 1, 1)`;
       if (glare) {
         glare.style.opacity = '0';
       }
     });
   }
 
-  // 2. Gyroscope support for mobile tilt
+  // 2. Gyroscope support for mobile tilt with Flip Awareness
   if (window.DeviceOrientationEvent && window.innerWidth <= 768) {
     window.addEventListener('deviceorientation', (e) => {
       if (e.beta !== null && e.gamma !== null) {
-        const tiltX = Math.min(Math.max((e.beta - 45) * 0.4, -10), 10);
-        const tiltY = Math.min(Math.max(e.gamma * 0.4, -10), 10);
-        card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
+        const tiltX = Math.min(Math.max((e.beta - 45) * 0.3, -8), 8);
+        const tiltY = Math.min(Math.max(e.gamma * 0.3, -8), 8);
+        const baseRotY = certIsFlipped ? 180 : 0;
+        const finalRotY = certIsFlipped ? baseRotY - tiltY : tiltY;
+        card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${finalRotY.toFixed(2)}deg)`;
       }
     });
   }

@@ -57,6 +57,7 @@ function initMonroeIntro() {
   // Lock scroll while intro is playing on both html and body
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
+  document.body.style.backgroundColor = '#FAF8F5';
 
   // Grace period: ignore accidental clicks and reload keystrokes (Cmd+R, Ctrl+R, F5)
   setTimeout(() => {
@@ -71,6 +72,7 @@ function initMonroeIntro() {
     intro.classList.add('hidden');
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+    document.body.style.backgroundColor = '';
   }
   window.dismissMonroeIntro = dismissIntro;
 
@@ -1666,8 +1668,8 @@ function initCheckoutForm() {
 
   const messengerConfig = {
     Telegram: {
-      hint: 'Менеджер @volodiumparfum подтвердит состав, реквизиты и отправит трек-номер СДЭК',
-      btnText: 'Отправить заказ в Telegram менеджеру',
+      hint: '⚡ Быстрее всего: менеджер @volodiumparfum ответит почти мгновенно, согласует состав и отправит трек СДЭК',
+      btnText: 'Отправить заказ в Telegram (Быстрее всего)',
       send: (orderText) => {
         const tgUrl = `https://t.me/volodiumparfum?text=${encodeURIComponent(orderText)}`;
         window.open(tgUrl, '_blank');
@@ -1675,8 +1677,8 @@ function initCheckoutForm() {
       }
     },
     WhatsApp: {
-      hint: 'Прямой чат с Владимиром в WhatsApp (+7 909 444-26-17) для мгновенного согласования заказа',
-      btnText: 'Отправить заказ в WhatsApp менеджеру',
+      hint: '💬 Прямой чат с Владимиром в WhatsApp (+7 909 444-26-17) для согласования заказа',
+      btnText: 'Отправить заказ в WhatsApp (+7 909 444-26-17)',
       send: (orderText) => {
         const waUrl = `https://wa.me/79094442617?text=${encodeURIComponent(orderText)}`;
         window.open(waUrl, '_blank');
@@ -1684,14 +1686,14 @@ function initCheckoutForm() {
       }
     },
     VK: {
-      hint: 'Менеджер ответит в личных сообщениях ВКонтакте (vk.me/vatsiik) и оформит доставку',
-      btnText: 'Отправить заказ во ВКонтакте менеджеру',
+      hint: '👤 Личные сообщения ВКонтакте (vk.ru/volodya_v_v). Владимир или менеджер ответит и оформит доставку',
+      btnText: 'Отправить заказ во ВКонтакте (vk.ru/volodya_v_v)',
       send: (orderText) => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(orderText).catch(() => {});
         }
-        window.open('https://vk.me/vatsiik', '_blank');
-        showToast('✦ Текст заказа скопирован в буфер! Отправьте его в открывшемся диалоге ВКонтакте', 7000);
+        window.open('https://vk.ru/volodya_v_v', '_blank');
+        showToast('✦ Текст заказа скопирован в буфер! Отправьте его в открывшемся профиле ВКонтакте (vk.ru/volodya_v_v)', 7000);
       }
     }
   };

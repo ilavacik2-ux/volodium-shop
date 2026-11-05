@@ -1657,10 +1657,63 @@ window.closeCheckoutModal = closeCheckoutModal;
 
 function initCheckoutForm() {
   const form = document.getElementById('checkoutForm');
-  const msgBtns = document.querySelectorAll('.msg-opt-btn');
   const closeBtn = document.getElementById('btnCheckoutClose');
   const checkoutBackdrop = document.getElementById('checkoutModalBackdrop');
+  const messengerButtons = document.querySelectorAll('.cms-btn');
+  const messengerHint = document.getElementById('checkoutMessengerHint');
+  const submitBtnText = document.getElementById('btnCheckoutSubmitText');
   let selectedMessenger = 'Telegram';
+
+  const messengerConfig = {
+    Telegram: {
+      hint: 'Менеджер @volodiumparfum подтвердит состав, реквизиты и отправит трек-номер СДЭК',
+      btnText: 'Отправить заказ в Telegram менеджеру',
+      send: (orderText) => {
+        const tgUrl = `https://t.me/volodiumparfum?text=${encodeURIComponent(orderText)}`;
+        window.open(tgUrl, '_blank');
+        showToast('✦ Заказ сформирован! Перенаправляем в Telegram к менеджеру...', 6000);
+      }
+    },
+    WhatsApp: {
+      hint: 'Прямой чат с Владимиром в WhatsApp (+7 909 444-26-17) для мгновенного согласования заказа',
+      btnText: 'Отправить заказ в WhatsApp менеджеру',
+      send: (orderText) => {
+        const waUrl = `https://wa.me/79094442617?text=${encodeURIComponent(orderText)}`;
+        window.open(waUrl, '_blank');
+        showToast('✦ Заказ сформирован! Открываем чат WhatsApp с Владимиром...', 6000);
+      }
+    },
+    VK: {
+      hint: 'Менеджер ответит в личных сообщениях ВКонтакте (vk.me/vatsiik) и оформит доставку',
+      btnText: 'Отправить заказ во ВКонтакте менеджеру',
+      send: (orderText) => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(orderText).catch(() => {});
+        }
+        window.open('https://vk.me/vatsiik', '_blank');
+        showToast('✦ Текст заказа скопирован в буфер! Отправьте его в открывшемся диалоге ВКонтакте', 7000);
+      }
+    }
+  };
+
+  if (messengerButtons.length) {
+    messengerButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        messengerButtons.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-checked', 'true');
+        selectedMessenger = btn.getAttribute('data-messenger') || 'Telegram';
+
+        const cfg = messengerConfig[selectedMessenger] || messengerConfig.Telegram;
+        if (messengerHint) messengerHint.textContent = cfg.hint;
+        if (submitBtnText) submitBtnText.textContent = cfg.btnText;
+        if (typeof playChime === 'function') playChime(620);
+      });
+    });
+  }
 
   if (closeBtn) {
     closeBtn.addEventListener('click', (e) => {
@@ -1701,9 +1754,9 @@ function initCheckoutForm() {
 -----------------------------
 Клиент: ${name}
 Телефон: ${phone}
-Связь: Telegram (@volodiumparfum)
+Канал связи: ${selectedMessenger}
 Доставка: ${delivery}
-Адрес / ПВЗ: ${address || 'Уточнить в Telegram'}
+Адрес / ПВЗ: ${address || 'Уточнить при подтверждении'}
 ${comment ? `Пожелания: ${comment}\n` : ''}
 ${appliedPromo ? `Промокод: ${appliedPromo.code} (-${appliedPromo.discountPercent}%)\n` : ''}
 ИТОГО К ОПЛАТЕ: ${formatPrice(total)}
@@ -1711,7 +1764,7 @@ ${appliedPromo ? `Промокод: ${appliedPromo.code} (-${appliedPromo.discou
 СОСТАВ ЗАКАЗА:
 ${itemsListText}
 -----------------------------
-После отправки менеджер свяжется в Telegram для отправки реквизитов и трек-номера СДЭК.`;
+После отправки менеджер свяжется для отправки реквизитов и трек-номера СДЭК.`;
 
     // Clear cart and show congratulations
     cart = [];
@@ -1720,11 +1773,9 @@ ${itemsListText}
     closeCheckoutModal();
     closeCart();
 
-    // Open Telegram with pre-filled message
-    const tgUrl = `https://t.me/volodiumparfum?text=${encodeURIComponent(orderText)}`;
-    window.open(tgUrl, '_blank');
-
-    showToast('✦ Заказ сформирован! Перенаправляем в Telegram к менеджеру...', 6000);
+    // Trigger messenger-specific routing
+    const cfg = messengerConfig[selectedMessenger] || messengerConfig.Telegram;
+    cfg.send(orderText);
   });
 }
 

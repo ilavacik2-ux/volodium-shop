@@ -5536,7 +5536,182 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
 }
 
-/* Pure Telegram Checkout Confirmation Pill */
+/* ==========================================================================
+   Cart Drawer Channels Strip (Telegram, WhatsApp, VK)
+   ========================================================================== */
+.cart-channels-strip {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(17, 18, 22, 0.03);
+  border: 1px solid rgba(17, 18, 22, 0.08);
+  border-radius: var(--radius-md, 12px);
+  text-align: center;
+}
+
+.ccs-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim, #8E8E93);
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.ccs-badges-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.ccs-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.5rem;
+  background: #ffffff;
+  border: 1px solid rgba(17, 18, 22, 0.1);
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #111216;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ccs-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-color: rgba(143, 109, 53, 0.35);
+}
+
+.ccs-icon-wrap {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.ccs-icon-wrap.tg-bg {
+  background: #2AABEE;
+}
+
+.ccs-icon-wrap.wa-bg {
+  background: #25D366;
+}
+
+.ccs-icon-wrap.vk-bg {
+  background: #0077FF;
+}
+
+/* ==========================================================================
+   Checkout Modal Multi-Messenger Selector (Telegram, WhatsApp, VK)
+   ========================================================================== */
+.checkout-messenger-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.cms-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.85rem 0.5rem;
+  background: #FAFAFA;
+  border: 1.5px solid rgba(17, 18, 22, 0.12);
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  color: #111216;
+}
+
+.cms-btn:hover {
+  background: #FFFFFF;
+  border-color: rgba(143, 109, 53, 0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.cms-btn.active {
+  background: #FFFFFF;
+  border-color: #8F6D35;
+  box-shadow: 0 4px 14px rgba(143, 109, 53, 0.18), 0 0 0 1px #8F6D35;
+}
+
+.cms-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  transition: transform 0.2s ease;
+}
+
+.cms-btn.active .cms-icon {
+  transform: scale(1.08);
+}
+
+.cms-icon.tg {
+  background: #2AABEE;
+  box-shadow: 0 3px 8px rgba(42, 171, 238, 0.35);
+}
+
+.cms-icon.wa {
+  background: #25D366;
+  box-shadow: 0 3px 8px rgba(37, 211, 102, 0.35);
+}
+
+.cms-icon.vk {
+  background: #0077FF;
+  box-shadow: 0 3px 8px rgba(0, 119, 255, 0.35);
+}
+
+.cms-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.cms-badge {
+  position: absolute;
+  top: -8px;
+  right: 6px;
+  background: #8F6D35;
+  color: #FFFFFF;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(143, 109, 53, 0.35);
+}
+
+.checkout-messenger-hint {
+  font-size: 0.78rem;
+  color: #6E7079;
+  line-height: 1.4;
+  padding: 0.65rem 0.85rem;
+  background: #FAF8F5;
+  border-radius: 8px;
+  border: 1px solid rgba(143, 109, 53, 0.18);
+  transition: all 0.2s ease;
+}
+
+/* Legacy fallback support */
 .checkout-tg-channel-pill {
   display: flex;
   align-items: center;
@@ -5601,6 +5776,19 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 @media (max-width: 520px) {
+  .checkout-messenger-selector {
+    gap: 0.45rem;
+  }
+  .cms-btn {
+    padding: 0.75rem 0.35rem;
+  }
+  .cms-name {
+    font-size: 0.78rem;
+  }
+  .cms-icon {
+    width: 28px;
+    height: 28px;
+  }
   .checkout-tg-channel-pill {
     flex-direction: column;
     align-items: flex-start;

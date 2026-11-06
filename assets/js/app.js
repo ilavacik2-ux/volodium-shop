@@ -1123,7 +1123,7 @@ function openProductModal(itemId) {
             <span class="soc-crest">✦</span>
             <span class="soc-title">Ольфакторная композиция</span>
           </div>
-          <span class="soc-vibe">${escapeHtml(item.metrics?.vibe || lifestyle.mood || 'Селективный нишевый профиль')}</span>
+          <span class="soc-vibe">${escapeHtml(item.metrics?.vibe || lifestyle.mood || 'Нишевый ольфакторный профиль')}</span>
         </div>
 
         <div class="soc-notes-list">
@@ -1349,7 +1349,7 @@ function initCart() {
         cart = parsed.filter(item => item && typeof item === 'object').map(item => {
           let resolvedName = item.name;
           if (!resolvedName || resolvedName === 'undefined' || resolvedName === 'null') {
-            resolvedName = item.title || (item.level ? `Secret Box «${item.level}»` : 'Селективный сет Volodium');
+            resolvedName = item.title || (item.level ? `Secret Box «${item.level}»` : 'Фирменный сет Volodium');
           }
           let resolvedVol = item.volume;
           if (!resolvedVol || resolvedVol === 'undefined' || resolvedVol === 'null') {
@@ -1511,7 +1511,7 @@ function renderCartDrawer() {
   }
 
   itemsContainer.innerHTML = cart.map(item => {
-    const rawName = (item.name && item.name !== 'undefined' && item.name !== 'null') ? item.name : (item.title || 'Селективный сет Volodium');
+    const rawName = (item.name && item.name !== 'undefined' && item.name !== 'null') ? item.name : (item.title || 'Фирменный сет Volodium');
     const rawVol = (item.volume && item.volume !== 'undefined' && item.volume !== 'null') ? item.volume : 'стандарт';
     const volMeta = rawVol === 'bottle' ? 'Полноразмерный флакон' : 
                     (item.itemId && item.itemId.startsWith('box-') ? `Сет из 5 флаконов × ${rawVol}` : rawVol);
@@ -1865,7 +1865,7 @@ window.openLegalDoc = function(type) {
       <div class="legal-doc-header">
         <span class="section-tag">Федеральный закон № 152-ФЗ</span>
         <h3 class="legal-doc-title">Политика обработки персональных данных</h3>
-        <p class="legal-doc-subtitle">Интернет-бутик селективной парфюмерии VOLODIUM PARFUM</p>
+        <p class="legal-doc-subtitle">Интернет-бутик нишевой парфюмерии VOLODIUM PARFUM</p>
       </div>
       <div class="legal-doc-content">
         <h4>1. Общие положения</h4>
@@ -1885,7 +1885,7 @@ window.openLegalDoc = function(type) {
         <p>3.1. Персональные данные используются строго для:</p>
         <ul>
           <li>Формирования накладных курьерской службы СДЭК и курьерской доставки по Москве и регионам РФ;</li>
-          <li>Оформления заказа на оригинальную селективную парфюмерию, персональные аромабоксы или подарочные сертификаты;</li>
+          <li>Оформления заказа на оригинальную парфюмерию, персональные аромабоксы или подарочные сертификаты;</li>
           <li>Индивидуального консультирования покупателя основателем бутика Владимиром Вациком;</li>
           <li>Предоставления информации о статусе отправления и батч-кодах флаконов.</li>
         </ul>
@@ -1904,7 +1904,7 @@ window.openLegalDoc = function(type) {
       <div class="legal-doc-header">
         <span class="section-tag">Статьи 435, 437 ГК РФ</span>
         <h3 class="legal-doc-title">Публичная оферта интернет-бутика</h3>
-        <p class="legal-doc-subtitle">Условия дистанционной розничной купли-продажи селективной парфюмерии</p>
+        <p class="legal-doc-subtitle">Условия дистанционной розничной купли-продажи нишевой парфюмерии</p>
       </div>
       <div class="legal-doc-content">
         <h4>1. Общие положения</h4>
@@ -1912,8 +1912,8 @@ window.openLegalDoc = function(type) {
         <p>1.2. Ознакомительная информация на страницах каталога носит информационно-демонстрационный характер. Моментом заключения договора является подтверждение заказа покупателем и согласование деталей с менеджером бутика.</p>
 
         <h4>2. Гарантия оригинальности и качество товара</h4>
-        <p>2.1. Продавец гарантирует 100% подлинность и оригинальность всех представленных селективных ароматов, их соответствие стандартам IFRA и возможность проверки батч-кодов перед вскрытием.</p>
-        <p>2.2. Продавец передает Покупателю оригинальную парфюмерную продукцию (селективные духи во флаконах, атомайзерах или фирменных сетах аромабоксов), а Покупатель оплачивает товар по согласованной стоимости.</p>
+        <p>2.1. Продавец гарантирует 100% подлинность и оригинальность всех представленных ароматов, их соответствие стандартам IFRA и возможность проверки батч-кодов перед вскрытием.</p>
+        <p>2.2. Продавец передает Покупателю оригинальную парфюмерную продукцию (оригинальные духи во флаконах, атомайзерах или фирменных сетах аромабоксов), а Покупатель оплачивает товар по согласованной стоимости.</p>
 
         <h4>3. Оплата и доставка</h4>
         <p>3.1. Заказ оформляется через корзину сайта либо посредством прямой коммуникации в официальном канале Telegram @volodiumparfum.</p>
@@ -2715,7 +2715,7 @@ function initCertificates() {
     certState.serviceKey = serviceKey;
     const services = {
       consultation: 'Индивидуальный парфюмерный гардероб',
-      deposit: 'Депозит на селективную коллекцию бутика',
+      deposit: 'Депозит на коллекцию бутика',
       secret_box: 'Персональный Secret Box Владимира Вацика'
     };
     certState.serviceTitle = services[serviceKey] || services.consultation;

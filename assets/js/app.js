@@ -70,6 +70,8 @@ function initMonroeIntro() {
       autoTimer = null;
     }
     intro.classList.add('hidden');
+    document.documentElement.classList.remove('intro-active');
+    document.body.classList.remove('intro-active');
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     document.body.style.backgroundColor = '';
@@ -82,6 +84,8 @@ function initMonroeIntro() {
       canDismiss = true;
     }, 150);
     intro.classList.remove('hidden');
+    document.documentElement.classList.add('intro-active');
+    document.body.classList.add('intro-active');
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     const stage = intro.querySelector('.monroe-brand-stage');
@@ -1487,21 +1491,25 @@ function renderCartDrawer() {
   const totalEl = document.getElementById('cartTotal');
   const freeTrackEl = document.getElementById('freeDeliveryFill');
   const freeTextEl = document.getElementById('freeDeliveryText');
+  const orderExtras = document.getElementById('cartOrderExtras');
+  const stickyBottom = document.getElementById('cartStickyBottom');
   if (!itemsContainer) return;
 
   if (cart.length === 0) {
     itemsContainer.innerHTML = `
       <div class="cart-empty-state">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--gold-primary); opacity: 0.7;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--bordo-primary); opacity: 0.85;">
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
           <line x1="3" y1="6" x2="21" y2="6"/>
           <path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
-        <p style="font-size: 1.1rem; color: #111216; font-weight: 600;">Ваша парфюмерная корзина пуста</p>
-        <p style="font-size: 0.85rem; max-width: 260px; color: var(--text-muted);">Выберите понравившийся аромат в каталоге или закажите персональный Secret Box.</p>
-        <button class="btn-primary" onclick="closeCart();" style="margin-top: 1rem;">Перейти к ароматам</button>
+        <p style="font-size: 1.15rem; color: #111216; font-weight: 600;">Ваша парфюмерная корзина пуста</p>
+        <p style="font-size: 0.85rem; max-width: 260px; color: var(--text-muted); line-height: 1.45;">Выберите понравившийся аромат в каталоге или закажите персональный Secret Box.</p>
+        <button class="btn-primary" onclick="closeCart();" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">Перейти к ароматам</button>
       </div>
     `;
+    if (orderExtras) orderExtras.style.display = 'none';
+    if (stickyBottom) stickyBottom.style.display = 'none';
     if (subtotalEl) subtotalEl.textContent = '0 ₽';
     if (totalEl) totalEl.textContent = '0 ₽';
     if (discountRow) discountRow.style.display = 'none';
@@ -1510,26 +1518,34 @@ function renderCartDrawer() {
     return;
   }
 
+  if (orderExtras) orderExtras.style.display = 'block';
+  if (stickyBottom) stickyBottom.style.display = 'block';
+
   itemsContainer.innerHTML = cart.map(item => {
     const rawName = (item.name && item.name !== 'undefined' && item.name !== 'null') ? item.name : (item.title || 'Фирменный сет Volodium');
     const rawVol = (item.volume && item.volume !== 'undefined' && item.volume !== 'null') ? item.volume : 'стандарт';
     const volMeta = rawVol === 'bottle' ? 'Полноразмерный флакон' : 
-                    (item.itemId && item.itemId.startsWith('box-') ? `Сет из 5 флаконов × ${rawVol}` : rawVol);
+                    (item.itemId && item.itemId.startsWith('box-') ? `Сет из 5 флаконов × ${rawVol}` : `Отливант ${rawVol}`);
     const imgSrc = item.image || 'assets/img/aromaboxes/real_box_open_kraft.jpg';
     return `
     <div class="cart-item">
       <img class="cart-item-img" src="${imgSrc}" alt="${escapeHtml(rawName)}">
       <div class="cart-item-info">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div class="cart-item-top">
           <div class="cart-item-title">${escapeHtml(rawName)}</div>
-          <button class="cart-item-del" onclick="removeCartItem('${item.cartId}');" title="Удалить">✕</button>
+          <button class="cart-item-del" onclick="removeCartItem('${item.cartId}');" title="Удалить" aria-label="Удалить товар">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
         </div>
         <div class="cart-item-meta">${escapeHtml(volMeta)}</div>
         <div class="cart-item-bot">
           <div class="cart-item-qty">
-            <button class="qty-btn" onclick="changeCartQty('${item.cartId}', -1);">–</button>
+            <button class="qty-btn" onclick="changeCartQty('${item.cartId}', -1);" aria-label="Уменьшить">−</button>
             <span class="qty-number">${item.qty}</span>
-            <button class="qty-btn" onclick="changeCartQty('${item.cartId}', 1);">+</button>
+            <button class="qty-btn" onclick="changeCartQty('${item.cartId}', 1);" aria-label="Увеличить">+</button>
           </div>
           <div class="cart-item-price">${formatPrice(item.price * item.qty)}</div>
         </div>

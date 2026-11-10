@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="intro-active">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
@@ -22,10 +22,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Critical Splash Screen Protection -->
+  <style>
+    html.intro-active, html.intro-active body {
+      overflow: hidden !important;
+      height: 100% !important;
+      background-color: #FAF8F5 !important;
+    }
+    html.intro-active body > *:not(#monroeIntro) {
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  </style>
+
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261101_12">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_01">
 </head>
-<body>
+<body class="intro-active">
 
   <!-- Cinematic Luxury Intro Screen (Haute Parfumerie Gold Shimmer & Monogram Crest) -->
   <aside class="monroe-intro-overlay" id="monroeIntro" role="dialog" aria-modal="true" aria-label="Volodium Parfum">
@@ -486,7 +499,7 @@
         <!-- Explorer Box -->
         <div class="secret-card">
           <div class="secret-card-img-wrap">
-            <img src="assets/img/aromaboxes/real_box_open_kraft.jpg" alt="Secret Box Исследователь" loading="lazy">
+            <img src="assets/img/aromaboxes/secret_box_explorer.jpg" alt="Secret Box Исследователь" loading="lazy">
           </div>
           <h3 class="secret-card-level">Исследователь</h3>
           <span class="secret-card-sub">3–5 нишевых ароматов под ваш запрос</span>
@@ -521,7 +534,7 @@
         <div class="secret-card hit">
           <span class="secret-badge-hit">★ Безусловный Хит ★</span>
           <div class="secret-card-img-wrap">
-            <img src="assets/img/aromaboxes/real_box_white_closed.jpg" alt="Secret Box Коллекционер" loading="lazy">
+            <img src="assets/img/aromaboxes/secret_box_collector.jpg" alt="Secret Box Коллекционер" loading="lazy">
           </div>
           <h3 class="secret-card-level">Коллекционер</h3>
           <span class="secret-card-sub">5–8 нишевых ароматов + подарок для дома</span>
@@ -555,7 +568,7 @@
         <!-- Obsession Box (VIP) -->
         <div class="secret-card">
           <div class="secret-card-img-wrap">
-            <img src="assets/img/aromaboxes/real_box_open_marble.jpg" alt="Secret Box Одержимость" loading="lazy">
+            <img src="assets/img/aromaboxes/secret_box_obsession.jpg" alt="Secret Box Одержимость" loading="lazy">
           </div>
           <h3 class="secret-card-level">Одержимость</h3>
           <span class="secret-card-sub">8–10 редких композиций + подарки от Владимира Вацика</span>
@@ -1648,70 +1661,6 @@
     </div>
   </section>
 
-  <!-- Educational Decants Guide -->
-  <section class="section-padding decants-section" id="decants">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Культура парфюмерии</span>
-        <h2 class="section-title">Искусство распива & авторский гардероб</h2>
-        <p class="section-descr">
-          Отливант — это аутентичный концентрат, бережно перенесенный в персональный качественный атомайзер для комфортного тестирования редкого аромата.
-        </p>
-      </div>
-
-      <div class="decants-trio-grid">
-        <div class="decant-trio-card">
-          <div class="dtc-header">
-            <div class="dtc-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <span class="dtc-badge">3 мл · 5 мл · 10 мл</span>
-          </div>
-          <h3 class="dtc-title">Свобода выбора & гардероб</h3>
-          <p class="dtc-text">
-            Формируйте собственный ольфакторный гардероб: дегустируйте редкие шедевры на коже и меняйте композиции под статус, сезон и настроение без привязки к полному флакону.
-          </p>
-        </div>
-
-        <div class="decant-trio-card">
-          <div class="dtc-header">
-            <div class="dtc-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            </div>
-            <span class="dtc-badge highlight">100% аутентичность</span>
-          </div>
-          <h3 class="dtc-title">Безупречная подлинность</h3>
-          <p class="dtc-text">
-            Исключительно оригинальные заводские флаконы из закрытых коллекций европейских бутиков со строгим контролем батч-кодов и гарантией стойкости.
-          </p>
-        </div>
-
-        <div class="decant-trio-card">
-          <div class="dtc-header">
-            <div class="dtc-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
-            </div>
-            <span class="dtc-badge">Стекло & сталь</span>
-          </div>
-          <h3 class="dtc-title">Стеклянный тревел-формат</h3>
-          <p class="dtc-text">
-            Герметичные стеклянные колбы с металлической микропомпой. Аромат защищен от окисления и звучит ровно так, как задумал великий парфюмер.
-          </p>
-        </div>
-      </div>
-
-      <!-- Slim Editorial Quote Strip (Photo 1 fix: Symmetrical, elegant, zero awkward photo crop) -->
-      <div class="decants-quote-strip">
-        <div class="dqs-monogram">V</div>
-        <div class="dqs-body">
-          <blockquote class="dqs-quote">
-            «Мы используем исключительно герметичные стеклянные колбы с металлической микропомпой. Никакого дешевого пластика: формула не окисляется и сохраняет кристальную чистоту каждой ноты.»
-          </blockquote>
-          <span class="dqs-author">— Владимир Вацик, основатель Volodium Parfum</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Custom Scent Finding & Quality Standards (Real from Volodium) -->
   <section class="section-padding custom-order-section" id="custom-scent">
@@ -2062,8 +2011,15 @@
   <div class="cart-drawer-backdrop" id="cartDrawerBackdrop">
     <div class="cart-drawer">
       <div class="cart-header">
-        <h3 class="cart-title">Парфюмерная корзина</h3>
-        <button class="btn-icon" id="btnCartClose" aria-label="Закрыть корзину">✕</button>
+        <div class="cart-header-title-wrap">
+          <h3 class="cart-title">Парфюмерная корзина</h3>
+        </div>
+        <button class="cart-close-btn" id="btnCartClose" aria-label="Закрыть корзину">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
       </div>
 
       <!-- Free Delivery Progress Tracker -->
@@ -2076,82 +2032,98 @@
         </div>
       </div>
 
-      <!-- Cart Items List -->
-      <div class="cart-items-wrap" id="cartItemsList"></div>
+      <!-- Scrollable Cart Content (Items + Promo + Summary + Channels) -->
+      <div class="cart-body-scroll" id="cartBodyScroll">
+        <!-- Cart Items List -->
+        <div class="cart-items-wrap" id="cartItemsList"></div>
 
-      <!-- Cart Summary & Checkout -->
-      <div class="cart-footer">
-        <div class="promo-row">
-          <input type="text" id="promoCodeInput" class="promo-input" placeholder="Промокод (например: СТАРТ)">
-          <button class="promo-btn" id="btnApplyPromo">Применить</button>
-        </div>
-        <div class="promo-tip">
-          ✦ Введите промокод <strong>СТАРТ</strong> для скидки 10% на ваш заказ!
-        </div>
+        <!-- Order Extras (Promo, Breakdown, Messenger channels) -->
+        <div class="cart-order-extras" id="cartOrderExtras">
+          <!-- Promo Row -->
+          <div class="promo-row">
+            <input type="text" id="promoCodeInput" class="promo-input" placeholder="Промокод (СТАРТ)">
+            <button class="promo-btn" id="btnApplyPromo">Применить</button>
+          </div>
+          <div class="promo-tip">
+            ✦ Скидка 10% на ваш заказ по промокоду <strong>СТАРТ</strong>
+          </div>
 
-        <div class="cart-summary-line">
-          <span>Сумма товаров:</span>
-          <span id="cartSubtotal">0 ₽</span>
-        </div>
-        <div class="cart-summary-line" id="cartDiscountRow" style="display: none; color: var(--gold-primary);">
-          <span>Скидка по промокоду:</span>
-          <span id="cartDiscountVal">-0 ₽</span>
-        </div>
-        <div class="cart-summary-line total">
-          <span>Итого к оплате:</span>
-          <span id="cartTotal">0 ₽</span>
-        </div>
+          <!-- Breakdown Summary Lines -->
+          <div class="cart-breakdown-card">
+            <div class="cart-summary-line">
+              <span>Сумма товаров:</span>
+              <span id="cartSubtotal">0 ₽</span>
+            </div>
+            <div class="cart-summary-line" id="cartDiscountRow" style="display: none; color: var(--bordo-primary);">
+              <span>Скидка по промокоду:</span>
+              <span id="cartDiscountVal">-0 ₽</span>
+            </div>
+            <div class="cart-summary-line">
+              <span>Доставка СДЭК:</span>
+              <span class="cart-delivery-calc-note">По тарифам СДЭК (от 5 000 ₽ бесплатно)</span>
+            </div>
+          </div>
 
+          <!-- Messenger Badges in Cart Drawer (Telegram, WhatsApp, VK) -->
+          <div class="cart-channels-strip">
+            <div class="ccs-header-row">
+              <span class="ccs-label">Каналы подтверждения</span>
+              <span class="ccs-speed-pill">⚡ В TG быстрее всего</span>
+            </div>
+            <div class="ccs-badges-row">
+              <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="ccs-badge tg" title="Telegram @volodiumparfum — отвечаем почти мгновенно">
+                <span class="ccs-icon-wrap tg-bg">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+                  </svg>
+                </span>
+                <div class="ccs-badge-info">
+                  <span class="ccs-badge-name">Telegram</span>
+                  <span class="ccs-badge-sub">~1 мин</span>
+                </div>
+              </a>
+              <a href="https://wa.me/79094442617" target="_blank" rel="noopener noreferrer" class="ccs-badge wa" title="WhatsApp +7 909 444-26-17">
+                <span class="ccs-icon-wrap wa-bg">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.97.58 3.86 1.68 5.48L2 22l4.77-1.74a9.85 9.85 0 0 0 5.27 1.5h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.89h-.01a8.16 8.16 0 0 1-4.17-1.15l-.3-.18-3.08 1.12 1.15-3.01-.2-.31a8.14 8.14 0 0 1-1.25-4.45c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4a8.16 8.16 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.2 8.2zm4.49-6.14c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.76 2.68 4.25 3.76.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.31z"/>
+                  </svg>
+                </span>
+                <div class="ccs-badge-info">
+                  <span class="ccs-badge-name">WhatsApp</span>
+                  <span class="ccs-badge-sub">номер Вовы</span>
+                </div>
+              </a>
+              <a href="https://vk.ru/volodya_v_v" target="_blank" rel="noopener noreferrer" class="ccs-badge vk" title="ВКонтакте vk.ru/volodya_v_v">
+                <span class="ccs-icon-wrap vk-bg">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.072-1.892.854-2.585 1.785-1.921 1.073.766 1.673 2.13 2.827 2.13h2.628c1.378 0 1.83-.82 1.25-2.077-.909-1.969-2.827-3.864-2.923-4.223-.198-.74.195-1.096.598-1.637.397-.533 3.328-4.735 3.65-6.351H20.73c-.569 0-.825.289-1.026.837-.872 2.379-2.316 5.342-3.185 5.513-.717.14-1.002-.395-1.002-1.528V6.985c0-1.282-.363-1.685-1.42-1.685h-3.957c-.777 0-1.229.434-.84 1.05.617.974.793 1.528.793 2.871v2.793c0 .874-.32 1.157-.96 1.157-.91 0-2.318-2.339-3.325-5.321-.24-.712-.55-1.05-1.14-1.05H2.17C.926 6.8 0 7.42 0 8.358c0 1.082 1.284 6.702 5.977 12.337C8.618 23.86 11.83 24 13.162 24v-5.006z"/>
+                  </svg>
+                </span>
+                <div class="ccs-badge-info">
+                  <span class="ccs-badge-name">ВКонтакте</span>
+                  <span class="ccs-badge-sub">личка Вовы</span>
+                </div>
+              </a>
+            </div>
+            <span class="ccs-instant-note">⚡ Отвечаем в Telegram почти мгновенно, но вы можете выбрать любой удобный канал</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fixed Sticky Bottom Checkout Bar -->
+      <div class="cart-sticky-bottom" id="cartStickyBottom">
+        <div class="csb-total-row">
+          <div class="csb-total-meta">
+            <span class="csb-total-label">Итого к оплате:</span>
+          </div>
+          <span class="csb-total-val" id="cartTotal">0 ₽</span>
+        </div>
         <button class="btn-checkout" id="btnCartCheckout">
           <span>Перейти к оформлению</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </button>
-
-        <!-- Messenger Badges in Cart Drawer (Telegram, WhatsApp, VK) -->
-        <div class="cart-channels-strip">
-          <div class="ccs-header-row">
-            <span class="ccs-label">Каналы подтверждения заказа</span>
-            <span class="ccs-speed-pill">⚡ В TG быстрее всего</span>
-          </div>
-          <div class="ccs-badges-row">
-            <div class="ccs-badge tg" title="Telegram @volodiumparfum — отвечаем почти мгновенно">
-              <span class="ccs-icon-wrap tg-bg">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-                </svg>
-              </span>
-              <div class="ccs-badge-info">
-                <span class="ccs-badge-name">Telegram</span>
-                <span class="ccs-badge-sub">~1 мин</span>
-              </div>
-            </div>
-            <div class="ccs-badge wa" title="WhatsApp +7 909 444-26-17">
-              <span class="ccs-icon-wrap wa-bg">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.97.58 3.86 1.68 5.48L2 22l4.77-1.74a9.85 9.85 0 0 0 5.27 1.5h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.89h-.01a8.16 8.16 0 0 1-4.17-1.15l-.3-.18-3.08 1.12 1.15-3.01-.2-.31a8.14 8.14 0 0 1-1.25-4.45c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4a8.16 8.16 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.2 8.2zm4.49-6.14c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.76 2.68 4.25 3.76.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.31z"/>
-                </svg>
-              </span>
-              <div class="ccs-badge-info">
-                <span class="ccs-badge-name">WhatsApp</span>
-                <span class="ccs-badge-sub">номер Вовы</span>
-              </div>
-            </div>
-            <div class="ccs-badge vk" title="ВКонтакте vk.ru/volodya_v_v">
-              <span class="ccs-icon-wrap vk-bg">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.072-1.892.854-2.585 1.785-1.921 1.073.766 1.673 2.13 2.827 2.13h2.628c1.378 0 1.83-.82 1.25-2.077-.909-1.969-2.827-3.864-2.923-4.223-.198-.74.195-1.096.598-1.637.397-.533 3.328-4.735 3.65-6.351H20.73c-.569 0-.825.289-1.026.837-.872 2.379-2.316 5.342-3.185 5.513-.717.14-1.002-.395-1.002-1.528V6.985c0-1.282-.363-1.685-1.42-1.685h-3.957c-.777 0-1.229.434-.84 1.05.617.974.793 1.528.793 2.871v2.793c0 .874-.32 1.157-.96 1.157-.91 0-2.318-2.339-3.325-5.321-.24-.712-.55-1.05-1.14-1.05H2.17C.926 6.8 0 7.42 0 8.358c0 1.082 1.284 6.702 5.977 12.337C8.618 23.86 11.83 24 13.162 24v-5.006z"/>
-                </svg>
-              </span>
-              <div class="ccs-badge-info">
-                <span class="ccs-badge-name">ВКонтакте</span>
-                <span class="ccs-badge-sub">личка Вовы</span>
-              </div>
-            </div>
-          </div>
-          <span class="ccs-instant-note">⚡ Отвечаем в Telegram почти мгновенно, но вы можете выбрать любой удобный канал</span>
-        </div>
       </div>
     </div>
   </div>

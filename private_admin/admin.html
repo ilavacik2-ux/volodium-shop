@@ -1054,10 +1054,10 @@
   </div>
 
   <!-- ======================================================================
-       MODAL: AROMA BOX EDITOR
+       MODAL: AROMA BOX EDITOR (SPLIT STUDIO WITH LIVE CARD PREVIEW & PHOTO CROPPING)
        ====================================================================== -->
   <div class="vp-modal-backdrop" id="vpBoxModalBackdrop" hidden role="dialog" aria-modal="true" aria-labelledby="vpBoxModalTitle">
-    <div class="vp-modal">
+    <div class="vp-modal vp-modal-lg">
       <div class="vp-modal-head">
         <div>
           <span class="vp-modal-tag">АРОМАБОКС</span>
@@ -1067,54 +1067,120 @@
       </div>
       <form id="vpBoxForm" class="vp-modal-body">
         <input type="hidden" id="bmId">
-        <div class="vp-form-grid">
-          <div class="vp-field vp-col-span-2"><label>Название бокса *</label><input type="text" id="bmName" required></div>
-          <div class="vp-field">
-            <label>Категория</label>
-            <select id="bmGender">
-              <option value="women">Для нее</option>
-              <option value="men">Для него</option>
-              <option value="unisex">Унисекс</option>
-            </select>
-          </div>
-          <div class="vp-field"><label>Бейдж</label><input type="text" id="bmBadge" placeholder="Хит / Бестселлер"></div>
-          <div class="vp-field vp-col-span-2"><label>Короткий подзаголовок</label><input type="text" id="bmSubtitle"></div>
-          <div class="vp-field vp-col-span-2">
-            <label>Фотография бокса</label>
-            <div class="vp-upload-row">
-              <input type="text" id="bmImage">
-              <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
-                <span>Загрузить фото</span>
+        <div class="vp-editor-split">
+          <!-- Left: Photo Studio + Live Card Preview -->
+          <div class="vp-editor-media-col">
+            <div class="vp-box-preview-shell" id="bmPreviewCard">
+              <div class="vp-pcs-img-wrap">
+                <span class="vp-pcs-badge" id="bmPreviewBadge" hidden>Хит</span>
+                <img
+                  id="bmPreviewImg"
+                  src="/assets/images/noroot.png"
+                  alt="Предпросмотр аромабокса"
+                  referrerpolicy="no-referrer"
+                  decoding="async"
+                >
+              </div>
+              <div class="vp-pcs-body">
+                <div class="vp-pcs-brand" id="bmPreviewGender">Унисекс</div>
+                <div class="vp-pcs-name" id="bmPreviewName">Название бокса</div>
+                <div class="vp-pcs-season" id="bmPreviewSub">Короткое описание · 5 ароматов</div>
+                <div class="vp-pcs-price-wrap" style="display:flex; align-items:baseline; gap:8px; margin-top:4px;">
+                  <span class="vp-pcs-price" id="bmPreviewPrice">от 3 200 ₽</span>
+                  <span class="vp-bac-old" id="bmPreviewOldPrice" hidden></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box Photo Studio & Live Feedback Strip -->
+            <div class="vp-photo-studio-panel" style="margin-top:14px;">
+              <div class="vp-psp-head">
+                <strong>📸 Фотография аромабокса</strong>
+                <span class="vp-tag ok" id="bmPhotoStatusTag">В эфире</span>
+              </div>
+
+              <label class="vp-upload-dropzone" id="bmDropzone">
+                <span>📁 Перетащите фото или <strong>нажмите для загрузки</strong> (JPG, PNG, WebP)</span>
                 <input type="file" id="bmFileInput" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
               </label>
+
+              <div class="vp-input-clear-wrap" style="margin-top:8px;">
+                <input type="text" id="bmImage" placeholder="URL или assets/uploads/..." style="font-size:12.5px;">
+                <button type="button" class="vp-btn-inline-clear" id="bmClearImgBtn" title="Очистить фото">✕</button>
+              </div>
+
+              <div class="vp-range-row">
+                <span>Фокус по вертикали:</span>
+                <input type="range" id="bmObjPosY" min="0" max="100" value="50">
+                <span id="bmObjPosYVal">50%</span>
+              </div>
+
+              <!-- Visual strip: What you are currently changing -->
+              <div class="vp-current-photo-strip" id="bmCurrentPhotoStrip">
+                <img id="bmCurrentThumb" src="/assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
+                <div class="vp-cps-info">
+                  <span class="vp-cps-label">Активное изображение:</span>
+                  <span class="vp-cps-src" id="bmPhotoSourceLabel">assets/images/noroot.png</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="vp-prices-editor-box" style="margin-top:12px;">
-          <strong>Цены и зачёркнутые цены (5×3 мл / 5×5 мл / 5×10 мл)</strong>
-          <div class="vp-volumes-grid three" style="margin-top:8px;">
-            <div class="vp-field"><label>5×3 мл (₽)</label><input type="number" id="bmP3" min="0" step="10"></div>
-            <div class="vp-field"><label>5×5 мл (₽)</label><input type="number" id="bmP5" min="0" step="10"></div>
-            <div class="vp-field"><label>5×10 мл (₽)</label><input type="number" id="bmP10" min="0" step="10"></div>
-            <div class="vp-field"><label>Старая 3 мл</label><input type="number" id="bmOld3" min="0" step="10"></div>
-            <div class="vp-field"><label>Старая 5 мл</label><input type="number" id="bmOld5" min="0" step="10"></div>
-            <div class="vp-field"><label>Старая 10 мл</label><input type="number" id="bmOld10" min="0" step="10"></div>
+          <!-- Right: All Fields, Pricing & Perfume Composition -->
+          <div class="vp-editor-fields-col">
+            <div class="vp-form-grid">
+              <div class="vp-field vp-col-span-2">
+                <label for="bmName">Название бокса *</label>
+                <input type="text" id="bmName" required placeholder="Например: Вдохновение Парижа">
+              </div>
+              <div class="vp-field">
+                <label for="bmGender">Категория</label>
+                <select id="bmGender">
+                  <option value="unisex">Унисекс</option>
+                  <option value="women">Для нее</option>
+                  <option value="men">Для него</option>
+                </select>
+              </div>
+              <div class="vp-field">
+                <label for="bmBadge">Бейдж на карточке</label>
+                <input type="text" id="bmBadge" list="vpBadgeSuggestions" placeholder="Хит / Бестселлер / Эксклюзив">
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="bmSubtitle">Короткий подзаголовок</label>
+                <input type="text" id="bmSubtitle" placeholder="Например: 5 культовых французских композиций">
+              </div>
+            </div>
+
+            <div class="vp-prices-editor-box">
+              <div class="vp-peb-head">
+                <strong>💰 Цены и зачёркнутые старые цены (₽)</strong>
+              </div>
+              <div class="vp-volumes-grid three" style="margin-top:8px;">
+                <div class="vp-field"><label for="bmP3">5×3 мл (₽)</label><input type="number" id="bmP3" min="0" step="10" placeholder="3200"></div>
+                <div class="vp-field"><label for="bmP5">5×5 мл (₽)</label><input type="number" id="bmP5" min="0" step="10" placeholder="5200"></div>
+                <div class="vp-field"><label for="bmP10">5×10 мл (₽)</label><input type="number" id="bmP10" min="0" step="10" placeholder="9800"></div>
+                <div class="vp-field"><label for="bmOld3">Старая 3 мл</label><input type="number" id="bmOld3" min="0" step="10" placeholder="4000"></div>
+                <div class="vp-field"><label for="bmOld5">Старая 5 мл</label><input type="number" id="bmOld5" min="0" step="10" placeholder="6500"></div>
+                <div class="vp-field"><label for="bmOld10">Старая 10 мл</label><input type="number" id="bmOld10" min="0" step="10" placeholder="12000"></div>
+              </div>
+            </div>
+
+            <div class="vp-field" style="margin-top:12px;">
+              <label for="bmPerfumes">Состав ароматов (по 1 аромату в строке: Бренд — Название)</label>
+              <textarea id="bmPerfumes" rows="4" placeholder="Tom Ford — Lost Cherry&#10;Kilian — Angels' Share&#10;Maison Francis Kurkdjian — Baccarat Rouge 540"></textarea>
+            </div>
+
+            <div class="vp-field" style="margin-top:8px;">
+              <label for="bmDesc">Полное описание бокса</label>
+              <textarea id="bmDesc" rows="3" placeholder="Подробный рассказ о концепции сета, нотах и характере звучания"></textarea>
+            </div>
+
+            <label class="vp-checkbox-row" style="margin-top:10px;">
+              <input type="checkbox" id="bmIsActive" checked>
+              <span>Показывать бокс на сайте</span>
+            </label>
           </div>
         </div>
-
-        <div class="vp-field" style="margin-top:12px;">
-          <label>Состав ароматов (по 1 аромату в строке: Бренд — Название)</label>
-          <textarea id="bmPerfumes" rows="5"></textarea>
-        </div>
-        <div class="vp-field" style="margin-top:8px;">
-          <label>Полное описание бокса</label>
-          <textarea id="bmDesc" rows="3"></textarea>
-        </div>
-        <label class="vp-checkbox-row" style="margin-top:10px;">
-          <input type="checkbox" id="bmIsActive" checked>
-          <span>Показывать бокс на сайте</span>
-        </label>
 
         <div class="vp-modal-footer">
           <button type="button" class="vp-btn vp-btn-danger-outline" id="bmDeleteBtn">Удалить бокс</button>
@@ -1128,10 +1194,10 @@
   </div>
 
   <!-- ======================================================================
-       MODAL: SECRET BOX EDITOR
+       MODAL: SECRET BOX EDITOR (SPLIT STUDIO WITH LIVE CARD PREVIEW & PHOTO CROPPING)
        ====================================================================== -->
   <div class="vp-modal-backdrop" id="vpSecretModalBackdrop" hidden role="dialog" aria-modal="true" aria-labelledby="vpSecretModalTitle">
-    <div class="vp-modal">
+    <div class="vp-modal vp-modal-lg">
       <div class="vp-modal-head">
         <div>
           <span class="vp-modal-tag">SECRET BOX</span>
@@ -1142,29 +1208,106 @@
       <form id="vpSecretForm" class="vp-modal-body">
         <input type="hidden" id="smId">
         <input type="hidden" id="smLevel">
-        <div class="vp-form-grid">
-          <div class="vp-field"><label>Название</label><input type="text" id="smName" required></div>
-          <div class="vp-field"><label>Бейдж (напр. ★ Безусловный Хит ★)</label><input type="text" id="smBadge"></div>
-          <div class="vp-field"><label>Актуальная цена (₽)</label><input type="number" id="smPrice" min="100" step="50" required></div>
-          <div class="vp-field"><label>Старая цена (₽)</label><input type="number" id="smOldPrice" min="0" step="50"></div>
-          <div class="vp-field vp-col-span-2"><label>Короткий подзаголовок</label><input type="text" id="smSubtitle"></div>
-          <div class="vp-field vp-col-span-2">
-            <label>Фотография бокса</label>
-            <div class="vp-upload-row">
-              <input type="text" id="smImage">
-              <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
-                <span>Загрузить фото</span>
+        <div class="vp-editor-split">
+          <!-- Left: Photo Studio + Live Card Preview -->
+          <div class="vp-editor-media-col">
+            <div class="vp-box-preview-shell" id="smPreviewCard">
+              <div class="vp-pcs-img-wrap">
+                <span class="vp-pcs-badge" id="smPreviewBadge" hidden>★ Хит ★</span>
+                <img
+                  id="smPreviewImg"
+                  src="/assets/images/noroot.png"
+                  alt="Предпросмотр Secret Box"
+                  referrerpolicy="no-referrer"
+                  decoding="async"
+                >
+              </div>
+              <div class="vp-pcs-body">
+                <div class="vp-pcs-brand" id="smPreviewBrand">SECRET BOX</div>
+                <div class="vp-pcs-name" id="smPreviewName">Секретный бокс</div>
+                <div class="vp-pcs-season" id="smPreviewSubtitle">Персональный подбор</div>
+                <div class="vp-pcs-price-wrap" style="display:flex; align-items:baseline; gap:8px; margin-top:4px;">
+                  <span class="vp-pcs-price" id="smPreviewPrice">4 900 ₽</span>
+                  <span class="vp-bac-old" id="smPreviewOldPrice" hidden></span>
+                </div>
+                <ul class="vp-preview-features-list" id="smPreviewFeatures"></ul>
+              </div>
+            </div>
+
+            <!-- Secret Box Photo Studio -->
+            <div class="vp-photo-studio-panel" style="margin-top:14px;">
+              <div class="vp-psp-head">
+                <strong>📸 Фотография Secret Box</strong>
+                <span class="vp-tag ok" id="smPhotoStatusTag">В эфире</span>
+              </div>
+
+              <label class="vp-upload-dropzone" id="smDropzone">
+                <span>📁 Перетащите фото или <strong>нажмите для загрузки</strong> (JPG, PNG, WebP)</span>
                 <input type="file" id="smFileInput" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
               </label>
+
+              <div class="vp-input-clear-wrap" style="margin-top:8px;">
+                <input type="text" id="smImage" placeholder="URL или assets/uploads/..." style="font-size:12.5px;">
+                <button type="button" class="vp-btn-inline-clear" id="smClearImgBtn" title="Очистить фото">✕</button>
+              </div>
+
+              <div class="vp-range-row">
+                <span>Фокус по вертикали:</span>
+                <input type="range" id="smObjPosY" min="0" max="100" value="50">
+                <span id="smObjPosYVal">50%</span>
+              </div>
+
+              <!-- Visual strip: What you are currently changing -->
+              <div class="vp-current-photo-strip" id="smCurrentPhotoStrip">
+                <img id="smCurrentThumb" src="/assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
+                <div class="vp-cps-info">
+                  <span class="vp-cps-label">Активное изображение:</span>
+                  <span class="vp-cps-src" id="smPhotoSourceLabel">assets/images/noroot.png</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="vp-field vp-col-span-2"><label>Описание карточки</label><textarea id="smDesc" rows="3"></textarea></div>
-          <div class="vp-field vp-col-span-2"><label>Пункты преимуществ (по 1 пункту в строке)</label><textarea id="smFeatures" rows="3"></textarea></div>
+
+          <!-- Right: All Fields & Features -->
+          <div class="vp-editor-fields-col">
+            <div class="vp-form-grid">
+              <div class="vp-field">
+                <label for="smName">Название Secret Box *</label>
+                <input type="text" id="smName" required placeholder="Секретный бокс «Стандарт»">
+              </div>
+              <div class="vp-field">
+                <label for="smBadge">Бейдж на карточке</label>
+                <input type="text" id="smBadge" list="vpBadgeSuggestions" placeholder="★ Безусловный Хит ★">
+              </div>
+              <div class="vp-field">
+                <label for="smPrice">Актуальная цена (₽) *</label>
+                <input type="number" id="smPrice" min="100" step="50" required placeholder="4900">
+              </div>
+              <div class="vp-field">
+                <label for="smOldPrice">Старая цена (₽)</label>
+                <input type="number" id="smOldPrice" min="0" step="50" placeholder="6000">
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="smSubtitle">Короткий подзаголовок</label>
+                <input type="text" id="smSubtitle" placeholder="Например: Идеально для первого знакомства с нишей">
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="smDesc">Описание карточки</label>
+                <textarea id="smDesc" rows="3" placeholder="Расскажите о наполнении бокса и гарантии стойкости"></textarea>
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="smFeatures">Пункты преимуществ (по 1 пункту в строке)</label>
+                <textarea id="smFeatures" rows="3" placeholder="5 селективных ароматов по 3 мл&#10;Подбор лично Владимиром под ваш психотип&#10;Фирменная крафтовая упаковка с сургучом"></textarea>
+              </div>
+            </div>
+
+            <label class="vp-checkbox-row" style="margin-top:12px;">
+              <input type="checkbox" id="smIsHit">
+              <span>Выделять карточку акцентной золотой рамкой («Хит»)</span>
+            </label>
+          </div>
         </div>
-        <label class="vp-checkbox-row" style="margin-top:10px;">
-          <input type="checkbox" id="smIsHit">
-          <span>Выделять как «Хит» акцентной рамкой</span>
-        </label>
+
         <div class="vp-modal-footer">
           <div></div>
           <div class="vp-mf-right">

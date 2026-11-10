@@ -8463,10 +8463,10 @@ section[id],
 /* Delicate Gold Atelier Framing Border */
 .monroe-intro-frame-border {
   position: absolute;
-  top: max(16px, env(safe-area-inset-top, 16px));
-  bottom: max(16px, env(safe-area-inset-bottom, 16px));
-  left: max(16px, env(safe-area-inset-left, 16px));
-  right: max(16px, env(safe-area-inset-right, 16px));
+  top: max(12px, env(safe-area-inset-top, 12px));
+  bottom: max(12px, env(safe-area-inset-bottom, 12px));
+  left: max(12px, env(safe-area-inset-left, 12px));
+  right: max(12px, env(safe-area-inset-right, 12px));
   border: 1px solid rgba(212, 175, 55, 0.28);
   border-radius: 16px;
   pointer-events: none;
@@ -8485,7 +8485,8 @@ section[id],
   z-index: 2;
   width: 100%;
   max-width: 1200px;
-  padding: 3rem 2rem;
+  padding: 2.5rem 1.5rem;
+  box-sizing: border-box;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -8499,15 +8500,17 @@ section[id],
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
+  max-width: 100%;
   user-select: none;
 }
 
 /* Monumental Brand Title "VOLODIUM" */
 .monroe-grand-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.8rem, 11vw, 9.2rem);
+  font-size: clamp(2.3rem, 7.8vw, 8.5rem);
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #111216;
   line-height: 1;
@@ -8516,7 +8519,9 @@ section[id],
   align-items: center;
   justify-content: center;
   position: relative;
-  padding-left: 0.22em;
+  padding-left: 0.16em;
+  max-width: calc(100vw - 48px);
+  box-sizing: border-box;
 }
 
 .monroe-title-letter {
@@ -8550,22 +8555,47 @@ section[id],
   }
 }
 
-/* Grand Subtitle 'HAUTE PARFUMERIE' */
+/* Grand Subtitle 'PARFUM' */
 .monroe-grand-sub {
   font-family: var(--font-serif);
-  font-size: clamp(0.9rem, 2.2vw, 1.6rem);
+  font-size: clamp(0.75rem, 1.8vw, 1.4rem);
   font-weight: 600;
-  letter-spacing: 0.55em;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
   color: var(--bordo-primary, #812020);
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding-left: 0.55em;
+  gap: 0.75rem;
+  padding-left: 0.42em;
   opacity: 0;
   transform: translateY(10px);
   animation: introSubReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+@media (max-width: 480px) {
+  .monroe-intro-frame-border {
+    top: max(8px, env(safe-area-inset-top, 8px));
+    bottom: max(8px, env(safe-area-inset-bottom, 8px));
+    left: max(8px, env(safe-area-inset-left, 8px));
+    right: max(8px, env(safe-area-inset-right, 8px));
+    border-radius: 12px;
+  }
+  .monroe-intro-content {
+    padding: 1.5rem 1rem;
+  }
+  .monroe-grand-title {
+    font-size: clamp(2.1rem, 7.4vw, 3.2rem);
+    letter-spacing: 0.12em;
+    padding-left: 0.12em;
+    max-width: calc(100vw - 36px);
+  }
+  .monroe-grand-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    padding-left: 0.32em;
+    margin-top: 1.15rem;
+  }
 }
 
 @keyframes introSubReveal {

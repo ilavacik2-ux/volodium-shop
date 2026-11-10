@@ -73,7 +73,8 @@
   function resolveMediaSrc(src) {
     const raw = String(src || '').trim();
     if (!raw) return '/assets/images/noroot.png';
-    if (/^(https?:)?\/\//i.test(raw) || raw.startsWith('data:') || raw.startsWith('blob:')) return raw;
+    if (raw.startsWith('//')) return 'https:' + raw;
+    if (/^https?:\/\//i.test(raw) || raw.startsWith('data:') || raw.startsWith('blob:')) return raw;
     if (raw.startsWith('/')) return raw;
     return '/' + raw.replace(/^\/+/, '');
   }
@@ -546,7 +547,9 @@
                 class="vp-thumb"
                 src="${esc(resolveMediaSrc(item.image))}"
                 alt="${esc(item.name)}"
-                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer"
+                onerror="this.onerror=null;this.src='/assets/images/noroot.png';"
                 style="object-position:${esc(item.objectPosition || 'center center')};"
               >
             </td>
@@ -1089,7 +1092,14 @@
     sbGrid.innerHTML = state.secretBoxes.map((sb) => `
       <article class="vp-box-admin-card ${sb.isHit ? 'is-hit' : ''}">
         <div class="vp-bac-media">
-          <img src="${esc(resolveMediaSrc(sb.image))}" alt="${esc(sb.name)}" loading="lazy">
+          <img
+            src="${esc(resolveMediaSrc(sb.image))}"
+            alt="${esc(sb.name)}"
+            decoding="async"
+            referrerpolicy="no-referrer"
+            onerror="this.onerror=null;this.src='/assets/images/noroot.png';"
+            style="object-position:${esc(sb.objectPosition || 'center center')};"
+          >
           ${sb.badge ? `<span class="vp-bac-badge">${esc(sb.badge)}</span>` : ''}
         </div>
         <div class="vp-bac-body">
@@ -1113,7 +1123,14 @@
       return `
         <article class="vp-box-admin-card">
           <div class="vp-bac-media">
-            <img src="${esc(resolveMediaSrc(box.image))}" alt="${esc(box.name)}" loading="lazy">
+            <img
+              src="${esc(resolveMediaSrc(box.image))}"
+              alt="${esc(box.name)}"
+              decoding="async"
+              referrerpolicy="no-referrer"
+              onerror="this.onerror=null;this.src='/assets/images/noroot.png';"
+              style="object-position:${esc(box.objectPosition || 'center center')};"
+            >
             ${box.badge ? `<span class="vp-bac-badge">${esc(box.badge)}</span>` : ''}
           </div>
           <div class="vp-bac-body">
@@ -1133,6 +1150,90 @@
     }).join('');
   }
 
+  function updateBoxModalPreview() {
+    const imgVal = ($('bmImage').value || '').trim();
+    const posY = Number($('bmObjPosY').value || 50);
+    $('bmObjPosYVal').textContent = `${posY}%`;
+
+    const imgEl = $('bmPreviewImg');
+    imgEl.src = resolveMediaSrc(imgVal);
+    imgEl.style.objectPosition = `center ${posY}%`;
+
+    const thumbEl = $('bmCurrentThumb');
+    thumbEl.src = resolveMediaSrc(imgVal);
+    thumbEl.style.objectPosition = `center ${posY}%`;
+    $('bmPhotoSourceLabel').textContent = imgVal || 'assets/images/noroot.png';
+    $('bmPhotoStatusTag').textContent = imgVal ? 'Фото активно' : 'Без фото';
+    $('bmPhotoStatusTag').className = `vp-tag ${imgVal ? 'ok' : 'muted'}`;
+
+    const badgeVal = ($('bmBadge').value || '').trim();
+    $('bmPreviewBadge').textContent = badgeVal;
+    $('bmPreviewBadge').hidden = !badgeVal;
+
+    const gmap = { women: 'Для нее', men: 'Для него', unisex: 'Унисекс' };
+    $('bmPreviewGender').textContent = gmap[$('bmGender').value] || 'Унисекс';
+    $('bmPreviewName').textContent = ($('bmName').value || '').trim() || 'Название бокса';
+
+    const pList = $('bmPerfumes').value.split('\n').map((s) => s.trim()).filter(Boolean);
+    const sub = ($('bmSubtitle').value || '').trim();
+    $('bmPreviewSub').textContent = `${sub ? sub + ' · ' : ''}${pList.length} ароматов`;
+
+    const p3 = Number($('bmP3').value || 0);
+    const p5 = Number($('bmP5').value || 0);
+    const p10 = Number($('bmP10').value || 0);
+    const candidates = [p3, p5, p10].filter((v) => v > 0);
+    $('bmPreviewPrice').textContent = candidates.length ? `от ${formatRub(Math.min(...candidates))}` : 'от 3 200 ₽';
+
+    const old3 = Number($('bmOld3').value || 0);
+    if (old3 > 0) {
+      $('bmPreviewOldPrice').textContent = formatRub(old3);
+      $('bmPreviewOldPrice').hidden = false;
+    } else {
+      $('bmPreviewOldPrice').hidden = true;
+    }
+  }
+
+  function updateSecretModalPreview() {
+    const imgVal = ($('smImage').value || '').trim();
+    const posY = Number($('smObjPosY').value || 50);
+    $('smObjPosYVal').textContent = `${posY}%`;
+
+    const imgEl = $('smPreviewImg');
+    imgEl.src = resolveMediaSrc(imgVal);
+    imgEl.style.objectPosition = `center ${posY}%`;
+
+    const thumbEl = $('smCurrentThumb');
+    thumbEl.src = resolveMediaSrc(imgVal);
+    thumbEl.style.objectPosition = `center ${posY}%`;
+    $('smPhotoSourceLabel').textContent = imgVal || 'assets/images/noroot.png';
+    $('smPhotoStatusTag').textContent = imgVal ? 'Фото активно' : 'Без фото';
+    $('smPhotoStatusTag').className = `vp-tag ${imgVal ? 'ok' : 'muted'}`;
+
+    const badgeVal = ($('smBadge').value || '').trim();
+    $('smPreviewBadge').textContent = badgeVal;
+    $('smPreviewBadge').hidden = !badgeVal;
+
+    $('smPreviewName').textContent = ($('smName').value || '').trim() || 'Секретный бокс';
+    $('smPreviewSubtitle').textContent = ($('smSubtitle').value || '').trim() || 'Персональный подбор';
+
+    const price = Number($('smPrice').value || 0);
+    $('smPreviewPrice').textContent = price > 0 ? formatRub(price) : '4 900 ₽';
+
+    const oldPrice = Number($('smOldPrice').value || 0);
+    if (oldPrice > 0) {
+      $('smPreviewOldPrice').textContent = formatRub(oldPrice);
+      $('smPreviewOldPrice').hidden = false;
+    } else {
+      $('smPreviewOldPrice').hidden = true;
+    }
+
+    const feats = $('smFeatures').value.split('\n').map((s) => s.trim()).filter(Boolean);
+    $('smPreviewFeatures').innerHTML = feats.map((f) => `<li>${esc(f)}</li>`).join('');
+
+    const isHit = $('smIsHit').checked;
+    $('smPreviewCard').classList.toggle('is-hit', isHit);
+  }
+
   function openBoxModal(boxId) {
     const box = boxId ? state.aromaboxes.find((x) => x.id === boxId) : null;
     $('bmId').value = box ? box.id : '';
@@ -1144,6 +1245,7 @@
     $('bmBadge').value = box ? (box.badge || '') : '';
     $('bmSubtitle').value = box ? (box.shortSubtitle || '') : '';
     $('bmImage').value = box ? (box.image || '') : '';
+    $('bmObjPosY').value = extractObjPosY(box ? box.objectPosition : '50%');
     $('bmP3').value = (box && box.prices && box.prices['3ml']) || '';
     $('bmP5').value = (box && box.prices && box.prices['5ml']) || '';
     $('bmP10').value = (box && box.prices && box.prices['10ml']) || '';
@@ -1153,6 +1255,7 @@
     $('bmPerfumes').value = box ? (box.perfumes || []).join('\n') : '';
     $('bmDesc').value = box ? (box.fullDescription || '') : '';
     $('bmIsActive').checked = box ? (box.isActive !== false) : true;
+    updateBoxModalPreview();
     openModal('vpBoxModalBackdrop');
   }
 
@@ -1168,9 +1271,11 @@
     $('smOldPrice').value = sb.oldPrice || '';
     $('smSubtitle').value = sb.subtitle || '';
     $('smImage').value = sb.image || '';
+    $('smObjPosY').value = extractObjPosY(sb.objectPosition || '50%');
     $('smDesc').value = sb.description || '';
     $('smFeatures').value = (sb.features || []).join('\n');
     $('smIsHit').checked = Boolean(sb.isHit);
+    updateSecretModalPreview();
     openModal('vpSecretModalBackdrop');
   }
 
@@ -1185,34 +1290,105 @@
       if (btn) openSecretModal(btn.dataset.editSecret);
     });
 
-    $('bmFileInput').addEventListener('change', async () => {
-      const f = $('bmFileInput').files && $('bmFileInput').files[0];
-      if (!f) return;
-      try {
-        const res = await uploadImageFile(f, 'boxes');
-        $('bmImage').value = res.url;
-        showToast('Фото бокса загружено', 'ok');
-      } catch (err) {
-        showToast(err.message, 'err');
-      } finally {
-        $('bmFileInput').value = '';
-      }
+    // AromaBox live preview inputs
+    ['bmName', 'bmBadge', 'bmSubtitle', 'bmImage', 'bmP3', 'bmP5', 'bmP10', 'bmOld3', 'bmPerfumes'].forEach((id) => {
+      $(id).addEventListener('input', updateBoxModalPreview);
+    });
+    ['bmGender', 'bmObjPosY'].forEach((id) => {
+      $(id).addEventListener('input', updateBoxModalPreview);
+      $(id).addEventListener('change', updateBoxModalPreview);
+    });
+    $('bmClearImgBtn').addEventListener('click', () => {
+      $('bmImage').value = '';
+      updateBoxModalPreview();
     });
 
-    $('smFileInput').addEventListener('change', async () => {
-      const f = $('smFileInput').files && $('smFileInput').files[0];
-      if (!f) return;
+    // Secret Box live preview inputs
+    ['smName', 'smBadge', 'smSubtitle', 'smPrice', 'smOldPrice', 'smImage', 'smFeatures'].forEach((id) => {
+      $(id).addEventListener('input', updateSecretModalPreview);
+    });
+    ['smObjPosY', 'smIsHit'].forEach((id) => {
+      $(id).addEventListener('input', updateSecretModalPreview);
+      $(id).addEventListener('change', updateSecretModalPreview);
+    });
+    $('smClearImgBtn').addEventListener('click', () => {
+      $('smImage').value = '';
+      updateSecretModalPreview();
+    });
+
+    // AromaBox file upload + drag & drop
+    const bmFileInp = $('bmFileInput');
+    const bmDrop = $('bmDropzone');
+    async function handleAromaBoxFile(file) {
+      if (!file) return;
       try {
-        const res = await uploadImageFile(f, 'boxes');
+        showToast('Загрузка изображения аромабокса...', 'ok');
+        const res = await uploadImageFile(file, 'boxes');
+        $('bmImage').value = res.url;
+        updateBoxModalPreview();
+        showToast('Фото аромабокса загружено', 'ok');
+      } catch (err) {
+        showToast(err.message, 'err');
+      }
+    }
+    bmFileInp.addEventListener('change', () => {
+      if (bmFileInp.files && bmFileInp.files[0]) handleAromaBoxFile(bmFileInp.files[0]);
+      bmFileInp.value = '';
+    });
+    ['dragenter', 'dragover'].forEach((ev) => {
+      bmDrop.addEventListener(ev, (e) => {
+        e.preventDefault();
+        bmDrop.classList.add('is-dragover');
+      });
+    });
+    ['dragleave', 'drop'].forEach((ev) => {
+      bmDrop.addEventListener(ev, (e) => {
+        e.preventDefault();
+        bmDrop.classList.remove('is-dragover');
+      });
+    });
+    bmDrop.addEventListener('drop', (e) => {
+      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (file) handleAromaBoxFile(file);
+    });
+
+    // Secret Box file upload + drag & drop
+    const smFileInp = $('smFileInput');
+    const smDrop = $('smDropzone');
+    async function handleSecretBoxFile(file) {
+      if (!file) return;
+      try {
+        showToast('Загрузка изображения Secret Box...', 'ok');
+        const res = await uploadImageFile(file, 'boxes');
         $('smImage').value = res.url;
+        updateSecretModalPreview();
         showToast('Фото Secret Box загружено', 'ok');
       } catch (err) {
         showToast(err.message, 'err');
-      } finally {
-        $('smFileInput').value = '';
       }
+    }
+    smFileInp.addEventListener('change', () => {
+      if (smFileInp.files && smFileInp.files[0]) handleSecretBoxFile(smFileInp.files[0]);
+      smFileInp.value = '';
+    });
+    ['dragenter', 'dragover'].forEach((ev) => {
+      smDrop.addEventListener(ev, (e) => {
+        e.preventDefault();
+        smDrop.classList.add('is-dragover');
+      });
+    });
+    ['dragleave', 'drop'].forEach((ev) => {
+      smDrop.addEventListener(ev, (e) => {
+        e.preventDefault();
+        smDrop.classList.remove('is-dragover');
+      });
+    });
+    smDrop.addEventListener('drop', (e) => {
+      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (file) handleSecretBoxFile(file);
     });
 
+    // Submit save AromaBox
     $('vpBoxForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const prices = {};
@@ -1226,6 +1402,7 @@
 
       const gender = $('bmGender').value;
       const gmap = { women: 'Для нее', men: 'Для него', unisex: 'Унисекс' };
+      const posY = Number($('bmObjPosY').value || 50);
       const payload = {
         id: $('bmId').value || undefined,
         name: $('bmName').value.trim(),
@@ -1234,6 +1411,7 @@
         badge: $('bmBadge').value.trim(),
         shortSubtitle: $('bmSubtitle').value.trim(),
         image: $('bmImage').value.trim(),
+        objectPosition: `center ${posY}%`,
         prices,
         oldPrices,
         perfumes: $('bmPerfumes').value.split('\n').map((s) => s.trim()).filter(Boolean),
@@ -1265,8 +1443,10 @@
       }
     });
 
+    // Submit save Secret Box
     $('vpSecretForm').addEventListener('submit', async (e) => {
       e.preventDefault();
+      const posY = Number($('smObjPosY').value || 50);
       const payload = {
         id: $('smId').value,
         level: $('smLevel').value || $('smName').value.trim(),
@@ -1277,6 +1457,7 @@
         oldPrice: Math.round(Number($('smOldPrice').value || 0)),
         subtitle: $('smSubtitle').value.trim(),
         image: $('smImage').value.trim(),
+        objectPosition: `center ${posY}%`,
         description: $('smDesc').value.trim(),
         features: $('smFeatures').value.split('\n').map((s) => s.trim()).filter(Boolean),
         isHit: $('smIsHit').checked,

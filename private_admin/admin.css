@@ -1957,6 +1957,132 @@ textarea {
   font-size: 15px;
 }
 
+.vp-box-preview-shell {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.vp-box-preview-shell.is-hit {
+  border-color: var(--gold-deep);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.25), 0 8px 24px rgba(184, 134, 11, 0.15);
+}
+
+.vp-preview-features-list {
+  margin: 6px 0 0 0;
+  padding: 0 0 0 16px;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.vp-preview-features-list li {
+  margin-bottom: 2px;
+}
+
+.vp-photo-studio-panel {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+}
+
+.vp-psp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.vp-psp-head strong {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.vp-input-clear-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.vp-input-clear-wrap input {
+  padding-right: 32px;
+}
+
+.vp-btn-inline-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.vp-btn-inline-clear:hover {
+  background: var(--wine);
+  color: #FFFFFF;
+}
+
+.vp-current-photo-strip {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vp-current-photo-strip img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--bg-soft);
+}
+
+.vp-cps-info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vp-cps-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.vp-cps-src {
+  font-size: 11px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+
 .vp-season-editor-box,
 .vp-prices-editor-box {
   margin-top: 14px;

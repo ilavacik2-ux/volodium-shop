@@ -204,6 +204,8 @@ const HERO_PORTRAIT = {
   sub: '«Парфюм как чувственное продолжение вашей индивидуальности»'
 };
 
+const HERO_BACKDROP_IMAGE = 'assets/img/editorial/hero_perfume_flacons_neutral.jpg';
+
 let heroCinematicMode = true;
 
 function initHeroLookbook() {
@@ -213,7 +215,7 @@ function initHeroLookbook() {
 
   const backdropImg = document.getElementById('heroBackdropImg');
   if (backdropImg) {
-    backdropImg.style.backgroundImage = `url('${HERO_PORTRAIT.image}')`;
+    backdropImg.style.backgroundImage = `url('${HERO_BACKDROP_IMAGE}')`;
   }
 }
 

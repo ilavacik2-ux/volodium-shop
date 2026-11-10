@@ -7202,8 +7202,9 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     margin-bottom: 0.75rem !important;
   }
   .rec-photo-thumb {
-    height: 135px !important;
-    border-radius: 10px !important;
+    height: 195px !important;
+    border-radius: 12px !important;
+    background: #f5f3ee !important;
   }
   .reviews-dots-nav {
     display: flex !important;
@@ -11199,21 +11200,27 @@ section[id],
 
 .rec-photo-thumb {
   width: 100%;
-  height: 180px;
-  border-radius: 12px;
+  height: 240px;
+  border-radius: 14px;
   overflow: hidden;
-  background: #111216;
+  background: #f5f3ee;
+  border: 1px solid rgba(17, 18, 22, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .rec-photo-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  object-position: center 25%;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .review-editorial-card:hover .rec-photo-thumb img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .reviews-concierge-footer {

@@ -1,0 +1,35 @@
+# ==============================================================================
+# VOLODIUM PARFUM — systemd Service Unit (Ubuntu/Debian VDS)
+# Установка:
+#   sudo mkdir -p /var/www/volodium
+#   sudo chown -R www-data:www-data /var/www/volodium
+#   sudo cp deploy/volodium.service /etc/systemd/system/volodium.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now volodium
+#   sudo journalctl -u volodium -f
+# ==============================================================================
+
+[Unit]
+Description=VOLODIUM PARFUM Storefront & Stealth Atelier Backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/volodium
+EnvironmentFile=/var/www/volodium/.env
+ExecStart=/var/www/volodium/venv/bin/uvicorn server:app --host 127.0.0.1 --port 8000 --workers 2 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=always
+RestartSec=3
+TimeoutStopSec=15
+
+# Изоляция и защита прав процесса
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/www/volodium
+
+[Install]
+WantedBy=multi-user.target

@@ -1,12 +1,8 @@
 /**
- * VOLODIUM PARFUM - Authentic Catalog Database
- * Scraped and synchronized with official store https://volodiumparfum.ru
- * Total catalog perfumes: 277
- * Total authentic aromaboxes: 9
- * Total secret boxes: 3
+ * VOLODIUM PARFUM — Master Catalog Data
+ * Pure fragrances (265 items), Thematic Aroma Boxes (9 sets), Secret Boxes (3 tiers).
  */
-
-const PERFUMES_DATA = [
+var PERFUMES_DATA = [
   {
     "id": "vp-501166132292",
     "uid": 501166132292,
@@ -464,7 +460,7 @@ const PERFUMES_DATA = [
       "15ml": 2535,
       "20ml": 3180
     },
-    "description": "Ambre Pimente — про благородную сложность и уют без излишней сладости. Пряный старт моментально бодрит, сердце из кедра, гваяка и амбры добавляет статусный древесно-тёплый характер, а база из мускуса и ветивера делает шлейф стойким и узнаваемым. Лучше всего аромат раскрывается...",
+    "description": "ByBozo Rival in Love — утончённая нишевая композиция французского парфюмерного дома ByBozo.",
     "url": "http://volodiumparfum.ru/catalog/tproduct/538782379242-bybozo-rival-in-love"
   },
   {
@@ -3972,215 +3968,6 @@ const PERFUMES_DATA = [
     "url": "http://volodiumparfum.ru/catalog/tproduct/774916797993-lhomme-idal-platine-priv-guerlain"
   },
   {
-    "id": "vp-826224487353",
-    "uid": 826224487353,
-    "brand": "Секретный",
-    "name": "бокс «Исследователь»",
-    "fullTitle": "Секретный бокс «Исследователь»",
-    "gender": "unisex",
-    "category": "perfume",
-    "notesFamily": "oriental",
-    "image": "https://static.tildacdn.com/stor3737-3966-4633-b162-323137623034/311432ab09b4b9bfd7fdf6567ed4f7c3.png",
-    "badge": "Бестселлер",
-    "prices": {
-      "3ml": 4900,
-      "5ml": 7595,
-      "10ml": 13720
-    },
-    "description": "Быстрый способ познакомиться с ароматами, подобранными специально под вас. Внутри: — от 3 до 5 ароматов; — объем каждого аромата — 5 мл; — индивидуальный подбор по информации, указанной в заказе Вы можете написать, какие ноты вам нравятся, для какого времени года или случая ну...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/826224487353-sekretnii-boks-issledovatel"
-  },
-  {
-    "id": "vp-445538548093",
-    "uid": 445538548093,
-    "brand": "Секретный",
-    "name": "бокс «Коллекционер»",
-    "fullTitle": "Секретный бокс «Коллекционер»",
-    "gender": "unisex",
-    "category": "perfume",
-    "notesFamily": "oriental",
-    "image": "https://static.tildacdn.com/stor3261-3062-4263-a431-663633343463/bbc37dc2ad78fe9efd13edf7fa0f789b.png",
-    "badge": "В наличии",
-    "prices": {
-      "3ml": 11900,
-      "5ml": 18445,
-      "10ml": 33320
-    },
-    "description": "Расширенный персональный аромабокс для тех, кто хочет получить больше вариантов, объемов и приятных сюрпризов. Внутри: — от 5 до 8 ароматов; — ароматы в объемах 5 и 10 мл; — фирменные пробники и сэмплы; — подарки от Владимира; — индивидуальный подбор по вашим пожеланиям, харак...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/445538548093-sekretnii-boks-kollektsioner"
-  },
-  {
-    "id": "vp-618605553333",
-    "uid": 618605553333,
-    "brand": "Секретный",
-    "name": "бокс «Одержимость»",
-    "fullTitle": "Секретный бокс «Одержимость»",
-    "gender": "unisex",
-    "category": "perfume",
-    "notesFamily": "oriental",
-    "image": "https://static.tildacdn.com/stor3835-3831-4139-a563-666563303562/7f33623c076aa36d7c7937cf9741061d.png",
-    "badge": "",
-    "prices": {
-      "3ml": 19900,
-      "5ml": 30845,
-      "10ml": 55720
-    },
-    "description": "Коллекция, собранная вокруг вашей личности, образа и эстетики. Внутри: — от 8 до 10 нишевых ароматов; — интересные, неизбитые и оригинальные парфюмерные композиции; — разные объемы ароматов в зависимости от концепции бокса и запроса; — предмет для ароматизации интерьера; — сек...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/618605553333-sekretnii-boks-oderzhimost"
-  },
-  {
-    "id": "vp-776250689083",
-    "uid": 776250689083,
-    "brand": "НЕцитрусовый",
-    "name": "аромабокс для него",
-    "fullTitle": "НЕцитрусовый аромабокс для него",
-    "gender": "men",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor3634-6163-4361-a138-396464373261/329c4c94ffef8ac5541c9f71a81d56fc.png",
-    "badge": "",
-    "prices": {
-      "53ml": 3240,
-      "55ml": 5150,
-      "510ml": 9800
-    },
-    "description": "Аромабокс с 5 мужскими ароматами без очевидной цитрусовой свежести Бокс для тех, кто хочет пахнуть небанально свежо, а глубже, интереснее и дороже Внутри — 5 ароматов для мужчин, в которых нет привычного акцента на цитрусы. Вместо этого здесь собраны более характерные направле...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/776250689083-netsitrusovii-aromaboks-dlya-nego"
-  },
-  {
-    "id": "vp-862779877033",
-    "uid": 862779877033,
-    "brand": "НЕцитрусовый",
-    "name": "аромабокс для нее",
-    "fullTitle": "НЕцитрусовый аромабокс для нее",
-    "gender": "women",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor3863-6532-4634-b636-373162306262/d747f6e232252620793e82e2b3204a11.png",
-    "badge": "",
-    "prices": {
-      "53ml": 3780,
-      "55ml": 6050,
-      "510ml": 11600
-    },
-    "description": "Аромабокс с 5 женскими ароматами без привычной цитрусовой свежести Внутри — 5 ароматов для нее, в которых нет акцента на очевидные цитрусы. Вместо этого здесь собраны более выразительные направления: цветочные, мускусные, древесные, сладковатые, кремовые, амбровые и шлейфовые ...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/862779877033-netsitrusovii-aromaboks-dlya-nee"
-  },
-  {
-    "id": "vp-951991302213",
-    "uid": 951991302213,
-    "brand": "Аромабокс",
-    "name": "«Знакомство с брендом Rudross» для него",
-    "fullTitle": "Аромабокс «Знакомство с брендом Rudross» для него",
-    "gender": "men",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor3333-3037-4366-b134-613734653865/7245f0c5d0caab98f41387febbc2b66f.png",
-    "badge": "",
-    "prices": {
-      "53ml": 2670,
-      "55ml": 4200,
-      "510ml": 7900
-    },
-    "description": "Универсальный аромабокс для него с пятью ароматами бренда Rudross Внутри — подборка самых интересных композиций бренда: от чистых, свежих и повседневных до более выразительных, глубоких и характерных. Это хороший способ познакомиться с Rudross сразу через несколько разных напр...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/951991302213-aromaboks-znakomstvo-s-brendom-rudross-d"
-  },
-  {
-    "id": "vp-188290376183",
-    "uid": 188290376183,
-    "brand": "Аромабокс",
-    "name": "«Знакомство с брендом M.INT» унисекс",
-    "fullTitle": "Аромабокс «Знакомство с брендом M.INT» унисекс",
-    "gender": "unisex",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor6264-3765-4535-b366-323834323663/af9e289693ff382c320721a8636c432e.png",
-    "badge": "В наличии",
-    "prices": {
-      "53ml": 3500,
-      "55ml": 6300,
-      "510ml": 11200
-    },
-    "description": "Откройте для себя один из самых необычных современных нишевых брендов M’INT — это бренд, вдохновленный движением, архитектурой и современным искусством. Его ароматы объединяют высокое качество ингредиентов, необычные сочетания нот и яркий характер, благодаря чему каждый из них...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/188290376183-aromaboks-znakomstvo-s-brendom-mint-unis"
-  },
-  {
-    "id": "vp-168867808923",
-    "uid": 168867808923,
-    "brand": "Аромабокс",
-    "name": "«Самые ВКУСНЫЕ ароматы» для нее",
-    "fullTitle": "Аромабокс «Самые ВКУСНЫЕ ароматы» для нее",
-    "gender": "women",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor3331-3366-4162-b561-646663343161/540a32430a4ce2cd2e9456a2d4073f0b.webp",
-    "badge": "Бестселлер",
-    "prices": {
-      "53ml": 3840,
-      "55ml": 6150,
-      "510ml": 11800
-    },
-    "description": "Аромабокс с 5 женственными гурманскими ароматами Бокс для тех, кто любит ароматы, от которых хочется услышать: «Чем это так вкусно пахнет?» Внутри — 5 сладких, мягких и комплиментарных ароматов для нее. Это подборка про нежность, сливочность, ваниль, карамельные оттенки, уютну...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/168867808923-aromaboks-samie-vkusnie-aromati-dlya-nee"
-  },
-  {
-    "id": "vp-977967948573",
-    "uid": 977967948573,
-    "brand": "Аромабокс",
-    "name": "«Стойко, громко, ярко» для нее",
-    "fullTitle": "Аромабокс «Стойко, громко, ярко» для нее",
-    "gender": "women",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor3935-3062-4163-a236-313736326461/0dfa5ccae8b3ed02ab6785342060a0ca.webp",
-    "badge": "",
-    "prices": {
-      "53ml": 4580,
-      "55ml": 7350,
-      "510ml": 14200
-    },
-    "description": "Аромабокс с 5 выразительными женскими ароматами Внутри — 5 ярких, стойких и шлейфовых ароматов для нее. Это подборка для девушек, которые любят заметное звучание, комплименты и ароматы, которые остаются в памяти. Каждый аромат в боксе создан для того, чтобы подчеркнуть характе...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/977967948573-aromaboks-stoiko-gromko-yarko-dlya-nee"
-  },
-  {
-    "id": "vp-501090980333",
-    "uid": 501090980333,
-    "brand": "Аромабокс",
-    "name": "«Стойко, громко, ярко» для него",
-    "fullTitle": "Аромабокс «Стойко, громко, ярко» для него",
-    "gender": "men",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor3461-3033-4232-b936-373731333034/76f062e23fb8fad54738859129b2cafb.png",
-    "badge": "",
-    "prices": {
-      "53ml": 4800,
-      "55ml": 7750,
-      "510ml": 14800
-    },
-    "description": "Аромабокс с 5 выразительными мужскими ароматами Бокс для мужчины, который хочет, чтобы аромат был заметной частью образа. Внутри — 5 стойких, ярких и шлейфовых ароматов для него. Это подборка про уверенное звучание, характер и эффектное первое впечатление. Ароматы из бокса под...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/501090980333-aromaboks-stoiko-gromko-yarko-dlya-nego"
-  },
-  {
-    "id": "vp-591836169713",
-    "uid": 591836169713,
-    "brand": "Аромабокс",
-    "name": "«Знакомство с брендом Bybozo» для нее",
-    "fullTitle": "Аромабокс «Знакомство с брендом Bybozo» для нее",
-    "gender": "women",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor3338-6161-4339-a432-393665323764/e0d2f6e35108a77ac795a71cccf3efc5.png",
-    "badge": "",
-    "prices": {
-      "53ml": 2790,
-      "55ml": 4400,
-      "510ml": 8300
-    },
-    "description": "Аромабокс для нее с самыми красивыми, женственными и запоминающимися ароматами бренда BYBOZO Это подборка композиций, которые раскрываются мягко, дорого и чувственно: от нежных повседневных ароматов до более выразительных, шлейфовых и комплиментарных. Бокс подойдет тем, кто хо...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/591836169713-aromaboks-znakomstvo-s-brendom-bybozo-dl"
-  },
-  {
     "id": "vp-691614364143",
     "uid": 691614364143,
     "brand": "Lattafa",
@@ -5609,25 +5396,6 @@ const PERFUMES_DATA = [
     "url": "http://volodiumparfum.ru/catalog/tproduct/762969685043-sospiro-il-padrino"
   },
   {
-    "id": "vp-788543720123",
-    "uid": 788543720123,
-    "brand": "Аромабокс",
-    "name": "«Ароматы в необычных флаконах» для нее",
-    "fullTitle": "Аромабокс «Ароматы в необычных флаконах» для нее",
-    "gender": "women",
-    "category": "perfume",
-    "notesFamily": "woody",
-    "image": "https://static.tildacdn.com/stor6234-3130-4532-b430-623866333939/06e3250d5f8125cb87e463a4eb9c33bf.png",
-    "badge": "",
-    "prices": {
-      "53ml": 3045,
-      "55ml": 5775,
-      "510ml": 9240
-    },
-    "description": "Пять ароматов из моей коллекции с самыми необычными флаконами! Дракон, античная богиня, Пизанская башня, золотой волк и песочные часы. Каждый из них — настоящее произведение искусства. В этом боксе я собрал композиции, которые привлекают внимание ещё до первого распыления. В н...",
-    "url": "http://volodiumparfum.ru/catalog/tproduct/788543720123-aromaboks-aromati-v-neobichnih-flakonah"
-  },
-  {
     "id": "vp-838188237503",
     "uid": 838188237503,
     "brand": "French Avenue",
@@ -5797,7 +5565,7 @@ const PERFUMES_DATA = [
   }
 ];
 
-const AROMA_BOXES_DATA = [
+var AROMA_BOXES_DATA = [
   {
     "id": "box-нецитрусовый-аромабокс-для-него",
     "uid": 776250689083,
@@ -6070,7 +5838,7 @@ const AROMA_BOXES_DATA = [
   }
 ];
 
-const SECRET_BOXES_DATA = [
+var SECRET_BOXES_DATA = [
   {
     "id": "secret-исследователь",
     "uid": 826224487353,
@@ -6079,7 +5847,7 @@ const SECRET_BOXES_DATA = [
     "title": "Секретный бокс «Исследователь»",
     "price": 4900,
     "oldPrice": 6125,
-    "image": "assets/img/aromaboxes/real_box_open_kraft.jpg",
+    "image": "assets/img/aromaboxes/secret_box_explorer.jpg",
     "cdnImage": "assets/img/aromaboxes/real_box_open_kraft.jpg",
     "description": "Быстрый способ познакомиться с ароматами, подобранными специально под вас. Внутри: 3–5 нишевых композиций в качественных атомайзерах по 5 мл, индивидуальный подбор по вашей анкете от Владимира Вацика, фирменная черная тишью и персональная открытка-послание от парфюмерного стилиста.",
     "badge": "Легкий Старт"
@@ -6092,7 +5860,7 @@ const SECRET_BOXES_DATA = [
     "title": "Секретный бокс «Коллекционер»",
     "price": 11900,
     "oldPrice": 14875,
-    "image": "assets/img/aromaboxes/real_box_white_closed.jpg",
+    "image": "assets/img/aromaboxes/secret_box_collector.jpg",
     "cdnImage": "assets/img/aromaboxes/real_box_white_closed.jpg",
     "description": "Расширенный персональный аромабокс для тех, кто хочет получить полноценный парфюмерный гардероб на разные состояния и события. Внутри: 5–8 редких композиций в объемах 5 и 10 мл (точно есть позиция 10 мл), расширенная консультация Владимира Вацика и премиальная подарочная коробка с черной хлопковой лентой.",
     "badge": "Безусловный Хит"
@@ -6105,7 +5873,7 @@ const SECRET_BOXES_DATA = [
     "title": "Секретный бокс «Одержимость»",
     "price": 19900,
     "oldPrice": 24875,
-    "image": "assets/img/aromaboxes/real_box_open_marble.jpg",
+    "image": "assets/img/aromaboxes/secret_box_obsession.jpg",
     "cdnImage": "assets/img/aromaboxes/real_box_open_marble.jpg",
     "description": "Максимальный парфюмерный опыт: 8–10 неизбитых нишевых ароматов в коллекционных мраморных и деревянных тревел-атомайзерах, секретные подарки от Владимира Вацика, диффузор для интерьера и глубокий персональный подбор по вашей эстетике.",
     "badge": "VIP Сет"

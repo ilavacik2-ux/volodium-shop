@@ -1,70 +1,78 @@
 #!/usr/bin/env python3
 """
-Volodium Parfum - High-Performance Local Dev Server
-Multithreaded HTTP server with zero-cache headers for instant mobile and desktop previews.
+VOLODIUM PARFUM — Local LAN & Desktop Dev Server
+Runs the full FastAPI + SQLite backend with 404 cloaking (replaces raw static SimpleHTTPServer
+so .env, database files, and private_admin stay strictly protected during local/Wi-Fi testing).
 """
 
 import os
 import sys
 import socket
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-from socketserver import ThreadingMixIn
+from pathlib import Path
 
-PORT = 3000
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+VENV_PYTHON = BASE_DIR / "venv" / "bin" / "python3"
 
-class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
-    allow_reuse_address = True
-    daemon_threads = True
 
-class NoCacheDevHandler(SimpleHTTPRequestHandler):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=BASE_DIR, **kwargs)
+def _ensure_venv():
+    try:
+        import fastapi  # noqa: F401
+        import uvicorn  # noqa: F401
+        return
+    except ImportError:
+        if VENV_PYTHON.is_file() and Path(sys.executable).resolve() != VENV_PYTHON.resolve():
+            os.execv(str(VENV_PYTHON), [str(VENV_PYTHON), str(Path(__file__).resolve()), *sys.argv[1:]])
+        raise SystemExit(
+            "FastAPI/Uvicorn не установлены. Запустите через ./start_server.sh или активируйте venv."
+        )
 
-    def end_headers(self):
-        # Force fresh content during development
-        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
-        self.send_header('Pragma', 'no-cache')
-        self.send_header('Expires', '0')
-        self.send_header('Access-Control-Allow-Origin', '*')
-        super().end_headers()
 
-    def log_message(self, format, *args):
-        # Clean brief console logging
-        sys.stderr.write(f"[{self.log_date_time_string()}] {args[0]} {args[1]}\n")
-
-def get_wifi_ip():
+def get_wifi_ip() -> str:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('8.8.8.8', 80))
+        s.connect(("8.8.8.8", 80))
         ip = s.getsockname()[0]
         s.close()
         return ip
     except Exception:
-        return '127.0.0.1'
+        return "127.0.0.1"
+
 
 def run():
-    wifi_ip = get_wifi_ip()
-    server_address = ('0.0.0.0', PORT)
-    httpd = ThreadingSimpleServer(server_address, NoCacheDevHandler)
-    
-    print("\n" + "═"*60)
-    print("✨ VOLODIUM PARFUM — LIFESTYLE ATELIER DEV SERVER")
-    print("═"*60)
-    print(f"👉 Local (Mac):    http://localhost:{PORT}")
-    print(f"👉 Local (127):    http://127.0.0.1:{PORT}")
-    print(f"👉 Mobile (Wi-Fi): http://{wifi_ip}:{PORT}")
-    print("═"*60)
-    print(f"📂 Root Directory: {BASE_DIR}")
-    print("⚡ Multithreading:  ACTIVE (concurrent assets)")
-    print("🔄 Cache Policy:    NO-CACHE (live edits appear instantly)")
-    print("═"*60 + "\n")
-    
-    try:
-        httpd.serve_forever()
-    except KeyboardInterrupt:
-        print("\n🛑 Dev server stopped cleanly.")
-        httpd.server_close()
+    _ensure_venv()
+    sys.path.insert(0, str(BASE_DIR))
+    os.chdir(str(BASE_DIR))
 
-if __name__ == '__main__':
+    from dotenv import load_dotenv
+    load_dotenv(BASE_DIR / ".env")
+
+    import uvicorn
+    import database as db
+
+    db.init_db()
+    port = int(os.environ.get("DEV_PORT", os.environ.get("VP_PORT", "8000")))
+    wifi_ip = get_wifi_ip()
+
+    print("\n" + "═" * 64)
+    print("  VOLODIUM PARFUM — ATELIER DEV SERVER (FastAPI + 404 Cloaking)")
+    print("═" * 64)
+    print(f"  Storefront (Mac)   : http://127.0.0.1:{port}/")
+    print(f"  Storefront (Local) : http://localhost:{port}/")
+    print(f"  Mobile (Wi-Fi LAN) : http://{wifi_ip}:{port}/")
+    print("═" * 64)
+    print("  404 Cloaking & Live /api/bootstrap ACTIVE.")
+    print("  Скрытые токены входа смотрите в .env или через ./start_server.sh")
+    print("═" * 64 + "\n")
+
+    uvicorn.run(
+        "server:app",
+        host="0.0.0.0",
+        port=port,
+        reload=True,
+        reload_excludes=["assets/*", "*.db*", "*.sqlite*", ".env", "venv/*"],
+    )
+
+
+if __name__ == "__main__":
     run()
+

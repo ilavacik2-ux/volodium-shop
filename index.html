@@ -36,7 +36,7 @@
   </style>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261110_01">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261110_02">
 </head>
 <body class="intro-active">
 
@@ -299,7 +299,7 @@
 
         <div class="hero-actions">
           <a href="#catalog" class="btn-primary">
-            <span>Каталог духов (277+)</span>
+            <span>Каталог духов (265+)</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
@@ -318,7 +318,7 @@
             <span class="stat-label">Довольных клиентов</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">300+</span>
+            <span class="stat-number">265+</span>
             <span class="stat-label">Редких ароматов</span>
           </div>
           <div class="stat-item">
@@ -425,9 +425,9 @@
       <div class="catalog-pagination-wrap" id="catalogPagination">
         <button class="btn-load-more" id="btnLoadMore">
           <span>Загрузить еще ароматы</span>
-          <span class="load-more-count" id="loadMoreCount">(265)</span>
+          <span class="load-more-count" id="loadMoreCount">(+12)</span>
         </button>
-        <div class="catalog-loaded-info" id="catalogLoadedInfo">Показано 12 из 277 ароматов</div>
+        <div class="catalog-loaded-info" id="catalogLoadedInfo">Показано 12 из 265 ароматов</div>
       </div>
     </div>
   </section>
@@ -497,7 +497,7 @@
 
       <div class="secret-grid">
         <!-- Explorer Box -->
-        <div class="secret-card">
+        <div class="secret-card" data-secret-id="secret-исследователь">
           <div class="secret-card-img-wrap">
             <img src="assets/img/aromaboxes/secret_box_explorer.jpg" alt="Secret Box Исследователь" loading="lazy">
           </div>
@@ -522,6 +522,7 @@
           </ul>
           <div class="secret-card-bottom">
             <div class="secret-price-box">
+              <span class="secret-old-price" style="display:none;"></span>
               <span class="secret-current-price">4 900 ₽</span>
             </div>
             <button class="btn-primary" onclick="addItemToCartById('secret-исследователь', 'стандарт'); playChime(660);">
@@ -531,7 +532,7 @@
         </div>
 
         <!-- Collector Box (Hit) -->
-        <div class="secret-card hit">
+        <div class="secret-card hit" data-secret-id="secret-коллекционер">
           <span class="secret-badge-hit">★ Безусловный Хит ★</span>
           <div class="secret-card-img-wrap">
             <img src="assets/img/aromaboxes/secret_box_collector.jpg" alt="Secret Box Коллекционер" loading="lazy">
@@ -557,6 +558,7 @@
           </ul>
           <div class="secret-card-bottom">
             <div class="secret-price-box">
+              <span class="secret-old-price" style="display:none;"></span>
               <span class="secret-current-price">11 900 ₽</span>
             </div>
             <button class="btn-primary" onclick="addItemToCartById('secret-коллекционер', 'стандарт'); playChime(660);">
@@ -566,7 +568,8 @@
         </div>
 
         <!-- Obsession Box (VIP) -->
-        <div class="secret-card">
+        <div class="secret-card" data-secret-id="secret-одержимость">
+          <span class="secret-badge-hit" style="display:none;"></span>
           <div class="secret-card-img-wrap">
             <img src="assets/img/aromaboxes/secret_box_obsession.jpg" alt="Secret Box Одержимость" loading="lazy">
           </div>
@@ -591,9 +594,10 @@
           </ul>
           <div class="secret-card-bottom">
             <div class="secret-price-box">
+              <span class="secret-old-price" style="display:none;"></span>
               <span class="secret-current-price">19 900 ₽</span>
             </div>
-            <button class="btn-primary" onclick="addItemToCartById('secret-одержимость', 'стандарт');">
+            <button class="btn-primary" onclick="addItemToCartById('secret-одержимость', 'стандарт'); playChime(660);">
               Заказать бокс
             </button>
           </div>
@@ -1462,7 +1466,7 @@
                 <span class="method-price-note">45–60 минут индивидуально</span>
               </div>
               <div class="method-btns-wrap">
-                <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20%D0%B2%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B5%20(5%20000%20%D1%80%D1%83%D0%B1)" target="_blank" class="btn-primary method-action-btn">Записаться на встречу →</a>
+                <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20%D0%B2%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B5%20(5%20000%20%D1%80%D1%83%D0%B1)" target="_blank" rel="noopener noreferrer" class="btn-primary method-action-btn">Записаться на встречу →</a>
               </div>
             </div>
           </div>
@@ -1648,7 +1652,7 @@
             Наличие тестеров и редких нишевых флаконов постоянно обновляется. Напишите Владимиру название или пришлите фото желаемого флакона — мы моментально проверим склад и найдем нужную позицию.
           </p>
           <div class="vip-card-actions">
-            <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D0%BB%D0%B8%D1%87%D0%B8%D1%8E%20%D1%84%D0%BB%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0%20%D0%B8%D0%BB%D0%B8%20%D1%82%D0%B5%D1%81%D1%82%D0%B5%D1%80%D0%B0..." target="_blank" class="vip-btn-primary">
+            <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D0%BB%D0%B8%D1%87%D0%B8%D1%8E%20%D1%84%D0%BB%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0%20%D0%B8%D0%BB%D0%B8%20%D1%82%D0%B5%D1%81%D1%82%D0%B5%D1%80%D0%B0..." target="_blank" rel="noopener noreferrer" class="vip-btn-primary">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/></svg>
               <span>Уточнить наличие флакона в TG →</span>
             </a>
@@ -1714,7 +1718,7 @@
         </div>
 
         <div class="custom-order-cta">
-          <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" class="btn-primary custom-order-btn">
+          <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" rel="noopener noreferrer" class="btn-primary custom-order-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
             </svg>
@@ -2381,7 +2385,7 @@
       <span class="dock-label">Корзина</span>
     </button>
 
-    <a href="https://t.me/volodiumparfum" target="_blank" class="dock-item dock-tg-btn" title="Написать в Telegram Владимиру">
+    <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="dock-item dock-tg-btn" title="Написать в Telegram Владимиру">
       <span class="dock-icon tg-icon-color">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
@@ -2399,7 +2403,7 @@
   </button>
 
   <!-- Scripts -->
-  <script src="assets/data/perfumes.js?v=20261101_02"></script>
-  <script src="assets/js/app.js?v=20261101_12"></script>
+  <script src="assets/data/perfumes.js?v=20261110_02"></script>
+  <script src="assets/js/app.js?v=20261110_02"></script>
 </body>
 </html>

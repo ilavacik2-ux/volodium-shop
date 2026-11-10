@@ -1,0 +1,40 @@
+# ==============================================================================
+# VOLODIUM PARFUM — Caddy 2 Reverse Proxy (Автоматический Let's Encrypt HTTPS)
+# Установка на VDS:
+#   sudo cp deploy/Caddyfile /etc/caddy/Caddyfile
+#   sudo systemctl reload caddy
+#
+# В файле .env на сервере установите:
+#   VP_ENV=production
+#   VP_HOST=127.0.0.1
+#   VP_PORT=8000
+#   VP_BEHIND_PROXY=true
+#   VP_TRUSTED_PROXIES=127.0.0.1,::1
+# ==============================================================================
+
+volodiumparfum.ru, www.volodiumparfum.ru {
+    encode zstd gzip
+
+    request_body {
+        max_size 10MB
+    }
+
+    header {
+        -Server
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+    # Единый 404 Cloaking для сканеров и закрытых каталогов
+    @blocked {
+        path /.env* /.git* /admin /admin/* /admin.html /wp-admin* /wp-login* /administrator* /phpmyadmin* /private_admin* /scripts/* /deploy/* /venv/* /backups/* /requirements.txt /xmlrpc.php
+        path *.env *.py *.pyc *.db *.db-wal *.db-shm *.sqlite *.sqlite3 *.log *.bak *.sh *.md *.example
+    }
+    respond @blocked "404 Not Found" 404
+
+    reverse_proxy 127.0.0.1:8000 {
+        header_up X-Real-IP {remote_host}
+    }
+}

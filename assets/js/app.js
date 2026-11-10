@@ -13,16 +13,456 @@ window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
 
+const SEASON_PRESET_META = {
+  'Круглый год': { seasonIcon: '🌸', timeOfDay: 'День & Вечер', timeIcon: '✨' },
+  'Весна — Лето': { seasonIcon: '☀️', timeOfDay: 'Идеально на день', timeIcon: '☀️' },
+  'Осень — Зима': { seasonIcon: '🍂', timeOfDay: 'Вечер / Особый случай', timeIcon: '🌙' },
+  'Весна — Осень': { seasonIcon: '🌿', timeOfDay: 'День & Романтический вечер', timeIcon: '✨' },
+  'Зима': { seasonIcon: '❄️', timeOfDay: 'Морозный день & Вечер', timeIcon: '❄️' },
+  'Лето': { seasonIcon: '🍋', timeOfDay: 'Лёгкий дневной шлейф', timeIcon: '☀️' }
+};
+
+let DYNAMIC_PROMO_CODES = [
+  { code: 'СТАРТ', discountPercent: 10, active: true, label: 'Скидка 10% на первый заказ' },
+  { code: 'START', discountPercent: 10, active: true, label: 'Скидка 10%' },
+  { code: 'VOLODIUM', discountPercent: 15, active: true, label: 'Клубная скидка 15%' },
+  { code: 'VOVA', discountPercent: 15, active: true, label: 'Персональная скидка 15%' }
+];
+
+let ACTIVE_CONTACTS = {
+  telegramHandle: 'volodiumparfum',
+  channelHandle: 'vatsiik',
+  whatsappPhone: '79094442617',
+  whatsappDisplay: '+7 (909) 444-26-17',
+  vkUrl: 'https://vk.ru/volodya_v_v',
+  vkDisplay: 'vk.ru/volodya_v_v',
+  address: 'Москва, ул. Автозаводская 23к7',
+  hours: 'Ежедневно 10:00 — 22:00 МСК'
+};
+
+let ACTIVE_SITE_CONTENT = null;
+
+function resolveSafeMediaUrl(raw, fallback = 'assets/images/noroot.png') {
+  const s = String(raw || '').trim();
+  if (!s) return fallback;
+  if (/^(javascript|vbscript|data:text\/html):/i.test(s)) return fallback;
+  return s;
+}
+
+function syncSecretBoxesDom() {
+  if (typeof SECRET_BOXES_DATA === 'undefined' || !Array.isArray(SECRET_BOXES_DATA)) return;
+  const tabs = document.querySelectorAll('.secret-tab-btn');
+  SECRET_BOXES_DATA.forEach((sb, idx) => {
+    const card = document.querySelector(`.secret-card[data-secret-id="${sb.id}"]`) || document.querySelectorAll('.secret-card')[idx];
+    if (!card) return;
+    card.dataset.secretId = sb.id;
+    card.classList.toggle('hit', Boolean(sb.isHit));
+
+    const hitBadge = card.querySelector('.secret-badge-hit');
+    if (hitBadge) {
+      if (sb.badge && String(sb.badge).trim()) {
+        hitBadge.textContent = sb.badge;
+        hitBadge.style.display = '';
+      } else {
+        hitBadge.style.display = 'none';
+      }
+    }
+
+    const img = card.querySelector('.secret-card-img-wrap img');
+    if (img && sb.image) {
+      img.src = resolveSafeMediaUrl(sb.image, img.getAttribute('src') || 'assets/img/aromaboxes/secret_box_explorer.jpg');
+      img.alt = sb.name || sb.level || 'Secret Box';
+      if (sb.objectPosition) img.style.objectPosition = sb.objectPosition;
+    }
+
+    const levelEl = card.querySelector('.secret-card-level');
+    if (levelEl) levelEl.textContent = sb.level || sb.name || '';
+    if (tabs[idx]) {
+      const span = tabs[idx].querySelector('span');
+      const tabTitle = sb.level || sb.name || '';
+      if (span) span.textContent = sb.isHit ? `★ ${tabTitle}` : tabTitle;
+    }
+
+    const subEl = card.querySelector('.secret-card-sub');
+    if (subEl && sb.subtitle != null) subEl.textContent = sb.subtitle;
+
+    const descEl = card.querySelector('.secret-card-desc');
+    if (descEl && sb.description != null) descEl.textContent = sb.description;
+
+    const featList = card.querySelector('.secret-features-list');
+    if (featList && Array.isArray(sb.features) && sb.features.length > 0) {
+      featList.innerHTML = sb.features.map(f => `
+        <li class="secret-feature-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>${escapeHtml(String(f))}</span>
+        </li>
+      `).join('');
+    }
+
+    const curPriceEl = card.querySelector('.secret-current-price');
+    if (curPriceEl && sb.price != null) curPriceEl.textContent = formatPrice(sb.price);
+
+    const oldPriceEl = card.querySelector('.secret-old-price');
+    if (oldPriceEl) {
+      if (sb.oldPrice && Number(sb.oldPrice) > Number(sb.price || 0)) {
+        oldPriceEl.textContent = formatPrice(sb.oldPrice);
+        oldPriceEl.style.display = '';
+      } else {
+        oldPriceEl.style.display = 'none';
+      }
+    }
+  });
+}
+
+function applySiteContent(sc) {
+  if (!sc || typeof sc !== 'object') return;
+  ACTIVE_SITE_CONTENT = sc;
+
+  try {
+    // 1. Brand, Logo, Favicon & Monroe Intro
+    if (sc.brand) {
+      const b = sc.brand;
+      const bTitle = b.title || 'VOLODIUM';
+      const bSub = b.subtitle || 'Parfum';
+      document.querySelectorAll('.brand-title, .v-drawer-brand-name, .footer-brand-title').forEach(el => {
+        el.textContent = bTitle;
+      });
+      document.querySelectorAll('.brand-sub, .v-drawer-brand-sub').forEach(el => {
+        el.textContent = bSub;
+      });
+      const crestChar = bTitle.trim().charAt(0).toUpperCase() || 'V';
+      document.querySelectorAll('.v-drawer-crest, .footer-emblem').forEach(el => {
+        el.textContent = crestChar;
+      });
+      if (b.logo) {
+        const logoSrc = resolveSafeMediaUrl(b.logo, 'assets/images/E610BB2F-DBAE-4672-9.PNG');
+        document.querySelectorAll('.brand-logo-img').forEach(img => {
+          img.src = logoSrc;
+          img.alt = bTitle;
+        });
+      }
+      const favHref = b.favicon || b.logo;
+      if (favHref) {
+        const safeFav = resolveSafeMediaUrl(favHref, 'assets/images/E610BB2F-DBAE-4672-9.PNG');
+        document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach(link => {
+          link.href = safeFav;
+        });
+      }
+      const grandTitle = document.getElementById('monroeGrandTitle');
+      if (grandTitle && b.introTitle && b.introTitle.trim()) {
+        const letters = Array.from(b.introTitle.trim());
+        grandTitle.setAttribute('aria-label', b.introTitle.trim());
+        grandTitle.innerHTML = letters.map((ch, i) =>
+          `<span class="monroe-title-letter" style="--l-idx: ${i}">${escapeHtml(ch)}</span>`
+        ).join('');
+      }
+      const grandSub = document.querySelector('#monroeGrandSub .mgs-word');
+      if (grandSub && b.introSubtitle != null) {
+        grandSub.textContent = b.introSubtitle;
+      }
+      if (b.introEnabled === false) {
+        if (typeof window.dismissMonroeIntro === 'function') {
+          window.dismissMonroeIntro();
+        } else {
+          const introEl = document.getElementById('monroeIntro');
+          if (introEl) introEl.classList.add('hidden');
+          document.documentElement.classList.remove('intro-active');
+          document.body.classList.remove('intro-active');
+          document.documentElement.style.overflow = '';
+          document.body.style.overflow = '';
+        }
+      }
+    }
+
+    // 2. Top Promo Bar
+    if (sc.promoBar) {
+      const pb = sc.promoBar;
+      const bar = document.getElementById('promoTopBar');
+      if (bar) {
+        bar.style.display = pb.enabled === false ? 'none' : '';
+        const textEl = bar.querySelector('.promo-bar-text');
+        const hiCode = (pb.highlightCode || '').trim();
+        if (textEl) {
+          textEl.innerHTML = `${escapeHtml(pb.prefix || '')} ${hiCode ? `<strong class="promo-highlight">${escapeHtml(hiCode)}</strong>` : ''} ${escapeHtml(pb.suffix || '')}`.trim();
+        }
+        const btnEl = document.getElementById('btnCopyTopPromo');
+        if (btnEl) {
+          btnEl.textContent = pb.buttonText || 'Применить в корзине';
+          btnEl.onclick = () => window.copyPromoCode(hiCode || 'СТАРТ');
+        }
+      }
+    }
+
+    // 3. Hero Texts, Portrait, Backdrop & Stats
+    if (sc.hero) {
+      const h = sc.hero;
+      const badgeSpan = document.querySelector('#hero .hero-badge span:last-child');
+      if (badgeSpan && h.badge) badgeSpan.textContent = h.badge;
+
+      const titleMain = document.querySelector('#hero .hero-title-main');
+      if (titleMain && (h.titleLine != null || h.titleAccent != null)) {
+        titleMain.textContent = '';
+        titleMain.appendChild(document.createTextNode((h.titleLine || 'Открой. Вдохни.') + ' '));
+        const acc = document.createElement('span');
+        acc.className = 'hero-serif-accent';
+        acc.textContent = h.titleAccent || 'Почувствуй.';
+        titleMain.appendChild(acc);
+      }
+
+      const heroDesc = document.querySelector('#hero .hero-description');
+      if (heroDesc && h.description != null) heroDesc.textContent = h.description;
+
+      const ctaCat = document.querySelector('#hero .hero-actions a[href="#catalog"] span');
+      if (ctaCat && h.ctaCatalogText) ctaCat.textContent = h.ctaCatalogText;
+      const ctaQuiz = document.querySelector('#hero .hero-actions a[href="#quiz"] span');
+      if (ctaQuiz && h.ctaQuizText) ctaQuiz.textContent = h.ctaQuizText;
+      const ctaSec = document.querySelector('#hero .hero-actions a[href="#secret-boxes"] span');
+      if (ctaSec && h.ctaSecretText) ctaSec.textContent = h.ctaSecretText;
+
+      if (Array.isArray(h.stats)) {
+        const statItems = document.querySelectorAll('#hero .hero-stats .stat-item');
+        h.stats.forEach((st, idx) => {
+          if (!statItems[idx] || !st) return;
+          const numEl = statItems[idx].querySelector('.stat-number');
+          const lblEl = statItems[idx].querySelector('.stat-label');
+          if (numEl && st.value != null) numEl.textContent = st.value;
+          if (lblEl && st.label != null) lblEl.textContent = st.label;
+        });
+      }
+
+      const portraitImg = document.getElementById('heroLookbookImg');
+      if (portraitImg) {
+        if (h.portraitImage) portraitImg.src = resolveSafeMediaUrl(h.portraitImage, HERO_PORTRAIT.image);
+        if (h.portraitPosition) portraitImg.style.objectPosition = h.portraitPosition;
+      }
+      const pTitle = document.getElementById('heroLookbookTitle');
+      if (pTitle && h.portraitTitle != null) pTitle.textContent = h.portraitTitle;
+      const pSub = document.getElementById('heroLookbookSub');
+      if (pSub && h.portraitQuote != null) pSub.textContent = h.portraitQuote;
+
+      const backdropImg = document.getElementById('heroBackdropImg');
+      if (backdropImg) {
+        if (h.backdropImage) {
+          const safeBg = resolveSafeMediaUrl(h.backdropImage, HERO_BACKDROP_IMAGE).replace(/["\\]/g, '');
+          backdropImg.style.backgroundImage = `url("${safeBg}")`;
+        }
+        if (h.backdropOpacity != null) {
+          const op = Math.min(1, Math.max(0.05, Number(h.backdropOpacity) || 0.75));
+          backdropImg.style.opacity = String(op);
+        }
+      }
+    }
+
+    // 4. Consultation Cards
+    if (sc.consultation) {
+      const c = sc.consultation;
+      const cards = document.querySelectorAll('#consultation .consult-method-card');
+      if (cards[0]) {
+        const img = cards[0].querySelector('.method-card-media img');
+        const h3 = cards[0].querySelector('.method-card-heading');
+        const sub = cards[0].querySelector('.method-card-subheading');
+        const pr = cards[0].querySelector('.method-price-amount');
+        const note = cards[0].querySelector('.method-price-note');
+        if (img && c.onlineImage) img.src = resolveSafeMediaUrl(c.onlineImage, img.getAttribute('src'));
+        if (h3 && c.onlineTitle != null) h3.textContent = c.onlineTitle;
+        if (sub && c.onlineSub != null) sub.textContent = c.onlineSub;
+        if (pr && c.onlinePrice != null) pr.textContent = c.onlinePrice;
+        if (note && c.onlineNote != null) note.textContent = c.onlineNote;
+      }
+      if (cards[1]) {
+        const img = cards[1].querySelector('.method-card-media img');
+        const h3 = cards[1].querySelector('.method-card-heading');
+        const sub = cards[1].querySelector('.method-card-subheading');
+        const pr = cards[1].querySelector('.method-price-amount');
+        const note = cards[1].querySelector('.method-price-note');
+        if (img && c.offlineImage) img.src = resolveSafeMediaUrl(c.offlineImage, img.getAttribute('src'));
+        if (h3 && c.offlineTitle != null) h3.textContent = c.offlineTitle;
+        if (sub && c.offlineSub != null) sub.textContent = c.offlineSub;
+        if (pr && c.offlinePrice != null) pr.textContent = c.offlinePrice;
+        if (note && c.offlineNote != null) note.textContent = c.offlineNote;
+      }
+    }
+
+    // 5. Commerce Thresholds & Promo Codes
+    if (sc.commerce) {
+      const cm = sc.commerce;
+      if (cm.minOrderThreshold != null && !Number.isNaN(Number(cm.minOrderThreshold))) {
+        MIN_ORDER_THRESHOLD = Math.max(0, Number(cm.minOrderThreshold));
+      }
+      if (cm.freeDeliveryThreshold != null && !Number.isNaN(Number(cm.freeDeliveryThreshold))) {
+        FREE_DELIVERY_THRESHOLD = Math.max(0, Number(cm.freeDeliveryThreshold));
+      }
+      if (Array.isArray(cm.promoCodes)) {
+        DYNAMIC_PROMO_CODES = cm.promoCodes;
+      }
+
+      document.querySelectorAll('#dfPanelDelivery .dcr-badge-free').forEach(el => {
+        el.textContent = `Бесплатно от ${formatPrice(FREE_DELIVERY_THRESHOLD)}`;
+      });
+      const dgbStrong = document.querySelectorAll('#delivery .delivery-guarantee-bar .dgb-text strong');
+      if (dgbStrong.length >= 2) {
+        dgbStrong[dgbStrong.length - 1].textContent = formatPrice(MIN_ORDER_THRESHOLD);
+      }
+      const cartDelivNote = document.querySelector('.cart-delivery-calc-note');
+      if (cartDelivNote) {
+        cartDelivNote.textContent = `По тарифам СДЭК (от ${formatPrice(FREE_DELIVERY_THRESHOLD)} бесплатно)`;
+      }
+      const sdekOpt = document.querySelector('#orderDelivery option[value^="СДЭК по России"]');
+      if (sdekOpt) {
+        sdekOpt.textContent = `СДЭК по России (Бесплатно от ${formatPrice(FREE_DELIVERY_THRESHOLD)} / 400 ₽)`;
+      }
+      const faqItems = document.querySelectorAll('#dfPanelFaq .faq-item .faq-answer');
+      if (faqItems[1]) {
+        faqItems[1].textContent = `Минимальная сумма заказа составляет ${formatPrice(MIN_ORDER_THRESHOLD)}. Это позволяет обеспечить бесплатную премиальную крафтовую упаковку и оперативную отправку день-в-день.`;
+      }
+
+      if (appliedPromo && typeof findActivePromo === 'function') {
+        const refreshedPromo = findActivePromo(appliedPromo.code);
+        if (refreshedPromo) {
+          appliedPromo.discountPercent = Math.min(90, Math.max(1, Number(refreshedPromo.discountPercent) || 10));
+        }
+      }
+
+      const firstActivePromo = DYNAMIC_PROMO_CODES.find(p => p && p.active !== false);
+      const promoInp = document.getElementById('promoCodeInput');
+      const promoTip = document.querySelector('.promo-tip');
+      if (firstActivePromo) {
+        if (promoInp) promoInp.placeholder = `Промокод (${firstActivePromo.code})`;
+        if (promoTip) {
+          promoTip.style.display = '';
+          promoTip.innerHTML = `✦ Скидка ${Number(firstActivePromo.discountPercent || 10)}% на ваш заказ по промокоду <strong>${escapeHtml(firstActivePromo.code)}</strong>`;
+        }
+      } else {
+        if (promoInp) promoInp.placeholder = 'Введите промокод';
+        if (promoTip) promoTip.style.display = 'none';
+      }
+    }
+
+    // 6. Contacts
+    if (sc.contacts) {
+      const ct = sc.contacts;
+      const tg = (ct.telegramHandle || 'volodiumparfum').replace(/^@/, '').trim();
+      const ch = (ct.channelHandle || 'vatsiik').replace(/^@/, '').trim();
+      const waPhone = (ct.whatsappPhone || '79094442617').replace(/\D/g, '') || '79094442617';
+      const waDisp = ct.whatsappDisplay || '+7 (909) 444-26-17';
+      const rawVkUrl = String(ct.vkUrl || 'https://vk.ru/volodya_v_v').trim();
+      const vkUrl = /^https?:\/\//i.test(rawVkUrl) ? rawVkUrl : 'https://vk.ru/volodya_v_v';
+      const vkDisp = ct.vkDisplay || vkUrl.replace(/^https?:\/\//, '');
+      const address = ct.address || 'Москва, ул. Автозаводская 23к7';
+      const hours = ct.hours || 'Ежедневно 10:00 — 22:00 МСК';
+
+      ACTIVE_CONTACTS = { telegramHandle: tg, channelHandle: ch, whatsappPhone: waPhone, whatsappDisplay: waDisp, vkUrl, vkDisplay: vkDisp, address, hours };
+
+      document.querySelectorAll('a[href^="https://t.me/"]').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const qIdx = href.indexOf('?');
+        const query = qIdx !== -1 ? href.slice(qIdx) : '';
+        const handlePart = href.slice('https://t.me/'.length, qIdx !== -1 ? qIdx : undefined);
+        const rowLbl = (a.closest('.footer-contact-row')?.querySelector('.fc-label')?.textContent || '').toLowerCase();
+        const isChannelLink = a.classList.contains('reviews-tg-pill') || a.classList.contains('footer-channel-badge') || rowLbl.includes('канал бутика') || (a.closest('.footer-contact-row') && (handlePart === 'vatsiik' || (a.textContent || '').includes('@vatsiik')));
+        const nextHandle = isChannelLink ? ch : tg;
+        a.setAttribute('href', `https://t.me/${encodeURIComponent(nextHandle)}${query}`);
+      });
+
+      const revPillSpan = document.querySelector('#reviews .reviews-tg-pill span');
+      if (revPillSpan) revPillSpan.textContent = `Telegram-канал бутика: распаковки и свежие поступления (@${ch})`;
+
+      document.querySelectorAll('.footer-contact-row').forEach(row => {
+        const lbl = (row.querySelector('.fc-label')?.textContent || '').toLowerCase();
+        const valEl = row.querySelector('a, .fc-val, .fc-val-muted');
+        if (!valEl) return;
+        if (lbl.includes('связь в telegram')) {
+          valEl.innerHTML = `@${escapeHtml(tg)} <small style="color: #D4AF37; font-weight:600;">(быстрее всего)</small>`;
+        } else if (lbl.includes('whatsapp')) {
+          valEl.textContent = waDisp;
+          valEl.setAttribute('href', `https://wa.me/${waPhone}`);
+        } else if (lbl.includes('вконтакте')) {
+          valEl.textContent = vkDisp;
+          valEl.setAttribute('href', vkUrl);
+        } else if (lbl.includes('канал бутика')) {
+          valEl.textContent = `@${ch}`;
+        } else if (lbl.includes('режим')) {
+          valEl.textContent = hours;
+        }
+      });
+
+      document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a => a.setAttribute('href', `https://wa.me/${waPhone}`));
+      document.querySelectorAll('a[href^="https://vk.ru/"], a[href^="https://vk.com/"]').forEach(a => a.setAttribute('href', vkUrl));
+
+      const drawerSub = document.querySelector('.v-drawer-tg-sub');
+      if (drawerSub) drawerSub.textContent = `Быстрый ответ @${tg}`;
+      document.querySelectorAll('.v-drawer-loc, .footer-showroom-item .fsi-line').forEach(el => {
+        el.textContent = address;
+      });
+      const pickupOpt = document.querySelector('#orderDelivery option[value*="Самовывоз"]');
+      if (pickupOpt) pickupOpt.textContent = `Самовывоз (${address})`;
+      const waCheckoutSub = document.querySelector('.cms-btn[data-messenger="WhatsApp"] .cms-speed-time');
+      if (waCheckoutSub) waCheckoutSub.textContent = waDisp;
+      const vkCheckoutSub = document.querySelector('.cms-btn[data-messenger="VK"] .cms-speed-time');
+      if (vkCheckoutSub) vkCheckoutSub.textContent = vkDisp;
+      const activeMessenger = document.querySelector('.cms-btn.active')?.getAttribute('data-messenger') || 'Telegram';
+      if (typeof getCheckoutMessengerMeta === 'function') {
+        const cfg = getCheckoutMessengerMeta(activeMessenger);
+        const chHint = document.getElementById('checkoutMessengerHint');
+        const subTxt = document.getElementById('btnCheckoutSubmitText');
+        if (chHint) chHint.textContent = cfg.hint;
+        if (subTxt) subTxt.textContent = cfg.btnText;
+      }
+    }
+  } catch (err) {
+    console.warn('Site content hydration notice:', err);
+  }
+
+  syncSecretBoxesDom();
+  if (typeof renderCartDrawer === 'function') renderCartDrawer();
+}
+
+async function loadBootstrapFromApi(isLiveSync = false) {
+  try {
+    const res = await fetch('/api/bootstrap', { cache: 'no-store' });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (Array.isArray(data.perfumes)) {
+      window.PERFUMES_DATA = data.perfumes;
+      if (typeof PERFUMES_DATA !== 'undefined') PERFUMES_DATA = data.perfumes;
+    }
+    if (Array.isArray(data.aromaboxes)) {
+      window.AROMA_BOXES_DATA = data.aromaboxes;
+      if (typeof AROMA_BOXES_DATA !== 'undefined') AROMA_BOXES_DATA = data.aromaboxes;
+    }
+    if (Array.isArray(data.secretBoxes)) {
+      window.SECRET_BOXES_DATA = data.secretBoxes;
+      if (typeof SECRET_BOXES_DATA !== 'undefined') SECRET_BOXES_DATA = data.secretBoxes;
+    }
+    if (data.siteContent) {
+      applySiteContent(data.siteContent);
+    }
+    if (typeof renderCatalog === 'function') renderCatalog(false);
+    if (typeof renderAromaBoxes === 'function') renderAromaBoxes();
+    syncSecretBoxesDom();
+    if (isLiveSync && typeof showToast === 'function') {
+      showToast('Витрина обновлена в реальном времени');
+    }
+  } catch (_) {
+    // Graceful static fallback when served without Python backend
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (!window.location.hash) {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
 
-  // Initialize all subsystems
+  // Initialize all subsystems cleanly from static bundle first
   initMonroeIntro();
   initHeroCanvas();
   initHeroLookbook();
   initNavServicesDropdown();
+  if (typeof VOLODIUM_SITE_CONTENT !== 'undefined') {
+    applySiteContent(VOLODIUM_SITE_CONTENT);
+  } else {
+    syncSecretBoxesDom();
+  }
   initCatalog();
   initCart();
   initQuiz();
@@ -35,6 +475,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingBackTop();
   initSecretBoxesCarousel();
   initReviewsCarousel();
+
+  // Then hydrate live database state from backend API + listen for cross-tab studio updates
+  loadBootstrapFromApi(false);
+  if (typeof BroadcastChannel !== 'undefined') {
+    const ch = new BroadcastChannel('volodium_sync');
+    ch.addEventListener('message', () => loadBootstrapFromApi(true));
+  }
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'volodium_sync_ts') loadBootstrapFromApi(true);
+  });
 });
 
 window.addEventListener('load', () => {
@@ -440,11 +890,13 @@ function renderCatalog(resetScroll = false) {
   const loadedInfo = document.getElementById('catalogLoadedInfo');
 
   if (items.length === 0) {
+    const totalCount = Array.isArray(PERFUMES_DATA) ? PERFUMES_DATA.length : 265;
+    const tgHandle = encodeURIComponent((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
     grid.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
         <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main);">Ничего не найдено по запросу «${escapeHtml(currentSearch)}»</p>
-        <p style="font-size: 0.9rem;">В нашей коллекции более 270 нишевых ароматов. Попробуйте изменить запрос или напишите Владимиру в Telegram для индивидуального поиска.</p>
-        <a href="https://t.me/volodiumparfum" target="_blank" class="btn-secondary" style="margin-top: 1.5rem; display: inline-flex;">Написать в Telegram</a>
+        <p style="font-size: 0.9rem;">В нашей коллекции более ${totalCount} нишевых ароматов. Попробуйте изменить запрос или напишите Владимиру в Telegram для индивидуального поиска.</p>
+        <a href="https://t.me/${tgHandle}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.5rem; display: inline-flex;">Написать в Telegram</a>
       </div>
     `;
     if (paginationWrap) paginationWrap.style.display = 'none';
@@ -530,7 +982,22 @@ function renderAromaBoxes() {
   const isCollapsedView = (currentBoxGender === 'all' && !aromaBoxesExpanded);
   const displayBoxes = isCollapsedView ? filteredBoxes.slice(0, 3) : filteredBoxes;
 
-  // Manage Animated Filter Bar ("панель ВСЕ СЕТЫ 9 ДЛЯ НЕЕ 4 ДЛЯ НЕГО 3 УНИСЕКС 2 выскакивает крутой анимацией")
+  // Update filter bar counts dynamically from AROMA_BOXES_DATA
+  const totalBoxes = AROMA_BOXES_DATA.length;
+  const remainingBoxes = Math.max(0, totalBoxes - 3);
+  const filterCounts = {
+    all: totalBoxes,
+    women: AROMA_BOXES_DATA.filter(b => b.gender === 'women').length,
+    men: AROMA_BOXES_DATA.filter(b => b.gender === 'men').length,
+    unisex: AROMA_BOXES_DATA.filter(b => b.gender === 'unisex').length
+  };
+  document.querySelectorAll('#aromaBoxFilterBar .box-filter-btn').forEach(btn => {
+    const g = btn.dataset.boxGender || 'all';
+    const cntEl = btn.querySelector('.bf-count');
+    if (cntEl && filterCounts[g] != null) cntEl.textContent = String(filterCounts[g]);
+  });
+
+  // Manage Animated Filter Bar
   const filterBar = document.getElementById('aromaBoxFilterBar');
   if (filterBar) {
     if (!isCollapsedView) {
@@ -548,13 +1015,15 @@ function renderAromaBoxes() {
   // Manage Expander Button
   const expanderWrap = document.getElementById('aromaExpanderWrap');
   if (expanderWrap) {
-    if (currentBoxGender === 'all') {
+    if (totalBoxes <= 3 && currentBoxGender === 'all') {
+      expanderWrap.innerHTML = '';
+    } else if (currentBoxGender === 'all') {
       if (!aromaBoxesExpanded) {
         expanderWrap.innerHTML = `
           <button type="button" class="btn-expand-aromaboxes" onclick="window.toggleAromaBoxesExpanded()" aria-expanded="false">
             <span class="bea-sparkle">✦</span>
-            <span class="bea-text">Посмотреть ещё 6 авторских сетов</span>
-            <span class="bea-badge">Все 9 боксов</span>
+            <span class="bea-text">Посмотреть ещё ${remainingBoxes} авторских сетов</span>
+            <span class="bea-badge">Все ${totalBoxes} боксов</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
         `;
@@ -569,7 +1038,7 @@ function renderAromaBoxes() {
     } else {
       expanderWrap.innerHTML = `
         <button type="button" class="btn-expand-aromaboxes is-filtered" onclick="window.setAromaBoxGenderFilter('all')" aria-expanded="true">
-          <span class="bea-text">Показать всю коллекцию (9 боксов)</span>
+          <span class="bea-text">Показать всю коллекцию (${totalBoxes} боксов)</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
       `;
@@ -593,14 +1062,18 @@ function renderAromaBoxes() {
     const discountPct = (oldPrice && price && oldPrice > price)
       ? Math.round((1 - price / oldPrice) * 100)
       : null;
+    const boxImg = resolveSafeMediaUrl(box.image);
+    const boxFallbackImg = resolveSafeMediaUrl(box.cdnImage || box.image);
+    const objPos = escapeHtml(box.objectPosition || 'center center');
+    const compCount = Array.isArray(box.perfumes) && box.perfumes.length ? box.perfumes.length : 5;
 
     return `
-      <div class="aroma-box-card ${!isCollapsedView ? 'aroma-card-reveal' : ''}" id="card-${box.id}" style="animation-delay: ${idx * 0.05}s">
-        <div class="aroma-box-img-wrap box-open-modal" data-box-id="${box.id}" role="button" tabindex="0" title="Нажмите, чтобы изучить подробный состав">
-          <img src="${box.image}" alt="${escapeHtml(box.name)}" loading="lazy" onerror="this.src='${box.cdnImage || box.image}'">
+      <div class="aroma-box-card ${!isCollapsedView ? 'aroma-card-reveal' : ''}" id="card-${escapeHtml(box.id)}" style="animation-delay: ${idx * 0.05}s">
+        <div class="aroma-box-img-wrap box-open-modal" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0" title="Нажмите, чтобы изучить подробный состав">
+          <img src="${escapeHtml(boxImg)}" alt="${escapeHtml(box.name)}" style="object-position: ${objPos};" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(boxFallbackImg)}';">
           
           <div class="aroma-box-badges-overlay">
-            <span class="aroma-box-gender-badge gender-${box.gender}">${escapeHtml(box.genderLabel || 'Сет')}</span>
+            <span class="aroma-box-gender-badge gender-${escapeHtml(box.gender || 'unisex')}">${escapeHtml(box.genderLabel || 'Сет')}</span>
             ${discountPct ? `<span class="aroma-box-discount-badge">-${discountPct}%</span>` : ''}
           </div>
 
@@ -612,11 +1085,11 @@ function renderAromaBoxes() {
         </div>
 
         <div class="aroma-box-content">
-          <h3 class="aroma-box-title box-open-modal" data-box-id="${box.id}" role="button" tabindex="0">${escapeHtml(box.name)}</h3>
+          <h3 class="aroma-box-title box-open-modal" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0">${escapeHtml(box.name)}</h3>
           <p class="aroma-box-short-subtitle">${escapeHtml(box.shortSubtitle || '')}</p>
 
-          <div class="box-composition-preview box-open-modal" data-box-id="${box.id}" role="button" tabindex="0" title="Нажмите, чтобы открыть подробный состав и ноты сета">
-            <span class="bcp-action">✦ Состав сета (5 ароматов) →</span>
+          <div class="box-composition-preview box-open-modal" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0" title="Нажмите, чтобы открыть подробный состав и ноты сета">
+            <span class="bcp-action">✦ Состав сета (${compCount} ароматов) →</span>
           </div>
 
           <div class="aroma-box-vol-block">
@@ -767,7 +1240,7 @@ function getDefaultVolume(item) {
 
 function getScentLifestyleMeta(item) {
   if (!item) return { season: 'Круглый год', seasonIcon: '🌸', timeOfDay: 'День & Вечер', timeIcon: '✨', mood: 'Изысканный нишевый стиль' };
-  
+
   const family = (item.notesFamily || '').toLowerCase();
   const desc = (item.description || '').toLowerCase();
   const name = (item.name || '').toLowerCase();
@@ -805,9 +1278,24 @@ function getScentLifestyleMeta(item) {
     mood = 'Благородный, сдержанный, стойкий';
   }
 
-  if (item.metrics && item.metrics.season) {
-    season = item.metrics.season;
+  const explicitSeason = (item.season || (item.metrics && item.metrics.season) || '').trim();
+  if (explicitSeason) {
+    season = explicitSeason;
+    const preset = SEASON_PRESET_META[explicitSeason];
+    if (preset) {
+      seasonIcon = preset.seasonIcon;
+      timeOfDay = preset.timeOfDay;
+      timeIcon = preset.timeIcon;
+    }
   }
+  const explicitSeasonIcon = item.seasonIcon || (item.metrics && item.metrics.seasonIcon);
+  if (explicitSeasonIcon) seasonIcon = explicitSeasonIcon;
+  const explicitTime = item.timeOfDay || (item.metrics && item.metrics.timeOfDay);
+  if (explicitTime) timeOfDay = explicitTime;
+  const explicitTimeIcon = item.timeIcon || (item.metrics && item.metrics.timeIcon);
+  if (explicitTimeIcon) timeIcon = explicitTimeIcon;
+  const explicitMood = item.mood || (item.metrics && item.metrics.vibe);
+  if (explicitMood) mood = explicitMood;
 
   return { season, seasonIcon, timeOfDay, timeIcon, mood };
 }
@@ -817,14 +1305,16 @@ function createProductCardHtml(item) {
   const currentPrice = item.prices ? item.prices[currentVol] : item.price;
   const isAromaBox = item.category === 'box';
   const lifestyle = getScentLifestyleMeta(item);
+  const imgUrl = resolveSafeMediaUrl(item.image);
+  const objPos = escapeHtml(item.objectPosition || 'center center');
 
   let volumeSelectorHtml = '';
   if (item.prices) {
     volumeSelectorHtml = `
       <div class="volume-selector">
         ${Object.keys(item.prices).map(v => `
-          <button class="volume-btn vol-btn-${item.id} ${v === currentVol ? 'active' : ''}" data-vol="${v}">
-            ${v === 'bottle' ? (item.bottleSize || 'Флакон') : v}
+          <button class="volume-btn vol-btn-${escapeHtml(item.id)} ${v === currentVol ? 'active' : ''}" data-vol="${escapeHtml(v)}">
+            ${v === 'bottle' ? escapeHtml(item.bottleSize || 'Флакон') : escapeHtml(v)}
           </button>
         `).join('')}
       </div>
@@ -833,38 +1323,38 @@ function createProductCardHtml(item) {
 
   const seasonPillHtml = (!isAromaBox) ? `
     <div class="card-season-pill" title="Рекомендуемый сезон и время суток">
-      <span class="csp-icon">${lifestyle.seasonIcon}</span>
+      <span class="csp-icon">${escapeHtml(lifestyle.seasonIcon)}</span>
       <span>${escapeHtml(lifestyle.season)}</span>
       <span class="csp-time">${escapeHtml(lifestyle.timeOfDay)}</span>
     </div>
   ` : '';
 
   return `
-    <div class="perfume-card" id="card-${item.id}">
-      ${item.badge ? `<span class="card-badge">${item.badge}</span>` : ''}
-      <div class="card-img-wrap trigger-modal-${item.id}">
-        <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+    <div class="perfume-card" id="card-${escapeHtml(item.id)}">
+      ${item.badge ? `<span class="card-badge">${escapeHtml(item.badge)}</span>` : ''}
+      <div class="card-img-wrap trigger-modal-${escapeHtml(item.id)}">
+        <img src="${escapeHtml(imgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${objPos};" loading="lazy" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
       </div>
-      <div class="card-brand">${item.brand || 'VOLODIUM PARFUM'}</div>
-      <h3 class="card-title trigger-modal-${item.id}">${item.name}</h3>
+      <div class="card-brand">${escapeHtml(item.brand || 'VOLODIUM PARFUM')}</div>
+      <h3 class="card-title trigger-modal-${escapeHtml(item.id)}">${escapeHtml(item.name)}</h3>
       ${seasonPillHtml}
-      <p class="card-subtitle">${item.subtitle || item.description}</p>
+      <p class="card-subtitle">${escapeHtml(item.subtitle || item.description)}</p>
       
       ${volumeSelectorHtml}
 
       <div class="card-footer">
         <div class="price-wrap">
-          <div class="price-current" id="price-${item.id}">${formatPrice(currentPrice)}</div>
-          <div class="price-unit">${currentVol === 'bottle' ? 'оригинальный флакон' : (item.category === 'box' ? 'набор миниатюр' : 'отливант ' + currentVol)}</div>
+          <div class="price-current" id="price-${escapeHtml(item.id)}">${formatPrice(currentPrice)}</div>
+          <div class="price-unit">${currentVol === 'bottle' ? 'оригинальный флакон' : (item.category === 'box' ? 'набор миниатюр' : 'отливант ' + escapeHtml(currentVol))}</div>
         </div>
         <div class="card-actions-row">
-          <button class="btn-details trigger-modal-${item.id}" title="Пирамида нот и подробности">
+          <button class="btn-details trigger-modal-${escapeHtml(item.id)}" title="Пирамида нот и подробности">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
           </button>
-          <button class="btn-add-cart add-cart-${item.id}">
+          <button class="btn-add-cart add-cart-${escapeHtml(item.id)}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
@@ -948,11 +1438,17 @@ function openProductModal(itemId) {
       '10ml': '~150 распылений на флакон (750 всего)'
     };
 
+    const modalBoxImg = resolveSafeMediaUrl(item.image);
+    const modalBoxFallback = resolveSafeMediaUrl(item.cdnImage || item.image);
+    const modalObjPos = escapeHtml(item.objectPosition || 'center center');
+    const compCount = Array.isArray(item.perfumes) && item.perfumes.length ? item.perfumes.length : 5;
+    const tgHandle = encodeURIComponent((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
+
     modalContent.innerHTML = `
       <div class="modal-grid modal-box-layout">
         <div class="modal-img-col">
           <div class="modal-box-img-wrap">
-            <img class="modal-main-img" src="${item.image}" alt="${escapeHtml(item.name)}" onerror="this.src='${item.cdnImage || item.image}'">
+            <img class="modal-main-img" src="${escapeHtml(modalBoxImg)}" alt="${escapeHtml(item.name)}" style="object-position: ${modalObjPos};" onerror="this.onerror=null;this.src='${escapeHtml(modalBoxFallback)}';">
           </div>
           <div class="modal-guarantee-card">
             <div class="mg-head">
@@ -967,8 +1463,8 @@ function openProductModal(itemId) {
 
         <div class="modal-info-col">
           <div class="modal-box-badges">
-            <span class="aroma-box-gender-badge gender-${item.gender}">${escapeHtml(item.genderLabel || 'Коллекция')}</span>
-            <span class="modal-box-tag">Тематический сет • 5 ароматов</span>
+            <span class="aroma-box-gender-badge gender-${escapeHtml(item.gender || 'unisex')}">${escapeHtml(item.genderLabel || 'Коллекция')}</span>
+            <span class="modal-box-tag">Тематический сет • ${compCount} ароматов</span>
             ${item.badge ? `<span class="aroma-box-hit-badge-inline">${escapeHtml(item.badge)}</span>` : ''}
           </div>
 
@@ -983,11 +1479,11 @@ function openProductModal(itemId) {
           <div class="modal-box-perfumes-block">
             <h4 class="mbp-heading">
               <span style="color:var(--bordo-primary);">✦</span>
-              <span>В наборе 5 оригинальных композиций:</span>
+              <span>В наборе ${compCount} оригинальных композиций:</span>
             </h4>
             <div class="modal-box-perfumes-grid">
               ${(item.perfumes || []).map((perfume, idx) => {
-                const parts = perfume.split('—');
+                const parts = String(perfume).split('—');
                 const brand = parts[0]?.trim() || '';
                 const pName = parts[1]?.trim() || perfume;
                 return `
@@ -1006,12 +1502,12 @@ function openProductModal(itemId) {
           <div class="modal-box-vol-block">
             <div class="mbv-header">
               <label class="mbv-label">Выберите объем атомайзеров:</label>
-              <span class="mbv-hint" id="modalBoxSprayHint">${sprayHints[activeModalVol] || ''}</span>
+              <span class="mbv-hint" id="modalBoxSprayHint">${escapeHtml(sprayHints[activeModalVol] || '')}</span>
             </div>
             <div class="volume-selector" id="modalBoxVolumeSelector">
               ${availableVols.map(v => `
-                <button type="button" class="volume-btn modal-vol-btn ${v === activeModalVol ? 'active' : ''}" data-vol="${v}">
-                  ${volLabels[v] || v}
+                <button type="button" class="volume-btn modal-vol-btn ${v === activeModalVol ? 'active' : ''}" data-vol="${escapeHtml(v)}">
+                  ${escapeHtml(volLabels[v] || v)}
                 </button>
               `).join('')}
             </div>
@@ -1023,7 +1519,7 @@ function openProductModal(itemId) {
                 <span class="price-old" id="modalBoxOldPrice" style="${oldPrice ? '' : 'display:none;'}">${oldPrice ? formatPrice(oldPrice) : ''}</span>
                 <div class="modal-price-val" id="modalBoxPrice">${formatPrice(currentPrice)}</div>
               </div>
-              <div class="modal-price-sub">за комплект из 5 флаконов в подарочном боксе</div>
+              <div class="modal-price-sub">за комплект из ${compCount} флаконов в подарочном боксе</div>
             </div>
 
             <button type="button" class="btn-primary modal-cta-btn" id="modalAddToCartBtn">
@@ -1037,7 +1533,7 @@ function openProductModal(itemId) {
           </div>
 
           <div class="modal-concierge-row">
-            <a href="https://t.me/volodiumparfum?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, по аромабоксу: ' + item.name)}" 
+            <a href="https://t.me/${tgHandle}?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, по аромабоксу: ' + item.name)}" 
                target="_blank" 
                rel="noopener noreferrer" 
                class="btn-ask-vladimir"
@@ -1109,8 +1605,8 @@ function openProductModal(itemId) {
         <label style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 0.5rem;">Выберите объем:</label>
         <div class="volume-selector" id="modalVolumeSelector">
           ${Object.keys(item.prices).map(v => `
-            <button class="volume-btn modal-vol-btn ${v === currentVol ? 'active' : ''}" data-vol="${v}">
-              ${v === 'bottle' ? (item.bottleSize || 'Флакон') : v}
+            <button class="volume-btn modal-vol-btn ${v === currentVol ? 'active' : ''}" data-vol="${escapeHtml(v)}">
+              ${escapeHtml(v === 'bottle' ? (item.bottleSize || 'Флакон') : v)}
             </button>
           `).join('')}
         </div>
@@ -1120,8 +1616,16 @@ function openProductModal(itemId) {
 
   // Unified Haute Parfumerie Olfactory Presentation (Clean, artisanal, no AI-dashboard clutter)
   const lifestyle = getScentLifestyleMeta(item);
+  const normalizeNotes = (val) => {
+    if (Array.isArray(val)) return val.map(x => String(x || '').trim()).filter(Boolean);
+    if (typeof val === 'string') return val.split(/[·,;|\n]+/).map(x => x.trim()).filter(Boolean);
+    return [];
+  };
   let olfactoryProfileHtml = '';
-  if (item.pyramid) {
+  if (item.pyramid && typeof item.pyramid === 'object') {
+    const topStr = normalizeNotes(item.pyramid.top).map(escapeHtml).join(' · ') || '—';
+    const heartStr = normalizeNotes(item.pyramid.heart).map(escapeHtml).join(' · ') || '—';
+    const baseStr = normalizeNotes(item.pyramid.base).map(escapeHtml).join(' · ') || '—';
     olfactoryProfileHtml = `
       <div class="scent-olfactory-card">
         <div class="soc-header">
@@ -1135,59 +1639,63 @@ function openProductModal(itemId) {
         <div class="soc-notes-list">
           <div class="soc-note-item">
             <span class="soc-phase">Верхние ноты (15 мин)</span>
-            <span class="soc-notes">${item.pyramid.top.join(' · ')}</span>
+            <span class="soc-notes">${topStr}</span>
           </div>
           <div class="soc-note-item heart">
             <span class="soc-phase">Ноты сердца (2–4 ч)</span>
-            <span class="soc-notes">${item.pyramid.heart.join(' · ')}</span>
+            <span class="soc-notes">${heartStr}</span>
           </div>
           <div class="soc-note-item base">
             <span class="soc-phase">Шлейф и база (до 24 ч)</span>
-            <span class="soc-notes">${item.pyramid.base.join(' · ')}</span>
+            <span class="soc-notes">${baseStr}</span>
           </div>
         </div>
 
         <div class="soc-meta-strip">
           <div class="soc-meta-col">
             <span class="soc-meta-k">Сезон</span>
-            <span class="soc-meta-v">${lifestyle.seasonIcon} ${escapeHtml(lifestyle.season)}</span>
+            <span class="soc-meta-v">${escapeHtml(lifestyle.seasonIcon)} ${escapeHtml(lifestyle.season)}</span>
           </div>
           <div class="soc-meta-sep"></div>
           <div class="soc-meta-col">
             <span class="soc-meta-k">Время</span>
-            <span class="soc-meta-v">${lifestyle.timeIcon} ${escapeHtml(lifestyle.timeOfDay)}</span>
+            <span class="soc-meta-v">${escapeHtml(lifestyle.timeIcon)} ${escapeHtml(lifestyle.timeOfDay)}</span>
           </div>
           <div class="soc-meta-sep"></div>
           <div class="soc-meta-col">
             <span class="soc-meta-k">Стойкость</span>
-            <span class="soc-meta-v">${item.metrics ? item.metrics.longevity : 'До 12 часов'}</span>
+            <span class="soc-meta-v">${escapeHtml(item.metrics?.longevity || 'До 12 часов')}</span>
           </div>
           <div class="soc-meta-sep"></div>
           <div class="soc-meta-col">
             <span class="soc-meta-k">Шлейф</span>
-            <span class="soc-meta-v">${item.metrics ? item.metrics.sillage : 'Выразительный'}</span>
+            <span class="soc-meta-v">${escapeHtml(item.metrics?.sillage || 'Выразительный')}</span>
           </div>
         </div>
       </div>
     `;
   }
 
+  const safeImgUrl = resolveSafeMediaUrl(item.image, 'assets/images/noroot.png');
+  const safeObjPos = escapeHtml(item.objectPosition || 'center center');
+  const tgHandle = encodeURIComponent((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
+
   modalContent.innerHTML = `
     <div class="modal-grid">
       <div class="modal-img-col">
-        <img class="modal-main-img" src="${item.image}" alt="${escapeHtml(item.name)}">
+        <img class="modal-main-img" src="${escapeHtml(safeImgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${safeObjPos};" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
         <div style="background: #faf9f7; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.8rem; color: var(--text-muted);">
           <div style="color: #111216; font-weight: 600; margin-bottom: 0.25rem;">Гарантия оригинальности</div>
           100% оригинальный парфюм из официального флакона бренда. Разливается в стерильные стеклянные атомайзеры с металлической помпой.
         </div>
       </div>
       <div class="modal-info-col">
-        <div class="card-brand">${item.brand || 'VOLODIUM PARFUM'}</div>
-        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: #111216; margin-bottom: 0.4rem;">${item.name}</h2>
-        <p style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 1.25rem;">${item.subtitle || ''}</p>
+        <div class="card-brand">${escapeHtml(item.brand || 'VOLODIUM PARFUM')}</div>
+        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: #111216; margin-bottom: 0.4rem;">${escapeHtml(item.name)}</h2>
+        <p style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 1.25rem;">${escapeHtml(item.subtitle || '')}</p>
         
         <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
-          ${item.description}
+          ${escapeHtml(item.description || '')}
         </p>
 
         ${olfactoryProfileHtml}
@@ -1199,7 +1707,7 @@ function openProductModal(itemId) {
               ${formatPrice(currentPrice)}
             </div>
             <div style="font-size: 0.8rem; color: var(--text-dim);" id="modalVolLabel">
-              ${currentVol === 'bottle' ? 'полноразмерный флакон' : 'отливант ' + currentVol}
+              ${escapeHtml(currentVol === 'bottle' ? 'полноразмерный флакон' : 'отливант ' + currentVol)}
             </div>
           </div>
           <button class="btn-primary" id="modalAddToCartBtn" style="padding: 1rem 2rem;">
@@ -1213,7 +1721,7 @@ function openProductModal(itemId) {
         </div>
 
         <div class="modal-concierge-row">
-          <a href="https://t.me/volodiumparfum?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, по аромату: ' + (item.fullTitle || item.name))}" 
+          <a href="https://t.me/${tgHandle}?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, по аромату: ' + (item.fullTitle || item.name))}" 
              target="_blank" 
              rel="noopener noreferrer" 
              class="btn-ask-vladimir"
@@ -1342,8 +1850,59 @@ document.addEventListener('click', (e) => {
    ========================================================================== */
 let cart = [];
 let appliedPromo = null; // e.g. { code: 'СТАРТ', discountPercent: 10 }
-const FREE_DELIVERY_THRESHOLD = 5000;
-const MIN_ORDER_THRESHOLD = 3000;
+let FREE_DELIVERY_THRESHOLD = 5000;
+let MIN_ORDER_THRESHOLD = 3000;
+
+function findActivePromo(rawCode) {
+  const normalized = String(rawCode || '').trim().toUpperCase();
+  if (!normalized || !Array.isArray(DYNAMIC_PROMO_CODES)) return null;
+  return DYNAMIC_PROMO_CODES.find(
+    (p) => p && p.active !== false && String(p.code || '').trim().toUpperCase() === normalized
+  ) || null;
+}
+
+function getCheckoutMessengerMeta(messenger) {
+  const ct = ACTIVE_CONTACTS || {};
+  const tg = String(ct.telegramHandle || 'volodiumparfum').replace(/^@/, '').trim() || 'volodiumparfum';
+  const waPhone = String(ct.whatsappPhone || '79094442617').replace(/\D/g, '') || '79094442617';
+  const waDisp = String(ct.whatsappDisplay || '+7 909 444-26-17').trim();
+  const vkUrlRaw = String(ct.vkUrl || 'https://vk.ru/volodya_v_v').trim();
+  const vkUrl = /^https?:\/\//i.test(vkUrlRaw) ? vkUrlRaw : 'https://vk.ru/volodya_v_v';
+  const vkDisp = String(ct.vkDisplay || 'vk.ru/volodya_v_v').trim();
+
+  const map = {
+    Telegram: {
+      hint: `⚡ Быстрее всего: менеджер @${tg} ответит почти мгновенно, согласует состав и отправит трек СДЭК`,
+      btnText: 'Отправить заказ в Telegram (Быстрее всего)',
+      send: (orderText) => {
+        const tgUrl = `https://t.me/${encodeURIComponent(tg)}?text=${encodeURIComponent(orderText)}`;
+        window.open(tgUrl, '_blank', 'noopener,noreferrer');
+        showToast('✦ Заказ сформирован! Перенаправляем в Telegram к менеджеру...', 6000);
+      }
+    },
+    WhatsApp: {
+      hint: `💬 Прямой чат с Владимиром в WhatsApp (${waDisp}) для согласования заказа`,
+      btnText: `Отправить заказ в WhatsApp (${waDisp})`,
+      send: (orderText) => {
+        const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(orderText)}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        showToast('✦ Заказ сформирован! Открываем чат WhatsApp с Владимиром...', 6000);
+      }
+    },
+    VK: {
+      hint: `👤 Личные сообщения ВКонтакте (${vkDisp}). Владимир или менеджер ответит и оформит доставку`,
+      btnText: `Отправить заказ во ВКонтакте (${vkDisp})`,
+      send: (orderText) => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(orderText).catch(() => {});
+        }
+        window.open(vkUrl, '_blank', 'noopener,noreferrer');
+        showToast(`✦ Текст заказа скопирован в буфер! Отправьте его в открывшемся профиле ВКонтакте (${vkDisp})`, 7000);
+      }
+    }
+  };
+  return map[messenger] || map.Telegram;
+}
 
 function initCart() {
   // Load from LocalStorage and sanitize
@@ -1363,9 +1922,10 @@ function initCart() {
           }
           return {
             ...item,
-            name: resolvedName,
-            volume: resolvedVol,
-            image: item.image || 'assets/img/aromaboxes/real_box_open_kraft.jpg',
+            cartId: String(item.cartId || `${item.itemId || 'item'}__${resolvedVol}`),
+            name: String(resolvedName),
+            volume: String(resolvedVol),
+            image: resolveSafeMediaUrl(item.image, 'assets/img/aromaboxes/real_box_open_kraft.jpg'),
             price: Number(item.price) || 4900,
             qty: Math.max(1, Number(item.qty) || 1)
           };
@@ -1383,6 +1943,24 @@ function initCart() {
       playChime(440);
     });
   });
+
+  const itemsContainer = document.getElementById('cartItemsList');
+  if (itemsContainer && !itemsContainer.dataset.delegated) {
+    itemsContainer.dataset.delegated = '1';
+    itemsContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-cart-action]');
+      if (!btn) return;
+      const action = btn.dataset.cartAction;
+      const cid = btn.dataset.cartId;
+      if (!cid) return;
+      if (action === 'remove') {
+        window.removeCartItem(cid);
+      } else if (action === 'qty') {
+        const delta = parseInt(btn.dataset.delta || '0', 10);
+        if (delta) window.changeCartQty(cid, delta);
+      }
+    });
+  }
 
   const promoBtn = document.getElementById('btnApplyPromo');
   if (promoBtn) {
@@ -1449,7 +2027,7 @@ function addItemToCart(item, volume) {
       brand: item.brand || 'VOLODIUM PARFUM',
       volume: vol,
       price: price,
-      image: item.image || item.cdnImage || 'assets/img/aromaboxes/real_box_open_kraft.jpg',
+      image: resolveSafeMediaUrl(item.image || item.cdnImage, 'assets/img/aromaboxes/real_box_open_kraft.jpg'),
       qty: 1
     });
   }
@@ -1457,7 +2035,6 @@ function addItemToCart(item, volume) {
   saveCart();
   updateCartBadge();
   renderCartDrawer();
-  const volLabel = (item.category === 'box' || (item.id && item.id.startsWith('box-'))) ? `5 × ${vol}` : vol;
   showToast(`«${item.name || item.title || 'Товар'}» добавлен в корзину`);
 }
 
@@ -1478,7 +2055,7 @@ function saveCart() {
 
 function updateCartBadge() {
   const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-  const badges = document.querySelectorAll('.cart-badge-count');
+  const badges = document.querySelectorAll('.cart-badge-count, .cart-count-badge');
   badges.forEach(b => {
     b.textContent = totalCount;
     b.style.display = totalCount > 0 ? 'flex' : 'none';
@@ -1528,14 +2105,15 @@ function renderCartDrawer() {
     const rawVol = (item.volume && item.volume !== 'undefined' && item.volume !== 'null') ? item.volume : 'стандарт';
     const volMeta = rawVol === 'bottle' ? 'Полноразмерный флакон' : 
                     (item.itemId && item.itemId.startsWith('box-') ? `Сет из 5 флаконов × ${rawVol}` : `Отливант ${rawVol}`);
-    const imgSrc = item.image || 'assets/img/aromaboxes/real_box_open_kraft.jpg';
+    const imgSrc = resolveSafeMediaUrl(item.image, 'assets/img/aromaboxes/real_box_open_kraft.jpg');
+    const cidEsc = escapeHtml(String(item.cartId || ''));
     return `
     <div class="cart-item">
-      <img class="cart-item-img" src="${imgSrc}" alt="${escapeHtml(rawName)}">
+      <img class="cart-item-img" src="${escapeHtml(imgSrc)}" alt="${escapeHtml(rawName)}" onerror="this.onerror=null;this.src='assets/img/aromaboxes/real_box_open_kraft.jpg';">
       <div class="cart-item-info">
         <div class="cart-item-top">
           <div class="cart-item-title">${escapeHtml(rawName)}</div>
-          <button class="cart-item-del" onclick="removeCartItem('${item.cartId}');" title="Удалить" aria-label="Удалить товар">
+          <button class="cart-item-del" data-cart-action="remove" data-cart-id="${cidEsc}" title="Удалить" aria-label="Удалить товар">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
               <line x1="18" y1="6" x2="6" y2="18"/>
               <line x1="6" y1="6" x2="18" y2="18"/>
@@ -1545,11 +2123,11 @@ function renderCartDrawer() {
         <div class="cart-item-meta">${escapeHtml(volMeta)}</div>
         <div class="cart-item-bot">
           <div class="cart-item-qty">
-            <button class="qty-btn" onclick="changeCartQty('${item.cartId}', -1);" aria-label="Уменьшить">−</button>
-            <span class="qty-number">${item.qty}</span>
-            <button class="qty-btn" onclick="changeCartQty('${item.cartId}', 1);" aria-label="Увеличить">+</button>
+            <button class="qty-btn" data-cart-action="qty" data-delta="-1" data-cart-id="${cidEsc}" aria-label="Уменьшить">−</button>
+            <span class="qty-number">${Math.max(1, Number(item.qty) || 1)}</span>
+            <button class="qty-btn" data-cart-action="qty" data-delta="1" data-cart-id="${cidEsc}" aria-label="Увеличить">+</button>
           </div>
-          <div class="cart-item-price">${formatPrice(item.price * item.qty)}</div>
+          <div class="cart-item-price">${formatPrice((Number(item.price) || 0) * Math.max(1, Number(item.qty) || 1))}</div>
         </div>
       </div>
     </div>
@@ -1573,7 +2151,8 @@ function renderCartDrawer() {
 
   // Free delivery progress
   if (freeTrackEl && freeTextEl) {
-    const pct = Math.min(100, Math.round((total / FREE_DELIVERY_THRESHOLD) * 100));
+    const denom = FREE_DELIVERY_THRESHOLD > 0 ? FREE_DELIVERY_THRESHOLD : 1;
+    const pct = Math.min(100, Math.round((total / denom) * 100));
     freeTrackEl.style.width = `${pct}%`;
     if (total >= FREE_DELIVERY_THRESHOLD) {
       freeTextEl.innerHTML = `✨ <strong>Поздравляем!</strong> Вам доступна бесплатная доставка СДЭК`;
@@ -1607,7 +2186,7 @@ window.removeCartItem = function(cartId) {
 };
 
 function getCartSubtotal() {
-  return cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  return cart.reduce((sum, item) => sum + ((Number(item.price) || 0) * Math.max(1, Number(item.qty) || 1)), 0);
 }
 
 function getCartTotal() {
@@ -1622,33 +2201,35 @@ function applyPromoCode() {
   const input = document.getElementById('promoCodeInput');
   if (!input) return;
   const code = input.value.trim().toUpperCase();
+  const found = findActivePromo(code);
 
-  if (code === 'СТАРТ' || code === 'START') {
-    appliedPromo = { code: code, discountPercent: 10 };
+  if (found) {
+    const pct = Math.min(90, Math.max(1, Number(found.discountPercent) || 10));
+    appliedPromo = { code: String(found.code).trim().toUpperCase(), discountPercent: pct };
     renderCartDrawer();
-    showToast('Промокод применен: скидка 10% на ваш заказ');
-  } else if (code === 'VOLODIUM' || code === 'VOVA') {
-    appliedPromo = { code: code, discountPercent: 15 };
-    renderCartDrawer();
-    showToast('Промокод применен: скидка 15%');
+    showToast(`Промокод применен: скидка ${pct}% на ваш заказ`);
   } else {
     showToast('Неверный промокод или срок его действия истек');
   }
 }
 
-window.copyPromoCode = function(code = 'СТАРТ') {
+window.copyPromoCode = function(code) {
+  const firstActive = (Array.isArray(DYNAMIC_PROMO_CODES) && DYNAMIC_PROMO_CODES.find(p => p && p.active !== false)) || null;
+  const targetCode = String(code || firstActive?.code || 'СТАРТ').trim().toUpperCase();
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(code).catch(() => {});
+    navigator.clipboard.writeText(targetCode).catch(() => {});
   }
   const input = document.getElementById('promoCodeInput');
   if (input) {
-    input.value = code;
+    input.value = targetCode;
   }
-  appliedPromo = { code: code, discountPercent: 10 };
+  const found = findActivePromo(targetCode);
+  const pct = found ? Math.min(90, Math.max(1, Number(found.discountPercent) || 10)) : (Number(firstActive?.discountPercent) || 10);
+  appliedPromo = { code: targetCode, discountPercent: pct };
   openCart();
   renderCartDrawer();
   playChime(660);
-  showToast(`Промокод «${code}» активирован! Скидка 10% применена.`);
+  showToast(`Промокод «${targetCode}» активирован! Скидка ${pct}% применена.`);
 };
 
 /* ==========================================================================
@@ -1684,38 +2265,6 @@ function initCheckoutForm() {
   const submitBtnText = document.getElementById('btnCheckoutSubmitText');
   let selectedMessenger = 'Telegram';
 
-  const messengerConfig = {
-    Telegram: {
-      hint: '⚡ Быстрее всего: менеджер @volodiumparfum ответит почти мгновенно, согласует состав и отправит трек СДЭК',
-      btnText: 'Отправить заказ в Telegram (Быстрее всего)',
-      send: (orderText) => {
-        const tgUrl = `https://t.me/volodiumparfum?text=${encodeURIComponent(orderText)}`;
-        window.open(tgUrl, '_blank');
-        showToast('✦ Заказ сформирован! Перенаправляем в Telegram к менеджеру...', 6000);
-      }
-    },
-    WhatsApp: {
-      hint: '💬 Прямой чат с Владимиром в WhatsApp (+7 909 444-26-17) для согласования заказа',
-      btnText: 'Отправить заказ в WhatsApp (+7 909 444-26-17)',
-      send: (orderText) => {
-        const waUrl = `https://wa.me/79094442617?text=${encodeURIComponent(orderText)}`;
-        window.open(waUrl, '_blank');
-        showToast('✦ Заказ сформирован! Открываем чат WhatsApp с Владимиром...', 6000);
-      }
-    },
-    VK: {
-      hint: '👤 Личные сообщения ВКонтакте (vk.ru/volodya_v_v). Владимир или менеджер ответит и оформит доставку',
-      btnText: 'Отправить заказ во ВКонтакте (vk.ru/volodya_v_v)',
-      send: (orderText) => {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(orderText).catch(() => {});
-        }
-        window.open('https://vk.ru/volodya_v_v', '_blank');
-        showToast('✦ Текст заказа скопирован в буфер! Отправьте его в открывшемся профиле ВКонтакте (vk.ru/volodya_v_v)', 7000);
-      }
-    }
-  };
-
   if (messengerButtons.length) {
     messengerButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -1727,7 +2276,7 @@ function initCheckoutForm() {
         btn.setAttribute('aria-checked', 'true');
         selectedMessenger = btn.getAttribute('data-messenger') || 'Telegram';
 
-        const cfg = messengerConfig[selectedMessenger] || messengerConfig.Telegram;
+        const cfg = getCheckoutMessengerMeta(selectedMessenger);
         if (messengerHint) messengerHint.textContent = cfg.hint;
         if (submitBtnText) submitBtnText.textContent = cfg.btnText;
         if (typeof playChime === 'function') playChime(620);
@@ -1793,8 +2342,8 @@ ${itemsListText}
     closeCheckoutModal();
     closeCart();
 
-    // Trigger messenger-specific routing
-    const cfg = messengerConfig[selectedMessenger] || messengerConfig.Telegram;
+    // Trigger messenger-specific routing using live ACTIVE_CONTACTS
+    const cfg = getCheckoutMessengerMeta(selectedMessenger);
     cfg.send(orderText);
   });
 }
@@ -1934,8 +2483,8 @@ window.openLegalDoc = function(type) {
         <p>2.2. Продавец передает Покупателю оригинальную парфюмерную продукцию (оригинальные духи во флаконах, атомайзерах или фирменных сетах аромабоксов), а Покупатель оплачивает товар по согласованной стоимости.</p>
 
         <h4>3. Оплата и доставка</h4>
-        <p>3.1. Заказ оформляется через корзину сайта либо посредством прямой коммуникации в официальном канале Telegram @volodiumparfum.</p>
-        <p>3.2. Доставка по территории РФ осуществляется курьерской службой СДЭК (до двери или пункта выдачи) либо специализированной курьерской службой по Москве. При сумме заказа от 5 000 ₽ доставка по РФ до ПВЗ СДЭК бесплатная.</p>
+        <p>3.1. Заказ оформляется через корзину сайта либо посредством прямой коммуникации в официальном канале Telegram @${escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum')}.</p>
+        <p>3.2. Доставка по территории РФ осуществляется курьерской службой СДЭК (до двери или пункта выдачи) либо специализированной курьерской службой по Москве. При сумме заказа от ${escapeHtml(formatPrice(FREE_DELIVERY_THRESHOLD))} доставка по РФ до ПВЗ СДЭК бесплатная.</p>
       </div>
     `;
   } else if (type === 'returns') {
@@ -2557,13 +3106,14 @@ window.submitQuizToTelegram = function() {
 
   const fullText = lines.join('\n');
   const encoded = encodeURIComponent(fullText);
-  const tgUrl = `https://t.me/volodiumparfum?text=${encoded}`;
+  const tgHandle = encodeURIComponent((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
+  const tgUrl = `https://t.me/${tgHandle}?text=${encoded}`;
 
   if (typeof playChime === 'function') playChime(660);
   showToast('Ольфакторный паспорт сформирован! Открываем диалог с Владимиром...');
 
   setTimeout(() => {
-    window.open(tgUrl, '_blank');
+    window.open(tgUrl, '_blank', 'noopener,noreferrer');
   }, 400);
 };
 
@@ -2779,11 +3329,12 @@ function initCertificates() {
       `🔑 *Код активации:* ${certState.code}`
     ].filter(Boolean).join('\n');
 
-    const tgUrl = `https://t.me/volodiumparfum?text=${encodeURIComponent(text)}`;
+    const tgHandle = encodeURIComponent((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
+    const tgUrl = `https://t.me/${tgHandle}?text=${encodeURIComponent(text)}`;
     playChime(660);
     showToast('Переходим в Telegram для оформления сертификата...');
     setTimeout(() => {
-      window.open(tgUrl, '_blank');
+      window.open(tgUrl, '_blank', 'noopener,noreferrer');
     }, 400);
   };
 }

@@ -1772,14 +1772,28 @@ textarea {
 }
 
 .vp-upload-dropzone {
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  padding: 12px 14px;
   border-radius: var(--radius-sm);
   border: 1.5px dashed var(--border-strong);
   background: var(--bg-soft);
-  font-size: 12.5px;
+  font-size: 12px;
+  line-height: 1.35;
   color: var(--text-muted);
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease;
+  min-height: 58px;
+  box-sizing: border-box;
+}
+
+.vp-upload-dropzone span {
+  display: block;
+  pointer-events: none;
 }
 
 .vp-upload-dropzone:hover,
@@ -1884,8 +1898,8 @@ textarea {
 
 .vp-editor-split {
   display: grid;
-  grid-template-columns: 290px 1fr;
-  gap: 22px;
+  grid-template-columns: 310px 1fr;
+  gap: 24px;
   align-items: start;
 }
 

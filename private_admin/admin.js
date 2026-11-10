@@ -1551,11 +1551,156 @@
     $('scConsultOfflineImg').value = consult.offlineImage || '';
 
     updateLiveHeroPreview();
+    renderReviewsAdmin();
+  }
+
+  function renderReviewsAdmin() {
+    const grid = $('vpReviewsAdminGrid');
+    if (!grid) return;
+    const sc = state.siteContent || {};
+    const reviews = Array.isArray(sc.reviews) && sc.reviews.length ? sc.reviews : [
+      { id: 1, name: 'Kirill Belov', tag: 'Аромабокс', text: '«Арома-бокс приехал, всё дошло в идеальном состоянии — упаковано с душой и вниманием к деталям. Спасибо за атмосферу, которую создаёшь! Парфюмы с порога заявили о себе — всё в моём духе. Рад, что выбрал тебя! Отдельное спасибо за секретный ништячок Al Thaïr!»', image: 'assets/img/reviews/review_box_kirill.jpg', objectPosition: 'center 25%' },
+      { id: 2, name: 'Юлианна', tag: 'Подбор вслепую', text: '«Владимир, спасибо огромное за подбор! Заказывала практически вслепую и переживала, но попадание в точку! Особенно Wavechild — любовь с первого пшика. Видно, что стараешься подобрать под человека, а не просто продать. Упаковка с фирменным посланием — отдельный вайб!»', image: 'assets/img/reviews/review_box_open_motto.jpg', objectPosition: 'center 65%' },
+      { id: 3, name: 'Дарья & Муж', tag: 'Парные сеты', text: '«Большое спасибо! Упаковка шикарная, и отдельное спасибо за обозначение, какая кому ❤️ От заказа до получения — сплошное эстетическое удовольствие!»', image: 'assets/img/reviews/review_boxes_labeled.jpg', objectPosition: 'center 40%' },
+      { id: 4, name: 'Анастасия', tag: 'Boss Unlimited & Сет', text: '«В общем! Большое тебе спасибо за парфюм и твой подход 🙏🏻 От заказа до его получения мы остались под впечатлением! Быстрая отправка, аккуратная красивая упаковка, молодой человек в восторге, Boss Unlimited — его любимый парфюм и он теперь снова каждый день им пользуется! Обязательно буду обращаться еще! Спасибо за твой труд и твой подход к работе 🫶🏻»', image: 'assets/img/reviews/review_boss_unlimited.jpg', objectPosition: 'center 45%' },
+      { id: 5, name: 'Максим', tag: 'Althaïr & Подарки', text: '«Привет! Все получил, да еще и 2 подарочка 🔥 Ультра доволен, есть как культовые ароматы по типу Альтаира, Ангела, так и варианты на попробовать. От души еще раз ♥️»', image: 'assets/img/reviews/review_altair_gifts.jpg', objectPosition: 'center 50%' },
+      { id: 6, name: 'Ксения', tag: 'Парфюмерный гардероб', text: '«Вова, спасибо тебе! Вспоминаю, как впервые попала на консультацию, думая, что мне мало что интересно. А потом провела инвентаризацию: это настоящее исследование себя через мир ароматов и поиск своего образа. Спасибо за это путешествие!»', image: 'assets/img/reviews/photo_viola.jpg', objectPosition: 'center 30%' },
+    ];
+
+    grid.innerHTML = reviews.map((rev, idx) => {
+      const posY = extractObjPosY(rev.objectPosition || 'center 25%');
+      return `
+        <article class="vp-review-admin-card" data-rev-idx="${idx}">
+          <div class="vp-rac-top">
+            <span class="vp-rac-badge">Отзыв #${idx + 1}</span>
+            <span class="vp-tag ok">5 звёзд ★★★★★</span>
+          </div>
+
+          <div class="vp-rac-thumb-wrap">
+            <img
+              id="scRevThumb${idx}"
+              src="${esc(resolveMediaSrc(rev.image))}"
+              alt="Превью отзыва #${idx + 1}"
+              referrerpolicy="no-referrer"
+              decoding="async"
+              style="object-position: center ${posY}%;"
+            >
+          </div>
+
+          <div class="vp-range-row" style="margin-top:8px;">
+            <span>Фокус по высоте:</span>
+            <input type="range" id="scRevPosY${idx}" min="0" max="100" value="${posY}" data-rev-slider="${idx}">
+            <span id="scRevPosYVal${idx}">${posY}%</span>
+          </div>
+
+          <div class="vp-upload-row" style="margin-top:8px;">
+            <input type="text" id="scRevImg${idx}" value="${esc(rev.image || '')}" placeholder="assets/img/reviews/..." data-rev-img-input="${idx}">
+            <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+              <span>Загрузить</span>
+              <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-review="${idx}">
+            </label>
+          </div>
+
+          <div class="vp-form-grid" style="margin-top:8px;">
+            <div class="vp-field">
+              <label>Имя клиента</label>
+              <input type="text" id="scRevName${idx}" value="${esc(rev.name || '')}">
+            </div>
+            <div class="vp-field">
+              <label>Тег / Категория</label>
+              <input type="text" id="scRevTag${idx}" value="${esc(rev.tag || '')}">
+            </div>
+          </div>
+
+          <div class="vp-field" style="margin-top:8px;">
+            <label>Текст отзыва</label>
+            <textarea id="scRevText${idx}" rows="3">${esc(rev.text || '')}</textarea>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    // Wire live sliders for vertical position
+    qsa('[data-rev-slider]').forEach((slider) => {
+      slider.addEventListener('input', () => {
+        const idx = slider.dataset.revSlider;
+        const val = slider.value;
+        const valEl = $(`scRevPosYVal${idx}`);
+        if (valEl) valEl.textContent = `${val}%`;
+        const thumb = $(`scRevThumb${idx}`);
+        if (thumb) thumb.style.objectPosition = `center ${val}%`;
+      });
+    });
+
+    // Wire image text input live update
+    qsa('[data-rev-img-input]').forEach((inp) => {
+      inp.addEventListener('input', () => {
+        const idx = inp.dataset.revImgInput;
+        const thumb = $(`scRevThumb${idx}`);
+        if (thumb) thumb.src = resolveMediaSrc(inp.value.trim());
+      });
+    });
+
+    // Wire file uploads
+    qsa('[data-upload-review]').forEach((fileInp) => {
+      fileInp.addEventListener('change', async () => {
+        const file = fileInp.files && fileInp.files[0];
+        if (!file) return;
+        const idx = fileInp.dataset.uploadReview;
+        try {
+          showToast(`Загрузка фото для отзыва #${Number(idx) + 1}...`, 'ok');
+          const res = await uploadImageFile(file, 'reviews');
+          const txtInp = $(`scRevImg${idx}`);
+          if (txtInp) txtInp.value = res.url;
+          const thumb = $(`scRevThumb${idx}`);
+          if (thumb) thumb.src = resolveMediaSrc(res.url);
+          showToast('Фото отзыва загружено', 'ok');
+        } catch (err) {
+          showToast(err.message, 'err');
+        } finally {
+          fileInp.value = '';
+        }
+      });
+    });
+  }
+
+  function readReviewsForm() {
+    const sc = state.siteContent || {};
+    const baseReviews = Array.isArray(sc.reviews) && sc.reviews.length ? sc.reviews : [
+      { id: 1, name: 'Kirill Belov', city: 'Telegram отзыв', tag: 'Аромабокс', image: 'assets/img/reviews/review_box_kirill.jpg' },
+      { id: 2, name: 'Юлианна', city: 'Telegram отзыв', tag: 'Подбор вслепую', image: 'assets/img/reviews/review_box_open_motto.jpg' },
+      { id: 3, name: 'Дарья & Муж', city: 'Telegram отзыв', tag: 'Парные сеты', image: 'assets/img/reviews/review_boxes_labeled.jpg' },
+      { id: 4, name: 'Анастасия', city: 'Telegram отзыв', tag: 'Boss Unlimited & Сет', image: 'assets/img/reviews/review_boss_unlimited.jpg' },
+      { id: 5, name: 'Максим', city: 'Telegram отзыв', tag: 'Althaïr & Подарки', image: 'assets/img/reviews/review_altair_gifts.jpg' },
+      { id: 6, name: 'Ксения', city: 'Telegram отзыв', tag: 'Парфюмерный гардероб', image: 'assets/img/reviews/photo_viola.jpg' },
+    ];
+
+    return [0, 1, 2, 3, 4, 5].map((idx) => {
+      const base = baseReviews[idx] || {};
+      const nameEl = $(`scRevName${idx}`);
+      const tagEl = $(`scRevTag${idx}`);
+      const textEl = $(`scRevText${idx}`);
+      const imgEl = $(`scRevImg${idx}`);
+      const posYEl = $(`scRevPosY${idx}`);
+
+      const posY = posYEl ? Number(posYEl.value || 25) : 25;
+      return {
+        id: idx + 1,
+        city: 'Telegram отзыв',
+        name: nameEl ? nameEl.value.trim() : (base.name || ''),
+        tag: tagEl ? tagEl.value.trim() : (base.tag || ''),
+        text: textEl ? textEl.value.trim() : (base.text || ''),
+        image: imgEl ? imgEl.value.trim() : (base.image || ''),
+        objectPosition: `center ${posY}%`,
+      };
+    });
   }
 
   function bindStorefrontEvents() {
     qsa('#vpStorefrontForm input, #vpStorefrontForm textarea').forEach((el) => {
-      el.addEventListener('input', updateLiveHeroPreview);
+      if (!el.dataset.revSlider && !el.dataset.revImgInput && !el.id.startsWith('scRev')) {
+        el.addEventListener('input', updateLiveHeroPreview);
+      }
     });
 
     // Generic upload buttons with data-upload-target
@@ -1626,6 +1771,7 @@
           offlinePrice: $('scConsultOfflinePrice').value.trim(),
           offlineImage: $('scConsultOfflineImg').value.trim(),
         },
+        reviews: readReviewsForm(),
       };
 
       try {
@@ -1635,7 +1781,7 @@
         });
         state.siteContent = res.siteContent || nextContent;
         notifyStorefrontSync('siteContent');
-        showToast('Оформление витрины сохранено!', 'ok');
+        showToast('Оформление витрины и отзывы сохранены!', 'ok');
       } catch (err) {
         showToast(err.message, 'err');
       }

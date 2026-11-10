@@ -283,6 +283,28 @@ function applySiteContent(sc) {
       }
     }
 
+    // 5. Reviews & Unboxings (Live Text, Photos & Vertical Crop)
+    if (Array.isArray(sc.reviews)) {
+      const reviewCards = document.querySelectorAll('.reviews-editorial-grid .review-editorial-card');
+      sc.reviews.forEach((r, idx) => {
+        const card = reviewCards[idx];
+        if (!card || !r) return;
+        const tag = card.querySelector('.rec-tag');
+        if (tag && r.tag) tag.textContent = r.tag;
+        const name = card.querySelector('.rec-name');
+        if (name && r.name) name.textContent = r.name;
+        const city = card.querySelector('.rec-city');
+        if (city && r.city) city.textContent = r.city;
+        const text = card.querySelector('.rec-text');
+        if (text && r.text) text.textContent = r.text;
+        const img = card.querySelector('.rec-photo-thumb img');
+        if (img) {
+          if (r.image) img.src = resolveSafeMediaUrl(r.image, img.getAttribute('src') || '');
+          if (r.objectPosition) img.style.objectPosition = r.objectPosition;
+        }
+      });
+    }
+
     // 5. Commerce Thresholds & Promo Codes
     if (sc.commerce) {
       const cm = sc.commerce;

@@ -201,7 +201,7 @@ const HERO_PORTRAIT = {
   image: 'assets/img/editorial/vladimir_atomizer_portrait.jpg',
   tag: 'STUDIO EDITORIAL',
   title: 'ВЛАДИМИР ВАЦИК',
-  sub: '«Парфюм как чувственное продолжение вашей индивидуальности»'
+  sub: '«Парфюм — это чувственное продолжение вашей индивидуальности»'
 };
 
 const HERO_BACKDROP_IMAGE = 'assets/img/editorial/hero_perfume_flacons_neutral.jpg';

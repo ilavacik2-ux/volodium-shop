@@ -7120,7 +7120,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     overflow: hidden;
   }
   .method-card-media {
-    height: 155px !important;
+    height: 175px !important;
   }
   .method-card-body {
     padding: 1.15rem 1rem 1.25rem;
@@ -10919,7 +10919,7 @@ section[id],
 }
 
 .consult-method-card:first-child .method-card-media img {
-  object-position: center 35%;
+  object-position: center center;
 }
 
 .consult-method-card.hit .method-card-media img {

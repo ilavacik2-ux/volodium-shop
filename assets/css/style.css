@@ -10923,7 +10923,7 @@ section[id],
 }
 
 .consult-method-card.hit .method-card-media img {
-  object-position: center 15%;
+  object-position: center center;
 }
 
 .consult-method-card:hover .method-card-media img {

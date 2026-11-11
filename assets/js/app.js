@@ -8,9 +8,11 @@
 if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
-window.scrollTo(0, 0);
-window.addEventListener('beforeunload', () => {
+if (!window.location.hash) {
   window.scrollTo(0, 0);
+}
+window.addEventListener('beforeunload', () => {
+  if (!window.location.hash) window.scrollTo(0, 0);
 });
 
 const SEASON_PRESET_META = {
@@ -36,7 +38,7 @@ let ACTIVE_CONTACTS = {
   whatsappDisplay: '+7 (909) 444-26-17',
   vkUrl: 'https://vk.ru/volodya_v_v',
   vkDisplay: 'vk.ru/volodya_v_v',
-  address: 'Москва, ул. Автозаводская 23к7',
+  address: 'Самовывоз Ⓜ️ Автозаводская',
   hours: 'Ежедневно 10:00 — 22:00 МСК'
 };
 
@@ -212,11 +214,11 @@ function applySiteContent(sc) {
       const heroDesc = document.querySelector('#hero .hero-description');
       if (heroDesc && h.description != null) heroDesc.textContent = h.description;
 
-      const ctaCat = document.querySelector('#hero .hero-actions a[href="#catalog"] span');
+      const ctaCat = document.querySelector('#hero .hero-actions a[href*="catalog"] span');
       if (ctaCat && h.ctaCatalogText) ctaCat.textContent = h.ctaCatalogText;
-      const ctaQuiz = document.querySelector('#hero .hero-actions a[href="#quiz"] span');
+      const ctaQuiz = document.querySelector('#hero .hero-actions a[href*="quiz"] span');
       if (ctaQuiz && h.ctaQuizText) ctaQuiz.textContent = h.ctaQuizText;
-      const ctaSec = document.querySelector('#hero .hero-actions a[href="#secret-boxes"] span');
+      const ctaSec = document.querySelector('#hero .hero-actions a[href*="secret-boxes"] span');
       if (ctaSec && h.ctaSecretText) ctaSec.textContent = h.ctaSecretText;
 
       if (Array.isArray(h.stats)) {
@@ -331,7 +333,7 @@ function applySiteContent(sc) {
       }
       const sdekOpt = document.querySelector('#orderDelivery option[value^="СДЭК по России"]');
       if (sdekOpt) {
-        sdekOpt.textContent = `СДЭК по России (Бесплатно от ${formatPrice(FREE_DELIVERY_THRESHOLD)} / 400 ₽)`;
+        sdekOpt.textContent = `СДЭК по России (Бесплатно от ${formatPrice(FREE_DELIVERY_THRESHOLD)} / 300 ₽)`;
       }
       const faqItems = document.querySelectorAll('#dfPanelFaq .faq-item .faq-answer');
       if (faqItems[1]) {
@@ -370,7 +372,8 @@ function applySiteContent(sc) {
       const rawVkUrl = String(ct.vkUrl || 'https://vk.ru/volodya_v_v').trim();
       const vkUrl = /^https?:\/\//i.test(rawVkUrl) ? rawVkUrl : 'https://vk.ru/volodya_v_v';
       const vkDisp = ct.vkDisplay || vkUrl.replace(/^https?:\/\//, '');
-      const address = ct.address || 'Москва, ул. Автозаводская 23к7';
+      const rawAddress = (ct.address || '').trim();
+      const address = (!rawAddress || /23\s*к\s*7/i.test(rawAddress)) ? 'Самовывоз Ⓜ️ Автозаводская' : rawAddress;
       const hours = ct.hours || 'Ежедневно 10:00 — 22:00 МСК';
 
       ACTIVE_CONTACTS = { telegramHandle: tg, channelHandle: ch, whatsappPhone: waPhone, whatsappDisplay: waDisp, vkUrl, vkDisplay: vkDisp, address, hours };
@@ -381,13 +384,13 @@ function applySiteContent(sc) {
         const query = qIdx !== -1 ? href.slice(qIdx) : '';
         const handlePart = href.slice('https://t.me/'.length, qIdx !== -1 ? qIdx : undefined);
         const rowLbl = (a.closest('.footer-contact-row')?.querySelector('.fc-label')?.textContent || '').toLowerCase();
-        const isChannelLink = a.classList.contains('reviews-tg-pill') || a.classList.contains('footer-channel-badge') || rowLbl.includes('канал бутика') || (a.closest('.footer-contact-row') && (handlePart === 'vatsiik' || (a.textContent || '').includes('@vatsiik')));
+        const isChannelLink = a.classList.contains('reviews-tg-pill') || a.classList.contains('footer-channel-badge') || rowLbl.includes('канал') || (a.closest('.footer-contact-row') && (handlePart === 'vatsiik' || (a.textContent || '').includes('@vatsiik')));
         const nextHandle = isChannelLink ? ch : tg;
         a.setAttribute('href', `https://t.me/${encodeURIComponent(nextHandle)}${query}`);
       });
 
       const revPillSpan = document.querySelector('#reviews .reviews-tg-pill span');
-      if (revPillSpan) revPillSpan.textContent = `Telegram-канал бутика: распаковки и свежие поступления (@${ch})`;
+      if (revPillSpan) revPillSpan.textContent = `Telegram-канал эксперта: распаковки и свежие поступления (@${ch})`;
 
       document.querySelectorAll('.footer-contact-row').forEach(row => {
         const lbl = (row.querySelector('.fc-label')?.textContent || '').toLowerCase();
@@ -401,7 +404,7 @@ function applySiteContent(sc) {
         } else if (lbl.includes('вконтакте')) {
           valEl.textContent = vkDisp;
           valEl.setAttribute('href', vkUrl);
-        } else if (lbl.includes('канал бутика')) {
+        } else if (lbl.includes('канал')) {
           valEl.textContent = `@${ch}`;
         } else if (lbl.includes('режим')) {
           valEl.textContent = hours;
@@ -417,7 +420,7 @@ function applySiteContent(sc) {
         el.textContent = address;
       });
       const pickupOpt = document.querySelector('#orderDelivery option[value*="Самовывоз"]');
-      if (pickupOpt) pickupOpt.textContent = `Самовывоз (${address})`;
+      if (pickupOpt) pickupOpt.textContent = address.includes('Самовывоз') ? address : `Самовывоз Москва (${address})`;
       const waCheckoutSub = document.querySelector('.cms-btn[data-messenger="WhatsApp"] .cms-speed-time');
       if (waCheckoutSub) waCheckoutSub.textContent = waDisp;
       const vkCheckoutSub = document.querySelector('.cms-btn[data-messenger="VK"] .cms-speed-time');
@@ -518,10 +521,36 @@ window.addEventListener('load', () => {
 /* ==========================================================================
    0. Monroe Handwriting Intro Controller
    ========================================================================== */
+function initMultiPageActiveNav() {
+  const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  const current = path === '' ? 'index.html' : path;
+  document.querySelectorAll('.nav-desktop .nav-link, .nav-dropdown-item, .v-drawer-link, .mobile-bottom-dock .dock-item').forEach(el => {
+    const href = (el.getAttribute('href') || '').split('#')[0].toLowerCase();
+    if (!href) return;
+    if (href === current || (current === 'index.html' && (href === '#' || href === 'index.html'))) {
+      el.classList.add('is-active-page');
+    }
+  });
+}
+
 function initMonroeIntro() {
   const intro = document.getElementById('monroeIntro');
   const replayBtn = document.getElementById('btnReplayIntro');
+  initMultiPageActiveNav();
   if (!intro) return;
+
+  try {
+    if (sessionStorage.getItem('vp_intro_seen') === '1' || window.location.hash) {
+      intro.classList.add('hidden');
+      document.documentElement.classList.remove('intro-active');
+      document.body.classList.remove('intro-active');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      document.body.style.backgroundColor = '';
+      return;
+    }
+    sessionStorage.setItem('vp_intro_seen', '1');
+  } catch (e) {}
 
   let autoTimer = null;
   let canDismiss = false;
@@ -2106,7 +2135,7 @@ function renderCartDrawer() {
         </svg>
         <p style="font-size: 1.15rem; color: #111216; font-weight: 600;">Ваша парфюмерная корзина пуста</p>
         <p style="font-size: 0.85rem; max-width: 280px; color: var(--text-muted); line-height: 1.45;">Выберите понравившийся аромат или готовый аромабокс в каталоге.</p>
-        <button class="btn-primary" onclick="closeCart();" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">Перейти к ароматам</button>
+        <button class="btn-primary" onclick="closeCart(); if(!document.getElementById('perfumesGrid')){window.location.href='catalog.html';}" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">Перейти к ароматам</button>
       </div>
     `;
     if (orderExtras) orderExtras.style.display = 'none';

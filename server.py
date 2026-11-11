@@ -961,6 +961,33 @@ async def serve_storefront_index_alias():
     return await serve_storefront_index()
 
 
+PUBLIC_SUBPAGES = {
+    "catalog.html",
+    "boxes.html",
+    "quiz.html",
+    "consultation.html",
+    "request.html",
+    "certificates.html",
+    "reviews.html",
+    "delivery.html",
+}
+
+
+@app.get("/{page_name}.html")
+async def serve_storefront_subpage(page_name: str):
+    filename = f"{page_name}.html"
+    if filename not in PUBLIC_SUBPAGES:
+        return not_found_response()
+    target = BASE_DIR / filename
+    if not target.is_file():
+        return not_found_response()
+    return FileResponse(
+        target,
+        media_type="text/html; charset=utf-8",
+        headers={"Cache-Control": "no-cache"},
+    )
+
+
 @app.get("/favicon.ico")
 async def serve_favicon():
     fav = BASE_DIR / "assets" / "images" / "E610BB2F-DBAE-4672-9.PNG"

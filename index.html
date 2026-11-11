@@ -36,6 +36,7 @@
     }
   </style>
 
+  <script>try{if(sessionStorage.getItem('vp_intro_seen')==='1'||window.location.hash){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css?v=20261110_02">
 </head>
@@ -77,7 +78,7 @@
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
-      <a href="#" class="brand">
+      <a href="index.html" class="brand">
         <img class="brand-logo-img" src="assets/images/E610BB2F-DBAE-4672-9.PNG" alt="VOLODIUM">
         <div class="brand-text-wrap">
           <span class="brand-title">VOLODIUM</span>
@@ -86,10 +87,10 @@
       </a>
 
       <nav class="nav-desktop" aria-label="Основная навигация">
-        <a href="#catalog" class="nav-link">Коллекция</a>
-        <a href="#aroma-boxes" class="nav-link">Аромабоксы</a>
-        <a href="#secret-boxes" class="nav-link">Secret Box</a>
-        <a href="#quiz" class="nav-link">Анкета</a>
+        <a href="catalog.html" class="nav-link">Коллекция</a>
+        <a href="boxes.html" class="nav-link">Аромабоксы</a>
+        <a href="boxes.html#secret-boxes" class="nav-link">Secret Box</a>
+        <a href="quiz.html" class="nav-link">Анкета</a>
         <div class="nav-dropdown-wrap" id="navServicesWrap">
           <button type="button" class="nav-link nav-dropdown-btn" id="navServicesBtn" aria-expanded="false" aria-haspopup="true">
             <span>Сервис</span>
@@ -98,19 +99,19 @@
             </svg>
           </button>
           <div class="nav-dropdown-menu" id="navServicesMenu" role="menu">
-            <a href="#consultation" class="nav-dropdown-item" role="menuitem">
+            <a href="consultation.html" class="nav-dropdown-item" role="menuitem">
               <span class="ndi-title">Консультация с Владимиром</span>
               <span class="ndi-sub">Очно в Москве / Онлайн-разбор</span>
             </a>
-            <a href="#tester-guide" class="nav-dropdown-item" role="menuitem">
+            <a href="request.html" class="nav-dropdown-item" role="menuitem">
               <span class="ndi-title">Запрос на полноценный флакон</span>
               <span class="ndi-sub">Быстрая проверка наличия на складе</span>
             </a>
-            <a href="#certificates" class="nav-dropdown-item" role="menuitem">
+            <a href="certificates.html" class="nav-dropdown-item" role="menuitem">
               <span class="ndi-title">Подарочные сертификаты</span>
               <span class="ndi-sub">Сургучная авторская печать</span>
             </a>
-            <a href="#reviews" class="nav-dropdown-item" role="menuitem">
+            <a href="reviews.html" class="nav-dropdown-item" role="menuitem">
               <span class="ndi-title">Отзывы & Распаковки</span>
               <span class="ndi-sub">Опыт и впечатления клиентов</span>
             </a>
@@ -180,19 +181,19 @@
           <span class="v-drawer-group-title">Коллекция ароматов</span>
           <nav class="v-drawer-nav">
             
-            <a href="#catalog" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="catalog.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">01</span>
               <span class="vdl-title">Каталог парфюмерии</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
-            <a href="#aroma-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="boxes.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">02</span>
               <span class="vdl-title">Тематические аромабоксы</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
-            <a href="#secret-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="boxes.html#secret-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">03</span>
               <span class="vdl-title">Secret Box от Владимира</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -206,25 +207,25 @@
           <span class="v-drawer-group-title">Сервис & Экспертиза</span>
           <nav class="v-drawer-nav">
 
-            <a href="#quiz" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="quiz.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">04</span>
               <span class="vdl-title">Парфюмерная анкета</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
-            <a href="#consultation" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="consultation.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">05</span>
               <span class="vdl-title">Консультация с Владимиром</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
-            <a href="#tester-guide" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="request.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">06</span>
               <span class="vdl-title">Запрос на полноценный флакон</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
-            <a href="#certificates" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="certificates.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">07</span>
               <span class="vdl-title">Подарочные сертификаты</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -238,13 +239,13 @@
           <span class="v-drawer-group-title">Об интернет-магазине</span>
           <nav class="v-drawer-nav">
 
-            <a href="#reviews" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="reviews.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">08</span>
               <span class="vdl-title">Отзывы & Распаковки</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
-            <a href="#delivery" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="delivery.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">09</span>
               <span class="vdl-title">Доставка & Оплата</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -292,16 +293,16 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#catalog" class="btn-primary">
+          <a href="catalog.html" class="btn-primary">
             <span>Каталог духов (265+)</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <a href="#quiz" class="btn-secondary">
+          <a href="quiz.html" class="btn-secondary">
             <span>Парфюмерная анкета</span>
           </a>
-          <a href="#secret-boxes" class="btn-secondary">
+          <a href="boxes.html#secret-boxes" class="btn-secondary">
             <span>Secret Box от Владимира Вацика</span>
           </a>
         </div>
@@ -342,7 +343,7 @@
         </div>
 
         <!-- Clean Architectural Consultation Invite (Neatly below frame) -->
-        <a href="#consultation" class="hero-consult-invite-card" title="Записаться на очную консультацию или онлайн-подбор">
+        <a href="consultation.html" class="hero-consult-invite-card" title="Записаться на очную консультацию или онлайн-подбор">
           <div class="hcic-icon-wrap" aria-hidden="true">✦</div>
           <div class="hcic-body">
             <span class="hcic-title">Парфюмерная консультация Владимира</span>
@@ -372,1270 +373,99 @@
     </div>
   </section>
 
-  <!-- Catalog Section -->
-  <section class="section-padding catalog-section" id="catalog">
+
+  <!-- Luxury Storefront Sections Hub -->
+  <section class="home-hub-section" id="storefront-hub">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Коллекция ниши</span>
-        <h2 class="section-title">Каталог нишевой парфюмерии</h2>
+        <span class="section-tag">Навигация по магазину</span>
+        <h2 class="section-title">Коллекция и сервисы</h2>
         <p class="section-descr">
-          Нишевые ароматы на распив (3 мл, 5 мл, 10 мл) и запечатанные флаконы. 100% гарантия подлинности каждого аромата.
+          Выберите нужный раздел: полный каталог из 265+ ароматов, готовые сеты, персональный подбор или оформление подарочного сертификата.
         </p>
       </div>
 
-      <!-- Controls -->
-      <div class="catalog-controls">
-        <div class="catalog-tabs">
-          <button class="tab-btn active" data-category="all">Все духи</button>
-          <button class="tab-btn" data-category="women">Женские</button>
-          <button class="tab-btn" data-category="men">Мужские</button>
-          <button class="tab-btn" data-category="unisex">Унисекс</button>
-        </div>
-
-        <div class="catalog-sub-filters">
-          <div class="search-box">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <input type="text" id="catalogSearch" class="search-input" placeholder="Поиск по аромату, бренду или нотам...">
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <label for="catalogSort" style="font-size: 0.85rem; color: var(--text-muted);">Сортировка:</label>
-            <select id="catalogSort" class="sort-select">
-              <option value="popular">По популярности</option>
-              <option value="price-asc">Сначала доступные</option>
-              <option value="price-desc">Сначала премиальные</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- Products Grid -->
-      <div class="perfumes-grid" id="perfumesGrid"></div>
-
-      <!-- Catalog Pagination & Load More -->
-      <div class="catalog-pagination-wrap" id="catalogPagination">
-        <button class="btn-load-more" id="btnLoadMore">
-          <span>Загрузить еще ароматы</span>
-          <span class="load-more-count" id="loadMoreCount">(+12)</span>
-        </button>
-        <div class="catalog-loaded-info" id="catalogLoadedInfo">Показано 12 из 265 ароматов</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Thematic Aroma Boxes Showcase Section -->
-  <section class="section-padding aroma-boxes-section" id="aroma-boxes">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Коллекционные сеты</span>
-        <h2 class="section-title">Тематические аромабоксы</h2>
-        <p class="section-descr">
-          Сеты из 5 культовых нишевых композиций в атомайзерах по 3 мл или 5 мл. Идеальный способ примерить главные мировые шедевры перед покупкой полного флакона.
-        </p>
-      </div>
-
-      <!-- Aroma Boxes Filter Bar (Animated fly-in upon expanding collection) -->
-      <div class="box-filter-bar" id="aromaBoxFilterBar" role="tablist" aria-label="Фильтры аромабоксов" style="display: none;">
-        <button type="button" class="box-filter-btn active" data-box-gender="all">
-          <span>Все сеты</span>
-          <span class="bf-count">9</span>
-        </button>
-        <button type="button" class="box-filter-btn" data-box-gender="women">
-          <span>Для нее</span>
-          <span class="bf-count">4</span>
-        </button>
-        <button type="button" class="box-filter-btn" data-box-gender="men">
-          <span>Для него</span>
-          <span class="bf-count">3</span>
-        </button>
-        <button type="button" class="box-filter-btn" data-box-gender="unisex">
-          <span>Унисекс</span>
-          <span class="bf-count">2</span>
-        </button>
-      </div>
-
-      <!-- Aroma Boxes Grid -->
-      <div class="aroma-boxes-grid" id="aromaBoxesGrid"></div>
-
-      <!-- Expander Button Bar (Collapse/Expand) -->
-      <div class="aroma-expander-wrap" id="aromaExpanderWrap"></div>
-    </div>
-  </section>
-
-  <!-- Secret Box Showcase Section -->
-  <section class="section-padding secret-section" id="secret-boxes">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Главный эксклюзив</span>
-        <h2 class="section-title">Секретные аромабоксы от Владимира Вацика</h2>
-        <p class="section-descr">
-          Никаких шаблонных наборов и банальных композиций. Каждый Secret Box собирается персонально под ваши предпочтения, внешность и характер. Состав остается волнующей тайной до момента распаковки!
-        </p>
-      </div>
-
-      <!-- Mobile Segmented Controller for Secret Boxes -->
-      <div class="secret-tabs-nav" id="secretTabsNav" role="tablist" aria-label="Секретные боксы">
-        <button type="button" class="secret-tab-btn active" role="tab" aria-selected="true" data-index="0" onclick="window.scrollToSecretCard(0)">
-          <span>Исследователь</span>
-        </button>
-        <button type="button" class="secret-tab-btn" role="tab" aria-selected="false" data-index="1" onclick="window.scrollToSecretCard(1)">
-          <span>★ Коллекционер</span>
-        </button>
-        <button type="button" class="secret-tab-btn" role="tab" aria-selected="false" data-index="2" onclick="window.scrollToSecretCard(2)">
-          <span>Одержимость</span>
-        </button>
-      </div>
-
-      <div class="secret-grid">
-        <!-- Explorer Box -->
-        <div class="secret-card" data-secret-id="secret-исследователь">
-          <div class="secret-card-img-wrap">
-            <img src="assets/img/aromaboxes/secret_box_explorer.jpg" alt="Secret Box Исследователь" loading="lazy">
-          </div>
-          <h3 class="secret-card-level">Исследователь</h3>
-          <span class="secret-card-sub">3–5 нишевых ароматов под ваш запрос</span>
-          <p class="secret-card-desc">
-            Идеальный первый шаг в мир нишевой парфюмерии. Ароматы подбираются по вашей анкете с учетом привычек, стиля и любимых нот.
-          </p>
-          <ul class="secret-features-list">
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>3–5 нишевых ароматов</span>
-            </li>
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Индивидуальный подбор от Владимира Вацика</span>
-            </li>
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Фирменная подарочная упаковка</span>
-            </li>
-          </ul>
-          <div class="secret-card-bottom">
-            <div class="secret-price-box">
-              <span class="secret-old-price" style="display:none;"></span>
-              <span class="secret-current-price">4 900 ₽</span>
+      <div class="home-hub-grid">
+        <a href="catalog.html" class="home-hub-card hhc-featured">
+          <div>
+            <div class="hhc-top">
+              <span class="hhc-num">01</span>
+              <span class="hhc-tag">265+ ароматов</span>
             </div>
-            <button class="btn-primary" onclick="addItemToCartById('secret-исследователь', 'стандарт'); playChime(660);">
-              Заказать бокс
-            </button>
+            <h3 class="hhc-title">Каталог парфюмерии</h3>
+            <p class="hhc-desc">Редкая нишевая парфюмерия в стеклянных атомайзерах от 3 мл и полноценные флаконы с быстрым поиском по нотам и брендам.</p>
           </div>
-        </div>
+          <span class="hhc-cta">Открыть каталог →</span>
+        </a>
 
-        <!-- Collector Box (Hit) -->
-        <div class="secret-card hit" data-secret-id="secret-коллекционер">
-          <span class="secret-badge-hit">★ Безусловный Хит ★</span>
-          <div class="secret-card-img-wrap">
-            <img src="assets/img/aromaboxes/secret_box_collector.jpg" alt="Secret Box Коллекционер" loading="lazy">
-          </div>
-          <h3 class="secret-card-level">Коллекционер</h3>
-          <span class="secret-card-sub">5–8 нишевых ароматов (точно есть позиция 10 мл)</span>
-          <p class="secret-card-desc">
-            Полноценный парфюмерный гардероб на разные состояния и события с расширенной персональной консультацией Владимира.
-          </p>
-          <ul class="secret-features-list">
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>5–8 редких композиций (включая позицию 10 мл)</span>
-            </li>
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Расширенная персональная консультация</span>
-            </li>
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Бесплатная доставка СДЭК по РФ</span>
-            </li>
-          </ul>
-          <div class="secret-card-bottom">
-            <div class="secret-price-box">
-              <span class="secret-old-price" style="display:none;"></span>
-              <span class="secret-current-price">11 900 ₽</span>
+        <a href="boxes.html" class="home-hub-card">
+          <div>
+            <div class="hhc-top">
+              <span class="hhc-num">02</span>
+              <span class="hhc-tag">9 сетов</span>
             </div>
-            <button class="btn-primary" onclick="addItemToCartById('secret-коллекционер', 'стандарт'); playChime(660);">
-              Заказать бокс
-            </button>
+            <h3 class="hhc-title">Тематические аромабоксы</h3>
+            <p class="hhc-desc">Готовые коллекции из 5 культовых ароматов по 3 или 5 мл — идеальный формат для знакомства со знаковыми шедеврами.</p>
           </div>
-        </div>
+          <span class="hhc-cta">Смотреть сеты →</span>
+        </a>
 
-        <!-- Obsession Box (VIP) -->
-        <div class="secret-card" data-secret-id="secret-одержимость">
-          <span class="secret-badge-hit" style="display:none;"></span>
-          <div class="secret-card-img-wrap">
-            <img src="assets/img/aromaboxes/secret_box_obsession.jpg" alt="Secret Box Одержимость" loading="lazy" style="object-position: center 70%;">
-          </div>
-          <h3 class="secret-card-level">Одержимость</h3>
-          <span class="secret-card-sub">8–10 редких композиций + подарки от Владимира Вацика</span>
-          <p class="secret-card-desc">
-            Максимальный парфюмерный опыт: редкие открытия, ароматы для интерьера и секретные подарки. Собирается вокруг вашей личности и эстетики.
-          </p>
-          <ul class="secret-features-list">
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>8–10 неизбитых нишевых ароматов</span>
-            </li>
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Секретные подарки от Владимира Вацика</span>
-            </li>
-            <li class="secret-feature-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Расширенный персональный подбор</span>
-            </li>
-          </ul>
-          <div class="secret-card-bottom">
-            <div class="secret-price-box">
-              <span class="secret-old-price" style="display:none;"></span>
-              <span class="secret-current-price">19 900 ₽</span>
+        <a href="boxes.html#secret-boxes" class="home-hub-card">
+          <div>
+            <div class="hhc-top">
+              <span class="hhc-num">03</span>
+              <span class="hhc-tag">Эксклюзив</span>
             </div>
-            <button class="btn-primary" onclick="addItemToCartById('secret-одержимость', 'стандарт'); playChime(660);">
-              Заказать бокс
-            </button>
+            <h3 class="hhc-title">Secret Box от Владимира</h3>
+            <p class="hhc-desc">Персональный набор-сюрприз, составленный Владимиром Вациком на основе ваших предпочтений и стоп-нот.</p>
           </div>
-        </div>
-      </div>
+          <span class="hhc-cta">Выбрать Secret Box →</span>
+        </a>
 
-      <!-- Mobile Pagination Dots -->
-      <div class="secret-dots-nav" id="secretDotsNav" aria-hidden="true">
-        <span class="secret-dot active" data-index="0" onclick="window.scrollToSecretCard(0)"></span>
-        <span class="secret-dot" data-index="1" onclick="window.scrollToSecretCard(1)"></span>
-        <span class="secret-dot" data-index="2" onclick="window.scrollToSecretCard(2)"></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Interactive Perfume Questionnaire Section (Парфюмерная Анкета Владимира Вацика)
-       ========================================================================== -->
-    <section class="section-padding quiz-section" id="quiz">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Персональный подбор аромата</span>
-        <h2 class="section-title">Парфюмерная анкета Владимира Вацика</h2>
-        <p class="section-descr">
-          Ответьте на 7 лаконичных вопросов по авторской методике. Владимир лично изучит ваши ответы и сформирует персональную ольфакторную формулу для Secret Box или флакона.
-        </p>
-      </div>
-
-      <div class="quiz-concierge-wrap">
-        <!-- Progressive Concierge Card with Rich Shading & Tactile Depth -->
-        <div class="quiz-wizard-card">
-          
-          <!-- Top Progress Tracker -->
-          <div class="quiz-progress-bar-wrap">
-            <div class="quiz-progress-meta">
-              <span class="quiz-current-step-label" id="quizStepLabel">Вопрос 1 из 7: Кому подбираем аромат?</span>
-              <span class="quiz-progress-percent" id="quizProgressPercent">14%</span>
+        <a href="quiz.html" class="home-hub-card">
+          <div>
+            <div class="hhc-top">
+              <span class="hhc-num">04</span>
+              <span class="hhc-tag">За 2 минуты</span>
             </div>
-            <div class="quiz-progress-track">
-              <div class="quiz-progress-fill" id="quizProgressFill" style="width: 14%;"></div>
+            <h3 class="hhc-title">Парфюмерная анкета</h3>
+            <p class="hhc-desc">Ответьте на 7 коротких вопросов — эксперт соберёт вашу персональную формулу парфюмерного гардероба.</p>
+          </div>
+          <span class="hhc-cta">Пройти анкету →</span>
+        </a>
+
+        <a href="consultation.html" class="home-hub-card">
+          <div>
+            <div class="hhc-top">
+              <span class="hhc-num">05</span>
+              <span class="hhc-tag">Онлайн и Москва</span>
             </div>
+            <h3 class="hhc-title">Консультация с экспертом</h3>
+            <p class="hhc-desc">Персональный онлайн-разбор или личная встреча в Москве с чемоданом на 150+ редких композиций.</p>
           </div>
+          <span class="hhc-cta">Записаться →</span>
+        </a>
 
-          <!-- Wizard Form Body -->
-          <form id="quizForm" class="quiz-form" onsubmit="return false;">
-            
-            <!-- STEP 1: ПРОФИЛЬ / КОМУ -->
-            <div class="quiz-step active" id="quizStep1" data-step="1">
-              <div class="quiz-step-header">
-                <h3 class="quiz-step-title">Для кого мы подбираем идеальный аромат?</h3>
-                <p class="quiz-step-sub">Это определит ключевой вектор пирамиды и баланс аккордов.</p>
-              </div>
-
-              <div class="quiz-tactile-grid" data-question="gender">
-                <button type="button" class="quiz-tactile-card selected" data-val="Девушке / Женщине">
-                  <span class="qtc-icon">🌸</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Для девушки / женщины</span>
-                    <span class="qtc-desc">Феминный профиль: чувственные цветы, нежный кашемир, мускусы и утонченный шлейф</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Мужчине">
-                  <span class="qtc-icon">🎩</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Для мужчины</span>
-                    <span class="qtc-desc">Маскулинный профиль: благородная древесина, специи, табак, кожа и весомый стержень</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Чистый Унисекс / Ниша">
-                  <span class="qtc-icon">⚖️</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Чистый Унисекс / Ниша</span>
-                    <span class="qtc-desc">Вне рамок и гендера: концептуальная нишевая парфюмерия для истинных ценителей</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="В подарок">
-                  <span class="qtc-icon">🎁</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">В подарок близкому</span>
-                    <span class="qtc-desc">Беспроигрышные комплиментарные формулы с вау-эффектом и роскошным шлейфом</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-              </div>
-
-              <div class="quiz-actions-row">
-                <div></div>
-                <button type="button" class="btn-primary" onclick="window.quizNextStep(1)">
-                  <span>Далее: Повод и назначение</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
+        <a href="certificates.html" class="home-hub-card">
+          <div>
+            <div class="hhc-top">
+              <span class="hhc-num">06</span>
+              <span class="hhc-tag">От 3 000 ₽</span>
             </div>
-
-            <!-- STEP 2: ПОВОД И ОБСТАНОВКА -->
-            <div class="quiz-step" id="quizStep2" data-step="2">
-              <div class="quiz-step-header">
-                <h3 class="quiz-step-title">Главный повод и обстановка звучания</h3>
-                <p class="quiz-step-sub">Куда и при каких обстоятельствах вы будете чаще всего носить парфюм?</p>
-              </div>
-
-              <div class="quiz-tactile-grid" data-question="occasion">
-                <button type="button" class="quiz-tactile-card selected" data-val="Каждый день & Офис">
-                  <span class="qtc-icon">☀️</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Каждый день & Офис</span>
-                    <span class="qtc-desc">Интеллигентный, политкорректный, гармонично звучит в закрытых помещениях</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Вечерний выход & Рестораны">
-                  <span class="qtc-icon">🍷</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Вечерний выход & Рестораны</span>
-                    <span class="qtc-desc">Глубокий, тягучий, богатый шлейф для светских вечеров, театров и красивых ужинов</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Романтика & Свидания">
-                  <span class="qtc-icon">💫</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Романтика & Свидания</span>
-                    <span class="qtc-desc">Мягкий, притягательный, интимный афродизиак, пробуждающий эмоции и желание быть ближе</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Статус & Деловые переговоры">
-                  <span class="qtc-icon">🏛️</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Статус & Деловые переговоры</span>
-                    <span class="qtc-desc">Строгая элегантность, безупречный стиль, дорогая кожа, весомость и авторитет</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-              </div>
-
-              <div class="quiz-actions-row">
-                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(2)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Назад</span>
-                </button>
-                <button type="button" class="btn-primary" onclick="window.quizNextStep(2)">
-                  <span>Далее: Желаемое впечатление</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 3: ЖЕЛАЕМОЕ ВПЕЧАТЛЕНИЕ / АТМОСФЕРА -->
-            <div class="quiz-step" id="quizStep3" data-step="3">
-              <div class="quiz-step-header">
-                <h3 class="quiz-step-title">Какое эмоциональное впечатление вы хотите производить?</h3>
-                <p class="quiz-step-sub">Парфюм — это ваше невидимое послание. Что он должен транслировать окружающим?</p>
-              </div>
-
-              <div class="quiz-tactile-grid" data-question="vibe">
-                <button type="button" class="quiz-tactile-card selected" data-val="Чувственность & Магнетизм">
-                  <span class="qtc-icon">🔥</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Чувственность & Магнетизм</span>
-                    <span class="qtc-desc">Соблазнительный, манящий шлейф, который собирает искренние комплименты окружающих</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Статус & Авторитет">
-                  <span class="qtc-icon">🏛️</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Статус & Авторитет</span>
-                    <span class="qtc-desc">Серьезный, респектабельный и дорогой образ лидера. Благородное дерево и табак</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Чистота белой рубашки">
-                  <span class="qtc-icon">💧</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Чистота белой рубашки</span>
-                    <span class="qtc-desc">Хрустящий хлопок, аристократичные альдегиды, горный воздух и кристальная свежесть</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-
-                <button type="button" class="quiz-tactile-card" data-val="Уют & Кашемир">
-                  <span class="qtc-icon">☕</span>
-                  <div class="qtc-body">
-                    <span class="qtc-title">Уют & Кашемир</span>
-                    <span class="qtc-desc">Мягкое обволакивающее тепло: согревающий сандал, бобы тонка, корица и бурбонская ваниль</span>
-                  </div>
-                  <span class="qtc-check" aria-hidden="true">✓</span>
-                </button>
-              </div>
-
-              <div class="quiz-actions-row">
-                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(3)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Назад</span>
-                </button>
-                <button type="button" class="btn-primary" onclick="window.quizNextStep(3)">
-                  <span>Далее: Дистанция шлейфа</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 4: РАДИУС ШЛЕЙФА (SILLAGE) -->
-            <div class="quiz-step" id="quizStep4" data-step="4">
-              <div class="quiz-step-header">
-                <h3 class="quiz-step-title">Радиус шлейфа: какая дистанция проекции для вас комфортна?</h3>
-                <p class="quiz-step-sub">На каком расстоянии окружающие должны ощущать ваш аромат?</p>
-              </div>
-
-              <div class="quiz-sillage-cards-grid" data-question="sillage">
-                
-                <div class="quiz-sillage-card" data-val="Интимный (0.5 м)">
-                  <div class="qsc-radar-indicator">
-                    <span class="qsc-radar-circle circle-1"></span>
-                    <span class="qsc-radar-center"></span>
-                  </div>
-                  <div class="qsc-distance-pill">0.5 метра</div>
-                  <h5 class="qsc-title">Только для себя</h5>
-                  <span class="qsc-subtitle">Интимный кокон</span>
-                  <p class="qsc-desc">Звучит близко к коже в зоне объятий. Деликатный, не вторгается в чужое пространство.</p>
-                  <div class="qsc-meter-track"><span style="width: 25%;"></span></div>
-                </div>
-
-                <div class="quiz-sillage-card" data-val="Близкая дистанция (1.0 м)">
-                  <div class="qsc-radar-indicator">
-                    <span class="qsc-radar-circle circle-2"></span>
-                    <span class="qsc-radar-circle circle-1"></span>
-                    <span class="qsc-radar-center"></span>
-                  </div>
-                  <div class="qsc-distance-pill">1.0 метр</div>
-                  <h5 class="qsc-title">Близкая дистанция</h5>
-                  <span class="qsc-subtitle">Зона рукопожатия</span>
-                  <p class="qsc-desc">Слышен при личном общении и за одним столом. Безупречный европейский деловой этикет.</p>
-                  <div class="qsc-meter-track"><span style="width: 50%;"></span></div>
-                </div>
-
-                <div class="quiz-sillage-card selected" data-val="Интеллигентный шлейф (2.0 м)">
-                  <div class="qsc-recommend-tag">ВЫБОР ВЛАДИМИРА</div>
-                  <div class="qsc-radar-indicator">
-                    <span class="qsc-radar-circle circle-3"></span>
-                    <span class="qsc-radar-circle circle-2"></span>
-                    <span class="qsc-radar-circle circle-1"></span>
-                    <span class="qsc-radar-center"></span>
-                  </div>
-                  <div class="qsc-distance-pill gold-pill">2.0 метра</div>
-                  <h5 class="qsc-title">Интеллигентный шлейф</h5>
-                  <span class="qsc-subtitle">Идеальный баланс</span>
-                  <p class="qsc-desc">Тонкий красивый след в воздухе при движении. Собирает максимальное число комплиментов.</p>
-                  <div class="qsc-meter-track"><span style="width: 75%;"></span></div>
-                </div>
-
-                <div class="quiz-sillage-card" data-val="Диффузный шлейф (3.0+ м)">
-                  <div class="qsc-radar-indicator">
-                    <span class="qsc-radar-circle circle-4"></span>
-                    <span class="qsc-radar-circle circle-3"></span>
-                    <span class="qsc-radar-circle circle-2"></span>
-                    <span class="qsc-radar-circle circle-1"></span>
-                    <span class="qsc-radar-center"></span>
-                  </div>
-                  <div class="qsc-distance-pill">3.0+ метра</div>
-                  <h5 class="qsc-title">Maximum Impact</h5>
-                  <span class="qsc-subtitle">Диффузный шлейф</span>
-                  <p class="qsc-desc">Заполняет собой пространство, заявляет о вашем появлении и запоминается навсегда.</p>
-                  <div class="qsc-meter-track"><span style="width: 100%;"></span></div>
-                </div>
-
-              </div>
-
-              <div class="quiz-actions-row">
-                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(4)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Назад</span>
-                </button>
-                <button type="button" class="btn-primary" onclick="window.quizNextStep(4)">
-                  <span>Далее: Уровень сладости</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 5: УРОВЕНЬ СЛАДОСТИ -->
-            <div class="quiz-step" id="quizStep5" data-step="5">
-              <div class="quiz-step-header">
-                <h3 class="quiz-step-title">Уровень сладости в парфюмерной пирамиде</h3>
-                <p class="quiz-step-sub">Какая степень гурманских и сладких оттенков вам нравится?</p>
-              </div>
-
-              <div class="quiz-sweetness-cards" data-question="sweetness">
-                <button type="button" class="quiz-meter-card" data-val="Сухой / Без сахара (0%)">
-                  <div class="qmc-top">
-                    <span class="qmc-gauge">0%</span>
-                    <span class="qmc-val">Сухой / Без сахара</span>
-                  </div>
-                  <p class="qmc-desc">Горькие степные травы, мох, сухой ветивер, минералы, холодная замша.</p>
-                </button>
-
-                <button type="button" class="quiz-meter-card selected" data-val="Умеренная сладость (50%)">
-                  <div class="qmc-top">
-                    <span class="qmc-gauge gold">50%</span>
-                    <span class="qmc-val">Умеренная сладость</span>
-                  </div>
-                  <p class="qmc-desc">Золотой баланс: легкий акцент бобов тонка, ягод или амбры без липкой приторности.</p>
-                </button>
-
-                <button type="button" class="quiz-meter-card" data-val="Гурманский десерт (100%)">
-                  <div class="qmc-top">
-                    <span class="qmc-gauge">100%</span>
-                    <span class="qmc-val">Гурманский десерт</span>
-                  </div>
-                  <p class="qmc-desc">Сливочное пралине, шоколад, соленая карамель и густая бурбонская ваниль.</p>
-                </button>
-              </div>
-
-              <div class="quiz-actions-row">
-                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(5)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Назад</span>
-                </button>
-                <button type="button" class="btn-primary" onclick="window.quizNextStep(5)">
-                  <span>Далее: Семейства нот</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 6: ЛЮБИМЫЕ СЕМЕЙСТВА НОТ -->
-            <div class="quiz-step" id="quizStep6" data-step="6">
-              <div class="quiz-step-header">
-                <h3 class="quiz-step-title">Какие ольфакторные семействa вам ближе всего?</h3>
-                <p class="quiz-step-sub">Выберите от 1 до 4 любимых направлений нот.</p>
-              </div>
-
-              <div class="quiz-families-grid" data-question="families">
-                
-                <div class="quiz-family-card selected" data-family="Белоцветочные">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🌸</span>
-                    <h4 class="q-fam-title">Белоцветочные</h4>
-                  </div>
-                  <p class="q-fam-desc">Жасмин, гардения, тубероза. Сливочно-наркотический, чувственный характер.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-                <div class="quiz-family-card selected" data-family="Древесные & Уд">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🪵</span>
-                    <h4 class="q-fam-title">Древесные & Уд</h4>
-                  </div>
-                  <p class="q-fam-desc">Сандал, кедр, ветивер, уд. Благородные, медитативные и статусные аккорды.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-                <div class="quiz-family-card" data-family="Кожаные & Замшевые">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🧥</span>
-                    <h4 class="q-fam-title">Кожаные & Замша</h4>
-                  </div>
-                  <p class="q-fam-desc">Тосканская кожа, бархатная замша. Аромат роскошного салона и дорогой куртки.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-                <div class="quiz-family-card" data-family="Пряные & Теплые">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🌶️</span>
-                    <h4 class="q-fam-title">Пряные & Теплые</h4>
-                  </div>
-                  <p class="q-fam-desc">Кардамон, корица, мускат, шафран, розовый перец. Согревающие и пикантные.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-                <div class="quiz-family-card" data-family="Цитрусовые & Свежие">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🍋</span>
-                    <h4 class="q-fam-title">Цитрусы & Бриз</h4>
-                  </div>
-                  <p class="q-fam-desc">Калабрийский бергамот, юдзу, грейпфрут, акватика. Заряд бодрости и чистоты.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-                <div class="quiz-family-card" data-family="Гурманские">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🍮</span>
-                    <h4 class="q-fam-title">Гурманские</h4>
-                  </div>
-                  <p class="q-fam-desc">Ваниль, кофе, карамель, бобы тонка. Самая комплиментарная группа в холодное время.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-                <div class="quiz-family-card" data-family="Табачные">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🍂</span>
-                    <h4 class="q-fam-title">Табачные</h4>
-                  </div>
-                  <p class="q-fam-desc">Листья кубинского табака, вишневый табак, пепел. Густой аристократичный характер.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-                <div class="quiz-family-card" data-family="Зеленые & Травяные">
-                  <div class="q-fam-header">
-                    <span class="q-fam-icon">🌿</span>
-                    <h4 class="q-fam-title">Зелень & Инжир</h4>
-                  </div>
-                  <p class="q-fam-desc">Листья инжира, мох, базилик, утренняя трава. Природная свежесть и гармония.</p>
-                  <span class="q-fam-check">✓</span>
-                </div>
-
-              </div>
-
-              <div class="quiz-actions-row">
-                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(6)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Назад</span>
-                </button>
-                <button type="button" class="btn-primary" onclick="window.quizNextStep(6)">
-                  <span>Далее: Ваши контакты</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 7: КОНТАКТЫ И ПОЖЕЛАНИЯ -->
-            <div class="quiz-step" id="quizStep7" data-step="7">
-              <div class="quiz-step-header">
-                <h3 class="quiz-step-title">Куда прислать готовую карту аромата?</h3>
-                <p class="quiz-step-sub">Владимир Вацик лично изучит ваши ответы и ответит в течение 15–30 минут.</p>
-              </div>
-
-              <div class="quiz-inputs-stack">
-                <div class="quiz-field-group">
-                  <label for="quizName" class="quiz-field-label">Ваше имя *</label>
-                  <input type="text" id="quizName" class="quiz-text-input" placeholder="Например: Александр или Анна" required>
-                </div>
-
-                <div class="quiz-field-group">
-                  <label for="quizTelegram" class="quiz-field-label">Telegram (@username) или телефон *</label>
-                  <input type="text" id="quizTelegram" class="quiz-text-input" placeholder="@username или +7 (999) 000-00-00" required>
-                  <span class="quiz-field-hint">Без спама. Контакт нужен только для личной отправки разбора.</span>
-                </div>
-
-                <div class="quiz-field-group">
-                  <label for="quizTabooCustom" class="quiz-field-label">Стоп-ноты и табу (необязательно)</label>
-                  <input type="text" id="quizTabooCustom" class="quiz-text-input" placeholder="Например: не люблю розу, резкий ладан или мускус">
-                </div>
-              </div>
-
-              <div class="quiz-actions-row">
-                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(7)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Назад</span>
-                </button>
-                <button type="button" class="btn-primary" onclick="window.finishQuizAndShowResult()">
-                  <span>Сформировать карту аромата</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 8: РЕЗУЛЬТАТ / ПАСПОРТ АРОМАТА -->
-            <div class="quiz-step" id="quizStep8" data-step="8">
-              <div class="quiz-result-card">
-                
-                <div class="qrc-seal-header">
-                  <div class="qrc-seal-badge">
-                    <span class="qrc-seal-monogram">VP</span>
-                  </div>
-                  <div class="qrc-seal-titles">
-                    <span class="qrc-tag">ОЛЬФАКТОРНЫЙ ПРОФИЛЬ ГОТОВ</span>
-                    <h3 class="qrc-title" id="quizSummaryTitle">Персональная карта аромата</h3>
-                    <p class="qrc-subtitle">Сформирована на базе авторской методологии Владимира Вацика</p>
-                  </div>
-                </div>
-
-                <div class="qrc-summary-grid">
-                  <div class="qrc-summary-item">
-                    <span class="qrc-item-label">ПРОФИЛЬ:</span>
-                    <span class="qrc-item-val" id="resSummaryGender">Чистый Унисекс</span>
-                  </div>
-                  <div class="qrc-summary-item">
-                    <span class="qrc-item-label">ПОВОД:</span>
-                    <span class="qrc-item-val" id="resSummaryOccasion">Каждый день & Офис</span>
-                  </div>
-                  <div class="qrc-summary-item">
-                    <span class="qrc-item-label">АТМОСФЕРА:</span>
-                    <span class="qrc-item-val" id="resSummaryVibe">Чувственность & Магнетизм</span>
-                  </div>
-                  <div class="qrc-summary-item">
-                    <span class="qrc-item-label">ШЛЕЙФ:</span>
-                    <span class="qrc-item-val" id="resSummarySillage">Интеллигентный (2.0 м)</span>
-                  </div>
-                  <div class="qrc-summary-item">
-                    <span class="qrc-item-label">СЛАДОСТЬ:</span>
-                    <span class="qrc-item-val" id="resSummarySweetness">Умеренная (50%)</span>
-                  </div>
-                  <div class="qrc-summary-item">
-                    <span class="qrc-item-label">АККОРДЫ:</span>
-                    <span class="qrc-item-val" id="resSummaryFamilies">Белоцветочные, Древесные</span>
-                  </div>
-                </div>
-
-                <div class="qrc-actions-box">
-                  <h4 class="qrc-action-heading">Выберите удобный способ получения:</h4>
-                  <div class="qrc-buttons-row">
-                    <button type="button" class="btn-primary qrc-tg-btn" onclick="window.submitQuizToTelegram()">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-                      </svg>
-                      <span>Отправить анкету лично Владимиру в Telegram</span>
-                    </button>
-                    <button type="button" class="btn-secondary qrc-box-btn" onclick="window.attachQuizToSecretBox()">
-                      <span>Прикрепить анкету к заказу Secret Box</span>
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="quiz-actions-row">
-                <button type="button" class="btn-secondary" onclick="window.quizPrevStep(8)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  <span>Изменить ответы</span>
-                </button>
-                <div></div>
-              </div>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ==========================================================================
-       Gift Certificates Studio (Подарочные сертификаты нового поколения)
-       ========================================================================== -->
-  <section class="section-padding cert-section" id="certificates">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Подарок безупречного вкуса</span>
-        <h2 class="section-title">Подарочный сертификат Volodium</h2>
-        <p class="section-descr">
-          Живой персонализированный сертификат на авторскую аромаконсультацию Владимира Вацика или свободный депозит на любые ароматы из коллекции. Настройте имя, сумму и оформите за пару кликов.
-        </p>
-      </div>
-
-      <div class="cert-studio-grid">
-        <!-- 3D Interactive Live Certificate Display -->
-        <div class="cert-stage-col">
-          <div class="cert-3d-scene" id="cert3dScene">
-            <div class="cert-card-3d" id="certCard3d" role="region" aria-label="Интерактивный сертификат">
-              <!-- Holographic / Foil Specular Glare -->
-              <div class="cert-foil-glare" id="certFoilGlare"></div>
-
-              <!-- FRONT FACE: Certificate -->
-              <div class="cert-card-face cert-card-front">
-                <!-- Left Parchment Column (Live Reactive Text) -->
-                <div class="cert-parchment">
-                  <div class="cert-parchment-header">
-                    <div class="cert-gold-monogram">VP</div>
-                    <div class="cert-brand-wrap">
-                      <span class="cert-brand-mono">VOLODIUM PARFUM</span>
-                      <span class="cert-edition-sub">EDITION 2026 • PARIS — MOSCOW</span>
-                    </div>
-                  </div>
-
-                  <div class="cert-title-wrap">
-                    <h3 class="cert-main-title">ПОДАРОЧНЫЙ СЕРТИФИКАТ</h3>
-                    <div class="cert-gold-rule"></div>
-                  </div>
-
-                  <div class="cert-service-tag-box">
-                    <span class="cert-field-label">НАЗНАЧЕНИЕ:</span>
-                    <div class="cert-field-service" id="certLiveService">Индивидуальный парфюмерный гардероб</div>
-                  </div>
-
-                  <div class="cert-recipient-deposit-row">
-                    <div class="cert-field-block">
-                      <span class="cert-field-label">КОМУ:</span>
-                      <div class="cert-field-recipient" id="certLiveRecipient">Алисе</div>
-                    </div>
-
-                    <div class="cert-field-block">
-                      <span class="cert-field-label">НОМИНАЛ:</span>
-                      <div class="cert-field-deposit" id="certLiveDeposit">5 000 ₽</div>
-                    </div>
-                  </div>
-
-                  <div class="cert-parchment-footer">
-                    <div class="cert-seal-serial">
-                      <span class="cert-serial-tag" id="certLiveSerial">№ VP-2026-8812</span>
-                      <span class="cert-valid-text">Действителен до <strong id="certLiveExpiry">01.01.2027</strong></span>
-                    </div>
-                    <div class="cert-contact-tag">
-                      <span>Бутик: <strong>@volodiumparfum</strong></span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Right Photo Column (Vladimir with Atomizer) -->
-                <div class="cert-photo-col">
-                  <img src="assets/img/certificates/vladimir_portrait_right.jpg" alt="Владимир Вацик" class="cert-portrait-img">
-                </div>
-
-                <!-- Flip Hint Chip on Front -->
-                <button type="button" class="cert-flip-chip" onclick="window.toggleCertFlip(event)" aria-label="Посмотреть крафтовый конверт">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-                  </svg>
-                  <span>Крафтовый конверт</span>
-                </button>
-              </div>
-
-              <!-- BACK FACE: Authentic Craft Envelope with Black Wax Seal & Dried Flowers -->
-              <div class="cert-card-face cert-card-back">
-                <img src="assets/img/certificates/real_certificate_envelope.jpg" alt="Аутентичный крафтовый конверт с черным сургучом и сухоцветами" class="cert-envelope-full-img">
-                <div class="cert-envelope-badge-bar">
-                  <span class="cert-envelope-badge">ФИРМЕННАЯ УПАКОВКА В КОМПЛЕКТЕ</span>
-                  <button type="button" class="cert-flip-back-btn" onclick="window.toggleCertFlip(event)" aria-label="Вернуться к сертификату">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-                    </svg>
-                    <span>Показать сертификат</span>
-                  </button>
-                </div>
-              </div>
-
-            </div>
+            <h3 class="hhc-title">Подарочные сертификаты</h3>
+            <p class="hhc-desc">Электронный сертификат или фирменный конверт с сургучной печатью — беспроигрышный подарок на любой случай.</p>
           </div>
-
-          <!-- Format Preview & Authentic Handmade Envelope Showcase -->
-          <div class="cert-packaging-preview-box">
-            <div class="cert-pack-thumb cert-pack-thumb-luxury">
-              <img src="assets/img/certificates/real_certificate_envelope.jpg" alt="Аутентичный крафтовый конверт с черным сургучом и сухоцветами" loading="lazy">
-            </div>
-            <div class="cert-pack-text">
-              <span class="cert-pack-badge">ПОДАРОЧНОЕ ОФОРМЛЕНИЕ В КОМПЛЕКТЕ</span>
-              <span class="cert-pack-title">Крафтовый конверт с сургучом & сухоцветами</span>
-              <p class="cert-pack-desc">
-                Физический формат доставляется в дизайнерском фактурном крафтовом конверте с атласной лентой, веточкой живых сухоцветов и личным сургучом «VP». Нажмите на карточку, чтобы перевернуть её.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Interactive Configurator Studio -->
-        <div class="cert-controls-col">
-          <div class="cert-configurator-card">
-            <h3 class="cert-config-title">Конфигуратор сертификата</h3>
-            <p class="cert-config-sub">Все изменения отображаются на карте в реальном времени</p>
-
-            <!-- 1. Format Choice -->
-            <div class="cert-form-group">
-              <label class="cert-label">1. Формат подарка</label>
-              <div class="cert-format-switcher">
-                <button type="button" class="cert-format-btn active" data-format="digital" onclick="window.setCertFormat('digital')">
-                  <span class="fmt-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                      <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                    </svg>
-                  </span>
-                  <div class="fmt-info">
-                    <span class="fmt-name">Электронный</span>
-                    <span class="fmt-desc">Мгновенно в Telegram / PDF</span>
-                  </div>
-                </button>
-                <button type="button" class="cert-format-btn" data-format="physical" onclick="window.setCertFormat('physical')">
-                  <span class="fmt-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 12 20 22 4 22 4 12"></polyline>
-                      <rect x="2" y="7" width="20" height="5"></rect>
-                      <line x1="12" y1="22" x2="12" y2="7"></line>
-                      <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
-                      <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
-                    </svg>
-                  </span>
-                  <div class="fmt-info">
-                    <span class="fmt-name">Конверт с сургучом</span>
-                    <span class="fmt-desc">Крафт + доставка СДЭК</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            <!-- 2. Recipient Name -->
-            <div class="cert-form-group">
-              <label class="cert-label" for="certRecipientInput">2. Имя получателя (Кому)</label>
-              <div class="cert-input-wrap">
-                <input type="text" id="certRecipientInput" class="cert-input-text" value="Алисе" placeholder="Например: Алисе, Любимой, Максиму">
-              </div>
-            </div>
-
-            <!-- 3. Nominal / Deposit -->
-            <div class="cert-form-group">
-              <label class="cert-label">3. Номинал депозита</label>
-              <div class="cert-presets-grid">
-                <button type="button" class="cert-preset-btn" data-amount="3000" onclick="window.setCertAmount(3000)">3 000 ₽</button>
-                <button type="button" class="cert-preset-btn active" data-amount="5000" onclick="window.setCertAmount(5000)">5 000 ₽ <span class="preset-hit">★ Хит</span></button>
-                <button type="button" class="cert-preset-btn" data-amount="10000" onclick="window.setCertAmount(10000)">10 000 ₽</button>
-                <button type="button" class="cert-preset-btn" data-amount="15000" onclick="window.setCertAmount(15000)">15 000 ₽</button>
-                <button type="button" class="cert-preset-btn" data-amount="25000" onclick="window.setCertAmount(25000)">25 000 ₽</button>
-              </div>
-              <div class="cert-custom-deposit-row">
-                <input type="number" id="certCustomAmount" class="cert-input-text" placeholder="Или укажите свою сумму в рублях" min="1000" max="100000" step="500">
-              </div>
-            </div>
-
-            <!-- 4. Service Selection -->
-            <div class="cert-form-group">
-              <label class="cert-label">4. Назначение сертификата</label>
-              <div class="cert-services-list">
-                <label class="cert-service-opt active">
-                  <input type="radio" name="certServiceRadio" value="consultation" checked onchange="window.setCertService('consultation')">
-                  <div class="service-opt-body">
-                    <span class="service-opt-title">Аромаконсультация и гардероб</span>
-                    <span class="service-opt-desc">Индивидуальный аудит и подбор от Владимира Вацика</span>
-                  </div>
-                </label>
-                <label class="cert-service-opt">
-                  <input type="radio" name="certServiceRadio" value="deposit" onchange="window.setCertService('deposit')">
-                  <div class="service-opt-body">
-                    <span class="service-opt-title">Свободный депозит на любые духи</span>
-                    <span class="service-opt-desc">Получатель сможет выбрать любые отливанты и флаконы</span>
-                  </div>
-                </label>
-                <label class="cert-service-opt">
-                  <input type="radio" name="certServiceRadio" value="secret_box" onchange="window.setCertService('secret_box')">
-                  <div class="service-opt-body">
-                    <span class="service-opt-title">Персональный Secret Box</span>
-                    <span class="service-opt-desc">Эксклюзивный сюрприз-бокс с подарками</span>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <!-- 5. Optional Greeting Message -->
-            <div class="cert-form-group">
-              <label class="cert-label" for="certGreetingInput">5. Пожелание получателю (по желанию)</label>
-              <textarea id="certGreetingInput" class="cert-input-text cert-textarea-compact" rows="2" placeholder="Например: С днем рождения! Выбери свой неповторимый аромат..."></textarea>
-            </div>
-
-            <!-- Configurator Summary & Action Buttons -->
-            <div class="cert-summary-box">
-              <div class="cert-sum-row">
-                <span class="cert-sum-label">Итого к оплате:</span>
-                <span class="cert-sum-val" id="certSumDisplay">5 000 ₽</span>
-              </div>
-              <div class="cert-action-buttons">
-                <button type="button" class="btn-primary cert-btn-cart" id="btnAddToCartCert" onclick="window.addCertificateToCart()">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                    <line x1="3" y1="6" x2="21" y2="6"/>
-                    <path d="M16 10a4 4 0 0 1-8 0"/>
-                  </svg>
-                  <span>Добавить сертификат в корзину</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Perfume Consultation Section (Парфюмерная консультация Владимира Вацика)
-       ========================================================================== -->
-  <section class="section-padding consultation-section" id="consultation">
-    <div class="container">
-      
-      <!-- Section Header -->
-      <div class="section-header" style="text-align: center;">
-        <span class="section-tag">Индивидуальный разбор</span>
-        <h2 class="section-title">Парфюмерная консультация Владимира Вацика</h2>
-        <p class="section-descr">
-          Профессиональный аудит и подбор гардероба от основателя бутика. Выберите комфортный формат: онлайн-разбор по анкете или очная встреча в центре Москвы с чемоданом на 150+ редких ароматов.
-        </p>
-      </div>
-
-      <!-- 2 Clean, Perfectly Symmetrical Consultation Cards -->
-      <div class="consult-methods-grid">
-        
-        <!-- 1 СПОСОБ: Подбор онлайн -->
-        <div class="consult-method-card">
-          <div class="method-card-media">
-            <img src="assets/img/consultation/online_selection_infographic.jpg" alt="Инфографика онлайн-подбора по парфюмерной анкете" decoding="async" onerror="this.onerror=null;this.src='assets/img/editorial/vladimir_blotters_monochrome.jpg'">
-            <span class="method-card-badge">ОНЛАЙН-ПОДБОР</span>
-          </div>
-
-          <div class="method-card-body">
-            <div class="method-card-header-block">
-              <h3 class="method-card-heading">Подбор по парфюмерной анкете</h3>
-              <span class="method-card-subheading">Персональный разбор ольфакторного профиля за 1 минуту</span>
-            </div>
-
-            <ul class="method-checklist">
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Анализ ваших предпочтений, характера и желаемого шлейфа</span>
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Прямой контакт и рекомендации основателя в Telegram</span>
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Сборка персонального сета отливантов или Secret Box</span>
-              </li>
-            </ul>
-
-            <div class="method-footer-row">
-              <div class="method-price-box">
-                <span class="method-price-amount">0 ₽</span>
-                <span class="method-price-note">Входит в стоимость сета</span>
-              </div>
-              <div class="method-btns-wrap">
-                <a href="#quiz" class="btn-primary method-action-btn">Заполнить анкету →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2 СПОСОБ: Офлайн в Москве -->
-        <div class="consult-method-card hit">
-          <div class="method-card-media">
-            <img src="assets/img/consultation/consult_offline_suitcase_enhanced.jpg" alt="Очная консультация в Москве с чемоданом ароматов Владимира Вацика" decoding="async" onerror="this.onerror=null;this.src='assets/img/consultation/consult_offline_suitcase_retouched.jpg'">
-            <span class="method-card-badge gold-badge">★ ОЧНАЯ ВСТРЕЧА В МОСКВЕ ★</span>
-          </div>
-
-          <div class="method-card-body">
-            <div class="method-card-header-block">
-              <h3 class="method-card-heading">Личная сессия в Москве</h3>
-              <span class="method-card-subheading">Индивидуальный разбор вашего гардероба и подбор из 350+ ароматов</span>
-            </div>
-
-            <ul class="method-checklist">
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Индивидуальный разбор вашего существующего гардероба ароматов</span>
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Персональный подбор ароматов под ваш точный запрос</span>
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Личный подбор ароматов из эксклюзивной коллекции в 350+ флаконов</span>
-              </li>
-            </ul>
-
-            <div class="method-footer-row">
-              <div class="method-price-box">
-                <span class="method-price-amount">5 000 ₽</span>
-                <span class="method-price-note">45–60 минут индивидуально</span>
-              </div>
-              <div class="method-btns-wrap">
-                <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BE%D1%87%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20%D0%B2%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B5%20(5%20000%20%D1%80%D1%83%D0%B1)" target="_blank" rel="noopener noreferrer" class="btn-primary method-action-btn">Записаться на встречу →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section-padding reviews-section" id="reviews">
-    <div class="container">
-      <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
-        <span class="section-tag">Живой опыт</span>
-        <h2 class="section-title">Распаковки и отзывы</h2>
-        <p class="section-descr">
-          Честные впечатления клиентов о стойкости, подборе ароматов и авторской упаковке заказов.
-        </p>
-      </div>
-
-      <!-- Symmetrical Haute Parfumerie Review Gallery (Real Telegram Feedback) -->
-      <div class="reviews-editorial-grid">
-        <article class="review-editorial-card">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Аромабокс</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Kirill Belov</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Арома-бокс приехал, всё дошло в идеальном состоянии — упаковано с душой и вниманием к деталям. Спасибо за атмосферу, которую создаёшь! Парфюмы с порога заявили о себе — всё в моём духе. Рад, что выбрал тебя! Отдельное спасибо за секретный ништячок Al Thaïr!»
-          </p>
-          <div class="rec-photo-thumb">
-            <img src="assets/img/reviews/review_box_kirill.jpg" alt="Распаковка арома-бокса Volodium от Кирилла" loading="lazy" decoding="async">
-          </div>
-        </article>
-
-        <article class="review-editorial-card">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Подбор вслепую</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Юлианна</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Владимир, спасибо огромное за подбор! Заказывала практически вслепую и переживала, но попадание в точку! Особенно Wavechild — любовь с первого пшика. Видно, что стараешься подобрать под человека, а не просто продать. Упаковка с фирменным посланием — отдельный вайб!»
-          </p>
-          <div class="rec-photo-thumb">
-            <img src="assets/img/reviews/review_box_open_motto.jpg" alt="Крафтовый бокс Volodium с посланием «Открой. Вдохни. Почувствуй»" loading="lazy" decoding="async" style="object-position: center 65%;">
-          </div>
-        </article>
-
-        <article class="review-editorial-card">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Парные сеты</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Дарья & Муж</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Большое спасибо! Упаковка шикарная, и отдельное спасибо за обозначение, какая кому ❤️ От заказа до получения — сплошное эстетическое удовольствие!»
-          </p>
-          <div class="rec-photo-thumb">
-            <img src="assets/img/reviews/review_boxes_labeled.jpg" alt="Подарочные боксы Volodium с сургучной печатью и персональными подписями" loading="lazy" decoding="async" style="object-position: center 40%;">
-          </div>
-        </article>
-
-        <article class="review-editorial-card">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Boss Unlimited & Сет</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Анастасия</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «В общем! Большое тебе спасибо за парфюм и твой подход 🙏🏻 От заказа до его получения мы остались под впечатлением! Быстрая отправка, аккуратная красивая упаковка, молодой человек в восторге, Boss Unlimited — его любимый парфюм и он теперь снова каждый день им пользуется! Обязательно буду обращаться еще! Спасибо за твой труд и твой подход к работе 🫶🏻»
-          </p>
-          <div class="rec-photo-thumb">
-            <img src="assets/img/reviews/review_boss_unlimited.jpg" alt="Подарочный сет Volodium с красным сургучом и крафтовой открыткой" loading="lazy" decoding="async" style="object-position: center 45%;">
-          </div>
-        </article>
-
-        <article class="review-editorial-card">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Распаковка & Подарки</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Максим</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Привет! Все получил, да еще и 2 подарочка 🔥 Ультра доволен, есть как культовые ароматы по типу Альтаира, Ангела, так и варианты на попробовать. От души еще раз, спасибо! ♥️»
-          </p>
-          <div class="rec-photo-thumb">
-            <img src="assets/img/reviews/review_box_motto_unpack.jpg" alt="Подарочный бокс Volodium с посланием «Открой. Вдохни. Почувствуй»" loading="lazy" decoding="async" style="object-position: center 65%;">
-          </div>
-        </article>
-
-        <article class="review-editorial-card">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Парфюмерный гардероб</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Ксения</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Вова, спасибо тебе! Вспоминаю, как впервые попала на консультацию, думая, что мне мало что интересно. А потом провела инвентаризацию: это настоящее исследование себя через мир ароматов и поиск своего образа. Спасибо за это путешествие!»
-          </p>
-          <div class="rec-photo-thumb">
-            <img src="assets/img/reviews/photo_viola.jpg" alt="Подарочный бокс Volodium с сургучной печатью" loading="lazy" decoding="async">
-          </div>
-        </article>
-      </div>
-
-      <!-- Mobile Reviews Dots -->
-      <div class="reviews-dots-nav" id="reviewsDotsNav" aria-hidden="true">
-        <span class="reviews-dot active" data-index="0"></span>
-        <span class="reviews-dot" data-index="1"></span>
-        <span class="reviews-dot" data-index="2"></span>
-        <span class="reviews-dot" data-index="3"></span>
-        <span class="reviews-dot" data-index="4"></span>
-        <span class="reviews-dot" data-index="5"></span>
-      </div>
-
-      <div class="reviews-concierge-footer">
-        <a href="https://t.me/volodium_feedback" target="_blank" rel="noopener noreferrer" class="reviews-tg-pill">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-          </svg>
-          <span>Больше реальных отзывов и распаковок в канале @volodium_feedback</span>
+          <span class="hhc-cta">Оформить подарок →</span>
         </a>
       </div>
-    </div>
-  </section>
 
-  <section class="section-padding tester-section" id="tester-guide">
-    <div class="container">
-
-      <!-- Prominent VIP Concierge Card (Photo 4: beautifully styled, luxury VIP aesthetic) -->
-      <div class="tester-concierge-vip-card">
-        <div class="vip-card-glow" aria-hidden="true"></div>
-        <div class="vip-card-content">
-          <div class="vip-card-badge">
-            <span class="sparkle">✦</span>
-            <span>ИНДИВИДУАЛЬНЫЙ ЗАПРОС НА ФЛАКОН</span>
-          </div>
-          <h3 class="vip-card-title">Интересует конкретный аромат в тестере?</h3>
-          <p class="vip-card-desc">
-            Наличие тестеров и редких нишевых флаконов постоянно обновляется. Напишите Владимиру название или пришлите фото желаемого флакона — мы моментально проверим склад и найдем нужную позицию.
-          </p>
-          <div class="vip-card-actions">
-            <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%20%D0%BD%D0%B0%D0%BB%D0%B8%D1%87%D0%B8%D1%8E%20%D1%84%D0%BB%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0%20%D0%B8%D0%BB%D0%B8%20%D1%82%D0%B5%D1%81%D1%82%D0%B5%D1%80%D0%B0..." target="_blank" rel="noopener noreferrer" class="vip-btn-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/></svg>
-              <span>Уточнить наличие флакона в TG →</span>
-            </a>
-            <a href="#catalog" class="vip-btn-secondary">
-              <span>Смотреть каталог</span>
-            </a>
-          </div>
-        </div>
+      <div class="home-hub-secondary-links">
+        <a href="request.html" class="hhs-pill">Запрос на полноценный флакон →</a>
+        <a href="reviews.html" class="hhs-pill">Отзывы &amp; Распаковки →</a>
+        <a href="delivery.html" class="hhs-pill">Доставка СДЭК (от 300 ₽) &amp; FAQ →</a>
       </div>
     </div>
   </section>
-
 
   <!-- Custom Scent Finding & Quality Standards (Real from Volodium) -->
   <section class="section-padding custom-order-section" id="custom-scent">
@@ -1701,193 +531,6 @@
     </div>
   </section>
 
-  <!-- Delivery & FAQ Section -->
-  <section class="section-padding delivery-section" id="delivery">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Сервис и логистика</span>
-        <h2 class="section-title">Доставка и частые вопросы</h2>
-        <p class="section-descr">
-          Прозрачные тарифы, бережная отправка оригинальной парфюмерии по России и СНГ и ответы на главные вопросы.
-        </p>
-      </div>
-
-      <div class="delivery-faq-wrapper">
-        <!-- Segmented Controls / Tabs -->
-        <div class="df-tabs-bar" role="tablist">
-          <button type="button" class="df-tab-btn active" id="dfTabDelivery" role="tab" aria-selected="true" onclick="switchDeliveryTab('delivery')">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
-            <span>Варианты доставки</span>
-            <span class="df-tab-count">5 способов</span>
-          </button>
-          <button type="button" class="df-tab-btn" id="dfTabFaq" role="tab" aria-selected="false" onclick="switchDeliveryTab('faq')">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-            <span>Частые вопросы (FAQ)</span>
-            <span class="df-tab-count">4 ответа</span>
-          </button>
-        </div>
-
-        <!-- Panel 1: Delivery Options -->
-        <div class="df-panel active" id="dfPanelDelivery" role="tabpanel">
-          <div class="delivery-compact-list">
-            <!-- Item 1: СДЭК по РФ -->
-            <div class="delivery-compact-row">
-              <div class="dcr-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="1" y="3" width="15" height="13"/>
-                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-                  <circle cx="5.5" cy="18.5" r="2.5"/>
-                  <circle cx="18.5" cy="18.5" r="2.5"/>
-                </svg>
-              </div>
-              <div class="dcr-info">
-                <div class="dcr-header">
-                  <span class="dcr-title">СДЭК по всей России</span>
-                  <span class="dcr-badge-free">Бесплатно от 5 000 ₽</span>
-                </div>
-                <div class="dcr-desc">До пункта выдачи СДЭК или курьером до двери (2–5 рабочих дней)</div>
-              </div>
-              <div class="dcr-price">400 ₽</div>
-            </div>
-
-            <!-- Item 2: Курьер Москва -->
-            <div class="delivery-compact-row">
-              <div class="dcr-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                </svg>
-              </div>
-              <div class="dcr-info">
-                <div class="dcr-header">
-                  <span class="dcr-title">Курьер по Москве (до двери)</span>
-                  <span class="dcr-badge-subtle">День-в-день</span>
-                </div>
-                <div class="dcr-desc">Срочная доставка в пределах МКАД по тарифам курьерской службы</div>
-              </div>
-              <div class="dcr-price">По тарифу</div>
-            </div>
-
-            <!-- Item 3: Самовывоз -->
-            <div class="delivery-compact-row">
-              <div class="dcr-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-              <div class="dcr-info">
-                <div class="dcr-header">
-                  <span class="dcr-title">Самовывоз в Москве</span>
-                  <span class="dcr-badge-subtle">Ⓜ️ Автозаводская</span>
-                </div>
-                <div class="dcr-desc">Выдача готовых заказов в шоуруме по предварительному согласованию</div>
-              </div>
-              <div class="dcr-price dcr-price-free">0 ₽</div>
-            </div>
-
-            <!-- Item 4: Беларусь и Казахстан -->
-            <div class="delivery-compact-row">
-              <div class="dcr-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-              </div>
-              <div class="dcr-info">
-                <div class="dcr-header">
-                  <span class="dcr-title">Беларусь и Казахстан (СНГ)</span>
-                  <span class="dcr-badge-free">Бесплатно от 5 000 ₽</span>
-                </div>
-                <div class="dcr-desc">Экспресс-отправка СДЭК в Минск, Астану, Алматы и другие города ЕАЭС</div>
-              </div>
-              <div class="dcr-price">В чате</div>
-            </div>
-
-            <!-- Item 5: Яндекс Доставка и регионы -->
-            <div class="delivery-compact-row">
-              <div class="dcr-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div class="dcr-info">
-                <div class="dcr-header">
-                  <span class="dcr-title">Яндекс Доставка и отдаленные регионы РФ</span>
-                  <span class="dcr-badge-subtle">ПВЗ и постаматы</span>
-                </div>
-                <div class="dcr-desc">Индивидуальный подбор оптимального способа и сроков вручения</div>
-              </div>
-              <div class="dcr-price">По тарифу</div>
-            </div>
-          </div>
-
-          <!-- Luxury Delivery Packaging Guarantee Bar (Photo 4 fix: No cheap dashed border) -->
-          <div class="delivery-guarantee-bar">
-            <div class="dgb-icon">✦</div>
-            <div class="dgb-text">
-              <strong>Фирменная защита каждого отправления:</strong> бережная упаковка в противоударные крафтовые боксы Volodium с защитой от перепадов температур. Минимальный заказ в бутике — <strong>3 000 ₽</strong>.
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 2: FAQ Accordion -->
-        <div class="df-panel" id="dfPanelFaq" role="tabpanel">
-          <div class="faq-compact-list">
-            <div class="faq-item open">
-              <button type="button" class="faq-question">
-                <span>Как вы гарантируете 100% оригинальность и батч-коды?</span>
-                <span class="faq-icon">▼</span>
-              </button>
-              <div class="faq-answer" style="max-height: 220px;">
-                Мы работаем исключительно с официальными дистрибьюторами и проверенными европейскими бутиками. Все флаконы имеют оригинальные батч-коды, лазерные гравировки и фабричные пломбы. Мы готовы прислать фото или видео распива конкретного аромата по вашему первому запросу.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                <span>Какая минимальная сумма заказа в бутике?</span>
-                <span class="faq-icon">▼</span>
-              </button>
-              <div class="faq-answer">
-                Минимальная сумма заказа составляет 3 000 ₽. Это позволяет обеспечить бесплатную премиальную крафтовую упаковку и оперативную отправку день-в-день.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                <span>Сколько миллилитров во флаконах-отливантах и на сколько их хватает?</span>
-                <span class="faq-icon">▼</span>
-              </button>
-              <div class="faq-answer">
-                Вы можете выбрать 3 мл (~45 распылений, хватает на 1–2 недели регулярной носки), 5 мл (~75 распылений, около месяца носки) или 10 мл (~150 распылений). Также доступны запечатанные фабричные флаконы 50–100 мл в заводской слюде.
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                <span>Что если мне не понравится выбранный аромат?</span>
-                <span class="faq-icon">▼</span>
-              </button>
-              <div class="faq-answer">
-                Именно поэтому существует распив: вы тестируете редкий аромат на коже в комфортном объеме перед приобретением полноразмерного издания. А при заказе Secret Box основатель бутика Владимир детально изучает ваши стоп-ноты, исключая неподходящие аккорды.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer (Photo 5 fix: Luxury Noir aesthetic, no duplicates, mobile clearance) -->
   <footer class="footer">
     <div class="footer-ambient-glow" aria-hidden="true"></div>
@@ -1902,7 +545,7 @@
             </div>
           </div>
           <p class="footer-descr">
-            Авторский бутик оригинальной нишевой парфюмерии, тематических аромабоксов и персонального гардероба от Владимира Вацика. Только оригинальные европейские флаконы и редкие нишевые издания.
+            Интернет-магазин оригинальной нишевой парфюмерии, тематических аромабоксов и персонального гардероба от Владимира Вацика. Только оригинальные европейские флаконы и редкие нишевые издания.
           </p>
           <div class="footer-social-links">
             <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="footer-channel-badge" title="Telegram-канал бутика @vatsiik" aria-label="Telegram-канал бутика">
@@ -1921,15 +564,15 @@
         </div>
 
         <div class="footer-col footer-col-contacts">
-          <h4 class="footer-title">Шоурум & Прямая связь</h4>
+          <h4 class="footer-title">Прямая связь</h4>
           <div class="footer-card-box">
             <div class="footer-showroom-item">
               <div class="fsi-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div class="fsi-text">
-                <span class="fsi-line">Москва, ул. Автозаводская 23к7</span>
-                <span class="fsi-sub">Тестирование и самовывоз по согласованию</span>
+                <span class="fsi-line">Самовывоз Ⓜ️ Автозаводская</span>
+                <span class="fsi-sub">Самовывоз по согласованию</span>
               </div>
             </div>
             <div class="footer-contacts-list">
@@ -1946,7 +589,7 @@
                 <a href="https://vk.ru/volodya_v_v" target="_blank" rel="noopener noreferrer" class="fc-val">vk.ru/volodya_v_v</a>
               </div>
               <div class="footer-contact-row">
-                <span class="fc-label">Канал бутика:</span>
+                <span class="fc-label">TG Канал эксперта:</span>
                 <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="fc-val">@vatsiik</a>
               </div>
               <div class="footer-contact-row">
@@ -2169,7 +812,7 @@
         <div class="form-group">
           <label class="form-label" for="orderDelivery">Способ доставки</label>
           <select id="orderDelivery" name="delivery" class="form-input" style="cursor: pointer;">
-            <option value="СДЭК по России (до ПВЗ или курьером)">СДЭК по России (Бесплатно от 5 000 ₽ / 400 ₽)</option>
+            <option value="СДЭК по России (до ПВЗ или курьером)">СДЭК по России (Бесплатно от 5 000 ₽ / 300 ₽)</option>
             <option value="Курьер по Москве (до двери)">Курьер по Москве (по тарифу)</option>
             <option value="Самовывоз в Москве (Автозаводская)">Самовывоз Москва (Ⓜ️ Автозаводская)</option>
             <option value="СДЭК в Беларусь / Казахстан">СДЭК в Беларусь или Казахстан</option>
@@ -2319,7 +962,7 @@
 
   <!-- Modern Mobile Luxury Floating Dock (Visible on Mobile Devices <= 768px) -->
   <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Быстрая мобильная навигация">
-    <a href="#catalog" class="dock-item" title="Каталог парфюмерии">
+    <a href="catalog.html" class="dock-item" title="Каталог парфюмерии">
       <span class="dock-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
@@ -2328,7 +971,7 @@
       <span class="dock-label">Каталог</span>
     </a>
 
-    <a href="#quiz" class="dock-item" title="Парфюмерная анкета">
+    <a href="quiz.html" class="dock-item" title="Парфюмерная анкета">
       <span class="dock-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
@@ -2337,7 +980,7 @@
       <span class="dock-label">Анкета</span>
     </a>
 
-    <a href="#tester-guide" class="dock-item" title="Гид по тестерам">
+    <a href="request.html" class="dock-item" title="Гид по тестерам">
       <span class="dock-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2L18 2M12 2L12 6M7 6L17 6C18.1 6 19 6.9 19 8L19 20C19 21.1 18.1 22 17 22L7 22C5.9 22 5 21.1 5 20L5 8C5 6.9 5.9 6 7 6Z"/>

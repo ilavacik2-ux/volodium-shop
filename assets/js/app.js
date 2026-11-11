@@ -2105,7 +2105,7 @@ function renderCartDrawer() {
           <path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
         <p style="font-size: 1.15rem; color: #111216; font-weight: 600;">Ваша парфюмерная корзина пуста</p>
-        <p style="font-size: 0.85rem; max-width: 260px; color: var(--text-muted); line-height: 1.45;">Выберите понравившийся аромат в каталоге или закажите персональный Secret Box.</p>
+        <p style="font-size: 0.85rem; max-width: 280px; color: var(--text-muted); line-height: 1.45;">Выберите понравившийся аромат или готовый аромабокс в каталоге.</p>
         <button class="btn-primary" onclick="closeCart();" style="margin-top: 1rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">Перейти к ароматам</button>
       </div>
     `;
@@ -2115,7 +2115,7 @@ function renderCartDrawer() {
     if (totalEl) totalEl.textContent = '0 ₽';
     if (discountRow) discountRow.style.display = 'none';
     if (freeTrackEl) freeTrackEl.style.width = '0%';
-    if (freeTextEl) freeTextEl.innerHTML = `Бесплатная доставка СДЭК при заказе от <strong>${formatPrice(FREE_DELIVERY_THRESHOLD)}</strong>`;
+    if (freeTextEl) freeTextEl.innerHTML = `Бесплатная доставка СДЭК при заказе от&nbsp;<strong>5&nbsp;000&nbsp;₽</strong>`;
     return;
   }
 

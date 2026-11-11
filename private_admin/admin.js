@@ -1561,10 +1561,11 @@
     const reviews = Array.isArray(sc.reviews) && sc.reviews.length ? sc.reviews : [
       { id: 1, name: 'Kirill Belov', tag: 'Аромабокс', text: '«Арома-бокс приехал, всё дошло в идеальном состоянии — упаковано с душой и вниманием к деталям. Спасибо за атмосферу, которую создаёшь! Парфюмы с порога заявили о себе — всё в моём духе. Рад, что выбрал тебя! Отдельное спасибо за секретный ништячок Al Thaïr!»', image: 'assets/img/reviews/review_box_kirill.jpg', objectPosition: 'center 25%' },
       { id: 2, name: 'Юлианна', tag: 'Подбор вслепую', text: '«Владимир, спасибо огромное за подбор! Заказывала практически вслепую и переживала, но попадание в точку! Особенно Wavechild — любовь с первого пшика. Видно, что стараешься подобрать под человека, а не просто продать. Упаковка с фирменным посланием — отдельный вайб!»', image: 'assets/img/reviews/review_box_open_motto.jpg', objectPosition: 'center 65%' },
-      { id: 3, name: 'Дарья & Муж', tag: 'Парные сеты', text: '«Большое спасибо! Упаковка шикарная, и отдельное спасибо за обозначение, какая кому ❤️ От заказа до получения — сплошное эстетическое удовольствие!»', image: 'assets/img/reviews/review_boxes_labeled.jpg', objectPosition: 'center 40%' },
+      { id: 3, name: 'Екатерина', tag: 'Подарочный бокс', text: '«Володя, это восторг! Заказывала подарочный бокс — оформление превзошло все ожидания! Черная лента, фирменная сургучная печать с монограммой, всё до мельчайших деталей продумано. Распаковывать было отдельным эстетическим удовольствием, а ароматы внутри подобраны с первого раза в десятку ❤️»', image: 'assets/img/reviews/review_box_wax_ribbon.jpg', objectPosition: 'center 50%' },
       { id: 4, name: 'Анастасия', tag: 'Boss Unlimited & Сет', text: '«В общем! Большое тебе спасибо за парфюм и твой подход 🙏🏻 От заказа до его получения мы остались под впечатлением! Быстрая отправка, аккуратная красивая упаковка, молодой человек в восторге, Boss Unlimited — его любимый парфюм и он теперь снова каждый день им пользуется! Обязательно буду обращаться еще! Спасибо за твой труд и твой подход к работе 🫶🏻»', image: 'assets/img/reviews/review_boss_unlimited.jpg', objectPosition: 'center 45%' },
-      { id: 5, name: 'Максим', tag: 'Althaïr & Подарки', text: '«Привет! Все получил, да еще и 2 подарочка 🔥 Ультра доволен, есть как культовые ароматы по типу Альтаира, Ангела, так и варианты на попробовать. От души еще раз ♥️»', image: 'assets/img/reviews/review_altair_gifts.jpg', objectPosition: 'center 50%' },
+      { id: 5, name: 'Максим', tag: 'Распаковка & Подарки', text: '«Привет! Все получил, да еще и 2 подарочка 🔥 Ультра доволен, есть как культовые ароматы по типу Альтаира, Ангела, так и варианты на попробовать. От души еще раз, спасибо! ♥️»', image: 'assets/img/reviews/review_box_motto_unpack.jpg', objectPosition: 'center 65%' },
       { id: 6, name: 'Ксения', tag: 'Парфюмерный гардероб', text: '«Вова, спасибо тебе! Вспоминаю, как впервые попала на консультацию, думая, что мне мало что интересно. А потом провела инвентаризацию: это настоящее исследование себя через мир ароматов и поиск своего образа. Спасибо за это путешествие!»', image: 'assets/img/reviews/photo_viola.jpg', objectPosition: 'center 30%' },
+      { id: 7, name: 'Никита', tag: 'Личный подбор', text: '«Все прошло просто супер! Встретились, открыли огромный чемодан и нашли сразу 6 новых топовых ароматов для меня. Честно, я в полном восторге, обожаю твою работу — ты настоящий профи и эксперт! Теперь за парфюмом только к тебе 🔥»', image: 'assets/img/reviews/review_nikita_consult.jpg', objectPosition: 'center 20%' },
     ];
 
     grid.innerHTML = reviews.map((rev, idx) => {
@@ -1669,13 +1670,17 @@
     const baseReviews = Array.isArray(sc.reviews) && sc.reviews.length ? sc.reviews : [
       { id: 1, name: 'Kirill Belov', city: 'Telegram отзыв', tag: 'Аромабокс', image: 'assets/img/reviews/review_box_kirill.jpg' },
       { id: 2, name: 'Юлианна', city: 'Telegram отзыв', tag: 'Подбор вслепую', image: 'assets/img/reviews/review_box_open_motto.jpg' },
-      { id: 3, name: 'Дарья & Муж', city: 'Telegram отзыв', tag: 'Парные сеты', image: 'assets/img/reviews/review_boxes_labeled.jpg' },
+      { id: 3, name: 'Екатерина', city: 'Telegram отзыв', tag: 'Подарочный бокс', image: 'assets/img/reviews/review_box_wax_ribbon.jpg' },
       { id: 4, name: 'Анастасия', city: 'Telegram отзыв', tag: 'Boss Unlimited & Сет', image: 'assets/img/reviews/review_boss_unlimited.jpg' },
-      { id: 5, name: 'Максим', city: 'Telegram отзыв', tag: 'Althaïr & Подарки', image: 'assets/img/reviews/review_altair_gifts.jpg' },
+      { id: 5, name: 'Максим', city: 'Telegram отзыв', tag: 'Распаковка & Подарки', image: 'assets/img/reviews/review_box_motto_unpack.jpg' },
       { id: 6, name: 'Ксения', city: 'Telegram отзыв', tag: 'Парфюмерный гардероб', image: 'assets/img/reviews/photo_viola.jpg' },
+      { id: 7, name: 'Никита', city: 'Личная встреча / Telegram', tag: 'Личный подбор', image: 'assets/img/reviews/review_nikita_consult.jpg' },
     ];
 
-    return [0, 1, 2, 3, 4, 5].map((idx) => {
+    const adminCards = qsa('#scReviewsGrid .vp-review-admin-card');
+    const indices = adminCards.length ? Array.from(adminCards).map((_, i) => i) : [0, 1, 2, 3, 4, 5, 6];
+
+    return indices.map((idx) => {
       const base = baseReviews[idx] || {};
       const nameEl = $(`scRevName${idx}`);
       const tagEl = $(`scRevTag${idx}`);

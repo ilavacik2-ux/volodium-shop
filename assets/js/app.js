@@ -287,7 +287,33 @@ function applySiteContent(sc) {
 
     // 5. Reviews & Unboxings (Live Text, Photos & Vertical Crop)
     if (Array.isArray(sc.reviews)) {
-      const reviewCards = document.querySelectorAll('.reviews-editorial-grid .review-editorial-card');
+      const grid = document.querySelector('.reviews-editorial-grid');
+      let reviewCards = document.querySelectorAll('.reviews-editorial-grid .review-editorial-card');
+      if (grid && sc.reviews.length > reviewCards.length) {
+        for (let i = reviewCards.length; i < sc.reviews.length; i++) {
+          const r = sc.reviews[i];
+          if (!r) continue;
+          const art = document.createElement('article');
+          art.className = 'review-editorial-card';
+          art.innerHTML = `
+            <div class="rec-top">
+              <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+              <span class="rec-tag">${r.tag || ''}</span>
+            </div>
+            <div class="rec-client">
+              <span class="rec-name">${r.name || ''}</span>
+              <span class="rec-city">${r.city || 'Telegram отзыв'}</span>
+            </div>
+            <p class="rec-text">${r.text || ''}</p>
+            <div class="rec-photo-thumb">
+              <img src="${resolveSafeMediaUrl(r.image, '')}" alt="${r.name || ''}" loading="lazy" decoding="async" style="object-position: ${r.objectPosition || 'center 25%'};">
+            </div>
+          `;
+          grid.appendChild(art);
+        }
+        reviewCards = document.querySelectorAll('.reviews-editorial-grid .review-editorial-card');
+      }
+
       sc.reviews.forEach((r, idx) => {
         const card = reviewCards[idx];
         if (!card || !r) return;
@@ -2483,11 +2509,11 @@ window.openLegalDoc = function(type) {
       <div class="legal-doc-header">
         <span class="section-tag">Федеральный закон № 152-ФЗ</span>
         <h3 class="legal-doc-title">Политика обработки персональных данных</h3>
-        <p class="legal-doc-subtitle">Интернет-бутик нишевой парфюмерии VOLODIUM PARFUM</p>
+        <p class="legal-doc-subtitle">Интернет-магазин нишевой парфюмерии VOLODIUM PARFUM</p>
       </div>
       <div class="legal-doc-content">
         <h4>1. Общие положения</h4>
-        <p>1.1. Настоящая Политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 г. № 152-ФЗ «О персональных данных» и определяет порядок сбора, систематизации, накопления, хранения и защиты конфиденциальной информации клиентов бутика VOLODIUM PARFUM (далее — «Оператор»).</p>
+        <p>1.1. Настоящая Политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 г. № 152-ФЗ «О персональных данных» и определяет порядок сбора, систематизации, накопления, хранения и защиты конфиденциальной информации клиентов интернет-магазина VOLODIUM PARFUM (далее — «Оператор»).</p>
         <p>1.2. Оператор ставит важнейшей целью соблюдение прав и свобод человека при обработке его персональных данных, включая защиту прав на неприкосновенность частной жизни, личную и семейную тайну.</p>
 
         <h4>2. Состав обрабатываемых данных</h4>
@@ -2504,7 +2530,7 @@ window.openLegalDoc = function(type) {
         <ul>
           <li>Формирования накладных курьерской службы СДЭК и курьерской доставки по Москве и регионам РФ;</li>
           <li>Оформления заказа на оригинальную парфюмерию, персональные аромабоксы или подарочные сертификаты;</li>
-          <li>Индивидуального консультирования покупателя основателем бутика Владимиром Вациком;</li>
+          <li>Индивидуального консультирования покупателя основателем интернет-магазина Владимиром Вациком;</li>
           <li>Предоставления информации о статусе отправления и батч-кодах флаконов.</li>
         </ul>
 
@@ -2521,13 +2547,13 @@ window.openLegalDoc = function(type) {
     modalBody.innerHTML = `
       <div class="legal-doc-header">
         <span class="section-tag">Статьи 435, 437 ГК РФ</span>
-        <h3 class="legal-doc-title">Публичная оферта интернет-бутика</h3>
+        <h3 class="legal-doc-title">Публичная оферта интернет-магазина</h3>
         <p class="legal-doc-subtitle">Условия дистанционной розничной купли-продажи нишевой парфюмерии</p>
       </div>
       <div class="legal-doc-content">
         <h4>1. Общие положения</h4>
-        <p>1.1. Настоящий документ является официальным предложением (публичной офертой по ст. 435 и п. 2 ст. 437 Гражданского кодекса РФ) интернет-бутика VOLODIUM PARFUM заключить договор розничной купли-продажи парфюмерной продукции дистанционным способом.</p>
-        <p>1.2. Ознакомительная информация на страницах каталога носит информационно-демонстрационный характер. Моментом заключения договора является подтверждение заказа покупателем и согласование деталей с менеджером бутика.</p>
+        <p>1.1. Настоящий документ является официальным предложением (публичной офертой по ст. 435 и п. 2 ст. 437 Гражданского кодекса РФ) интернет-магазина VOLODIUM PARFUM заключить договор розничной купли-продажи парфюмерной продукции дистанционным способом.</p>
+        <p>1.2. Ознакомительная информация на страницах каталога носит информационно-демонстрационный характер. Моментом заключения договора является подтверждение заказа покупателем и согласование деталей с менеджером интернет-магазина.</p>
 
         <h4>2. Гарантия оригинальности и качество товара</h4>
         <p>2.1. Продавец гарантирует 100% подлинность и оригинальность всех представленных ароматов, их соответствие стандартам IFRA и возможность проверки батч-кодов перед вскрытием.</p>
@@ -2551,8 +2577,8 @@ window.openLegalDoc = function(type) {
         <p>1.2. Данное ограничение обусловлено санитарно-гигиеническими нормами, особенностями хранения тонких парфюмерных композиций и защитой покупателей от риска получения вскрытой или подмененной продукции.</p>
 
         <h4>2. Гарантии целостности при транспортировке</h4>
-        <p>2.1. Бутик VOLODIUM PARFUM использует усиленную многослойную премиальную упаковку, защищающую флаконы от механических повреждений и температурных колебаний в процессе доставки СДЭК.</p>
-        <p>2.2. При получении заказа в пункте выдачи СДЭК или от курьера Покупатель имеет право осмотреть внешнюю упаковку. В случае выявления повреждения транспортной коробки или флакона при доставке Покупатель составляет акт совместно с сотрудником СДЭК, после чего бутик VOLODIUM производит мгновенную бесплатную повторную отправку либо 100% возврат средств.</p>
+        <p>2.1. Интернет-магазин VOLODIUM PARFUM использует усиленную многослойную премиальную упаковку, защищающую флаконы от механических повреждений и температурных колебаний в процессе доставки СДЭК.</p>
+        <p>2.2. При получении заказа в пункте выдачи СДЭК или от курьера Покупатель имеет право осмотреть внешнюю упаковку. В случае выявления повреждения транспортной коробки или флакона при доставке Покупатель составляет акт совместно с сотрудником СДЭК, после чего интернет-магазин VOLODIUM производит мгновенную бесплатную повторную отправку либо 100% возврат средств.</p>
 
         <h4>3. Проверка оригинальности и батч-кодов</h4>
         <p>3.1. До распечатывания слюды на полноразмерных флаконах покупатель может сверить батч-код на дне флакона и коробки через международные базы косметических брендов или обратиться к нам за подтверждением.</p>
@@ -2722,6 +2748,19 @@ function initReviewsCarousel() {
   const grid = document.querySelector('.reviews-editorial-grid');
   if (!grid) return;
   const cards = grid.querySelectorAll('.review-editorial-card');
+  const dotsNav = document.getElementById('reviewsDotsNav');
+  if (dotsNav && cards.length > 0) {
+    const currentDots = dotsNav.querySelectorAll('.reviews-dot');
+    if (currentDots.length !== cards.length) {
+      dotsNav.innerHTML = '';
+      cards.forEach((_, idx) => {
+        const dot = document.createElement('span');
+        dot.className = 'reviews-dot' + (idx === 0 ? ' active' : '');
+        dot.dataset.index = idx;
+        dotsNav.appendChild(dot);
+      });
+    }
+  }
   const dots = document.querySelectorAll('.reviews-dot');
   if (!dots.length) return;
 
@@ -3334,7 +3373,7 @@ function initCertificates() {
     certState.serviceKey = serviceKey;
     const services = {
       consultation: 'Индивидуальный парфюмерный гардероб',
-      deposit: 'Депозит на коллекцию бутика',
+      deposit: 'Депозит на коллекцию магазина',
       secret_box: 'Персональный Secret Box Владимира Вацика'
     };
     certState.serviceTitle = services[serviceKey] || services.consultation;

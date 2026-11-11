@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Splits single-page index.html into a clean 9-page storefront while preserving
+Splits source HTML into a clean 9-page storefront while preserving
 100% of shared layout, modals, cart drawer, scripts, and user customizations.
+Applies all 'интернет-магазин' and editorial text requirements everywhere.
 """
 from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC_FILE = ROOT / "index.html"
+SRC_FILE = ROOT / "_source_single_page.html"
 
 text = SRC_FILE.read_text(encoding="utf-8")
 lines = text.splitlines(keepends=True)
@@ -17,10 +18,9 @@ def slice_lines(start_1idx: int, end_1idx: int) -> str:
     return "".join(lines[start_1idx - 1 : end_1idx])
 
 
-# Extract exact building blocks from current verified index.html
-head_block = slice_lines(1, 43)       # <!DOCTYPE html> ... <body class="intro-active">
-intro_block = slice_lines(44, 68)     # <aside id="monroeIntro"> ... </aside>
-header_drawer_block = slice_lines(69, 275)  # Promo bar + Header + Volodium Drawer
+head_block = slice_lines(1, 43)
+intro_block = slice_lines(44, 68)
+header_drawer_block = slice_lines(69, 275)
 
 hero_section = slice_lines(276, 356)
 marquee_section = slice_lines(357, 374)
@@ -38,11 +38,93 @@ delivery_section = slice_lines(1704, 1889)
 footer_and_bottom = slice_lines(1890, len(lines))
 
 
-def rewrite_links(html: str, current_page: str) -> str:
-    """Rewrite section anchor links to multi-page URLs cleanly."""
-    # Brand logo -> index.html
-    html = html.replace('<a href="#" class="brand">', '<a href="index.html" class="brand">')
+def apply_editorial_fixes(html: str) -> str:
+    """Apply user's exact wording requirements everywhere."""
+    # 1. '100% Оригинальная продукция' description card (media_1794434042568.jpg)
+    html = re.sub(
+        r"Строгий контроль батч-кодов и происхождение флаконов\.\s*Бережный лабораторный атоминг в стеклянные флаконы с металлической помпой, сохраняющей чистоту формулы\.",
+        "Строгий контроль батч-кодов и происхождение флаконов. Работаем только с официальными поставщиками и дистрибьюторами.",
+        html,
+    )
 
+    # 2. FAQ question 4 (media_1794434040271.jpg): remove 'редкий'
+    html = html.replace(
+        "вы тестируете редкий аромат на коже в комфортном объеме",
+        "вы тестируете аромат на коже в комфортном объеме",
+    )
+    # Remove 'бутика' in FAQ 4
+    html = html.replace(
+        "основатель бутика Владимир детально изучает",
+        "основатель интернет-магазина Владимир детально изучает",
+    )
+
+    # 3. FAQ question 2: replace 'в бутике'
+    html = html.replace(
+        "Какая минимальная сумма заказа в бутике?",
+        "Какая минимальная сумма заказа в интернет-магазине?",
+    )
+    html = html.replace(
+        "европейскими бутиками",
+        "европейскими дистрибьюторами",
+    )
+
+    # 4. Guarantee bar
+    html = html.replace(
+        "Минимальный заказ в бутике —",
+        "Минимальный заказ в интернет-магазине —",
+    )
+
+    # 5. Consultation intro: remove 'бутика'
+    html = html.replace(
+        "от основателя бутика. Выберите комфортный",
+        "от основателя интернет-магазина. Выберите комфортный",
+    )
+
+    # 6. Certificates card: 'Бутик:' -> 'Магазин:'
+    html = html.replace(
+        "<span>Бутик: <strong>@volodiumparfum</strong></span>",
+        "<span>Магазин: <strong>@volodiumparfum</strong></span>",
+    )
+
+    # 7. Navigation & attributes: 'бутика' -> 'магазина'
+    html = html.replace('title="Официальный Telegram бутика"', 'title="Официальный Telegram интернет-магазина"')
+    html = html.replace('aria-label="Открыть меню бутика"', 'aria-label="Открыть меню интернет-магазина"')
+    html = html.replace('aria-label="Навигация по бутику"', 'aria-label="Навигация по интернет-магазину"')
+    html = html.replace('title="Telegram-канал бутика @vatsiik"', 'title="TG Канал эксперта @vatsiik"')
+    html = html.replace('aria-label="Telegram-канал бутика"', 'aria-label="TG Канал эксперта"')
+
+    # 8. Meta description
+    html = html.replace(
+        'content="Бутик оригинальной нишевой парфюмерии VOLODIUM PARFUM',
+        'content="Интернет-магазин оригинальной нишевой парфюмерии VOLODIUM PARFUM',
+    )
+
+    # 9. Footer description (media_1794434032368.jpg):
+    # 'Авторский интернет-магазин оригинальной нишевой парфюмерии, тематических аромабоксов и персонального парфюмерного гардероба от Владимира Вацика.'
+    # (without the next line)
+    html = re.sub(
+        r'<p class="footer-descr">\s*(?:Авторский бутик|Интернет-магазин).*?от Владимира Вацика\.\s*(?:Только оригинальные.*?\.)?\s*</p>',
+        '<p class="footer-descr">\n            Авторский интернет-магазин оригинальной нишевой парфюмерии, тематических аромабоксов и персонального парфюмерного гардероба от Владимира Вацика.\n          </p>',
+        html,
+        flags=re.DOTALL,
+    )
+
+    # 10. Ensure footer contacts match previous verified edits
+    html = html.replace('<h4 class="footer-title">Шоурум & Прямая связь</h4>', '<h4 class="footer-title">Прямая связь</h4>')
+    html = html.replace('<span class="fsi-line">Москва, ул. Автозаводская 23к7</span>', '<span class="fsi-line">Самовывоз Ⓜ️ Автозаводская</span>')
+    html = html.replace('<span class="fsi-sub">Тестирование и самовывоз по согласованию</span>', '<span class="fsi-sub">Самовывоз по согласованию</span>')
+    html = html.replace('<span class="v-drawer-loc">Москва, Автозаводская 23к7</span>', '<span class="v-drawer-loc">Самовывоз Ⓜ️ Автозаводская</span>')
+    html = html.replace('<span class="fc-label">Канал бутика:</span>', '<span class="fc-label">TG Канал эксперта:</span>')
+    html = html.replace('<span class="fc-label">TG-канал эксперта:</span>', '<span class="fc-label">TG Канал эксперта:</span>')
+    html = html.replace('<span class="dcr-badge-subtle">ул. Автозаводская 23к7</span>', '<span class="dcr-badge-subtle">Ⓜ️ Автозаводская</span>')
+    html = html.replace('Выдача готовых заказов в шоуруме по предварительному согласованию', 'Выдача готовых заказов по предварительному согласованию')
+    html = html.replace('Запрос на тестер / флакон', 'Запрос на полноценный флакон')
+
+    return html
+
+
+def rewrite_links(html: str, current_page: str) -> str:
+    html = html.replace('<a href="#" class="brand">', '<a href="index.html" class="brand">')
     replacements = [
         ('href="#catalog"', 'href="catalog.html"'),
         ('href="#aroma-boxes"', 'href="boxes.html"'),
@@ -57,7 +139,6 @@ def rewrite_links(html: str, current_page: str) -> str:
     for old, new in replacements:
         html = html.replace(old, new)
 
-    # On boxes.html, smooth-scroll directly to #secret-boxes
     if current_page == "boxes.html":
         html = html.replace('href="boxes.html#secret-boxes"', 'href="#secret-boxes"')
 
@@ -68,30 +149,13 @@ def build_subpage_head(title: str, description: str) -> str:
     h = head_block
     h = h.replace('<html lang="ru" class="intro-active">', '<html lang="ru">')
     h = h.replace('<body class="intro-active">', '<body class="hero-cinematic-active">')
-    # Remove critical splash protection CSS on subpages
-    h = re.sub(
-        r"\s*<!-- Critical Splash Screen Protection -->.*?</style>",
-        "",
-        h,
-        flags=re.DOTALL,
-    )
-    h = re.sub(
-        r"<title>.*?</title>",
-        f"<title>{title}</title>",
-        h,
-        count=1,
-    )
-    h = re.sub(
-        r'<meta name="description" content=".*?">',
-        f'<meta name="description" content="{description}">',
-        h,
-        count=1,
-    )
+    h = re.sub(r"\s*<!-- Critical Splash Screen Protection -->.*?</style>", "", h, flags=re.DOTALL)
+    h = re.sub(r"<title>.*?</title>", f"<title>{title}</title>", h, count=1)
+    h = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{description}">', h, count=1)
     return h
 
 
 def build_home_head() -> str:
-    # Add fast pre-paint check on homepage so back-navigation skips splash cleanly
     guard_script = (
         "  <script>try{if(sessionStorage.getItem('vp_intro_seen')==='1'||window.location.hash)"
         "{document.documentElement.classList.remove('intro-active');}}catch(e){}</script>\n"
@@ -287,6 +351,7 @@ for page in pages:
         )
 
     full_html = top + middle + footer_and_bottom
+    full_html = apply_editorial_fixes(full_html)
     full_html = rewrite_links(full_html, fname)
     (ROOT / fname).write_text(full_html, encoding="utf-8")
     print(f"Generated {fname} ({len(full_html):,} bytes)")

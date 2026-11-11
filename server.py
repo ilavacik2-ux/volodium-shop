@@ -947,7 +947,7 @@ async def admin_restore_backup(payload: Dict[str, Any], request: Request):
 # SAFE PUBLIC STATIC FILE SERVING
 # ==============================================================================
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 async def serve_storefront_index():
     return FileResponse(
         BASE_DIR / "index.html",
@@ -956,7 +956,7 @@ async def serve_storefront_index():
     )
 
 
-@app.get("/index.html")
+@app.api_route("/index.html", methods=["GET", "HEAD"])
 async def serve_storefront_index_alias():
     return await serve_storefront_index()
 
@@ -973,7 +973,7 @@ PUBLIC_SUBPAGES = {
 }
 
 
-@app.get("/{page_name}.html")
+@app.api_route("/{page_name}.html", methods=["GET", "HEAD"])
 async def serve_storefront_subpage(page_name: str):
     filename = f"{page_name}.html"
     if filename not in PUBLIC_SUBPAGES:
@@ -988,7 +988,7 @@ async def serve_storefront_subpage(page_name: str):
     )
 
 
-@app.get("/favicon.ico")
+@app.api_route("/favicon.ico", methods=["GET", "HEAD"])
 async def serve_favicon():
     fav = BASE_DIR / "assets" / "images" / "E610BB2F-DBAE-4672-9.PNG"
     if fav.is_file():
@@ -996,7 +996,7 @@ async def serve_favicon():
     return not_found_response()
 
 
-@app.get("/assets/{asset_path:path}")
+@app.api_route("/assets/{asset_path:path}", methods=["GET", "HEAD"])
 async def serve_public_assets(asset_path: str):
     if ".." in asset_path or asset_path.startswith("."):
         return not_found_response()

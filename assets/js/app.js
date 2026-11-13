@@ -1855,7 +1855,7 @@ function openProductModal(itemId) {
         <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: #111216; margin-bottom: 0.4rem;">${escapeHtml(item.name)}</h2>
         <p style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 1.25rem;">${escapeHtml(item.subtitle || '')}</p>
         
-        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; white-space: pre-line;">
           ${escapeHtml(item.description || '')}
         </p>
 

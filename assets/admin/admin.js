@@ -180,7 +180,7 @@
     if (isStaticDeployment()) {
       const storedRole = localStorage.getItem('vp_static_role') || (inMemoryGateToken.includes('help') ? 'assistant' : 'owner');
       state.operatorRole = storedRole;
-      state.operatorName = storedRole === 'owner' ? 'Владимир' : 'Саша (Помощница)';
+      state.operatorName = storedRole === 'owner' ? 'Admin 1' : 'Admin 2';
       
       // Auto-grant if token in URL or already authorized
       if (inMemoryGateToken || sessionStorage.getItem('vp_static_granted') === '1') {
@@ -225,13 +225,13 @@
     if (quickBtn) {
       quickBtn.addEventListener('click', async () => {
         state.operatorRole = 'assistant';
-        state.operatorName = 'Саша (Помощница)';
+        state.operatorName = 'Admin 2';
         sessionStorage.setItem('vp_static_granted', '1');
         localStorage.setItem('vp_static_role', 'assistant');
         $('vpAuthScreen').hidden = true;
         $('vpAppShell').hidden = false;
         await loadStudioOverview();
-        showToast('Добро пожаловать в студию, Саша!', 'ok');
+        showToast('Добро пожаловать в студию (Admin 2)', 'ok');
       });
     }
 
@@ -248,7 +248,7 @@
       if (isStaticDeployment() || ['volodium', 'vova', 'sasha', 'admin', '1234', '123456', 'vatsiik'].includes(enteredPass)) {
         const isSasha = enteredPass === 'sasha' || inMemoryGateToken.includes('help');
         state.operatorRole = isSasha ? 'assistant' : 'owner';
-        state.operatorName = isSasha ? 'Саша (Помощница)' : 'Владимир';
+        state.operatorName = isSasha ? 'Admin 2' : 'Admin 1';
         sessionStorage.setItem('vp_static_granted', '1');
         localStorage.setItem('vp_static_role', state.operatorRole);
         passInput.value = '';
@@ -283,7 +283,7 @@
         // Fallback for static GitHub Pages if fetch fails
         if (isStaticDeployment()) {
           state.operatorRole = 'assistant';
-          state.operatorName = 'Саша (Помощница)';
+          state.operatorName = 'Admin 2';
           sessionStorage.setItem('vp_static_granted', '1');
           $('vpAuthScreen').hidden = true;
           $('vpAppShell').hidden = false;
@@ -430,7 +430,7 @@
 
       data = {
         operatorRole: state.operatorRole || 'assistant',
-        operatorName: state.operatorName || 'Саша (Помощница)',
+        operatorName: state.operatorName || (state.operatorRole === 'owner' ? 'Admin 1' : 'Admin 2'),
         perfumes: localPerfumes ? JSON.parse(localPerfumes) : (window.PERFUMES_DATA || []),
         aromaboxes: localAromaboxes ? JSON.parse(localAromaboxes) : (window.AROMA_BOXES_DATA || []),
         secretBoxes: localSecretBoxes ? JSON.parse(localSecretBoxes) : (window.SECRET_BOXES_DATA || []),
@@ -441,7 +441,7 @@
             id: 1,
             created_at: new Date().toLocaleString('ru-RU'),
             action: 'SESSION_START',
-            operator_name: state.operatorName || 'Саша (Помощница)',
+            operator_name: state.operatorName || (state.operatorRole === 'owner' ? 'Admin 1' : 'Admin 2'),
             operator_role: state.operatorRole || 'assistant',
             target: 'admin.html',
             details: 'Вход в студию управления на GitHub Pages',
@@ -452,6 +452,12 @@
 
     state.operatorRole = data.operatorRole || state.operatorRole;
     state.operatorName = data.operatorName || state.operatorName;
+    if (state.operatorRole === 'owner' && (!state.operatorName || state.operatorName.includes('Владимир'))) {
+      state.operatorName = 'Admin 1';
+    } else if (state.operatorRole === 'assistant' && (!state.operatorName || state.operatorName.includes('Помощниц') || state.operatorName.includes('Саша'))) {
+      state.operatorName = 'Admin 2';
+    }
+
     state.perfumes = Array.isArray(data.perfumes) ? data.perfumes : [];
     state.aromaboxes = Array.isArray(data.aromaboxes) ? data.aromaboxes : [];
     state.secretBoxes = Array.isArray(data.secretBoxes) ? data.secretBoxes : [];
@@ -459,8 +465,8 @@
     state.priceSnapshots = Array.isArray(data.priceSnapshots) ? data.priceSnapshots : [];
     state.auditLogs = Array.isArray(data.auditLogs) ? data.auditLogs : [];
 
-    $('vpOperatorRoleLabel').textContent = state.operatorRole === 'owner' ? 'Владелец бутика' : 'Команда / Помощница';
-    $('vpOperatorNameLabel').textContent = state.operatorName;
+    $('vpOperatorRoleLabel').textContent = 'Администратор';
+    $('vpOperatorNameLabel').textContent = state.operatorName || (state.operatorRole === 'owner' ? 'Admin 1' : 'Admin 2');
     $('navBadgePerfumes').textContent = String(state.perfumes.length);
     $('navBadgeBoxes').textContent = String(state.aromaboxes.length + state.secretBoxes.length);
 
@@ -2111,7 +2117,7 @@
       mgr.innerHTML = `
         <div class="vp-token-box">
           <div class="vp-token-head">
-            <strong>👑 Секретная ссылка Владимира (Владелец)</strong>
+            <strong>👑 Секретная ссылка Admin 1</strong>
             <div style="display:flex;gap:6px;">
               <button type="button" class="vp-btn vp-btn-outline vp-btn-xs" data-copy-url="${esc(ownerFullUrl)}">Копировать</button>
               <button type="button" class="vp-btn vp-btn-danger-outline vp-btn-xs" data-rotate-role="owner">Перевыпустить</button>
@@ -2121,7 +2127,7 @@
         </div>
         <div class="vp-token-box">
           <div class="vp-token-head">
-            <strong>👩‍💼 Секретная ссылка Помощницы</strong>
+            <strong>🛡️ Секретная ссылка Admin 2</strong>
             <div style="display:flex;gap:6px;">
               <button type="button" class="vp-btn vp-btn-outline vp-btn-xs" data-copy-url="${esc(assistFullUrl)}">Копировать</button>
               <button type="button" class="vp-btn vp-btn-danger-outline vp-btn-xs" data-rotate-role="assistant">Перевыпустить</button>
@@ -2168,7 +2174,7 @@
       const rotBtn = e.target.closest('[data-rotate-role]');
       if (rotBtn) {
         const role = rotBtn.dataset.rotateRole;
-        const label = role === 'owner' ? 'Владимира' : 'Помощницы';
+        const label = role === 'owner' ? 'Admin 1' : 'Admin 2';
         if (!window.confirm(`Перевыпустить токен доступа для ${label}?\nСтарая ссылка перестанет открываться (вернёт 404).`)) return;
         try {
           await apiFetch('/api/auth/rotate-token', {
@@ -2220,7 +2226,7 @@
         const backupData = {
           version: '1.0',
           exportedAt: new Date().toISOString(),
-          exportedBy: state.operatorName || 'Саша (Помощница)',
+          exportedBy: state.operatorName || (state.operatorRole === 'owner' ? 'Admin 1' : 'Admin 2'),
           perfumes: state.perfumes,
           aromaboxes: state.aromaboxes,
           secretBoxes: state.secretBoxes,

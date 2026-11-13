@@ -141,7 +141,7 @@ def verify_gate_cookie(cookie_val: Optional[str]) -> Optional[tuple]:
     expected_sig = hmac.new(VP_SECRET_KEY.encode("utf-8"), payload.encode("utf-8"), hashlib.sha256).hexdigest()
     if not hmac.compare_digest(sig, expected_sig):
         return None
-    label = "Владимир (Владелец)" if role == "owner" else "Помощница"
+    label = "Admin 1" if role == "owner" else "Admin 2"
     return (role, label)
 
 
@@ -176,7 +176,7 @@ def require_owner(sess: Dict[str, Any]):
     if sess.get("operator_role") != "owner":
         raise HTTPException(
             status_code=403,
-            detail="Это действие доступно только по токену владельца (Владимир).",
+            detail="Это действие доступно только по токену Admin 1.",
         )
 
 
@@ -487,7 +487,7 @@ async def auth_rotate_token(payload: RotateTokenRequest, request: Request):
     sess = require_session(request)
     require_owner(sess)
     new_tok = db.rotate_gateway_token(payload.role)
-    role_title = "Владимира (Владельца)" if payload.role == "owner" else "Помощницы"
+    role_title = "Admin 1" if payload.role == "owner" else "Admin 2"
     db.add_audit_log(
         sess["operator_role"],
         sess["operator_name"],

@@ -1103,7 +1103,7 @@ def bulk_adjust_prices(
     apply_to_old_prices: bool = False,
     dry_run: bool = True,
     operator_role: str = "owner",
-    operator_name: str = "Владимир (Владелец)",
+    operator_name: str = "Admin 1",
 ) -> Dict[str, Any]:
     """
     Preview or apply +% / -% price adjustments cleanly with automatic Snapshot saving.
@@ -1356,9 +1356,9 @@ def resolve_gateway_token_role(candidate: str) -> Optional[Tuple[str, str]]:
         return None
     tokens = get_gateway_tokens()
     if tokens["owner"] and hmac.compare_digest(candidate, tokens["owner"]):
-        return ("owner", "Владимир (Владелец)")
+        return ("owner", "Admin 1")
     if tokens["assistant"] and hmac.compare_digest(candidate, tokens["assistant"]):
-        return ("assistant", "Помощница")
+        return ("assistant", "Admin 2")
     return None
 
 

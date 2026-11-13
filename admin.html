@@ -60,7 +60,7 @@
         </button>
 
         <button type="button" class="vp-btn vp-btn-outline vp-btn-full" id="vpQuickLoginBtn" style="margin-top: 10px; border-color: rgba(201, 168, 106, 0.5); color: #C9A86A;">
-          ⚡ Быстрый вход (Саша / Помощница)
+          ⚡ Быстрый вход (Admin 2)
         </button>
       </form>
 
@@ -244,7 +244,7 @@
               <div class="vp-card-head">
                 <div>
                   <h3>Последние изменения</h3>
-                  <p>Фиксируется, кто внёс правку: Владимир или Помощница</p>
+                  <p>Фиксируется, кто внёс правку: Admin 1 или Admin 2</p>
                 </div>
                 <button type="button" class="vp-btn vp-btn-outline vp-btn-sm" data-goto-tab="audit">Весь журнал</button>
               </div>
@@ -792,13 +792,13 @@
             <div class="vp-card-head">
               <div>
                 <h3>Локальный журнал действий и безопасности</h3>
-                <p>История всех входов и правок Владимира и Помощницы без уведомлений в Telegram</p>
+                <p>История всех входов и правок Admin 1 и Admin 2 без уведомлений в Telegram</p>
               </div>
               <div class="vp-toolbar-filters">
                 <select id="auditOperatorFilter">
                   <option value="all">Все операторы</option>
-                  <option value="owner">Владимир (Владелец)</option>
-                  <option value="assistant">Помощница</option>
+                  <option value="owner">Admin 1</option>
+                  <option value="assistant">Admin 2</option>
                 </select>
                 <select id="auditActionFilter">
                   <option value="all">Все события</option>
@@ -839,7 +839,7 @@
                 </div>
               </div>
               <div id="vpSecurityOwnerNotice" class="vp-info-banner" hidden>
-                Вы вошли по токену <strong>Помощницы</strong>. Управление токенами доступа и смена мастер-пароля доступны только по токену владельца (Владимира).
+                Вы вошли по токену <strong>Admin 2</strong>. Управление токенами доступа и смена мастер-пароля доступны только по токену Admin 1.
               </div>
               <div id="vpTokensManager" class="vp-tokens-grid"></div>
 

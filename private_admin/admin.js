@@ -361,8 +361,14 @@
     state.priceSnapshots = Array.isArray(data.priceSnapshots) ? data.priceSnapshots : [];
     state.auditLogs = Array.isArray(data.auditLogs) ? data.auditLogs : [];
 
-    $('vpOperatorRoleLabel').textContent = state.operatorRole === 'owner' ? 'Владелец бутика' : 'Команда / Помощница';
-    $('vpOperatorNameLabel').textContent = state.operatorName;
+    if (state.operatorRole === 'owner' && (!state.operatorName || state.operatorName.includes('Владимир'))) {
+      state.operatorName = 'Admin 1';
+    } else if (state.operatorRole === 'assistant' && (!state.operatorName || state.operatorName.includes('Помощниц') || state.operatorName.includes('Саша'))) {
+      state.operatorName = 'Admin 2';
+    }
+
+    $('vpOperatorRoleLabel').textContent = 'Администратор';
+    $('vpOperatorNameLabel').textContent = state.operatorName || (state.operatorRole === 'owner' ? 'Admin 1' : 'Admin 2');
     $('navBadgePerfumes').textContent = String(state.perfumes.length);
     $('navBadgeBoxes').textContent = String(state.aromaboxes.length + state.secretBoxes.length);
 
@@ -1985,7 +1991,7 @@
       mgr.innerHTML = `
         <div class="vp-token-box">
           <div class="vp-token-head">
-            <strong>👑 Секретная ссылка Владимира (Владелец)</strong>
+            <strong>👑 Секретная ссылка Admin 1</strong>
             <div style="display:flex;gap:6px;">
               <button type="button" class="vp-btn vp-btn-outline vp-btn-xs" data-copy-url="${esc(ownerFullUrl)}">Копировать</button>
               <button type="button" class="vp-btn vp-btn-danger-outline vp-btn-xs" data-rotate-role="owner">Перевыпустить</button>
@@ -1995,7 +2001,7 @@
         </div>
         <div class="vp-token-box">
           <div class="vp-token-head">
-            <strong>👩‍💼 Секретная ссылка Помощницы</strong>
+            <strong>🛡️ Секретная ссылка Admin 2</strong>
             <div style="display:flex;gap:6px;">
               <button type="button" class="vp-btn vp-btn-outline vp-btn-xs" data-copy-url="${esc(assistFullUrl)}">Копировать</button>
               <button type="button" class="vp-btn vp-btn-danger-outline vp-btn-xs" data-rotate-role="assistant">Перевыпустить</button>
@@ -2042,7 +2048,7 @@
       const rotBtn = e.target.closest('[data-rotate-role]');
       if (rotBtn) {
         const role = rotBtn.dataset.rotateRole;
-        const label = role === 'owner' ? 'Владимира' : 'Помощницы';
+        const label = role === 'owner' ? 'Admin 1' : 'Admin 2';
         if (!window.confirm(`Перевыпустить токен доступа для ${label}?\nСтарая ссылка перестанет открываться (вернёт 404).`)) return;
         try {
           await apiFetch('/api/auth/rotate-token', {

@@ -523,6 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initVolodiumDrawer();
   init3DTiltCards();
+  initCardPlaqueAnimations();
   initFloatingBackTop();
   initSecretBoxesCarousel();
   initReviewsCarousel();
@@ -833,6 +834,89 @@ function initFloatingBackTop() {
       btn.classList.remove('visible');
     }
   }, { passive: true });
+}
+
+/* ==========================================================================
+   1.4 Universal Card & Plaque Reveal Animations ("при каждом появлении")
+   ========================================================================== */
+function initCardPlaqueAnimations() {
+  if (typeof IntersectionObserver === 'undefined') {
+    document.querySelectorAll('.home-hub-card, .hhs-pill, .tester-concierge-vip-card, .review-editorial-card, .standard-card, .reveal-card').forEach(el => {
+      el.classList.add('is-revealed');
+    });
+    return;
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.home-hub-card, .hhs-pill, .tester-concierge-vip-card, .review-editorial-card, .standard-card, .reveal-card').forEach(el => {
+      el.classList.add('is-revealed');
+    });
+    return;
+  }
+
+  const cardGroups = [
+    { container: '.home-hub-section', items: '.home-hub-card, .hhs-pill' },
+    { container: '.standards-grid', items: '.standard-card' },
+    { container: '.reviews-editorial-grid', items: '.review-editorial-card' },
+    { container: '.tester-section', items: '.tester-concierge-vip-card' },
+    { container: '.tester-diff-layout', items: '.tester-expert-card, .tester-diff-card' },
+    { container: '.custom-order-section', items: '.standard-card' }
+  ];
+
+  cardGroups.forEach(group => {
+    const containers = document.querySelectorAll(group.container);
+    containers.forEach(container => {
+      const items = container.querySelectorAll(group.items);
+      if (!items.length) return;
+
+      items.forEach((item, idx) => {
+        item.classList.add('reveal-card');
+        item.style.setProperty('--card-stagger', `${idx * 75}ms`);
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            items.forEach(item => item.classList.add('is-revealed'));
+          } else {
+            // When scrolled completely away, reset so it re-triggers upon re-entry ("при каждом появлении")
+            const rect = entry.boundingClientRect;
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top > vh || rect.bottom < 0) {
+              items.forEach(item => item.classList.remove('is-revealed'));
+            }
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      observer.observe(container);
+    });
+  });
+
+  // Also support any element with .reveal-card directly
+  const standaloneCards = document.querySelectorAll('.reveal-card:not([style*="--card-stagger"])');
+  if (standaloneCards.length) {
+    const standaloneObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+        } else {
+          const rect = entry.boundingClientRect;
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+          if (rect.top > vh || rect.bottom < 0) {
+            entry.target.classList.remove('is-revealed');
+          }
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -30px 0px'
+    });
+    standaloneCards.forEach(c => standaloneObserver.observe(c));
+  }
 }
 
 /* ==========================================================================

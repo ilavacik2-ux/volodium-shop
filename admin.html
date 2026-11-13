@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>VOLODIUM ATELIER — Закрытая студия управления</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/E610BB2F-DBAE-4672-9.PNG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/admin/admin.css?v=20261113_01">
+</head>
+<body>
+  <div class="vp-ambient-aura" aria-hidden="true"></div>
+
+  <!-- ======================================================================
+       SCREEN 1: PASSWORD LOGIN GATE (Zero credentials exposed, no hints)
+       ====================================================================== -->
+  <section class="vp-auth-screen" id="vpAuthScreen" aria-label="Авторизация в студии управления">
+    <div class="vp-auth-card">
+      <div class="vp-auth-crest">V</div>
+      <div class="vp-auth-overline">HAUTE PARFUMERIE • ATELIER STUDIO</div>
+      <h1 class="vp-auth-title">VOLODIUM <em>Admin</em></h1>
+      <p class="vp-auth-subtitle" id="vpAuthGateBadge">Проверка защищённого шлюза...</p>
+
+      <form id="vpAuthForm" class="vp-auth-form" autocomplete="off">
+        <!-- Anti-bot honeypot trap -->
+        <div class="vp-honeypot-field" aria-hidden="true">
+          <label for="vpTrapInput">Leave empty</label>
+          <input type="text" id="vpTrapInput" name="website_url" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="vp-field">
+          <label for="vpMasterPassword">Мастер-пароль доступа</label>
+          <div class="vp-password-wrap">
+            <input
+              type="password"
+              id="vpMasterPassword"
+              name="password"
+              placeholder="Введите пароль студии"
+              autocomplete="current-password"
+              required
+            >
+            <button type="button" class="vp-eye-btn" id="vpTogglePassBtn" aria-label="Показать или скрыть пароль" title="Показать пароль">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="vp-auth-error" id="vpAuthError" role="alert" hidden></div>
+
+        <button type="submit" class="vp-btn vp-btn-primary vp-btn-full" id="vpAuthSubmitBtn">
+          <span>Войти в студию</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <button type="button" class="vp-btn vp-btn-outline vp-btn-full" id="vpQuickLoginBtn" style="margin-top: 10px; border-color: rgba(201, 168, 106, 0.5); color: #C9A86A;">
+          ⚡ Быстрый вход (Саша / Помощница)
+        </button>
+      </form>
+
+      <div class="vp-auth-footer-note" style="margin-top: 14px; font-size: 12px; color: var(--text-muted); line-height: 1.4;">
+        Пароль доступа: <strong style="color: #C9A86A;">volodium</strong> (или по токену в ссылке)
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SCREEN 2: FULL ATELIER DASHBOARD SHELL
+       ====================================================================== -->
+  <div class="vp-app-shell" id="vpAppShell" hidden>
+    <!-- Mobile Drawer Backdrop -->
+    <div class="vp-sidebar-backdrop" id="vpSidebarBackdrop"></div>
+
+    <!-- Left Atelier Sidebar -->
+    <aside class="vp-sidebar" id="vpSidebar" aria-label="Навигация админ-панели">
+      <div class="vp-sb-brand">
+        <div class="vp-sb-crest">V</div>
+        <div>
+          <div class="vp-sb-name">VOLODIUM</div>
+          <div class="vp-sb-sub">ATELIER STUDIO</div>
+        </div>
+        <button type="button" class="vp-sb-close" id="vpSidebarClose" aria-label="Закрыть меню">✕</button>
+      </div>
+
+      <div class="vp-sb-operator">
+        <span class="vp-op-dot"></span>
+        <div class="vp-op-info">
+          <span class="vp-op-role" id="vpOperatorRoleLabel">Оператор</span>
+          <strong class="vp-op-name" id="vpOperatorNameLabel">Загрузка...</strong>
+        </div>
+      </div>
+
+      <nav class="vp-sb-nav" id="vpSidebarNav">
+        <div class="vp-nav-group-label">Управление бутиком</div>
+        <button type="button" class="vp-nav-item active" data-tab="overview">
+          <span class="vp-nav-ico">🏛️</span>
+          <span>Обзор ателье</span>
+        </button>
+        <button type="button" class="vp-nav-item" data-tab="perfumes">
+          <span class="vp-nav-ico">🧴</span>
+          <span>Каталог духов</span>
+          <span class="vp-nav-badge" id="navBadgePerfumes">0</span>
+        </button>
+        <button type="button" class="vp-nav-item" data-tab="pricing">
+          <span class="vp-nav-ico">📈</span>
+          <span>Переоценка +% / -%</span>
+        </button>
+        <button type="button" class="vp-nav-item" data-tab="boxes">
+          <span class="vp-nav-ico">🎁</span>
+          <span>Аромабоксы &amp; Secret</span>
+          <span class="vp-nav-badge" id="navBadgeBoxes">0</span>
+        </button>
+
+        <div class="vp-nav-group-label">Витрина и маркетинг</div>
+        <button type="button" class="vp-nav-item" data-tab="storefront">
+          <span class="vp-nav-ico">✨</span>
+          <span>Главный экран &amp; Фото</span>
+        </button>
+        <button type="button" class="vp-nav-item" data-tab="commerce">
+          <span class="vp-nav-ico">🎟️</span>
+          <span>Промокоды &amp; Доставка</span>
+        </button>
+
+        <div class="vp-nav-group-label">Контроль и доступ</div>
+        <button type="button" class="vp-nav-item" data-tab="audit">
+          <span class="vp-nav-ico">📜</span>
+          <span>Журнал действий</span>
+        </button>
+        <button type="button" class="vp-nav-item" data-tab="security">
+          <span class="vp-nav-ico">🔐</span>
+          <span>Токены &amp; Бэкап</span>
+        </button>
+      </nav>
+
+      <div class="vp-sb-footer">
+        <a href="/" target="_blank" rel="noopener noreferrer" class="vp-sb-store-link">
+          <span>Открыть витрину сайта</span>
+          <span>↗</span>
+        </a>
+        <button type="button" class="vp-sb-logout" id="vpLogoutBtn">Выйти из студии</button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="vp-main-area">
+      <!-- Top Header Bar -->
+      <header class="vp-topbar">
+        <div class="vp-topbar-left">
+          <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div>
+            <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
+            <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
+          </div>
+        </div>
+
+        <div class="vp-topbar-actions">
+          <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
+            <span id="vpThemeIcon">🌙</span>
+          </button>
+
+          <div class="vp-audit-bell-wrap">
+            <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
+              <span>🔔</span>
+              <span class="vp-bell-dot" id="vpBellDot" hidden></span>
+            </button>
+            <div class="vp-audit-popover" id="vpAuditPopover" hidden>
+              <div class="vp-ap-head">
+                <strong>Журнал изменений</strong>
+                <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
+              </div>
+              <div class="vp-ap-list" id="vpAuditPopoverList"></div>
+            </div>
+          </div>
+
+          <a href="/" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
+            <span>Витрина</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Tab Panels Container -->
+      <main class="vp-content">
+
+        <!-- ================================================================
+             TAB 1: OVERVIEW DASHBOARD
+             ================================================================ -->
+        <section class="vp-tab-panel active" id="tab-overview">
+          <div class="vp-kpi-grid">
+            <article class="vp-kpi-card">
+              <div class="vp-kpi-label">Ароматы в каталоге</div>
+              <div class="vp-kpi-val" id="kpiPerfumesTotal">0</div>
+              <div class="vp-kpi-meta" id="kpiPerfumesGender">—</div>
+            </article>
+            <article class="vp-kpi-card">
+              <div class="vp-kpi-label">Аромабоксы &amp; Secret</div>
+              <div class="vp-kpi-val" id="kpiBoxesTotal">0</div>
+              <div class="vp-kpi-meta">Тематические сеты и VIP боксы</div>
+            </article>
+            <article class="vp-kpi-card">
+              <div class="vp-kpi-label">Средняя цена (5 мл)</div>
+              <div class="vp-kpi-val" id="kpiAvgPrice">0 ₽</div>
+              <div class="vp-kpi-meta" id="kpiPriceRange">—</div>
+            </article>
+            <article class="vp-kpi-card vp-kpi-warn">
+              <div class="vp-kpi-label">Точки роста каталога</div>
+              <div class="vp-kpi-val" id="kpiQualityCount">0</div>
+              <div class="vp-kpi-meta" id="kpiQualityHint">Обрезанные описания / CDN</div>
+            </article>
+          </div>
+
+          <div class="vp-dashboard-split">
+            <!-- Quick Bulk Price Card -->
+            <div class="vp-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Быстрая индексация цен</h3>
+                  <p>Поднять или снизить цены на весь каталог за 2 клика с возможностью отката</p>
+                </div>
+                <button type="button" class="vp-btn vp-btn-outline vp-btn-sm" data-goto-tab="pricing">Калькулятор % →</button>
+              </div>
+              <div class="vp-quick-pct-row">
+                <button type="button" class="vp-chip-btn neg" data-quick-pct="-10">-10% Скидка</button>
+                <button type="button" class="vp-chip-btn neg" data-quick-pct="-5">-5%</button>
+                <button type="button" class="vp-chip-btn pos" data-quick-pct="5">+5%</button>
+                <button type="button" class="vp-chip-btn pos" data-quick-pct="10">+10% Весь товар</button>
+                <button type="button" class="vp-chip-btn pos" data-quick-pct="15">+15%</button>
+              </div>
+              <div class="vp-season-breakdown" id="vpSeasonBreakdown"></div>
+            </div>
+
+            <!-- Recent Actions Card -->
+            <div class="vp-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Последние изменения</h3>
+                  <p>Фиксируется, кто внёс правку: Владимир или Помощница</p>
+                </div>
+                <button type="button" class="vp-btn vp-btn-outline vp-btn-sm" data-goto-tab="audit">Весь журнал</button>
+              </div>
+              <div class="vp-recent-list" id="vpRecentAuditList"></div>
+            </div>
+          </div>
+
+          <div class="vp-card">
+            <div class="vp-card-head">
+              <div>
+                <h3>Быстрые разделы студии</h3>
+                <p>Что можно поменять на сайте прямо сейчас</p>
+              </div>
+            </div>
+            <div class="vp-shortcut-grid">
+              <button type="button" class="vp-shortcut-card" data-goto-tab="perfumes">
+                <span class="vp-sc-ico">🧴</span>
+                <strong>Редактор ароматов &amp; Сезонности</strong>
+                <span>Смена фото, пирамиды нот, сезон «Весна-Лето / Осень-Зима» и цен по объёмам</span>
+              </button>
+              <button type="button" class="vp-shortcut-card" data-goto-tab="storefront">
+                <span class="vp-sc-ico">✨</span>
+                <strong>Первый экран «Открой. Вдохни.»</strong>
+                <span>Заголовок Hero, фото Владимира, цитата, фоновая фотография, логотип и статистика</span>
+              </button>
+              <button type="button" class="vp-shortcut-card" data-goto-tab="boxes">
+                <span class="vp-sc-ico">🎁</span>
+                <strong>Аромабоксы &amp; Secret Box</strong>
+                <span>Настройка 9 тематических боксов (старая/новая цена) и 3 уровней Secret Box</span>
+              </button>
+              <button type="button" class="vp-shortcut-card" data-goto-tab="commerce">
+                <span class="vp-sc-ico">🎟️</span>
+                <strong>Промокоды и пороги заказа</strong>
+                <span>Верхняя полоса акций, создание своих промокодов на %, бесплатная доставка</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             TAB 2: PERFUMES CATALOG (265+)
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-perfumes">
+          <div class="vp-card vp-toolbar-card">
+            <div class="vp-toolbar-top">
+              <div class="vp-search-wrap">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" id="vpCatalogSearch" placeholder="Поиск по бренду, названию, нотам или описанию...">
+              </div>
+              <div class="vp-toolbar-filters">
+                <select id="vpFilterGender" aria-label="Фильтр по полу">
+                  <option value="all">Все категории</option>
+                  <option value="women">Женские</option>
+                  <option value="men">Мужские</option>
+                  <option value="unisex">Унисекс</option>
+                </select>
+                <select id="vpFilterSeason" aria-label="Фильтр по сезонности">
+                  <option value="all">Любая сезонность</option>
+                  <option value="Круглый год">🌸 Круглый год</option>
+                  <option value="Весна — Лето">☀️ Весна — Лето</option>
+                  <option value="Осень — Зима">🍂 Осень — Зима</option>
+                  <option value="Весна — Осень">🌿 Весна — Осень</option>
+                  <option value="Зима">❄️ Зима</option>
+                  <option value="Лето">🍋 Лето</option>
+                </select>
+                <select id="vpFilterQuality" aria-label="Фильтр состояния карточки">
+                  <option value="all">Все карточки</option>
+                  <option value="truncated">Обрезанное описание (...)</option>
+                  <option value="cdn">Фото на внешнем Tilda CDN</option>
+                  <option value="local">Локальные фото</option>
+                  <option value="badged">С бейджем (Хит / Бестселлер)</option>
+                  <option value="hidden">Скрытые с витрины</option>
+                </select>
+              </div>
+              <button type="button" class="vp-btn vp-btn-primary" id="vpAddPerfumeBtn">
+                <span>+ Добавить аромат</span>
+              </button>
+            </div>
+            <div class="vp-toolbar-meta">
+              <span id="vpCatalogCountLabel">Показано: 0</span>
+              <span class="vp-hint-inline">Совет: кликните по пилюле сезона в таблице, чтобы открыть быструю смену сезонности и фото</span>
+            </div>
+          </div>
+
+          <div class="vp-card vp-table-card">
+            <div class="vp-table-scroll">
+              <table class="vp-table" id="vpPerfumesTable">
+                <thead>
+                  <tr>
+                    <th>Фото</th>
+                    <th>Бренд и Аромат</th>
+                    <th>Сезонность</th>
+                    <th>Цены (от 3 мл)</th>
+                    <th>Статус</th>
+                    <th class="vp-th-actions">Действия</th>
+                  </tr>
+                </thead>
+                <tbody id="vpPerfumesTbody"></tbody>
+              </table>
+            </div>
+            <div class="vp-pagination-bar" id="vpCatalogPager"></div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             TAB 3: BULK PERCENTAGE PRICING & ROLLBACK
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-pricing">
+          <div class="vp-pricing-layout">
+            <div class="vp-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Массовое изменение цен в процентах (+% / -%)</h3>
+                  <p>Поднимите или снизьте стоимость всех товаров сразу или выбранной группы. Перед применением смотрите таблицу «Было → Станет».</p>
+                </div>
+              </div>
+
+              <div class="vp-form-grid">
+                <div class="vp-field">
+                  <label for="bulkScope">К чему применить</label>
+                  <select id="bulkScope">
+                    <option value="all">Весь каталог целиком (Духи + Аромабоксы + Secret Box)</option>
+                    <option value="perfumes">Только все духи на распив и флаконы</option>
+                    <option value="aromaboxes">Только тематические аромабоксы</option>
+                    <option value="secret_boxes">Только Secret Box (3 уровня)</option>
+                  </select>
+                </div>
+
+                <div class="vp-field">
+                  <label for="bulkRoundStep">Округление цен</label>
+                  <select id="bulkRoundStep">
+                    <option value="10">Кратно 10 ₽ (рекомендуется)</option>
+                    <option value="50">Кратно 50 ₽</option>
+                    <option value="100">Кратно 100 ₽</option>
+                    <option value="1">Точно до 1 ₽ (без округления)</option>
+                  </select>
+                </div>
+
+                <div class="vp-field">
+                  <label for="bulkGenderFilter">Фильтр по полу (для духов/боксов)</label>
+                  <select id="bulkGenderFilter">
+                    <option value="all">Любой пол</option>
+                    <option value="women">Женские</option>
+                    <option value="men">Мужские</option>
+                    <option value="unisex">Унисекс</option>
+                  </select>
+                </div>
+
+                <div class="vp-field">
+                  <label for="bulkSeasonFilter">Фильтр по сезонности (для духов)</label>
+                  <select id="bulkSeasonFilter">
+                    <option value="all">Любой сезон</option>
+                    <option value="Круглый год">🌸 Круглый год</option>
+                    <option value="Весна — Лето">☀️ Весна — Лето</option>
+                    <option value="Осень — Зима">🍂 Осень — Зима</option>
+                    <option value="Весна — Осень">🌿 Весна — Осень</option>
+                    <option value="Зима">❄️ Зима</option>
+                    <option value="Лето">🍋 Лето</option>
+                  </select>
+                </div>
+
+                <div class="vp-field vp-col-span-2">
+                  <label for="bulkBrandFilter">Только бренд / слово в названии (необязательно)</label>
+                  <input type="text" id="bulkBrandFilter" placeholder="Например: ByBozo, Tom Ford или оставьте пустым для всех">
+                </div>
+              </div>
+
+              <div class="vp-pct-box">
+                <div class="vp-pct-header">
+                  <label for="bulkPercentInput">Процент изменения цены (отрицательное — скидка, положительное — наценка):</label>
+                  <div class="vp-pct-input-wrap">
+                    <input type="number" id="bulkPercentInput" value="10" step="0.5" min="-90" max="500">
+                    <span>%</span>
+                  </div>
+                </div>
+
+                <div class="vp-pct-presets">
+                  <button type="button" class="vp-chip-btn neg" data-set-pct="-20">-20%</button>
+                  <button type="button" class="vp-chip-btn neg" data-set-pct="-15">-15%</button>
+                  <button type="button" class="vp-chip-btn neg" data-set-pct="-10">-10%</button>
+                  <button type="button" class="vp-chip-btn neg" data-set-pct="-5">-5%</button>
+                  <button type="button" class="vp-chip-btn pos" data-set-pct="5">+5%</button>
+                  <button type="button" class="vp-chip-btn pos" data-set-pct="10">+10%</button>
+                  <button type="button" class="vp-chip-btn pos" data-set-pct="15">+15%</button>
+                  <button type="button" class="vp-chip-btn pos" data-set-pct="20">+20%</button>
+                </div>
+
+                <label class="vp-checkbox-row">
+                  <input type="checkbox" id="bulkApplyOldPrices" checked>
+                  <span>Также пропорционально изменить старые зачёркнутые цены у боксов</span>
+                </label>
+              </div>
+
+              <div class="vp-actions-bar">
+                <button type="button" class="vp-btn vp-btn-outline" id="bulkPreviewBtn">
+                  <span>Рассчитать предпросмотр «Было → Станет»</span>
+                </button>
+                <button type="button" class="vp-btn vp-btn-primary" id="bulkApplyBtn">
+                  <span>Применить новые цены к каталогу</span>
+                </button>
+              </div>
+
+              <!-- Live Preview Table -->
+              <div class="vp-bulk-preview" id="bulkPreviewWrap" hidden>
+                <div class="vp-bp-head" id="bulkPreviewSummary"></div>
+                <div class="vp-table-scroll">
+                  <table class="vp-table vp-table-compact">
+                    <thead>
+                      <tr><th>Тип</th><th>Позиция</th><th>Объём</th><th>Было</th><th>Станет</th><th>Разница</th></tr>
+                    </thead>
+                    <tbody id="bulkPreviewTbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Snapshots Rollback Column -->
+            <div class="vp-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Страховка и откат цен</h3>
+                  <p>Перед каждой массовой переоценкой создаётся снимок старых цен. Откат в 1 клик!</p>
+                </div>
+              </div>
+              <div class="vp-snapshots-list" id="vpSnapshotsList"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             TAB 4: AROMA BOXES & SECRET BOXES
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-boxes">
+          <div class="vp-card">
+            <div class="vp-card-head">
+              <div>
+                <h3>Секретные аромабоксы Владимира Вацика (Secret Box)</h3>
+                <p>3 эксклюзивных уровня. Редактирование фото и цены автоматически обновляет секцию витрины и корзину.</p>
+              </div>
+            </div>
+            <div class="vp-secret-admin-grid" id="vpSecretBoxesGrid"></div>
+          </div>
+
+          <div class="vp-card">
+            <div class="vp-card-head">
+              <div>
+                <h3>Тематические аромабоксы (5 × 3 мл / 5 × 5 мл / 5 × 10 мл)</h3>
+                <p>Меняйте фотографии, состав 5 композиций, текущие и старые цены со скидкой.</p>
+              </div>
+              <button type="button" class="vp-btn vp-btn-primary" id="vpAddBoxBtn">+ Новый аромабокс</button>
+            </div>
+            <div class="vp-boxes-admin-grid" id="vpAromaBoxesGrid"></div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             TAB 5: HERO, HEADER, INTRO & CONSULTATION VISUALS
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-storefront">
+          <form id="vpStorefrontForm">
+            <!-- Live Mini Hero Preview -->
+            <div class="vp-card vp-hero-preview-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Предпросмотр первого экрана (Hero)</h3>
+                  <p>Обновляется в реальном времени при редактировании полей ниже</p>
+                </div>
+                <button type="submit" class="vp-btn vp-btn-primary">Сохранить оформление сайта</button>
+              </div>
+              <div class="vp-live-hero-stage" id="vpLiveHeroStage">
+                <div class="vp-lhs-bg" id="lhsBackdrop"></div>
+                <div class="vp-lhs-left">
+                  <span class="vp-lhs-badge" id="lhsBadge">100% Оригинальная парфюмерия</span>
+                  <h4 class="vp-lhs-title">
+                    <span id="lhsTitleLine">Открой. Вдохни.</span>
+                    <em id="lhsTitleAccent">Почувствуй.</em>
+                  </h4>
+                  <p class="vp-lhs-desc" id="lhsDesc">...</p>
+                  <div class="vp-lhs-stats" id="lhsStatsPreview"></div>
+                </div>
+                <div class="vp-lhs-portrait-card">
+                  <img id="lhsPortraitImg" src="/assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Превью портрета">
+                  <div class="vp-lhs-portrait-cap">
+                    <strong id="lhsPortraitTitle">ВЛАДИМИР ВАЦИК</strong>
+                    <span id="lhsPortraitQuote">«Парфюм — это чувственное продолжение...»</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="vp-two-col">
+              <!-- Hero Texts & Buttons -->
+              <div class="vp-card">
+                <div class="vp-card-head"><h3>Главный экран: Заголовок, описание, кнопки</h3></div>
+                <div class="vp-form-grid single">
+                  <div class="vp-field">
+                    <label for="scHeroBadge">Плашка над заголовком</label>
+                    <input type="text" id="scHeroBadge">
+                  </div>
+                  <div class="vp-form-grid">
+                    <div class="vp-field">
+                      <label for="scHeroTitleLine">Первая часть заголовка</label>
+                      <input type="text" id="scHeroTitleLine" placeholder="Открой. Вдохни.">
+                    </div>
+                    <div class="vp-field">
+                      <label for="scHeroTitleAccent">Акцентное слово (курсив)</label>
+                      <input type="text" id="scHeroTitleAccent" placeholder="Почувствуй.">
+                    </div>
+                  </div>
+                  <div class="vp-field">
+                    <label for="scHeroDesc">Подзаголовок (описание бутика)</label>
+                    <textarea id="scHeroDesc" rows="3"></textarea>
+                  </div>
+                  <div class="vp-form-grid">
+                    <div class="vp-field">
+                      <label for="scCtaCatalog">Кнопка №1 (Каталог)</label>
+                      <input type="text" id="scCtaCatalog">
+                    </div>
+                    <div class="vp-field">
+                      <label for="scCtaQuiz">Кнопка №2 (Анкета)</label>
+                      <input type="text" id="scCtaQuiz">
+                    </div>
+                  </div>
+                  <div class="vp-field">
+                    <label for="scCtaSecret">Кнопка №3 (Secret Box)</label>
+                    <input type="text" id="scCtaSecret">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hero Photos & Quote -->
+              <div class="vp-card">
+                <div class="vp-card-head"><h3>Фотографии первого экрана и цитата</h3></div>
+                <div class="vp-form-grid single">
+                  <div class="vp-upload-block">
+                    <label>Портретная фотография справа (Владимир)</label>
+                    <div class="vp-upload-row">
+                      <input type="text" id="scHeroPortraitImg" placeholder="assets/img/editorial/...">
+                      <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                        <span>Загрузить фото</span>
+                        <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scHeroPortraitImg" data-upload-folder="hero" data-preview-img="lhsPortraitImg">
+                      </label>
+                    </div>
+                    <div class="vp-range-row">
+                      <span>Кадрирование (по вертикали):</span>
+                      <input type="range" id="scHeroPortraitY" min="0" max="100" value="20">
+                      <span id="scHeroPortraitYVal">20%</span>
+                    </div>
+                  </div>
+
+                  <div class="vp-field">
+                    <label for="scHeroPortraitTitle">Имя на портрете</label>
+                    <input type="text" id="scHeroPortraitTitle">
+                  </div>
+                  <div class="vp-field">
+                    <label for="scHeroPortraitQuote">Цитата под фото</label>
+                    <input type="text" id="scHeroPortraitQuote">
+                  </div>
+
+                  <div class="vp-upload-block">
+                    <label>Фоновая фотография всего Hero-блока</label>
+                    <div class="vp-upload-row">
+                      <input type="text" id="scHeroBackdropImg" placeholder="assets/img/editorial/...">
+                      <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                        <span>Загрузить фон</span>
+                        <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scHeroBackdropImg" data-upload-folder="hero">
+                      </label>
+                    </div>
+                    <div class="vp-range-row">
+                      <span>Видимость фона (прозрачность):</span>
+                      <input type="range" id="scHeroBackdropOpacity" min="10" max="100" value="75">
+                      <span id="scHeroBackdropOpacityVal">75%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats, Header Logo & Intro, Consultation -->
+            <div class="vp-two-col">
+              <div class="vp-card">
+                <div class="vp-card-head"><h3>4 цифры статистики, Шапка и Заставка</h3></div>
+                <div class="vp-stats-editor-grid">
+                  <div class="vp-field"><label>Стат #1 (Значение / Подпись)</label><div class="vp-pair"><input type="text" id="scStatVal0"><input type="text" id="scStatLbl0"></div></div>
+                  <div class="vp-field"><label>Стат #2</label><div class="vp-pair"><input type="text" id="scStatVal1"><input type="text" id="scStatLbl1"></div></div>
+                  <div class="vp-field"><label>Стат #3</label><div class="vp-pair"><input type="text" id="scStatVal2"><input type="text" id="scStatLbl2"></div></div>
+                  <div class="vp-field"><label>Стат #4</label><div class="vp-pair"><input type="text" id="scStatVal3"><input type="text" id="scStatLbl3"></div></div>
+                </div>
+                <hr class="vp-divider">
+                <div class="vp-form-grid">
+                  <div class="vp-field"><label for="scBrandTitle">Название в шапке</label><input type="text" id="scBrandTitle"></div>
+                  <div class="vp-field"><label for="scBrandSub">Подзаголовок в шапке</label><input type="text" id="scBrandSub"></div>
+                </div>
+                <div class="vp-upload-block" style="margin-top:12px;">
+                  <label>Логотип сайта и Favicon</label>
+                  <div class="vp-upload-row">
+                    <input type="text" id="scBrandLogo">
+                    <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                      <span>Загрузить лого</span>
+                      <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scBrandLogo" data-upload-folder="branding">
+                    </label>
+                  </div>
+                </div>
+                <div class="vp-form-grid" style="margin-top:12px;">
+                  <div class="vp-field"><label for="scIntroTitle">Заголовок заставки</label><input type="text" id="scIntroTitle"></div>
+                  <div class="vp-field"><label for="scIntroSub">Подпись заставки</label><input type="text" id="scIntroSub"></div>
+                </div>
+                <label class="vp-checkbox-row" style="margin-top:10px;">
+                  <input type="checkbox" id="scIntroEnabled" checked>
+                  <span>Показывать красивую золотую заставку при входе на сайт</span>
+                </label>
+              </div>
+
+              <div class="vp-card">
+                <div class="vp-card-head"><h3>Блок «Консультация с Владимиром Вациком»</h3></div>
+                <div class="vp-form-grid single">
+                  <div class="vp-subcard-title">Способ 1 — Онлайн-подбор по анкете</div>
+                  <div class="vp-form-grid">
+                    <div class="vp-field"><label>Заголовок</label><input type="text" id="scConsultOnlineTitle"></div>
+                    <div class="vp-field"><label>Цена</label><input type="text" id="scConsultOnlinePrice"></div>
+                  </div>
+                  <div class="vp-field"><label>Подзаголовок</label><input type="text" id="scConsultOnlineSub"></div>
+                  <div class="vp-upload-row">
+                    <input type="text" id="scConsultOnlineImg" placeholder="Фото онлайн-карточки">
+                    <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                      <span>Загрузить фото</span>
+                      <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOnlineImg" data-upload-folder="consultation">
+                    </label>
+                  </div>
+
+                  <hr class="vp-divider">
+                  <div class="vp-subcard-title">Способ 2 — Офлайн сессия в Москве</div>
+                  <div class="vp-form-grid">
+                    <div class="vp-field"><label>Заголовок</label><input type="text" id="scConsultOfflineTitle"></div>
+                    <div class="vp-field"><label>Цена</label><input type="text" id="scConsultOfflinePrice"></div>
+                  </div>
+                  <div class="vp-field"><label>Подзаголовок</label><input type="text" id="scConsultOfflineSub"></div>
+                  <div class="vp-upload-row">
+                    <input type="text" id="scConsultOfflineImg" placeholder="Фото чемодана / встречи">
+                    <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                      <span>Загрузить фото</span>
+                      <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOfflineImg" data-upload-folder="consultation">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reviews & Customer Unboxing Gallery (6 Cards with Vertical Crop / Height Sliders) -->
+            <div class="vp-card" style="margin-top: 20px;">
+              <div class="vp-card-head">
+                <div>
+                  <h3>⭐ Распаковки и отзывы клиентов (6 карточек на главной витрине)</h3>
+                  <p>Настраивайте фотографии, авторов, текст отзывов и регулируйте вертикальное положение (фокус по высоте) для каждого снимка</p>
+                </div>
+              </div>
+              <div class="vp-reviews-admin-grid" id="vpReviewsAdminGrid"></div>
+            </div>
+
+            <div class="vp-sticky-save-bar">
+              <span>Все изменения главного экрана и фотографий сразу применяются на витрине сайта</span>
+              <button type="submit" class="vp-btn vp-btn-primary">Сохранить оформление сайта</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================================================================
+             TAB 6: PROMO CODES, TOP BANNER, DELIVERY THRESHOLDS, CONTACTS
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-commerce">
+          <form id="vpCommerceForm">
+            <div class="vp-two-col">
+              <div class="vp-card">
+                <div class="vp-card-head">
+                  <div>
+                    <h3>Верхняя полоса акции (#promoTopBar)</h3>
+                    <p>Закреплена над шапкой сайта и позволяет применить промокод в 1 клик</p>
+                  </div>
+                </div>
+                <label class="vp-checkbox-row" style="margin-bottom:12px;">
+                  <input type="checkbox" id="cmPromoBarEnabled" checked>
+                  <span>Показывать верхнюю акционную полосу</span>
+                </label>
+                <div class="vp-form-grid">
+                  <div class="vp-field"><label>Начало текста</label><input type="text" id="cmPromoPrefix"></div>
+                  <div class="vp-field"><label>Промокод в кнопке</label><input type="text" id="cmPromoHighlight" style="text-transform:uppercase;"></div>
+                  <div class="vp-field"><label>Продолжение текста</label><input type="text" id="cmPromoSuffix"></div>
+                  <div class="vp-field"><label>Текст кнопки</label><input type="text" id="cmPromoBtnText"></div>
+                </div>
+
+                <hr class="vp-divider">
+                <div class="vp-card-head" style="padding:0;border:none;margin-bottom:10px;">
+                  <h3>Активные промокоды в корзине</h3>
+                  <button type="button" class="vp-btn vp-btn-outline vp-btn-sm" id="cmAddPromoBtn">+ Добавить код</button>
+                </div>
+                <div id="cmPromoList" class="vp-promo-list"></div>
+              </div>
+
+              <div class="vp-card">
+                <div class="vp-card-head">
+                  <div>
+                    <h3>Пороги заказа и контакты бутика</h3>
+                    <p>Управляет проверкой минимального заказа, прогресс-баром в корзине и ссылками</p>
+                  </div>
+                </div>
+                <div class="vp-form-grid">
+                  <div class="vp-field">
+                    <label for="cmMinOrder">Минимальная сумма заказа (₽)</label>
+                    <input type="number" id="cmMinOrder" min="0" step="100">
+                  </div>
+                  <div class="vp-field">
+                    <label for="cmFreeDelivery">Бесплатная доставка СДЭК от (₽)</label>
+                    <input type="number" id="cmFreeDelivery" min="0" step="100">
+                  </div>
+                </div>
+
+                <hr class="vp-divider">
+                <div class="vp-form-grid">
+                  <div class="vp-field"><label>Telegram для заказов (без @)</label><input type="text" id="cmTgHandle"></div>
+                  <div class="vp-field"><label>Telegram-канал (без @)</label><input type="text" id="cmChannelHandle"></div>
+                  <div class="vp-field"><label>WhatsApp (цифры, 7909...)</label><input type="text" id="cmWaPhone"></div>
+                  <div class="vp-field"><label>WhatsApp (отображение)</label><input type="text" id="cmWaDisplay"></div>
+                  <div class="vp-field"><label>Ссылка ВКонтакте</label><input type="text" id="cmVkUrl"></div>
+                  <div class="vp-field"><label>Режим работы</label><input type="text" id="cmHours"></div>
+                </div>
+                <div class="vp-field" style="margin-top:12px;">
+                  <label>Адрес шоурума в Москве</label>
+                  <input type="text" id="cmAddress">
+                </div>
+              </div>
+            </div>
+
+            <div class="vp-sticky-save-bar">
+              <span>Сохраняет промокоды, акционную строку, пороги доставки и контакты</span>
+              <button type="submit" class="vp-btn vp-btn-primary">Сохранить настройки коммерции</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================================================================
+             TAB 7: AUDIT LOGS (NO TELEGRAM)
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-audit">
+          <div class="vp-card">
+            <div class="vp-card-head">
+              <div>
+                <h3>Локальный журнал действий и безопасности</h3>
+                <p>История всех входов и правок Владимира и Помощницы без уведомлений в Telegram</p>
+              </div>
+              <div class="vp-toolbar-filters">
+                <select id="auditOperatorFilter">
+                  <option value="all">Все операторы</option>
+                  <option value="owner">Владимир (Владелец)</option>
+                  <option value="assistant">Помощница</option>
+                </select>
+                <select id="auditActionFilter">
+                  <option value="all">Все события</option>
+                  <option value="BULK_PRICE">Массовая переоценка</option>
+                  <option value="PRICE_ROLLBACK">Откат цен</option>
+                  <option value="UPDATE">Редактирование</option>
+                  <option value="ADD">Добавление</option>
+                  <option value="DELETE">Удаление</option>
+                  <option value="CONTENT">Контент сайта</option>
+                  <option value="MEDIA_UPLOAD">Загрузка фото</option>
+                  <option value="SECURITY">Безопасность</option>
+                  <option value="AUTH_FAIL">Ошибки пароля</option>
+                </select>
+              </div>
+            </div>
+            <div class="vp-table-scroll">
+              <table class="vp-table vp-table-compact">
+                <thead>
+                  <tr><th>Время</th><th>Оператор</th><th>Тип</th><th>Событие</th><th>IP</th></tr>
+                </thead>
+                <tbody id="vpAuditTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             TAB 8: SECURITY TOKENS & BACKUP
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-security">
+          <div class="vp-two-col">
+            <!-- Dual Tokens & Password (Owner only for rotation) -->
+            <div class="vp-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Два секретных токена-шлюза</h3>
+                  <p>Вход возможен только по уникальной секретной ссылке. Подбор URL даёт 404.</p>
+                </div>
+              </div>
+              <div id="vpSecurityOwnerNotice" class="vp-info-banner" hidden>
+                Вы вошли по токену <strong>Помощницы</strong>. Управление токенами доступа и смена мастер-пароля доступны только по токену владельца (Владимира).
+              </div>
+              <div id="vpTokensManager" class="vp-tokens-grid"></div>
+
+              <hr class="vp-divider">
+              <h4 style="margin-bottom:10px;">Смена мастер-пароля</h4>
+              <form id="vpChangePassForm" class="vp-form-grid">
+                <div class="vp-field">
+                  <label for="secCurrentPass">Текущий пароль</label>
+                  <input type="password" id="secCurrentPass" required>
+                </div>
+                <div class="vp-field">
+                  <label for="secNewPass">Новый пароль (от 6 символов)</label>
+                  <input type="password" id="secNewPass" minlength="6" required>
+                </div>
+                <div class="vp-actions-bar vp-col-span-2" style="margin-top:4px;">
+                  <button type="submit" class="vp-btn vp-btn-primary">Обновить пароль</button>
+                  <button type="button" class="vp-btn vp-btn-danger-outline" id="secRevokeAllBtn">Завершить все сессии</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Backups & Export -->
+            <div class="vp-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Резервные копии и экспорт каталога</h3>
+                  <p>Полный снимок базы SQLite и генерация статического perfumes.js для GitHub Pages</p>
+                </div>
+              </div>
+              <div class="vp-backup-actions">
+                <button type="button" class="vp-btn vp-btn-primary" id="btnExportJsonBackup">
+                  <span>📥 Скачать полный JSON-бэкап базы</span>
+                </button>
+                <button type="button" class="vp-btn vp-btn-outline" id="btnExportPerfumesJs">
+                  <span>📄 Скачать обновлённый assets/data/perfumes.js</span>
+                </button>
+              </div>
+              <hr class="vp-divider">
+              <h4 style="margin-bottom:8px;">Восстановление из JSON-бэкапа</h4>
+              <p class="vp-muted-note">Перед восстановлением сервер автоматически сохранит снимок цен на случай отката.</p>
+              <label class="vp-upload-dropzone" style="margin-top:10px;display:block;text-align:center;cursor:pointer;">
+                <span>Нажмите, чтобы выбрать файл <code>volodium_backup.json</code></span>
+                <input type="file" id="inputRestoreBackup" accept="application/json,.json" hidden>
+              </label>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: PERFUME EDITOR (WITH SEASONALITY, PHOTO UPLOAD & PREVIEW)
+       ====================================================================== -->
+  <div class="vp-modal-backdrop" id="vpPerfumeModalBackdrop" hidden role="dialog" aria-modal="true" aria-labelledby="vpPerfumeModalTitle">
+    <div class="vp-modal vp-modal-lg">
+      <div class="vp-modal-head">
+        <div>
+          <span class="vp-modal-tag" id="vpPerfumeModalTag">РЕДАКТОР АРОМАТА</span>
+          <h3 id="vpPerfumeModalTitle">Редактирование карточки</h3>
+        </div>
+        <button type="button" class="vp-modal-close" data-close-modal="vpPerfumeModalBackdrop" aria-label="Закрыть">✕</button>
+      </div>
+
+      <form id="vpPerfumeForm" class="vp-modal-body">
+        <input type="hidden" id="pmId">
+        <div class="vp-editor-split">
+          <!-- Left: Photo Studio + Live Card Preview -->
+          <div class="vp-editor-media-col">
+            <div class="vp-preview-card-shell">
+              <div class="vp-pcs-img-wrap">
+                <span class="vp-pcs-badge" id="pmPreviewBadge" hidden>Хит</span>
+                <img id="pmPreviewImg" src="/assets/images/noroot.png" alt="Предпросмотр">
+              </div>
+              <div class="vp-pcs-body">
+                <div class="vp-pcs-brand" id="pmPreviewBrand">VOLODIUM</div>
+                <div class="vp-pcs-name" id="pmPreviewName">Название аромата</div>
+                <div class="vp-pcs-season" id="pmPreviewSeason">🌸 Круглый год · ✨ День &amp; Вечер</div>
+                <div class="vp-pcs-price" id="pmPreviewPrice">от 500 ₽</div>
+              </div>
+            </div>
+
+            <div class="vp-upload-block" style="margin-top:14px;">
+              <label>Фотография флакона (Загрузка или ссылка)</label>
+              <label class="vp-upload-dropzone" id="pmDropzone">
+                <span>📁 Перетащите фото или <strong>нажмите для загрузки</strong> (JPG, PNG, WebP)</span>
+                <input type="file" id="pmPhotoFileInput" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+              </label>
+              <input type="text" id="pmImage" placeholder="URL или assets/uploads/..." style="margin-top:8px;">
+              <div class="vp-range-row">
+                <span>Фокус по вертикали:</span>
+                <input type="range" id="pmObjPosY" min="0" max="100" value="50">
+                <span id="pmObjPosYVal">50%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: All Fields, Seasonality, Pyramid & Prices -->
+          <div class="vp-editor-fields-col">
+            <div class="vp-form-grid">
+              <div class="vp-field">
+                <label for="pmBrand">Бренд *</label>
+                <input type="text" id="pmBrand" placeholder="Например: Tom Ford">
+              </div>
+              <div class="vp-field">
+                <label for="pmName">Название аромата *</label>
+                <input type="text" id="pmName" required placeholder="Например: Lost Cherry">
+              </div>
+              <div class="vp-field">
+                <label for="pmGender">Категория (Пол)</label>
+                <select id="pmGender">
+                  <option value="unisex">Унисекс</option>
+                  <option value="women">Женские</option>
+                  <option value="men">Мужские</option>
+                </select>
+              </div>
+              <div class="vp-field">
+                <label for="pmBadge">Бейдж на карточке</label>
+                <input type="text" id="pmBadge" list="vpBadgeSuggestions" placeholder="Бестселлер / Хит / Новинка">
+                <datalist id="vpBadgeSuggestions">
+                  <option value="Бестселлер">
+                  <option value="Хит">
+                  <option value="Новинка">
+                  <option value="Выбор Владимира">
+                  <option value="Лимитка">
+                </datalist>
+              </div>
+            </div>
+
+            <!-- Seasonality Section -->
+            <div class="vp-season-editor-box">
+              <div class="vp-seb-title">🍂 Сезонность и характер звучания</div>
+              <div class="vp-season-pills" id="pmSeasonPills">
+                <button type="button" class="vp-sp-btn" data-season="Круглый год" data-icon="🌸" data-time="День &amp; Вечер">🌸 Круглый год</button>
+                <button type="button" class="vp-sp-btn" data-season="Весна — Лето" data-icon="☀️" data-time="Идеально на день">☀️ Весна — Лето</button>
+                <button type="button" class="vp-sp-btn" data-season="Осень — Зима" data-icon="🍂" data-time="Вечер / Особый случай">🍂 Осень — Зима</button>
+                <button type="button" class="vp-sp-btn" data-season="Весна — Осень" data-icon="🌿" data-time="День &amp; Романтический вечер">🌿 Весна — Осень</button>
+                <button type="button" class="vp-sp-btn" data-season="Зима" data-icon="❄️" data-time="Морозный день &amp; Вечер">❄️ Зима</button>
+                <button type="button" class="vp-sp-btn" data-season="Лето" data-icon="🍋" data-time="Лёгкий дневной шлейф">🍋 Лето</button>
+              </div>
+              <div class="vp-form-grid" style="margin-top:10px;">
+                <div class="vp-field">
+                  <label for="pmSeasonText">Текст сезона</label>
+                  <input type="text" id="pmSeasonText" placeholder="Осень — Зима">
+                </div>
+                <div class="vp-field">
+                  <label for="pmSeasonIcon">Иконка (Эмодзи)</label>
+                  <input type="text" id="pmSeasonIcon" maxlength="8" placeholder="🍂">
+                </div>
+                <div class="vp-field">
+                  <label for="pmTimeOfDay">Время суток</label>
+                  <input type="text" id="pmTimeOfDay" placeholder="Вечер / Особый случай">
+                </div>
+                <div class="vp-field">
+                  <label for="pmMood">Настроение (Vibe)</label>
+                  <input type="text" id="pmMood" placeholder="Глубокий, согревающий, статусный">
+                </div>
+                <div class="vp-field">
+                  <label for="pmLongevity">Стойкость</label>
+                  <input type="text" id="pmLongevity" placeholder="До 12 часов">
+                </div>
+                <div class="vp-field">
+                  <label for="pmSillage">Шлейф</label>
+                  <input type="text" id="pmSillage" placeholder="Выразительный">
+                </div>
+              </div>
+            </div>
+
+            <!-- Prices & Single-Item % Adjust -->
+            <div class="vp-prices-editor-box">
+              <div class="vp-peb-head">
+                <strong>💰 Цены по объёмам (₽)</strong>
+                <div class="vp-single-pct-controls">
+                  <span>Быстро на этот товар:</span>
+                  <button type="button" class="vp-mini-pct neg" data-item-pct="-10">-10%</button>
+                  <button type="button" class="vp-mini-pct neg" data-item-pct="-5">-5%</button>
+                  <button type="button" class="vp-mini-pct pos" data-item-pct="5">+5%</button>
+                  <button type="button" class="vp-mini-pct pos" data-item-pct="10">+10%</button>
+                  <div class="vp-inline-custom-pct">
+                    <input type="number" id="pmCustomPct" placeholder="%" step="1" min="-90" max="500">
+                    <button type="button" id="pmApplyCustomPctBtn">Прим.</button>
+                  </div>
+                </div>
+              </div>
+              <div class="vp-volumes-grid">
+                <div class="vp-field"><label for="pmPrice3ml">3 мл</label><input type="number" id="pmPrice3ml" min="0" step="10"></div>
+                <div class="vp-field"><label for="pmPrice5ml">5 мл</label><input type="number" id="pmPrice5ml" min="0" step="10"></div>
+                <div class="vp-field"><label for="pmPrice10ml">10 мл</label><input type="number" id="pmPrice10ml" min="0" step="10"></div>
+                <div class="vp-field"><label for="pmPrice15ml">15 мл</label><input type="number" id="pmPrice15ml" min="0" step="10"></div>
+                <div class="vp-field"><label for="pmPrice20ml">20 мл</label><input type="number" id="pmPrice20ml" min="0" step="10"></div>
+                <div class="vp-field"><label for="pmPriceBottle">Флакон (₽)</label><input type="number" id="pmPriceBottle" min="0" step="50"></div>
+              </div>
+              <div class="vp-form-grid" style="margin-top:8px;">
+                <div class="vp-field"><label for="pmBottleSize">Подпись флакона (напр. 100 мл)</label><input type="text" id="pmBottleSize" placeholder="100 мл"></div>
+                <div class="vp-field"><label for="pmSubtitle">Короткий слоган</label><input type="text" id="pmSubtitle" placeholder="Опционально"></div>
+              </div>
+            </div>
+
+            <!-- Description & Pyramid -->
+            <div class="vp-field" style="margin-top:12px;">
+              <label for="pmDescription">Описание аромата <span class="vp-trunc-warn" id="pmTruncWarn" hidden>⚠ Обрывается на «...»</span></label>
+              <textarea id="pmDescription" rows="3"></textarea>
+            </div>
+            <div class="vp-form-grid three" style="margin-top:8px;">
+              <div class="vp-field"><label for="pmPyrTop">Верхние ноты (через ,)</label><input type="text" id="pmPyrTop" placeholder="Бергамот, Мандарин"></div>
+              <div class="vp-field"><label for="pmPyrHeart">Ноты сердца</label><input type="text" id="pmPyrHeart" placeholder="Жасмин, Роза"></div>
+              <div class="vp-field"><label for="pmPyrBase">База и шлейф</label><input type="text" id="pmPyrBase" placeholder="Уд, Ваниль, Амбра"></div>
+            </div>
+
+            <label class="vp-checkbox-row" style="margin-top:12px;">
+              <input type="checkbox" id="pmIsActive" checked>
+              <span>Показывать этот аромат покупателям на сайте</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="vp-modal-footer">
+          <button type="button" class="vp-btn vp-btn-danger-outline" id="pmDeleteBtn">Удалить товар</button>
+          <div class="vp-mf-right">
+            <button type="button" class="vp-btn vp-btn-outline" data-close-modal="vpPerfumeModalBackdrop">Отмена</button>
+            <button type="submit" class="vp-btn vp-btn-primary">Сохранить изменения</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: AROMA BOX EDITOR (SPLIT STUDIO WITH LIVE CARD PREVIEW & PHOTO CROPPING)
+       ====================================================================== -->
+  <div class="vp-modal-backdrop" id="vpBoxModalBackdrop" hidden role="dialog" aria-modal="true" aria-labelledby="vpBoxModalTitle">
+    <div class="vp-modal vp-modal-lg">
+      <div class="vp-modal-head">
+        <div>
+          <span class="vp-modal-tag">АРОМАБОКС</span>
+          <h3 id="vpBoxModalTitle">Редактирование аромабокса</h3>
+        </div>
+        <button type="button" class="vp-modal-close" data-close-modal="vpBoxModalBackdrop" aria-label="Закрыть">✕</button>
+      </div>
+      <form id="vpBoxForm" class="vp-modal-body">
+        <input type="hidden" id="bmId">
+        <div class="vp-editor-split">
+          <!-- Left: Photo Studio + Live Card Preview -->
+          <div class="vp-editor-media-col">
+            <div class="vp-box-preview-shell" id="bmPreviewCard">
+              <div class="vp-pcs-img-wrap">
+                <span class="vp-pcs-badge" id="bmPreviewBadge" hidden>Хит</span>
+                <img
+                  id="bmPreviewImg"
+                  src="/assets/images/noroot.png"
+                  alt="Предпросмотр аромабокса"
+                  referrerpolicy="no-referrer"
+                  decoding="async"
+                >
+              </div>
+              <div class="vp-pcs-body">
+                <div class="vp-pcs-brand" id="bmPreviewGender">Унисекс</div>
+                <div class="vp-pcs-name" id="bmPreviewName">Название бокса</div>
+                <div class="vp-pcs-season" id="bmPreviewSub">Короткое описание · 5 ароматов</div>
+                <div class="vp-pcs-price-wrap" style="display:flex; align-items:baseline; gap:8px; margin-top:4px;">
+                  <span class="vp-pcs-price" id="bmPreviewPrice">от 3 200 ₽</span>
+                  <span class="vp-bac-old" id="bmPreviewOldPrice" hidden></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box Photo Studio & Live Feedback Strip -->
+            <div class="vp-photo-studio-panel" style="margin-top:14px;">
+              <div class="vp-psp-head">
+                <strong>📸 Фотография аромабокса</strong>
+                <span class="vp-tag ok" id="bmPhotoStatusTag">В эфире</span>
+              </div>
+
+              <label class="vp-upload-dropzone" id="bmDropzone">
+                <span>📁 Перетащите фото или <strong>нажмите для загрузки</strong> (JPG, PNG, WebP)</span>
+                <input type="file" id="bmFileInput" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+              </label>
+
+              <div class="vp-input-clear-wrap" style="margin-top:8px;">
+                <input type="text" id="bmImage" placeholder="URL или assets/uploads/..." style="font-size:12.5px;">
+                <button type="button" class="vp-btn-inline-clear" id="bmClearImgBtn" title="Очистить фото">✕</button>
+              </div>
+
+              <div class="vp-range-row">
+                <span>Фокус по вертикали:</span>
+                <input type="range" id="bmObjPosY" min="0" max="100" value="50">
+                <span id="bmObjPosYVal">50%</span>
+              </div>
+
+              <!-- Visual strip: What you are currently changing -->
+              <div class="vp-current-photo-strip" id="bmCurrentPhotoStrip">
+                <img id="bmCurrentThumb" src="/assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
+                <div class="vp-cps-info">
+                  <span class="vp-cps-label">Активное изображение:</span>
+                  <span class="vp-cps-src" id="bmPhotoSourceLabel">assets/images/noroot.png</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: All Fields, Pricing & Perfume Composition -->
+          <div class="vp-editor-fields-col">
+            <div class="vp-form-grid">
+              <div class="vp-field vp-col-span-2">
+                <label for="bmName">Название бокса *</label>
+                <input type="text" id="bmName" required placeholder="Например: Вдохновение Парижа">
+              </div>
+              <div class="vp-field">
+                <label for="bmGender">Категория</label>
+                <select id="bmGender">
+                  <option value="unisex">Унисекс</option>
+                  <option value="women">Для нее</option>
+                  <option value="men">Для него</option>
+                </select>
+              </div>
+              <div class="vp-field">
+                <label for="bmBadge">Бейдж на карточке</label>
+                <input type="text" id="bmBadge" list="vpBadgeSuggestions" placeholder="Хит / Бестселлер / Эксклюзив">
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="bmSubtitle">Короткий подзаголовок</label>
+                <input type="text" id="bmSubtitle" placeholder="Например: 5 культовых французских композиций">
+              </div>
+            </div>
+
+            <div class="vp-prices-editor-box">
+              <div class="vp-peb-head">
+                <strong>💰 Цены и зачёркнутые старые цены (₽)</strong>
+              </div>
+              <div class="vp-volumes-grid three" style="margin-top:8px;">
+                <div class="vp-field"><label for="bmP3">5×3 мл (₽)</label><input type="number" id="bmP3" min="0" step="10" placeholder="3200"></div>
+                <div class="vp-field"><label for="bmP5">5×5 мл (₽)</label><input type="number" id="bmP5" min="0" step="10" placeholder="5200"></div>
+                <div class="vp-field"><label for="bmP10">5×10 мл (₽)</label><input type="number" id="bmP10" min="0" step="10" placeholder="9800"></div>
+                <div class="vp-field"><label for="bmOld3">Старая 3 мл</label><input type="number" id="bmOld3" min="0" step="10" placeholder="4000"></div>
+                <div class="vp-field"><label for="bmOld5">Старая 5 мл</label><input type="number" id="bmOld5" min="0" step="10" placeholder="6500"></div>
+                <div class="vp-field"><label for="bmOld10">Старая 10 мл</label><input type="number" id="bmOld10" min="0" step="10" placeholder="12000"></div>
+              </div>
+            </div>
+
+            <div class="vp-field" style="margin-top:12px;">
+              <label for="bmPerfumes">Состав ароматов (по 1 аромату в строке: Бренд — Название)</label>
+              <textarea id="bmPerfumes" rows="4" placeholder="Tom Ford — Lost Cherry&#10;Kilian — Angels' Share&#10;Maison Francis Kurkdjian — Baccarat Rouge 540"></textarea>
+            </div>
+
+            <div class="vp-field" style="margin-top:8px;">
+              <label for="bmDesc">Полное описание бокса</label>
+              <textarea id="bmDesc" rows="3" placeholder="Подробный рассказ о концепции сета, нотах и характере звучания"></textarea>
+            </div>
+
+            <label class="vp-checkbox-row" style="margin-top:10px;">
+              <input type="checkbox" id="bmIsActive" checked>
+              <span>Показывать бокс на сайте</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="vp-modal-footer">
+          <button type="button" class="vp-btn vp-btn-danger-outline" id="bmDeleteBtn">Удалить бокс</button>
+          <div class="vp-mf-right">
+            <button type="button" class="vp-btn vp-btn-outline" data-close-modal="vpBoxModalBackdrop">Отмена</button>
+            <button type="submit" class="vp-btn vp-btn-primary">Сохранить аромабокс</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: SECRET BOX EDITOR (SPLIT STUDIO WITH LIVE CARD PREVIEW & PHOTO CROPPING)
+       ====================================================================== -->
+  <div class="vp-modal-backdrop" id="vpSecretModalBackdrop" hidden role="dialog" aria-modal="true" aria-labelledby="vpSecretModalTitle">
+    <div class="vp-modal vp-modal-lg">
+      <div class="vp-modal-head">
+        <div>
+          <span class="vp-modal-tag">SECRET BOX</span>
+          <h3 id="vpSecretModalTitle">Настройка Secret Box</h3>
+        </div>
+        <button type="button" class="vp-modal-close" data-close-modal="vpSecretModalBackdrop" aria-label="Закрыть">✕</button>
+      </div>
+      <form id="vpSecretForm" class="vp-modal-body">
+        <input type="hidden" id="smId">
+        <input type="hidden" id="smLevel">
+        <div class="vp-editor-split">
+          <!-- Left: Photo Studio + Live Card Preview -->
+          <div class="vp-editor-media-col">
+            <div class="vp-box-preview-shell" id="smPreviewCard">
+              <div class="vp-pcs-img-wrap">
+                <span class="vp-pcs-badge" id="smPreviewBadge" hidden>★ Хит ★</span>
+                <img
+                  id="smPreviewImg"
+                  src="/assets/images/noroot.png"
+                  alt="Предпросмотр Secret Box"
+                  referrerpolicy="no-referrer"
+                  decoding="async"
+                >
+              </div>
+              <div class="vp-pcs-body">
+                <div class="vp-pcs-brand" id="smPreviewBrand">SECRET BOX</div>
+                <div class="vp-pcs-name" id="smPreviewName">Секретный бокс</div>
+                <div class="vp-pcs-season" id="smPreviewSubtitle">Персональный подбор</div>
+                <div class="vp-pcs-price-wrap" style="display:flex; align-items:baseline; gap:8px; margin-top:4px;">
+                  <span class="vp-pcs-price" id="smPreviewPrice">4 900 ₽</span>
+                  <span class="vp-bac-old" id="smPreviewOldPrice" hidden></span>
+                </div>
+                <ul class="vp-preview-features-list" id="smPreviewFeatures"></ul>
+              </div>
+            </div>
+
+            <!-- Secret Box Photo Studio -->
+            <div class="vp-photo-studio-panel" style="margin-top:14px;">
+              <div class="vp-psp-head">
+                <strong>📸 Фотография Secret Box</strong>
+                <span class="vp-tag ok" id="smPhotoStatusTag">В эфире</span>
+              </div>
+
+              <label class="vp-upload-dropzone" id="smDropzone">
+                <span>📁 Перетащите фото или <strong>нажмите для загрузки</strong> (JPG, PNG, WebP)</span>
+                <input type="file" id="smFileInput" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+              </label>
+
+              <div class="vp-input-clear-wrap" style="margin-top:8px;">
+                <input type="text" id="smImage" placeholder="URL или assets/uploads/..." style="font-size:12.5px;">
+                <button type="button" class="vp-btn-inline-clear" id="smClearImgBtn" title="Очистить фото">✕</button>
+              </div>
+
+              <div class="vp-range-row">
+                <span>Фокус по вертикали:</span>
+                <input type="range" id="smObjPosY" min="0" max="100" value="50">
+                <span id="smObjPosYVal">50%</span>
+              </div>
+
+              <!-- Visual strip: What you are currently changing -->
+              <div class="vp-current-photo-strip" id="smCurrentPhotoStrip">
+                <img id="smCurrentThumb" src="/assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
+                <div class="vp-cps-info">
+                  <span class="vp-cps-label">Активное изображение:</span>
+                  <span class="vp-cps-src" id="smPhotoSourceLabel">assets/images/noroot.png</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: All Fields & Features -->
+          <div class="vp-editor-fields-col">
+            <div class="vp-form-grid">
+              <div class="vp-field">
+                <label for="smName">Название Secret Box *</label>
+                <input type="text" id="smName" required placeholder="Секретный бокс «Стандарт»">
+              </div>
+              <div class="vp-field">
+                <label for="smBadge">Бейдж на карточке</label>
+                <input type="text" id="smBadge" list="vpBadgeSuggestions" placeholder="★ Безусловный Хит ★">
+              </div>
+              <div class="vp-field">
+                <label for="smPrice">Актуальная цена (₽) *</label>
+                <input type="number" id="smPrice" min="100" step="50" required placeholder="4900">
+              </div>
+              <div class="vp-field">
+                <label for="smOldPrice">Старая цена (₽)</label>
+                <input type="number" id="smOldPrice" min="0" step="50" placeholder="6000">
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="smSubtitle">Короткий подзаголовок</label>
+                <input type="text" id="smSubtitle" placeholder="Например: Идеально для первого знакомства с нишей">
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="smDesc">Описание карточки</label>
+                <textarea id="smDesc" rows="3" placeholder="Расскажите о наполнении бокса и гарантии стойкости"></textarea>
+              </div>
+              <div class="vp-field vp-col-span-2">
+                <label for="smFeatures">Пункты преимуществ (по 1 пункту в строке)</label>
+                <textarea id="smFeatures" rows="3" placeholder="5 селективных ароматов по 3 мл&#10;Подбор лично Владимиром под ваш психотип&#10;Фирменная крафтовая упаковка с сургучом"></textarea>
+              </div>
+            </div>
+
+            <label class="vp-checkbox-row" style="margin-top:12px;">
+              <input type="checkbox" id="smIsHit">
+              <span>Выделять карточку акцентной золотой рамкой («Хит»)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="vp-modal-footer">
+          <div></div>
+          <div class="vp-mf-right">
+            <button type="button" class="vp-btn vp-btn-outline" data-close-modal="vpSecretModalBackdrop">Отмена</button>
+            <button type="submit" class="vp-btn vp-btn-primary">Сохранить Secret Box</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="vp-toast-root" id="vpToastRoot" aria-live="polite"></div>
+
+  <!-- Master Data & Admin Engine -->
+  <script src="assets/data/perfumes.js?v=20261113_01"></script>
+  <script src="assets/admin/admin.js?v=20261113_01"></script>
+</body>
+</html>

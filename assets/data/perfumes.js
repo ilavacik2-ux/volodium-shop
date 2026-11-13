@@ -13,7 +13,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3534-6563-4266-b632-633933346232/e198519c028ea4797f745871c968304f.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 970,
       "5ml": 1450,
@@ -116,7 +116,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3262-3038-4266-a563-343961626630/6159524a990a4ee3b2534576a0e4d69e.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 660,
       "5ml": 1050,
@@ -221,7 +221,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3738-3838-4937-b430-646465336664/2c345e6233b3bd17bb4d222443c78569.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 477,
       "5ml": 745,
@@ -326,7 +326,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3563-6165-4665-b365-313932303737/f60f6c25eb9baf6a508a0d276d68d0c3.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 480,
       "5ml": 750,
@@ -431,7 +431,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "gourmand",
     "image": "https://static.tildacdn.com/stor3632-6264-4636-b163-656431633637/22e4256a14cdeb83f3f9153421dd6081.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 540,
       "5ml": 850,
@@ -536,7 +536,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor6535-3963-4138-a636-663532383830/b711381e4ff9ce34a70b2aada72aecb5.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 840,
       "5ml": 1300,
@@ -641,7 +641,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3838-3433-4538-a331-316631643362/0ef114c6c4dd6ebe3ead328cca1f21db.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 495,
       "5ml": 775,
@@ -746,7 +746,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor3261-3136-4664-b332-393434636237/9779ab8282ccad6a0177b62f78b2f0e0.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 540,
       "5ml": 850,
@@ -851,7 +851,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3936-3037-4135-a136-333365366366/44088a6a4d978dbc2d537783e0cba80a.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 456,
       "5ml": 710,
@@ -956,7 +956,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor3736-3562-4061-b334-356465356361/7d3f489a7a0cb64dbb3e1fe51868502b.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 495,
       "5ml": 775,
@@ -1061,7 +1061,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor3239-3562-4265-a564-353438663134/9f4c09415562c8b6f7dd14013c2d7e37.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 585,
       "5ml": 925,
@@ -1166,7 +1166,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "floral",
     "image": "https://static.tildacdn.com/stor3562-3732-4135-b732-373033313137/7de4948ec4a30fe6d675c81f79f51c37.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 795,
       "5ml": 1225,
@@ -1271,7 +1271,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3766-6663-4962-b039-376633386562/de5d0ac3740cf235f6f20caa978de681.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 990,
       "5ml": 1550,
@@ -1376,7 +1376,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6632-3737-4462-a534-336135376632/1770aa0f3f0f1ab8a2681178bf91de97.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1770,
       "5ml": 2850,
@@ -1481,7 +1481,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6266-3930-4366-b661-333233656262/e7963c91fefc56b70baea86bb83681c0.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 597,
       "5ml": 945,
@@ -1586,7 +1586,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3164-6261-4237-a562-653036383463/a589c64aa2bb7a92036cbbbecac5c87a.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1250,
       "5ml": 2050,
@@ -1691,7 +1691,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3766-6239-4538-b163-663165366238/91e77b321595fbe025e640a6e92507b3.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 597,
       "5ml": 945,
@@ -1796,7 +1796,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor3661-3735-4530-b330-383633333263/bbe38e8cf88aa91cd22d090466635067.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 480,
       "5ml": 750,
@@ -1901,7 +1901,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor6365-3763-4636-b037-393836623963/8fbd90910f1e16a915db027071b62c72.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 480,
       "5ml": 750,
@@ -2006,7 +2006,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor3832-3663-4537-b165-313831333338/1ec82e5710ac05ca1b1666f78334ae4e.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 525,
       "5ml": 825,
@@ -2111,7 +2111,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "gourmand",
     "image": "https://static.tildacdn.com/stor3436-3430-4535-b565-633662396638/81ab182f597c5c0f1404c789407f2922.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 480,
       "5ml": 750,
@@ -2216,7 +2216,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor6165-3766-4939-a263-646337636663/a9281d9639a5589411004c488b11449e.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 450,
       "5ml": 700,
@@ -2321,7 +2321,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "gourmand",
     "image": "https://static.tildacdn.com/stor3864-3835-4666-a163-323862366161/2d0b29fffa97829a42cd9bb143333607.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 435,
       "5ml": 675,
@@ -2426,7 +2426,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3761-3833-4363-b132-383562613366/7344727b88a3ede1d081768afbcaa04c.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 597,
       "5ml": 945,
@@ -2531,7 +2531,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor6239-3031-4135-b831-313262313631/0ff777233a969f77dd72fd5b3040ba62.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 570,
       "5ml": 900,
@@ -2636,7 +2636,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3731-6366-4664-a337-323739316564/1aef908a9ce096e29f5e220e0ad31cc8.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1095,
       "5ml": 1725,
@@ -2741,7 +2741,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3061-6337-4562-b463-626634393838/0a8bd05ee8600ccf77625d60ef854b68.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1440,
       "5ml": 2300,
@@ -2844,7 +2844,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "oriental",
     "image": "https://static.tildacdn.com/stor3035-6137-4930-a335-616637363365/6546ff585fd3a83f2311908ef8ea849e.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1050,
       "5ml": 1650,
@@ -2949,7 +2949,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6533-3731-4930-b233-343330366365/28c66208092e9972444c1bde9ccb4e55.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 750,
       "5ml": 1150,
@@ -3054,7 +3054,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3939-3339-4839-a365-636339643135/754b531bda54c9ece7503865098c00dd.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 570,
       "5ml": 900,
@@ -3159,7 +3159,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6664-6636-4961-b532-373462656363/8178ea6345ad2fd0fe5d6f62e84a6e94.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 540,
       "5ml": 850,
@@ -3264,7 +3264,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6531-3036-4631-b961-643931383933/4303828864f61eea0b34456d247cfbbe.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1800,
       "5ml": 2900,
@@ -3369,7 +3369,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "gourmand",
     "image": "https://static.tildacdn.com/stor3638-3838-4466-a138-373362353562/3384912b67631af9f48da7a6735a5c58.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 870,
       "5ml": 1350,
@@ -3474,7 +3474,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3832-6434-4936-a431-326565623663/db1e7d3a5f48cf44d0e6f52fdacc399e.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 600,
       "5ml": 950,
@@ -3579,7 +3579,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6462-6531-4665-b761-643866653439/eb4923d4c4bcb600606a993c083142df.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 600,
       "5ml": 950,
@@ -3684,7 +3684,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6539-3038-4137-b737-373232666361/c2b245973a5cfea3e3a26ecea4b0a38f.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 540,
       "5ml": 850,
@@ -3789,7 +3789,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "gourmand",
     "image": "https://static.tildacdn.com/stor3532-3036-4266-b335-393466393730/39047459a5e313ef1017f46cba49791f.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1470,
       "5ml": 2350,
@@ -3894,7 +3894,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6637-3236-4238-b538-353562313563/30b68ce46943daaee40883d99ed1fa41.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 840,
       "5ml": 1300,
@@ -3977,7 +3977,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3661-6439-4633-b062-323461646365/14e3ffe276fb262b14220892f4d5a2f3.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 525,
       "5ml": 825,
@@ -4082,7 +4082,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6331-6563-4230-b436-626536396132/9f6dfe0672371db440bab3f5ca791d81.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 480,
       "5ml": 750,
@@ -4187,7 +4187,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "fresh",
     "image": "https://static.tildacdn.com/stor6365-3234-4966-b536-313234663066/ccaaad7f3b14c6f464859e98b978a2f3.webp",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 600,
       "5ml": 950,
@@ -4292,7 +4292,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3337-6238-4736-a138-303039633362/8cfbe963c2b95a9ddcea423a4754036f.webp",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 480,
       "5ml": 750,
@@ -4397,7 +4397,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6565-6139-4966-a332-653361623432/81d8f5f5e45f9f130654d4fd9355aeb5.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 480,
       "5ml": 750,
@@ -4502,7 +4502,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6131-3961-4237-a161-323066336536/01c62834dbf69a4f87257ea92cd4e2f5.webp",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 990,
       "5ml": 1550,
@@ -4607,7 +4607,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3339-3965-4339-a664-376536656530/04fa7c08838ace0ad27ead7598e841d5.webp",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 600,
       "5ml": 900,
@@ -4712,7 +4712,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3437-3236-4662-b266-353162623965/2a2cb9c42afde993f4199cf6728d1260.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 840,
       "5ml": 1300,
@@ -4817,7 +4817,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3731-3135-4663-b637-383830383265/f53267f23d2add4c0c7d3a0d5430b708.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 720,
       "5ml": 1100,
@@ -4922,7 +4922,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6132-6563-4231-b639-313834373037/3c647a72f4e1811d370f3093aebed051.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 660,
       "5ml": 1000,
@@ -5027,7 +5027,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6663-3933-4463-b234-663131346565/1681fbe1b4ad38f7de316f337f874259.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 540,
       "5ml": 850,
@@ -5132,7 +5132,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6633-3739-4736-b839-333363356431/53663eb41eff2bb39cc8b314f88234d8.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 870,
       "5ml": 1500,
@@ -5237,7 +5237,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3230-3535-4163-b562-396534653838/1d5b20a68d54eb9aad2fd278928c9eb5.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 780,
       "5ml": 1200,
@@ -5342,7 +5342,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6536-3563-4435-a366-646265383732/2b6a1f2cc9d1c5336b527b7701b40dc9.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 810,
       "5ml": 1250,
@@ -5426,7 +5426,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor3564-3737-4638-a133-663030633261/e82d25849b7345241e1c4efc042a5810.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 645,
       "5ml": 1025,
@@ -5531,7 +5531,7 @@ var PERFUMES_DATA = [
     "category": "perfume",
     "notesFamily": "woody",
     "image": "https://static.tildacdn.com/stor6361-6361-4664-b061-313734333835/d1b114afb09996a5c4f8ec757a219c1c.png",
-    "badge": "В наличии",
+    "badge": "",
     "prices": {
       "3ml": 1080,
       "5ml": 1700,

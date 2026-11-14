@@ -970,13 +970,18 @@ PUBLIC_SUBPAGES = {
     "certificates.html",
     "reviews.html",
     "delivery.html",
+    "preview.html",
+    "preview-v1.html",
+    "preview-v2.html",
+    "preview-v3.html",
+    "preview-v4.html",
 }
 
 
 @app.api_route("/{page_name}.html", methods=["GET", "HEAD"])
 async def serve_storefront_subpage(page_name: str):
     filename = f"{page_name}.html"
-    if filename not in PUBLIC_SUBPAGES:
+    if filename not in PUBLIC_SUBPAGES and not page_name.startswith("preview"):
         return not_found_response()
     target = BASE_DIR / filename
     if not target.is_file():

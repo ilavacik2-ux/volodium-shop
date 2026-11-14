@@ -8,126 +8,150 @@
   <link rel="stylesheet" href="assets/css/preview-variants.css">
   <style>
     body {
-      background: #FAF8F5;
+      background: #F7F5F2;
       color: #111216;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      padding-bottom: 3rem;
+      padding-bottom: 4rem;
     }
     .preview-hub-header {
-      background: #111216;
+      background: #0E0F12;
       color: #FFFFFF;
-      padding: 2.2rem 1rem 1.8rem;
+      padding: 3rem 1rem 2.2rem;
       text-align: center;
       border-bottom: 3px solid #6B1123;
     }
     .ph-title {
-      font-size: clamp(1.4rem, 4vw, 2.1rem);
+      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
       font-weight: 900;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.65rem;
       text-transform: uppercase;
     }
     .ph-sub {
-      font-size: 0.92rem;
+      font-size: 0.96rem;
       color: rgba(255, 255, 255, 0.8);
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto;
-      line-height: 1.45;
+      line-height: 1.5;
     }
     .preview-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
+      margin-top: 2.2rem;
     }
     .variant-card {
       background: #FFFFFF;
       border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 18px;
+      border-radius: 24px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .variant-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
       border-color: #6B1123;
     }
     .vc-badge {
       display: inline-block;
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
+      padding: 0.28rem 0.75rem;
       border-radius: 9999px;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.65rem;
+      align-self: flex-start;
     }
     .vc-badge-rec {
       background: #6B1123;
       color: #FFFFFF;
     }
     .vc-badge-grad {
-      background: #2A0810;
-      color: #F3CA8E;
+      background: #2E050D;
+      color: #F7D09A;
+      border: 1px solid rgba(247, 208, 154, 0.3);
     }
     .vc-badge-photo {
       background: #111216;
       color: #FFFFFF;
     }
     .vc-badge-sivets {
-      background: #FF69B4;
+      background: #FF60B2;
       color: #FFFFFF;
     }
     .vc-preview-box {
-      height: 180px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
     }
     .vc-body {
-      padding: 1.35rem 1.25rem;
+      padding: 1.5rem 1.35rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
     .vc-title {
-      font-size: 1.15rem;
+      font-size: 1.22rem;
       font-weight: 800;
       margin-bottom: 0.45rem;
       line-height: 1.25;
+      color: #111216;
     }
     .vc-desc {
-      font-size: 0.84rem;
-      line-height: 1.45;
-      color: #555;
-      margin-bottom: 1.2rem;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: #555555;
+      margin-bottom: 1.35rem;
       flex-grow: 1;
+    }
+    .vc-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .vc-bullets li {
+      font-size: 0.80rem;
+      color: #333333;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .vc-bullets li::before {
+      content: "✓";
+      color: #6B1123;
+      font-weight: 800;
     }
     .vc-btn {
       display: block;
       text-align: center;
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1.2rem;
       background: #111216;
       color: #FFFFFF;
       font-weight: 700;
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       text-decoration: none;
-      border-radius: 10px;
-      transition: background 0.2s;
+      border-radius: 12px;
+      transition: background 0.2s, transform 0.2s;
     }
     .vc-btn:hover {
       background: #6B1123;
+      transform: translateY(-1px);
     }
     .vc-btn-primary {
       background: #6B1123;
     }
     .vc-btn-primary:hover {
-      background: #84162C;
+      background: #8E1B32;
     }
   </style>
 </head>
@@ -135,7 +159,7 @@
 
   <aside class="preview-switch-toolbar">
     <div class="pst-inner">
-      <span class="pst-tag">⚡ Быстрое переключение:</span>
+      <span class="pst-tag">⚡ Быстрый переход:</span>
       <nav class="pst-nav">
         <a href="preview-v1.html" class="pst-link">1. Бутик (Макет)</a>
         <a href="preview-v2.html" class="pst-link">2. Градиент Вацика</a>
@@ -149,73 +173,104 @@
     <div class="container">
       <h1 class="ph-title">Тестовый полигон дизайна</h1>
       <p class="ph-sub">
-        Сравните все 4 визуальных концепта прямо на телефоне на локальном сервере. Переключаться между ними можно в один клик в верхней плашке.
+        Сравните 4 варианта оформления магазина прямо сейчас. Каждый вариант проработан до мелочей, с реальными фото флаконов, бокса и Владимира Вацика.
       </p>
     </div>
   </header>
 
-  <main class="container" style="max-width: 1200px; padding: 0 1rem;">
+  <main class="container" style="max-width: 1240px; padding: 0 1rem;">
     <div class="preview-cards-grid">
 
       <!-- Вариант 1 -->
       <div class="variant-card">
-        <div class="vc-preview-box" style="background: #FFFFFF; border-bottom: 1px solid #EEE;">
-          <img src="assets/images/volodium_box_transparent.png" alt="Вариант 1" style="max-height: 140px; object-fit: contain;">
+        <div class="vc-preview-box" style="background: #F4EFEA; padding: 1rem;">
+          <img src="assets/images/volodium_box_transparent.png" alt="Вариант 1" style="max-height: 160px; object-fit: contain; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.12));">
         </div>
         <div class="vc-body">
           <span class="vc-badge vc-badge-rec">⭐ Согласованный макет</span>
           <h2 class="vc-title">1. Бутиковый минимализм</h2>
           <p class="vc-desc">
-            Чистый светлый фон, флаконы и бокс вырезаны без рамок (прозрачный альфа-слой). Тонкие разделители, сбалансированная мобильная сетка 2-в-ряд.
+            Элегантный светлый бутик по вашему исходному утверждённому макету. Флаконы и бокс вырезаны без рамок и объёмно выступают из карточек.
           </p>
-          <a href="preview-v1.html" class="vc-btn vc-btn-primary">Открыть Вариант 1 →</a>
+          <ul class="vc-bullets">
+            <li>Крупный наклонённый бокс Volodium в первом экране</li>
+            <li>Флаконы выступают из углов бежевых карточек (без рамок!)</li>
+            <li>Планка УТП 100% оригиналов с тонкими разделителями</li>
+            <li>Бордовая карточка «Выбор Вацика» с градиентным фото</li>
+          </ul>
+          <a href="preview-v1.html" class="vc-btn vc-btn-primary">Смотреть Вариант 1 →</a>
         </div>
       </div>
 
       <!-- Вариант 2 -->
       <div class="variant-card">
-        <div class="vc-preview-box" style="background: linear-gradient(135deg, #4A0816 0%, #6B1123 50%, #2B030C 100%);">
-          <img src="assets/images/volodium_box_transparent.png" alt="Вариант 2" style="max-height: 130px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));">
+        <div class="vc-preview-box" style="background: radial-gradient(120% 100% at 75% 50%, #7A1227 0%, #4E0A18 45%, #20030A 100%);">
+          <img src="assets/images/volodium_box_transparent.png" alt="Вариант 2" style="max-height: 150px; object-fit: contain; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.5));">
         </div>
         <div class="vc-body">
           <span class="vc-badge vc-badge-grad">Глубокий винный</span>
           <h2 class="vc-title">2. Люксовый градиент</h2>
           <p class="vc-desc">
-            Эстетика карточки «Выбор Вацика»: глубокий бордовый бархат с мягким радиальным свечением. Фотография коробки плавно перетекает в цвет фона.
+            Эстетика карточки «Выбор Вацика»: глубокий бархатный бордовый тон с золотыми акцентами и мягким радиальным растворением фото.
           </p>
-          <a href="preview-v2.html" class="vc-btn">Открыть Вариант 2 →</a>
+          <ul class="vc-bullets">
+            <li>Бархатный винный Hero-баннер (#7A1227 / #20030A)</li>
+            <li>Фотография коробки мягко растворяется в градиенте</li>
+            <li>Золотые акцентные детали и белая кнопка-пилюля</li>
+            <li>Премиальная эстетика глянцевого журнала (Vogue/GQ)</li>
+          </ul>
+          <a href="preview-v2.html" class="vc-btn">Смотреть Вариант 2 →</a>
         </div>
       </div>
 
       <!-- Вариант 3 -->
       <div class="variant-card">
-        <div class="vc-preview-box" style="background: #111216; position: relative;">
-          <img src="assets/images/volodium_box_real.jpg" alt="Вариант 3" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
-          <span style="position: absolute; color: #FFF; font-weight: 800; font-size: 0.85rem; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px;">Editorial Cover</span>
+        <div class="vc-preview-box" style="background: #0E0F12; position: relative;">
+          <img src="assets/img/editorial/hero_perfume_flacons_neutral.jpg" alt="Вариант 3" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.65;">
+          <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,15,18,0.85) 0%, transparent 100%);"></div>
+          <span style="position: absolute; left: 1rem; bottom: 1rem; color: #FFF; font-weight: 800; font-size: 0.76rem; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.2);">Editorial Panorama</span>
         </div>
         <div class="vc-body">
           <span class="vc-badge vc-badge-photo">Журнальный стиль</span>
           <h2 class="vc-title">3. Фото с текстом поверх</h2>
           <p class="vc-desc">
-            Большое атмосферное фото бокса на весь экран, поверх которого лежит карточка со стеклянным размытием (Glassmorphism) и контрастным белым текстом.
+            Полноформатная панорама флаконов на подиумах на весь экран, поверх которой лежит карточка с матовым размытием (Glassmorphism).
           </p>
-          <a href="preview-v3.html" class="vc-btn">Открыть Вариант 3 →</a>
+          <ul class="vc-bullets">
+            <li>Кинематографичная студийная фотопанорама на весь экран</li>
+            <li>Карточка с эффектом матового стекла (Frosted Glass)</li>
+            <li>Контрастный белый заголовок с золотой биркой</li>
+            <li>Атмосферный глубокий тёмный стиль</li>
+          </ul>
+          <a href="preview-v3.html" class="vc-btn">Смотреть Вариант 3 →</a>
         </div>
       </div>
 
       <!-- Вариант 4 -->
       <div class="variant-card">
-        <div class="vc-preview-box" style="background: #FAF8F5; padding: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-          <div style="background: #FF69B4; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 0.72rem;">Женские →</div>
-          <div style="background: #E01B24; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 0.72rem;">Боксы →</div>
+        <div class="vc-preview-box" style="background: #FFFFFF; padding: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border-bottom: 1px solid #EEE;">
+          <div style="background: #FF60B2; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 8px;">
+            <div style="background: #FFF; height: 45px; border-radius: 8px; overflow: hidden;"><img src="assets/img/editorial/hero_perfume_flacons_neutral.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <span style="color: #FFF; font-weight: 700; font-size: 0.68rem;">Женские →</span>
+          </div>
+          <div style="background: #DE1C24; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 8px;">
+            <div style="background: #FFF; height: 45px; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><img src="assets/images/volodium_box_real.jpg" style="max-height: 40px; object-fit: contain;"></div>
+            <span style="color: #FFF; font-weight: 700; font-size: 0.68rem;">Боксы →</span>
+          </div>
         </div>
         <div class="vc-body">
-          <span class="vc-badge vc-badge-sivets">Эстетика Сивец</span>
+          <span class="vc-badge vc-badge-sivets">Эстетика Насти Сивец</span>
           <h2 class="vc-title">4. Блочные плашки (Bento)</h2>
           <p class="vc-desc">
-            Точное воссоздание логики сайта Насти Сивец (nastyasivets.com): сочные цветные скругленные плашки (розовая, красная, белая с рамкой, черная) с фото внутри.
+            Настоящее воплощение сайта Насти Сивец (nastyasivets.com): сочные цветные скруглённые плашки с реальными студийными фото.
           </p>
-          <a href="preview-v4.html" class="vc-btn">Открыть Вариант 4 →</a>
+          <ul class="vc-bullets">
+            <li>Чёрная карточка с фото Владимира в кресле с флаконом</li>
+            <li>Розовая плашка «Женские» со студийной раскладкой флаконов</li>
+            <li>Белая плашка «Мужские» с ч/б фото Владимира с блоттерами</li>
+            <li>Красная плашка «Боксы» с нашей фирменной коробкой</li>
+          </ul>
+          <a href="preview-v4.html" class="vc-btn">Смотреть Вариант 4 →</a>
         </div>
       </div>
 

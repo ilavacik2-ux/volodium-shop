@@ -1,5 +1,5 @@
 /* ==========================================================================
-   VOLODIUM PARFUM — Visual Comparison Suite: 4 Design Variants
+   VOLODIUM PARFUM — High-Fashion Editorial Comparison Suite (2026)
    ========================================================================== */
 
 /* Top Floating Switcher Bar */
@@ -9,10 +9,10 @@
   left: 0;
   right: 0;
   z-index: 99999;
-  background: #111216;
+  background: #0E0F12;
   color: #FFFFFF;
-  padding: 0.55rem 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  padding: 0.6rem 0.85rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   border-bottom: 2px solid #6B1123;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.6rem;
+  gap: 0.65rem;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -34,122 +34,117 @@
 }
 
 .pst-tag {
-  font-size: 0.74rem;
-  font-weight: 700;
+  font-size: 0.76rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #E0A96D;
+  color: #F7D09A;
   white-space: nowrap;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .pst-nav {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   flex-shrink: 0;
 }
 
 .pst-link {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
   border-radius: 9999px;
   color: #FFFFFF;
   background: rgba(255, 255, 255, 0.12);
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .pst-link:hover {
-  background: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.25);
   color: #FFFFFF;
+  transform: translateY(-1px);
 }
 
 .pst-link.is-active {
   background: #6B1123;
   color: #FFFFFF;
-  border-color: #8E1B32;
-  box-shadow: 0 2px 8px rgba(107, 17, 35, 0.6);
+  border-color: #A31C38;
+  box-shadow: 0 2px 10px rgba(107, 17, 35, 0.7);
 }
 
 /* ==========================================================================
-   VARIANT 2: Cinematic Gradient Melt (Like "Выбор Вацика" Deep Burgundy)
+   VARIANT 1: Refined Boutique Editorial (Bleeding Bottles on Beige Cards)
    ========================================================================== */
-.hero-v2-gradient {
-  background: linear-gradient(135deg, #4A0816 0%, #6B1123 50%, #2B030C 100%);
-  color: #FFFFFF;
-  padding: 2.2rem 0;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.hero-v1-refined {
+  padding: 2.2rem 0 2rem;
+  background: #FFFFFF;
 }
 
-.hero-v2-grid {
+.hero-v1-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
-.hero-v2-title {
-  font-size: clamp(1.4rem, 4vw, 2.3rem);
+.hero-v1-title {
+  font-size: clamp(1.6rem, 4.2vw, 2.7rem);
   font-weight: 900;
-  line-height: 1.12;
-  color: #FFFFFF;
-  letter-spacing: 0.02em;
+  color: #111216;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
 }
 
-.hero-v2-title span.accent-gold {
-  color: #F3CA8E;
-  display: block;
+.hero-v1-sub {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555555;
+  margin-bottom: 1.35rem;
+  max-width: 460px;
 }
 
-.hero-v2-sub {
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.88);
-  margin-bottom: 1.25rem;
-  max-width: 440px;
-}
-
-.hero-v2-actions {
+.hero-v1-actions {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.btn-v2-white {
-  background: #FFFFFF;
-  color: #6B1123;
+.btn-v1-burgundy {
+  background: #6B1123;
+  color: #FFFFFF;
   font-weight: 700;
-  font-size: 0.86rem;
-  padding: 0.65rem 1.25rem;
+  font-size: 0.88rem;
+  padding: 0.75rem 1.4rem;
   border-radius: 8px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   transition: transform 0.2s, background 0.2s;
 }
 
-.btn-v2-white:hover {
+.btn-v1-burgundy:hover {
+  background: #84162C;
   transform: translateY(-2px);
-  background: #FAF8F5;
 }
 
-.btn-v2-outline {
-  background: rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  font-weight: 600;
-  font-size: 0.86rem;
-  padding: 0.65rem 1.25rem;
+.btn-v1-outline {
+  background: transparent;
+  color: #111216;
+  border: 1.5px solid #111216;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.75rem 1.4rem;
   border-radius: 8px;
   text-decoration: none;
   display: inline-flex;
@@ -157,50 +152,326 @@
   transition: all 0.2s;
 }
 
-.btn-v2-outline:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: #FFFFFF;
+.btn-v1-outline:hover {
+  background: #111216;
+  color: #FFFFFF;
 }
 
-.hero-v2-visual {
-  position: relative;
+.hero-v1-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.h1d-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #D9D9D9;
+}
+
+.h1d-dot.active {
+  width: 24px;
+  border-radius: 9999px;
+  background: #6B1123;
+}
+
+.hero-v1-visual {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-v2-img {
+.hero-v1-box {
   width: 100%;
-  max-height: 340px;
+  max-height: 380px;
   object-fit: contain;
-  /* Smooth Gradient Melt into deep burgundy background */
-  mask-image: radial-gradient(circle at 60% 50%, black 55%, transparent 95%);
-  -webkit-mask-image: radial-gradient(circle at 60% 50%, black 55%, transparent 95%);
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.12));
+  transform: rotate(-2deg);
+  transition: transform 0.35s ease;
+}
+
+.hero-v1-box:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* Category Cards with Large Bleeding Bottles */
+.cat-grid-bleeding {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cat-bleed-card {
+  background: #F4EFEA;
+  border-radius: 16px;
+  padding: 1.25rem 1.15rem;
+  min-height: 125px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.cat-bleed-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  background: #ECE5DE;
+}
+
+.cat-bleed-content {
+  position: relative;
+  z-index: 2;
+  max-width: 60%;
+}
+
+.cat-bleed-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #111216;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.cat-bleed-sub {
+  font-size: 0.74rem;
+  color: #777777;
+  font-weight: 500;
+}
+
+.cat-bleed-img-wrap {
+  position: absolute;
+  right: -8px;
+  bottom: -15px;
+  width: 120px;
+  height: 130px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.cat-bleed-img {
+  max-height: 125px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.cat-bleed-card:hover .cat-bleed-img {
+  transform: scale(1.08) rotate(2deg);
 }
 
 @media (max-width: 768px) {
-  .hero-v2-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+  .hero-v1-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0.85rem;
+    align-items: center;
   }
-  .hero-v2-title {
-    font-size: 1.35rem;
+  .hero-v1-title {
+    font-size: 1.25rem;
   }
-  .hero-v2-img {
-    max-height: 230px;
+  .hero-v1-sub {
+    font-size: 0.74rem;
+    margin-bottom: 0.85rem;
+  }
+  .hero-v1-actions {
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+  }
+  .btn-v1-burgundy, .btn-v1-outline {
+    padding: 0.52rem 0.8rem;
+    font-size: 0.76rem;
+    justify-content: center;
+  }
+  .hero-v1-box {
+    max-height: 220px;
+  }
+  .cat-bleed-card {
+    min-height: 105px;
+    padding: 1rem 0.85rem;
+  }
+  .cat-bleed-title {
+    font-size: 0.82rem;
+  }
+  .cat-bleed-img-wrap {
+    width: 95px;
+    height: 105px;
+    right: -6px;
+    bottom: -10px;
+  }
+  .cat-bleed-img {
+    max-height: 100px;
   }
 }
 
 /* ==========================================================================
-   VARIANT 3: Editorial Photo Background with Glassmorphism Overlay
+   VARIANT 2: Cinematic Gradient Melt (Deep Velvet Luxury)
+   ========================================================================== */
+.hero-v2-gradient {
+  background: radial-gradient(120% 100% at 75% 50%, #7A1227 0%, #4E0A18 45%, #20030A 100%);
+  color: #FFFFFF;
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-v2-glow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247, 208, 154, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-v2-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-v2-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #F7D09A;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.hero-v2-title {
+  font-size: clamp(1.6rem, 4.4vw, 2.7rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.hero-v2-title span.accent-gold {
+  color: #F7D09A;
+  display: block;
+}
+
+.hero-v2-sub {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.5rem;
+  max-width: 460px;
+}
+
+.hero-v2-actions {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.btn-v2-white {
+  background: #FFFFFF;
+  color: #6B1123;
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-v2-white:hover {
+  background: #FAF8F5;
+  transform: translateY(-2px);
+}
+
+.btn-v2-glass {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.btn-v2-glass:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #FFFFFF;
+}
+
+.hero-v2-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-v2-box {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  mask-image: radial-gradient(circle at 60% 50%, black 65%, transparent 98%);
+  -webkit-mask-image: radial-gradient(circle at 60% 50%, black 65%, transparent 98%);
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+}
+
+@media (max-width: 768px) {
+  .hero-v2-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0.85rem;
+  }
+  .hero-v2-title {
+    font-size: 1.25rem;
+  }
+  .hero-v2-sub {
+    font-size: 0.74rem;
+    margin-bottom: 0.85rem;
+  }
+  .btn-v2-white, .btn-v2-glass {
+    padding: 0.52rem 0.8rem;
+    font-size: 0.76rem;
+    justify-content: center;
+  }
+  .hero-v2-box {
+    max-height: 220px;
+  }
+}
+
+/* ==========================================================================
+   VARIANT 3: Full Photo Background Editorial Cover
    ========================================================================== */
 .hero-v3-cinematic {
   position: relative;
   min-height: 520px;
   display: flex;
   align-items: center;
-  background: #111216;
+  background: #0E0F12;
   overflow: hidden;
 }
 
@@ -210,105 +481,109 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: 0.55;
-  filter: saturate(1.1) brightness(0.85);
-  transform: scale(1.04);
+  object-position: center 30%;
+  opacity: 0.45;
+  filter: saturate(1.15) brightness(0.85);
 }
 
 .hero-v3-backdrop-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(17, 18, 22, 0.92) 0%, rgba(17, 18, 22, 0.65) 50%, rgba(17, 18, 22, 0.2) 100%);
+  background: linear-gradient(90deg, rgba(14, 15, 18, 0.94) 0%, rgba(14, 15, 18, 0.72) 50%, rgba(14, 15, 18, 0.25) 100%);
 }
 
 .hero-v3-content {
   position: relative;
   z-index: 2;
-  max-width: 580px;
-  padding: 2.5rem 0;
+  max-width: 620px;
+  padding: 3rem 0;
 }
 
 .hero-v3-glass-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 16px;
-  padding: 1.75rem 1.6rem;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  padding: 2.2rem 2rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
 }
 
 .hero-v3-tag {
   display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #F3CA8E;
-  margin-bottom: 0.6rem;
+  letter-spacing: 0.18em;
+  color: #F7D09A;
+  margin-bottom: 0.65rem;
 }
 
 .hero-v3-title {
-  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
   font-weight: 900;
   color: #FFFFFF;
-  line-height: 1.15;
-  margin-bottom: 0.75rem;
+  line-height: 1.1;
+  margin-bottom: 0.85rem;
   text-transform: uppercase;
 }
 
 .hero-v3-sub {
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 1.4rem;
 }
 
 @media (max-width: 768px) {
   .hero-v3-cinematic {
-    min-height: 440px;
+    min-height: 420px;
   }
   .hero-v3-glass-card {
-    padding: 1.35rem 1.15rem;
+    padding: 1.4rem 1.25rem;
+    border-radius: 16px;
   }
   .hero-v3-title {
     font-size: 1.3rem;
   }
+  .hero-v3-sub {
+    font-size: 0.78rem;
+  }
 }
 
 /* ==========================================================================
-   VARIANT 4: Bento Block Plaque Style (Nastya Sivets Aesthetic: nastyasivets.com)
+   VARIANT 4: Authentic Bento Plaques (Nastya Sivets nastyasivets.com Aesthetic)
    ========================================================================== */
 .sivets-showcase-section {
-  padding: 1.5rem 0 3rem;
-  background: #FAF8F5;
+  padding: 1.75rem 0 3rem;
+  background: #FFFFFF;
 }
 
-/* Main Top Card (Nastya's Online-Courses Black Card) */
+/* Top Large Black Plaque with Real Vladimir Photo */
 .sivets-hero-card {
-  background: #0D0E11;
+  background: #000000;
   color: #FFFFFF;
-  border-radius: 28px;
-  padding: 1.25rem 1.5rem;
+  border-radius: 30px;
+  padding: 1.35rem 1.6rem;
   display: grid;
   grid-template-columns: 140px 1fr;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.6rem;
   margin-bottom: 1.25rem;
   text-decoration: none;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .sivets-hero-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
 }
 
 .sivets-hero-visual {
   width: 140px;
   height: 140px;
-  border-radius: 20px;
+  border-radius: 22px;
   overflow: hidden;
   background: #1A1C22;
   flex-shrink: 0;
@@ -318,6 +593,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.sivets-hero-card:hover .sivets-hero-visual img {
+  transform: scale(1.05);
 }
 
 .sivets-hero-content {
@@ -326,87 +607,101 @@
 }
 
 .sivets-hero-title {
-  font-size: clamp(1.2rem, 3.2vw, 1.6rem);
-  font-weight: 800;
+  font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+  font-weight: 400;
   color: #FFFFFF;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.sivets-hero-title span.arrow {
+  font-weight: 300;
+  transition: transform 0.2s;
+}
+
+.sivets-hero-card:hover .sivets-hero-title span.arrow {
+  transform: translateX(4px);
 }
 
 .sivets-hero-sub {
-  font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.45;
 }
 
-/* Bento 2x2 Grid of Colored Plaques */
+/* Bento 2x2 Colored Grid */
 .sivets-bento-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.15rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .sivets-bento-card {
-  border-radius: 26px;
-  padding: 1.25rem;
+  border-radius: 28px;
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-decoration: none;
-  min-height: 220px;
+  min-height: 250px;
   position: relative;
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .sivets-bento-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
 }
 
-/* Card 1: Nastya's Signature Pink (#FF60B2 / #FF70B8) */
+/* Card 1: Nastya's Signature Pink (#FF60B2) */
 .sivets-card-pink {
-  background: #FF69B4;
+  background: #FF60B2;
   color: #FFFFFF;
 }
 
-/* Card 2: Clean Outline / White Card with Thin Border */
+/* Card 2: Crisp White with Fine Black Outline (1.5px solid #000) */
 .sivets-card-white {
   background: #FFFFFF;
   color: #111216;
   border: 1.5px solid #111216;
 }
 
-/* Card 3: Soft Muted Grey */
+/* Card 3: Soft Muted Grey (#EFEFF1) */
 .sivets-card-grey {
-  background: #ECECEE;
+  background: #EFEFF1;
   color: #111216;
 }
 
 /* Card 4: Nastya's Crimson Red (#DE1C24) */
 .sivets-card-red {
-  background: #E01B24;
+  background: #DE1C24;
   color: #FFFFFF;
 }
 
-/* Framed Photo Inside Card (Nastya Sivets's signature nested rounded frame) */
+/* Large Inner Photo Frame (Filling 65% of card!) */
 .sivets-card-frame {
   width: 100%;
-  height: 120px;
-  background: #FFFFFF;
-  border-radius: 18px;
+  height: 145px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem;
-  margin-bottom: 0.85rem;
-  overflow: hidden;
 }
 
 .sivets-card-pink .sivets-card-frame {
-  background: rgba(255, 255, 255, 0.9);
+  background: #FFFFFF;
+}
+
+.sivets-card-white .sivets-card-frame {
+  background: #F6F6F6;
 }
 
 .sivets-card-grey .sivets-card-frame {
@@ -418,51 +713,85 @@
 }
 
 .sivets-card-img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.sivets-card-img.contain-mode {
   object-fit: contain;
+  padding: 0.75rem;
+}
+
+.sivets-bento-card:hover .sivets-card-img {
+  transform: scale(1.06);
 }
 
 .sivets-card-title {
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 500;
   line-height: 1.2;
   margin-bottom: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  letter-spacing: -0.01em;
 }
 
 .sivets-card-sub {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   opacity: 0.85;
+}
+
+/* Nastya Sivets Big Section Title (Light, huge, elegant) */
+.sivets-section-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: #111216;
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
   .sivets-hero-card {
-    grid-template-columns: 95px 1fr;
-    gap: 1rem;
+    grid-template-columns: 100px 1fr;
+    gap: 1.1rem;
     padding: 1rem;
     border-radius: 22px;
   }
   .sivets-hero-visual {
-    width: 95px;
-    height: 95px;
+    width: 100px;
+    height: 100px;
     border-radius: 16px;
+  }
+  .sivets-hero-title {
+    font-size: 1.1rem;
+  }
+  .sivets-hero-sub {
+    font-size: 0.76rem;
   }
   .sivets-bento-grid {
     gap: 0.75rem;
   }
   .sivets-bento-card {
-    padding: 0.95rem;
-    min-height: 185px;
-    border-radius: 20px;
+    padding: 1rem;
+    min-height: 205px;
+    border-radius: 22px;
   }
   .sivets-card-frame {
-    height: 95px;
-    border-radius: 14px;
+    height: 110px;
+    border-radius: 15px;
+    margin-bottom: 0.65rem;
   }
   .sivets-card-title {
-    font-size: 0.86rem;
+    font-size: 0.95rem;
+  }
+  .sivets-card-sub {
+    font-size: 0.74rem;
+  }
+  .sivets-section-title {
+    font-size: 1.65rem;
   }
 }

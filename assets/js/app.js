@@ -1694,15 +1694,15 @@ function openProductModal(itemId) {
           </div>
 
           <div class="modal-concierge-row">
-            <a href="https://t.me/${tgHandle}?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, по аромабоксу: ' + item.name)}" 
+            <a href="https://t.me/${tgHandle}?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, стоимость: ' + item.name)}" 
                target="_blank" 
                rel="noopener noreferrer" 
                class="btn-ask-vladimir"
-               title="Задать вопрос Владимиру в Telegram">
+               title="Узнать стоимость флакона в Telegram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
               </svg>
-              <span>Спросить у Владимира</span>
+              <span>Узнать стоимость флакона</span>
             </a>
           </div>
         </div>
@@ -1862,16 +1862,16 @@ function openProductModal(itemId) {
         ${olfactoryProfileHtml}
         ${volumeOptionsHtml}
 
-        <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-top: 1.5rem;">
-          <div>
-            <div style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #111216;" id="modalPrice">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; margin-top: 1.5rem; gap: 1rem;">
+          <div style="min-width: 0; flex-shrink: 0;">
+            <div style="font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700; color: #111216; white-space: nowrap;" id="modalPrice">
               ${formatPrice(currentPrice)}
             </div>
-            <div style="font-size: 0.8rem; color: var(--text-dim);" id="modalVolLabel">
+            <div style="font-size: 0.8rem; color: var(--text-dim); white-space: nowrap;" id="modalVolLabel">
               ${escapeHtml(currentVol === 'bottle' ? 'полноразмерный флакон' : 'отливант ' + currentVol)}
             </div>
           </div>
-          <button class="btn-primary" id="modalAddToCartBtn" style="padding: 1rem 2rem;">
+          <button class="btn-primary" id="modalAddToCartBtn" style="padding: 0.9rem 1.6rem; white-space: nowrap;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
               <line x1="3" y1="6" x2="21" y2="6"/>
@@ -1882,15 +1882,15 @@ function openProductModal(itemId) {
         </div>
 
         <div class="modal-concierge-row">
-          <a href="https://t.me/${tgHandle}?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, по аромату: ' + (item.fullTitle || item.name))}" 
+          <a href="https://t.me/${tgHandle}?text=${encodeURIComponent('Здравствуйте, Владимир! Подскажите, пожалуйста, стоимость флакона: ' + (item.fullTitle || item.name))}" 
              target="_blank" 
              rel="noopener noreferrer" 
              class="btn-ask-vladimir"
-             title="Задать вопрос Владимиру в Telegram">
+             title="Узнать стоимость флакона в Telegram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
             </svg>
-            <span>Спросить у Владимира</span>
+            <span>Узнать стоимость флакона</span>
           </a>
         </div>
       </div>
@@ -2738,7 +2738,8 @@ window.acceptVolodiumCookies = function() {
    10. Helper Utilities & Toast System
    ========================================================================== */
 function formatPrice(val) {
-  return new Intl.NumberFormat('ru-RU').format(val) + ' ₽';
+  if (val == null || isNaN(val)) return '0\u00A0₽';
+  return new Intl.NumberFormat('ru-RU').format(val).replace(/\s+/g, '\u00A0') + '\u00A0₽';
 }
 
 function escapeHtml(str) {
@@ -3525,6 +3526,155 @@ function updateCertPrice(amount) {
     sumDisplayEl.textContent = formatPrice(amount);
   }
 }
+
+/* ==========================================================================
+   Quick Search & Wishlist Controller (2026 Refined Storefront)
+   ========================================================================== */
+function openQuickSearch() {
+  const overlay = document.getElementById('quickSearchOverlay');
+  const input = document.getElementById('quickSearchInput');
+  if (overlay) {
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    setTimeout(() => {
+      if (input) {
+        input.focus();
+        input.select();
+      }
+    }, 100);
+  }
+}
+
+function closeQuickSearch() {
+  const overlay = document.getElementById('quickSearchOverlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeQuickSearch();
+  }
+});
+
+// Quick Search Input Listener
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('quickSearchInput');
+  const resultsContainer = document.getElementById('quickSearchResults');
+  if (searchInput && resultsContainer) {
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) {
+        resultsContainer.innerHTML = `
+          <div style="padding: 1.5rem; text-align: center; color: #888; font-size: 0.9rem;">
+            Начните вводить название аромата или бренд...
+          </div>
+        `;
+        return;
+      }
+
+      if (typeof PERFUMES_DATA === 'undefined' || !Array.isArray(PERFUMES_DATA)) return;
+
+      const matches = PERFUMES_DATA.filter(p => {
+        const title = (p.fullTitle || (p.brand + ' ' + p.name)).toLowerCase();
+        const brand = (p.brand || '').toLowerCase();
+        const desc = (p.description || '').toLowerCase();
+        return title.includes(q) || brand.includes(q) || desc.includes(q);
+      }).slice(0, 8);
+
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = `
+          <div style="padding: 1.5rem; text-align: center; color: #888; font-size: 0.9rem;">
+            Ничего не найдено по запросу «${escapeHtml(q)}»
+          </div>
+        `;
+        return;
+      }
+
+      resultsContainer.innerHTML = matches.map(p => {
+        const title = p.fullTitle || (p.brand + ' ' + p.name);
+        const price = (p.prices && p.prices['3ml']) ? `от ${p.prices['3ml']} ₽` : '';
+        const img = p.image || 'assets/images/perfumes/ganymede.jpg';
+        return `
+          <a href="catalog.html?search=${encodeURIComponent(p.name || p.brand)}" class="qsd-item" onclick="closeQuickSearch()">
+            <img src="${img}" alt="${escapeHtml(title)}" class="qsd-thumb" loading="lazy">
+            <div class="qsd-info">
+              <div class="qsd-title">${escapeHtml(title)}</div>
+              <div class="qsd-meta">${escapeHtml(p.brand || '')}</div>
+            </div>
+            ${price ? `<div class="qsd-price">${price}</div>` : ''}
+          </a>
+        `;
+      }).join('');
+    });
+  }
+
+  updateWishlistBadges();
+});
+
+// Wishlist System
+function getWishlist() {
+  try {
+    return JSON.parse(localStorage.getItem('vp_favorites') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function setWishlist(list) {
+  try {
+    localStorage.setItem('vp_favorites', JSON.stringify(list));
+  } catch (e) {}
+}
+
+function toggleWishlist(perfumeId, e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  let list = getWishlist();
+  const idx = list.indexOf(perfumeId);
+  if (idx > -1) {
+    list.splice(idx, 1);
+    if (typeof showToast === 'function') showToast('Удалено из избранного');
+  } else {
+    list.push(perfumeId);
+    if (typeof showToast === 'function') showToast('Добавлено в избранное ❤️');
+  }
+  setWishlist(list);
+  updateWishlistBadges();
+}
+
+function updateWishlistBadges() {
+  const list = getWishlist();
+  const count = list.length;
+  const badge = document.getElementById('wishlistCountBadge');
+  if (badge) {
+    if (count > 0) {
+      badge.textContent = count;
+      badge.style.display = 'flex';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  document.querySelectorAll('.bestseller-card').forEach(card => {
+    const pid = card.dataset.perfumeId;
+    const btn = card.querySelector('.bestseller-fav-btn');
+    if (btn && pid) {
+      const isFav = list.includes(pid);
+      btn.classList.toggle('active', isFav);
+      const svg = btn.querySelector('svg');
+      if (svg) {
+        svg.style.fill = isFav ? '#6B1123' : 'none';
+        svg.style.stroke = isFav ? '#6B1123' : 'currentColor';
+      }
+    }
+  });
+}
+
 
 
 

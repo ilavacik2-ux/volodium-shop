@@ -13063,4 +13063,858 @@ body.hero-cinematic-active .nav-desktop .nav-link.is-active-page {
   }
 }
 
+/* ==========================================================================
+   VOLODIUM PARFUM — 2026 Refined Storefront Design System
+   Matches User Approved Visual Mockup (Image 1 & Image 2)
+   ========================================================================== */
+
+/* Top Promo Bar: Deep Burgundy */
+.promo-announcement-bar {
+  background: #6B1123 !important;
+  color: #FFFFFF !important;
+  padding: 0.55rem 1rem !important;
+  border-bottom: none !important;
+}
+
+.promo-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.promo-bar-text {
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+.promo-badge-pill {
+  display: inline-block;
+  padding: 1px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 9999px;
+  margin: 0 4px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  transition: all 0.2s ease;
+}
+
+.promo-badge-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.04);
+}
+
+/* Header: Thin crisp divider line and minimalist icons */
+.header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  background: #FFFFFF !important;
+}
+
+.header-inner {
+  height: 4.4rem;
+}
+
+.brand-text-stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.brand-text-stacked .brand-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #111216;
+}
+
+.brand-text-stacked .brand-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  color: #111216;
+  margin-top: 3px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hdr-minimal-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: #111216;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 0;
+  text-decoration: none;
+}
+
+.hdr-minimal-btn:hover {
+  color: #6B1123;
+  transform: scale(1.08);
+}
+
+.hdr-minimal-btn svg {
+  display: block;
+}
+
+.wishlist-badge-count, .cart-badge-count {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #6B1123;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+  border: 1.5px solid #FFFFFF;
+}
+
+/* ==========================================================================
+   Hero Section: Approved Layout
+   ========================================================================== */
+.hero-brand-section {
+  background: #FFFFFF;
+  padding: 2.5rem 0 2rem;
+  overflow: hidden;
+}
+
+.hero-brand-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.hero-brand-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-brand-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  color: #111216;
+  text-transform: uppercase;
+  margin-bottom: 1.15rem;
+}
+
+.hero-brand-sub {
+  font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+  line-height: 1.55;
+  color: #4A4646;
+  max-width: 440px;
+  margin-bottom: 1.8rem;
+  font-weight: 400;
+}
+
+.hero-brand-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+
+.btn-hero-burgundy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #6B1123;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  border: 1.5px solid #6B1123;
+}
+
+.btn-hero-burgundy:hover {
+  background: #540D1B;
+  border-color: #540D1B;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(107, 17, 35, 0.25);
+}
+
+.btn-hero-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  color: #111216;
+  border: 1.5px solid #2B2929;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.btn-hero-outline:hover {
+  border-color: #6B1123;
+  color: #6B1123;
+  transform: translateY(-1px);
+}
+
+.hero-slider-pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hsp-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #E5E2DC;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.hsp-dot.active {
+  width: 28px;
+  background: #6B1123;
+}
+
+.hero-brand-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-box-stage {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-box-image {
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+  object-fit: contain;
+  border-radius: 14px;
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.08));
+  transition: transform 0.4s ease;
+}
+
+.hero-box-image:hover {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   USP Strip: 100% Оригиналы (Bordered with thin dividers)
+   ========================================================================== */
+.brand-usp-strip {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background: #FFFFFF;
+  padding: 1.1rem 0;
+  margin: 1rem 0 2rem;
+}
+
+.usp-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+
+.usp-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.75rem;
+  border-right: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.usp-item:last-child {
+  border-right: none;
+}
+
+.usp-icon {
+  color: #111216;
+  flex-shrink: 0;
+}
+
+.usp-text {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #111216;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Categories 2x2 Grid (Warm Cream Tiles)
+   ========================================================================== */
+.brand-categories-section {
+  padding: 0 0 2rem;
+}
+
+.categories-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem;
+}
+
+.category-tile {
+  background: #F4EFEA;
+  border-radius: 12px;
+  padding: 1.25rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  min-height: 105px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.category-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+  background: #EFE9E2;
+}
+
+.cat-tile-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #111216;
+  text-transform: uppercase;
+  line-height: 1.28;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.cat-tile-arrow {
+  display: inline-block;
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+.category-tile:hover .cat-tile-arrow {
+  transform: translateX(3px);
+}
+
+.cat-tile-img-wrap {
+  width: 82px;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cat-tile-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+  transition: transform 0.3s ease;
+}
+
+.category-tile:hover .cat-tile-img {
+  transform: scale(1.06);
+}
+
+.cat-tile-box-img {
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   ВЫБОР ВАЦИКА: Burgundy Card with Vladimir's Photo
+   ========================================================================== */
+.vatsik-selection-section {
+  padding: 0.75rem 0 2.25rem;
+}
+
+.vatsik-card {
+  background: #6B1123;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  padding: 2.25rem 2.5rem;
+  color: #FFFFFF;
+}
+
+.vatsik-card-content {
+  position: relative;
+  z-index: 2;
+  max-width: 440px;
+}
+
+.vatsik-title {
+  font-size: clamp(1.4rem, 3.2vw, 1.95rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+  color: #FFFFFF;
+}
+
+.vatsik-subtitle {
+  font-size: clamp(0.85rem, 1.8vw, 0.98rem);
+  line-height: 1.48;
+  color: rgba(255, 255, 255, 0.90);
+  margin-bottom: 1.4rem;
+  font-weight: 400;
+}
+
+.btn-vatsik-selection {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFFFFF;
+  color: #6B1123;
+  font-weight: 700;
+  font-size: 0.86rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-vatsik-selection:hover {
+  transform: translateY(-2px);
+  background: #F8F5F0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.vatsik-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-vatsik-selection:hover .vatsik-arrow {
+  transform: translateX(3px);
+}
+
+.vatsik-card-visual {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 46%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.vatsik-photo {
+  height: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: top center;
+  mask-image: linear-gradient(to right, transparent 0%, black 28%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28%);
+}
+
+/* ==========================================================================
+   БЕСТСЕЛЛЕРЫ: Product Strip / Slider
+   ========================================================================== */
+.brand-bestsellers-section {
+  padding: 1.5rem 0 3.5rem;
+}
+
+.bestsellers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.35rem;
+}
+
+.bestsellers-title {
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #111216;
+}
+
+.bestsellers-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111216;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.bestsellers-all-link:hover {
+  color: #6B1123;
+}
+
+.bestsellers-arrow {
+  transition: transform 0.2s ease;
+}
+
+.bestsellers-all-link:hover .bestsellers-arrow {
+  transform: translateX(3px);
+}
+
+.bestsellers-scroll-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.bestseller-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.bestseller-card:hover {
+  border-color: rgba(107, 17, 35, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.bestseller-fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #888888;
+  transition: all 0.2s ease;
+  z-index: 2;
+  padding: 0;
+}
+
+.bestseller-fav-btn:hover {
+  color: #6B1123;
+  transform: scale(1.1);
+}
+
+.bestseller-fav-btn.active {
+  color: #6B1123;
+  fill: #6B1123;
+}
+
+.bestseller-img-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  margin-bottom: 0.85rem;
+  text-decoration: none;
+}
+
+.bestseller-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.bestseller-card:hover .bestseller-img {
+  transform: scale(1.05);
+}
+
+.bestseller-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.bestseller-brand {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888888;
+  margin-bottom: 0.2rem;
+}
+
+.bestseller-name {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #111216;
+  margin-bottom: 0.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bestseller-price {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #6B1123;
+}
+
+/* ==========================================================================
+   Mobile Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-brand-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  
+  .hero-brand-visual {
+    order: 2;
+  }
+  
+  .hero-brand-content {
+    order: 1;
+  }
+
+  .usp-strip-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem 0;
+  }
+  
+  .usp-item {
+    justify-content: flex-start;
+    padding: 0.35rem 0.5rem;
+  }
+  
+  .usp-item:nth-child(2) {
+    border-right: none;
+  }
+  
+  .usp-item:nth-child(3), .usp-item:nth-child(4) {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .usp-item:nth-child(4) {
+    border-right: none;
+  }
+
+  .categories-grid-2x2 {
+    gap: 0.75rem;
+  }
+  
+  .category-tile {
+    padding: 0.85rem 0.75rem;
+    min-height: 85px;
+  }
+  
+  .cat-tile-title {
+    font-size: 0.72rem;
+  }
+  
+  .cat-tile-img-wrap {
+    width: 65px;
+    height: 65px;
+  }
+
+  .vatsik-card {
+    grid-template-columns: 1fr 110px;
+    padding: 1.5rem 1.25rem;
+    min-height: 190px;
+  }
+  
+  .vatsik-card-visual {
+    width: 38%;
+  }
+
+  .bestsellers-scroll-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0.85rem;
+    padding-bottom: 0.75rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .bestsellers-scroll-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bestseller-card {
+    width: 165px;
+    scroll-snap-align: start;
+    padding: 0.85rem 0.75rem;
+  }
+  
+  .bestseller-img-link {
+    height: 130px;
+  }
+}
+
+/* Quick Search Modal */
+.quick-search-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 18, 22, 0.55);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 1rem 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.quick-search-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.quick-search-dialog {
+  background: #FFFFFF;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.qsd-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.qsd-icon {
+  color: #6B1123;
+  flex-shrink: 0;
+}
+
+.qsd-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.05rem;
+  font-family: inherit;
+  color: #111216;
+}
+
+.qsd-close-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.2s;
+}
+
+.qsd-close-btn:hover {
+  color: #111;
+}
+
+.qsd-results {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.qsd-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.18s;
+}
+
+.qsd-item:hover {
+  background: #F8F5F0;
+}
+
+.qsd-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #FAF8F5;
+}
+
+.qsd-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.qsd-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qsd-meta {
+  font-size: 0.76rem;
+  color: #777;
+}
+
+.qsd-price {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #6B1123;
+}
+
+
 

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="ru" class="intro-active">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#FAF8F5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>VOLODIUM PARFUM — Высокая нишевая парфюмерия и гардероб ароматов</title>
+  <meta name="description" content="Интернет-магазин оригинальной нишевой парфюмерии VOLODIUM PARFUM. Распив от 3 мл, авторские Secret Box, аромабоксы и персональный подбор от эксперта Владимира Вацика.">
+  <meta property="og:title" content="VOLODIUM PARFUM — Высокая нишевая парфюмерия">
+  <meta property="og:description" content="100% оригинальные отливанты и флаконы, секретные боксы и подбор парфюмерного гардероба.">
+  <meta property="og:image" content="assets/images/IMG_4553.PNG">
+  <meta property="og:type" content="website">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/E610BB2F-DBAE-4672-9.PNG">
+  <link rel="apple-touch-icon" href="assets/images/E610BB2F-DBAE-4672-9.PNG">
+
+  <!-- Google Fonts: Cormorant Garamond (Card Identity) & Plus Jakarta Sans (Modern Clean Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Critical Splash Screen Protection -->
+  <style>
+    html.intro-active, html.intro-active body {
+      overflow: hidden !important;
+      height: 100% !important;
+      background-color: #FAF8F5 !important;
+    }
+    html.intro-active body > *:not(#monroeIntro) {
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  </style>
+
+  <script>try{if(sessionStorage.getItem('vp_intro_seen')==='1'||window.location.hash){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css?v=20261113_03">
+  <link rel="stylesheet" href="assets/css/preview-variants.css">
+</head>
+<body class="intro-active">
+
+  <!-- Cinematic Luxury Intro Screen (Haute Parfumerie Gold Shimmer & Monogram Crest) -->
+  <aside class="monroe-intro-overlay" id="monroeIntro" role="dialog" aria-modal="true" aria-label="Volodium Parfum">
+    <div class="monroe-intro-frame-border" aria-hidden="true"></div>
+    <div class="monroe-intro-content">
+      <div class="monroe-brand-stage" id="monroeBrandStage">
+        <!-- Monumental Liquid Gold Shimmer Brand Name -->
+        <h1 class="monroe-grand-title" id="monroeGrandTitle" aria-label="VOLODIUM">
+          <span class="monroe-title-letter" style="--l-idx: 0">V</span>
+          <span class="monroe-title-letter" style="--l-idx: 1">O</span>
+          <span class="monroe-title-letter" style="--l-idx: 2">L</span>
+          <span class="monroe-title-letter" style="--l-idx: 3">O</span>
+          <span class="monroe-title-letter" style="--l-idx: 4">D</span>
+          <span class="monroe-title-letter" style="--l-idx: 5">I</span>
+          <span class="monroe-title-letter" style="--l-idx: 6">U</span>
+          <span class="monroe-title-letter" style="--l-idx: 7">M</span>
+        </h1>
+        
+        <!-- Grand Subtitle 'PARFUM' -->
+        <div class="monroe-grand-sub" id="monroeGrandSub" aria-label="Parfum">
+          <span class="mgs-word">PARFUM</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Top Promo Announcement Bar -->
+  <div class="promo-announcement-bar" id="promoTopBar">
+    <div class="container promo-bar-content">
+      <span class="promo-bar-text">✨ Промокод <span class="promo-badge-pill" onclick="copyPromoCode('СТАРТ')" title="Нажмите, чтобы применить">СТАРТ</span> — скидка 10% на ваш первый заказ</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="VOLODIUM PARFUM">
+        <div class="brand-text-stacked">
+          <span class="brand-title">VOLODIUM</span>
+          <span class="brand-sub">PARFUM</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <!-- Поиск -->
+        <button class="hdr-minimal-btn" id="hdrSearchBtn" title="Поиск по ароматам" aria-label="Поиск" type="button" onclick="openQuickSearch()">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.5" y2="16.5"/>
+          </svg>
+        </button>
+
+        <!-- Избранное -->
+        <a href="catalog.html?filter=favorites" class="hdr-minimal-btn" id="hdrWishlistBtn" title="Избранное" aria-label="Избранное">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span class="wishlist-badge-count" id="wishlistCountBadge" style="display: none;">0</span>
+        </a>
+
+        <!-- Корзина -->
+        <button class="hdr-minimal-btn trigger-cart" aria-label="Корзина" title="Открыть корзину" type="button" onclick="openCart()">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Меню (три полоски) -->
+        <button class="hdr-minimal-btn" id="volodiumMenuBtn" aria-label="Открыть меню интернет-магазина" title="Меню" type="button" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(true)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Bespoke Volodium Boutique Drawer (Right-Slide Atelier Panel) -->
+  <div class="volodium-drawer-overlay" id="volodiumDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Навигация по интернет-магазину">
+    <div class="v-drawer-backdrop" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)"></div>
+    <aside class="v-drawer-panel">
+      <!-- Drawer Header -->
+      <div class="v-drawer-header">
+        <div class="v-drawer-brand">
+          <div class="v-drawer-crest">V</div>
+          <div class="v-drawer-brand-text">
+            <span class="v-drawer-brand-name">VOLODIUM</span>
+            <span class="v-drawer-brand-sub">PARFUM</span>
+          </div>
+        </div>
+        <button type="button" class="v-drawer-close-btn" id="vDrawerCloseBtn" aria-label="Закрыть меню" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer Body -->
+      <div class="v-drawer-body">
+        
+        <!-- Group 1: Коллекция ароматов -->
+        <div class="v-drawer-group">
+          <span class="v-drawer-group-title">Коллекция ароматов</span>
+          <nav class="v-drawer-nav">
+            
+            <a href="catalog.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">01</span>
+              <span class="vdl-title">Каталог</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="boxes.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">02</span>
+              <span class="vdl-title">Аромабоксы</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="boxes.html#secret-boxes" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">03</span>
+              <span class="vdl-title">Секретные боксы от Владимира</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+          </nav>
+        </div>
+
+        <!-- Group 2: Сервис & Экспертиза -->
+        <div class="v-drawer-group">
+          <span class="v-drawer-group-title">Сервис & Экспертиза</span>
+          <nav class="v-drawer-nav">
+
+            <a href="quiz.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">04</span>
+              <span class="vdl-title">Парфюмерная анкета</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="consultation.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">05</span>
+              <span class="vdl-title">Консультация с Владимиром</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="request.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">06</span>
+              <span class="vdl-title">Запрос на полноценный флакон</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="certificates.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">07</span>
+              <span class="vdl-title">Подарочные сертификаты</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+          </nav>
+        </div>
+
+        <!-- Group 3: Об интернет-магазине -->
+        <div class="v-drawer-group">
+          <span class="v-drawer-group-title">Об интернет-магазине</span>
+          <nav class="v-drawer-nav">
+
+            <a href="reviews.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">08</span>
+              <span class="vdl-title">Отзывы & Распаковки</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="delivery.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">09</span>
+              <span class="vdl-title">Доставка & Оплата</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+          </nav>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="v-drawer-footer">
+        <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="v-drawer-tg-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+          </svg>
+          <div class="v-drawer-tg-label">
+            <span class="v-drawer-tg-main">Связь в Telegram</span>
+            <span class="v-drawer-tg-sub">Быстрый ответ @volodiumparfum</span>
+          </div>
+        </a>
+        <div class="v-drawer-contact-line">
+          <span class="v-drawer-loc">Самовывоз Ⓜ️ Автозаводская</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Hero Section (Matches User Approved Mockup with Real Box Photo) -->
+  <section class="hero-brand-section" id="hero">
+    <div class="container hero-brand-grid">
+      <div class="hero-brand-content">
+        <!-- Title without duplicate label above it -->
+        <h1 class="hero-brand-title">
+          ПАРФЮМЕРИЯ —<br>
+          ЭТО БОЛЬШЕ,<br>
+          ЧЕМ АРОМАТ
+        </h1>
+
+        <p class="hero-brand-sub">
+          Оригинальная нишевая парфюмерия во флаконах и на распив. Более 500 ароматов.
+        </p>
+
+        <div class="hero-brand-actions">
+          <a href="catalog.html" class="btn-hero-burgundy">
+            <span>Каталог ароматов</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="quiz.html" class="btn-hero-outline">
+            <span>Подобрать аромат</span>
+          </a>
+        </div>
+
+        <!-- Slider Pagination Indicator -->
+        <div class="hero-slider-pagination" aria-label="Слайды">
+          <span class="hsp-dot active" title="Слайд 1"></span>
+          <span class="hsp-dot" title="Слайд 2"></span>
+          <span class="hsp-dot" title="Слайд 3"></span>
+          <span class="hsp-dot" title="Слайд 4"></span>
+        </div>
+      </div>
+
+      <!-- Right Visual: REAL VOLODIUM BOX PHOTO -->
+      <div class="hero-brand-visual">
+        <div class="hero-box-stage">
+          <img src="assets/images/volodium_box_transparent.png" alt="Фирменная подарочная упаковка Volodium Parfum" class="hero-box-image" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP Strip (Bordered by thin lines and dividers as requested) -->
+  <section class="brand-usp-strip" aria-label="Преимущества магазина">
+    <div class="container">
+      <div class="usp-strip-grid">
+        <div class="usp-item">
+          <svg class="usp-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span class="usp-text">100% оригиналы</span>
+        </div>
+
+        <div class="usp-item">
+          <svg class="usp-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="7" y="2" width="10" height="20" rx="2"/>
+            <line x1="12" y1="18" x2="12" y2="18.01"/>
+            <path d="M10 6h4"/>
+          </svg>
+          <span class="usp-text">От 3 мл</span>
+        </div>
+
+        <div class="usp-item">
+          <svg class="usp-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13" rx="1"/>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+          <span class="usp-text">Доставка по России</span>
+        </div>
+
+        <div class="usp-item">
+          <svg class="usp-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 12 20 22 4 22 4 12"/>
+            <rect x="2" y="7" width="20" height="5" rx="1"/>
+            <line x1="12" y1="22" x2="12" y2="7"/>
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+          </svg>
+          <span class="usp-text">Подарочная упаковка</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories 2x2 Grid -->
+  <section class="brand-categories-section" aria-label="Категории парфюмерии">
+    <div class="container">
+      <div class="categories-grid-2x2">
+        <!-- 1. Женская -->
+        <a href="catalog.html?category=women" class="category-tile">
+          <div class="cat-tile-content">
+            <span class="cat-tile-title">ЖЕНСКАЯ<br>ПАРФЮМЕРИЯ <span class="cat-tile-arrow">→</span></span>
+          </div>
+          <div class="cat-tile-img-wrap">
+            <img src="assets/images/perfumes/cat_women_transparent.png" alt="Женская парфюмерия" class="cat-tile-img" loading="lazy">
+          </div>
+        </a>
+
+        <!-- 2. Мужская -->
+        <a href="catalog.html?category=men" class="category-tile">
+          <div class="cat-tile-content">
+            <span class="cat-tile-title">МУЖСКАЯ<br>ПАРФЮМЕРИЯ <span class="cat-tile-arrow">→</span></span>
+          </div>
+          <div class="cat-tile-img-wrap">
+            <img src="assets/images/perfumes/cat_men_transparent.png" alt="Мужская парфюмерия" class="cat-tile-img" loading="lazy">
+          </div>
+        </a>
+
+        <!-- 3. Унисекс -->
+        <a href="catalog.html?category=unisex" class="category-tile">
+          <div class="cat-tile-content">
+            <span class="cat-tile-title">УНИСЕКС<br>ПАРФЮМЕРИЯ <span class="cat-tile-arrow">→</span></span>
+          </div>
+          <div class="cat-tile-img-wrap">
+            <img src="assets/images/perfumes/cat_unisex_transparent.png" alt="Унисекс парфюмерия" class="cat-tile-img" loading="lazy">
+          </div>
+        </a>
+
+        <!-- 4. Наборы и боксы (with real box photo!) -->
+        <a href="boxes.html" class="category-tile">
+          <div class="cat-tile-content">
+            <span class="cat-tile-title">НАБОРЫ<br>И БОКСЫ <span class="cat-tile-arrow">→</span></span>
+          </div>
+          <div class="cat-tile-img-wrap">
+            <img src="assets/images/volodium_box_transparent.png" alt="Наборы и аромабоксы" class="cat-tile-img cat-tile-box-img" loading="lazy">
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВЫБОР ВАЦИКА: Burgundy Card with Vladimir's Photo -->
+  <section class="vatsik-selection-section" aria-label="Выбор Вацика">
+    <div class="container">
+      <div class="vatsik-card">
+        <div class="vatsik-card-content">
+          <h2 class="vatsik-title">ВЫБОР ВАЦИКА</h2>
+          <p class="vatsik-subtitle">Моя личная подборка ароматов, которые действительно впечатляют.</p>
+          <a href="catalog.html" class="btn-vatsik-selection">
+            <span>Смотреть подборку</span>
+            <span class="vatsik-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="vatsik-card-visual">
+          <img src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик" class="vatsik-photo" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- БЕСТСЕЛЛЕРЫ Section -->
+  <section class="brand-bestsellers-section" id="bestsellers" aria-label="Бестселлеры парфюмерии">
+    <div class="container">
+      <div class="bestsellers-header">
+        <h2 class="bestsellers-title">БЕСТСЕЛЛЕРЫ</h2>
+        <a href="catalog.html?filter=popular" class="bestsellers-all-link">
+          <span>Смотреть все</span>
+          <span class="bestsellers-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="bestsellers-scroll-track" id="bestsellersTrack">
+        <!-- 1. Ganymede -->
+        <div class="bestseller-card" data-perfume-id="vp-970496381632">
+          <button class="bestseller-fav-btn" onclick="toggleWishlist('vp-970496381632', event)" aria-label="В избранное" title="В избранное" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="catalog.html?search=Ganymede" class="bestseller-img-link" title="Marc-Antoine Barrois Ganymede">
+            <img src="assets/images/perfumes/ganymede.jpg" alt="Marc-Antoine Barrois Ganymede" class="bestseller-img" loading="lazy">
+          </a>
+          <div class="bestseller-info">
+            <span class="bestseller-brand">Marc-Antoine Barrois</span>
+            <h3 class="bestseller-name">Ganymede</h3>
+            <span class="bestseller-price">от 1 200 ₽</span>
+          </div>
+        </div>
+
+        <!-- 2. Tom Ford Lost Cherry -->
+        <div class="bestseller-card" data-perfume-id="vp-750283863072">
+          <button class="bestseller-fav-btn" onclick="toggleWishlist('vp-750283863072', event)" aria-label="В избранное" title="В избранное" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="catalog.html?search=Lost+Cherry" class="bestseller-img-link" title="Tom Ford Lost Cherry">
+            <img src="assets/images/perfumes/lost-cherry.jpg" alt="Tom Ford Lost Cherry" class="bestseller-img" loading="lazy">
+          </a>
+          <div class="bestseller-info">
+            <span class="bestseller-brand">Tom Ford</span>
+            <h3 class="bestseller-name">Lost Cherry</h3>
+            <span class="bestseller-price">от 1 095 ₽</span>
+          </div>
+        </div>
+
+        <!-- 3. Byredo Blanche -->
+        <div class="bestseller-card" data-perfume-id="vp-630169855112">
+          <button class="bestseller-fav-btn" onclick="toggleWishlist('vp-630169855112', event)" aria-label="В избранное" title="В избранное" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="catalog.html?search=Blanche" class="bestseller-img-link" title="Byredo Blanche">
+            <img src="assets/images/perfumes/blanche.jpg" alt="Byredo Blanche" class="bestseller-img" loading="lazy">
+          </a>
+          <div class="bestseller-info">
+            <span class="bestseller-brand">Byredo</span>
+            <h3 class="bestseller-name">Blanche</h3>
+            <span class="bestseller-price">от 1 020 ₽</span>
+          </div>
+        </div>
+
+        <!-- 4. Kilian Angels' Share -->
+        <div class="bestseller-card" data-perfume-id="vp-angels-share">
+          <button class="bestseller-fav-btn" onclick="toggleWishlist('vp-angels-share', event)" aria-label="В избранное" title="В избранное" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <a href="catalog.html?search=Angels" class="bestseller-img-link" title="Kilian Angels' Share">
+            <img src="assets/images/perfumes/angels-share.jpg" alt="Kilian Angels' Share" class="bestseller-img" loading="lazy">
+          </a>
+          <div class="bestseller-info">
+            <span class="bestseller-brand">Kilian</span>
+            <h3 class="bestseller-name">Angels' Share</h3>
+            <span class="bestseller-price">от 1 290 ₽</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Scent Finding & Quality Standards (Real from Volodium) -->
+  <section class="section-padding custom-order-section" id="custom-scent">
+    <div class="container">
+      <div class="concierge-atelier-card">
+        <div class="section-header" style="margin-bottom: 2.25rem;">
+          <span class="section-tag">Индивидуальный поиск</span>
+          <h2 class="section-title">Нет нужного аромата? Найдем специально для вас</h2>
+          <p class="section-descr">
+            Если вы ищете редкий нишевый выпуск, винтажную формулу или снятый с производства парфюм — напишите нам в Telegram. Мы проверим наличие у европейских дистрибьюторов.
+          </p>
+        </div>
+
+        <div class="standards-grid">
+          <div class="standard-card">
+            <div class="standard-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 class="standard-title">100% Оригинальная продукция</h3>
+            <p class="standard-text">
+              Строгий контроль батч-кодов и происхождение флаконов. Работаем только с официальными поставщиками и дистрибьюторами.
+            </p>
+          </div>
+
+          <div class="standard-card">
+            <div class="standard-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <h3 class="standard-title">Сборка заказа 1–3 рабочих дня</h3>
+            <p class="standard-text">
+              После оплаты заказ формируется 1–3 рабочих дня. Бережная противоударная упаковка в коробки и термопленку для безопасной доставки в любой город.
+            </p>
+          </div>
+
+          <div class="standard-card">
+            <div class="standard-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3 class="standard-title">Прямой диалог с Владимиром</h3>
+            <p class="standard-text">
+              Можно отправить название, фотографию флакона или просто описать настроение. Владимир лично отвечает в Telegram и помогает подобрать идеальный аромат.
+            </p>
+          </div>
+        </div>
+
+        <div class="custom-order-cta">
+          <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" rel="noopener noreferrer" class="btn-primary custom-order-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+            </svg>
+            <span>Найти флакон в Telegram →</span>
+          </a>
+          <span class="custom-order-note">✦ Личный ответ Владимира в течение 15 минут</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer (Photo 5 fix: Luxury Noir aesthetic, no duplicates, mobile clearance) -->
+  <footer class="footer">
+    <div class="footer-ambient-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand">
+            <div class="footer-emblem">V</div>
+            <div class="footer-brand-text">
+              <span class="footer-brand-title">VOLODIUM</span>
+              <span class="footer-brand-sub">PARFUM</span>
+            </div>
+          </div>
+          <p class="footer-descr">
+            Авторский интернет-магазин оригинальной нишевой парфюмерии, тематических аромабоксов и персонального парфюмерного гардероба от Владимира Вацика.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="footer-channel-badge" title="TG Канал эксперта @vatsiik" aria-label="TG Канал эксперта">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+              </svg>
+              <span>Telegram-канал</span>
+            </a>
+            <a href="https://www.youtube.com/@vatsiik" target="_blank" rel="noopener noreferrer" class="footer-channel-badge" title="YouTube канал Владимира Вацика" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>YouTube</span>
+            </a>
+            <a href="https://www.instagram.com/vatsiik" target="_blank" rel="noopener noreferrer" class="footer-channel-badge" title="Instagram профиль" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col footer-col-contacts">
+          <h4 class="footer-title">Прямая связь</h4>
+          <div class="footer-card-box">
+            <div class="footer-showroom-item">
+              <div class="fsi-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="fsi-text">
+                <span class="fsi-line">Самовывоз Ⓜ️ Автозаводская</span>
+                <span class="fsi-sub">Самовывоз по согласованию</span>
+              </div>
+            </div>
+            <div class="footer-contacts-list">
+              <div class="footer-contact-row">
+                <span class="fc-label">Связь в Telegram:</span>
+                <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="fc-val fc-highlight">@volodiumparfum <small style="color: #D4AF37; font-weight:600;">(быстрее всего)</small></a>
+              </div>
+              <div class="footer-contact-row">
+                <span class="fc-label">WhatsApp Владимира:</span>
+                <a href="https://wa.me/79094442617" target="_blank" rel="noopener noreferrer" class="fc-val">+7 (909) 444-26-17</a>
+              </div>
+              <div class="footer-contact-row">
+                <span class="fc-label">ВКонтакте:</span>
+                <a href="https://vk.ru/volodya_v_v" target="_blank" rel="noopener noreferrer" class="fc-val">vk.ru/volodya_v_v</a>
+              </div>
+              <div class="footer-contact-row">
+                <span class="fc-label">TG Канал эксперта:</span>
+                <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="fc-val">@vatsiik</a>
+              </div>
+              <div class="footer-contact-row">
+                <span class="fc-label">Instagram:</span>
+                <a href="https://www.instagram.com/vatsiik" target="_blank" rel="noopener noreferrer" class="fc-val">@vatsiik</a>
+              </div>
+              <div class="footer-contact-row">
+                <span class="fc-label">Режим связи:</span>
+                <span class="fc-val-muted">Ежедневно 10:00 — 22:00 МСК</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal-bar">
+          <a href="#legalModal" onclick="openLegalDoc('privacy'); return false;" class="footer-legal-link">Политика обработки персональных данных (152-ФЗ)</a>
+          <span class="legal-bullet">•</span>
+          <a href="#legalModal" onclick="openLegalDoc('offer'); return false;" class="footer-legal-link">Публичная оферта</a>
+          <span class="legal-bullet">•</span>
+          <a href="#legalModal" onclick="openLegalDoc('returns'); return false;" class="footer-legal-link">Правила возврата (Пост. №55)</a>
+        </div>
+        <div class="footer-disclaimer-text">
+          Информация на сайте носит ознакомительный характер и не является публичной офертой (ст. 437 ГК РФ).<br>
+          © 2026 VOLODIUM PARFUM. Все права защищены.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Details Modal -->
+  <div class="modal-backdrop" id="productModalBackdrop">
+    <div class="product-modal">
+      <button class="btn-modal-close" id="btnModalClose" aria-label="Закрыть модальное окно">✕</button>
+      <div id="productModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Slide-Over Cart Drawer -->
+  <div class="cart-drawer-backdrop" id="cartDrawerBackdrop">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <div class="cart-header-title-wrap">
+          <h3 class="cart-title">Парфюмерная корзина</h3>
+        </div>
+        <button class="cart-close-btn" id="btnCartClose" aria-label="Закрыть корзину">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Free Delivery Progress Tracker -->
+      <div class="free-delivery-banner">
+        <div class="free-delivery-text" id="freeDeliveryText">
+          До бесплатной доставки осталось <strong>5 000 ₽</strong>
+        </div>
+        <div class="free-delivery-track">
+          <div class="free-delivery-fill" id="freeDeliveryFill"></div>
+        </div>
+      </div>
+
+      <!-- Scrollable Cart Content (Items + Promo + Summary + Channels) -->
+      <div class="cart-body-scroll" id="cartBodyScroll">
+        <!-- Cart Items List -->
+        <div class="cart-items-wrap" id="cartItemsList"></div>
+
+        <!-- Order Extras (Promo, Breakdown, Messenger channels) -->
+        <div class="cart-order-extras" id="cartOrderExtras">
+          <!-- Promo Row -->
+          <div class="promo-row">
+            <input type="text" id="promoCodeInput" class="promo-input" placeholder="Промокод (СТАРТ)">
+            <button class="promo-btn" id="btnApplyPromo">Применить</button>
+          </div>
+          <div class="promo-tip">
+            ✦ Скидка 10% на ваш заказ по промокоду <strong>СТАРТ</strong>
+          </div>
+
+          <!-- Breakdown Summary Lines -->
+          <div class="cart-breakdown-card">
+            <div class="cart-summary-line">
+              <span>Сумма товаров:</span>
+              <span id="cartSubtotal">0 ₽</span>
+            </div>
+            <div class="cart-summary-line" id="cartDiscountRow" style="display: none; color: var(--bordo-primary);">
+              <span>Скидка по промокоду:</span>
+              <span id="cartDiscountVal">-0 ₽</span>
+            </div>
+            <div class="cart-summary-line">
+              <span>Доставка СДЭК:</span>
+              <span class="cart-delivery-calc-note">По тарифам СДЭК (от 5 000 ₽ бесплатно)</span>
+            </div>
+          </div>
+
+          <!-- Messenger Badges in Cart Drawer (Telegram, WhatsApp, VK) -->
+          <div class="cart-channels-strip">
+            <div class="ccs-header-row">
+              <span class="ccs-label">Каналы подтверждения</span>
+              <span class="ccs-speed-pill">⚡ В TG быстрее всего</span>
+            </div>
+            <div class="ccs-badges-row">
+              <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="ccs-badge tg" title="Telegram @volodiumparfum — отвечаем почти мгновенно">
+                <span class="ccs-icon-wrap tg-bg">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+                  </svg>
+                </span>
+                <div class="ccs-badge-info">
+                  <span class="ccs-badge-name">Telegram</span>
+                  <span class="ccs-badge-sub">~1 мин</span>
+                </div>
+              </a>
+              <a href="https://wa.me/79094442617" target="_blank" rel="noopener noreferrer" class="ccs-badge wa" title="WhatsApp +7 909 444-26-17">
+                <span class="ccs-icon-wrap wa-bg">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.97.58 3.86 1.68 5.48L2 22l4.77-1.74a9.85 9.85 0 0 0 5.27 1.5h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.89h-.01a8.16 8.16 0 0 1-4.17-1.15l-.3-.18-3.08 1.12 1.15-3.01-.2-.31a8.14 8.14 0 0 1-1.25-4.45c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4a8.16 8.16 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.2 8.2zm4.49-6.14c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.76 2.68 4.25 3.76.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.31z"/>
+                  </svg>
+                </span>
+                <div class="ccs-badge-info">
+                  <span class="ccs-badge-name">WhatsApp</span>
+                  <span class="ccs-badge-sub">номер Вовы</span>
+                </div>
+              </a>
+              <a href="https://vk.ru/volodya_v_v" target="_blank" rel="noopener noreferrer" class="ccs-badge vk" title="ВКонтакте vk.ru/volodya_v_v">
+                <span class="ccs-icon-wrap vk-bg">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.072-1.892.854-2.585 1.785-1.921 1.073.766 1.673 2.13 2.827 2.13h2.628c1.378 0 1.83-.82 1.25-2.077-.909-1.969-2.827-3.864-2.923-4.223-.198-.74.195-1.096.598-1.637.397-.533 3.328-4.735 3.65-6.351H20.73c-.569 0-.825.289-1.026.837-.872 2.379-2.316 5.342-3.185 5.513-.717.14-1.002-.395-1.002-1.528V6.985c0-1.282-.363-1.685-1.42-1.685h-3.957c-.777 0-1.229.434-.84 1.05.617.974.793 1.528.793 2.871v2.793c0 .874-.32 1.157-.96 1.157-.91 0-2.318-2.339-3.325-5.321-.24-.712-.55-1.05-1.14-1.05H2.17C.926 6.8 0 7.42 0 8.358c0 1.082 1.284 6.702 5.977 12.337C8.618 23.86 11.83 24 13.162 24v-5.006z"/>
+                  </svg>
+                </span>
+                <div class="ccs-badge-info">
+                  <span class="ccs-badge-name">ВКонтакте</span>
+                  <span class="ccs-badge-sub">личка Вовы</span>
+                </div>
+              </a>
+            </div>
+            <span class="ccs-instant-note">⚡ Отвечаем в Telegram почти мгновенно, но вы можете выбрать любой удобный канал</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fixed Sticky Bottom Checkout Bar -->
+      <div class="cart-sticky-bottom" id="cartStickyBottom">
+        <div class="csb-total-row">
+          <div class="csb-total-meta">
+            <span class="csb-total-label">Итого к оплате:</span>
+          </div>
+          <span class="csb-total-val" id="cartTotal">0 ₽</span>
+        </div>
+        <button class="btn-checkout" id="btnCartCheckout">
+          <span>Перейти к оформлению</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instant Checkout Modal -->
+  <div class="modal-backdrop" id="checkoutModalBackdrop">
+    <div class="product-modal checkout-modal">
+      <button class="btn-modal-close" id="btnCheckoutClose" aria-label="Закрыть оформление">✕</button>
+      <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+        <span class="section-tag">Быстрое оформление</span>
+        <h3 style="font-family: var(--font-serif); font-size: 1.85rem; font-weight: 600;">Подтверждение заказа</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Итоговая сумма: <strong id="checkoutDisplayTotal" style="color: var(--gold-light);">0 ₽</strong>. После отправки менеджер свяжется с вами для отправки трек-номера СДЭК.
+        </p>
+      </div>
+
+      <form id="checkoutForm">
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <div class="checkout-messenger-label-row">
+            <label class="form-label" style="margin-bottom: 0;">Куда отправить заказ для подтверждения? *</label>
+            <span class="cml-hint-tag">Выбор за вами</span>
+          </div>
+          <div class="checkout-messenger-selector" role="radiogroup" aria-label="Выберите мессенджер для подтверждения">
+            <button type="button" class="cms-btn active" data-messenger="Telegram" aria-checked="true" role="radio">
+              <span class="cms-badge fast">Быстрее всего</span>
+              <span class="cms-icon tg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+                </svg>
+              </span>
+              <span class="cms-name">Telegram</span>
+              <span class="cms-speed-time">Почти мгновенно</span>
+            </button>
+            <button type="button" class="cms-btn" data-messenger="WhatsApp" aria-checked="false" role="radio">
+              <span class="cms-icon wa">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.97.58 3.86 1.68 5.48L2 22l4.77-1.74a9.85 9.85 0 0 0 5.27 1.5h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.91-7.01A9.82 9.82 0 0 0 12.04 2zm0 17.89h-.01a8.16 8.16 0 0 1-4.17-1.15l-.3-.18-3.08 1.12 1.15-3.01-.2-.31a8.14 8.14 0 0 1-1.25-4.45c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4a8.16 8.16 0 0 1 2.4 5.8c0 4.52-3.68 8.2-8.2 8.2zm4.49-6.14c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.76 2.68 4.25 3.76.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.31z"/>
+                </svg>
+              </span>
+              <span class="cms-name">WhatsApp</span>
+              <span class="cms-speed-time">+7 909 444-26-17</span>
+            </button>
+            <button type="button" class="cms-btn" data-messenger="VK" aria-checked="false" role="radio">
+              <span class="cms-icon vk">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.072-1.892.854-2.585 1.785-1.921 1.073.766 1.673 2.13 2.827 2.13h2.628c1.378 0 1.83-.82 1.25-2.077-.909-1.969-2.827-3.864-2.923-4.223-.198-.74.195-1.096.598-1.637.397-.533 3.328-4.735 3.65-6.351H20.73c-.569 0-.825.289-1.026.837-.872 2.379-2.316 5.342-3.185 5.513-.717.14-1.002-.395-1.002-1.528V6.985c0-1.282-.363-1.685-1.42-1.685h-3.957c-.777 0-1.229.434-.84 1.05.617.974.793 1.528.793 2.871v2.793c0 .874-.32 1.157-.96 1.157-.91 0-2.318-2.339-3.325-5.321-.24-.712-.55-1.05-1.14-1.05H2.17C.926 6.8 0 7.42 0 8.358c0 1.082 1.284 6.702 5.977 12.337C8.618 23.86 11.83 24 13.162 24v-5.006z"/>
+                </svg>
+              </span>
+              <span class="cms-name">ВКонтакте</span>
+              <span class="cms-speed-time">vk.ru/volodya_v_v</span>
+            </button>
+          </div>
+          <div class="checkout-messenger-hint" id="checkoutMessengerHint">
+            ⚡ <strong>Быстрее всего:</strong> менеджер @volodiumparfum в Telegram ответит почти мгновенно, согласует состав и отправит трек-номер СДЭК.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="orderName">Ваше имя и фамилия *</label>
+          <input type="text" id="orderName" name="name" class="form-input" placeholder="Владимир" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="orderPhone">Номер телефона *</label>
+          <input type="tel" id="orderPhone" name="phone" class="form-input" placeholder="+7 (999) 000-00-00" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="orderDelivery">Способ доставки</label>
+          <select id="orderDelivery" name="delivery" class="form-input" style="cursor: pointer;">
+            <option value="СДЭК по России (до ПВЗ или курьером)">СДЭК по России (Бесплатно от 5 000 ₽ / 300 ₽)</option>
+            <option value="Курьер по Москве (до двери)">Курьер по Москве (по тарифу)</option>
+            <option value="Самовывоз в Москве (Автозаводская)">Самовывоз Москва (Ⓜ️ Автозаводская)</option>
+            <option value="СДЭК в Беларусь / Казахстан">СДЭК в Беларусь или Казахстан</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="orderAddress">Город, адрес доставки или пункт СДЭК</label>
+          <input type="text" id="orderAddress" name="address" class="form-input" placeholder="Например: Москва, СДЭК на ул. Ленина 12">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="orderComment">Комментарий или пожелания к ароматам</label>
+          <input type="text" id="orderComment" name="comment" class="form-input" placeholder="Уточнения для Владимира...">
+        </div>
+
+        <button type="submit" id="btnCheckoutSubmit" class="btn-primary" style="width: 100%; padding: 1.1rem; margin-top: 1rem; font-size: 1.05rem;">
+          <span id="btnCheckoutSubmitText">Отправить заказ в Telegram менеджеру</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Business Card & QR Code Print Center Modal -->
+  <div class="modal-backdrop" id="businessCardModalBackdrop" style="display: none;">
+    <div class="product-modal business-card-modal">
+      <button class="btn-modal-close" onclick="closeBusinessCardModal();" aria-label="Закрыть окно визитки">✕</button>
+      
+      <div class="bcm-header">
+        <span class="bcm-tag">ТИПОГРАФИЯ & ФИРМЕННЫЙ СТИЛЬ</span>
+        <h2 class="bcm-title">Фирменная визитка & QR-коды Volodium</h2>
+        <p class="bcm-sub">Оригинальный макет визитки Владимира Вацика (90×50 мм) и сгенерированные векторные QR-коды для типографии.</p>
+      </div>
+
+      <div class="bcm-grid">
+        <!-- Interactive Card Preview -->
+        <div class="bcm-card-preview-wrap">
+          <div class="bcm-card-tab-btns">
+            <button type="button" class="bcm-tab-btn active" id="btnCardBackTab" onclick="switchCardPreview('back')">Оборот с QR (90×50 мм)</button>
+            <button type="button" class="bcm-tab-btn" id="btnCardFrontTab" onclick="switchCardPreview('front')">Лицевая сторона</button>
+          </div>
+          
+          <div class="bcm-card-stage">
+            <div class="bcm-card-render bcm-card-back active" id="cardBackView">
+              <img src="assets/img/qr/business_card_back_print.svg" alt="Оборот визитки Владимира Вацика с QR-кодом" class="bcm-card-img">
+            </div>
+            <div class="bcm-card-render bcm-card-front" id="cardFrontView" style="display: none;">
+              <img src="assets/img/branding/card_front_sexy.jpg" alt="Лицевая сторона визитки Владимира Вацика" class="bcm-card-img">
+            </div>
+          </div>
+
+          <div class="bcm-card-dims">
+            <span>Стандарт: <strong>90 × 50 мм</strong></span>
+            <span>Палитра: <strong>Limestone #D2D1CC / Bordo #812020 / Velvet Noir #111216</strong></span>
+          </div>
+        </div>
+
+        <!-- Downloads & Formats List -->
+        <div class="bcm-downloads-wrap">
+          <h4 class="bcm-downloads-heading">Готовые файлы для печати и размещения:</h4>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon svg-icon">SVG</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">Макет визитки (Оборот, вектор 90×50 мм)</span>
+              <span class="bcm-file-desc">Векторный SVG для офсетной печати, шелкографии и тиснения</span>
+            </div>
+            <a href="assets/img/qr/business_card_back_print.svg" download="volodium_business_card_90x50mm.svg" class="bcm-download-link">Скачать</a>
+          </div>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon qr-icon">QR</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">QR-код сайта (Limestone Tone)</span>
+              <span class="bcm-file-desc">Цвет #812020 на фоне визитки #D2D1CC с монограммой</span>
+            </div>
+            <div class="bcm-file-actions">
+              <a href="assets/img/qr/volodium_qr_website_limestone.svg" download="volodium_qr_website_limestone.svg" class="bcm-download-link">SVG</a>
+              <a href="assets/img/qr/volodium_qr_website_limestone.png" download="volodium_qr_website_limestone.png" class="bcm-download-link">PNG</a>
+            </div>
+          </div>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon qr-icon">QR</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">QR-код сайта (Burgundy Wine)</span>
+              <span class="bcm-file-desc">Фирменный бордо #812020 на белом/прозрачном фоне</span>
+            </div>
+            <div class="bcm-file-actions">
+              <a href="assets/img/qr/volodium_qr_website_wine.svg" download="volodium_qr_website_wine.svg" class="bcm-download-link">SVG</a>
+              <a href="assets/img/qr/volodium_qr_website_wine.png" download="volodium_qr_website_wine.png" class="bcm-download-link">PNG</a>
+            </div>
+          </div>
+
+          <div class="bcm-file-card">
+            <div class="bcm-file-icon tg-icon">TG</div>
+            <div class="bcm-file-meta">
+              <span class="bcm-file-name">QR-код Telegram канала (@volodiumparfum)</span>
+              <span class="bcm-file-desc">Прямой переход в закрытый клуб и консультации</span>
+            </div>
+            <div class="bcm-file-actions">
+              <a href="assets/img/qr/volodium_qr_telegram_wine.svg" download="volodium_qr_telegram_wine.svg" class="bcm-download-link">SVG</a>
+              <a href="assets/img/qr/volodium_qr_telegram_wine.png" download="volodium_qr_telegram_wine.png" class="bcm-download-link">PNG</a>
+            </div>
+          </div>
+
+          <div class="bcm-tip-box">
+            <span class="bcm-tip-icon">✦</span>
+            <p class="bcm-tip-text">Файлы SVG можно напрямую передать в типографию. Векторные кривые масштабируются без потери качества при любом методе печати (УФ-печать, шелкография, лакирование).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Search Modal Dialog -->
+  <div class="quick-search-modal-overlay" id="quickSearchOverlay" onclick="if(event.target===this)closeQuickSearch()" aria-hidden="true">
+    <div class="quick-search-dialog" role="dialog" aria-modal="true" aria-label="Быстрый поиск ароматов">
+      <div class="qsd-header">
+        <svg class="qsd-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.5" y2="16.5"/>
+        </svg>
+        <input type="text" id="quickSearchInput" class="qsd-input" placeholder="Поиск ароматов, брендов, нот..." autocomplete="off">
+        <button type="button" class="qsd-close-btn" onclick="closeQuickSearch()" aria-label="Закрыть поиск">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="qsd-results" id="quickSearchResults">
+        <div style="padding: 1.5rem; text-align: center; color: #888; font-size: 0.9rem;">
+          Начните вводить название аромата или бренд...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clean Legal Document Modal Reader (152-ФЗ, Оферта, Возврат) -->
+  <div class="modal-backdrop" id="legalModalBackdrop">
+    <div class="product-modal legal-modal-box">
+      <button class="btn-modal-close" onclick="closeLegalDoc()" aria-label="Закрыть документ">✕</button>
+      <div id="legalModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Cookie & 152-ФЗ Compliance Notice Banner -->
+  <div id="volodiumCookieBanner" class="volodium-cookie-banner" style="display: none;">
+    <div class="cookie-banner-content">
+      <span class="cookie-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </span>
+      <p class="cookie-text">
+        Мы используем технические файлы cookie для корректной работы корзины и персонализации (в соответствии с 152-ФЗ). Оставаясь на сайте, вы соглашаетесь с 
+        <a href="#legalModal" onclick="openLegalDoc('privacy'); return false;">Политикой обработки персональных данных</a>.
+      </p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="cookie-accept-btn" onclick="acceptVolodiumCookies()">Принять</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Root -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Modern Mobile Luxury Floating Dock (Visible on Mobile Devices <= 768px) -->
+  <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Быстрая мобильная навигация">
+    <a href="catalog.html" class="dock-item" title="Каталог парфюмерии">
+      <span class="dock-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+      </span>
+      <span class="dock-label">Каталог</span>
+    </a>
+
+    <a href="quiz.html" class="dock-item" title="Парфюмерная анкета">
+      <span class="dock-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </span>
+      <span class="dock-label">Анкета</span>
+    </a>
+
+    <a href="request.html" class="dock-item" title="Гид по тестерам">
+      <span class="dock-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L18 2M12 2L12 6M7 6L17 6C18.1 6 19 6.9 19 8L19 20C19 21.1 18.1 22 17 22L7 22C5.9 22 5 21.1 5 20L5 8C5 6.9 5.9 6 7 6Z"/>
+        </svg>
+      </span>
+      <span class="dock-label">Тестеры</span>
+    </a>
+
+    <button type="button" class="dock-item dock-cart-btn" onclick="openCart();" title="Корзина">
+      <span class="dock-icon dock-cart-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="dock-cart-badge cart-count-badge">0</span>
+      </span>
+      <span class="dock-label">Корзина</span>
+    </button>
+
+    <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="dock-item dock-tg-btn" title="Написать в Telegram Владимиру">
+      <span class="dock-icon tg-icon-color">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
+        </svg>
+      </span>
+      <span class="dock-label">Telegram</span>
+    </a>
+  </nav>
+
+  <!-- Desktop Floating Quick Return Button -->
+  <button type="button" class="floating-back-top" id="floatingBackTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Вернуться наверх" title="Наверх">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="assets/data/perfumes.js?v=20261113_02"></script>
+  <script src="assets/js/app.js?v=20261113_02"></script>
+</body>
+</html>

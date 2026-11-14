@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>VOLODIUM PARFUM — 4 Концепта дизайна</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/preview-variants.css">
+  <style>
+    body {
+      background: #FAF8F5;
+      color: #111216;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding-bottom: 3rem;
+    }
+    .preview-hub-header {
+      background: #111216;
+      color: #FFFFFF;
+      padding: 2.2rem 1rem 1.8rem;
+      text-align: center;
+      border-bottom: 3px solid #6B1123;
+    }
+    .ph-title {
+      font-size: clamp(1.4rem, 4vw, 2.1rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .ph-sub {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.45;
+    }
+    .preview-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .variant-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .variant-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+      border-color: #6B1123;
+    }
+    .vc-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      margin-bottom: 0.6rem;
+    }
+    .vc-badge-rec {
+      background: #6B1123;
+      color: #FFFFFF;
+    }
+    .vc-badge-grad {
+      background: #2A0810;
+      color: #F3CA8E;
+    }
+    .vc-badge-photo {
+      background: #111216;
+      color: #FFFFFF;
+    }
+    .vc-badge-sivets {
+      background: #FF69B4;
+      color: #FFFFFF;
+    }
+    .vc-preview-box {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .vc-body {
+      padding: 1.35rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .vc-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.45rem;
+      line-height: 1.25;
+    }
+    .vc-desc {
+      font-size: 0.84rem;
+      line-height: 1.45;
+      color: #555;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+    .vc-btn {
+      display: block;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      background: #111216;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.86rem;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+    .vc-btn:hover {
+      background: #6B1123;
+    }
+    .vc-btn-primary {
+      background: #6B1123;
+    }
+    .vc-btn-primary:hover {
+      background: #84162C;
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="preview-switch-toolbar">
+    <div class="pst-inner">
+      <span class="pst-tag">⚡ Быстрое переключение:</span>
+      <nav class="pst-nav">
+        <a href="preview-v1.html" class="pst-link">1. Бутик (Макет)</a>
+        <a href="preview-v2.html" class="pst-link">2. Градиент Вацика</a>
+        <a href="preview-v3.html" class="pst-link">3. Фото-фон</a>
+        <a href="preview-v4.html" class="pst-link">4. Блоки Сивец</a>
+      </nav>
+    </div>
+  </aside>
+
+  <header class="preview-hub-header">
+    <div class="container">
+      <h1 class="ph-title">Тестовый полигон дизайна</h1>
+      <p class="ph-sub">
+        Сравните все 4 визуальных концепта прямо на телефоне на локальном сервере. Переключаться между ними можно в один клик в верхней плашке.
+      </p>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 1200px; padding: 0 1rem;">
+    <div class="preview-cards-grid">
+
+      <!-- Вариант 1 -->
+      <div class="variant-card">
+        <div class="vc-preview-box" style="background: #FFFFFF; border-bottom: 1px solid #EEE;">
+          <img src="assets/images/volodium_box_transparent.png" alt="Вариант 1" style="max-height: 140px; object-fit: contain;">
+        </div>
+        <div class="vc-body">
+          <span class="vc-badge vc-badge-rec">⭐ Согласованный макет</span>
+          <h2 class="vc-title">1. Бутиковый минимализм</h2>
+          <p class="vc-desc">
+            Чистый светлый фон, флаконы и бокс вырезаны без рамок (прозрачный альфа-слой). Тонкие разделители, сбалансированная мобильная сетка 2-в-ряд.
+          </p>
+          <a href="preview-v1.html" class="vc-btn vc-btn-primary">Открыть Вариант 1 →</a>
+        </div>
+      </div>
+
+      <!-- Вариант 2 -->
+      <div class="variant-card">
+        <div class="vc-preview-box" style="background: linear-gradient(135deg, #4A0816 0%, #6B1123 50%, #2B030C 100%);">
+          <img src="assets/images/volodium_box_transparent.png" alt="Вариант 2" style="max-height: 130px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));">
+        </div>
+        <div class="vc-body">
+          <span class="vc-badge vc-badge-grad">Глубокий винный</span>
+          <h2 class="vc-title">2. Люксовый градиент</h2>
+          <p class="vc-desc">
+            Эстетика карточки «Выбор Вацика»: глубокий бордовый бархат с мягким радиальным свечением. Фотография коробки плавно перетекает в цвет фона.
+          </p>
+          <a href="preview-v2.html" class="vc-btn">Открыть Вариант 2 →</a>
+        </div>
+      </div>
+
+      <!-- Вариант 3 -->
+      <div class="variant-card">
+        <div class="vc-preview-box" style="background: #111216; position: relative;">
+          <img src="assets/images/volodium_box_real.jpg" alt="Вариант 3" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+          <span style="position: absolute; color: #FFF; font-weight: 800; font-size: 0.85rem; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px;">Editorial Cover</span>
+        </div>
+        <div class="vc-body">
+          <span class="vc-badge vc-badge-photo">Журнальный стиль</span>
+          <h2 class="vc-title">3. Фото с текстом поверх</h2>
+          <p class="vc-desc">
+            Большое атмосферное фото бокса на весь экран, поверх которого лежит карточка со стеклянным размытием (Glassmorphism) и контрастным белым текстом.
+          </p>
+          <a href="preview-v3.html" class="vc-btn">Открыть Вариант 3 →</a>
+        </div>
+      </div>
+
+      <!-- Вариант 4 -->
+      <div class="variant-card">
+        <div class="vc-preview-box" style="background: #FAF8F5; padding: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <div style="background: #FF69B4; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 0.72rem;">Женские →</div>
+          <div style="background: #E01B24; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 0.72rem;">Боксы →</div>
+        </div>
+        <div class="vc-body">
+          <span class="vc-badge vc-badge-sivets">Эстетика Сивец</span>
+          <h2 class="vc-title">4. Блочные плашки (Bento)</h2>
+          <p class="vc-desc">
+            Точное воссоздание логики сайта Насти Сивец (nastyasivets.com): сочные цветные скругленные плашки (розовая, красная, белая с рамкой, черная) с фото внутри.
+          </p>
+          <a href="preview-v4.html" class="vc-btn">Открыть Вариант 4 →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

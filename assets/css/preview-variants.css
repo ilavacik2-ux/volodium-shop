@@ -1,0 +1,468 @@
+/* ==========================================================================
+   VOLODIUM PARFUM — Visual Comparison Suite: 4 Design Variants
+   ========================================================================== */
+
+/* Top Floating Switcher Bar */
+.preview-switch-toolbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: #111216;
+  color: #FFFFFF;
+  padding: 0.55rem 0.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  border-bottom: 2px solid #6B1123;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.pst-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pst-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.pst-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #E0A96D;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pst-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.pst-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.pst-link:hover {
+  background: rgba(255, 255, 255, 0.24);
+  color: #FFFFFF;
+}
+
+.pst-link.is-active {
+  background: #6B1123;
+  color: #FFFFFF;
+  border-color: #8E1B32;
+  box-shadow: 0 2px 8px rgba(107, 17, 35, 0.6);
+}
+
+/* ==========================================================================
+   VARIANT 2: Cinematic Gradient Melt (Like "Выбор Вацика" Deep Burgundy)
+   ========================================================================== */
+.hero-v2-gradient {
+  background: linear-gradient(135deg, #4A0816 0%, #6B1123 50%, #2B030C 100%);
+  color: #FFFFFF;
+  padding: 2.2rem 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-v2-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-v2-title {
+  font-size: clamp(1.4rem, 4vw, 2.3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.hero-v2-title span.accent-gold {
+  color: #F3CA8E;
+  display: block;
+}
+
+.hero-v2-sub {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 1.25rem;
+  max-width: 440px;
+}
+
+.hero-v2-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.btn-v2-white {
+  background: #FFFFFF;
+  color: #6B1123;
+  font-weight: 700;
+  font-size: 0.86rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-v2-white:hover {
+  transform: translateY(-2px);
+  background: #FAF8F5;
+}
+
+.btn-v2-outline {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  font-size: 0.86rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.btn-v2-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
+}
+
+.hero-v2-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-v2-img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  /* Smooth Gradient Melt into deep burgundy background */
+  mask-image: radial-gradient(circle at 60% 50%, black 55%, transparent 95%);
+  -webkit-mask-image: radial-gradient(circle at 60% 50%, black 55%, transparent 95%);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
+}
+
+@media (max-width: 768px) {
+  .hero-v2-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .hero-v2-title {
+    font-size: 1.35rem;
+  }
+  .hero-v2-img {
+    max-height: 230px;
+  }
+}
+
+/* ==========================================================================
+   VARIANT 3: Editorial Photo Background with Glassmorphism Overlay
+   ========================================================================== */
+.hero-v3-cinematic {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  background: #111216;
+  overflow: hidden;
+}
+
+.hero-v3-bg-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.55;
+  filter: saturate(1.1) brightness(0.85);
+  transform: scale(1.04);
+}
+
+.hero-v3-backdrop-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(17, 18, 22, 0.92) 0%, rgba(17, 18, 22, 0.65) 50%, rgba(17, 18, 22, 0.2) 100%);
+}
+
+.hero-v3-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  padding: 2.5rem 0;
+}
+
+.hero-v3-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 1.75rem 1.6rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero-v3-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #F3CA8E;
+  margin-bottom: 0.6rem;
+}
+
+.hero-v3-title {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.hero-v3-sub {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .hero-v3-cinematic {
+    min-height: 440px;
+  }
+  .hero-v3-glass-card {
+    padding: 1.35rem 1.15rem;
+  }
+  .hero-v3-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* ==========================================================================
+   VARIANT 4: Bento Block Plaque Style (Nastya Sivets Aesthetic: nastyasivets.com)
+   ========================================================================== */
+.sivets-showcase-section {
+  padding: 1.5rem 0 3rem;
+  background: #FAF8F5;
+}
+
+/* Main Top Card (Nastya's Online-Courses Black Card) */
+.sivets-hero-card {
+  background: #0D0E11;
+  color: #FFFFFF;
+  border-radius: 28px;
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease;
+}
+
+.sivets-hero-card:hover {
+  transform: translateY(-2px);
+}
+
+.sivets-hero-visual {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1A1C22;
+  flex-shrink: 0;
+}
+
+.sivets-hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sivets-hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sivets-hero-title {
+  font-size: clamp(1.2rem, 3.2vw, 1.6rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sivets-hero-sub {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Bento 2x2 Grid of Colored Plaques */
+.sivets-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.sivets-bento-card {
+  border-radius: 26px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sivets-bento-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Card 1: Nastya's Signature Pink (#FF60B2 / #FF70B8) */
+.sivets-card-pink {
+  background: #FF69B4;
+  color: #FFFFFF;
+}
+
+/* Card 2: Clean Outline / White Card with Thin Border */
+.sivets-card-white {
+  background: #FFFFFF;
+  color: #111216;
+  border: 1.5px solid #111216;
+}
+
+/* Card 3: Soft Muted Grey */
+.sivets-card-grey {
+  background: #ECECEE;
+  color: #111216;
+}
+
+/* Card 4: Nastya's Crimson Red (#DE1C24) */
+.sivets-card-red {
+  background: #E01B24;
+  color: #FFFFFF;
+}
+
+/* Framed Photo Inside Card (Nastya Sivets's signature nested rounded frame) */
+.sivets-card-frame {
+  width: 100%;
+  height: 120px;
+  background: #FFFFFF;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  margin-bottom: 0.85rem;
+  overflow: hidden;
+}
+
+.sivets-card-pink .sivets-card-frame {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.sivets-card-grey .sivets-card-frame {
+  background: #FFFFFF;
+}
+
+.sivets-card-red .sivets-card-frame {
+  background: #FFFFFF;
+}
+
+.sivets-card-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.sivets-card-title {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sivets-card-sub {
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .sivets-hero-card {
+    grid-template-columns: 95px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 22px;
+  }
+  .sivets-hero-visual {
+    width: 95px;
+    height: 95px;
+    border-radius: 16px;
+  }
+  .sivets-bento-grid {
+    gap: 0.75rem;
+  }
+  .sivets-bento-card {
+    padding: 0.95rem;
+    min-height: 185px;
+    border-radius: 20px;
+  }
+  .sivets-card-frame {
+    height: 95px;
+    border-radius: 14px;
+  }
+  .sivets-card-title {
+    font-size: 0.86rem;
+  }
+}

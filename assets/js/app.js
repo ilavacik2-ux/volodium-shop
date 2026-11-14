@@ -739,7 +739,7 @@ let heroCinematicMode = true;
 function initHeroLookbook() {
   const hero = document.getElementById('hero');
   if (hero) hero.classList.add('hero-cinematic-mode');
-  document.body.classList.add('hero-cinematic-active');
+  // Cinematic active mode disabled to keep header black and crisp on clean white background
 
   const backdropImg = document.getElementById('heroBackdropImg');
   if (backdropImg) {

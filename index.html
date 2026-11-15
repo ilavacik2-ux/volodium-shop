@@ -62,7 +62,7 @@
 
   <script>try{if(sessionStorage.getItem('vp_intro_seen')==='1'||window.location.hash){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261115_12">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261115_14">
 </head>
 <body class="intro-active">
 
@@ -450,14 +450,17 @@
         <div class="acc-glow"></div>
         
         <div class="acc-collapsed-bar">
+          <span class="acc-badge">01 · Pour Elle</span>
           <span class="acc-collapsed-title">Женская</span>
         </div>
 
         <div class="acc-expanded-content">
-          <h3 class="acc-title">Женская парфюмерия</h3>
+          <span class="acc-badge">01 · Pour Elle</span>
+          <h3 class="acc-title">Женская <span class="acc-title-extra">парфюмерия</span></h3>
           <p class="acc-desc">Цветочные, восточные, гурманские и пудровые шлейфы от легендарных мировых домов.</p>
           <span class="btn-acc-action">
-            <span>Смотреть коллекцию</span>
+            <span class="btn-acc-text">Смотреть коллекцию</span>
+            <span class="btn-acc-mobile-text">Смотреть</span>
             <span class="acc-arrow" aria-hidden="true">→</span>
           </span>
         </div>
@@ -473,14 +476,17 @@
         <div class="acc-glow"></div>
 
         <div class="acc-collapsed-bar">
+          <span class="acc-badge">02 · Pour Lui</span>
           <span class="acc-collapsed-title">Мужская</span>
         </div>
 
         <div class="acc-expanded-content">
-          <h3 class="acc-title">Мужская парфюмерия</h3>
+          <span class="acc-badge">02 · Pour Lui</span>
+          <h3 class="acc-title">Мужская <span class="acc-title-extra">парфюмерия</span></h3>
           <p class="acc-desc">Благородные древесные базы, кожа, пряности, табак и кристальные минеральные ноты.</p>
           <span class="btn-acc-action">
-            <span>Смотреть коллекцию</span>
+            <span class="btn-acc-text">Смотреть коллекцию</span>
+            <span class="btn-acc-mobile-text">Смотреть</span>
             <span class="acc-arrow" aria-hidden="true">→</span>
           </span>
         </div>
@@ -496,14 +502,17 @@
         <div class="acc-glow"></div>
 
         <div class="acc-collapsed-bar">
+          <span class="acc-badge">03 · Unisexe</span>
           <span class="acc-collapsed-title">Унисекс</span>
         </div>
 
         <div class="acc-expanded-content">
-          <h3 class="acc-title">Унисекс & Ниша</h3>
+          <span class="acc-badge">03 · Unisexe</span>
+          <h3 class="acc-title">Унисекс &amp; Ниша</h3>
           <p class="acc-desc">Сложные, многогранные селективные композиции, раскрывающиеся индивидуально на коже.</p>
           <span class="btn-acc-action">
-            <span>Смотреть коллекцию</span>
+            <span class="btn-acc-text">Смотреть коллекцию</span>
+            <span class="btn-acc-mobile-text">Смотреть</span>
             <span class="acc-arrow" aria-hidden="true">→</span>
           </span>
         </div>
@@ -519,14 +528,17 @@
         <div class="acc-glow"></div>
 
         <div class="acc-collapsed-bar">
+          <span class="acc-badge">04 · Coffrets</span>
           <span class="acc-collapsed-title">Боксы</span>
         </div>
 
         <div class="acc-expanded-content">
-          <h3 class="acc-title">Аромабоксы & Сеты</h3>
+          <span class="acc-badge">04 · Coffrets</span>
+          <h3 class="acc-title">Аромабоксы <span class="acc-title-extra">&amp; Сеты</span></h3>
           <p class="acc-desc">Тематические сеты по 5 и 10 селективных ароматов в фирменном крафтовом боксе Volodium.</p>
           <span class="btn-acc-action">
-            <span>Выбрать бокс</span>
+            <span class="btn-acc-text">Выбрать бокс</span>
+            <span class="btn-acc-mobile-text">Выбрать</span>
             <span class="acc-arrow" aria-hidden="true">→</span>
           </span>
         </div>
@@ -535,17 +547,16 @@
     </div>
   </section>
 
-  <!-- Custom Scent Finding: Haute Parfumerie Personal Search Service (Design from Photo 3) -->
-  <section class="section-padding custom-order-section" id="custom-scent" aria-label="Персональный поиск ароматов">
-    <div class="container">
-      <div class="luxury-concierge-card">
-        <!-- Top Bar: Brand Signature & Service Category -->
+  <!-- Custom Scent Finding: Haute Parfumerie Personal Search Service (Full-Bleed Luxury Atelier) -->
+  <section class="custom-order-section is-fullbleed" id="custom-scent" aria-label="Персональный поиск ароматов">
+    <div class="luxury-concierge-card is-fullbleed">
+      <div class="lcc-fullbleed-inner">
+        <!-- Top Bar: Brand Signature -->
         <div class="lcc-top-bar">
           <div class="lcc-brand-tag">
             <span class="lcc-brand-name">VOLODIUM PARFUM</span>
             <span class="lcc-divider-line" aria-hidden="true"></span>
           </div>
-          <span class="lcc-service-label">PERSONAL SEARCH SERVICE</span>
         </div>
 
         <!-- Main Body: Left Content + Right Flacon Stage -->
@@ -572,36 +583,35 @@
           <div class="lcc-visual-stage" aria-hidden="true"></div>
         </div>
 
-        <!-- Bottom Frosted Glass Bar: 3 Luxury Pillars -->
-        <div class="lcc-bottom-bar">
+        <!-- Bottom Pillars: 3 Animated Floating Glass Cards (НЕ как единое целое) -->
+        <div class="lcc-floating-pillars">
           <!-- 01 Оригинальность -->
-          <div class="lcc-pillar">
-            <span class="lcc-pillar-num">01</span>
-            <div class="lcc-pillar-content">
-              <strong class="lcc-pillar-title">Оригинальность</strong>
-              <span class="lcc-pillar-desc">Контроль происхождения и батч-кодов</span>
+          <div class="lcc-fcard" style="--card-idx: 0">
+            <div class="lcc-fcard-sheen" aria-hidden="true"></div>
+            <span class="lcc-fcard-num">01</span>
+            <div class="lcc-fcard-body">
+              <strong class="lcc-fcard-title">Оригинальность</strong>
+              <span class="lcc-fcard-desc">Контроль происхождения и батч-кодов</span>
             </div>
           </div>
-
-          <div class="lcc-pillar-sep" aria-hidden="true"></div>
 
           <!-- 02 Сроки сборки -->
-          <div class="lcc-pillar">
-            <span class="lcc-pillar-num">02</span>
-            <div class="lcc-pillar-content">
-              <strong class="lcc-pillar-title">Сроки сборки</strong>
-              <span class="lcc-pillar-desc">1–3 рабочих дня после оплаты</span>
+          <div class="lcc-fcard" style="--card-idx: 1">
+            <div class="lcc-fcard-sheen" aria-hidden="true"></div>
+            <span class="lcc-fcard-num">02</span>
+            <div class="lcc-fcard-body">
+              <strong class="lcc-fcard-title">Сроки сборки</strong>
+              <span class="lcc-fcard-desc">1–3 рабочих дня после оплаты</span>
             </div>
           </div>
 
-          <div class="lcc-pillar-sep" aria-hidden="true"></div>
-
           <!-- 03 Личный подход -->
-          <div class="lcc-pillar">
-            <span class="lcc-pillar-num lcc-pillar-num-accent">03</span>
-            <div class="lcc-pillar-content">
-              <strong class="lcc-pillar-title lcc-pillar-title-accent">Личный подход</strong>
-              <span class="lcc-pillar-desc">Подбор с помощью эксперта</span>
+          <div class="lcc-fcard lcc-fcard-accent" style="--card-idx: 2">
+            <div class="lcc-fcard-sheen" aria-hidden="true"></div>
+            <span class="lcc-fcard-num lcc-fcard-num-accent">03</span>
+            <div class="lcc-fcard-body">
+              <strong class="lcc-fcard-title lcc-fcard-title-accent">Личный подход</strong>
+              <span class="lcc-fcard-desc">Подбор с помощью эксперта</span>
             </div>
           </div>
         </div>

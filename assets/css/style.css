@@ -4513,33 +4513,50 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 /* ==========================================================================
-   Luxury Concierge Card: Haute Parfumerie Personal Search Service (Photo 3)
+   Luxury Concierge Card: Haute Parfumerie Personal Search Service (Full-Bleed)
    ========================================================================== */
-.luxury-concierge-card {
+.custom-order-section.is-fullbleed {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #EAE3D9;
+}
+
+.luxury-concierge-card.is-fullbleed {
   position: relative;
+  width: 100%;
   background-color: #EAE3D9;
   background-image: url('../images/custom_scent_master_clean.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center right;
-  border-radius: 28px;
+  border-radius: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+  padding: 4.5rem 0 4.5rem;
   overflow: hidden;
-  box-shadow: 0 24px 60px -15px rgba(28, 20, 15, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+.lcc-fullbleed-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4.5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 560px;
-  transition: transform var(--transition-smooth, 0.3s ease), box-shadow var(--transition-smooth, 0.3s ease);
+  min-height: 640px;
 }
 
-/* Top Bar: VOLODIUM PARFUM ── PERSONAL SEARCH SERVICE */
+/* Top Bar: VOLODIUM PARFUM signature line */
 .lcc-top-bar {
   position: relative;
   z-index: 3;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 2.2rem 3rem 1rem;
+  justify-content: flex-start;
+  padding: 0 0 1.5rem;
 }
 
 .lcc-brand-tag {
@@ -4550,7 +4567,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 .lcc-brand-name {
   font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4559,29 +4576,20 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 .lcc-divider-line {
   display: inline-block;
-  width: 140px;
+  width: 160px;
   height: 1px;
-  background: rgba(43, 35, 32, 0.18);
+  background: rgba(43, 35, 32, 0.2);
 }
 
-.lcc-service-label {
-  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #82776E;
-}
-
-/* Main Body: Left Content + Flacon Visual */
+/* Main Body: Left Content + Flacon Visual Stage */
 .lcc-main-body {
   position: relative;
   z-index: 3;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  padding: 1rem 3rem 2.5rem;
-  gap: 2rem;
+  padding: 0;
+  gap: 2.5rem;
 }
 
 .lcc-content-wrap {
@@ -4611,7 +4619,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 .lcc-title-lead {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
   font-weight: 600;
   line-height: 1.05;
   color: #201A18;
@@ -4621,7 +4629,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 .lcc-title-italic {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
-  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
   font-weight: 400;
   line-height: 1.1;
   color: #201A18;
@@ -4630,11 +4638,11 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 .lcc-description {
   font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   line-height: 1.55;
   color: #524A45;
   margin: 0 0 1.85rem;
-  max-width: 440px;
+  max-width: 450px;
   font-weight: 400;
 }
 
@@ -4687,121 +4695,156 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 .lcc-visual-stage {
-  min-height: 300px;
+  min-height: 320px;
   pointer-events: none;
 }
 
-/* Bottom Frosted Glass Bar: 3 Luxury Pillars */
-.lcc-bottom-bar {
-  position: relative;
-  z-index: 3;
+/* ==========================================================================
+   Bottom Pillars: 3 Animated Floating Glass Cards (НЕ как единое целое)
+   ========================================================================== */
+.lcc-floating-pillars {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  align-items: center;
-  background: rgba(242, 237, 230, 0.72);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(43, 35, 32, 0.08);
-  padding: 1.6rem 3rem;
-  border-radius: 0 0 28px 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 3.5rem;
+  position: relative;
+  z-index: 4;
 }
 
-.lcc-pillar {
+.lcc-fcard {
+  position: relative;
   display: flex;
   align-items: baseline;
-  gap: 1.25rem;
+  gap: 1.35rem;
+  padding: 1.6rem 2.2rem;
+  background: rgba(250, 246, 240, 0.74);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 14px 34px -8px rgba(35, 25, 20, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.35s ease,
+              border-color 0.35s ease;
+  animation: lccCardFloat 6s ease-in-out infinite alternate;
+  animation-delay: calc(var(--card-idx, 0) * 1.8s);
 }
 
-.lcc-pillar-num {
+@keyframes lccCardFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.lcc-fcard:hover {
+  transform: translateY(-9px) scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(126, 34, 38, 0.45);
+  box-shadow: 0 24px 50px -10px rgba(92, 21, 28, 0.18), 0 0 0 1px rgba(126, 34, 38, 0.15) inset;
+}
+
+/* Subtle Animated Glass Sheen Reflection */
+.lcc-fcard-sheen {
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-22deg);
+  transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.lcc-fcard:hover .lcc-fcard-sheen {
+  left: 180%;
+}
+
+.lcc-fcard-num {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.85rem;
+  font-size: 2.2rem;
   font-weight: 500;
   color: #2B2320;
   line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.35s ease, color 0.35s ease;
 }
 
-.lcc-pillar-num-accent {
+.lcc-fcard:hover .lcc-fcard-num {
+  transform: scale(1.08);
+  color: #7E2226;
+}
+
+.lcc-fcard-num-accent {
   color: #7E2226;
   font-weight: 600;
 }
 
-.lcc-pillar-content {
+.lcc-fcard-body {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.lcc-pillar-title {
+.lcc-fcard-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: #2B2320;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #201A18;
   line-height: 1.15;
 }
 
-.lcc-pillar-title-accent {
+.lcc-fcard-title-accent {
   color: #7E2226;
 }
 
-.lcc-pillar-desc {
+.lcc-fcard-desc {
   font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.82rem;
-  color: #6B625B;
-  line-height: 1.35;
+  font-size: 0.85rem;
+  color: #645C55;
+  line-height: 1.4;
 }
 
-.lcc-pillar-sep {
-  width: 1px;
-  height: 44px;
-  background: rgba(43, 35, 32, 0.12);
-  margin: 0 1.5rem;
+.lcc-fcard-accent {
+  border-color: rgba(126, 34, 38, 0.25);
+  background: rgba(252, 247, 245, 0.82);
 }
 
-/* Responsive Media Queries for Luxury Concierge Card */
+/* Responsive Media Queries for Full-Bleed Luxury Concierge */
 @media (max-width: 991px) {
-  .lcc-top-bar {
-    padding: 1.75rem 2rem 0.75rem;
-  }
-  .lcc-divider-line {
-    width: 80px;
+  .luxury-concierge-card.is-fullbleed {
+    padding: 3rem 0 3.5rem;
+    background-position: 80% center;
   }
   .lcc-main-body {
     grid-template-columns: 1fr;
-    padding: 1rem 2rem 2rem;
   }
   .lcc-visual-stage {
     display: none;
   }
-  .luxury-concierge-card {
-    background-position: 80% center;
-  }
-  .lcc-bottom-bar {
-    padding: 1.4rem 2rem;
+  .lcc-floating-pillars {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .lcc-pillar-sep {
-    display: none;
+    gap: 1.15rem;
+    margin-top: 2.5rem;
   }
 }
 
 @media (max-width: 600px) {
-  .luxury-concierge-card {
-    border-radius: 20px;
+  .luxury-concierge-card.is-fullbleed {
+    padding: 2.25rem 0 3rem;
     background-position: 85% top;
-    background-size: cover;
   }
-  .lcc-top-bar {
-    padding: 1.4rem 1.25rem 0.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
-  }
-  .lcc-divider-line {
-    display: none;
-  }
-  .lcc-main-body {
-    padding: 1rem 1.25rem 1.75rem;
+  .lcc-fullbleed-inner {
+    padding: 0 1.25rem;
   }
   .lcc-title-lead,
   .lcc-title-italic {
@@ -4811,12 +4854,10 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     width: 100%;
     text-align: center;
   }
-  .lcc-bottom-bar {
-    padding: 1.25rem;
-    border-radius: 0 0 20px 20px;
-  }
-  .lcc-pillar {
-    gap: 0.85rem;
+  .lcc-fcard {
+    padding: 1.25rem 1.4rem;
+    border-radius: 16px;
+    gap: 1rem;
   }
 }
 
@@ -14051,6 +14092,15 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   transform: translateX(3px);
 }
 
+.btn-acc-mobile-text {
+  display: none;
+}
+
+.btn-acc-text,
+.acc-title-extra {
+  display: inline;
+}
+
 /* Bottle Stage in each panel */
 .acc-bottle-stage {
   position: absolute;
@@ -14636,29 +14686,77 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
     font-size: 0.72rem;
   }
 
-  .acc-panel.acc-panel-boxes {
-    background: 
-      linear-gradient(to right, #1F040A 0%, rgba(31, 4, 10, 0.94) 45%, rgba(31, 4, 10, 0.55) 75%, rgba(31, 4, 10, 0.15) 100%),
-      url('../images/perfumes/aromabox_open_sexy.jpg') right center / cover no-repeat;
+  .brand-categories-section {
+    padding: 0.65rem 0.65rem 1.15rem;
+    background: #0E0D10;
   }
 
   .categories-accordion-stage {
-    flex-direction: column;
-    height: auto;
-    border-radius: 18px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.55rem !important;
+    height: auto !important;
+    min-height: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
   }
 
   .acc-panel {
     flex: none !important;
-    width: 100%;
-    min-height: 125px;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-    align-items: center;
+    width: 100% !important;
+    min-height: 152px !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1.06;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255, 255, 255, 0.09) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.09) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+    overflow: hidden;
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding: 0.85rem 0.85rem 0.8rem !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.18s ease;
   }
 
-  .acc-panel:last-child {
-    border-bottom: none;
+  .acc-panel:active {
+    transform: scale(0.975);
+    border-color: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  .acc-panel-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 14px;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .acc-bg-women {
+    background: radial-gradient(130% 120% at 85% 20%, #4D1322 0%, #22060C 60%, #100206 100%) !important;
+  }
+
+  .acc-bg-men {
+    background: radial-gradient(130% 120% at 85% 20%, #1F2837 0%, #10141D 60%, #080A0E 100%) !important;
+  }
+
+  .acc-bg-unisex {
+    background: radial-gradient(130% 120% at 85% 20%, #3D2714 0%, #1D1106 60%, #0C0602 100%) !important;
+  }
+
+  .acc-panel.acc-panel-boxes .acc-panel-bg,
+  .acc-panel.acc-panel-boxes .acc-bg-boxes {
+    background: 
+      linear-gradient(to top, rgba(20, 3, 7, 0.94) 0%, rgba(20, 3, 7, 0.55) 45%, rgba(20, 3, 7, 0.18) 100%),
+      url('../images/perfumes/aromabox_open_sexy.jpg?v=clean2') center 65% / cover no-repeat !important;
   }
 
   .acc-collapsed-bar {
@@ -14666,39 +14764,109 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   }
 
   .acc-expanded-content {
+    position: relative;
+    z-index: 3;
     opacity: 1 !important;
     transform: none !important;
     pointer-events: auto !important;
-    padding: 1.15rem 1.1rem;
-    max-width: 62%;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.15rem !important;
   }
 
-  .acc-desc {
-    display: none;
+  .acc-badge {
+    font-family: 'Inter Tight', -apple-system, sans-serif !important;
+    font-size: 0.62rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    color: rgba(255, 255, 255, 0.62) !important;
+    text-transform: uppercase !important;
+    display: block !important;
+    line-height: 1 !important;
   }
 
   .acc-title {
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
+    font-family: 'Inter Tight', -apple-system, sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+    margin: 0.15rem 0 0 !important;
+    letter-spacing: 0.02em !important;
+    color: #FFFFFF !important;
+    text-transform: uppercase !important;
+  }
+
+  .acc-title-extra {
+    display: none !important;
+  }
+
+  .acc-desc {
+    display: none !important;
+  }
+
+  .btn-acc-text {
+    display: none !important;
+  }
+
+  .btn-acc-mobile-text {
+    display: inline !important;
   }
 
   .btn-acc-action {
-    font-size: 0.76rem;
-    padding: 0.45rem 1rem;
+    position: relative;
+    z-index: 3;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.14) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #FFFFFF !important;
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    padding: 0.32rem 0.68rem !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: none !important;
+    margin-top: auto !important;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .acc-arrow {
+    font-size: 0.72rem;
+    font-weight: 700;
   }
 
   .acc-bottle-stage {
-    opacity: 1 !important;
+    position: absolute !important;
+    right: -4px !important;
+    bottom: -6px !important;
+    top: auto !important;
+    height: 72% !important;
+    width: 58% !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    opacity: 0.95 !important;
     transform: none !important;
-    right: 12px;
-    bottom: 6px;
-    top: 6px;
-    height: auto;
-    width: 35%;
   }
 
   .acc-bottle-img {
-    max-height: 105px;
+    max-height: 100% !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.82)) !important;
+    transform: none !important;
+  }
+
+  .acc-glow {
+    display: none !important;
   }
 
   .vatsik-card {

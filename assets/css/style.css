@@ -4851,7 +4851,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 @media (max-width: 600px) {
   .luxury-concierge-card.is-fullbleed {
     padding: 2.25rem 0 2.5rem;
-    background-position: 85% top;
+    background-position: 72% center;
+    background-size: cover;
   }
   .lcc-fullbleed-inner {
     padding: 0 1rem;
@@ -4859,6 +4860,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   .lcc-content-wrap {
     padding: 1.4rem 1.15rem;
     border-radius: 16px;
+    background: rgba(246, 240, 233, 0.92);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   }
   .lcc-title-lead,
   .lcc-title-italic {
@@ -13860,8 +13863,6 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 0.85rem 0;
   margin: 0;
-  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .usp-ticker-wrap {

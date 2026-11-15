@@ -22,7 +22,7 @@
   <!-- Google Fonts: Cormorant Garamond (Card Identity) & Plus Jakarta Sans (Modern Clean Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Critical Splash Screen Protection & Light Luxury Typography -->
   <style>
@@ -62,7 +62,7 @@
 
   <script>try{if(sessionStorage.getItem('vp_intro_seen')==='1'||window.location.hash){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261115_08">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261115_12">
 </head>
 <body class="intro-active">
 
@@ -267,11 +267,6 @@
   <section class="hero-brand-section" id="hero">
     <div class="container hero-brand-grid">
       <div class="hero-brand-content">
-        <!-- Brand Eyebrow -->
-        <div class="hero-brand-eyebrow">
-          <span class="hero-brand-eyebrow-dot"></span>
-          <span>VOLODIUM PARFUM</span>
-        </div>
 
         <!-- Title -->
         <h1 class="hero-brand-title">
@@ -445,390 +440,170 @@
     </div>
   </section>
 
-  <!-- Categories: Interactive Full-Width Luxury Split Accordion Showcase -->
+  <!-- Categories: Interactive Full-Bleed Luxury Split Accordion Showcase -->
   <section class="brand-categories-section" aria-label="Категории парфюмерии">
-    <div class="container">
-      <div class="categories-accordion-stage" id="categoriesAccordion">
+    <div class="categories-accordion-stage" id="categoriesAccordion">
 
-        <!-- 1. Женская -->
-        <a href="catalog.html?category=women" class="acc-panel is-active" data-panel="0">
-          <div class="acc-panel-bg acc-bg-women"></div>
-          <div class="acc-glow"></div>
-          
-          <div class="acc-collapsed-bar">
-            <span class="acc-badge">01 · POUR ELLE</span>
-            <span class="acc-collapsed-title">Женская</span>
-          </div>
-
-          <div class="acc-expanded-content">
-            <span class="acc-badge">01 · POUR ELLE</span>
-            <h3 class="acc-title">Женская парфюмерия</h3>
-            <p class="acc-desc">Цветочные, восточные, гурманские и пудровые шлейфы от легендарных мировых домов.</p>
-            <span class="btn-acc-action">
-              <span>Смотреть коллекцию</span>
-              <span class="acc-arrow" aria-hidden="true">→</span>
-            </span>
-          </div>
-
-          <div class="acc-bottle-stage">
-            <img src="assets/images/perfumes/cat_women_bottle_trans.png" alt="Женская парфюмерия" class="acc-bottle-img" loading="lazy">
-          </div>
-        </a>
-
-        <!-- 2. Мужская -->
-        <a href="catalog.html?category=men" class="acc-panel" data-panel="1">
-          <div class="acc-panel-bg acc-bg-men"></div>
-          <div class="acc-glow"></div>
-
-          <div class="acc-collapsed-bar">
-            <span class="acc-badge">02 · POUR LUI</span>
-            <span class="acc-collapsed-title">Мужская</span>
-          </div>
-
-          <div class="acc-expanded-content">
-            <span class="acc-badge">02 · POUR LUI</span>
-            <h3 class="acc-title">Мужская парфюмерия</h3>
-            <p class="acc-desc">Благородные древесные базы, кожа, пряности, табак и кристальные минеральные ноты.</p>
-            <span class="btn-acc-action">
-              <span>Смотреть коллекцию</span>
-              <span class="acc-arrow" aria-hidden="true">→</span>
-            </span>
-          </div>
-
-          <div class="acc-bottle-stage">
-            <img src="assets/images/perfumes/cat_men_bottle_trans.png" alt="Мужская парфюмерия" class="acc-bottle-img" loading="lazy">
-          </div>
-        </a>
-
-        <!-- 3. Унисекс -->
-        <a href="catalog.html?category=unisex" class="acc-panel" data-panel="2">
-          <div class="acc-panel-bg acc-bg-unisex"></div>
-          <div class="acc-glow"></div>
-
-          <div class="acc-collapsed-bar">
-            <span class="acc-badge">03 · UNISEXE</span>
-            <span class="acc-collapsed-title">Унисекс</span>
-          </div>
-
-          <div class="acc-expanded-content">
-            <span class="acc-badge">03 · UNISEXE</span>
-            <h3 class="acc-title">Унисекс & Ниша</h3>
-            <p class="acc-desc">Сложные, многогранные селективные композиции, раскрывающиеся индивидуально на коже.</p>
-            <span class="btn-acc-action">
-              <span>Смотреть коллекцию</span>
-              <span class="acc-arrow" aria-hidden="true">→</span>
-            </span>
-          </div>
-
-          <div class="acc-bottle-stage">
-            <img src="assets/images/perfumes/cat_unisex_bottle_trans.png" alt="Унисекс парфюмерия" class="acc-bottle-img" loading="lazy">
-          </div>
-        </a>
-
-        <!-- 4. Наборы и боксы -->
-        <a href="boxes.html" class="acc-panel acc-panel-boxes" data-panel="3">
-          <div class="acc-panel-bg acc-bg-boxes"></div>
-          <div class="acc-glow"></div>
-
-          <div class="acc-collapsed-bar">
-            <span class="acc-badge">04 · COFFRETS</span>
-            <span class="acc-collapsed-title">Боксы</span>
-          </div>
-
-          <div class="acc-expanded-content">
-            <span class="acc-badge">04 · COFFRETS</span>
-            <h3 class="acc-title">Аромабоксы & Сеты</h3>
-            <p class="acc-desc">Тематические сеты по 5 и 10 селективных ароматов в фирменном крафтовом боксе Volodium.</p>
-            <span class="btn-acc-action">
-              <span>Выбрать бокс</span>
-              <span class="acc-arrow" aria-hidden="true">→</span>
-            </span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ВЫБОР ВАЦИКА: Burgundy Card with Vladimir's Photo -->
-  <section class="vatsik-selection-section" aria-label="Выбор Вацика">
-    <div class="container">
-      <div class="vatsik-card">
-        <div class="vatsik-card-content">
-          <h2 class="vatsik-title">ВЫБОР ВАЦИКА</h2>
-          <p class="vatsik-subtitle">Моя личная подборка ароматов, которые действительно впечатляют.</p>
-          <a href="catalog.html" class="btn-vatsik-selection">
-            <span>Смотреть подборку</span>
-            <span class="vatsik-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-        <div class="vatsik-card-visual">
-          <img src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик" class="vatsik-photo" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FRAGRANCE COLLECTION CARDS: Atmospheric Plinth Showcase (Inspired by Aurenza) -->
-  <section class="brand-fragrance-cards-section" id="fragrance-cards" aria-label="Знаковые селективные ароматы">
-    <div class="container">
-      
-      <!-- Editorial Header -->
-      <div class="fc-header">
-        <div class="fc-header-text">
-          <span class="fc-kicker">Volodium Haute Parfumerie</span>
-          <h2 class="fc-title">FRAGRANCE COLLECTION</h2>
-          <p class="fc-subtitle">Культовые селективные композиции в атомайзерах от 3 мл и полных флаконах с быстрой доставкой по РФ.</p>
-        </div>
+      <!-- 1. Женская -->
+      <a href="catalog.html?category=women" class="acc-panel is-active" data-panel="0">
+        <div class="acc-panel-bg acc-bg-women"></div>
+        <div class="acc-glow"></div>
         
-        <!-- Navigation Controls -->
-        <div class="fc-nav-controls">
-          <button type="button" class="fc-nav-btn" id="fcPrevBtn" aria-label="Предыдущий аромат">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button type="button" class="fc-nav-btn" id="fcNextBtn" aria-label="Следующий аромат">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
+        <div class="acc-collapsed-bar">
+          <span class="acc-collapsed-title">Женская</span>
         </div>
-      </div>
 
-      <!-- Horizontal Cards Track -->
-      <div class="fc-carousel-viewport">
-        <div class="fc-cards-track" id="fcCardsTrack">
-          
-          <!-- Card 1: Ganymede -->
-          <div class="fc-card" data-perfume-id="vp-970496381632">
-            <button class="fc-fav-btn" onclick="toggleWishlist('vp-970496381632', event)" aria-label="В избранное" title="В избранное" type="button">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <a href="catalog.html?search=Ganymede" class="fc-card-link" title="Marc-Antoine Barrois Ganymede">
-              <div class="fc-stage">
-                <div class="fc-stage-glow" style="background: radial-gradient(circle, rgba(197, 160, 89, 0.22) 0%, transparent 70%);"></div>
-                <img src="assets/images/perfumes/ganymede_bottle_real.png" alt="Ganymede" class="fc-stage-img" loading="lazy">
-                <div class="fc-pedestal-shadow"></div>
-              </div>
-              <div class="fc-info">
-                <span class="fc-brand">Marc-Antoine Barrois</span>
-                <h3 class="fc-name">GANYMEDE</h3>
-                <span class="fc-notes">Минеральный · Замша · Акигалавуд</span>
-                <div class="fc-bottom">
-                  <span class="fc-price">от 1 200 ₽</span>
-                  <span class="fc-cta">
-                    <span>Выбрать объем</span>
-                    <span class="fc-arrow">→</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 2: Lost Cherry -->
-          <div class="fc-card" data-perfume-id="vp-750283863072">
-            <button class="fc-fav-btn" onclick="toggleWishlist('vp-750283863072', event)" aria-label="В избранное" title="В избранное" type="button">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <a href="catalog.html?search=Lost+Cherry" class="fc-card-link" title="Tom Ford Lost Cherry">
-              <div class="fc-stage">
-                <div class="fc-stage-glow" style="background: radial-gradient(circle, rgba(162, 19, 45, 0.25) 0%, transparent 70%);"></div>
-                <img src="assets/images/perfumes/lost_cherry_bottle_real.png" alt="Lost Cherry" class="fc-stage-img" loading="lazy">
-                <div class="fc-pedestal-shadow"></div>
-              </div>
-              <div class="fc-info">
-                <span class="fc-brand">Tom Ford</span>
-                <h3 class="fc-name">LOST CHERRY</h3>
-                <span class="fc-notes">Ликёрная вишня · Горький миндаль · Ликёр</span>
-                <div class="fc-bottom">
-                  <span class="fc-price">от 1 095 ₽</span>
-                  <span class="fc-cta">
-                    <span>Выбрать объем</span>
-                    <span class="fc-arrow">→</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 3: Angels' Share -->
-          <div class="fc-card" data-perfume-id="vp-angels-share">
-            <button class="fc-fav-btn" onclick="toggleWishlist('vp-angels-share', event)" aria-label="В избранное" title="В избранное" type="button">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <a href="catalog.html?search=Angels" class="fc-card-link" title="Kilian Angels' Share">
-              <div class="fc-stage">
-                <div class="fc-stage-glow" style="background: radial-gradient(circle, rgba(205, 133, 63, 0.28) 0%, transparent 70%);"></div>
-                <img src="assets/images/perfumes/cat_unisex_angels_trans.png" alt="Angels' Share" class="fc-stage-img" loading="lazy">
-                <div class="fc-pedestal-shadow"></div>
-              </div>
-              <div class="fc-info">
-                <span class="fc-brand">Kilian Paris</span>
-                <h3 class="fc-name">ANGELS' SHARE</h3>
-                <span class="fc-notes">Французский коньяк · Корица · Пралине</span>
-                <div class="fc-bottom">
-                  <span class="fc-price">от 1 290 ₽</span>
-                  <span class="fc-cta">
-                    <span>Выбрать объем</span>
-                    <span class="fc-arrow">→</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 4: Creed Aventus -->
-          <div class="fc-card" data-perfume-id="vp-aventus">
-            <button class="fc-fav-btn" onclick="toggleWishlist('vp-aventus', event)" aria-label="В избранное" title="В избранное" type="button">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <a href="catalog.html?search=Aventus" class="fc-card-link" title="Creed Aventus">
-              <div class="fc-stage">
-                <div class="fc-stage-glow" style="background: radial-gradient(circle, rgba(100, 120, 140, 0.22) 0%, transparent 70%);"></div>
-                <img src="assets/images/perfumes/cat_men_aventus_trans.png" alt="Creed Aventus" class="fc-stage-img" loading="lazy">
-                <div class="fc-pedestal-shadow"></div>
-              </div>
-              <div class="fc-info">
-                <span class="fc-brand">Creed</span>
-                <h3 class="fc-name">AVENTUS</h3>
-                <span class="fc-notes">Ананас · Берёзовый деготь · Серая амбра</span>
-                <div class="fc-bottom">
-                  <span class="fc-price">от 1 450 ₽</span>
-                  <span class="fc-cta">
-                    <span>Выбрать объем</span>
-                    <span class="fc-arrow">→</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 5: Amouage Guidance -->
-          <div class="fc-card" data-perfume-id="vp-guidance">
-            <button class="fc-fav-btn" onclick="toggleWishlist('vp-guidance', event)" aria-label="В избранное" title="В избранное" type="button">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <a href="catalog.html?search=Guidance" class="fc-card-link" title="Amouage Guidance">
-              <div class="fc-stage">
-                <div class="fc-stage-glow" style="background: radial-gradient(circle, rgba(220, 160, 170, 0.22) 0%, transparent 70%);"></div>
-                <img src="assets/images/perfumes/guidance_bottle_real.png" alt="Amouage Guidance" class="fc-stage-img" loading="lazy">
-                <div class="fc-pedestal-shadow"></div>
-              </div>
-              <div class="fc-info">
-                <span class="fc-brand">Amouage</span>
-                <h3 class="fc-name">GUIDANCE</h3>
-                <span class="fc-notes">Спелая груша · Олибанум · Османтус</span>
-                <div class="fc-bottom">
-                  <span class="fc-price">от 1 350 ₽</span>
-                  <span class="fc-cta">
-                    <span>Выбрать объем</span>
-                    <span class="fc-arrow">→</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Card 6: Baccarat Rouge 540 -->
-          <div class="fc-card" data-perfume-id="vp-baccarat-540">
-            <button class="fc-fav-btn" onclick="toggleWishlist('vp-baccarat-540', event)" aria-label="В избранное" title="В избранное" type="button">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <a href="catalog.html?search=Baccarat" class="fc-card-link" title="Maison Francis Kurkdjian Baccarat Rouge 540">
-              <div class="fc-stage">
-                <div class="fc-stage-glow" style="background: radial-gradient(circle, rgba(180, 20, 30, 0.25) 0%, transparent 70%);"></div>
-                <img src="assets/images/perfumes/baccarat_extrait_bottle_real.png" alt="Baccarat Rouge 540" class="fc-stage-img" loading="lazy">
-                <div class="fc-pedestal-shadow"></div>
-              </div>
-              <div class="fc-info">
-                <span class="fc-brand">Maison Francis Kurkdjian</span>
-                <h3 class="fc-name">BACCARAT ROUGE 540</h3>
-                <span class="fc-notes">Шафран · Горький миндаль · Кедр</span>
-                <div class="fc-bottom">
-                  <span class="fc-price">от 1 500 ₽</span>
-                  <span class="fc-cta">
-                    <span>Выбрать объем</span>
-                    <span class="fc-arrow">→</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          </div>
-
+        <div class="acc-expanded-content">
+          <h3 class="acc-title">Женская парфюмерия</h3>
+          <p class="acc-desc">Цветочные, восточные, гурманские и пудровые шлейфы от легендарных мировых домов.</p>
+          <span class="btn-acc-action">
+            <span>Смотреть коллекцию</span>
+            <span class="acc-arrow" aria-hidden="true">→</span>
+          </span>
         </div>
-      </div>
 
-      <!-- Pagination Dash Indicator -->
-      <div class="fc-pagination" id="fcPagination">
-        <button type="button" class="fc-dash is-active" data-index="0" aria-label="Слайд 1"></button>
-        <button type="button" class="fc-dash" data-index="1" aria-label="Слайд 2"></button>
-        <button type="button" class="fc-dash" data-index="2" aria-label="Слайд 3"></button>
-        <button type="button" class="fc-dash" data-index="3" aria-label="Слайд 4"></button>
-        <button type="button" class="fc-dash" data-index="4" aria-label="Слайд 5"></button>
-        <button type="button" class="fc-dash" data-index="5" aria-label="Слайд 6"></button>
-      </div>
+        <div class="acc-bottle-stage">
+          <img src="assets/images/perfumes/cat_women_bottle_trans.png" alt="Женская парфюмерия" class="acc-bottle-img" loading="lazy">
+        </div>
+      </a>
+
+      <!-- 2. Мужская -->
+      <a href="catalog.html?category=men" class="acc-panel" data-panel="1">
+        <div class="acc-panel-bg acc-bg-men"></div>
+        <div class="acc-glow"></div>
+
+        <div class="acc-collapsed-bar">
+          <span class="acc-collapsed-title">Мужская</span>
+        </div>
+
+        <div class="acc-expanded-content">
+          <h3 class="acc-title">Мужская парфюмерия</h3>
+          <p class="acc-desc">Благородные древесные базы, кожа, пряности, табак и кристальные минеральные ноты.</p>
+          <span class="btn-acc-action">
+            <span>Смотреть коллекцию</span>
+            <span class="acc-arrow" aria-hidden="true">→</span>
+          </span>
+        </div>
+
+        <div class="acc-bottle-stage">
+          <img src="assets/images/perfumes/cat_men_bottle_trans.png" alt="Мужская парфюмерия" class="acc-bottle-img" loading="lazy">
+        </div>
+      </a>
+
+      <!-- 3. Унисекс -->
+      <a href="catalog.html?category=unisex" class="acc-panel" data-panel="2">
+        <div class="acc-panel-bg acc-bg-unisex"></div>
+        <div class="acc-glow"></div>
+
+        <div class="acc-collapsed-bar">
+          <span class="acc-collapsed-title">Унисекс</span>
+        </div>
+
+        <div class="acc-expanded-content">
+          <h3 class="acc-title">Унисекс & Ниша</h3>
+          <p class="acc-desc">Сложные, многогранные селективные композиции, раскрывающиеся индивидуально на коже.</p>
+          <span class="btn-acc-action">
+            <span>Смотреть коллекцию</span>
+            <span class="acc-arrow" aria-hidden="true">→</span>
+          </span>
+        </div>
+
+        <div class="acc-bottle-stage">
+          <img src="assets/images/perfumes/cat_unisex_bottle_trans.png" alt="Унисекс парфюмерия" class="acc-bottle-img" loading="lazy">
+        </div>
+      </a>
+
+      <!-- 4. Наборы и боксы -->
+      <a href="boxes.html" class="acc-panel acc-panel-boxes" data-panel="3">
+        <div class="acc-panel-bg acc-bg-boxes"></div>
+        <div class="acc-glow"></div>
+
+        <div class="acc-collapsed-bar">
+          <span class="acc-collapsed-title">Боксы</span>
+        </div>
+
+        <div class="acc-expanded-content">
+          <h3 class="acc-title">Аромабоксы & Сеты</h3>
+          <p class="acc-desc">Тематические сеты по 5 и 10 селективных ароматов в фирменном крафтовом боксе Volodium.</p>
+          <span class="btn-acc-action">
+            <span>Выбрать бокс</span>
+            <span class="acc-arrow" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
 
     </div>
   </section>
 
-  <!-- Custom Scent Finding & Quality Standards (Real from Volodium) -->
-  <section class="section-padding custom-order-section" id="custom-scent">
+  <!-- Custom Scent Finding: Haute Parfumerie Personal Search Service (Design from Photo 3) -->
+  <section class="section-padding custom-order-section" id="custom-scent" aria-label="Персональный поиск ароматов">
     <div class="container">
-      <div class="concierge-atelier-card">
-        <div class="section-header" style="margin-bottom: 2.25rem;">
-          <h2 class="section-title">Нет нужного аромата?</h2>
-          <p class="section-descr" style="max-width: 720px; margin: 0 auto 0.75rem;">
-            Напишите нам в Telegram — проверим наличие у поставщиков и постараемся найти аромат специально для вас.
-          </p>
-          <p class="section-descr" style="max-width: 720px; margin: 0 auto; color: var(--text-muted); font-size: 0.95rem;">
-            Можно отправить название, фото флакона или просто описать, какой аромат вы ищете. Также поможем подобрать похожий вариант, если оригинал временно недоступен.
-          </p>
+      <div class="luxury-concierge-card">
+        <!-- Top Bar: Brand Signature & Service Category -->
+        <div class="lcc-top-bar">
+          <div class="lcc-brand-tag">
+            <span class="lcc-brand-name">VOLODIUM PARFUM</span>
+            <span class="lcc-divider-line" aria-hidden="true"></span>
+          </div>
+          <span class="lcc-service-label">PERSONAL SEARCH SERVICE</span>
         </div>
 
-        <div class="standards-grid">
-          <div class="standard-card">
-            <div class="standard-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3 class="standard-title">100% Оригинальная продукция</h3>
-            <p class="standard-text">
-              Строгий контроль батч-кодов и происхождение флаконов. Работаем только с официальными поставщиками и дистрибьюторами.
+        <!-- Main Body: Left Content + Right Flacon Stage -->
+        <div class="lcc-main-body">
+          <div class="lcc-content-wrap">
+            <span class="lcc-eyebrow">НЕ НАШЛИ СВОЙ АРОМАТ?</span>
+            <h2 class="lcc-title">
+              <span class="lcc-title-lead">Ваш аромат.</span>
+              <span class="lcc-title-italic">Даже если его нет</span>
+              <span class="lcc-title-italic">в каталоге.</span>
+            </h2>
+            <p class="lcc-description">
+              Мы проверим наличие у поставщиков и поможем подобрать достойную альтернативу.
             </p>
+            <div class="lcc-action-wrap">
+              <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" rel="noopener noreferrer" class="lcc-btn-burgundy">
+                <span>Найти мой аромат</span>
+                <span class="lcc-btn-arrow" aria-hidden="true">↗</span>
+              </a>
+              <span class="lcc-subtext">Перейдите в Telegram — обсудим ваш запрос лично</span>
+            </div>
           </div>
 
-          <div class="standard-card">
-            <div class="standard-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-              </svg>
-            </div>
-            <h3 class="standard-title">Сборка заказа 1–3 рабочих дня</h3>
-            <p class="standard-text">
-              После оплаты заказ формируется 1–3 рабочих дня. Бережная противоударная упаковка в коробки и термопленку для безопасной доставки в любой город.
-            </p>
-          </div>
-
-          <div class="standard-card">
-            <div class="standard-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              </svg>
-            </div>
-            <h3 class="standard-title">Прямой диалог с экспертом</h3>
-            <p class="standard-text">
-              Можно отправить название, фотографию флакона или просто описать настроение. Быстро ответим в Telegram и поможем подобрать идеальный аромат.
-            </p>
-          </div>
+          <div class="lcc-visual-stage" aria-hidden="true"></div>
         </div>
 
-        <div class="custom-order-cta">
-          <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" rel="noopener noreferrer" class="btn-primary custom-order-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-            </svg>
-            <span>Написать в Telegram</span>
-          </a>
-          <span class="custom-order-note">Отвечаем лично и помогаем с подбором ароматов</span>
+        <!-- Bottom Frosted Glass Bar: 3 Luxury Pillars -->
+        <div class="lcc-bottom-bar">
+          <!-- 01 Оригинальность -->
+          <div class="lcc-pillar">
+            <span class="lcc-pillar-num">01</span>
+            <div class="lcc-pillar-content">
+              <strong class="lcc-pillar-title">Оригинальность</strong>
+              <span class="lcc-pillar-desc">Контроль происхождения и батч-кодов</span>
+            </div>
+          </div>
+
+          <div class="lcc-pillar-sep" aria-hidden="true"></div>
+
+          <!-- 02 Сроки сборки -->
+          <div class="lcc-pillar">
+            <span class="lcc-pillar-num">02</span>
+            <div class="lcc-pillar-content">
+              <strong class="lcc-pillar-title">Сроки сборки</strong>
+              <span class="lcc-pillar-desc">1–3 рабочих дня после оплаты</span>
+            </div>
+          </div>
+
+          <div class="lcc-pillar-sep" aria-hidden="true"></div>
+
+          <!-- 03 Личный подход -->
+          <div class="lcc-pillar">
+            <span class="lcc-pillar-num lcc-pillar-num-accent">03</span>
+            <div class="lcc-pillar-content">
+              <strong class="lcc-pillar-title lcc-pillar-title-accent">Личный подход</strong>
+              <span class="lcc-pillar-desc">Подбор с помощью эксперта</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1352,60 +1127,6 @@
         panels.forEach(other => other.classList.remove('is-active'));
         if (panels[0]) panels[0].classList.add('is-active');
       });
-    })();
-
-    (function initFragranceCardsCarousel() {
-      const track = document.getElementById('fcCardsTrack');
-      const prevBtn = document.getElementById('fcPrevBtn');
-      const nextBtn = document.getElementById('fcNextBtn');
-      const dashes = document.querySelectorAll('.fc-dash');
-      if (!track) return;
-
-      const getScrollAmount = () => {
-        const firstCard = track.querySelector('.fc-card');
-        return firstCard ? firstCard.offsetWidth + 24 : 340;
-      };
-
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-        });
-      }
-
-      dashes.forEach((dash, idx) => {
-        dash.addEventListener('click', () => {
-          const cards = track.querySelectorAll('.fc-card');
-          if (cards[idx]) {
-            cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-          }
-        });
-      });
-
-      let scrollTimer = null;
-      track.addEventListener('scroll', () => {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => {
-          const cards = track.querySelectorAll('.fc-card');
-          if (!cards.length) return;
-          const trackLeft = track.getBoundingClientRect().left;
-          let closestIdx = 0;
-          let minDiff = Infinity;
-          cards.forEach((card, idx) => {
-            const diff = Math.abs(card.getBoundingClientRect().left - trackLeft);
-            if (diff < minDiff) {
-              minDiff = diff;
-              closestIdx = idx;
-            }
-          });
-          dashes.forEach((d, i) => d.classList.toggle('is-active', i === closestIdx));
-        }, 60);
-      }, { passive: true });
     })();
   </script>
 </body>

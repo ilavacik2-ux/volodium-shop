@@ -4823,41 +4823,77 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 @media (max-width: 991px) {
   .luxury-concierge-card.is-fullbleed {
     padding: 3rem 0 3.5rem;
-    background-position: 80% center;
+    background-position: right center;
   }
   .lcc-main-body {
     grid-template-columns: 1fr;
+    position: relative;
+  }
+  .lcc-content-wrap {
+    max-width: 100%;
+    background: rgba(237, 228, 218, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 1.75rem 1.5rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
   }
   .lcc-visual-stage {
     display: none;
   }
   .lcc-floating-pillars {
     grid-template-columns: 1fr;
-    gap: 1.15rem;
-    margin-top: 2.5rem;
+    gap: 1rem;
+    margin-top: 2rem;
   }
 }
 
 @media (max-width: 600px) {
   .luxury-concierge-card.is-fullbleed {
-    padding: 2.25rem 0 3rem;
+    padding: 2.25rem 0 2.5rem;
     background-position: 85% top;
   }
   .lcc-fullbleed-inner {
-    padding: 0 1.25rem;
+    padding: 0 1rem;
+  }
+  .lcc-content-wrap {
+    padding: 1.4rem 1.15rem;
+    border-radius: 16px;
   }
   .lcc-title-lead,
   .lcc-title-italic {
-    font-size: 2.1rem;
+    font-size: 1.85rem;
+    line-height: 1.15;
+  }
+  .lcc-description {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    margin-bottom: 1.35rem;
   }
   .lcc-btn-burgundy {
     width: 100%;
     text-align: center;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.92rem;
+  }
+  .lcc-subtext {
+    font-size: 0.78rem;
   }
   .lcc-fcard {
-    padding: 1.25rem 1.4rem;
-    border-radius: 16px;
-    gap: 1rem;
+    padding: 1.15rem 1.25rem;
+    border-radius: 14px;
+    gap: 0.85rem;
+    align-items: center;
+  }
+  .lcc-fcard-num {
+    font-size: 1.75rem;
+  }
+  .lcc-fcard-title {
+    font-size: 1.18rem;
+  }
+  .lcc-fcard-desc {
+    font-size: 0.8rem;
+    line-height: 1.35;
   }
 }
 
@@ -13819,11 +13855,11 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 .brand-usp-strip {
   position: relative;
   overflow: hidden;
-  background: #0E0D10;
+  background: #141316;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: 0.85rem 0;
-  margin: 0.85rem 0 1.75rem;
+  margin: 0;
   mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
@@ -14673,8 +14709,8 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   }
 
   .brand-usp-strip {
-    padding: 0.65rem 0;
-    margin: 0.5rem 0 1.25rem;
+    padding: 0.7rem 0;
+    margin: 0;
   }
 
   .usp-ticker-track {
@@ -14779,23 +14815,16 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   }
 
   .acc-badge {
-    font-family: 'Inter Tight', -apple-system, sans-serif !important;
-    font-size: 0.62rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.12em !important;
-    color: rgba(255, 255, 255, 0.62) !important;
-    text-transform: uppercase !important;
-    display: block !important;
-    line-height: 1 !important;
+    display: none !important;
   }
 
   .acc-title {
     font-family: 'Inter Tight', -apple-system, sans-serif !important;
-    font-size: 0.95rem !important;
-    font-weight: 400 !important;
-    line-height: 1.15 !important;
-    margin: 0.15rem 0 0 !important;
-    letter-spacing: 0.04em !important;
+    font-size: 1.02rem !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    letter-spacing: 0.03em !important;
     color: #FFFFFF !important;
     text-transform: uppercase !important;
   }
@@ -14843,17 +14872,17 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 
   .acc-bottle-stage {
     position: absolute !important;
-    right: -4px !important;
-    bottom: -6px !important;
+    right: 2px !important;
+    bottom: 2px !important;
     top: auto !important;
-    height: 72% !important;
-    width: 58% !important;
+    height: 68% !important;
+    width: 52% !important;
     display: flex !important;
     align-items: flex-end !important;
     justify-content: flex-end !important;
     pointer-events: none !important;
     z-index: 2 !important;
-    opacity: 0.95 !important;
+    opacity: 0.96 !important;
     transform: none !important;
   }
 
@@ -14861,7 +14890,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
     max-height: 100% !important;
     max-width: 100% !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.82)) !important;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.75)) !important;
     transform: none !important;
   }
 

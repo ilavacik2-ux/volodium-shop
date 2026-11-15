@@ -99,15 +99,9 @@ def apply_editorial_fixes(html: str) -> str:
         'content="Интернет-магазин оригинальной нишевой парфюмерии VOLODIUM PARFUM',
     )
 
-    # 9. Footer description (media_1794434032368.jpg):
-    # 'Авторский интернет-магазин оригинальной нишевой парфюмерии, тематических аромабоксов и персонального парфюмерного гардероба от Владимира Вацика.'
-    # (without the next line)
-    html = re.sub(
-        r'<p class="footer-descr">\s*(?:Авторский бутик|Интернет-магазин).*?от Владимира Вацика\.\s*(?:Только оригинальные.*?\.)?\s*</p>',
-        '<p class="footer-descr">\n            Авторский интернет-магазин оригинальной нишевой парфюмерии, тематических аромабоксов и персонального парфюмерного гардероба от Владимира Вацика.\n          </p>',
-        html,
-        flags=re.DOTALL,
-    )
+    # 9. Clean modern footer: remove duplicate brand and description
+    html = re.sub(r'<div class="footer-brand">.*?</div>\s*</div>', '', html, flags=re.DOTALL)
+    html = re.sub(r'<p class="footer-descr">.*?</p>', '', html, flags=re.DOTALL)
 
     # 10. Ensure footer contacts match previous verified edits
     html = html.replace('<h4 class="footer-title">Шоурум & Прямая связь</h4>', '<h4 class="footer-title">Прямая связь</h4>')

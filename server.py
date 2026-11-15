@@ -995,9 +995,17 @@ async def serve_storefront_subpage(page_name: str):
 
 @app.api_route("/favicon.ico", methods=["GET", "HEAD"])
 async def serve_favicon():
-    fav = BASE_DIR / "assets" / "images" / "E610BB2F-DBAE-4672-9.PNG"
+    fav = BASE_DIR / "assets" / "images" / "volodium_favicon.png"
     if fav.is_file():
-        return FileResponse(fav, media_type="image/png")
+        return FileResponse(fav, media_type="image/png", headers={"Cache-Control": "no-cache"})
+    return not_found_response()
+
+
+@app.api_route("/favicon.svg", methods=["GET", "HEAD"])
+async def serve_favicon_svg():
+    fav = BASE_DIR / "favicon.svg"
+    if fav.is_file():
+        return FileResponse(fav, media_type="image/svg+xml", headers={"Cache-Control": "no-cache"})
     return not_found_response()
 
 

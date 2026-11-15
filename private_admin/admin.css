@@ -1510,108 +1510,96 @@ textarea {
 .vp-live-hero-stage {
   position: relative;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-strong);
-  background: linear-gradient(135deg, #161417 0%, #271518 100%);
-  color: #FAF8F5;
-  padding: 24px;
+  border: 1px solid rgba(17, 18, 22, 0.08);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF8F5 50%, #F5EFEB 100%);
+  color: #111216;
+  padding: 24px 28px;
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: 22px;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 24px;
   align-items: center;
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-.vp-lhs-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.75;
-  filter: brightness(0.45);
-  pointer-events: none;
-}
-
-.vp-lhs-left,
-.vp-lhs-portrait-card {
+.vp-lhs-content {
   position: relative;
   z-index: 2;
 }
 
-.vp-lhs-badge {
+.vp-lhs-eyebrow {
   display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(200, 162, 101, 0.45);
-  color: var(--gold);
   font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(17, 18, 22, 0.55);
+  margin-bottom: 8px;
 }
 
 .vp-lhs-title {
-  margin: 12px 0 10px;
-  font-family: var(--font-serif);
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 1.04;
-}
-
-.vp-lhs-title em {
-  display: block;
-  color: var(--gold);
-  font-style: italic;
+  margin: 0 0 10px;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #111216;
+  text-transform: uppercase;
 }
 
 .vp-lhs-desc {
-  margin: 0 0 14px;
-  font-size: 13px;
-  color: rgba(250, 248, 245, 0.8);
-  max-width: 56ch;
+  margin: 0 0 16px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(17, 18, 22, 0.65);
+  max-width: 46ch;
 }
 
-.vp-lhs-stats {
+.vp-lhs-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  align-items: center;
+  gap: 10px;
 }
 
-.vp-lhs-stat {
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 11.5px;
+.vp-lhs-btn-main {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #812020;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(129, 32, 32, 0.25);
 }
 
-.vp-lhs-stat strong {
-  display: block;
-  color: var(--gold);
-  font-size: 14px;
+.vp-lhs-btn-sec {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(17, 18, 22, 0.22);
+  color: #111216;
+  font-size: 12px;
+  font-weight: 500;
 }
 
-.vp-lhs-portrait-card {
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(200, 162, 101, 0.35);
-  background: #0F0F12;
+.vp-lhs-box-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.vp-lhs-portrait-card img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-}
-
-.vp-lhs-portrait-cap {
-  padding: 10px 12px;
-  font-size: 11.5px;
-}
-
-.vp-lhs-portrait-cap strong {
-  display: block;
-  color: var(--gold);
-  font-size: 11px;
-  letter-spacing: 0.1em;
+.vp-lhs-box-wrap img {
+  max-height: 210px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 0.3s ease;
 }
 
 .vp-upload-block {

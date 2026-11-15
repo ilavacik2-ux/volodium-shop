@@ -6,11 +6,11 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
   <title>VOLODIUM ATELIER — Закрытая студия управления</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/E610BB2F-DBAE-4672-9.PNG">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/volodium_favicon.png?v=volodium3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/admin/admin.css?v=20261113_01">
+  <link rel="stylesheet" href="assets/admin/admin.css?v=20261114_02">
 </head>
 <body>
   <div class="vp-ambient-aura" aria-hidden="true"></div>
@@ -59,13 +59,13 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
 
-        <button type="button" class="vp-btn vp-btn-outline vp-btn-full" id="vpQuickLoginBtn" style="margin-top: 10px; border-color: rgba(201, 168, 106, 0.5); color: #C9A86A;">
+        <button type="button" class="vp-btn vp-btn-outline vp-btn-full" id="vpQuickLoginBtn" style="margin-top: 10px; border-color: rgba(129, 32, 32, 0.4); color: #812020;">
           ⚡ Быстрый вход (Admin 2)
         </button>
       </form>
 
       <div class="vp-auth-footer-note" style="margin-top: 14px; font-size: 12px; color: var(--text-muted); line-height: 1.4;">
-        Пароль доступа: <strong style="color: #C9A86A;">volodium</strong> (или по токену в ссылке)
+        Пароль доступа: <strong style="color: #812020;">volodium</strong> (или по токену в ссылке)
       </div>
     </div>
   </section>
@@ -515,22 +515,17 @@
                 <button type="submit" class="vp-btn vp-btn-primary">Сохранить оформление сайта</button>
               </div>
               <div class="vp-live-hero-stage" id="vpLiveHeroStage">
-                <div class="vp-lhs-bg" id="lhsBackdrop"></div>
-                <div class="vp-lhs-left">
-                  <span class="vp-lhs-badge" id="lhsBadge">100% Оригинальная парфюмерия</span>
-                  <h4 class="vp-lhs-title">
-                    <span id="lhsTitleLine">Открой. Вдохни.</span>
-                    <em id="lhsTitleAccent">Почувствуй.</em>
-                  </h4>
-                  <p class="vp-lhs-desc" id="lhsDesc">...</p>
-                  <div class="vp-lhs-stats" id="lhsStatsPreview"></div>
-                </div>
-                <div class="vp-lhs-portrait-card">
-                  <img id="lhsPortraitImg" src="/assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Превью портрета">
-                  <div class="vp-lhs-portrait-cap">
-                    <strong id="lhsPortraitTitle">ВЛАДИМИР ВАЦИК</strong>
-                    <span id="lhsPortraitQuote">«Парфюм — это чувственное продолжение...»</span>
+                <div class="vp-lhs-content">
+                  <div class="vp-lhs-eyebrow" id="lhsBadge">VOLODIUM PARFUM</div>
+                  <h4 class="vp-lhs-title" id="lhsTitleLine">ПАРФЮМЕРИЯ —<br>ЭТО БОЛЬШЕ,<br>ЧЕМ АРОМАТ</h4>
+                  <p class="vp-lhs-desc" id="lhsDesc">Оригинальная нишевая парфюмерия во флаконах и на распив. Более 500 ароматов.</p>
+                  <div class="vp-lhs-buttons">
+                    <span class="vp-lhs-btn-main" id="lhsBtnCatalog">Каталог ароматов →</span>
+                    <span class="vp-lhs-btn-sec" id="lhsBtnQuiz">Подобрать аромат</span>
                   </div>
+                </div>
+                <div class="vp-lhs-box-wrap">
+                  <img id="lhsBoxImg" src="/assets/images/volodium_box_stones.jpg" alt="Подарочная коробка на камнях" style="max-height: 190px; border-radius: 12px; object-fit: cover; aspect-ratio: 16/10; box-shadow: 0 8px 24px rgba(0,0,0,0.12);">
                 </div>
               </div>
             </div>
@@ -541,83 +536,44 @@
                 <div class="vp-card-head"><h3>Главный экран: Заголовок, описание, кнопки</h3></div>
                 <div class="vp-form-grid single">
                   <div class="vp-field">
-                    <label for="scHeroBadge">Плашка над заголовком</label>
-                    <input type="text" id="scHeroBadge">
+                    <label for="scHeroBadge">Надпись над заголовком (Eyebrow)</label>
+                    <input type="text" id="scHeroBadge" placeholder="VOLODIUM PARFUM">
                   </div>
-                  <div class="vp-form-grid">
-                    <div class="vp-field">
-                      <label for="scHeroTitleLine">Первая часть заголовка</label>
-                      <input type="text" id="scHeroTitleLine" placeholder="Открой. Вдохни.">
-                    </div>
-                    <div class="vp-field">
-                      <label for="scHeroTitleAccent">Акцентное слово (курсив)</label>
-                      <input type="text" id="scHeroTitleAccent" placeholder="Почувствуй.">
-                    </div>
+                  <div class="vp-field">
+                    <label for="scHeroTitleLine">Главный заголовок (поддерживает перенос строк)</label>
+                    <textarea id="scHeroTitleLine" rows="3" placeholder="ПАРФЮМЕРИЯ —&#10;ЭТО БОЛЬШЕ,&#10;ЧЕМ АРОМАТ"></textarea>
                   </div>
                   <div class="vp-field">
                     <label for="scHeroDesc">Подзаголовок (описание бутика)</label>
-                    <textarea id="scHeroDesc" rows="3"></textarea>
+                    <textarea id="scHeroDesc" rows="3" placeholder="Оригинальная нишевая парфюмерия во флаконах и на распив. Более 500 ароматов."></textarea>
                   </div>
                   <div class="vp-form-grid">
                     <div class="vp-field">
                       <label for="scCtaCatalog">Кнопка №1 (Каталог)</label>
-                      <input type="text" id="scCtaCatalog">
+                      <input type="text" id="scCtaCatalog" placeholder="Каталог ароматов">
                     </div>
                     <div class="vp-field">
-                      <label for="scCtaQuiz">Кнопка №2 (Анкета)</label>
-                      <input type="text" id="scCtaQuiz">
+                      <label for="scCtaQuiz">Кнопка №2 (Подобрать аромат)</label>
+                      <input type="text" id="scCtaQuiz" placeholder="Подобрать аромат">
                     </div>
-                  </div>
-                  <div class="vp-field">
-                    <label for="scCtaSecret">Кнопка №3 (Secret Box)</label>
-                    <input type="text" id="scCtaSecret">
                   </div>
                 </div>
               </div>
 
-              <!-- Hero Photos & Quote -->
+              <!-- Hero Box Photo -->
               <div class="vp-card">
-                <div class="vp-card-head"><h3>Фотографии первого экрана и цитата</h3></div>
+                <div class="vp-card-head"><h3>Фотография подарочной упаковки (справа)</h3></div>
                 <div class="vp-form-grid single">
                   <div class="vp-upload-block">
-                    <label>Портретная фотография справа (Владимир)</label>
+                    <label>Подарочная коробка Volodium</label>
                     <div class="vp-upload-row">
-                      <input type="text" id="scHeroPortraitImg" placeholder="assets/img/editorial/...">
+                      <input type="text" id="scHeroBoxImg" placeholder="assets/images/volodium_box_stones.jpg">
                       <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
                         <span>Загрузить фото</span>
-                        <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scHeroPortraitImg" data-upload-folder="hero" data-preview-img="lhsPortraitImg">
+                        <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scHeroBoxImg" data-upload-folder="hero" data-preview-img="lhsBoxImg">
                       </label>
                     </div>
-                    <div class="vp-range-row">
-                      <span>Кадрирование (по вертикали):</span>
-                      <input type="range" id="scHeroPortraitY" min="0" max="100" value="20">
-                      <span id="scHeroPortraitYVal">20%</span>
-                    </div>
-                  </div>
-
-                  <div class="vp-field">
-                    <label for="scHeroPortraitTitle">Имя на портрете</label>
-                    <input type="text" id="scHeroPortraitTitle">
-                  </div>
-                  <div class="vp-field">
-                    <label for="scHeroPortraitQuote">Цитата под фото</label>
-                    <input type="text" id="scHeroPortraitQuote">
-                  </div>
-
-                  <div class="vp-upload-block">
-                    <label>Фоновая фотография всего Hero-блока</label>
-                    <div class="vp-upload-row">
-                      <input type="text" id="scHeroBackdropImg" placeholder="assets/img/editorial/...">
-                      <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
-                        <span>Загрузить фон</span>
-                        <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scHeroBackdropImg" data-upload-folder="hero">
-                      </label>
-                    </div>
-                    <div class="vp-range-row">
-                      <span>Видимость фона (прозрачность):</span>
-                      <input type="range" id="scHeroBackdropOpacity" min="10" max="100" value="75">
-                      <span id="scHeroBackdropOpacityVal">75%</span>
-                    </div>
+                    <p style="font-size: 12px; color: var(--text-dim); margin-top: 6px;">Рекомендуется студийное фото на белом фоне или прозрачный PNG. Фон автоматически адаптируется под стилистику сайта.</p>
                   </div>
                 </div>
               </div>

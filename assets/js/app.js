@@ -137,7 +137,7 @@ function applySiteContent(sc) {
         el.textContent = crestChar;
       });
       if (b.logo) {
-        const logoSrc = resolveSafeMediaUrl(b.logo, 'assets/images/E610BB2F-DBAE-4672-9.PNG');
+        const logoSrc = resolveSafeMediaUrl(b.logo, 'assets/images/volodium_favicon.png');
         document.querySelectorAll('.brand-logo-img').forEach(img => {
           img.src = logoSrc;
           img.alt = bTitle;
@@ -145,7 +145,7 @@ function applySiteContent(sc) {
       }
       const favHref = b.favicon || b.logo;
       if (favHref) {
-        const safeFav = resolveSafeMediaUrl(favHref, 'assets/images/E610BB2F-DBAE-4672-9.PNG');
+        const safeFav = resolveSafeMediaUrl(favHref, 'assets/images/volodium_favicon.png');
         document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach(link => {
           link.href = safeFav;
         });
@@ -195,63 +195,30 @@ function applySiteContent(sc) {
       }
     }
 
-    // 3. Hero Texts, Portrait, Backdrop & Stats
+    // 3. Hero Texts, Box, Actions & Categories
     if (sc.hero) {
       const h = sc.hero;
-      const badgeSpan = document.querySelector('#hero .hero-badge span:last-child');
-      if (badgeSpan && h.badge) badgeSpan.textContent = h.badge;
+      const eyebrowEl = document.querySelector('#hero .hero-brand-eyebrow span:last-child');
+      if (eyebrowEl && h.eyebrow) eyebrowEl.textContent = h.eyebrow;
 
-      const titleMain = document.querySelector('#hero .hero-title-main');
-      if (titleMain && (h.titleLine != null || h.titleAccent != null)) {
-        titleMain.textContent = '';
-        titleMain.appendChild(document.createTextNode((h.titleLine || 'Открой. Вдохни.') + ' '));
-        const acc = document.createElement('span');
-        acc.className = 'hero-serif-accent';
-        acc.textContent = h.titleAccent || 'Почувствуй.';
-        titleMain.appendChild(acc);
+      const titleEl = document.querySelector('#hero .hero-brand-title');
+      if (titleEl && h.title) {
+        titleEl.innerHTML = escapeHtml(h.title).replace(/\n/g, '<br>');
+      } else if (titleEl && (h.titleLine || h.titleAccent)) {
+        titleEl.innerHTML = `${escapeHtml(h.titleLine || '')}<br>${escapeHtml(h.titleAccent || '')}`;
       }
 
-      const heroDesc = document.querySelector('#hero .hero-description');
+      const heroDesc = document.querySelector('#hero .hero-brand-sub, #hero .hero-description');
       if (heroDesc && h.description != null) heroDesc.textContent = h.description;
 
-      const ctaCat = document.querySelector('#hero .hero-actions a[href*="catalog"] span');
+      const ctaCat = document.querySelector('#hero .btn-hero-burgundy span:first-child, #hero .hero-actions a[href*="catalog"] span');
       if (ctaCat && h.ctaCatalogText) ctaCat.textContent = h.ctaCatalogText;
-      const ctaQuiz = document.querySelector('#hero .hero-actions a[href*="quiz"] span');
+      const ctaQuiz = document.querySelector('#hero .btn-hero-outline span:first-child, #hero .hero-actions a[href*="quiz"] span');
       if (ctaQuiz && h.ctaQuizText) ctaQuiz.textContent = h.ctaQuizText;
-      const ctaSec = document.querySelector('#hero .hero-actions a[href*="secret-boxes"] span');
-      if (ctaSec && h.ctaSecretText) ctaSec.textContent = h.ctaSecretText;
 
-      if (Array.isArray(h.stats)) {
-        const statItems = document.querySelectorAll('#hero .hero-stats .stat-item');
-        h.stats.forEach((st, idx) => {
-          if (!statItems[idx] || !st) return;
-          const numEl = statItems[idx].querySelector('.stat-number');
-          const lblEl = statItems[idx].querySelector('.stat-label');
-          if (numEl && st.value != null) numEl.textContent = st.value;
-          if (lblEl && st.label != null) lblEl.textContent = st.label;
-        });
-      }
-
-      const portraitImg = document.getElementById('heroLookbookImg');
-      if (portraitImg) {
-        if (h.portraitImage) portraitImg.src = resolveSafeMediaUrl(h.portraitImage, HERO_PORTRAIT.image);
-        if (h.portraitPosition) portraitImg.style.objectPosition = h.portraitPosition;
-      }
-      const pTitle = document.getElementById('heroLookbookTitle');
-      if (pTitle && h.portraitTitle != null) pTitle.textContent = h.portraitTitle;
-      const pSub = document.getElementById('heroLookbookSub');
-      if (pSub && h.portraitQuote != null) pSub.textContent = h.portraitQuote;
-
-      const backdropImg = document.getElementById('heroBackdropImg');
-      if (backdropImg) {
-        if (h.backdropImage) {
-          const safeBg = resolveSafeMediaUrl(h.backdropImage, HERO_BACKDROP_IMAGE).replace(/["\\]/g, '');
-          backdropImg.style.backgroundImage = `url("${safeBg}")`;
-        }
-        if (h.backdropOpacity != null) {
-          const op = Math.min(1, Math.max(0.05, Number(h.backdropOpacity) || 0.75));
-          backdropImg.style.opacity = String(op);
-        }
+      const boxImg = document.querySelector('#hero .hero-stones-image, #hero .hero-box-image');
+      if (boxImg && (h.boxImage || h.portraitImage)) {
+        boxImg.src = resolveSafeMediaUrl(h.boxImage || h.portraitImage, 'assets/images/volodium_box_stones.jpg');
       }
     }
 
@@ -294,7 +261,7 @@ function applySiteContent(sc) {
           const r = sc.reviews[i];
           if (!r) continue;
           const art = document.createElement('article');
-          art.className = 'review-editorial-card';
+          art.className = 'review-editorial-card' + (!r.image ? ' rec-card--no-photo' : '');
           art.innerHTML = `
             <div class="rec-top">
               <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
@@ -304,10 +271,10 @@ function applySiteContent(sc) {
               <span class="rec-name">${r.name || ''}</span>
               <span class="rec-city">${r.city || 'Telegram отзыв'}</span>
             </div>
-            <p class="rec-text">${r.text || ''}</p>
+            ${r.image ? `
             <div class="rec-photo-thumb">
               <img src="${resolveSafeMediaUrl(r.image, '')}" alt="${r.name || ''}" loading="lazy" decoding="async" style="object-position: ${r.objectPosition || 'center 25%'};">
-            </div>
+            </div>` : ''}
           `;
           grid.appendChild(art);
         }
@@ -325,10 +292,21 @@ function applySiteContent(sc) {
         if (city && r.city) city.textContent = r.city;
         const text = card.querySelector('.rec-text');
         if (text && r.text) text.textContent = r.text;
-        const img = card.querySelector('.rec-photo-thumb img');
-        if (img) {
-          if (r.image) img.src = resolveSafeMediaUrl(r.image, img.getAttribute('src') || '');
-          if (r.objectPosition) img.style.objectPosition = r.objectPosition;
+        const thumb = card.querySelector('.rec-photo-thumb');
+        if (thumb) {
+          if (!r.image) {
+            thumb.remove();
+            card.classList.add('rec-card--no-photo');
+          } else {
+            card.classList.remove('rec-card--no-photo');
+            const img = thumb.querySelector('img');
+            if (img) {
+              img.src = resolveSafeMediaUrl(r.image, img.getAttribute('src') || '');
+              if (r.objectPosition) img.style.objectPosition = r.objectPosition;
+            }
+          }
+        } else if (!r.image) {
+          card.classList.add('rec-card--no-photo');
         }
       });
     }
@@ -423,7 +401,7 @@ function applySiteContent(sc) {
         const valEl = row.querySelector('a, .fc-val, .fc-val-muted');
         if (!valEl) return;
         if (lbl.includes('связь в telegram')) {
-          valEl.innerHTML = `@${escapeHtml(tg)} <small style="color: #D4AF37; font-weight:600;">(быстрее всего)</small>`;
+          valEl.innerHTML = `@${escapeHtml(tg)} <small style="color: var(--bordo-light, #C87A7A); font-weight:600;">(быстрее всего)</small>`;
         } else if (lbl.includes('whatsapp')) {
           valEl.textContent = waDisp;
           valEl.setAttribute('href', `https://wa.me/${waPhone}`);
@@ -682,7 +660,7 @@ function initHeroCanvas() {
       this.size = Math.random() * 2 + 0.8;
       this.alpha = Math.random() * 0.25 + 0.05;
       this.maxAlpha = this.alpha;
-      this.color = Math.random() > 0.4 ? '143, 109, 53' : '180, 175, 165';
+      this.color = Math.random() > 0.4 ? '129, 32, 32' : '180, 175, 165';
     }
     update() {
       this.x += this.vx;
@@ -704,7 +682,7 @@ function initHeroCanvas() {
     }
   }
 
-  // Create 60 golden dust particles
+  // Create 60 ambient scent particles
   for (let i = 0; i < 60; i++) {
     const p = new Particle();
     p.y = Math.random() * height; // initial spread
@@ -1492,7 +1470,7 @@ function createProductCardHtml(item) {
 
   return `
     <div class="perfume-card" id="card-${escapeHtml(item.id)}">
-      ${item.badge ? `<span class="card-badge">${escapeHtml(item.badge)}</span>` : ''}
+      ${(item.badge && !/наличи/i.test(item.badge)) ? `<span class="card-badge">${escapeHtml(item.badge)}</span>` : ''}
       <div class="card-img-wrap trigger-modal-${escapeHtml(item.id)}">
         <img src="${escapeHtml(imgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${objPos};" loading="lazy" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
       </div>
@@ -3317,7 +3295,7 @@ let certState = {
   serviceKey: 'consultation',
   serviceTitle: 'Индивидуальный парфюмерный гардероб',
   greeting: '',
-  code: 'VP-2026-' + Math.floor(1000 + Math.random() * 9000)
+  code: 'VOL-' + Math.floor(1000 + Math.random() * 9000)
 };
 
 let certIsFlipped = false;

@@ -36,17 +36,17 @@
   
   --limestone-card: #D2D1CC;           /* Card Back Greige / Limestone Mineral Tone */
   --limestone-warm: #E6E4DC;           /* Warm Limestone */
-  --cream-bg: #FAF8F5;                 /* Warm Linen Paper Surface */
-  --cream-soft: #F4F1EA;               /* Ultra-soft card tone */
-  --cream-paper: #FAF8F5;              /* Off-white paper background */
+  --cream-bg: #FFFFFF;                 /* Standard clean white surface */
+  --cream-soft: #FFFFFF;               /* Clean white card tone */
+  --cream-paper: #FFFFFF;              /* Clean white background */
   --cream-card: #FFFFFF;               /* Pure crisp card surface */
   
   /* System Base Mapping */
   --bg-dark: #FFFFFF;
   --bg-page: #FFFFFF;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #FCFBF9;
-  --bg-surface: #F9F7F2;
+  --bg-card-hover: #FFFFFF;
+  --bg-surface: #FFFFFF;
   --bg-elevated: #FFFFFF;
   
   /* Luxury Accents */
@@ -735,72 +735,86 @@ img {
   color: #C87A7A;
 }
 
-/* Unified Dark Luxury Header in Cinematic Mode */
+/* Unified Header Styling Across All Modes (Crisp Luxury Black on Pure White) */
 body.hero-cinematic-active .header {
-  background: rgba(13, 14, 17, 0.95);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  background: #FFFFFF !important;
+  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
 }
 
 body.hero-cinematic-active .brand-title {
-  color: #ffffff;
+  color: #111216 !important;
 }
 
 body.hero-cinematic-active .brand-sub {
-  color: #ffffff;
+  color: #111216 !important;
 }
 
 body.hero-cinematic-active .nav-desktop .nav-link {
-  color: rgba(255, 255, 255, 0.85);
+  color: #111216 !important;
 }
 
 body.hero-cinematic-active .nav-desktop .nav-link:hover {
-  color: #ffffff;
+  color: var(--bordo-primary, #812020) !important;
 }
 
 body.hero-cinematic-active .nav-desktop .nav-link::after {
-  background: var(--bordo-light, #C87A7A);
+  background: var(--bordo-primary, #812020);
 }
 
 body.hero-cinematic-active .nav-desktop .nav-link .ndb-chevron {
-  color: rgba(255, 255, 255, 0.7);
+  color: #666666;
 }
 
-body.hero-cinematic-active .hdr-action-btn {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
+body.hero-cinematic-active .hdr-action-btn,
+body.hero-cinematic-active .hdr-minimal-btn {
+  color: #111216 !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  background: transparent !important;
 }
 
-body.hero-cinematic-active .hdr-action-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+body.hero-cinematic-active .hdr-action-btn svg,
+body.hero-cinematic-active .hdr-minimal-btn svg {
+  stroke: #111216 !important;
+  color: #111216 !important;
+}
+
+body.hero-cinematic-active .hdr-action-btn:hover,
+body.hero-cinematic-active .hdr-minimal-btn:hover {
+  background: var(--bordo-primary, #812020) !important;
+  border-color: var(--bordo-primary, #812020) !important;
+  color: #ffffff !important;
+}
+
+body.hero-cinematic-active .hdr-action-btn:hover svg,
+body.hero-cinematic-active .hdr-minimal-btn:hover svg {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
 }
 
 body.hero-cinematic-active .menu-toggle-btn,
 body.hero-cinematic-active .volodium-menu-trigger {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.14) !important;
+  background: #ffffff !important;
+  color: #111216 !important;
 }
 
 body.hero-cinematic-active .volodium-menu-trigger:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
+  background: var(--bordo-primary, #812020) !important;
+  border-color: var(--bordo-primary, #812020) !important;
+  color: #ffffff !important;
 }
 
 body.hero-cinematic-active .menu-toggle-btn .mtb-label,
 body.hero-cinematic-active .volodium-menu-trigger .vmt-label {
-  color: #ffffff;
+  color: inherit !important;
 }
 
 body.hero-cinematic-active .volodium-menu-trigger .vmt-burger .vmt-line {
-  background-color: #ffffff;
+  background-color: currentColor !important;
 }
 
 body.hero-cinematic-active .menu-toggle-btn .burger-line {
-  background: #ffffff;
+  background: currentColor !important;
 }
 
 .hero-canvas {
@@ -1423,20 +1437,20 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 /* ==========================================================================
-   Catalog & Filter Section (Warm Alabaster / Luxury Paper Background)
+   Catalog & Filter Section (Standard Clean White Background)
    ========================================================================== */
 .catalog-section {
   position: relative;
-  background: #F7F5F0;
+  background: #FFFFFF;
 }
 
 .subpage-main {
-  background: #F7F5F0;
+  background: #FFFFFF;
 }
 
 .subpage-breadcrumb-bar {
-  background: #F7F5F0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .catalog-controls {
@@ -1938,13 +1952,13 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 13px;
-  background: #F7F5F0;
+  background: #FFFFFF;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .aroma-box-img-wrap img {
@@ -5309,9 +5323,9 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   aspect-ratio: 1;
   border-radius: var(--radius-md);
   object-fit: contain;
-  padding: 1rem;
-  background: #ffffff;
-  border: 1px solid #f0eee9;
+  padding: 0.25rem;
+  background: #ffffff !important;
+  border: none !important;
 }
 
 /* Olfactory Pyramid Component */
@@ -7214,9 +7228,13 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     gap: 1.25rem;
   }
   .modal-main-img {
-    max-height: 200px;
-    aspect-ratio: auto;
-    padding: 0.5rem;
+    max-height: 220px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    display: block;
+    padding: 0.25rem;
+    background: #ffffff !important;
+    border: none !important;
   }
   .modal-info-col h2 {
     font-size: 1.6rem !important;
@@ -12744,8 +12762,11 @@ button, a, input, select, textarea, [role="button"] {
   }
 
   .modal-main-img {
-    max-height: 190px !important;
+    max-height: 200px !important;
+    aspect-ratio: 1 !important;
     margin: 0 auto !important;
+    background: #ffffff !important;
+    border: none !important;
   }
 
   .legal-modal-box {
@@ -13316,7 +13337,9 @@ body.hero-cinematic-active .header .brand-sub {
 }
 
 .header .hdr-minimal-btn,
-body.hero-cinematic-active .header .hdr-minimal-btn {
+.header .hdr-action-btn,
+body.hero-cinematic-active .header .hdr-minimal-btn,
+body.hero-cinematic-active .header .hdr-action-btn {
   width: 38px !important;
   height: 38px !important;
   border: none !important;
@@ -13328,23 +13351,37 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   border-radius: 50% !important;
   position: relative !important;
   cursor: pointer !important;
-  transition: color 0.2s ease, transform 0.2s ease !important;
+  transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease !important;
   padding: 0 !important;
   text-decoration: none !important;
 }
 
-.header .hdr-minimal-btn svg {
+.header .hdr-minimal-btn svg,
+.header .hdr-action-btn svg,
+body.hero-cinematic-active .header .hdr-minimal-btn svg,
+body.hero-cinematic-active .header .hdr-action-btn svg {
   display: block !important;
   stroke: #111216 !important;
+  color: #111216 !important;
 }
 
-.header .hdr-minimal-btn:hover {
+.header .trigger-cart svg,
+body.hero-cinematic-active .header .trigger-cart svg {
+  stroke: #111216 !important;
+  fill: none !important;
+}
+
+.header .hdr-minimal-btn:hover,
+.header .hdr-action-btn:hover {
   color: #6B1123 !important;
   transform: scale(1.08) !important;
 }
 
-.header .hdr-minimal-btn:hover svg {
+.header .hdr-minimal-btn:hover svg,
+.header .hdr-action-btn:hover svg,
+.header .trigger-cart:hover svg {
   stroke: #6B1123 !important;
+  color: #6B1123 !important;
 }
 
 .wishlist-badge-count, .cart-badge-count {

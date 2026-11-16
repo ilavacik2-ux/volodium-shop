@@ -25,11 +25,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261116_13">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261116_15">
   <meta http-equiv="refresh" content="0; url=index.html#custom-scent">
   <script>window.location.replace('index.html#custom-scent');</script>
 </head>
-<body class="hero-cinematic-active">
+<body>
 
   <!-- Top Promo Announcement Bar -->
   <div class="promo-announcement-bar" id="promoTopBar">
@@ -43,10 +43,9 @@
   <header class="header">
     <div class="container header-inner">
       <a href="index.html" class="brand">
-        <img class="brand-logo-img" src="assets/images/E610BB2F-DBAE-4672-9.PNG" alt="VOLODIUM">
-        <div class="brand-text-wrap">
+        <div class="brand-text-stacked">
           <span class="brand-title">VOLODIUM</span>
-          <span class="brand-sub">Parfum</span>
+          <span class="brand-sub">PARFUM</span>
         </div>
       </a>
 
@@ -84,26 +83,25 @@
       </nav>
 
       <div class="header-actions">
-        <a href="https://www.youtube.com/@vatsiik" target="_blank" rel="noopener noreferrer" class="hdr-action-btn" title="YouTube канал Владимира Вацика" aria-label="YouTube">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        <!-- Поиск -->
+        <button class="hdr-minimal-btn" id="hdrSearchBtn" title="Поиск по ароматам" aria-label="Поиск" type="button" onclick="openQuickSearch()">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.5" y2="16.5"/>
           </svg>
+        </button>
+
+        <!-- Избранное -->
+        <a href="catalog.html?filter=favorites" class="hdr-minimal-btn" id="hdrWishlistBtn" title="Избранное" aria-label="Избранное">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span class="wishlist-badge-count" id="wishlistCountBadge" style="display: none;">0</span>
         </a>
 
-        <a href="https://www.instagram.com/vatsiik" target="_blank" rel="noopener noreferrer" class="hdr-action-btn" title="Instagram профиль Владимира Вацика" aria-label="Instagram">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </a>
-
-        <a href="https://t.me/volodiumparfum" target="_blank" rel="noopener noreferrer" class="hdr-action-btn" title="Официальный Telegram интернет-магазина" aria-label="Telegram">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
-          </svg>
-        </a>
-
-        <button class="hdr-action-btn trigger-cart" aria-label="Корзина" title="Открыть корзину">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Корзина -->
+        <button class="hdr-minimal-btn trigger-cart" aria-label="Корзина" title="Открыть корзину" type="button" onclick="openCart()">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
             <line x1="3" y1="6" x2="21" y2="6"/>
             <path d="M16 10a4 4 0 0 1-8 0"/>
@@ -111,12 +109,13 @@
           <span class="cart-badge-count" style="display: none;">0</span>
         </button>
 
-        <button class="volodium-menu-trigger" id="volodiumMenuBtn" aria-label="Открыть меню интернет-магазина" type="button">
-          <span class="vmt-label">МЕНЮ</span>
-          <span class="vmt-burger" aria-hidden="true">
-            <span class="vmt-line"></span>
-            <span class="vmt-line"></span>
-          </span>
+        <!-- Меню (три полоски) -->
+        <button class="hdr-minimal-btn" id="volodiumMenuBtn" aria-label="Открыть меню интернет-магазина" title="Меню" type="button" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(true)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
         </button>
       </div>
     </div>
@@ -836,6 +835,27 @@
       <path d="M18 15l-6-6-6 6"/>
     </svg>
   </button>
+
+  <!-- Quick Search Modal Dialog -->
+  <div class="quick-search-modal-overlay" id="quickSearchOverlay" onclick="if(event.target===this)closeQuickSearch()" aria-hidden="true">
+    <div class="quick-search-dialog" role="dialog" aria-modal="true" aria-label="Быстрый поиск ароматов">
+      <div class="qsd-header">
+        <svg class="qsd-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.5" y2="16.5"/>
+        </svg>
+        <input type="text" id="quickSearchInput" class="qsd-input" placeholder="Поиск ароматов, брендов, нот..." autocomplete="off">
+        <button type="button" class="qsd-close-btn" onclick="closeQuickSearch()" aria-label="Закрыть поиск">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="qsd-results" id="quickSearchResults">
+        <div style="padding: 1.5rem; text-align: center; color: #888; font-size: 0.9rem;">
+          Начните вводить название аромата или бренд...
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="assets/data/perfumes.js?v=20261113_02"></script>

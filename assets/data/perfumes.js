@@ -10608,7 +10608,7 @@ var AROMA_BOXES_DATA = [
     "gender": "men",
     "genderLabel": "Для него",
     "badge": "Хит продаж",
-    "image": "assets/img/aromaboxes/box_776250689083.png",
+    "image": "assets/img/aromaboxes/box_776250689083.webp",
     "cdnImage": "https://static.tildacdn.com/stor3634-6163-4361-a138-396464373261/329c4c94ffef8ac5541c9f71a81d56fc.png",
     "objectPosition": "center center",
     "prices": {
@@ -10641,7 +10641,7 @@ var AROMA_BOXES_DATA = [
     "gender": "women",
     "genderLabel": "Для нее",
     "badge": "Бестселлер",
-    "image": "assets/img/aromaboxes/box_862779877033.png",
+    "image": "assets/img/aromaboxes/box_862779877033.webp",
     "cdnImage": "https://static.tildacdn.com/stor3863-6532-4634-b636-373162306262/d747f6e232252620793e82e2b3204a11.png",
     "objectPosition": "center center",
     "prices": {
@@ -10674,7 +10674,7 @@ var AROMA_BOXES_DATA = [
     "gender": "unisex",
     "genderLabel": "Унисекс",
     "badge": "Эксклюзив",
-    "image": "assets/img/aromaboxes/box_188290376183.png",
+    "image": "assets/img/aromaboxes/box_188290376183.webp",
     "cdnImage": "https://static.tildacdn.com/stor6264-3765-4535-b366-323834323663/af9e289693ff382c320721a8636c432e.png",
     "objectPosition": "center center",
     "prices": {
@@ -10773,7 +10773,7 @@ var AROMA_BOXES_DATA = [
     "gender": "men",
     "genderLabel": "Для него",
     "badge": "Шлейф 24h",
-    "image": "assets/img/aromaboxes/box_501090980333.png",
+    "image": "assets/img/aromaboxes/box_501090980333.webp",
     "cdnImage": "https://static.tildacdn.com/stor3461-3033-4232-b936-373731333034/76f062e23fb8fad54738859129b2cafb.png",
     "objectPosition": "center center",
     "prices": {
@@ -10806,7 +10806,7 @@ var AROMA_BOXES_DATA = [
     "gender": "men",
     "genderLabel": "Для него",
     "badge": "Коллекция",
-    "image": "assets/img/aromaboxes/box_951991302213.png",
+    "image": "assets/img/aromaboxes/box_951991302213.webp",
     "cdnImage": "https://static.tildacdn.com/stor3333-3037-4366-b134-613734653865/7245f0c5d0caab98f41387febbc2b66f.png",
     "objectPosition": "center center",
     "prices": {
@@ -10839,7 +10839,7 @@ var AROMA_BOXES_DATA = [
     "gender": "women",
     "genderLabel": "Для нее",
     "badge": "Бестселлер",
-    "image": "assets/img/aromaboxes/box_591836169713.png",
+    "image": "assets/img/aromaboxes/box_591836169713.webp",
     "cdnImage": "https://static.tildacdn.com/stor3338-6161-4339-a432-393665323764/e0d2f6e35108a77ac795a71cccf3efc5.png",
     "objectPosition": "center center",
     "prices": {
@@ -10872,7 +10872,7 @@ var AROMA_BOXES_DATA = [
     "gender": "unisex",
     "genderLabel": "Унисекс",
     "badge": "Коллекция",
-    "image": "assets/img/aromaboxes/box_788543720123.png",
+    "image": "assets/img/aromaboxes/box_788543720123.webp",
     "cdnImage": "https://static.tildacdn.com/stor6234-3130-4532-b430-623866333939/06e3250d5f8125cb87e463a4eb9c33bf.png",
     "objectPosition": "center center",
     "prices": {

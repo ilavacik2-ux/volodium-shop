@@ -13811,9 +13811,9 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 .brand-usp-strip {
   position: relative;
   overflow: hidden;
-  background: #141316;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding: 0.85rem 0;
   margin: 0;
 }
@@ -13851,19 +13851,19 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  color: #EDE8E3;
+  color: #201A18;
   cursor: default;
   transition: color 0.2s ease;
 }
 
 .usp-ticker-item:hover {
-  color: #FFFFFF;
+  color: #7E2226;
 }
 
 .usp-icon {
   width: 16px;
   height: 16px;
-  color: rgba(255, 255, 255, 0.62);
+  color: #7E2226;
   flex-shrink: 0;
 }
 
@@ -13878,7 +13878,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 }
 
 .usp-sep {
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(0, 0, 0, 0.2);
   font-size: 0.72rem;
   font-weight: 300;
   user-select: none;
@@ -13892,7 +13892,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   width: 100%;
   margin: 0;
   overflow: hidden;
-  background: #FAF8F5;
+  background: #FFFFFF;
 }
 
 .categories-accordion-stage {
@@ -13902,7 +13902,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   border-radius: 0;
   overflow: hidden;
   position: relative;
-  background: #FAF8F5;
+  background: #FFFFFF;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -13913,9 +13913,9 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   display: flex;
   align-items: flex-end;
   text-decoration: none;
-  color: #1A1615;
+  color: #FFFFFF;
   overflow: hidden;
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
   transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1),
               background 0.4s ease;
@@ -13934,15 +13934,15 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 }
 
 .acc-bg-women {
-  background: #FFFFFF;
+  background: radial-gradient(120% 120% at 80% 30%, #4A1220 0%, #20050B 60%, #110206 100%);
 }
 
 .acc-bg-men {
-  background: #FFFFFF;
+  background: radial-gradient(120% 120% at 80% 30%, #1E2530 0%, #10141A 60%, #0A0C0E 100%);
 }
 
 .acc-bg-unisex {
-  background: #FFFFFF;
+  background: radial-gradient(120% 120% at 80% 30%, #382412 0%, #1C1006 60%, #0E0702 100%);
 }
 
 .acc-bg-boxes {
@@ -13953,7 +13953,17 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 
 /* Ambient Glow */
 .acc-glow {
-  display: none;
+  position: absolute;
+  top: 15%;
+  right: 12%;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 32, 32, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 1;
 }
 
 /* Collapsed Header / Label */
@@ -13975,7 +13985,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #7E2226;
+  color: rgba(255, 255, 255, 0.75);
   display: inline-block;
 }
 
@@ -13985,7 +13995,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #1A1615;
+  color: #FFFFFF;
   white-space: nowrap;
 }
 
@@ -14017,7 +14027,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #7E2226;
+  color: #E8A8B4;
   margin-bottom: 0.65rem;
 }
 
@@ -14025,7 +14035,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #7E2226;
+  background: #E8A8B4;
 }
 
 .acc-title {
@@ -14034,7 +14044,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #1A1615;
+  color: #FFFFFF;
   line-height: 1.15;
   margin-bottom: 0.75rem;
 }
@@ -14046,7 +14056,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 .acc-desc {
   font-size: clamp(0.92rem, 1.1vw, 1.05rem);
   line-height: 1.6;
-  color: #554E48;
+  color: rgba(255, 255, 255, 0.88);
   margin-bottom: 1.75rem;
 }
 
@@ -14058,14 +14068,14 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: #1A1615;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #111216;
   font-weight: 700;
   font-size: 0.92rem;
   padding: 0.8rem 1.8rem;
   border-radius: 9999px;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
 }
 
 .acc-panel.acc-panel-boxes .btn-acc-action {
@@ -14715,8 +14725,8 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   }
 
   .brand-categories-section {
-    padding: 0.65rem 0.65rem 1.15rem;
-    background: #FAF8F5;
+    padding: 0.85rem 0.65rem 1.25rem;
+    background: #FFFFFF;
   }
 
   .categories-accordion-stage {
@@ -14747,7 +14757,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
     justify-content: space-between !important;
     align-items: flex-start !important;
     padding: 0.85rem 0.85rem 0.8rem !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 24px -4px rgba(20, 15, 12, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06) !important;
     text-decoration: none !important;
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
@@ -14756,7 +14766,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
 
   .acc-panel:active {
     transform: scale(0.975);
-    border-color: rgba(0, 0, 0, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
   }
 
   .acc-panel-bg {
@@ -14769,20 +14779,20 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
   }
 
   .acc-bg-women {
-    background: #FFFFFF !important;
+    background: radial-gradient(130% 120% at 85% 20%, #4D1322 0%, #22060C 60%, #100206 100%) !important;
   }
 
   .acc-bg-men {
-    background: #FFFFFF !important;
+    background: radial-gradient(130% 120% at 85% 20%, #1F2837 0%, #10141D 60%, #080A0E 100%) !important;
   }
 
   .acc-bg-unisex {
-    background: #FFFFFF !important;
+    background: radial-gradient(130% 120% at 85% 20%, #3D2714 0%, #1D1106 60%, #0C0602 100%) !important;
   }
 
   .acc-panel.acc-panel-boxes {
     border: 1px solid rgba(255, 255, 255, 0.09) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 24px -4px rgba(20, 15, 12, 0.25) !important;
   }
 
   .acc-panel.acc-panel-boxes .acc-panel-bg,
@@ -14822,7 +14832,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
     line-height: 1.15 !important;
     margin: 0 !important;
     letter-spacing: 0.02em !important;
-    color: #1A1615 !important;
+    color: #FFFFFF !important;
     text-transform: uppercase !important;
   }
 
@@ -14835,7 +14845,8 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
     font-size: 0.74rem !important;
     font-weight: 500 !important;
     letter-spacing: 0.04em !important;
-    opacity: 0.85 !important;
+    opacity: 0.88 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
   }
 
   .acc-desc {
@@ -14850,30 +14861,22 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
     display: inline !important;
   }
 
-  .acc-panel:not(.acc-panel-boxes) .btn-acc-action {
-    background: #1A1615 !important;
-    color: #FFFFFF !important;
-    border: none !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-  }
-
-  .acc-panel.acc-panel-boxes .btn-acc-action {
-    background: rgba(255, 255, 255, 0.18) !important;
-    color: #FFFFFF !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
-    box-shadow: none !important;
-  }
-
   .btn-acc-action {
     position: relative;
     z-index: 3;
     display: inline-flex !important;
     align-items: center;
     gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.16) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #FFFFFF !important;
     font-size: 0.68rem !important;
     font-weight: 600 !important;
     padding: 0.32rem 0.68rem !important;
     border-radius: 999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
     margin-top: auto !important;
     transition: background 0.2s ease, border-color 0.2s ease;
   }
@@ -14903,7 +14906,7 @@ body.hero-cinematic-active .header .hdr-minimal-btn {
     max-height: 100% !important;
     max-width: 100% !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.15)) !important;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.75)) !important;
     transform: none !important;
   }
 

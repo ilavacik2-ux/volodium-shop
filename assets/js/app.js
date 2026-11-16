@@ -918,15 +918,109 @@ function initCatalog() {
   const btnLoadMore = document.getElementById('btnLoadMore');
   const boxFilterBtns = document.querySelectorAll('.box-filter-bar .box-filter-btn');
 
+  // Helper to extract & normalize category from URL query or hash
+  function getCategoryFromLocation() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      let cat = (urlParams.get('category') || urlParams.get('cat') || urlParams.get('gender') || '').toLowerCase().trim();
+      if (!cat && window.location.hash) {
+        const hash = window.location.hash.replace(/^#/, '').toLowerCase().trim();
+        if (hash.startsWith('category=')) cat = hash.replace('category=', '');
+        else if (hash.startsWith('cat=')) cat = hash.replace('cat=', '');
+        else if (['women', 'men', 'unisex', 'all', 'женские', 'мужские', 'унисекс'].includes(hash)) {
+          cat = hash;
+        }
+      }
+      if (!cat) return null;
+      if (['women', 'woman', 'female', 'женская', 'женские', 'женский', 'для-нее', 'для-женщин'].includes(cat)) {
+        return 'women';
+      }
+      if (['men', 'man', 'male', 'мужская', 'мужские', 'мужской', 'для-него', 'для-мужчин'].includes(cat)) {
+        return 'men';
+      }
+      if (['unisex', 'унисекс'].includes(cat)) {
+        return 'unisex';
+      }
+      if (['all', 'все', 'все духи', 'все-духи'].includes(cat)) {
+        return 'all';
+      }
+      return cat;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  // Parse initial category from URL
+  const initialCat = getCategoryFromLocation();
+  if (initialCat) {
+    currentCategory = initialCat;
+  }
+
+  // Helper to sync tab UI states
+  function syncCategoryTabs() {
+    tabBtns.forEach(btn => {
+      const isTarget = btn.dataset.category === currentCategory;
+      btn.classList.toggle('active', isTarget);
+      if (isTarget && btn.parentElement) {
+        // Keep active tab centered in horizontal scroll container on mobile
+        const parent = btn.parentElement;
+        const targetScroll = btn.offsetLeft - (parent.clientWidth - btn.clientWidth) / 2;
+        parent.scrollLeft = Math.max(0, targetScroll);
+      }
+    });
+  }
+
+  syncCategoryTabs();
+
+  // Helper to sync URL without reload
+  function updateCategoryUrl(cat) {
+    try {
+      const url = new URL(window.location.href);
+      if (cat === 'all') {
+        url.searchParams.delete('category');
+        url.searchParams.delete('cat');
+        url.searchParams.delete('gender');
+      } else {
+        url.searchParams.set('category', cat);
+      }
+      window.history.replaceState(null, '', url.toString());
+    } catch (_) {}
+  }
+
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentCategory = btn.dataset.category;
+      currentCategory = btn.dataset.category || 'all';
+      syncCategoryTabs();
+      updateCategoryUrl(currentCategory);
       catalogVisibleCount = CATALOG_PAGE_SIZE;
       renderCatalog(true);
+      playChime(500);
     });
   });
+
+  // Support browser Back/Forward buttons
+  window.addEventListener('popstate', () => {
+    const poppedCat = getCategoryFromLocation() || 'all';
+    if (poppedCat !== currentCategory) {
+      currentCategory = poppedCat;
+      syncCategoryTabs();
+      catalogVisibleCount = CATALOG_PAGE_SIZE;
+      renderCatalog(true);
+    }
+  });
+
+  // Also support aroma box category URL param on boxes page
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const boxParam = (urlParams.get('boxGender') || urlParams.get('category') || urlParams.get('gender') || '').toLowerCase().trim();
+    if (boxParam && ['women', 'men', 'unisex'].includes(boxParam)) {
+      currentBoxGender = boxParam;
+      aromaBoxesExpanded = true;
+      boxFilterBtns.forEach(b => {
+        b.classList.toggle('active', b.dataset.boxGender === currentBoxGender);
+      });
+    }
+  } catch (_) {}
 
   boxFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -942,6 +1036,16 @@ function initCatalog() {
   });
 
   if (searchInput) {
+    // Check initial search param from URL
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchParam = urlParams.get('search') || urlParams.get('q');
+      if (searchParam) {
+        currentSearch = searchParam.toLowerCase().trim();
+        searchInput.value = searchParam;
+      }
+    } catch (_) {}
+
     searchInput.addEventListener('input', (e) => {
       currentSearch = e.target.value.toLowerCase().trim();
       catalogVisibleCount = CATALOG_PAGE_SIZE;
@@ -950,6 +1054,15 @@ function initCatalog() {
   }
 
   if (sortSelect) {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const sortParam = urlParams.get('sort');
+      if (sortParam) {
+        currentSort = sortParam;
+        sortSelect.value = sortParam;
+      }
+    } catch (_) {}
+
     sortSelect.addEventListener('change', (e) => {
       currentSort = e.target.value;
       catalogVisibleCount = CATALOG_PAGE_SIZE;
@@ -994,14 +1107,23 @@ function renderCatalog(resetScroll = false) {
   if (currentCategory === 'all') {
     items = [...PERFUMES_DATA];
   } else if (currentCategory === 'men') {
-    items = PERFUMES_DATA.filter(p => p.gender === 'men' || p.gender === 'unisex');
+    items = PERFUMES_DATA.filter(p => p.gender === 'men');
   } else if (currentCategory === 'women') {
-    items = PERFUMES_DATA.filter(p => p.gender === 'women' || p.gender === 'unisex');
+    items = PERFUMES_DATA.filter(p => p.gender === 'women');
   } else if (currentCategory === 'unisex') {
     items = PERFUMES_DATA.filter(p => p.gender === 'unisex');
   } else {
     items = PERFUMES_DATA.filter(p => p.gender === currentCategory);
   }
+
+  // Wishlist / Favorites URL filter support (?filter=favorites)
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('filter') === 'favorites') {
+      const favList = (typeof getWishlist === 'function') ? getWishlist() : [];
+      items = items.filter(p => favList.includes(p.id));
+    }
+  } catch (_) {}
 
   // Search filter
   if (currentSearch) {
@@ -1101,29 +1223,15 @@ function renderAromaBoxes() {
   const grid = document.getElementById('aromaBoxesGrid');
   if (!grid || typeof AROMA_BOXES_DATA === 'undefined') return;
 
-  const volLabels = {
-    '3ml': '5 × 3 мл',
-    '5ml': '5 × 5 мл',
-    '10ml': '5 × 10 мл'
-  };
-
-  const sprayHints = {
-    '3ml': '~45 распылений на флакон (225 всего)',
-    '5ml': '~75 распылений на флакон (375 всего)',
-    '10ml': '~150 распылений на флакон (750 всего)'
-  };
-
   const filteredBoxes = currentBoxGender === 'all'
     ? AROMA_BOXES_DATA
     : AROMA_BOXES_DATA.filter(b => b.gender === currentBoxGender);
 
-  // When 'all' is active and not yet expanded, show exactly 3 cards
-  const isCollapsedView = (currentBoxGender === 'all' && !aromaBoxesExpanded);
-  const displayBoxes = isCollapsedView ? filteredBoxes.slice(0, 3) : filteredBoxes;
+  // Show all filtered boxes in clean multi-column grid
+  const displayBoxes = filteredBoxes;
 
   // Update filter bar counts dynamically from AROMA_BOXES_DATA
   const totalBoxes = AROMA_BOXES_DATA.length;
-  const remainingBoxes = Math.max(0, totalBoxes - 3);
   const filterCounts = {
     all: totalBoxes,
     women: AROMA_BOXES_DATA.filter(b => b.gender === 'women').length,
@@ -1136,52 +1244,15 @@ function renderAromaBoxes() {
     if (cntEl && filterCounts[g] != null) cntEl.textContent = String(filterCounts[g]);
   });
 
-  // Manage Animated Filter Bar
   const filterBar = document.getElementById('aromaBoxFilterBar');
   if (filterBar) {
-    if (!isCollapsedView) {
-      filterBar.style.display = 'flex';
-      // Trigger smooth spring animation
-      filterBar.classList.remove('fly-in-spring');
-      void filterBar.offsetWidth; // force reflow for animation restart
-      filterBar.classList.add('fly-in-spring');
-    } else {
-      filterBar.style.display = 'none';
-      filterBar.classList.remove('fly-in-spring');
-    }
+    filterBar.style.display = 'flex';
   }
 
-  // Manage Expander Button
+  // Clear legacy expander
   const expanderWrap = document.getElementById('aromaExpanderWrap');
   if (expanderWrap) {
-    if (totalBoxes <= 3 && currentBoxGender === 'all') {
-      expanderWrap.innerHTML = '';
-    } else if (currentBoxGender === 'all') {
-      if (!aromaBoxesExpanded) {
-        expanderWrap.innerHTML = `
-          <button type="button" class="btn-expand-aromaboxes" onclick="window.toggleAromaBoxesExpanded()" aria-expanded="false">
-            <span class="bea-sparkle">✦</span>
-            <span class="bea-text">Посмотреть ещё ${remainingBoxes} авторских сетов</span>
-            <span class="bea-badge">Все ${totalBoxes} боксов</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-        `;
-      } else {
-        expanderWrap.innerHTML = `
-          <button type="button" class="btn-expand-aromaboxes is-expanded" onclick="window.toggleAromaBoxesExpanded()" aria-expanded="true">
-            <span class="bea-text">Свернуть до 3 основных сетов</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-          </button>
-        `;
-      }
-    } else {
-      expanderWrap.innerHTML = `
-        <button type="button" class="btn-expand-aromaboxes is-filtered" onclick="window.setAromaBoxGenderFilter('all')" aria-expanded="true">
-          <span class="bea-text">Показать всю коллекцию (${totalBoxes} боксов)</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-      `;
-    }
+    expanderWrap.innerHTML = '';
   }
 
   if (displayBoxes.length === 0) {
@@ -1193,159 +1264,96 @@ function renderAromaBoxes() {
     return;
   }
 
+  const wishlist = typeof getWishlist === 'function' ? getWishlist() : [];
+
   grid.innerHTML = displayBoxes.map((box, idx) => {
-    const availableVols = box.prices ? Object.keys(box.prices) : ['3ml'];
-    const currentVol = selectedVolumes[box.id] || availableVols[0];
-    const price = box.prices ? box.prices[currentVol] : 3240;
-    const oldPrice = box.oldPrices ? box.oldPrices[currentVol] : null;
-    const discountPct = (oldPrice && price && oldPrice > price)
-      ? Math.round((1 - price / oldPrice) * 100)
+    const prices = box.prices ? Object.values(box.prices) : [3240];
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    const priceRangeStr = minPrice === maxPrice
+      ? formatPrice(minPrice)
+      : `${formatPrice(minPrice)} – ${formatPrice(maxPrice)}`;
+
+    const oldPrices = box.oldPrices ? Object.values(box.oldPrices) : [];
+    const firstOldPrice = oldPrices.length ? oldPrices[0] : null;
+    const discountPct = (firstOldPrice && minPrice && firstOldPrice > minPrice)
+      ? Math.round((1 - minPrice / firstOldPrice) * 100)
       : null;
+
     const boxImg = resolveSafeMediaUrl(box.image);
     const boxFallbackImg = resolveSafeMediaUrl(box.cdnImage || box.image);
     const objPos = escapeHtml(box.objectPosition || 'center center');
-    const compCount = Array.isArray(box.perfumes) && box.perfumes.length ? box.perfumes.length : 5;
+    const isFav = wishlist.includes(box.id);
+
+    // Format clean luxury title like odekolon-shop (Image 2)
+    const rawName = (box.name || '').trim();
+    const cleanName = rawName.toUpperCase().replace(/^СЕТ\s+/i, '').replace(/\s+СЕТ$/i, '');
+    const displayTitle = `AROMABOX | ${cleanName}`;
 
     return `
-      <div class="aroma-box-card ${!isCollapsedView ? 'aroma-card-reveal' : ''}" id="card-${escapeHtml(box.id)}" style="animation-delay: ${idx * 0.05}s">
-        <div class="aroma-box-img-wrap box-open-modal" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0" title="Нажмите, чтобы изучить подробный состав">
+      <div class="aroma-box-card" id="card-${escapeHtml(box.id)}" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0">
+        <div class="aroma-box-img-wrap">
           <img src="${escapeHtml(boxImg)}" alt="${escapeHtml(box.name)}" style="object-position: ${objPos};" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(boxFallbackImg)}';">
           
           <div class="aroma-box-badges-overlay">
-            <span class="aroma-box-gender-badge gender-${escapeHtml(box.gender || 'unisex')}">${escapeHtml(box.genderLabel || 'Сет')}</span>
-            ${discountPct ? `<span class="aroma-box-discount-badge">-${discountPct}%</span>` : ''}
+            ${box.badge ? `<span class="aroma-pill-badge pill-hit">${escapeHtml(box.badge)}</span>` : ''}
+            ${discountPct ? `<span class="aroma-pill-badge pill-discount">-${discountPct}%</span>` : ''}
+            <span class="aroma-pill-badge pill-gender">${escapeHtml(box.genderLabel || 'Сет')}</span>
           </div>
 
-          ${box.badge ? `<span class="aroma-box-hit-badge">${escapeHtml(box.badge)}</span>` : ''}
-          
-          <div class="aroma-box-img-hover-hint">
-            <span>Изучить состав</span>
-          </div>
+          <button type="button" class="aroma-card-fav-btn ${isFav ? 'active' : ''}" data-box-id="${escapeHtml(box.id)}" aria-label="В избранное">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="${isFav ? '#812020' : 'none'}" stroke="${isFav ? '#812020' : '#4A4543'}" stroke-width="1.8">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
         </div>
 
         <div class="aroma-box-content">
-          <h3 class="aroma-box-title box-open-modal" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0">${escapeHtml(box.name)}</h3>
-          <p class="aroma-box-short-subtitle">${escapeHtml(box.shortSubtitle || '')}</p>
-
-          <div class="box-composition-preview box-open-modal" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0" title="Нажмите, чтобы открыть подробный состав и ноты сета">
-            <span class="bcp-action">✦ Состав сета (${compCount} ароматов) →</span>
-          </div>
-
-          <div class="aroma-box-vol-block">
-            <div class="volume-selector aroma-box-vol-selector">
-              ${availableVols.map(v => `
-                <button type="button" class="volume-btn vol-btn-${box.id} ${currentVol === v ? 'active' : ''}" data-vol="${v}">
-                  ${v === '3ml' ? '5 x 3 мл' : v === '5ml' ? '5 x 5 мл' : v === '10ml' ? '5 x 10 мл' : v}
-                </button>
-              `).join('')}
-            </div>
-          </div>
-
-          <div class="card-footer aroma-box-footer">
-            <div class="price-wrap">
-              <div class="price-row-box">
-                <span class="price-old" id="old-price-${box.id}" style="${oldPrice ? '' : 'display:none;'}">${oldPrice ? formatPrice(oldPrice) : ''}</span>
-                <div class="price-current" id="price-${box.id}">${formatPrice(price)}</div>
-              </div>
-              <div class="price-unit">за сет из 5 флаконов</div>
-            </div>
-            <button type="button" class="btn-primary btn-add-cart add-cart-${box.id}" aria-label="Добавить сет ${escapeHtml(box.name)} в корзину">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 0 1-8 0"/>
-              </svg>
-              <span>В корзину</span>
-            </button>
+          <h3 class="aroma-box-title" title="${escapeHtml(box.name)}">${escapeHtml(displayTitle)}</h3>
+          <div class="aroma-box-price-row">
+            <span class="aroma-price-current">${priceRangeStr}</span>
           </div>
         </div>
       </div>
     `;
   }).join('');
 
-  // Attach event listeners for each displayed box
+  // Attach card click handlers (open modal) and heart toggle
   displayBoxes.forEach(box => {
-    // Volume buttons
-    const volBtns = grid.querySelectorAll(`.vol-btn-${box.id}`);
-    volBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const vol = btn.dataset.vol;
-        selectedVolumes[box.id] = vol;
-        const priceEl = document.getElementById(`price-${box.id}`);
-        const oldPriceEl = document.getElementById(`old-price-${box.id}`);
-        const sprayHintEl = document.getElementById(`spray-hint-${box.id}`);
+    const cardEl = document.getElementById(`card-${box.id}`);
+    if (!cardEl) return;
 
-        if (priceEl && box.prices && box.prices[vol]) {
-          priceEl.textContent = formatPrice(box.prices[vol]);
-        }
-        if (oldPriceEl) {
-          if (box.oldPrices && box.oldPrices[vol]) {
-            oldPriceEl.textContent = formatPrice(box.oldPrices[vol]);
-            oldPriceEl.style.display = 'inline';
-          } else {
-            oldPriceEl.style.display = 'none';
-          }
-        }
-        if (sprayHintEl && sprayHints[vol]) {
-          sprayHintEl.textContent = sprayHints[vol];
-        }
-
-        volBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        playChime(440);
-      });
+    cardEl.addEventListener('click', (e) => {
+      // If heart button was clicked, don't open modal
+      if (e.target.closest('.aroma-card-fav-btn')) {
+        return;
+      }
+      openProductModal(box.id);
+      playChime(520);
     });
 
-    // Add to cart button
-    const addBtn = grid.querySelector(`.add-cart-${box.id}`);
-    if (addBtn) {
-      addBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const availableVols = box.prices ? Object.keys(box.prices) : ['3ml'];
-        const vol = selectedVolumes[box.id] || availableVols[0];
-        addItemToCart(box, vol);
-        playChime(660);
-      });
-    }
-
-    // Modal triggers on card elements
-    const cardEl = document.getElementById(`card-${box.id}`);
-    if (cardEl) {
-      const modalOpeners = cardEl.querySelectorAll('.box-open-modal');
-      modalOpeners.forEach(opener => {
-        opener.addEventListener('click', (e) => {
-          e.stopPropagation();
+    cardEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (!e.target.closest('.aroma-card-fav-btn')) {
+          e.preventDefault();
           openProductModal(box.id);
           playChime(520);
-        });
-        opener.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openProductModal(box.id);
-            playChime(520);
-          }
-        });
+        }
+      }
+    });
+
+    const favBtn = cardEl.querySelector('.aroma-card-fav-btn');
+    if (favBtn) {
+      favBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleWishlist(box.id, e);
       });
     }
   });
 }
 
 window.toggleAromaBoxesExpanded = function() {
-  aromaBoxesExpanded = !aromaBoxesExpanded;
-  if (!aromaBoxesExpanded) {
-    currentBoxGender = 'all';
-    const filterBtns = document.querySelectorAll('.box-filter-bar .box-filter-btn');
-    filterBtns.forEach(btn => {
-      btn.classList.toggle('active', (btn.dataset.boxGender || 'all') === 'all');
-    });
-  }
   renderAromaBoxes();
-  playChime(aromaBoxesExpanded ? 580 : 440);
-  if (!aromaBoxesExpanded) {
-    const section = document.getElementById('aroma-boxes');
-    if (section) section.scrollIntoView({ behavior: 'smooth' });
-  }
 };
 
 window.setAromaBoxGenderFilter = function(gender) {
@@ -3648,6 +3656,20 @@ function updateWishlistBadges() {
       if (svg) {
         svg.style.fill = isFav ? '#6B1123' : 'none';
         svg.style.stroke = isFav ? '#6B1123' : 'currentColor';
+      }
+    }
+  });
+
+  document.querySelectorAll('.aroma-box-card').forEach(card => {
+    const pid = card.dataset.boxId;
+    const btn = card.querySelector('.aroma-card-fav-btn');
+    if (btn && pid) {
+      const isFav = list.includes(pid);
+      btn.classList.toggle('active', isFav);
+      const svg = btn.querySelector('svg');
+      if (svg) {
+        svg.setAttribute('fill', isFav ? '#812020' : 'none');
+        svg.setAttribute('stroke', isFav ? '#812020' : '#4A4543');
       }
     }
   });

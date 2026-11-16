@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#FAF8F5">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -24,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261116_12">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261116_13">
 </head>
 <body class="hero-cinematic-active">
 
@@ -253,6 +254,36 @@
           <button class="tab-btn" data-category="men">Мужские</button>
           <button class="tab-btn" data-category="unisex">Унисекс</button>
         </div>
+        <script>
+          (function() {
+            try {
+              var params = new URLSearchParams(window.location.search);
+              var cat = (params.get('category') || params.get('cat') || params.get('gender') || '').toLowerCase().trim();
+              if (!cat && window.location.hash) {
+                var h = window.location.hash.replace(/^#/, '').toLowerCase().trim();
+                if (h.indexOf('category=') === 0) cat = h.replace('category=', '');
+                else if (['women', 'men', 'unisex'].indexOf(h) !== -1) cat = h;
+              }
+              if (cat) {
+                var norm = cat;
+                if (/^(women|woman|female|женск)/.test(cat)) norm = 'women';
+                else if (/^(men|man|male|мужск)/.test(cat)) norm = 'men';
+                else if (/^(unisex|унисекс)/.test(cat)) norm = 'unisex';
+                var btns = document.querySelectorAll('.catalog-tabs .tab-btn');
+                var matched = false;
+                btns.forEach(function(b) {
+                  if (b.getAttribute('data-category') === norm) {
+                    b.classList.add('active');
+                    matched = true;
+                  } else {
+                    b.classList.remove('active');
+                  }
+                });
+                if (!matched && btns[0]) btns[0].classList.add('active');
+              }
+            } catch (_) {}
+          })();
+        </script>
 
         <div class="catalog-sub-filters">
           <div class="search-box">

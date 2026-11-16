@@ -1288,7 +1288,7 @@ function renderAromaBoxes() {
     // Format clean luxury title like odekolon-shop (Image 2)
     const rawName = (box.name || '').trim();
     const cleanName = rawName.toUpperCase().replace(/^СЕТ\s+/i, '').replace(/\s+СЕТ$/i, '');
-    const displayTitle = `AROMABOX | ${cleanName}`;
+    const displayTitle = `АРОМАБОКС | ${cleanName}`;
 
     return `
       <div class="aroma-box-card" id="card-${escapeHtml(box.id)}" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0">

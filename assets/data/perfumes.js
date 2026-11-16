@@ -11023,7 +11023,7 @@ var VOLODIUM_SITE_CONTENT = {
     "onlinePrice": "0 ₽",
     "onlineNote": "Входит в стоимость сета",
     "onlineImage": "assets/img/consultation/online_selection_infographic.jpg",
-    "offlineTitle": "Личная сессия в Москве",
+    "offlineTitle": "Личная встреча в Москве",
     "offlineSub": "Индивидуальный разбор гардероба с чемоданом на 150+ ароматов",
     "offlinePrice": "5 000 ₽",
     "offlineNote": "45–60 минут индивидуально",

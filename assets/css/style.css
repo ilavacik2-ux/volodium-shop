@@ -1422,11 +1422,20 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 /* ==========================================================================
-   Catalog & Filter Section
+   Catalog & Filter Section (Warm Alabaster / Luxury Paper Background)
    ========================================================================== */
 .catalog-section {
   position: relative;
-  background: var(--bg-page);
+  background: #F7F5F0;
+}
+
+.subpage-main {
+  background: #F7F5F0;
+}
+
+.subpage-breadcrumb-bar {
+  background: #F7F5F0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .catalog-controls {
@@ -1449,15 +1458,17 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   font-size: 0.88rem;
   font-weight: 500;
   border-radius: var(--radius-full);
-  color: var(--text-muted);
+  color: #38322D;
   background: #ffffff;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
   transition: all var(--transition-fast);
 }
 
 .tab-btn:hover {
   color: var(--bordo-primary);
-  border-color: var(--bordo-primary);
+  border-color: rgba(129, 32, 32, 0.35);
+  transform: translateY(-1px);
 }
 
 .tab-btn.active {
@@ -1474,8 +1485,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .search-box {
@@ -1488,12 +1499,13 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 .search-input {
   width: 100%;
   background: #ffffff;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-full);
   padding: 0.65rem 1rem 0.65rem 2.6rem;
   font-size: 0.88rem;
   color: var(--text-main);
   outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   transition: all var(--transition-fast);
 }
 
@@ -1513,13 +1525,14 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 .sort-select {
   background: #ffffff;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-full);
   padding: 0.65rem 1.25rem;
   font-size: 0.88rem;
   color: var(--text-main);
   outline: none;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   transition: all var(--transition-fast);
 }
 
@@ -1536,21 +1549,23 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 .perfume-card {
   background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-smooth);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
   position: relative;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 6px 22px -4px rgba(35, 25, 20, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .perfume-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(102, 0, 31, 0.2);
+  transform: translateY(-5px);
+  border-color: rgba(126, 34, 38, 0.25);
   background: #ffffff;
-  box-shadow: 0 16px 36px rgba(102, 0, 31, 0.08);
+  box-shadow: 0 20px 45px -10px rgba(126, 34, 38, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .card-badge {

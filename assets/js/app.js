@@ -563,7 +563,7 @@ function initMonroeIntro() {
   // Lock scroll while intro is playing on both html and body
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
-  document.body.style.backgroundColor = '#FAF8F5';
+  document.body.style.backgroundColor = '#FFFFFF';
 
   // Grace period: ignore accidental clicks and reload keystrokes (Cmd+R, Ctrl+R, F5)
   setTimeout(() => {
@@ -1293,7 +1293,7 @@ function renderAromaBoxes() {
     return `
       <div class="aroma-box-card" id="card-${escapeHtml(box.id)}" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0">
         <div class="aroma-box-img-wrap">
-          <img src="${escapeHtml(boxImg)}" alt="${escapeHtml(box.name)}" style="object-position: ${objPos};" loading="lazy" onerror="this.onerror=null;this.src='${escapeHtml(boxFallbackImg)}';">
+          <img src="${escapeHtml(boxImg)}" alt="${escapeHtml(box.name)}" style="object-position: ${objPos};" ${idx < 4 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'} decoding="async" onerror="this.onerror=null;this.src='${escapeHtml(boxFallbackImg)}';">
           
           <div class="aroma-box-badges-overlay">
             ${box.badge ? `<span class="aroma-pill-badge pill-hit">${escapeHtml(box.badge)}</span>` : ''}
@@ -1831,7 +1831,7 @@ function openProductModal(itemId) {
     <div class="modal-grid">
       <div class="modal-img-col">
         <img class="modal-main-img" src="${escapeHtml(safeImgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${safeObjPos};" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
-        <div style="background: #faf9f7; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+        <div style="background: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.8rem; color: var(--text-muted);">
           <div style="color: #111216; font-weight: 600; margin-bottom: 0.25rem;">Гарантия оригинальности</div>
           100% оригинальный парфюм из официального флакона бренда. Разливается в стерильные стеклянные атомайзеры с металлической помпой.
         </div>

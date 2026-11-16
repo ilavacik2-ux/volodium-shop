@@ -2209,8 +2209,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   width: 100%;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #fdfbf8;
-  border: 1px solid #ebdcd5;
+  background: #ffffff;
+  border: none;
 }
 
 .modal-box-img-wrap img {
@@ -2221,8 +2221,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 .modal-guarantee-card {
-  background: #faf9f6;
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-sm);
   padding: 1rem 1.15rem;
   margin-top: 1rem;
@@ -2286,8 +2286,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 .modal-box-description-block {
-  background: #faf8f5;
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-sm);
   padding: 1.1rem 1.25rem;
   margin-bottom: 1.25rem;
@@ -5330,8 +5330,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 /* Olfactory Pyramid Component */
 .pyramid-box {
-  background: #faf9f7;
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   margin: 1.5rem 0;
@@ -7317,7 +7317,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   .modal-box-img-wrap {
     max-height: 170px;
     border-radius: 12px;
-    background: #FAF8F5 !important;
+    background: #FFFFFF !important;
+    border: none !important;
   }
   .modal-box-img-wrap img {
     max-height: 170px;
@@ -7343,7 +7344,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     color: var(--bordo-primary, #812020) !important;
   }
   .modal-box-description-block {
-    background: #FAF8F5 !important;
+    background: #FFFFFF !important;
     border: 1px solid rgba(0, 0, 0, 0.08) !important;
     color: #111216 !important;
     padding: 0.65rem 0.85rem !important;

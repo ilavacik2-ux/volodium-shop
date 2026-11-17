@@ -2044,20 +2044,43 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 /* Content block */
 .aroma-box-content {
-  padding: 0.65rem 0.25rem 0;
+  padding: 0.75rem 0.35rem 0.2rem;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
+.aroma-box-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bordo-primary, #812020);
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
 .aroma-box-title {
   font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   color: #111216;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.35rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.aroma-box-desc {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  line-height: 1.38;
+  color: #7A7670;
+  margin: 0 0 0.65rem 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -2069,11 +2092,18 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   margin-top: auto;
   display: flex;
   align-items: baseline;
-  gap: 0.45rem;
+  gap: 0.3rem;
+  padding-top: 0.25rem;
+}
+
+.aroma-price-prefix {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #8C8A85;
 }
 
 .aroma-price-current {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #111216;
   letter-spacing: -0.01em;
@@ -7296,17 +7326,29 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     padding: 0.45rem 0.45rem 0.75rem !important;
     border-radius: 14px !important;
   }
-  .aroma-box-img-wrap {
-    aspect-ratio: 1 / 1 !important;
-    border-radius: 12px !important;
+  .aroma-box-content {
+    padding: 0.5rem 0.15rem 0 !important;
+  }
+  .aroma-box-kicker {
+    font-size: 0.58rem !important;
+    margin-bottom: 0.2rem !important;
   }
   .aroma-box-title {
-    font-size: 0.76rem !important;
-    line-height: 1.22 !important;
-    margin-bottom: 0.35rem !important;
+    font-size: 0.84rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .aroma-box-desc {
+    font-size: 0.68rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.45rem !important;
+    -webkit-line-clamp: 2 !important;
+  }
+  .aroma-price-prefix {
+    font-size: 0.75rem !important;
   }
   .aroma-price-current {
-    font-size: 0.86rem !important;
+    font-size: 0.92rem !important;
   }
 
   /* Aromabox Dedicated Modal Mobile Compactness */
@@ -12963,19 +13005,34 @@ button, a, input, select, textarea, [role="button"] {
     border-radius: 14px !important;
   }
 
-  .aroma-box-img-wrap {
-    aspect-ratio: 1 / 1 !important;
-    border-radius: 12px !important;
+  .aroma-box-content {
+    padding: 0.45rem 0.15rem 0 !important;
+  }
+
+  .aroma-box-kicker {
+    font-size: 0.56rem !important;
+    margin-bottom: 0.2rem !important;
   }
 
   .aroma-box-title {
-    font-size: 0.74rem !important;
-    line-height: 1.22 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .aroma-box-desc {
+    font-size: 0.66rem !important;
+    line-height: 1.28 !important;
     margin-bottom: 0.35rem !important;
+    -webkit-line-clamp: 2 !important;
+  }
+
+  .aroma-price-prefix {
+    font-size: 0.72rem !important;
   }
 
   .aroma-price-current {
-    font-size: 0.84rem !important;
+    font-size: 0.88rem !important;
   }
 
   .btn-expand-aromaboxes .bea-badge {

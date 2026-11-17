@@ -1319,10 +1319,29 @@ function renderAromaBoxes() {
     const objPos = escapeHtml(box.objectPosition || 'center center');
     const isFav = wishlist.includes(box.id);
 
-    // Format clean luxury title like odekolon-shop (Image 2)
     const rawName = (box.name || '').trim();
-    const cleanName = rawName.toUpperCase().replace(/^СЕТ\s+/i, '').replace(/\s+СЕТ$/i, '');
-    const displayTitle = `АРОМАБОКС | ${cleanName}`;
+    // Clean name: capitalize nicely instead of screaming uppercase
+    // E.g. "НЕцитрусовый сет для него" -> "Нецитрусовый сет"
+    let cleanTitle = rawName
+      .replace(/\s*\((для\s+нее|для\s+него|унисекс)\)\s*/gi, '')
+      .replace(/\s+для\s+(нее|него)\s*$/gi, '')
+      .trim();
+
+    // Format clean first letter uppercase, rest normal case if not brand name
+    if (cleanTitle.toLowerCase().startsWith('нецитрусовый')) {
+      cleanTitle = 'Нецитрусовый сет';
+    } else if (cleanTitle.toLowerCase().startsWith('самые «вкусные»')) {
+      cleanTitle = 'Самые «вкусные» ароматы';
+    } else if (cleanTitle.toLowerCase().startsWith('стойко, громко, ярко')) {
+      cleanTitle = 'Стойко, громко, ярко';
+    } else if (cleanTitle.toLowerCase().startsWith('знакомство с брендом')) {
+      // Keep brand as is e.g. "Знакомство с M.INT" or "Знакомство с Rudross"
+      cleanTitle = cleanTitle.replace(/знакомство с брендом/i, 'Знакомство с');
+    }
+
+    const genderLabel = (box.genderLabel || (box.gender === 'men' ? 'Для него' : (box.gender === 'women' ? 'Для нее' : 'Унисекс'))).toUpperCase();
+    const kicker = `АРОМАБОКС · ${genderLabel}`;
+    const subtitle = box.shortSubtitle || '';
 
     return `
       <div class="aroma-box-card" id="card-${escapeHtml(box.id)}" data-box-id="${escapeHtml(box.id)}" role="button" tabindex="0">
@@ -1332,7 +1351,6 @@ function renderAromaBoxes() {
           <div class="aroma-box-badges-overlay">
             ${box.badge ? `<span class="aroma-pill-badge pill-hit">${escapeHtml(box.badge)}</span>` : ''}
             ${discountPct ? `<span class="aroma-pill-badge pill-discount">-${discountPct}%</span>` : ''}
-            <span class="aroma-pill-badge pill-gender">${escapeHtml(box.genderLabel || 'Сет')}</span>
           </div>
 
           <button type="button" class="aroma-card-fav-btn ${isFav ? 'active' : ''}" data-box-id="${escapeHtml(box.id)}" aria-label="В избранное">
@@ -1343,9 +1361,12 @@ function renderAromaBoxes() {
         </div>
 
         <div class="aroma-box-content">
-          <h3 class="aroma-box-title" title="${escapeHtml(box.name)}">${escapeHtml(displayTitle)}</h3>
+          <span class="aroma-box-kicker">${escapeHtml(kicker)}</span>
+          <h3 class="aroma-box-title" title="${escapeHtml(box.name)}">${escapeHtml(cleanTitle)}</h3>
+          ${subtitle ? `<p class="aroma-box-desc">${escapeHtml(subtitle)}</p>` : ''}
           <div class="aroma-box-price-row">
-            <span class="aroma-price-current">${priceRangeStr}</span>
+            <span class="aroma-price-prefix">от</span>
+            <span class="aroma-price-current">${formatPrice(minPrice)}</span>
           </div>
         </div>
       </div>

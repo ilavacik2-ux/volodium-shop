@@ -261,7 +261,9 @@ function applySiteContent(sc) {
           const r = sc.reviews[i];
           if (!r) continue;
           const art = document.createElement('article');
-          art.className = 'review-editorial-card' + (!r.image ? ' rec-card--no-photo' : '');
+          const hasPhoto = Boolean(r.image);
+          art.className = 'review-editorial-card' + (!hasPhoto ? ' rec-card--no-photo' : '');
+          art.setAttribute('data-has-photo', hasPhoto ? 'true' : 'false');
           art.innerHTML = `
             <div class="rec-top">
               <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
@@ -271,10 +273,11 @@ function applySiteContent(sc) {
               <span class="rec-name">${r.name || ''}</span>
               <span class="rec-city">${r.city || 'Telegram отзыв'}</span>
             </div>
-            ${r.image ? `
+            <p class="rec-text">${r.text || ''}</p>
+            ${hasPhoto ? `
             <div class="rec-photo-thumb">
               <img src="${resolveSafeMediaUrl(r.image, '')}" alt="${r.name || ''}" loading="lazy" decoding="async" style="object-position: ${r.objectPosition || 'center 25%'};">
-            </div>` : ''}
+            </div>` : '<div class="rec-quote-badge" aria-hidden="true">“</div>'}
           `;
           grid.appendChild(art);
         }
@@ -292,23 +295,53 @@ function applySiteContent(sc) {
         if (city && r.city) city.textContent = r.city;
         const text = card.querySelector('.rec-text');
         if (text && r.text) text.textContent = r.text;
+        const hasPhoto = Boolean(r.image);
+        card.setAttribute('data-has-photo', hasPhoto ? 'true' : 'false');
         const thumb = card.querySelector('.rec-photo-thumb');
         if (thumb) {
           if (!r.image) {
             thumb.remove();
             card.classList.add('rec-card--no-photo');
+            if (!card.querySelector('.rec-quote-badge')) {
+              const q = document.createElement('div');
+              q.className = 'rec-quote-badge';
+              q.setAttribute('aria-hidden', 'true');
+              q.textContent = '“';
+              card.appendChild(q);
+            }
           } else {
             card.classList.remove('rec-card--no-photo');
+            const q = card.querySelector('.rec-quote-badge');
+            if (q) q.remove();
             const img = thumb.querySelector('img');
             if (img) {
               img.src = resolveSafeMediaUrl(r.image, img.getAttribute('src') || '');
               if (r.objectPosition) img.style.objectPosition = r.objectPosition;
             }
           }
-        } else if (!r.image) {
+        } else if (r.image) {
+          card.classList.remove('rec-card--no-photo');
+          const q = card.querySelector('.rec-quote-badge');
+          if (q) q.remove();
+          const newThumb = document.createElement('div');
+          newThumb.className = 'rec-photo-thumb';
+          newThumb.innerHTML = `<img src="${resolveSafeMediaUrl(r.image, '')}" alt="${r.name || ''}" loading="lazy" decoding="async" style="object-position: ${r.objectPosition || 'center 25%'};">`;
+          card.appendChild(newThumb);
+        } else {
           card.classList.add('rec-card--no-photo');
+          if (!card.querySelector('.rec-quote-badge')) {
+            const q = document.createElement('div');
+            q.className = 'rec-quote-badge';
+            q.setAttribute('aria-hidden', 'true');
+            q.textContent = '“';
+            card.appendChild(q);
+          }
         }
       });
+
+      if (typeof initReviewsFilter === 'function') {
+        initReviewsFilter();
+      }
     }
 
     // 5. Commerce Thresholds & Promo Codes
@@ -504,6 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCardPlaqueAnimations();
   initFloatingBackTop();
   initSecretBoxesCarousel();
+  initReviewsFilter();
   initReviewsCarousel();
 
   // Then hydrate live database state from backend API + listen for cross-tab studio updates
@@ -2815,60 +2849,134 @@ function initSecretBoxesCarousel() {
   }, { passive: true });
 }
 
+function initReviewsFilter() {
+  const filterBar = document.querySelector('.reviews-filter-bar');
+  const grid = document.querySelector('.reviews-editorial-grid');
+  if (!filterBar || !grid) return;
+
+  const buttons = filterBar.querySelectorAll('.reviews-filter-btn');
+  const cards = grid.querySelectorAll('.review-editorial-card');
+
+  let photoCount = 0;
+  let textCount = 0;
+
+  cards.forEach(card => {
+    const hasPhoto = card.getAttribute('data-has-photo') === 'true' || !!card.querySelector('.rec-photo-thumb');
+    card.setAttribute('data-has-photo', hasPhoto ? 'true' : 'false');
+    if (hasPhoto) photoCount++;
+    else textCount++;
+  });
+
+  const allCountBadge = filterBar.querySelector('[data-review-filter="all"] .rfb-count');
+  const photoCountBadge = filterBar.querySelector('[data-review-filter="photo"] .rfb-count');
+  const textCountBadge = filterBar.querySelector('[data-review-filter="text"] .rfb-count');
+  if (allCountBadge) allCountBadge.textContent = cards.length;
+  if (photoCountBadge) photoCountBadge.textContent = photoCount;
+  if (textCountBadge) textCountBadge.textContent = textCount;
+
+  buttons.forEach(btn => {
+    btn.onclick = () => {
+      const filter = btn.getAttribute('data-review-filter');
+      buttons.forEach(b => {
+        const isActive = b === btn;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      cards.forEach(card => {
+        const hasPhoto = card.getAttribute('data-has-photo') === 'true';
+        let show = true;
+        if (filter === 'photo') show = hasPhoto;
+        else if (filter === 'text') show = !hasPhoto;
+
+        if (show) {
+          card.classList.remove('rec-card--hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(12px)';
+          requestAnimationFrame(() => {
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+        } else {
+          card.classList.add('rec-card--hidden');
+        }
+      });
+
+      // Update mobile carousel dots & reset scroll
+      initReviewsCarousel();
+      grid.scrollTo({ left: 0, behavior: 'smooth' });
+    };
+  });
+}
+
 function initReviewsCarousel() {
   const grid = document.querySelector('.reviews-editorial-grid');
   if (!grid) return;
-  const cards = grid.querySelectorAll('.review-editorial-card');
+  const cards = Array.from(grid.querySelectorAll('.review-editorial-card')).filter(c => !c.classList.contains('rec-card--hidden'));
   const dotsNav = document.getElementById('reviewsDotsNav');
-  if (dotsNav && cards.length > 0) {
-    const currentDots = dotsNav.querySelectorAll('.reviews-dot');
-    if (currentDots.length !== cards.length) {
+
+  if (dotsNav) {
+    if (cards.length > 1) {
+      dotsNav.style.display = '';
       dotsNav.innerHTML = '';
       cards.forEach((_, idx) => {
         const dot = document.createElement('span');
         dot.className = 'reviews-dot' + (idx === 0 ? ' active' : '');
         dot.dataset.index = idx;
-        dotsNav.appendChild(dot);
-      });
-    }
-  }
-  const dots = document.querySelectorAll('.reviews-dot');
-  if (!dots.length) return;
-
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      if (cards[idx]) {
-        cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      }
-    });
-  });
-
-  let ticking = false;
-  grid.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const gridCenter = grid.scrollLeft + grid.clientWidth / 2;
-        let closestIndex = 0;
-        let minDistance = Infinity;
-
-        cards.forEach((card, idx) => {
-          const cardCenter = card.offsetLeft + card.clientWidth / 2;
-          const dist = Math.abs(gridCenter - cardCenter);
-          if (dist < minDistance) {
-            minDistance = dist;
-            closestIndex = idx;
+        dot.addEventListener('click', () => {
+          if (cards[idx]) {
+            cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
           }
         });
-
-        dots.forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === closestIndex);
-        });
-
-        ticking = false;
+        dotsNav.appendChild(dot);
       });
-      ticking = true;
+    } else {
+      dotsNav.innerHTML = '';
+      dotsNav.style.display = 'none';
+      return;
     }
-  }, { passive: true });
+  }
+
+  const dots = dotsNav ? dotsNav.querySelectorAll('.reviews-dot') : [];
+  if (!dots.length) return;
+
+  let ticking = false;
+  if (!grid._hasReviewsScrollListener) {
+    grid._hasReviewsScrollListener = true;
+    grid.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const visibleCards = Array.from(grid.querySelectorAll('.review-editorial-card')).filter(c => !c.classList.contains('rec-card--hidden'));
+          const currentDots = dotsNav ? dotsNav.querySelectorAll('.reviews-dot') : [];
+          if (!visibleCards.length || !currentDots.length) {
+            ticking = false;
+            return;
+          }
+
+          const gridCenter = grid.scrollLeft + grid.clientWidth / 2;
+          let closestIndex = 0;
+          let minDistance = Infinity;
+
+          visibleCards.forEach((card, idx) => {
+            const cardCenter = card.offsetLeft + card.clientWidth / 2;
+            const dist = Math.abs(gridCenter - cardCenter);
+            if (dist < minDistance) {
+              minDistance = dist;
+              closestIndex = idx;
+            }
+          });
+
+          currentDots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === closestIndex);
+          });
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
 }
 
 function initSmoothScroll() {

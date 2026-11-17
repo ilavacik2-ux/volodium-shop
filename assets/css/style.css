@@ -11329,6 +11329,75 @@ section[id],
   position: relative;
 }
 
+/* Reviews Filter Pills Bar */
+.reviews-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 2.25rem;
+  flex-wrap: wrap;
+}
+
+.reviews-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.15rem;
+  background: #ffffff;
+  color: #4A4D55;
+  border: 1px solid rgba(17, 18, 22, 0.1);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.reviews-filter-btn svg {
+  color: #8C8E96;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.reviews-filter-btn:hover {
+  color: #111216;
+  border-color: rgba(129, 32, 32, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(129, 32, 32, 0.06);
+}
+
+.reviews-filter-btn:hover svg {
+  color: var(--bordo-primary, #812020);
+}
+
+.reviews-filter-btn.active {
+  background: var(--bordo-primary, #812020);
+  color: #ffffff;
+  border-color: var(--bordo-primary, #812020);
+  box-shadow: 0 6px 18px rgba(129, 32, 32, 0.24);
+}
+
+.reviews-filter-btn.active svg {
+  color: #ffffff;
+}
+
+.reviews-filter-btn .rfb-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(17, 18, 22, 0.06);
+  color: inherit;
+  transition: background 0.2s ease;
+}
+
+.reviews-filter-btn.active .rfb-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
 .reviews-editorial-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11352,7 +11421,13 @@ section[id],
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-editorial-card.rec-card--hidden {
+  display: none !important;
 }
 
 .review-editorial-card:hover {
@@ -11361,24 +11436,51 @@ section[id],
   border-color: var(--bordo-primary, #812020);
 }
 
-.review-editorial-card:not(:has(.rec-photo-thumb)),
+/* Card Without Photo: Noble Editorial Quote Card */
 .review-editorial-card.rec-card--no-photo {
-  background: transparent;
-  box-shadow: none;
-  align-self: start;
+  background: #ffffff;
+  border: 1px solid rgba(17, 18, 22, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
 
-.review-editorial-card:not(:has(.rec-photo-thumb)):hover,
 .review-editorial-card.rec-card--no-photo:hover {
-  background: transparent;
-  box-shadow: none;
   border-color: var(--bordo-primary, #812020);
+  box-shadow: 0 16px 36px rgba(129, 32, 32, 0.08);
 }
 
-.review-editorial-card:not(:has(.rec-photo-thumb)) .rec-text,
 .review-editorial-card.rec-card--no-photo .rec-text {
-  margin-bottom: 0;
-  flex: none;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #33363F;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.rec-quote-badge {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 0.85rem;
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: rgba(129, 32, 32, 0.08);
+  pointer-events: none;
+  font-weight: 700;
+  user-select: none;
+  z-index: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.review-editorial-card.rec-card--no-photo:hover .rec-quote-badge {
+  color: rgba(129, 32, 32, 0.18);
+  transform: scale(1.08);
 }
 
 .rec-top {

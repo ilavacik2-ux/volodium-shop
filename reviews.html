@@ -250,23 +250,33 @@
         </p>
       </div>
 
+      <!-- Reviews Filter Pills: Все / С фото распаковок / Текстовые -->
+      <div class="reviews-filter-bar" role="tablist" aria-label="Фильтрация отзывов">
+        <button type="button" class="reviews-filter-btn active" data-review-filter="all" role="tab" aria-selected="true">
+          <span>Все впечатления</span>
+          <span class="rfb-count">7</span>
+        </button>
+        <button type="button" class="reviews-filter-btn" data-review-filter="photo" role="tab" aria-selected="false">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          <span>С фото распаковок</span>
+          <span class="rfb-count">4</span>
+        </button>
+        <button type="button" class="reviews-filter-btn" data-review-filter="text" role="tab" aria-selected="false">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span>Текстовые отзывы</span>
+          <span class="rfb-count">3</span>
+        </button>
+      </div>
+
       <!-- Symmetrical Haute Parfumerie Review Gallery (Real Telegram Feedback) -->
       <div class="reviews-editorial-grid">
-        <article class="review-editorial-card rec-card--no-photo">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Аромабокс</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Kirill Belov</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Арома-бокс приехал, всё дошло в идеальном состоянии — упаковано с душой и вниманием к деталям. Спасибо за атмосферу, которую создаёшь! Парфюмы с порога заявили о себе — всё в моём духе. Рад, что выбрал тебя! Отдельное спасибо за секретный ништячок Al Thaïr!»
-          </p>
-        </article>
-
-        <article class="review-editorial-card">
+        <!-- 1. Юлианна (с фото) -->
+        <article class="review-editorial-card" data-has-photo="true">
           <div class="rec-top">
             <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
             <span class="rec-tag">Подбор вслепую</span>
@@ -283,7 +293,8 @@
           </div>
         </article>
 
-        <article class="review-editorial-card">
+        <!-- 2. Екатерина (с фото) -->
+        <article class="review-editorial-card" data-has-photo="true">
           <div class="rec-top">
             <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
             <span class="rec-tag">Подарочный бокс</span>
@@ -300,7 +311,8 @@
           </div>
         </article>
 
-        <article class="review-editorial-card">
+        <!-- 3. Анастасия (с фото) -->
+        <article class="review-editorial-card" data-has-photo="true">
           <div class="rec-top">
             <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
             <span class="rec-tag">Boss Unlimited & Сет</span>
@@ -317,35 +329,8 @@
           </div>
         </article>
 
-        <article class="review-editorial-card rec-card--no-photo">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Распаковка & Подарки</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Максим</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Привет! Все получил, да еще и 2 подарочка 🔥 Ультра доволен, есть как культовые ароматы по типу Альтаира, Ангела, так и варианты на попробовать. От души еще раз, спасибо! ♥️»
-          </p>
-        </article>
-
-        <article class="review-editorial-card rec-card--no-photo">
-          <div class="rec-top">
-            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <span class="rec-tag">Парфюмерный гардероб</span>
-          </div>
-          <div class="rec-client">
-            <span class="rec-name">Ксения</span>
-            <span class="rec-city">Telegram отзыв</span>
-          </div>
-          <p class="rec-text">
-            «Вова, спасибо тебе! Вспоминаю, как впервые попала на консультацию, думая, что мне мало что интересно. А потом провела инвентаризацию: это настоящее исследование себя через мир ароматов и поиск своего образа. Спасибо за это путешествие!»
-          </p>
-        </article>
-
-        <article class="review-editorial-card">
+        <!-- 4. Никита (с фото) -->
+        <article class="review-editorial-card" data-has-photo="true">
           <div class="rec-top">
             <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
             <span class="rec-tag">Личный подбор</span>
@@ -360,6 +345,54 @@
           <div class="rec-photo-thumb">
             <img src="assets/img/reviews/review_nikita_consult.jpg" alt="Очный разбор парфюмерного гардероба с Никитой — подбор из чемодана на 150+ ароматов" loading="lazy" decoding="async" style="object-position: center 20%;">
           </div>
+        </article>
+
+        <!-- 5. Kirill Belov (текстовый) -->
+        <article class="review-editorial-card rec-card--no-photo" data-has-photo="false">
+          <div class="rec-top">
+            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <span class="rec-tag">Аромабокс</span>
+          </div>
+          <div class="rec-client">
+            <span class="rec-name">Kirill Belov</span>
+            <span class="rec-city">Telegram отзыв</span>
+          </div>
+          <p class="rec-text">
+            «Арома-бокс приехал, всё дошло в идеальном состоянии — упаковано с душой и вниманием к деталям. Спасибо за атмосферу, которую создаёшь! Парфюмы с порога заявили о себе — всё в моём духе. Рад, что выбрал тебя! Отдельное спасибо за секретный ништячок Al Thaïr!»
+          </p>
+          <div class="rec-quote-badge" aria-hidden="true">“</div>
+        </article>
+
+        <!-- 6. Максим (текстовый) -->
+        <article class="review-editorial-card rec-card--no-photo" data-has-photo="false">
+          <div class="rec-top">
+            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <span class="rec-tag">Распаковка & Подарки</span>
+          </div>
+          <div class="rec-client">
+            <span class="rec-name">Максим</span>
+            <span class="rec-city">Telegram отзыв</span>
+          </div>
+          <p class="rec-text">
+            «Привет! Все получил, да еще и 2 подарочка 🔥 Ультра доволен, есть как культовые ароматы по типу Альтаира, Ангела, так и варианты на попробовать. От души еще раз, спасибо! ♥️»
+          </p>
+          <div class="rec-quote-badge" aria-hidden="true">“</div>
+        </article>
+
+        <!-- 7. Ксения (текстовый) -->
+        <article class="review-editorial-card rec-card--no-photo" data-has-photo="false">
+          <div class="rec-top">
+            <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+            <span class="rec-tag">Парфюмерный гардероб</span>
+          </div>
+          <div class="rec-client">
+            <span class="rec-name">Ксения</span>
+            <span class="rec-city">Telegram отзыв</span>
+          </div>
+          <p class="rec-text">
+            «Вова, спасибо тебе! Вспоминаю, как впервые попала на консультацию, думая, что мне мало что интересно. А потом провела инвентаризацию: это настоящее исследование себя через мир ароматов и поиск своего образа. Спасибо за это путешествие!»
+          </p>
+          <div class="rec-quote-badge" aria-hidden="true">“</div>
         </article>
       </div>
 

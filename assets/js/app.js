@@ -1339,7 +1339,8 @@ function renderAromaBoxes() {
       cleanTitle = cleanTitle.replace(/знакомство с брендом/i, 'Знакомство с');
     }
 
-    const genderLabel = (box.genderLabel || (box.gender === 'men' ? 'Для него' : (box.gender === 'women' ? 'Для нее' : 'Унисекс'))).toUpperCase();
+    const normalizedGenderLabel = box.gender === 'men' ? 'Для мужчины' : (box.gender === 'women' ? 'Для женщины' : 'Унисекс');
+    const genderLabel = normalizedGenderLabel.toUpperCase();
     const kicker = `АРОМАБОКС · ${genderLabel}`;
     const subtitle = box.shortSubtitle || '';
 

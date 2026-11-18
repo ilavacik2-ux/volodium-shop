@@ -203,9 +203,19 @@ function applySiteContent(sc) {
 
       const titleEl = document.querySelector('#hero .hero-brand-title');
       if (titleEl && h.title) {
-        titleEl.innerHTML = escapeHtml(h.title).replace(/\n/g, '<br>');
+        const raw = h.title.trim();
+        if (raw.includes('<span') || raw.includes('<strong>')) {
+          titleEl.innerHTML = raw;
+        } else {
+          const lines = raw.split(/\r?\n/).filter(Boolean);
+          if (lines.length >= 2) {
+            titleEl.innerHTML = `<span class="hero-title-thin">${escapeHtml(lines[0])}</span><br><span class="hero-title-bold">${escapeHtml(lines.slice(1).join(' '))}</span>`;
+          } else {
+            titleEl.innerHTML = `<span class="hero-title-bold">${escapeHtml(raw)}</span>`;
+          }
+        }
       } else if (titleEl && (h.titleLine || h.titleAccent)) {
-        titleEl.innerHTML = `${escapeHtml(h.titleLine || '')}<br>${escapeHtml(h.titleAccent || '')}`;
+        titleEl.innerHTML = `<span class="hero-title-thin">${escapeHtml(h.titleLine || '')}</span><br><span class="hero-title-bold">${escapeHtml(h.titleAccent || '')}</span>`;
       }
 
       const heroDesc = document.querySelector('#hero .hero-brand-sub, #hero .hero-description');
@@ -1610,6 +1620,24 @@ function updateCardPrice(itemId, vol) {
   }
 }
 
+/* Format Editorial Perfume Description (Bold olfactory notes headings & light narrative) */
+function formatPerfumeDescription(desc) {
+  if (!desc) return '';
+  const escaped = escapeHtml(desc);
+  const formatted = escaped.replace(
+    /(^|\n)(Верхние\s+ноты(?:\s*\([^)]+\))?|Верхняя\s+нота|Средние\s+ноты(?:\s*\([^)]+\))?|Ноты\s+сердца(?:\s*\([^)]+\))?|Нота\s+сердца|Базовые\s+ноты(?:\s*\([^)]+\))?|Базовая\s+нота|Базовая\s+основа|База|Сердце|Основные\s+ноты|Пирамида\s+нот|Ноты\s+аромата|Категория\s+ароматов|Группа\s+ароматов|Семейство(?:\s+ароматов)?|Стойкость(?:\s+и\s+шлейф)?|Шлейф|Концентрация|Для\s+кого(?:\s+и\s+когда)?|Для\s+каких\s+случаев(?:\s+подойд[её]т)?|Когда\s+и\s+где\s+носить|Сезонность|Сезон|Концепция|Звучание|Характер|Образ|Аромат)(:)/g,
+    '$1<strong class="desc-note-heading">$2$3</strong>'
+  );
+
+  const paragraphs = formatted
+    .split(/\n\s*\n/)
+    .map(p => p.trim())
+    .filter(Boolean)
+    .map(p => `<p class="modal-desc-p">${p.replace(/\n/g, '<br>')}</p>`);
+
+  return `<div class="modal-editorial-desc">${paragraphs.join('')}</div>`;
+}
+
 /* ==========================================================================
    3. Olfactory Pyramid & Product Details Modal
    ========================================================================== */
@@ -1897,9 +1925,7 @@ function openProductModal(itemId) {
         <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; color: #111216; margin-bottom: 0.4rem;">${escapeHtml(item.name)}</h2>
         <p style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 1.25rem;">${escapeHtml(item.subtitle || '')}</p>
         
-        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; white-space: pre-line;">
-          ${escapeHtml(item.description || '')}
-        </p>
+        ${formatPerfumeDescription(item.description)}
 
         ${olfactoryProfileHtml}
         ${volumeOptionsHtml}

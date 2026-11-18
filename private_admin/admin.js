@@ -1615,7 +1615,7 @@
       $('lhsBadge').textContent = $('scHeroBadge').value.trim() || 'VOLODIUM PARFUM';
     }
     if ($('lhsTitleLine') && $('scHeroTitleLine')) {
-      const rawTitle = $('scHeroTitleLine').value.trim() || 'ПАРФЮМЕРИЯ —\nЭТО БОЛЬШЕ,\nЧЕМ АРОМАТ';
+      const rawTitle = $('scHeroTitleLine').value.trim() || 'СОБЕРЕМ ТВОЙ\nПАРФЮМЕРНЫЙ ГАРДЕРОБ';
       $('lhsTitleLine').innerHTML = esc(rawTitle).replace(/\n/g, '<br>');
     }
     if ($('lhsDesc') && $('scHeroDesc')) {
@@ -1641,7 +1641,7 @@
     const consult = sc.consultation || {};
 
     if ($('scHeroBadge')) $('scHeroBadge').value = hero.eyebrow || hero.badge || 'VOLODIUM PARFUM';
-    if ($('scHeroTitleLine')) $('scHeroTitleLine').value = hero.title || hero.titleLine || 'ПАРФЮМЕРИЯ —\nЭТО БОЛЬШЕ,\nЧЕМ АРОМАТ';
+    if ($('scHeroTitleLine')) $('scHeroTitleLine').value = hero.title || hero.titleLine || 'СОБЕРЕМ ТВОЙ\nПАРФЮМЕРНЫЙ ГАРДЕРОБ';
     if ($('scHeroDesc')) $('scHeroDesc').value = hero.description || '';
     if ($('scCtaCatalog')) $('scCtaCatalog').value = hero.ctaCatalogText || 'Каталог ароматов';
     if ($('scCtaQuiz')) $('scCtaQuiz').value = hero.ctaQuizText || 'Подобрать аромат';

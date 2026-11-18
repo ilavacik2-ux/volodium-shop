@@ -5358,6 +5358,31 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   border: none !important;
 }
 
+/* Editorial Perfume Modal Description */
+.modal-editorial-desc {
+  margin-bottom: 1.5rem;
+}
+
+.modal-desc-p {
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 350;
+  line-height: 1.68;
+  color: #383533;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.005em;
+}
+
+.modal-desc-p:last-child {
+  margin-bottom: 0;
+}
+
+.desc-note-heading {
+  font-weight: 700;
+  color: #111216;
+  letter-spacing: 0.01em;
+}
+
 /* Olfactory Pyramid Component */
 .pyramid-box {
   background: #ffffff;
@@ -8430,15 +8455,16 @@ section[id],
   transform: translateX(2px);
 }
 
-/* Drawer Footer (Pinned Bottom) */
+/* Drawer Action Wrap (in scroll flow) */
+.v-drawer-action-wrap {
+  margin-top: 0.85rem;
+  padding-top: 0.25rem;
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 16px));
+}
+
+/* Obsolete pinned footer hidden */
 .v-drawer-footer {
-  padding: 1.15rem 1.45rem calc(1.15rem + env(safe-area-inset-bottom, 0px));
-  border-top: 1px solid rgba(17, 18, 22, 0.08);
-  background: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  flex-shrink: 0;
+  display: none !important;
 }
 
 .v-drawer-tg-btn {
@@ -13633,13 +13659,26 @@ body.hero-cinematic-active .header .trigger-cart svg {
 
 .hero-brand-title {
   font-family: 'Inter Tight', sans-serif;
-  font-size: clamp(1.5rem, 4.2vw, 2.9rem);
-  font-weight: 300;
-  line-height: 1.18;
-  letter-spacing: 0.04em;
+  font-size: clamp(1.5rem, 3.8vw, 2.85rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
   color: #111216;
   text-transform: uppercase;
   margin-bottom: 0.85rem;
+}
+
+.hero-title-thin {
+  font-weight: 300;
+  letter-spacing: 0.07em;
+  color: #383432;
+  display: inline-block;
+}
+
+.hero-title-bold {
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #111216;
+  display: inline-block;
 }
 
 .hero-brand-sub {
@@ -14653,12 +14692,23 @@ body.hero-cinematic-active .header .trigger-cart svg {
   }
   
   .hero-brand-title {
-    font-size: 1.35rem;
-    line-height: 1.18;
+    font-size: 1.38rem;
+    line-height: 1.2;
     margin-bottom: 0.55rem;
     color: #1A1615;
-    font-weight: 500;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
+  }
+  
+  .hero-title-thin {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #383230;
+  }
+
+  .hero-title-bold {
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #111216;
   }
   
   .hero-brand-sub {

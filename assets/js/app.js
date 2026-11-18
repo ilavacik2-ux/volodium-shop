@@ -219,7 +219,16 @@ function applySiteContent(sc) {
       }
 
       const heroDesc = document.querySelector('#hero .hero-brand-sub, #hero .hero-description');
-      if (heroDesc && h.description != null) heroDesc.textContent = h.description;
+      if (heroDesc && h.description != null) {
+        const rawDesc = h.description.trim();
+        if (rawDesc.includes('<br>') || rawDesc.includes('<span>') || rawDesc.includes('<strong>')) {
+          heroDesc.innerHTML = rawDesc;
+        } else if (rawDesc.includes('\n')) {
+          heroDesc.innerHTML = rawDesc.split(/\r?\n/).map(l => escapeHtml(l.trim())).filter(Boolean).join('<br>');
+        } else {
+          heroDesc.textContent = rawDesc;
+        }
+      }
 
       const ctaCat = document.querySelector('#hero .btn-hero-burgundy span:first-child, #hero .hero-actions a[href*="catalog"] span');
       if (ctaCat && h.ctaCatalogText) ctaCat.textContent = h.ctaCatalogText;
@@ -246,7 +255,15 @@ function applySiteContent(sc) {
         if (h3 && c.onlineTitle != null) h3.textContent = c.onlineTitle;
         if (sub && c.onlineSub != null) sub.textContent = c.onlineSub;
         if (pr && c.onlinePrice != null) pr.textContent = c.onlinePrice;
-        if (note && c.onlineNote != null) note.textContent = c.onlineNote;
+        if (note) {
+          if (c.onlineNote) {
+            note.textContent = c.onlineNote;
+            note.style.display = '';
+          } else {
+            note.textContent = '';
+            note.style.display = 'none';
+          }
+        }
       }
       if (cards[1]) {
         const img = cards[1].querySelector('.method-card-media img');
@@ -3213,7 +3230,8 @@ const quizState = {
   families: ['Белоцветочные', 'Древесные & Уд'],
   name: '',
   telegram: '',
-  tabooCustom: ''
+  tabooCustom: '',
+  budget: ''
 };
 
 function initQuiz() {
@@ -3297,6 +3315,8 @@ function initQuiz() {
     quizState.telegram = tgInput ? tgInput.value.trim() : '';
     const tabooInput = document.getElementById('quizTabooCustom');
     quizState.tabooCustom = tabooInput ? tabooInput.value.trim() : '';
+    const budgetInput = document.getElementById('quizBudget');
+    quizState.budget = budgetInput ? budgetInput.value.trim() : '';
 
     // Populate result card summary items
     const elGender = document.getElementById('resSummaryGender');
@@ -3305,6 +3325,7 @@ function initQuiz() {
     const elSillage = document.getElementById('resSummarySillage');
     const elSweetness = document.getElementById('resSummarySweetness');
     const elFamilies = document.getElementById('resSummaryFamilies');
+    const elBudget = document.getElementById('resSummaryBudget');
     const elTitle = document.getElementById('quizSummaryTitle');
 
     if (elGender) elGender.textContent = quizState.gender;
@@ -3313,6 +3334,7 @@ function initQuiz() {
     if (elSillage) elSillage.textContent = quizState.sillage;
     if (elSweetness) elSweetness.textContent = quizState.sweetness;
     if (elFamilies) elFamilies.textContent = quizState.families.length > 0 ? quizState.families.join(', ') : 'Индивидуально';
+    if (elBudget) elBudget.textContent = quizState.budget || 'Любой комфортный';
     if (elTitle) elTitle.textContent = `Карта звучания для ${quizState.name}`;
 
     goToQuizStep(8);
@@ -3382,6 +3404,7 @@ function collectQuizData() {
   const name = document.getElementById('quizName')?.value.trim() || quizState.name || 'Гость';
   const telegram = document.getElementById('quizTelegram')?.value.trim() || quizState.telegram || '';
   const taboo = document.getElementById('quizTabooCustom')?.value.trim() || quizState.tabooCustom || 'Нет табу';
+  const budget = document.getElementById('quizBudget')?.value.trim() || quizState.budget || '';
 
   return {
     name,
@@ -3392,6 +3415,7 @@ function collectQuizData() {
     sweetness: sweetnessEl?.dataset.val || quizState.sweetness,
     families: familyEls.length > 0 ? familyEls : quizState.families,
     taboo,
+    budget,
     telegram
   };
 }
@@ -3417,6 +3441,7 @@ window.submitQuizToTelegram = function() {
     `🍬 *Сладость:* ${data.sweetness}`,
     `🌸 *Любимые семейства нот:* ${data.families.join(', ')}`,
     `🚫 *Ноты-табу (исключить):* ${data.taboo}`,
+    `💰 *Бюджет на аромабокс/аромат:* ${data.budget || 'Не указан'}`,
     ``,
     `📱 *Контакт:* ${data.telegram}`
   ];
@@ -3454,8 +3479,8 @@ window.attachQuizToSecretBox = function() {
    ========================================================================== */
 let certState = {
   format: 'digital', // 'digital' or 'physical'
-  recipient: 'Алисе',
-  amount: 5000,
+  recipient: '',
+  amount: 10000,
   serviceKey: 'consultation',
   serviceTitle: 'Индивидуальный парфюмерный гардероб',
   greeting: '',
@@ -3544,10 +3569,10 @@ function initCertificates() {
   const recipientInput = document.getElementById('certRecipientInput');
   if (recipientInput) {
     recipientInput.addEventListener('input', (e) => {
-      const val = e.target.value.trim() || 'Для тебя';
+      const val = e.target.value.trim();
       certState.recipient = val;
       const displayEl = document.getElementById('certLiveRecipient');
-      if (displayEl) displayEl.textContent = val;
+      if (displayEl) displayEl.textContent = val || 'Для тебя';
     });
   }
 
@@ -3613,14 +3638,14 @@ function initCertificates() {
     const greeting = document.getElementById('certGreetingInput')?.value.trim() || '';
     const certItem = {
       id: `cert-${Date.now()}`,
-      name: `Подарочный сертификат «${certState.recipient}»`,
+      name: certState.recipient ? `Подарочный сертификат «${certState.recipient}»` : 'Подарочный сертификат Volodium',
       brand: 'VOLODIUM PARFUM',
       category: 'certificate',
       price: certState.amount,
       prices: { standard: certState.amount },
       image: 'assets/img/certificates/cert_vladimir_official.jpg',
       format: certState.format === 'digital' ? 'Электронный' : 'Фирменный тубус с сургучом',
-      recipient: certState.recipient,
+      recipient: certState.recipient || 'Для близкого человека',
       service: certState.serviceTitle,
       greeting: greeting,
       code: certState.code
@@ -3638,7 +3663,7 @@ function initCertificates() {
     const text = [
       `🎁 *ЗАКАЗ ПОДАРОЧНОГО СЕРТИФИКАТА VOLODIUM* 🎁`,
       ``,
-      `👤 *Кому:* ${certState.recipient}`,
+      `👤 *Кому:* ${certState.recipient || 'Для близкого человека'}`,
       `💰 *Сумма депозита:* ${formatPrice(certState.amount)}`,
       `📦 *Формат:* ${fmtLabel}`,
       `🎯 *На услугу:* ${certState.serviceTitle}`,

@@ -10991,10 +10991,10 @@ var VOLODIUM_SITE_CONTENT = {
   "hero": {
     "eyebrow": "VOLODIUM PARFUM",
     "badge": "VOLODIUM PARFUM",
-    "title": "Парфюмерия —\nэто больше,\nчем аромат",
-    "titleLine": "Парфюмерия —\nэто больше,\nчем аромат",
+    "title": "СОБЕРЕМ ТВОЙ\nПАРФЮМЕРНЫЙ ГАРДЕРОБ",
+    "titleLine": "СОБЕРЕМ ТВОЙ\nПАРФЮМЕРНЫЙ ГАРДЕРОБ",
     "titleAccent": "",
-    "description": "Оригинальная нишевая парфюмерия во флаконах и на распив. Более 500 ароматов от мировых брендов с доставкой по всей России.",
+    "description": "Оригинальная нишевая парфюмерия от миниатюры (распив) 3 мл до полноценного флакона (под заказ напрямую от поставщиков).\nВладимир делится личной парфюмерной коллекцией, чтобы показать вам многогранный мир ароматов.",
     "ctaCatalogText": "Каталог ароматов",
     "ctaQuizText": "Подобрать аромат",
     "boxImage": "assets/images/volodium_box_stones.jpg",
@@ -11021,16 +11021,16 @@ var VOLODIUM_SITE_CONTENT = {
     "onlineTitle": "Подбор по парфюмерной анкете",
     "onlineSub": "Персональный разбор ольфакторного профиля за 1 минуту",
     "onlinePrice": "0 ₽",
-    "onlineNote": "Входит в стоимость сета",
-    "onlineImage": "assets/img/consultation/online_selection_infographic.jpg",
+    "onlineNote": "",
+    "onlineImage": "assets/img/aromaboxes/secret_box_obsession.jpg",
     "offlineTitle": "Личная встреча в Москве",
     "offlineSub": "Индивидуальный разбор гардероба с чемоданом на 150+ ароматов",
     "offlinePrice": "5 000 ₽",
-    "offlineNote": "45–60 минут индивидуально",
+    "offlineNote": "45–60 минут примерное время подбора",
     "offlineImage": "assets/img/consultation/consult_offline_suitcase_enhanced.jpg"
   },
   "commerce": {
-    "minOrderThreshold": 3000,
+    "minOrderThreshold": 3500,
     "freeDeliveryThreshold": 5000,
     "promoCodes": [
       {
@@ -11111,7 +11111,7 @@ var VOLODIUM_SITE_CONTENT = {
       "name": "Kirill Belov",
       "city": "Telegram отзыв",
       "tag": "Аромабокс",
-      "text": "«Арома-бокс приехал, всё дошло в идеальном состоянии — упаковано с душой и вниманием к деталям. Спасибо за атмосферу, которую создаёшь! Парфюмы с порога заявили о себе — всё в моём духе. Рад, что выбрал тебя! Отдельное спасибо за секретный ништячок Al Thaïr!»",
+      "text": "«Аромабокс приехал, всё дошло в идеальном состоянии — упаковано с душой и вниманием к деталям. Спасибо за атмосферу, которую создаёшь! Парфюмы с порога заявили о себе — всё в моём духе. Рад, что выбрал тебя! Отдельное спасибо за секретный ништячок Althair!»",
       "image": "",
       "objectPosition": "center 25%"
     },

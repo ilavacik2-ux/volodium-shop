@@ -276,16 +276,16 @@
               </div>
 
               <div class="quiz-tactile-grid" data-question="gender">
-                <button type="button" class="quiz-tactile-card selected" data-val="Девушке / Женщине">
+                <button type="button" class="quiz-tactile-card selected" data-val="Для женщины">
                   <span class="qtc-icon">🌸</span>
                   <div class="qtc-body">
-                    <span class="qtc-title">Для девушки / женщины</span>
+                    <span class="qtc-title">Для женщины</span>
                     <span class="qtc-desc">Феминный профиль: чувственные цветы, утонченный шлейф, женственность и нежность</span>
                   </div>
                   <span class="qtc-check" aria-hidden="true">✓</span>
                 </button>
 
-                <button type="button" class="quiz-tactile-card" data-val="Мужчине">
+                <button type="button" class="quiz-tactile-card" data-val="Для мужчины">
                   <span class="qtc-icon">🎩</span>
                   <div class="qtc-body">
                     <span class="qtc-title">Для мужчины</span>
@@ -294,10 +294,10 @@
                   <span class="qtc-check" aria-hidden="true">✓</span>
                 </button>
 
-                <button type="button" class="quiz-tactile-card" data-val="Чистый Унисекс / Ниша">
+                <button type="button" class="quiz-tactile-card" data-val="Унисекс">
                   <span class="qtc-icon">⚖️</span>
                   <div class="qtc-body">
-                    <span class="qtc-title">Чистый Унисекс / Ниша</span>
+                    <span class="qtc-title">Унисекс</span>
                     <span class="qtc-desc">Вне рамок и гендера: концептуальная нишевая парфюмерия для истинных ценителей</span>
                   </div>
                   <span class="qtc-check" aria-hidden="true">✓</span>
@@ -471,7 +471,6 @@
                 </div>
 
                 <div class="quiz-sillage-card selected" data-val="Интеллигентный шлейф (2.0 м)">
-                  <div class="qsc-recommend-tag">ВЫБОР ВЛАДИМИРА</div>
                   <div class="qsc-radar-indicator">
                     <span class="qsc-radar-circle circle-3"></span>
                     <span class="qsc-radar-circle circle-2"></span>
@@ -674,6 +673,11 @@
                 </div>
 
                 <div class="quiz-field-group">
+                  <label for="quizBudget" class="quiz-field-label">Ваш бюджет на аромабокс/аромат</label>
+                  <input type="text" id="quizBudget" class="quiz-text-input" placeholder="Например: до 5 000 ₽, 10 000 ₽ или комфортная сумма">
+                </div>
+
+                <div class="quiz-field-group">
                   <label for="quizTabooCustom" class="quiz-field-label">Стоп-ноты и табу (необязательно)</label>
                   <input type="text" id="quizTabooCustom" class="quiz-text-input" placeholder="Например: не люблю розу, резкий ладан или мускус">
                 </div>
@@ -709,7 +713,7 @@
                 <div class="qrc-summary-grid">
                   <div class="qrc-summary-item">
                     <span class="qrc-item-label">ПРОФИЛЬ:</span>
-                    <span class="qrc-item-val" id="resSummaryGender">Чистый Унисекс</span>
+                    <span class="qrc-item-val" id="resSummaryGender">Для женщины</span>
                   </div>
                   <div class="qrc-summary-item">
                     <span class="qrc-item-label">ПОВОД:</span>
@@ -730,6 +734,10 @@
                   <div class="qrc-summary-item">
                     <span class="qrc-item-label">АККОРДЫ:</span>
                     <span class="qrc-item-val" id="resSummaryFamilies">Белоцветочные, Древесные</span>
+                  </div>
+                  <div class="qrc-summary-item">
+                    <span class="qrc-item-label">БЮДЖЕТ:</span>
+                    <span class="qrc-item-val" id="resSummaryBudget">Любой комфортный</span>
                   </div>
                 </div>
 
@@ -774,7 +782,7 @@
     <div class="container">
             <div class="footer-wrap">
         <div class="footer-social-links">
-          <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="footer-channel-badge" title="TG Канал эксперта @vatsiik" aria-label="TG Канал эксперта">
+          <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="footer-channel-badge" title="TG канал эксперта @vatsiik" aria-label="TG канал эксперта">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.943z"/>
             </svg>
@@ -811,7 +819,7 @@
                 <a href="https://vk.ru/volodya_v_v" target="_blank" rel="noopener noreferrer" class="fc-val">vk.ru/volodya_v_v</a>
               </div>
               <div class="footer-contact-row">
-                <span class="fc-label">TG Канал эксперта:</span>
+                <span class="fc-label">TG канал эксперта:</span>
                 <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="fc-val">@vatsiik</a>
               </div>
               <div class="footer-contact-row">

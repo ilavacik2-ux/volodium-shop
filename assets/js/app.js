@@ -3205,7 +3205,7 @@ window.switchCardPreview = switchCardPreview;
    ========================================================================== */
 let currentQuizStep = 1;
 const quizState = {
-  gender: 'Девушке / Женщине',
+  gender: 'Для женщины',
   occasion: 'Каждый день & Офис',
   vibe: 'Чувственность & Магнетизм',
   sillage: 'Интеллигентный шлейф (2.0 м)',

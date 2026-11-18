@@ -13658,12 +13658,13 @@ body.hero-cinematic-active .header .trigger-cart svg {
 }
 
 .hero-brand-title {
-  font-family: 'Inter Tight', sans-serif;
-  font-size: clamp(1.5rem, 3.8vw, 2.85rem);
-  line-height: 1.15;
-  letter-spacing: 0.02em;
+  font-family: 'Inter Tight', var(--font-sans), sans-serif;
+  font-size: clamp(1.65rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -0.015em;
   color: #111216;
-  text-transform: uppercase;
+  text-transform: none;
   margin-bottom: 0.85rem;
 }
 
@@ -14692,11 +14693,13 @@ body.hero-cinematic-active .header .trigger-cart svg {
   }
   
   .hero-brand-title {
-    font-size: 1.38rem;
+    font-size: 1.45rem;
     line-height: 1.2;
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.6rem;
     color: #1A1615;
-    letter-spacing: 0.02em;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    text-transform: none;
   }
   
   .hero-title-thin {

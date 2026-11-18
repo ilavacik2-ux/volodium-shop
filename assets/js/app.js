@@ -2653,8 +2653,15 @@ function initFAQ() {
 
         if (!isOpen) {
           item.classList.add('open');
-          answer.style.maxHeight = (answer.scrollHeight || 220) + 'px';
-          playChime(420);
+          const updateHeight = () => {
+            answer.style.maxHeight = (answer.scrollHeight + 30) + 'px';
+          };
+          updateHeight();
+          const img = answer.querySelector('img');
+          if (img && !img.complete) {
+            img.onload = updateHeight;
+          }
+          if (typeof playChime === 'function') playChime(420);
         }
       });
     }

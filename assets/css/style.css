@@ -5117,7 +5117,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 .delivery-guarantee-bar {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 1.1rem 1.45rem;
   background: #FFFFFF;
   border: 1px solid rgba(17, 18, 22, 0.08);
@@ -5126,9 +5126,44 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   box-shadow: 0 4px 18px rgba(17, 18, 22, 0.03);
 }
 
+.dgb-thumb-wrap {
+  width: 88px;
+  height: 88px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(17, 18, 22, 0.08);
+  background: #f7f6f3;
+}
+
+.dgb-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dgb-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.dgb-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.dgb-title {
+  color: #111216;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 .dgb-icon {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: rgba(129, 32, 32, 0.08);
   border: 1px solid rgba(129, 32, 32, 0.2);
@@ -5136,7 +5171,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   flex-shrink: 0;
 }
 
@@ -5212,6 +5247,32 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   padding-bottom: 1.15rem;
 }
 
+/* FAQ Packaging Media */
+.faq-packaging-media {
+  margin-top: 0.85rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(17, 18, 22, 0.08);
+  background: #FFFFFF;
+}
+
+.faq-packaging-img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.faq-packaging-caption {
+  display: block;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.78rem;
+  color: #666;
+  background: #faf8f5;
+  border-top: 1px solid rgba(17, 18, 22, 0.05);
+  font-weight: 500;
+}
+
 @media (max-width: 680px) {
   .df-tabs-bar {
     width: 100%;
@@ -5260,7 +5321,17 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
   .delivery-guarantee-bar {
     padding: 0.85rem 1rem;
-    gap: 0.75rem;
+    gap: 0.85rem;
+  }
+
+  .dgb-thumb-wrap {
+    width: 68px;
+    height: 68px;
+    border-radius: 8px;
+  }
+
+  .dgb-title {
+    font-size: 0.88rem;
   }
 
   .dgb-text {

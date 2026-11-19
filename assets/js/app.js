@@ -2097,7 +2097,7 @@ document.addEventListener('click', (e) => {
 let cart = [];
 let appliedPromo = null; // e.g. { code: 'СТАРТ', discountPercent: 10 }
 let FREE_DELIVERY_THRESHOLD = 5000;
-let MIN_ORDER_THRESHOLD = 3000;
+let MIN_ORDER_THRESHOLD = 3500;
 
 function findActivePromo(rawCode) {
   const normalized = String(rawCode || '').trim().toUpperCase();

@@ -11022,7 +11022,7 @@ var VOLODIUM_SITE_CONTENT = {
     "onlineSub": "Персональный разбор ольфакторного профиля за 1 минуту",
     "onlinePrice": "0 ₽",
     "onlineNote": "",
-    "onlineImage": "assets/img/aromaboxes/secret_box_obsession.jpg",
+    "onlineImage": "assets/img/consultation/consult_online_flacons.jpg",
     "offlineTitle": "Личная встреча в Москве",
     "offlineSub": "Индивидуальный разбор гардероба с чемоданом на 150+ ароматов",
     "offlinePrice": "5 000 ₽",

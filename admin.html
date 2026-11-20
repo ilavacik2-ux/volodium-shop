@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
   <title>VOLODIUM ATELIER — Закрытая студия управления</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/volodium_favicon.png?v=volodium3">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/volodium_favicon.png?v=volodium3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -121,7 +121,16 @@
         <div class="vp-nav-group-label">Витрина и маркетинг</div>
         <button type="button" class="vp-nav-item" data-tab="storefront">
           <span class="vp-nav-ico">✨</span>
-          <span>Главный экран &amp; Фото</span>
+          <span>Главная витрина</span>
+        </button>
+        <button type="button" class="vp-nav-item" data-tab="reviews">
+          <span class="vp-nav-ico">💬</span>
+          <span>Отзывы и распаковки</span>
+          <span class="vp-nav-badge" id="navBadgeReviews">7</span>
+        </button>
+        <button type="button" class="vp-nav-item" data-tab="consultation">
+          <span class="vp-nav-ico">🧳</span>
+          <span>Консультации &amp; Сертификаты</span>
         </button>
         <button type="button" class="vp-nav-item" data-tab="commerce">
           <span class="vp-nav-ico">🎟️</span>
@@ -140,7 +149,7 @@
       </nav>
 
       <div class="vp-sb-footer">
-        <a href="/" target="_blank" rel="noopener noreferrer" class="vp-sb-store-link">
+        <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-sb-store-link">
           <span>Открыть витрину сайта</span>
           <span>↗</span>
         </a>
@@ -183,7 +192,10 @@
             </div>
           </div>
 
-          <a href="/" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
+          <button type="button" class="vp-btn vp-btn-primary vp-btn-sm" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
+            <span>💾 Скачать perfumes.js</span>
+          </button>
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
             <span>Витрина</span>
             <span>↗</span>
           </a>
@@ -506,27 +518,30 @@
              ================================================================ -->
         <section class="vp-tab-panel" id="tab-storefront">
           <form id="vpStorefrontForm">
-            <!-- Live Mini Hero Preview -->
+            <!-- Live Mini Hero Preview matching index.html -->
             <div class="vp-card vp-hero-preview-card">
               <div class="vp-card-head">
                 <div>
                   <h3>Предпросмотр первого экрана (Hero)</h3>
-                  <p>Обновляется в реальном времени при редактировании полей ниже</p>
+                  <p>В точности соответствует витрине [index.html]. Обновляется в реальном времени при вводе.</p>
                 </div>
                 <button type="submit" class="vp-btn vp-btn-primary">Сохранить оформление сайта</button>
               </div>
-              <div class="vp-live-hero-stage" id="vpLiveHeroStage">
+              <div class="vp-live-hero-stage" id="vpLiveHeroStage" style="background:#FAF8F5; border:1px solid #E8E4DC; border-radius:16px; padding:28px 24px;">
                 <div class="vp-lhs-content">
-                  <div class="vp-lhs-eyebrow" id="lhsBadge">VOLODIUM PARFUM</div>
-                  <h4 class="vp-lhs-title" id="lhsTitleLine">Парфюмерия —<br>это больше,<br>чем аромат</h4>
-                  <p class="vp-lhs-desc" id="lhsDesc">Оригинальная нишевая парфюмерия от миниатюры (распив) 3 мл до полноценного флакона. Владимир делится личной коллекцией ароматов.</p>
-                  <div class="vp-lhs-buttons">
-                    <span class="vp-lhs-btn-main" id="lhsBtnCatalog">Каталог ароматов →</span>
-                    <span class="vp-lhs-btn-sec" id="lhsBtnQuiz">Подобрать аромат</span>
+                  <div class="vp-lhs-eyebrow" id="lhsBadge" style="color:var(--bordo-primary, #812020); font-weight:600; letter-spacing:0.12em; font-size:12px; margin-bottom:8px;">VOLODIUM PARFUM</div>
+                  <h4 class="vp-lhs-title" id="lhsTitleLine" style="font-family:'Inter Tight', sans-serif; font-size:26px; line-height:1.15; margin:0 0 12px 0;">
+                    <span style="font-weight:300; color:#111216;" id="lhsTitleThin">Соберем твой</span><br>
+                    <span style="font-weight:700; color:#111216;" id="lhsTitleBold">парфюмерный гардероб</span>
+                  </h4>
+                  <p class="vp-lhs-desc" id="lhsDesc" style="color:#5A5455; font-size:13px; line-height:1.5; margin:0 0 16px 0; max-width:440px;">Оригинальная нишевая парфюмерия от миниатюры (распив) 3 мл до полноценного флакона (под заказ напрямую от поставщиков). Владимир делится личной парфюмерной коллекцией, чтобы показать вам многогранный мир ароматов.</p>
+                  <div class="vp-lhs-buttons" style="display:flex; gap:10px; align-items:center;">
+                    <span class="vp-lhs-btn-main" id="lhsBtnCatalog" style="background:#812020; color:#FFF; padding:8px 18px; border-radius:9999px; font-weight:600; font-size:13px;">Каталог ароматов →</span>
+                    <span class="vp-lhs-btn-sec" id="lhsBtnQuiz" style="border:1px solid rgba(17,18,22,0.25); color:#111216; padding:8px 18px; border-radius:9999px; font-size:13px; font-weight:500;">Подобрать аромат</span>
                   </div>
                 </div>
                 <div class="vp-lhs-box-wrap">
-                  <img id="lhsBoxImg" src="/assets/images/volodium_box_stones.jpg" alt="Подарочная коробка на камнях" style="max-height: 190px; border-radius: 12px; object-fit: cover; aspect-ratio: 16/10; box-shadow: 0 8px 24px rgba(0,0,0,0.12);">
+                  <img id="lhsBoxImg" src="assets/images/volodium_box_stones.jpg" alt="Подарочная коробка на камнях" style="max-height: 190px; border-radius: 14px; object-fit: cover; aspect-ratio: 16/10; box-shadow: 0 12px 32px rgba(0,0,0,0.12);">
                 </div>
               </div>
             </div>
@@ -541,8 +556,8 @@
                     <input type="text" id="scHeroBadge" placeholder="VOLODIUM PARFUM">
                   </div>
                   <div class="vp-field">
-                    <label for="scHeroTitleLine">Главный заголовок (поддерживает перенос строк)</label>
-                    <textarea id="scHeroTitleLine" rows="3" placeholder="Парфюмерия —&#10;это больше,&#10;чем аромат"></textarea>
+                    <label for="scHeroTitleLine">Главный заголовок (строка 1 — тонкий шрифт, строка 2 — жирный)</label>
+                    <textarea id="scHeroTitleLine" rows="2" placeholder="Соберем твой&#10;парфюмерный гардероб"></textarea>
                   </div>
                   <div class="vp-field">
                     <label for="scHeroDesc">Подзаголовок (описание бутика)</label>
@@ -616,31 +631,209 @@
               </div>
 
               <div class="vp-card">
-                <div class="vp-card-head"><h3>Блок «Консультация с Владимиром Вациком»</h3></div>
-                <div class="vp-form-grid single">
-                  <div class="vp-subcard-title">Способ 1 — Онлайн-подбор по анкете</div>
-                  <div class="vp-form-grid">
-                    <div class="vp-field"><label>Заголовок</label><input type="text" id="scConsultOnlineTitle"></div>
-                    <div class="vp-field"><label>Цена</label><input type="text" id="scConsultOnlinePrice"></div>
+                <div class="vp-card-head">
+                  <div>
+                    <h3>Преимущества Volodium (Бегущая строка УТП)</h3>
+                    <p>5 пунктов, отображаемых в непрерывной золотой строке сразу под главным экраном</p>
                   </div>
-                  <div class="vp-field"><label>Подзаголовок</label><input type="text" id="scConsultOnlineSub"></div>
+                </div>
+                <div class="vp-form-grid single">
+                  <div class="vp-field">
+                    <label for="scUsp0">УТП #1 (Щит / Оригиналы)</label>
+                    <input type="text" id="scUsp0" placeholder="100% оригиналы с батч-кодами">
+                  </div>
+                  <div class="vp-field">
+                    <label for="scUsp1">УТП #2 (Флакон / Распив)</label>
+                    <input type="text" id="scUsp1" placeholder="Отливанты от 3 мл и флаконы">
+                  </div>
+                  <div class="vp-field">
+                    <label for="scUsp2">УТП #3 (Доставка СДЭК)</label>
+                    <input type="text" id="scUsp2" placeholder="Бесплатная доставка СДЭК от 5 000 ₽">
+                  </div>
+                  <div class="vp-field">
+                    <label for="scUsp3">УТП #4 (Подарочная упаковка)</label>
+                    <input type="text" id="scUsp3" placeholder="Подарочная брендовая упаковка">
+                  </div>
+                  <div class="vp-field">
+                    <label for="scUsp4">УТП #5 (Экспертный подбор)</label>
+                    <input type="text" id="scUsp4" placeholder="Персональный подбор ароматов">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Concierge Service Section: "Не нашли свой аромат?" -->
+            <div class="vp-card" style="margin-top: 20px;">
+              <div class="vp-card-head">
+                <div>
+                  <h3>Консьерж-сервис «Не нашли свой аромат?» (#custom-scent)</h3>
+                  <p>Премиум-блок персонального поиска ароматов и поставок под заказ напрямую из Европы</p>
+                </div>
+              </div>
+              <div class="vp-form-grid">
+                <div class="vp-field">
+                  <label for="scConciergeTitle">Заголовок блока</label>
+                  <input type="text" id="scConciergeTitle" placeholder="Не нашли свой аромат?">
+                </div>
+                <div class="vp-field">
+                  <label for="scConciergeBtn">Текст кнопки в Telegram</label>
+                  <input type="text" id="scConciergeBtn" placeholder="Найти мой аромат">
+                </div>
+              </div>
+              <div class="vp-form-grid">
+                <div class="vp-field">
+                  <label for="scConciergeDesc">Описание блока</label>
+                  <textarea id="scConciergeDesc" rows="2" placeholder="Мы проверим наличие у поставщиков и поможем подобрать достойную альтернативу."></textarea>
+                </div>
+                <div class="vp-field">
+                  <label for="scConciergeSub">Подпись под кнопкой</label>
+                  <textarea id="scConciergeSub" rows="2" placeholder="Перейдите в Telegram — обсудим ваш запрос лично"></textarea>
+                </div>
+              </div>
+
+              <hr class="vp-divider">
+              <div class="vp-card-head" style="padding:0;border:none;margin-bottom:12px;">
+                <h4>3 преимущества сервиса (Пиллары)</h4>
+              </div>
+              <div class="vp-three-col" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:14px;">
+                <div class="vp-card" style="padding:14px;background:rgba(255,255,255,0.02);">
+                  <div class="vp-subcard-title">01 Оригинальность</div>
+                  <div class="vp-field" style="margin-top:8px;">
+                    <label for="scPillarTitle0">Заголовок #1</label>
+                    <input type="text" id="scPillarTitle0" placeholder="Оригинальность">
+                  </div>
+                  <div class="vp-field" style="margin-top:8px;">
+                    <label for="scPillarDesc0">Подпись #1</label>
+                    <input type="text" id="scPillarDesc0" placeholder="Контроль происхождения и батч-кодов">
+                  </div>
+                </div>
+
+                <div class="vp-card" style="padding:14px;background:rgba(255,255,255,0.02);">
+                  <div class="vp-subcard-title">02 Сроки сборки</div>
+                  <div class="vp-field" style="margin-top:8px;">
+                    <label for="scPillarTitle1">Заголовок #2</label>
+                    <input type="text" id="scPillarTitle1" placeholder="Сроки сборки">
+                  </div>
+                  <div class="vp-field" style="margin-top:8px;">
+                    <label for="scPillarDesc1">Подпись #2</label>
+                    <input type="text" id="scPillarDesc1" placeholder="1–3 рабочих дня после оплаты">
+                  </div>
+                </div>
+
+                <div class="vp-card" style="padding:14px;background:rgba(255,255,255,0.02);">
+                  <div class="vp-subcard-title">03 Личный подход</div>
+                  <div class="vp-field" style="margin-top:8px;">
+                    <label for="scPillarTitle2">Заголовок #3</label>
+                    <input type="text" id="scPillarTitle2" placeholder="Личный подход">
+                  </div>
+                  <div class="vp-field" style="margin-top:8px;">
+                    <label for="scPillarDesc2">Подпись #3</label>
+                    <input type="text" id="scPillarDesc2" placeholder="Подбор с помощью эксперта">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="vp-sticky-save-bar">
+              <span>Все изменения главного экрана, бегущей строки и консьерж-блока сразу применяются на сайте</span>
+              <button type="submit" class="vp-btn vp-btn-primary">Сохранить главную витрину</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================================================================
+             TAB 5B: REVIEWS & UNBOXING GALLERY
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-reviews">
+          <form id="vpReviewsForm">
+            <div class="vp-card">
+              <div class="vp-card-head">
+                <div>
+                  <h3>⭐ Отзывы и распаковки клиентов (<span id="vpReviewsCountBadge">7</span>)</h3>
+                  <p>Настраивайте фотографии распаковок, авторов, текст отзывов и регулируйте вертикальный фокус для каждого снимка</p>
+                </div>
+                <button type="button" class="vp-btn vp-btn-outline vp-btn-sm" id="vpAddReviewBtn">+ Добавить отзыв</button>
+              </div>
+              <div class="vp-reviews-admin-grid" id="vpReviewsAdminGrid"></div>
+            </div>
+
+            <div class="vp-sticky-save-bar">
+              <span>Сохраняет все отзывы, цитаты и вертикальное кадрирование фотографий</span>
+              <button type="submit" class="vp-btn vp-btn-primary">Сохранить все отзывы</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================================================================
+             TAB 5C: CONSULTATION & GIFT CERTIFICATES
+             ================================================================ -->
+        <section class="vp-tab-panel" id="tab-consultation">
+          <form id="vpConsultationForm">
+            <div class="vp-two-col">
+              <div class="vp-card">
+                <div class="vp-card-head">
+                  <div>
+                    <h3>Способ 1 — Онлайн-подбор по анкете</h3>
+                    <p>Экспресс-подбор персонального ольфакторного профиля за 1 минуту</p>
+                  </div>
+                </div>
+                <div class="vp-form-grid">
+                  <div class="vp-field">
+                    <label for="scConsultOnlineTitle">Заголовок тарифа</label>
+                    <input type="text" id="scConsultOnlineTitle" placeholder="Подбор по парфюмерной анкете">
+                  </div>
+                  <div class="vp-field">
+                    <label for="scConsultOnlinePrice">Стоимость</label>
+                    <input type="text" id="scConsultOnlinePrice" placeholder="0 ₽">
+                  </div>
+                </div>
+                <div class="vp-field" style="margin-top:10px;">
+                  <label for="scConsultOnlineSub">Подзаголовок / Описание</label>
+                  <textarea id="scConsultOnlineSub" rows="2" placeholder="Персональный разбор ольфакторного профиля за 1 минуту"></textarea>
+                </div>
+                <div class="vp-upload-block" style="margin-top:12px;">
+                  <label>Фотография онлайн-карточки</label>
                   <div class="vp-upload-row">
-                    <input type="text" id="scConsultOnlineImg" placeholder="Фото онлайн-карточки">
+                    <input type="text" id="scConsultOnlineImg" placeholder="assets/img/consultation/consult_online_flacons.jpg">
                     <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
                       <span>Загрузить фото</span>
                       <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOnlineImg" data-upload-folder="consultation">
                     </label>
                   </div>
+                </div>
+              </div>
 
-                  <hr class="vp-divider">
-                  <div class="vp-subcard-title">Способ 2 — Личная встреча в Москве</div>
-                  <div class="vp-form-grid">
-                    <div class="vp-field"><label>Заголовок</label><input type="text" id="scConsultOfflineTitle"></div>
-                    <div class="vp-field"><label>Цена</label><input type="text" id="scConsultOfflinePrice"></div>
+              <div class="vp-card">
+                <div class="vp-card-head">
+                  <div>
+                    <h3>Способ 2 — Личная встреча в Москве</h3>
+                    <p>Индивидуальный разбор гардероба с чемоданом на 150+ селективных ароматов</p>
                   </div>
-                  <div class="vp-field"><label>Подзаголовок</label><input type="text" id="scConsultOfflineSub"></div>
+                </div>
+                <div class="vp-form-grid">
+                  <div class="vp-field">
+                    <label for="scConsultOfflineTitle">Заголовок тарифа</label>
+                    <input type="text" id="scConsultOfflineTitle" placeholder="Личная встреча в Москве">
+                  </div>
+                  <div class="vp-field">
+                    <label for="scConsultOfflinePrice">Стоимость</label>
+                    <input type="text" id="scConsultOfflinePrice" placeholder="5 000 ₽">
+                  </div>
+                </div>
+                <div class="vp-form-grid" style="margin-top:10px;">
+                  <div class="vp-field">
+                    <label for="scConsultOfflineSub">Подзаголовок / Описание</label>
+                    <textarea id="scConsultOfflineSub" rows="2" placeholder="Индивидуальный разбор гардероба с чемоданом на 150+ ароматов"></textarea>
+                  </div>
+                  <div class="vp-field">
+                    <label for="scConsultOfflineNote">Длительность / Примечание</label>
+                    <textarea id="scConsultOfflineNote" rows="2" placeholder="45–60 минут примерное время подбора"></textarea>
+                  </div>
+                </div>
+                <div class="vp-upload-block" style="margin-top:12px;">
+                  <label>Фотография чемодана / встречи</label>
                   <div class="vp-upload-row">
-                    <input type="text" id="scConsultOfflineImg" placeholder="Фото чемодана / встречи">
+                    <input type="text" id="scConsultOfflineImg" placeholder="assets/img/consultation/consult_offline_suitcase_enhanced.jpg">
                     <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
                       <span>Загрузить фото</span>
                       <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOfflineImg" data-upload-folder="consultation">
@@ -650,20 +843,47 @@
               </div>
             </div>
 
-            <!-- Reviews & Customer Unboxing Gallery (6 Cards with Vertical Crop / Height Sliders) -->
+            <!-- Gift Certificates Block -->
             <div class="vp-card" style="margin-top: 20px;">
               <div class="vp-card-head">
                 <div>
-                  <h3>⭐ Распаковки и отзывы клиентов (6 карточек на главной витрине)</h3>
-                  <p>Настраивайте фотографии, авторов, текст отзывов и регулируйте вертикальное положение (фокус по высоте) для каждого снимка</p>
+                  <h3>🎁 Подарочные сертификаты Volodium Parfum</h3>
+                  <p>Управление номиналами, дизайном сертификата и способами вручения (электронный PDF / премиум-конверт)</p>
                 </div>
               </div>
-              <div class="vp-reviews-admin-grid" id="vpReviewsAdminGrid"></div>
+              <div class="vp-form-grid">
+                <div class="vp-field">
+                  <label for="scCertTitle">Заголовок страницы сертификатов</label>
+                  <input type="text" id="scCertTitle" placeholder="Подарочный сертификат Volodium Parfum">
+                </div>
+                <div class="vp-field">
+                  <label for="scCertSub">Подзаголовок</label>
+                  <input type="text" id="scCertSub" placeholder="Идеальный подарок, когда хочется подарить выбор">
+                </div>
+              </div>
+
+              <div class="vp-form-grid" style="margin-top:12px;">
+                <div class="vp-field">
+                  <label for="scCertDenominations">Доступные номиналы (через запятую или с новой строки)</label>
+                  <textarea id="scCertDenominations" rows="3" placeholder="3 000 ₽&#10;5 000 ₽&#10;10 000 ₽&#10;15 000 ₽&#10;25 000 ₽&#10;50 000 ₽"></textarea>
+                </div>
+                <div class="vp-upload-block">
+                  <label>Фотография фирменного конверта / карточки</label>
+                  <div class="vp-upload-row">
+                    <input type="text" id="scCertImage" placeholder="assets/img/certificates/real_certificate_envelope.jpg">
+                    <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                      <span>Загрузить фото</span>
+                      <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scCertImage" data-upload-folder="certificates">
+                    </label>
+                  </div>
+                  <p style="font-size: 12px; color: var(--text-dim); margin-top: 6px;">Рекомендуется фото конверта с сургучной печатью или фирменной золотой карточки Volodium.</p>
+                </div>
+              </div>
             </div>
 
             <div class="vp-sticky-save-bar">
-              <span>Все изменения главного экрана и фотографий сразу применяются на витрине сайта</span>
-              <button type="submit" class="vp-btn vp-btn-primary">Сохранить оформление сайта</button>
+              <span>Сохраняет тарифы онлайн/офлайн консультаций и номиналы сертификатов</span>
+              <button type="submit" class="vp-btn vp-btn-primary">Сохранить консультации и сертификаты</button>
             </div>
           </form>
         </section>
@@ -870,7 +1090,7 @@
             <div class="vp-preview-card-shell">
               <div class="vp-pcs-img-wrap">
                 <span class="vp-pcs-badge" id="pmPreviewBadge" hidden>Хит</span>
-                <img id="pmPreviewImg" src="/assets/images/noroot.png" alt="Предпросмотр">
+                <img id="pmPreviewImg" src="assets/images/noroot.png" alt="Предпросмотр">
               </div>
               <div class="vp-pcs-body">
                 <div class="vp-pcs-brand" id="pmPreviewBrand">VOLODIUM</div>
@@ -1047,7 +1267,7 @@
                 <span class="vp-pcs-badge" id="bmPreviewBadge" hidden>Хит</span>
                 <img
                   id="bmPreviewImg"
-                  src="/assets/images/noroot.png"
+                  src="assets/images/noroot.png"
                   alt="Предпросмотр аромабокса"
                   referrerpolicy="no-referrer"
                   decoding="async"
@@ -1089,7 +1309,7 @@
 
               <!-- Visual strip: What you are currently changing -->
               <div class="vp-current-photo-strip" id="bmCurrentPhotoStrip">
-                <img id="bmCurrentThumb" src="/assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
+                <img id="bmCurrentThumb" src="assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
                 <div class="vp-cps-info">
                   <span class="vp-cps-label">Активное изображение:</span>
                   <span class="vp-cps-src" id="bmPhotoSourceLabel">assets/images/noroot.png</span>
@@ -1188,7 +1408,7 @@
                 <span class="vp-pcs-badge" id="smPreviewBadge" hidden>★ Хит ★</span>
                 <img
                   id="smPreviewImg"
-                  src="/assets/images/noroot.png"
+                  src="assets/images/noroot.png"
                   alt="Предпросмотр Secret Box"
                   referrerpolicy="no-referrer"
                   decoding="async"
@@ -1231,7 +1451,7 @@
 
               <!-- Visual strip: What you are currently changing -->
               <div class="vp-current-photo-strip" id="smCurrentPhotoStrip">
-                <img id="smCurrentThumb" src="/assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
+                <img id="smCurrentThumb" src="assets/images/noroot.png" alt="Текущее фото" referrerpolicy="no-referrer">
                 <div class="vp-cps-info">
                   <span class="vp-cps-label">Активное изображение:</span>
                   <span class="vp-cps-src" id="smPhotoSourceLabel">assets/images/noroot.png</span>

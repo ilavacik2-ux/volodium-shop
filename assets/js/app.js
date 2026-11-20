@@ -533,7 +533,36 @@ async function loadBootstrapFromApi(isLiveSync = false) {
       showToast('Витрина обновлена в реальном времени');
     }
   } catch (_) {
-    // Graceful static fallback when served without Python backend
+    // Graceful static fallback when served without Python backend (GitHub Pages)
+    try {
+      const localP = localStorage.getItem('vp_admin_perfumes');
+      const localA = localStorage.getItem('vp_admin_aromaboxes');
+      const localS = localStorage.getItem('vp_admin_secret_boxes');
+      const localC = localStorage.getItem('vp_admin_site_content');
+      if (localP) {
+        window.PERFUMES_DATA = JSON.parse(localP);
+        if (typeof PERFUMES_DATA !== 'undefined') PERFUMES_DATA = window.PERFUMES_DATA;
+      }
+      if (localA) {
+        window.AROMA_BOXES_DATA = JSON.parse(localA);
+        if (typeof AROMA_BOXES_DATA !== 'undefined') AROMA_BOXES_DATA = window.AROMA_BOXES_DATA;
+      }
+      if (localS) {
+        window.SECRET_BOXES_DATA = JSON.parse(localS);
+        if (typeof SECRET_BOXES_DATA !== 'undefined') SECRET_BOXES_DATA = window.SECRET_BOXES_DATA;
+      }
+      if (localC) {
+        applySiteContent(JSON.parse(localC));
+      }
+      if (typeof renderCatalog === 'function') renderCatalog(false);
+      if (typeof renderAromaBoxes === 'function') renderAromaBoxes();
+      syncSecretBoxesDom();
+      if (isLiveSync && typeof showToast === 'function') {
+        showToast('Витрина обновлена в реальном времени');
+      }
+    } catch (e) {
+      console.warn('Local live sync notice:', e);
+    }
   }
 }
 

@@ -54,7 +54,9 @@
     perfumes: ['Каталог духов', 'Редактирование ароматов, фотографий, сезонности и цен по объёмам'],
     pricing: ['Переоценка +% / -%', 'Массовое изменение цен в процентах с предпросмотром и откатом'],
     boxes: ['Аромабоксы & Secret Box', 'Управление тематическими наборами и 3 уровнями Secret Box'],
-    storefront: ['Главный экран & Фото', 'Редактор текста, фото Владимира, фона и консультаций'],
+    storefront: ['Главная витрина', 'Первый экран Hero, бегущая строка УТП, блок подбора и заставка'],
+    reviews: ['Отзывы и распаковки', 'Реальные отзывы клиентов, фото распаковок и настройка кадрирования'],
+    consultation: ['Консультации & Сертификаты', 'Онлайн-подбор, встреча с чемоданом в Москве и подарочные сертификаты'],
     commerce: ['Промокоды & Доставка', 'Верхняя акционная полоса, промокоды, пороги и контакты'],
     audit: ['Журнал действий', 'Локальный аудит входов и изменений без Telegram-уведомлений'],
     security: ['Токены & Бэкап', 'Два секретных токена-шлюза, пароль, JSON-бэкапы и perfumes.js'],
@@ -76,11 +78,10 @@
 
   function resolveMediaSrc(src) {
     const raw = String(src || '').trim();
-    if (!raw) return '/assets/images/noroot.png';
+    if (!raw) return 'assets/images/noroot.png';
     if (raw.startsWith('//')) return 'https:' + raw;
-    if (/^https?:\/\//i.test(raw) || raw.startsWith('data:') || raw.startsWith('blob:')) return raw;
-    if (raw.startsWith('/')) return raw;
-    return '/' + raw.replace(/^\/+/, '');
+    if (/^(https?:|data:|blob:)/i.test(raw)) return raw;
+    return raw.replace(/^\/+/, '');
   }
 
   function formatRub(val) {
@@ -333,6 +334,14 @@
       loadSecurityTab();
     } else if (tabId === 'audit') {
       loadAuditTable();
+    } else if (tabId === 'storefront') {
+      populateStorefrontForm();
+    } else if (tabId === 'reviews') {
+      renderReviewsAdmin();
+    } else if (tabId === 'consultation') {
+      populateConsultationForm();
+    } else if (tabId === 'commerce') {
+      populateCommerceForm();
     }
   }
 
@@ -423,10 +432,8 @@
       // Fallback for static GitHub Pages or offline usage
       const localPerfumes = localStorage.getItem('vp_admin_perfumes');
       const localAromaboxes = localStorage.getItem('vp_admin_aromaboxes');
-      const localSecretBoxes = localStorage.getItem('vp_admin_secret_boxes');
-      const localSiteContent = localStorage.getItem('vp_admin_site_content');
-      const localSnapshots = localStorage.getItem('vp_admin_price_snapshots');
-      const localAudit = localStorage.getItem('vp_admin_audit_logs');
+      const baseSiteContent = (typeof VOLODIUM_SITE_CONTENT !== 'undefined' && VOLODIUM_SITE_CONTENT) ? JSON.parse(JSON.stringify(VOLODIUM_SITE_CONTENT)) : {};
+      const localParsedContent = localSiteContent ? JSON.parse(localSiteContent) : {};
 
       data = {
         operatorRole: state.operatorRole || 'assistant',
@@ -434,7 +441,17 @@
         perfumes: localPerfumes ? JSON.parse(localPerfumes) : (window.PERFUMES_DATA || []),
         aromaboxes: localAromaboxes ? JSON.parse(localAromaboxes) : (window.AROMA_BOXES_DATA || []),
         secretBoxes: localSecretBoxes ? JSON.parse(localSecretBoxes) : (window.SECRET_BOXES_DATA || []),
-        siteContent: localSiteContent ? JSON.parse(localSiteContent) : {},
+        siteContent: {
+          ...baseSiteContent,
+          ...localParsedContent,
+          brand: { ...(baseSiteContent.brand || {}), ...(localParsedContent.brand || {}) },
+          promoBar: { ...(baseSiteContent.promoBar || {}), ...(localParsedContent.promoBar || {}) },
+          hero: { ...(baseSiteContent.hero || {}), ...(localParsedContent.hero || {}) },
+          consultation: { ...(baseSiteContent.consultation || {}), ...(localParsedContent.consultation || {}) },
+          commerce: { ...(baseSiteContent.commerce || {}), ...(localParsedContent.commerce || {}) },
+          contacts: { ...(baseSiteContent.contacts || {}), ...(localParsedContent.contacts || {}) },
+          reviews: Array.isArray(localParsedContent.reviews) && localParsedContent.reviews.length ? localParsedContent.reviews : (baseSiteContent.reviews || []),
+        },
         priceSnapshots: localSnapshots ? JSON.parse(localSnapshots) : [],
         auditLogs: localAudit ? JSON.parse(localAudit) : [
           {
@@ -458,10 +475,23 @@
       state.operatorName = 'Admin 2';
     }
 
+    const defaultContent = (typeof VOLODIUM_SITE_CONTENT !== 'undefined' && VOLODIUM_SITE_CONTENT) ? JSON.parse(JSON.stringify(VOLODIUM_SITE_CONTENT)) : {};
+    const incomingContent = data.siteContent || {};
+
     state.perfumes = Array.isArray(data.perfumes) ? data.perfumes : [];
     state.aromaboxes = Array.isArray(data.aromaboxes) ? data.aromaboxes : [];
     state.secretBoxes = Array.isArray(data.secretBoxes) ? data.secretBoxes : [];
-    state.siteContent = data.siteContent || {};
+    state.siteContent = {
+      ...defaultContent,
+      ...incomingContent,
+      brand: { ...(defaultContent.brand || {}), ...(incomingContent.brand || {}) },
+      promoBar: { ...(defaultContent.promoBar || {}), ...(incomingContent.promoBar || {}) },
+      hero: { ...(defaultContent.hero || {}), ...(incomingContent.hero || {}) },
+      consultation: { ...(defaultContent.consultation || {}), ...(incomingContent.consultation || {}) },
+      commerce: { ...(defaultContent.commerce || {}), ...(incomingContent.commerce || {}) },
+      contacts: { ...(defaultContent.contacts || {}), ...(incomingContent.contacts || {}) },
+      reviews: Array.isArray(incomingContent.reviews) && incomingContent.reviews.length ? incomingContent.reviews : (defaultContent.reviews || []),
+    };
     state.priceSnapshots = Array.isArray(data.priceSnapshots) ? data.priceSnapshots : [];
     state.auditLogs = Array.isArray(data.auditLogs) ? data.auditLogs : [];
 
@@ -653,7 +683,7 @@
                 alt="${esc(item.name)}"
                 decoding="async"
                 referrerpolicy="no-referrer"
-                onerror="this.onerror=null;this.src='/assets/images/noroot.png';"
+                onerror="this.onerror=null;this.src='assets/images/noroot.png';"
                 style="object-position:${esc(item.objectPosition || 'center center')};"
               >
             </td>
@@ -1229,7 +1259,7 @@
             alt="${esc(sb.name)}"
             decoding="async"
             referrerpolicy="no-referrer"
-            onerror="this.onerror=null;this.src='/assets/images/noroot.png';"
+            onerror="this.onerror=null;this.src='assets/images/noroot.png';"
             style="object-position:${esc(sb.objectPosition || 'center center')};"
           >
           ${sb.badge ? `<span class="vp-bac-badge">${esc(sb.badge)}</span>` : ''}
@@ -1240,7 +1270,7 @@
           <div class="vp-bac-price-row">
             <div>
               <span class="vp-bac-price">${formatRub(sb.price)}</span>
-              ${sb.oldPrice > 0 ? `<span class="vp-bac-old">${formatRub(sb.oldPrice)}</span>` : ''}
+              ${sb.oldPrice > 0 ? `<span class="vp-bac-old">${formatRub(old3 || sb.oldPrice)}</span>` : ''}
             </div>
             <button type="button" class="vp-btn vp-btn-outline vp-btn-xs" data-edit-secret="${esc(sb.id)}">Настроить</button>
           </div>
@@ -1260,7 +1290,7 @@
               alt="${esc(box.name)}"
               decoding="async"
               referrerpolicy="no-referrer"
-              onerror="this.onerror=null;this.src='/assets/images/noroot.png';"
+              onerror="this.onerror=null;this.src='assets/images/noroot.png';"
               style="object-position:${esc(box.objectPosition || 'center center')};"
             >
             ${box.badge ? `<span class="vp-bac-badge">${esc(box.badge)}</span>` : ''}
@@ -1553,11 +1583,29 @@
       try {
         await apiFetch('/api/admin/aromaboxes', { method: 'POST', body: JSON.stringify(payload) });
         closeModal('vpBoxModalBackdrop');
-        showToast('Аромабокс сохранён', 'ok');
+        showToast('Аромабокс сохранён и синхронизирован с витриной', 'ok');
         notifyStorefrontSync('boxes');
         await loadStudioOverview();
       } catch (err) {
-        showToast(err.message, 'err');
+        if (isStaticDeployment()) {
+          const list = [...state.aromaboxes];
+          const existIdx = list.findIndex((x) => x.id === payload.id);
+          if (existIdx >= 0) {
+            list[existIdx] = { ...list[existIdx], ...payload };
+          } else {
+            payload.id = payload.id || `box-${Date.now()}`;
+            list.unshift(payload);
+          }
+          state.aromaboxes = list;
+          localStorage.setItem('vp_admin_aromaboxes', JSON.stringify(list));
+          closeModal('vpBoxModalBackdrop');
+          showToast('Аромабокс сохранён локально в браузере', 'ok');
+          notifyStorefrontSync('boxes');
+          renderBoxesTab();
+          renderOverview();
+        } else {
+          showToast(err.message, 'err');
+        }
       }
     });
 
@@ -1571,7 +1619,18 @@
         notifyStorefrontSync('boxes');
         await loadStudioOverview();
       } catch (err) {
-        showToast(err.message, 'err');
+        if (isStaticDeployment()) {
+          const list = state.aromaboxes.filter((x) => x.id !== bid);
+          state.aromaboxes = list;
+          localStorage.setItem('vp_admin_aromaboxes', JSON.stringify(list));
+          closeModal('vpBoxModalBackdrop');
+          showToast('Аромабокс удалён локально', 'ok');
+          notifyStorefrontSync('boxes');
+          renderBoxesTab();
+          renderOverview();
+        } else {
+          showToast(err.message, 'err');
+        }
       }
     });
 
@@ -1602,7 +1661,24 @@
         notifyStorefrontSync('secret_boxes');
         await loadStudioOverview();
       } catch (err) {
-        showToast(err.message, 'err');
+        if (isStaticDeployment()) {
+          const list = [...state.secretBoxes];
+          const existIdx = list.findIndex((x) => x.id === payload.id);
+          if (existIdx >= 0) {
+            list[existIdx] = { ...list[existIdx], ...payload };
+          } else {
+            list.push(payload);
+          }
+          state.secretBoxes = list;
+          localStorage.setItem('vp_admin_secret_boxes', JSON.stringify(list));
+          closeModal('vpSecretModalBackdrop');
+          showToast('Secret Box сохранён локально в браузере', 'ok');
+          notifyStorefrontSync('secret_boxes');
+          renderBoxesTab();
+          renderOverview();
+        } else {
+          showToast(err.message, 'err');
+        }
       }
     });
   }
@@ -1902,7 +1978,14 @@
         notifyStorefrontSync('siteContent');
         showToast('Оформление витрины и отзывы сохранены!', 'ok');
       } catch (err) {
-        showToast(err.message, 'err');
+        if (isStaticDeployment()) {
+          state.siteContent = { ...state.siteContent, ...nextContent };
+          localStorage.setItem('vp_admin_site_content', JSON.stringify(state.siteContent));
+          notifyStorefrontSync('siteContent');
+          showToast('Оформление витрины сохранено локально в браузере!', 'ok');
+        } else {
+          showToast(err.message, 'err');
+        }
       }
     });
   }
@@ -2032,7 +2115,14 @@
         notifyStorefrontSync('commerce');
         showToast('Промокоды, доставка и контакты обновлены', 'ok');
       } catch (err) {
-        showToast(err.message, 'err');
+        if (isStaticDeployment()) {
+          state.siteContent = { ...state.siteContent, ...nextContent };
+          localStorage.setItem('vp_admin_site_content', JSON.stringify(state.siteContent));
+          notifyStorefrontSync('commerce');
+          showToast('Промокоды, доставка и контакты обновлены локально!', 'ok');
+        } else {
+          showToast(err.message, 'err');
+        }
       }
     });
   }

@@ -13744,11 +13744,11 @@ body.hero-cinematic-active .header .trigger-cart svg {
 .hero-brand-grid {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 2.5rem;
-  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+  min-height: 420px;
 }
 
 .hero-brand-visual {
@@ -14980,7 +14980,17 @@ body.hero-cinematic-active .header .trigger-cart svg {
   }
 
   .brand-usp-strip {
-    display: none !important;
+    padding: 0.7rem 0;
+    margin: 0;
+  }
+
+  .usp-ticker-track {
+    gap: 1.35rem;
+    animation-duration: 26s;
+  }
+
+  .usp-text {
+    font-size: 0.72rem;
   }
 
   .brand-categories-section {

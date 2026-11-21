@@ -13744,11 +13744,11 @@ body.hero-cinematic-active .header .trigger-cart svg {
 .hero-brand-grid {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 760px;
-  min-height: 420px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 2.5rem;
+  min-height: 480px;
 }
 
 .hero-brand-visual {

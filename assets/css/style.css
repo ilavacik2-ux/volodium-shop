@@ -4521,11 +4521,12 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
    ========================================================================== */
 .haute-guarantees-bar {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
+  gap: 1.5rem;
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 1.35rem 2.5rem;
+  padding: 1.35rem 2.25rem;
   margin-top: 3.5rem;
   position: relative;
   z-index: 4;
@@ -4534,15 +4535,22 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 .hgb-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 44px 1fr;
   align-items: center;
-  gap: 1.15rem;
-  padding: 0 1.25rem;
+  gap: 14px;
+  padding: 0 1rem;
+}
+
+.hgb-item:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .hgb-icon-cell {
   width: 44px;
   height: 44px;
+  min-width: 44px;
+  max-width: 44px;
   border-radius: 12px;
   background: #F7F3EE;
   color: #5C151C;
@@ -4556,7 +4564,9 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 .hgb-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.2rem;
+  min-width: 0;
 }
 
 .hgb-title {
@@ -4572,12 +4582,6 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   font-size: 0.82rem;
   color: #6E665E;
   line-height: 1.35;
-}
-
-.hgb-divider {
-  width: 1px;
-  height: 42px;
-  background: rgba(0, 0, 0, 0.08);
 }
 
 /* ==========================================================================
@@ -4882,6 +4886,8 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   .haute-guarantees-bar {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 0;
     padding: 0;
     background: #FFFFFF;
@@ -4891,26 +4897,33 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 12px 32px -8px rgba(35, 25, 20, 0.06);
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
   }
   .hgb-divider {
-    display: none;
+    display: none !important;
   }
   .hgb-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 44px 1fr;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
+    gap: 14px;
+    padding: 16px 20px;
     min-height: 72px;
+    border-right: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
+    width: 100%;
+    text-align: left;
   }
   .hgb-item:last-child {
     border-bottom: none;
   }
   .hgb-icon-cell {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    max-width: 44px;
     border-radius: 12px;
     background: rgba(92, 21, 28, 0.06);
     color: #5C151C;
@@ -4919,28 +4932,32 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    margin: 0;
   }
   .hgb-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2px;
+    gap: 3px;
     min-width: 0;
+    text-align: left;
   }
   .hgb-title {
     font-family: 'Inter Tight', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 600;
     color: #1A1615;
-    line-height: 1.2;
+    line-height: 1.25;
     margin: 0;
+    text-align: left;
   }
   .hgb-desc {
     font-family: 'Inter Tight', sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     color: #6E665E;
-    line-height: 1.25;
+    line-height: 1.35;
     margin: 0;
+    text-align: left;
   }
 }
 
@@ -4953,16 +4970,28 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   }
   .haute-guarantees-bar {
     margin-bottom: 3.5rem;
+    width: 100%;
   }
   .hgb-item {
-    padding: 0.95rem 1.15rem;
-    min-height: 70px;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 13px;
+    padding: 14px 16px;
+    min-height: 68px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .hgb-icon-cell {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    max-width: 42px;
   }
   .hgb-title {
-    font-size: 0.92rem;
+    font-size: 0.94rem;
   }
   .hgb-desc {
-    font-size: 0.76rem;
+    font-size: 0.77rem;
   }
 }
 

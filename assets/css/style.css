@@ -4883,13 +4883,14 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding: 0.5rem 1.4rem;
+    padding: 0;
     background: #FFFFFF;
     border-radius: 20px;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     margin-bottom: 3.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 14px 36px -8px rgba(35, 25, 20, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 32px -8px rgba(35, 25, 20, 0.06);
+    overflow: hidden;
   }
   .hgb-divider {
     display: none;
@@ -4897,50 +4898,68 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   .hgb-item {
     display: flex;
     align-items: center;
-    gap: 1.15rem;
-    padding: 1.05rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    min-height: 72px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
   }
   .hgb-item:last-child {
     border-bottom: none;
   }
   .hgb-icon-cell {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
     border-radius: 12px;
-    background: #F7F3EE;
+    background: rgba(92, 21, 28, 0.06);
     color: #5C151C;
-    border: 1px solid rgba(92, 21, 28, 0.08);
+    border: 1px solid rgba(92, 21, 28, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
+  .hgb-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+  }
   .hgb-title {
-    font-size: 0.98rem;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #1A1615;
+    line-height: 1.2;
+    margin: 0;
   }
   .hgb-desc {
-    font-size: 0.8rem;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 0.78rem;
     color: #6E665E;
-    line-height: 1.35;
+    line-height: 1.25;
+    margin: 0;
   }
 }
 
 @media (max-width: 600px) {
   .luxury-concierge-card.is-fullbleed {
-    padding: 2.25rem 0 2rem;
+    padding: 2rem 0 1.5rem;
   }
   .lcc-fullbleed-inner {
     padding: 0 1rem;
   }
   .haute-guarantees-bar {
-    padding: 0.5rem 1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .hgb-item {
+    padding: 0.95rem 1.15rem;
+    min-height: 70px;
   }
   .hgb-title {
-    font-size: 0.94rem;
+    font-size: 0.92rem;
   }
   .hgb-desc {
     font-size: 0.76rem;

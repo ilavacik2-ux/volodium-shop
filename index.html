@@ -47,7 +47,7 @@
 
   <script>try{var p=new URLSearchParams(window.location.search);if(!p.has('intro')&&!p.has('replay')&&(sessionStorage.getItem('vp_intro_seen')==='1'||(window.location.hash&&window.location.hash!=='#intro'))){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261122_vova_box_style">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261122_vova_fullscreen">
 </head>
 <body class="intro-active">
 
@@ -303,18 +303,6 @@
 
         <div class="usp-ticker-item">
           <svg class="usp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 12 20 22 4 22 4 12"/>
-            <rect x="2" y="7" width="20" height="5" rx="1"/>
-            <line x1="12" y1="22" x2="12" y2="7"/>
-            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
-            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
-          </svg>
-          <span class="usp-text">Противоударная упаковка</span>
-        </div>
-        <span class="usp-sep">/</span>
-
-        <div class="usp-ticker-item">
-          <svg class="usp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="1" y="3" width="15" height="13" rx="1"/>
             <polygon points="16 8 20 8 23 11 23 16 16 16 8"/>
             <circle cx="5.5" cy="18.5" r="2.5"/>
@@ -350,18 +338,6 @@
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
           <span class="usp-text">Бесплатная доставка СДЭК от 5 000 ₽</span>
-        </div>
-        <span class="usp-sep">/</span>
-
-        <div class="usp-ticker-item">
-          <svg class="usp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 12 20 22 4 22 4 12"/>
-            <rect x="2" y="7" width="20" height="5" rx="1"/>
-            <line x1="12" y1="22" x2="12" y2="7"/>
-            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
-            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
-          </svg>
-          <span class="usp-text">Противоударная упаковка</span>
         </div>
         <span class="usp-sep">/</span>
 
@@ -481,10 +457,12 @@
   <!-- Custom Scent Finding: Haute Parfumerie Personal Search Service (Full-Bleed Luxury Atelier) -->
   <section class="custom-order-section is-fullbleed" id="custom-scent" aria-label="Персональный поиск ароматов">
     <div class="luxury-concierge-card is-fullbleed">
+      <div class="lcc-bg-decor-text" aria-hidden="true">VOLODIUM ATELIER</div>
       <div class="lcc-fullbleed-inner">
-        <!-- Main Body: Left Content + Right Flacon Stage -->
+        <!-- Main Body: Left Content + Right Founder Stage -->
         <div class="lcc-main-body">
           <div class="lcc-content-wrap">
+            <span class="lcc-eyebrow">Индивидуальный ателье-подбор</span>
             <h2 class="lcc-title">Не нашли свой аромат?</h2>
             <p class="lcc-description">
               Мы проверим наличие у поставщиков и поможем подобрать достойную альтернативу.
@@ -499,14 +477,14 @@
           </div>
 
           <div class="lcc-visual-stage">
-            <div class="lcc-portrait-card">
-              <div class="lcc-portrait-media">
-                <img src="assets/img/editorial/vladimir_atomizer_portrait.jpg" alt="Владимир Вацик — эксперт Volodium Parfum" class="lcc-portrait-img" loading="lazy" width="682" height="1024">
-                <div class="lcc-portrait-sheen" aria-hidden="true"></div>
+            <div class="lcc-founder-pill">
+              <div class="lfp-badge">
+                <span class="lfp-pulse"></span>
+                <span class="lfp-status">Личный подбор</span>
               </div>
-              <div class="lcc-portrait-badge">
-                <span class="lpb-name">Владимир Вацик</span>
-                <span class="lpb-role">Основатель & парфюмерный эксперт</span>
+              <div class="lfp-details">
+                <strong class="lfp-name">Владимир Вацик</strong>
+                <span class="lfp-role">Основатель Volodium Parfum</span>
               </div>
             </div>
           </div>

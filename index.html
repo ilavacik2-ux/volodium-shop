@@ -47,7 +47,7 @@
 
   <script>try{var p=new URLSearchParams(window.location.search);if(!p.has('intro')&&!p.has('replay')&&(sessionStorage.getItem('vp_intro_seen')==='1'||(window.location.hash&&window.location.hash!=='#intro'))){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261122_mockup_editorial">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261122_clean_editorial_v1">
 </head>
 <body class="intro-active">
 
@@ -454,7 +454,7 @@
     </div>
   </section>
 
-  <!-- Custom Scent Finding: Haute Parfumerie Personal Search Service (Full-Bleed Luxury Atelier) -->
+  <!-- Custom Scent Finding: Haute Parfumerie Personal Search Service (Clean Editorial Split) -->
   <section class="custom-order-section is-fullbleed" id="custom-scent" aria-label="Персональный поиск ароматов">
     <div class="luxury-concierge-card is-fullbleed">
       <div class="lcc-fullbleed-inner">
@@ -479,90 +479,64 @@
             </div>
           </div>
 
-          <div class="lcc-visual-stage">
-            <div class="lcc-founder-badge-editorial">
-              <strong class="lfbe-name">Владимир Вацик</strong>
-              <span class="lfbe-role">ОСНОВАТЕЛЬ И ПАРФЮМЕРНЫЙ ЭКСПЕРТ</span>
+          <!-- Mobile Portrait Card (Visible only on mobile/tablet where full-bleed desktop background scales down) -->
+          <div class="lcc-mobile-portrait-stage">
+            <div class="lcc-mobile-frame">
+              <img src="assets/images/custom_scent_vladimir_mobile.jpg" alt="Владимир Вацик с фирменным боксом Volodium" class="lcc-mobile-img" loading="lazy" width="1080" height="1350">
+              <div class="lcc-founder-pill-subtle">
+                <span class="lfps-name">Владимир Вацик</span>
+                <span class="lfps-dot">•</span>
+                <span class="lfps-role">Основатель Volodium</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- 3 Pillars: Unified Mockup-Matched Strip (Desktop: 3 columns with dividers / Mobile: 1 card with 3 rows) -->
-        <div class="pillars-unified-strip">
-          <!-- 01 Оригинальность -->
-          <div class="pillar-col">
-            <div class="pillar-left-meta">
-              <span class="pillar-num">01</span>
-              <div class="pillar-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <polyline points="9 12 11 14 15 10"/>
-                </svg>
-              </div>
-            </div>
-            <div class="pillar-text">
-              <strong class="pillar-title">Оригинальность</strong>
-              <span class="pillar-desc">Контроль происхождения и батч-кодов</span>
-            </div>
-            <div class="pillar-mobile-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Refined Haute Service Guarantees (Clean, Bespoke, Non-AI Look) -->
+        <div class="haute-guarantees-bar">
+          <!-- 1. Оригинальность -->
+          <div class="hgb-item">
+            <div class="hgb-icon-cell" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 <polyline points="9 12 11 14 15 10"/>
               </svg>
             </div>
+            <div class="hgb-info">
+              <strong class="hgb-title">Оригинальность</strong>
+              <span class="hgb-desc">Контроль происхождения и батч-кодов</span>
+            </div>
           </div>
 
-          <div class="pillar-divider" aria-hidden="true"></div>
+          <div class="hgb-divider" aria-hidden="true"></div>
 
-          <!-- 02 Сроки сборки -->
-          <div class="pillar-col">
-            <div class="pillar-left-meta">
-              <span class="pillar-num">02</span>
-              <div class="pillar-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 12 20 22 4 22 4 12"/>
-                  <rect x="2" y="7" width="20" height="5" rx="1"/>
-                  <line x1="12" y1="22" x2="12" y2="7"/>
-                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
-                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="pillar-text">
-              <strong class="pillar-title">Сроки сборки</strong>
-              <span class="pillar-desc">1–3 рабочих дня после оплаты</span>
-            </div>
-            <div class="pillar-mobile-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 12 20 22 4 22 4 12"/>
-                <rect x="2" y="7" width="20" height="5" rx="1"/>
-                <line x1="12" y1="22" x2="12" y2="7"/>
+          <!-- 2. Сроки сборки -->
+          <div class="hgb-item">
+            <div class="hgb-icon-cell" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
               </svg>
             </div>
+            <div class="hgb-info">
+              <strong class="hgb-title">Сроки сборки</strong>
+              <span class="hgb-desc">1–3 рабочих дня после оплаты</span>
+            </div>
           </div>
 
-          <div class="pillar-divider" aria-hidden="true"></div>
+          <div class="hgb-divider" aria-hidden="true"></div>
 
-          <!-- 03 Личный подход -->
-          <div class="pillar-col">
-            <div class="pillar-left-meta">
-              <span class="pillar-num">03</span>
-              <div class="pillar-icon-wrap" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-            </div>
-            <div class="pillar-text">
-              <strong class="pillar-title">Личный подход</strong>
-              <span class="pillar-desc">Подбор с помощью эксперта</span>
-            </div>
-            <div class="pillar-mobile-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 3. Личный подход -->
+          <div class="hgb-item">
+            <div class="hgb-icon-cell" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                 <circle cx="12" cy="7" r="4"/>
               </svg>
+            </div>
+            <div class="hgb-info">
+              <strong class="hgb-title">Личный подход</strong>
+              <span class="hgb-desc">Подбор с помощью эксперта</span>
             </div>
           </div>
         </div>

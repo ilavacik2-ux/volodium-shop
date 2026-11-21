@@ -4393,11 +4393,11 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 .luxury-concierge-card.is-fullbleed {
   position: relative;
   width: 100%;
-  background-color: #E6DFD5;
-  background-image: url('../images/custom_scent_atelier_mockup_match.jpg');
+  background-color: #D5D1D0;
+  background-image: url('../images/custom_scent_vladimir_clean_studio.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right center;
+  background-position: center right;
   border-radius: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -4512,93 +4512,71 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   color: #5C151C;
 }
 
-.lcc-visual-stage {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  min-height: 420px;
-  position: relative;
-  z-index: 3;
-}
-
-.lcc-founder-badge-editorial {
+.lcc-mobile-portrait-stage {
   display: none;
 }
 
 /* ==========================================================================
-   2. Pillars: Unified Mockup-Matched Strip
+   2. Refined Haute Service Guarantees (Clean, Bespoke, Non-AI Look)
    ========================================================================== */
-.pillars-unified-strip {
+.haute-guarantees-bar {
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr;
   align-items: center;
   background: #EAE1D5;
   border-radius: 20px;
-  padding: 1.4rem 2rem;
+  padding: 1.4rem 2.25rem;
   margin-top: 3.5rem;
   position: relative;
   z-index: 4;
   border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 10px 30px rgba(35, 25, 20, 0.06);
+  box-shadow: 0 10px 30px rgba(35, 25, 20, 0.05);
 }
 
-.pillar-col {
+.hgb-item {
   display: flex;
   align-items: center;
   gap: 1.15rem;
   padding: 0 1.25rem;
 }
 
-.pillar-left-meta {
+.hgb-icon-cell {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(92, 21, 28, 0.08);
+  color: #5C151C;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
   flex-shrink: 0;
 }
 
-.pillar-num {
-  font-family: 'Bodoni Moda', 'Cormorant Garamond', serif;
-  font-size: 1.85rem;
-  font-weight: 500;
-  color: #1A1615;
-  line-height: 1;
-}
-
-.pillar-icon-wrap {
-  color: #1A1615;
-  display: flex;
-  align-items: center;
-}
-
-.pillar-text {
+.hgb-info {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
 
-.pillar-title {
+.hgb-title {
   font-family: 'Inter Tight', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 600;
   color: #1A1615;
   line-height: 1.2;
 }
 
-.pillar-desc {
+.hgb-desc {
   font-family: 'Inter Tight', sans-serif;
   font-size: 0.82rem;
-  color: #6E645D;
+  color: #635A54;
   line-height: 1.35;
 }
 
-.pillar-divider {
+.hgb-divider {
   width: 1px;
-  height: 48px;
-  background: rgba(0, 0, 0, 0.12);
-}
-
-.pillar-mobile-icon {
-  display: none;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* ==========================================================================
@@ -4830,104 +4808,132 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 /* ==========================================================================
-   Responsive Media Queries for Mockup Match
+   Responsive Media Queries for Mockup Match & Clean Editorial Split
    ========================================================================== */
 @media (max-width: 991px) {
   .luxury-concierge-card.is-fullbleed {
-    padding: 3rem 0 2.5rem;
-    background-image: url('../img/editorial/vladimir_box_present.jpg') !important;
-    background-position: 85% top !important;
-    background-size: cover !important;
+    padding: 3rem 0 2rem;
+    background-image: none !important;
+    background-color: #FAF7F2 !important;
   }
   .lcc-main-body {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   .lcc-content-wrap {
     max-width: 100%;
-    background: rgba(246, 240, 233, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    padding: 1.85rem 1.4rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
   }
   .lcc-title-editorial {
-    font-size: clamp(2rem, 7vw, 2.6rem);
-    line-height: 1.1;
+    font-size: clamp(2.2rem, 7.5vw, 2.85rem);
+    line-height: 1.08;
+    margin-bottom: 0.85rem;
+  }
+  .lcc-description-editorial {
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: #4A423D;
+    margin-bottom: 1.75rem;
+    max-width: 100%;
+  }
+  .lcc-action-wrap {
+    width: 100%;
   }
   .lcc-btn-editorial {
     width: 100%;
     text-align: center;
+    padding: 1rem 1.75rem;
   }
-  .lcc-visual-stage {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 180px;
-    min-height: auto;
-    padding: 0;
+  .lcc-mobile-portrait-stage {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
   }
-  .lcc-founder-badge-editorial {
+  .lcc-mobile-frame {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px -12px rgba(35, 25, 20, 0.16),
+                0 0 0 1px rgba(0, 0, 0, 0.06);
+    background: #EAE3D9;
+    aspect-ratio: 4 / 4.7;
+  }
+  .lcc-mobile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
+  }
+  .lcc-founder-pill-subtle {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
     display: inline-flex;
-    flex-direction: column;
-    gap: 0.2rem;
+    align-items: center;
+    gap: 0.45rem;
     background: rgba(26, 22, 21, 0.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 12px;
-    padding: 0.65rem 1rem;
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  }
-  .lfbe-name {
-    font-family: 'Cinzel', 'Bodoni Moda', serif;
-    font-size: 0.95rem;
-    font-weight: 700;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: #FFFFFF;
-    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
-  .lfbe-role {
-    font-family: 'Inter Tight', sans-serif;
-    font-size: 0.62rem;
+  .lfps-name {
+    color: #FFFFFF;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  }
+  .lfps-dot {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .lfps-role {
     color: #F7D09A;
+    font-size: 0.68rem;
   }
 
-  /* Pillars on Mobile: 1 Card with 3 Clean Rows */
-  .pillars-unified-strip {
+  /* Haute guarantees on Mobile: 1 Card with 3 Clean Rows, No Squishing */
+  .haute-guarantees-bar {
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding: 0.65rem 1.25rem;
+    padding: 0.5rem 1.25rem;
     background: #EAE1D5;
     border-radius: 20px;
-    margin-top: 2rem;
+    margin-top: 1.75rem;
+    margin-bottom: 2rem;
   }
-  .pillar-divider {
+  .hgb-divider {
     display: none;
   }
-  .pillar-col {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+  .hgb-item {
+    display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1.15rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
-  .pillar-col:last-child {
+  .hgb-item:last-child {
     border-bottom: none;
   }
-  .pillar-icon-wrap {
-    display: none;
+  .hgb-icon-cell {
+    width: 38px;
+    height: 38px;
   }
-  .pillar-mobile-icon {
-    display: flex;
-    align-items: center;
-    color: #1A1615;
+  .hgb-title {
+    font-size: 0.98rem;
+  }
+  .hgb-desc {
+    font-size: 0.78rem;
   }
 
   /* About section mobile */
@@ -4970,21 +4976,19 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 
 @media (max-width: 600px) {
   .luxury-concierge-card.is-fullbleed {
-    padding: 2.25rem 0 2.25rem;
+    padding: 2.25rem 0 2rem;
   }
   .lcc-fullbleed-inner {
     padding: 0 1rem;
   }
-  .pillars-unified-strip {
+  .haute-guarantees-bar {
     padding: 0.5rem 1rem;
+    margin-bottom: 2.5rem;
   }
-  .pillar-num {
-    font-size: 1.65rem;
+  .hgb-title {
+    font-size: 0.94rem;
   }
-  .pillar-title {
-    font-size: 0.98rem;
-  }
-  .pillar-desc {
+  .hgb-desc {
     font-size: 0.76rem;
   }
 }

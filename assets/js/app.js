@@ -697,17 +697,17 @@ function initMonroeIntro() {
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
-    // Restart SVG handwriting animation cleanly
-    const svgWrap = intro.querySelector('.monroe-handwriting-wrap');
-    if (svgWrap) {
-      const clone = svgWrap.cloneNode(true);
-      svgWrap.parentNode.replaceChild(clone, svgWrap);
+    // Restart brand reveal animation cleanly
+    const brandStage = intro.querySelector('.monroe-brand-stage') || intro.querySelector('.monroe-handwriting-wrap');
+    if (brandStage) {
+      const clone = brandStage.cloneNode(true);
+      brandStage.parentNode.replaceChild(clone, brandStage);
     }
 
     if (autoTimer) clearTimeout(autoTimer);
     autoTimer = setTimeout(() => {
       dismissIntro();
-    }, 4800);
+    }, 1800);
   }
   window.playMonroeIntro = playIntro;
 
@@ -715,10 +715,10 @@ function initMonroeIntro() {
     replayBtn.addEventListener('click', () => playIntro());
   }
 
-  // Initial auto-dismiss after handwriting animation and graceful hold (~4.8s)
+  // Initial auto-dismiss after brand reveal (~1.8s)
   autoTimer = setTimeout(() => {
     dismissIntro();
-  }, 4800);
+  }, 1800);
 
   // Click or touch anywhere to enter after grace period
   intro.addEventListener('click', (e) => {

@@ -299,23 +299,23 @@ img {
 }
 
 .brand-title {
-  font-family: var(--font-sans);
-  font-size: 1.18rem;
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.22rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #111216;
+  letter-spacing: 0.16em;
+  color: #161311;
   text-transform: uppercase;
   line-height: 1;
 }
 
 .brand-sub {
-  font-family: var(--font-sans);
-  font-size: 1.18rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.60rem;
+  font-weight: 600;
+  letter-spacing: 0.44em;
   text-transform: uppercase;
-  color: #111216;
-  margin-top: 0;
+  color: #7E2226;
+  margin-top: 3px;
   line-height: 1;
 }
 
@@ -4545,8 +4545,95 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
 }
 
 .lcc-visual-stage {
-  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+
+.lcc-portrait-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #1A1615;
+  box-shadow: 0 20px 48px -12px rgba(35, 25, 20, 0.28),
+              0 0 0 1px rgba(255, 255, 255, 0.75) inset;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lcc-portrait-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px -10px rgba(92, 21, 28, 0.28),
+              0 0 0 1px rgba(255, 255, 255, 0.95) inset;
+}
+
+.lcc-portrait-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #201A18;
+}
+
+.lcc-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lcc-portrait-card:hover .lcc-portrait-img {
+  transform: scale(1.03);
+}
+
+.lcc-portrait-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(18, 14, 13, 0.88) 100%);
   pointer-events: none;
+}
+
+.lcc-portrait-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(22, 18, 16, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 0.85rem 1.15rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: left;
+}
+
+.lpb-name {
+  font-family: 'Cinzel', 'Inter Tight', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.lpb-role {
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #F7D09A;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 /* ==========================================================================
@@ -4691,7 +4778,13 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     border: 1px solid rgba(255, 255, 255, 0.6);
   }
   .lcc-visual-stage {
-    display: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.75rem;
+  }
+  .lcc-portrait-card {
+    max-width: 320px;
   }
   .lcc-floating-pillars {
     grid-template-columns: 1fr;
@@ -4714,6 +4807,28 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     border-radius: 16px;
     background: rgba(246, 240, 233, 0.92);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  .lcc-visual-stage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.35rem;
+  }
+  .lcc-portrait-card {
+    max-width: 280px;
+    border-radius: 20px;
+  }
+  .lcc-portrait-badge {
+    padding: 0.75rem 0.95rem;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+  }
+  .lpb-name {
+    font-size: 0.98rem;
+  }
+  .lpb-role {
+    font-size: 0.68rem;
   }
   .lcc-title,
   .lcc-title-lead,
@@ -8892,7 +9007,7 @@ section[id],
 
 
 /* ==========================================================================
-   Haute Parfumerie Intro Overlay (Pure Warm Silk Alabaster & Calligraphy Ink)
+   Haute Parfumerie Intro Overlay (Authentic Box Brand Roman Typography)
    ========================================================================== */
 .monroe-intro-overlay {
   position: fixed;
@@ -8901,12 +9016,9 @@ section[id],
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100%;
   width: 100vw;
-  height: 100%;
-  min-height: 100%;
+  height: 100vh;
   z-index: 999999;
-  background: #FFFFFF;
   background: radial-gradient(ellipse at 50% 50%, #FFFFFF 0%, #FAF8F5 65%, #F0EAE1 100%);
   display: flex;
   align-items: center;
@@ -8915,13 +9027,15 @@ section[id],
   touch-action: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.45s;
   cursor: pointer;
 }
 
 .monroe-intro-overlay.hidden {
   opacity: 0;
-  transform: scale(1.025);
+  transform: scale(1.02);
   visibility: hidden;
   pointer-events: none;
 }
@@ -8930,8 +9044,8 @@ section[id],
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1000px;
-  padding: 2.5rem 1.5rem;
+  max-width: 600px;
+  padding: 2rem 1.5rem;
   box-sizing: border-box;
   text-align: center;
   display: flex;
@@ -8941,121 +9055,102 @@ section[id],
   user-select: none;
 }
 
-/* Handwriting SVG Wrapper */
-.monroe-handwriting-wrap {
-  width: 100%;
-  max-width: 920px;
+.monroe-brand-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  margin: 0 auto;
 }
 
-.monroe-svg {
-  width: 100%;
-  height: auto;
-  max-height: 380px;
-  overflow: visible;
-  display: block;
+.monroe-box-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 1. Default Authentic Master Perfumer Signature Calligraphy: Herr Von Muellerhoff */
-.monroe-svg-title {
-  font-family: 'Herr Von Muellerhoff', cursive;
-  font-size: 155px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  fill: #111216;
-  stroke: #111216;
-  stroke-width: 1.2px;
-  stroke-dasharray: 1800;
-  stroke-dashoffset: 1800;
-  animation: drawCalligraphy 3.5s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.25s;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* 2. Subtitle 'PARFUM': Haute Parfumerie Spaced Editorial Didone */
-.monroe-svg-sub {
-  font-family: 'Bodoni Moda', 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.65em;
+.mbb-title {
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  font-weight: 700;
+  color: #161311;
+  line-height: 1;
   text-transform: uppercase;
-  fill: #812020;
-  stroke: #812020;
-  stroke-width: 0.6px;
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: drawSub 2.2s cubic-bezier(0.25, 1, 0.45, 1) forwards 1.9s;
-  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.16em;
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+  animation: mbbTitleIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.15s;
 }
 
-/* Font Variant 2: Bodoni Moda Italic (Haute Couture French Vogue) */
-.monroe-intro-overlay[data-font="bodoni"] .monroe-svg-title,
-.monroe-intro-overlay.font-bodoni .monroe-svg-title {
-  font-family: 'Bodoni Moda', 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 125px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  stroke-width: 0.9px;
+.mbb-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0.85rem 0 0.75rem;
 }
 
-/* Font Variant 3: Italianno (Clean Classical Renaissance Cursive) */
-.monroe-intro-overlay[data-font="italianno"] .monroe-svg-title,
-.monroe-intro-overlay.font-italianno .monroe-svg-title {
-  font-family: 'Italianno', cursive;
-  font-size: 165px;
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  stroke-width: 1.2px;
+.mbb-line {
+  display: block;
+  height: 1px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, #812020 30%, #D2B48C 50%, #812020 70%, transparent);
+  animation: mbbLineExpand 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
 }
 
-/* Font Variant 4: Cormorant Garamond Italic (Noble Artisanal Italic) */
-.monroe-intro-overlay[data-font="garamond"] .monroe-svg-title,
-.monroe-intro-overlay.font-garamond .monroe-svg-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 135px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  stroke-width: 0.9px;
+.mbb-sub {
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.72rem, 2vw, 0.95rem);
+  font-weight: 600;
+  color: #7E2226;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.48em;
+  padding-left: 0.48em;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: mbbSubIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.55s;
 }
 
-@keyframes drawCalligraphy {
+@keyframes mbbTitleIn {
   0% {
-    stroke-dashoffset: 1800;
-    fill-opacity: 0;
-  }
-  70% {
-    stroke-dashoffset: 0;
-    fill-opacity: 0.25;
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+    letter-spacing: 0.12em;
   }
   100% {
-    stroke-dashoffset: 0;
-    fill-opacity: 1;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    letter-spacing: 0.18em;
   }
 }
 
-@keyframes drawSub {
+@keyframes mbbLineExpand {
   0% {
-    stroke-dashoffset: 600;
-    fill-opacity: 0;
-  }
-  75% {
-    stroke-dashoffset: 0;
-    fill-opacity: 0.35;
+    width: 0;
+    opacity: 0;
   }
   100% {
-    stroke-dashoffset: 0;
-    fill-opacity: 1;
+    width: 90px;
+    opacity: 0.85;
+  }
+}
+
+@keyframes mbbSubIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @media (max-width: 600px) {
   .monroe-intro-content {
     padding: 1.5rem 1rem;
-  }
-  .monroe-svg {
-    max-height: 240px;
   }
 }
 
@@ -13569,11 +13664,11 @@ body.hero-cinematic-active .nav-desktop .nav-link.is-active-page {
 
 .header .brand-title,
 body.hero-cinematic-active .header .brand-title {
-  font-family: var(--font-sans) !important;
-  font-size: 1.15rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.14em !important;
-  color: #111216 !important;
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.24rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  color: #161311 !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   display: block !important;
@@ -13581,11 +13676,11 @@ body.hero-cinematic-active .header .brand-title {
 
 .header .brand-sub,
 body.hero-cinematic-active .header .brand-sub {
-  font-family: var(--font-sans) !important;
-  font-size: 0.62rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.36em !important;
-  color: #111216 !important;
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 0.60rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.44em !important;
+  color: #7E2226 !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   margin-top: 3px !important;

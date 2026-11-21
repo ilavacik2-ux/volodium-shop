@@ -8892,7 +8892,7 @@ section[id],
 
 
 /* ==========================================================================
-   Haute Parfumerie Intro Overlay (Warm Silk Alabaster & Liquid Gold Shimmer)
+   Haute Parfumerie Intro Overlay (Pure Warm Silk Alabaster & Calligraphy Ink)
    ========================================================================== */
 .monroe-intro-overlay {
   position: fixed;
@@ -8906,8 +8906,8 @@ section[id],
   height: 100%;
   min-height: 100%;
   z-index: 999999;
-  background: #FAF8F5;
-  background: radial-gradient(ellipse at 50% 50%, #FFFFFF 0%, #FAF8F5 55%, #F0EAE1 100%);
+  background: #FFFFFF;
+  background: radial-gradient(ellipse at 50% 50%, #FFFFFF 0%, #FAF8F5 65%, #F0EAE1 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8915,42 +8915,22 @@ section[id],
   touch-action: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.75s;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
   cursor: pointer;
 }
 
 .monroe-intro-overlay.hidden {
   opacity: 0;
-  transform: scale(1.035);
+  transform: scale(1.025);
   visibility: hidden;
   pointer-events: none;
-}
-
-/* Delicate Gold Atelier Framing Border */
-.monroe-intro-frame-border {
-  position: absolute;
-  top: max(12px, env(safe-area-inset-top, 12px));
-  bottom: max(12px, env(safe-area-inset-bottom, 12px));
-  left: max(12px, env(safe-area-inset-left, 12px));
-  right: max(12px, env(safe-area-inset-right, 12px));
-  border: 1px solid rgba(17, 18, 22, 0.08);
-  border-radius: 16px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  animation: introFadeFrame 1s ease 0.2s forwards;
-}
-
-@keyframes introFadeFrame {
-  0% { opacity: 0; transform: scale(0.985); }
-  100% { opacity: 1; transform: scale(1); }
 }
 
 .monroe-intro-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   padding: 2.5rem 1.5rem;
   box-sizing: border-box;
   text-align: center;
@@ -8958,153 +8938,125 @@ section[id],
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.monroe-brand-stage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
   user-select: none;
 }
 
-/* Monumental Brand Title "VOLODIUM" */
-.monroe-grand-title {
-  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(2.5rem, 8.5vw, 8.5rem);
-  font-weight: 300;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #111216;
-  line-height: 1;
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* Handwriting SVG Wrapper */
+.monroe-handwriting-wrap {
+  width: 100%;
+  max-width: 920px;
   position: relative;
-  padding-left: 0.22em;
-  max-width: calc(100vw - 48px);
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
 }
 
-.monroe-title-letter {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: introLetterAscent 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(0.18s + var(--l-idx) * 0.06s);
-  color: #111216;
-  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.monroe-svg {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  overflow: visible;
+  display: block;
 }
 
-@keyframes introLetterAscent {
+/* 1. Default Authentic Master Perfumer Signature Calligraphy: Herr Von Muellerhoff */
+.monroe-svg-title {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 155px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  fill: #111216;
+  stroke: #111216;
+  stroke-width: 1.2px;
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+  animation: drawCalligraphy 3.5s cubic-bezier(0.25, 1, 0.45, 1) forwards 0.25s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Subtitle 'PARFUM': Haute Parfumerie Spaced Editorial Didone */
+.monroe-svg-sub {
+  font-family: 'Bodoni Moda', 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.65em;
+  text-transform: uppercase;
+  fill: #812020;
+  stroke: #812020;
+  stroke-width: 0.6px;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawSub 2.2s cubic-bezier(0.25, 1, 0.45, 1) forwards 1.9s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Font Variant 2: Bodoni Moda Italic (Haute Couture French Vogue) */
+.monroe-intro-overlay[data-font="bodoni"] .monroe-svg-title,
+.monroe-intro-overlay.font-bodoni .monroe-svg-title {
+  font-family: 'Bodoni Moda', 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 125px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  stroke-width: 0.9px;
+}
+
+/* Font Variant 3: Italianno (Clean Classical Renaissance Cursive) */
+.monroe-intro-overlay[data-font="italianno"] .monroe-svg-title,
+.monroe-intro-overlay.font-italianno .monroe-svg-title {
+  font-family: 'Italianno', cursive;
+  font-size: 165px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  stroke-width: 1.2px;
+}
+
+/* Font Variant 4: Cormorant Garamond Italic (Noble Artisanal Italic) */
+.monroe-intro-overlay[data-font="garamond"] .monroe-svg-title,
+.monroe-intro-overlay.font-garamond .monroe-svg-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 135px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  stroke-width: 0.9px;
+}
+
+@keyframes drawCalligraphy {
   0% {
-    opacity: 0;
-    transform: translateY(18px) scale(0.98);
+    stroke-dashoffset: 1800;
+    fill-opacity: 0;
+  }
+  70% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0.25;
   }
   100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
   }
 }
 
-/* Grand Subtitle 'PARFUM' */
-.monroe-grand-sub {
-  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(0.72rem, 1.6vw, 1.25rem);
-  font-weight: 400;
-  letter-spacing: 0.44em;
-  text-transform: uppercase;
-  color: var(--bordo-primary, #812020);
-  margin-top: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding-left: 0.44em;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: introSubReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@keyframes drawSub {
+  0% {
+    stroke-dashoffset: 600;
+    fill-opacity: 0;
+  }
+  75% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0.35;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
 }
 
-@media (max-width: 480px) {
-  .monroe-intro-frame-border {
-    top: max(8px, env(safe-area-inset-top, 8px));
-    bottom: max(8px, env(safe-area-inset-bottom, 8px));
-    left: max(8px, env(safe-area-inset-left, 8px));
-    right: max(8px, env(safe-area-inset-right, 8px));
-    border-radius: 12px;
-  }
+@media (max-width: 600px) {
   .monroe-intro-content {
     padding: 1.5rem 1rem;
   }
-  .monroe-grand-title {
-    font-size: clamp(2.2rem, 7.8vw, 3.4rem);
-    letter-spacing: 0.16em;
-    padding-left: 0.16em;
-    max-width: calc(100vw - 36px);
-    font-weight: 300;
+  .monroe-svg {
+    max-height: 240px;
   }
-  .monroe-grand-sub {
-    font-size: 0.7rem;
-    letter-spacing: 0.36em;
-    padding-left: 0.36em;
-    margin-top: 1.15rem;
-    font-weight: 400;
-  }
-}
-
-@keyframes introSubReveal {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.mgs-dot {
-  color: var(--bordo-primary, #812020);
-  font-size: 0.8em;
-}
-
-/* Discreet Luxury Enter Button */
-.monroe-enter-btn {
-  margin-top: 2.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.4rem;
-  border-radius: var(--radius-full);
-  background: rgba(17, 18, 22, 0.04);
-  border: 1px solid rgba(17, 18, 22, 0.12);
-  color: #555861;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  opacity: 0;
-  animation: introEnterBtnFade 0.6s ease 1.3s forwards;
-}
-
-@keyframes introEnterBtnFade {
-  0% { opacity: 0; transform: translateY(8px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.monroe-enter-btn:hover {
-  background: var(--bordo-primary, #812020);
-  border-color: var(--bordo-primary);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(129, 32, 32, 0.25);
 }
 
 /* ==========================================================================

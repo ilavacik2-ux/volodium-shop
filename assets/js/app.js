@@ -634,8 +634,16 @@ function initMonroeIntro() {
   initMultiPageActiveNav();
   if (!intro) return;
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const fontParam = urlParams.get('font') || localStorage.getItem('vp_intro_font');
+  if (fontParam) {
+    intro.setAttribute('data-font', fontParam);
+  }
+
+  const forceIntro = urlParams.has('intro') || urlParams.has('replay') || window.location.hash === '#intro';
+
   try {
-    if (sessionStorage.getItem('vp_intro_seen') === '1' || window.location.hash) {
+    if (!forceIntro && (sessionStorage.getItem('vp_intro_seen') === '1' || (window.location.hash && window.location.hash !== '#intro'))) {
       intro.classList.add('hidden');
       document.documentElement.classList.remove('intro-active');
       document.body.classList.remove('intro-active');
@@ -653,7 +661,7 @@ function initMonroeIntro() {
   // Lock scroll while intro is playing on both html and body
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
-  document.body.style.backgroundColor = '#FFFFFF';
+  document.body.style.backgroundColor = '#FAF8F5';
 
   // Grace period: ignore accidental clicks and reload keystrokes (Cmd+R, Ctrl+R, F5)
   setTimeout(() => {
@@ -674,7 +682,11 @@ function initMonroeIntro() {
   }
   window.dismissMonroeIntro = dismissIntro;
 
-  function playIntro() {
+  function playIntro(customFont) {
+    if (customFont) {
+      intro.setAttribute('data-font', customFont);
+      localStorage.setItem('vp_intro_font', customFont);
+    }
     canDismiss = false;
     setTimeout(() => {
       canDismiss = true;
@@ -684,25 +696,29 @@ function initMonroeIntro() {
     document.body.classList.add('intro-active');
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
-    const stage = intro.querySelector('.monroe-brand-stage');
-    if (stage) {
-      const clone = stage.cloneNode(true);
-      stage.parentNode.replaceChild(clone, stage);
+
+    // Restart SVG handwriting animation cleanly
+    const svgWrap = intro.querySelector('.monroe-handwriting-wrap');
+    if (svgWrap) {
+      const clone = svgWrap.cloneNode(true);
+      svgWrap.parentNode.replaceChild(clone, svgWrap);
     }
+
     if (autoTimer) clearTimeout(autoTimer);
     autoTimer = setTimeout(() => {
       dismissIntro();
-    }, 2400);
+    }, 4800);
   }
+  window.playMonroeIntro = playIntro;
 
   if (replayBtn) {
-    replayBtn.addEventListener('click', playIntro);
+    replayBtn.addEventListener('click', () => playIntro());
   }
 
-  // Initial auto-dismiss after Haute Parfumerie golden foil shimmer (~2.4s)
+  // Initial auto-dismiss after handwriting animation and graceful hold (~4.8s)
   autoTimer = setTimeout(() => {
     dismissIntro();
-  }, 2400);
+  }, 4800);
 
   // Click or touch anywhere to enter after grace period
   intro.addEventListener('click', (e) => {

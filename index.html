@@ -47,7 +47,7 @@
 
   <script>try{var p=new URLSearchParams(window.location.search);if(!p.has('intro')&&!p.has('replay')&&(sessionStorage.getItem('vp_intro_seen')==='1'||(window.location.hash&&window.location.hash!=='#intro'))){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261122_vova_fullscreen">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261122_mockup_editorial">
 </head>
 <body class="intro-active">
 
@@ -457,70 +457,174 @@
   <!-- Custom Scent Finding: Haute Parfumerie Personal Search Service (Full-Bleed Luxury Atelier) -->
   <section class="custom-order-section is-fullbleed" id="custom-scent" aria-label="Персональный поиск ароматов">
     <div class="luxury-concierge-card is-fullbleed">
-      <div class="lcc-bg-decor-text" aria-hidden="true">VOLODIUM ATELIER</div>
       <div class="lcc-fullbleed-inner">
-        <!-- Main Body: Left Content + Right Founder Stage -->
+        <!-- Main Body: Left Content + Right Founder Visual -->
         <div class="lcc-main-body">
           <div class="lcc-content-wrap">
-            <span class="lcc-eyebrow">Индивидуальный ателье-подбор</span>
-            <h2 class="lcc-title">Не нашли свой аромат?</h2>
-            <p class="lcc-description">
-              Мы проверим наличие у поставщиков и поможем подобрать достойную альтернативу.
+            <h2 class="lcc-title-editorial">Не нашли<br>свой аромат?</h2>
+            <p class="lcc-description-editorial">
+              Проверим наличие у поставщиков<br>и поможем подобрать достойную<br>альтернативу.
             </p>
             <div class="lcc-action-wrap">
-              <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" rel="noopener noreferrer" class="lcc-btn-burgundy">
+              <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" rel="noopener noreferrer" class="lcc-btn-editorial">
                 <span>Найти мой аромат</span>
                 <span class="lcc-btn-arrow" aria-hidden="true">↗</span>
               </a>
-              <span class="lcc-subtext">Перейдите в Telegram — обсудим ваш запрос лично</span>
+              <span class="lcc-subtext-editorial">
+                <svg class="lcc-plane-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+                Перейдите в Telegram — обсудим ваш запрос лично
+              </span>
             </div>
           </div>
 
           <div class="lcc-visual-stage">
-            <div class="lcc-founder-pill">
-              <div class="lfp-badge">
-                <span class="lfp-pulse"></span>
-                <span class="lfp-status">Личный подбор</span>
-              </div>
-              <div class="lfp-details">
-                <strong class="lfp-name">Владимир Вацик</strong>
-                <span class="lfp-role">Основатель Volodium Parfum</span>
-              </div>
+            <div class="lcc-founder-badge-editorial">
+              <strong class="lfbe-name">Владимир Вацик</strong>
+              <span class="lfbe-role">ОСНОВАТЕЛЬ И ПАРФЮМЕРНЫЙ ЭКСПЕРТ</span>
             </div>
           </div>
         </div>
 
-        <!-- Bottom Pillars: 3 Animated Floating Glass Cards (НЕ как единое целое) -->
-        <div class="lcc-floating-pillars">
+        <!-- 3 Pillars: Unified Mockup-Matched Strip (Desktop: 3 columns with dividers / Mobile: 1 card with 3 rows) -->
+        <div class="pillars-unified-strip">
           <!-- 01 Оригинальность -->
-          <div class="lcc-fcard" style="--card-idx: 0">
-            <div class="lcc-fcard-sheen" aria-hidden="true"></div>
-            <span class="lcc-fcard-num">01</span>
-            <div class="lcc-fcard-body">
-              <strong class="lcc-fcard-title">Оригинальность</strong>
-              <span class="lcc-fcard-desc">Контроль происхождения и батч-кодов</span>
+          <div class="pillar-col">
+            <div class="pillar-left-meta">
+              <span class="pillar-num">01</span>
+              <div class="pillar-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <polyline points="9 12 11 14 15 10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="pillar-text">
+              <strong class="pillar-title">Оригинальность</strong>
+              <span class="pillar-desc">Контроль происхождения и батч-кодов</span>
+            </div>
+            <div class="pillar-mobile-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
             </div>
           </div>
+
+          <div class="pillar-divider" aria-hidden="true"></div>
 
           <!-- 02 Сроки сборки -->
-          <div class="lcc-fcard" style="--card-idx: 1">
-            <div class="lcc-fcard-sheen" aria-hidden="true"></div>
-            <span class="lcc-fcard-num">02</span>
-            <div class="lcc-fcard-body">
-              <strong class="lcc-fcard-title">Сроки сборки</strong>
-              <span class="lcc-fcard-desc">1–3 рабочих дня после оплаты</span>
+          <div class="pillar-col">
+            <div class="pillar-left-meta">
+              <span class="pillar-num">02</span>
+              <div class="pillar-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 12 20 22 4 22 4 12"/>
+                  <rect x="2" y="7" width="20" height="5" rx="1"/>
+                  <line x1="12" y1="22" x2="12" y2="7"/>
+                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="pillar-text">
+              <strong class="pillar-title">Сроки сборки</strong>
+              <span class="pillar-desc">1–3 рабочих дня после оплаты</span>
+            </div>
+            <div class="pillar-mobile-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 12 20 22 4 22 4 12"/>
+                <rect x="2" y="7" width="20" height="5" rx="1"/>
+                <line x1="12" y1="22" x2="12" y2="7"/>
+              </svg>
             </div>
           </div>
 
+          <div class="pillar-divider" aria-hidden="true"></div>
+
           <!-- 03 Личный подход -->
-          <div class="lcc-fcard lcc-fcard-accent" style="--card-idx: 2">
-            <div class="lcc-fcard-sheen" aria-hidden="true"></div>
-            <span class="lcc-fcard-num lcc-fcard-num-accent">03</span>
-            <div class="lcc-fcard-body">
-              <strong class="lcc-fcard-title lcc-fcard-title-accent">Личный подход</strong>
-              <span class="lcc-fcard-desc">Подбор с помощью эксперта</span>
+          <div class="pillar-col">
+            <div class="pillar-left-meta">
+              <span class="pillar-num">03</span>
+              <div class="pillar-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="pillar-text">
+              <strong class="pillar-title">Личный подход</strong>
+              <span class="pillar-desc">Подбор с помощью эксперта</span>
+            </div>
+            <div class="pillar-mobile-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section: Vladimir Vatsik Boutique Editorial (Mockup Match) -->
+  <section class="about-editorial-section" id="about" aria-label="О бренде Volodium">
+    <div class="container about-editorial-container">
+      <div class="about-editorial-grid">
+        <!-- Left Column: Vladimir in Orto Parisi Boutique with Blotters -->
+        <div class="about-media-col">
+          <div class="about-media-frame">
+            <img src="assets/img/editorial/vladimir_orto_parisi.jpg" alt="Владимир Вацик — парфюмерный эксперт Volodium" class="about-media-img" loading="lazy" width="1941" height="2560">
+          </div>
+        </div>
+
+        <!-- Right Column: Editorial Narrative -->
+        <div class="about-content-col">
+          <span class="about-eyebrow">О НАС</span>
+          <h2 class="about-title-serif">Парфюмерия —<br>это больше, чем аромат.</h2>
+          <p class="about-lead-desc">
+            Мы внимательно относимся к каждому запросу, помогаем разобраться в композициях и найти аромат, который подходит именно вам.
+          </p>
+          <div class="about-action-wrap">
+            <a href="https://t.me/vatsiik" target="_blank" rel="noopener noreferrer" class="about-btn-burgundy">
+              <span>Познакомиться ближе</span>
+              <span class="about-btn-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concierge Bottom Accent Banner (Mockup Match) -->
+  <section class="concierge-banner-section" aria-label="Консультация по подбору">
+    <div class="container">
+      <div class="concierge-wine-banner">
+        <div class="cwb-content">
+          <h3 class="cwb-title">Ваш аромат<br>ещё не найден?</h3>
+          <p class="cwb-desc">
+            Расскажите нам, какой аромат ищете. Мы проверим доступность и предложим варианты.
+          </p>
+        </div>
+
+        <div class="cwb-action-wrap">
+          <a href="https://t.me/volodiumparfum?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D1%89%D1%83%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82..." target="_blank" rel="noopener noreferrer" class="cwb-btn-cream">
+            <span>Подобрать мой аромат</span>
+            <span class="cwb-btn-arrow" aria-hidden="true">↗</span>
+          </a>
+          <span class="cwb-subtext">
+            <svg class="cwb-plane-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+            Консультация в Telegram
+          </span>
+        </div>
+
+        <div class="cwb-visual-stage" aria-hidden="true">
+          <img src="assets/images/banner_bottle_stone.jpg" alt="" class="cwb-bottle-img" loading="lazy" width="172" height="236">
         </div>
       </div>
     </div>

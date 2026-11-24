@@ -318,9 +318,10 @@
     $('vpPageTitle').textContent = meta[0];
     $('vpPageSubtitle').textContent = meta[1];
 
-    // Close mobile sidebar
+    // Close mobile sidebar and popover
     $('vpSidebar').classList.remove('open');
     $('vpSidebarBackdrop').classList.remove('open');
+    if ($('vpAuditPopover')) $('vpAuditPopover').hidden = true;
 
     if (tabId === 'security') {
       loadSecurityTab();
@@ -380,6 +381,20 @@
       applyTheme(state.theme === 'noir' ? 'parchment' : 'noir');
     });
 
+    // Topbar Export Button
+    const topExportBtn = $('vpTopbarExportJsBtn');
+    if (topExportBtn) {
+      topExportBtn.addEventListener('click', () => {
+        const btn = $('btnExportPerfumesJs');
+        if (btn) {
+          btn.click();
+        } else {
+          // Trigger fallback export directly
+          downloadPerfumesJsDirect();
+        }
+      });
+    }
+
     // Audit Bell Popover
     const bellBtn = $('vpAuditBellBtn');
     const pop = $('vpAuditPopover');
@@ -424,8 +439,17 @@
       // Fallback for static GitHub Pages or offline usage
       const localPerfumes = localStorage.getItem('vp_admin_perfumes');
       const localAromaboxes = localStorage.getItem('vp_admin_aromaboxes');
+      const localSecretBoxes = localStorage.getItem('vp_admin_secret_boxes');
+      const localSiteContent = localStorage.getItem('vp_admin_site_content');
+      const localSnapshots = localStorage.getItem('vp_admin_snapshots');
+      const localAudit = localStorage.getItem('vp_admin_audit');
       const baseSiteContent = (typeof VOLODIUM_SITE_CONTENT !== 'undefined' && VOLODIUM_SITE_CONTENT) ? JSON.parse(JSON.stringify(VOLODIUM_SITE_CONTENT)) : {};
-      const localParsedContent = localSiteContent ? JSON.parse(localSiteContent) : {};
+      let localParsedContent = {};
+      try {
+        if (localSiteContent) localParsedContent = JSON.parse(localSiteContent);
+      } catch (_) {
+        localParsedContent = {};
+      }
 
       data = {
         operatorRole: state.operatorRole || 'assistant',
@@ -440,6 +464,7 @@
           promoBar: { ...(baseSiteContent.promoBar || {}), ...(localParsedContent.promoBar || {}) },
           hero: { ...(baseSiteContent.hero || {}), ...(localParsedContent.hero || {}) },
           consultation: { ...(baseSiteContent.consultation || {}), ...(localParsedContent.consultation || {}) },
+          certificates: { ...(baseSiteContent.certificates || {}), ...(localParsedContent.certificates || {}) },
           commerce: { ...(baseSiteContent.commerce || {}), ...(localParsedContent.commerce || {}) },
           contacts: { ...(baseSiteContent.contacts || {}), ...(localParsedContent.contacts || {}) },
           reviews: Array.isArray(localParsedContent.reviews) && localParsedContent.reviews.length ? localParsedContent.reviews : (baseSiteContent.reviews || []),
@@ -470,9 +495,9 @@
     const defaultContent = (typeof VOLODIUM_SITE_CONTENT !== 'undefined' && VOLODIUM_SITE_CONTENT) ? JSON.parse(JSON.stringify(VOLODIUM_SITE_CONTENT)) : {};
     const incomingContent = data.siteContent || {};
 
-    state.perfumes = Array.isArray(data.perfumes) ? data.perfumes : [];
-    state.aromaboxes = Array.isArray(data.aromaboxes) ? data.aromaboxes : [];
-    state.secretBoxes = Array.isArray(data.secretBoxes) ? data.secretBoxes : [];
+    state.perfumes = Array.isArray(data.perfumes) && data.perfumes.length ? data.perfumes : (window.PERFUMES_DATA || []);
+    state.aromaboxes = Array.isArray(data.aromaboxes) && data.aromaboxes.length ? data.aromaboxes : (window.AROMA_BOXES_DATA || []);
+    state.secretBoxes = Array.isArray(data.secretBoxes) && data.secretBoxes.length ? data.secretBoxes : (window.SECRET_BOXES_DATA || []);
     state.siteContent = {
       ...defaultContent,
       ...incomingContent,
@@ -480,6 +505,7 @@
       promoBar: { ...(defaultContent.promoBar || {}), ...(incomingContent.promoBar || {}) },
       hero: { ...(defaultContent.hero || {}), ...(incomingContent.hero || {}) },
       consultation: { ...(defaultContent.consultation || {}), ...(incomingContent.consultation || {}) },
+      certificates: { ...(defaultContent.certificates || {}), ...(incomingContent.certificates || {}) },
       commerce: { ...(defaultContent.commerce || {}), ...(incomingContent.commerce || {}) },
       contacts: { ...(defaultContent.contacts || {}), ...(incomingContent.contacts || {}) },
       reviews: Array.isArray(incomingContent.reviews) && incomingContent.reviews.length ? incomingContent.reviews : (defaultContent.reviews || []),
@@ -497,6 +523,7 @@
     renderSnapshots();
     renderBoxesTab();
     populateStorefrontForm();
+    populateConsultationForm();
     populateCommerceForm();
     renderAuditPopover();
     if (state.activeTab === 'audit') renderAuditTable(state.auditLogs);
@@ -1243,32 +1270,45 @@
   // ==========================================================================
   function renderBoxesTab() {
     const sbGrid = $('vpSecretBoxesGrid');
-    sbGrid.innerHTML = state.secretBoxes.map((sb) => `
-      <article class="vp-box-admin-card ${sb.isHit ? 'is-hit' : ''}">
-        <div class="vp-bac-media">
-          <img
-            src="${esc(resolveMediaSrc(sb.image))}"
-            alt="${esc(sb.name)}"
-            decoding="async"
-            referrerpolicy="no-referrer"
-            onerror="this.onerror=null;this.src='assets/images/noroot.png';"
-            style="object-position:${esc(sb.objectPosition || 'center center')};"
-          >
-          ${sb.badge ? `<span class="vp-bac-badge">${esc(sb.badge)}</span>` : ''}
-        </div>
-        <div class="vp-bac-body">
-          <h4 class="vp-bac-title">${esc(sb.name)}</h4>
-          <div class="vp-bac-sub">${esc(sb.subtitle || '')}</div>
-          <div class="vp-bac-price-row">
-            <div>
-              <span class="vp-bac-price">${formatRub(sb.price)}</span>
-              ${sb.oldPrice > 0 ? `<span class="vp-bac-old">${formatRub(old3 || sb.oldPrice)}</span>` : ''}
+    if (!state.secretBoxes || !state.secretBoxes.length) {
+      sbGrid.innerHTML = '<p class="vp-muted-note" style="grid-column:1/-1;padding:16px;text-align:center;">Секретные боксы загружаются из каталога...</p>';
+    } else {
+      sbGrid.innerHTML = state.secretBoxes.map((sb) => {
+        const feats = Array.isArray(sb.features) ? sb.features.slice(0, 3) : [];
+        return `
+          <article class="vp-box-admin-card vp-secret-card ${sb.isHit ? 'is-hit' : ''}">
+            <div class="vp-bac-media">
+              <img
+                src="${esc(resolveMediaSrc(sb.image || sb.cdnImage))}"
+                alt="${esc(sb.name || sb.title)}"
+                decoding="async"
+                referrerpolicy="no-referrer"
+                onerror="this.onerror=null;this.src='assets/images/noroot.png';"
+                style="object-position:${esc(sb.objectPosition || 'center center')};"
+              >
+              ${sb.badge ? `<span class="vp-bac-badge">${esc(sb.badge)}</span>` : ''}
+              ${sb.level ? `<span class="vp-bac-level-tag">${esc(sb.level)}</span>` : ''}
             </div>
-            <button type="button" class="vp-btn vp-btn-outline vp-btn-xs" data-edit-secret="${esc(sb.id)}">Настроить</button>
-          </div>
-        </div>
-      </article>
-    `).join('');
+            <div class="vp-bac-body">
+              <h4 class="vp-bac-title">${esc(sb.name || sb.title)}</h4>
+              <div class="vp-bac-sub">${esc(sb.subtitle || '')}</div>
+              ${feats.length ? `
+                <ul class="vp-secret-feat-list">
+                  ${feats.map((f) => `<li>• ${esc(f)}</li>`).join('')}
+                </ul>
+              ` : ''}
+              <div class="vp-bac-price-row">
+                <div>
+                  <span class="vp-bac-price">${formatRub(sb.price)}</span>
+                  ${Number(sb.oldPrice) > 0 ? `<span class="vp-bac-old">${formatRub(sb.oldPrice)}</span>` : ''}
+                </div>
+                <button type="button" class="vp-btn vp-btn-primary vp-btn-xs" data-edit-secret="${esc(sb.id)}">Настроить</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
 
     const abGrid = $('vpAromaBoxesGrid');
     abGrid.innerHTML = state.aromaboxes.map((box) => {
@@ -1983,6 +2023,125 @@
   }
 
   // ==========================================================================
+  // TAB 5C: CONSULTATION & GIFT CERTIFICATES
+  // ==========================================================================
+  function populateConsultationForm() {
+    const sc = state.siteContent || {};
+    const consult = sc.consultation || {};
+    const certs = sc.certificates || {};
+
+    if ($('scConsultOnlineTitle')) $('scConsultOnlineTitle').value = consult.onlineTitle || 'Подбор по парфюмерной анкете';
+    if ($('scConsultOnlineSub')) $('scConsultOnlineSub').value = consult.onlineSub || '';
+    if ($('scConsultOnlinePrice')) $('scConsultOnlinePrice').value = consult.onlinePrice || '0 ₽';
+    if ($('scConsultOnlineImg')) $('scConsultOnlineImg').value = consult.onlineImage || 'assets/img/consultation/consult_online_flacons.jpg';
+
+    if ($('scConsultOfflineTitle')) $('scConsultOfflineTitle').value = consult.offlineTitle || 'Личная встреча в Москве';
+    if ($('scConsultOfflineSub')) $('scConsultOfflineSub').value = consult.offlineSub || '';
+    if ($('scConsultOfflinePrice')) $('scConsultOfflinePrice').value = consult.offlinePrice || '5 000 ₽';
+    if ($('scConsultOfflineNote')) $('scConsultOfflineNote').value = consult.offlineNote || '';
+    if ($('scConsultOfflineImg')) $('scConsultOfflineImg').value = consult.offlineImage || 'assets/img/consultation/consult_offline_suitcase_enhanced.jpg';
+
+    if ($('scCertTitle')) $('scCertTitle').value = certs.title || 'Подарочный сертификат Volodium Parfum';
+    if ($('scCertSub')) $('scCertSub').value = certs.subtitle || 'Идеальный подарок, когда хочется подарить выбор';
+    if ($('scCertImage')) $('scCertImage').value = certs.image || 'assets/img/certificates/real_certificate_envelope.jpg';
+    if ($('scCertDenominations')) {
+      const denoms = Array.isArray(certs.denominations) ? certs.denominations : ['3 000 ₽', '5 000 ₽', '10 000 ₽', '15 000 ₽', '25 000 ₽', '50 000 ₽'];
+      $('scCertDenominations').value = denoms.join('\n');
+    }
+
+    updateConsultationPreviews();
+  }
+
+  function updateConsultationPreviews() {
+    const onlineImg = ($('scConsultOnlineImg') && $('scConsultOnlineImg').value.trim()) || 'assets/img/consultation/consult_online_flacons.jpg';
+    const offlineImg = ($('scConsultOfflineImg') && $('scConsultOfflineImg').value.trim()) || 'assets/img/consultation/consult_offline_suitcase_enhanced.jpg';
+    const certImg = ($('scCertImage') && $('scCertImage').value.trim()) || 'assets/img/certificates/real_certificate_envelope.jpg';
+
+    if ($('scConsultOnlineImgPreview')) $('scConsultOnlineImgPreview').src = resolveMediaSrc(onlineImg);
+    if ($('scConsultOfflineImgPreview')) $('scConsultOfflineImgPreview').src = resolveMediaSrc(offlineImg);
+    if ($('scCertImgPreview')) $('scCertImgPreview').src = resolveMediaSrc(certImg);
+
+    if ($('scConsultOnlineStatusTag')) {
+      $('scConsultOnlineStatusTag').textContent = onlineImg ? 'Фото активно' : 'Без фото';
+      $('scConsultOnlineStatusTag').className = `vp-photo-source-tag ${onlineImg ? 'ok' : 'muted'}`;
+    }
+    if ($('scConsultOfflineStatusTag')) {
+      $('scConsultOfflineStatusTag').textContent = offlineImg ? 'Фото активно' : 'Без фото';
+      $('scConsultOfflineStatusTag').className = `vp-photo-source-tag ${offlineImg ? 'ok' : 'muted'}`;
+    }
+    if ($('scCertStatusTag')) {
+      $('scCertStatusTag').textContent = certImg ? 'Фото активно' : 'Без фото';
+      $('scCertStatusTag').className = `vp-photo-source-tag ${certImg ? 'ok' : 'muted'}`;
+    }
+  }
+
+  function bindConsultationEvents() {
+    ['scConsultOnlineImg', 'scConsultOfflineImg', 'scCertImage'].forEach((id) => {
+      const el = $(id);
+      if (el) {
+        el.addEventListener('input', updateConsultationPreviews);
+        el.addEventListener('change', updateConsultationPreviews);
+      }
+    });
+
+    const form = $('vpConsultationForm');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const denoms = ($('scCertDenominations') ? $('scCertDenominations').value : '')
+          .split(/[\n,]+/)
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        const nextConsultation = {
+          onlineTitle: $('scConsultOnlineTitle') ? $('scConsultOnlineTitle').value.trim() : '',
+          onlineSub: $('scConsultOnlineSub') ? $('scConsultOnlineSub').value.trim() : '',
+          onlinePrice: $('scConsultOnlinePrice') ? $('scConsultOnlinePrice').value.trim() : '',
+          onlineNote: '',
+          onlineImage: $('scConsultOnlineImg') ? $('scConsultOnlineImg').value.trim() : '',
+          offlineTitle: $('scConsultOfflineTitle') ? $('scConsultOfflineTitle').value.trim() : '',
+          offlineSub: $('scConsultOfflineSub') ? $('scConsultOfflineSub').value.trim() : '',
+          offlinePrice: $('scConsultOfflinePrice') ? $('scConsultOfflinePrice').value.trim() : '',
+          offlineNote: $('scConsultOfflineNote') ? $('scConsultOfflineNote').value.trim() : '',
+          offlineImage: $('scConsultOfflineImg') ? $('scConsultOfflineImg').value.trim() : '',
+        };
+
+        const nextCertificates = {
+          title: $('scCertTitle') ? $('scCertTitle').value.trim() : '',
+          subtitle: $('scCertSub') ? $('scCertSub').value.trim() : '',
+          image: $('scCertImage') ? $('scCertImage').value.trim() : '',
+          denominations: denoms.length ? denoms : ['3 000 ₽', '5 000 ₽', '10 000 ₽', '15 000 ₽', '25 000 ₽', '50 000 ₽'],
+        };
+
+        const nextContent = {
+          ...(state.siteContent || {}),
+          consultation: nextConsultation,
+          certificates: nextCertificates,
+        };
+
+        try {
+          const res = await apiFetch('/api/admin/site-content', {
+            method: 'POST',
+            body: JSON.stringify(nextContent),
+          });
+          state.siteContent = res.siteContent || nextContent;
+          notifyStorefrontSync('consultation');
+          showToast('Тарифы консультаций и сертификаты сохранены!', 'ok');
+        } catch (err) {
+          if (isStaticDeployment()) {
+            state.siteContent = { ...state.siteContent, ...nextContent };
+            localStorage.setItem('vp_admin_site_content', JSON.stringify(state.siteContent));
+            notifyStorefrontSync('consultation');
+            showToast('Консультации и сертификаты сохранены в браузере!', 'ok');
+          } else {
+            showToast(err.message, 'err');
+          }
+        }
+      });
+    }
+  }
+
+  // ==========================================================================
   // TAB 6: COMMERCE, PROMOCODES, DELIVERY THRESHOLDS & CONTACTS
   // ==========================================================================
   let draftPromoCodes = [];
@@ -2144,13 +2303,20 @@
   }
 
   async function loadAuditTable() {
+    const op = ($('auditOperatorFilter') && $('auditOperatorFilter').value) || 'all';
+    const act = ($('auditActionFilter') && $('auditActionFilter').value) || 'all';
     try {
-      const op = $('auditOperatorFilter').value;
-      const act = $('auditActionFilter').value;
       const data = await apiFetch(`/api/admin/audit?operator=${encodeURIComponent(op)}&action=${encodeURIComponent(act)}`);
       renderAuditTable(data.logs || []);
     } catch (err) {
-      showToast(err.message, 'err');
+      if (isStaticDeployment()) {
+        let logs = state.auditLogs || [];
+        if (op !== 'all') logs = logs.filter((l) => l.operator_role === op || l.operator_name === op);
+        if (act !== 'all') logs = logs.filter((l) => l.action === act);
+        renderAuditTable(logs);
+      } else {
+        showToast(err.message, 'err');
+      }
     }
   }
 
@@ -2222,6 +2388,20 @@
     URL.revokeObjectURL(objUrl);
   }
 
+  function downloadPerfumesJsDirect() {
+    const jsContent = `/**\n * VOLODIUM PARFUM — Master Catalog Data\n * Pure fragrances (${state.perfumes.length} items), Thematic Aroma Boxes (${state.aromaboxes.length} sets), Secret Boxes (${state.secretBoxes.length} tiers).\n * Updated: ${new Date().toISOString()}\n */\nvar PERFUMES_DATA = ${JSON.stringify(state.perfumes, null, 2)};\n\nvar AROMA_BOXES_DATA = ${JSON.stringify(state.aromaboxes, null, 2)};\n\nvar SECRET_BOXES_DATA = ${JSON.stringify(state.secretBoxes, null, 2)};\n\nvar VOLODIUM_SITE_CONTENT = ${JSON.stringify(state.siteContent, null, 2)};\n`;
+    const blob = new Blob([jsContent], { type: 'application/javascript;charset=utf-8' });
+    const objUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = objUrl;
+    a.download = 'perfumes.js';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(objUrl);
+    showToast('Файл perfumes.js успешно сформирован и скачан', 'ok');
+  }
+
   function bindSecurityEvents() {
     $('vpTokensManager').addEventListener('click', async (e) => {
       const copyBtn = e.target.closest('[data-copy-url]');
@@ -2284,9 +2464,8 @@
     $('btnExportJsonBackup').addEventListener('click', async () => {
       try {
         await downloadWithAuth('/api/admin/backup/export', `volodium_backup_${new Date().toISOString().slice(0, 10)}.json`);
-        showToast('JSON-бэкап скачан', 'ok');
+        showToast('JSON-бэкап выгружен', 'ok');
       } catch (err) {
-        // Static client-side download fallback
         const backupData = {
           version: '1.0',
           exportedAt: new Date().toISOString(),
@@ -2314,18 +2493,7 @@
         await downloadWithAuth('/api/admin/backup/export-js', 'perfumes.js');
         showToast('Файл perfumes.js скачан', 'ok');
       } catch (err) {
-        // Static client-side download fallback
-        const jsContent = `/**\n * VOLODIUM PARFUM — Master Catalog Data\n * Pure fragrances (${state.perfumes.length} items), Thematic Aroma Boxes (${state.aromaboxes.length} sets), Secret Boxes (${state.secretBoxes.length} tiers).\n * Updated: ${new Date().toISOString()}\n */\nvar PERFUMES_DATA = ${JSON.stringify(state.perfumes, null, 2)};\n\nvar AROMA_BOXES_DATA = ${JSON.stringify(state.aromaboxes, null, 2)};\n\nvar SECRET_BOXES_DATA = ${JSON.stringify(state.secretBoxes, null, 2)};\n`;
-        const blob = new Blob([jsContent], { type: 'application/javascript;charset=utf-8' });
-        const objUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = objUrl;
-        a.download = 'perfumes.js';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(objUrl);
-        showToast('Файл perfumes.js успешно сформирован и скачан', 'ok');
+        downloadPerfumesJsDirect();
       }
     });
 
@@ -2366,6 +2534,7 @@
     bindPricingEvents();
     bindBoxesEvents();
     bindStorefrontEvents();
+    bindConsultationEvents();
     bindCommerceEvents();
     bindAuditEvents();
     bindSecurityEvents();

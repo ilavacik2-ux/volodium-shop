@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/_atelier_assets/admin.css?v=20261114_02">
+  <link rel="stylesheet" href="/_atelier_assets/admin.css?v=20261124_05">
 </head>
 <body>
   <div class="vp-ambient-aura" aria-hidden="true"></div>
@@ -153,44 +153,52 @@
     <div class="vp-main-area">
       <!-- Top Header Bar -->
       <header class="vp-topbar">
-        <div class="vp-topbar-left">
-          <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
-          <div>
-            <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
-            <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
-          </div>
-        </div>
-
-        <div class="vp-topbar-actions">
-          <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
-            <span id="vpThemeIcon">🌙</span>
-          </button>
-
-          <div class="vp-audit-bell-wrap">
-            <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
-              <span>🔔</span>
-              <span class="vp-bell-dot" id="vpBellDot" hidden></span>
+        <div class="vp-topbar-nav">
+          <div class="vp-topbar-left">
+            <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
             </button>
-            <div class="vp-audit-popover" id="vpAuditPopover" hidden>
-              <div class="vp-ap-head">
-                <strong>Журнал изменений</strong>
-                <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
-              </div>
-              <div class="vp-ap-list" id="vpAuditPopoverList"></div>
+            <div class="vp-topbar-brand">
+              <span class="vp-topbar-brand-title">VOLODIUM</span>
+              <span class="vp-topbar-brand-sub">STUDIO</span>
             </div>
           </div>
 
-          <button type="button" class="vp-btn vp-btn-primary vp-btn-sm" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
-            <span>💾 Скачать perfumes.js</span>
-          </button>
-          <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
-            <span>Витрина</span>
-            <span>↗</span>
-          </a>
+          <div class="vp-topbar-actions">
+            <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
+              <span id="vpThemeIcon">🌙</span>
+            </button>
+
+            <div class="vp-audit-bell-wrap">
+              <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
+                <span>🔔</span>
+                <span class="vp-bell-dot" id="vpBellDot" hidden></span>
+              </button>
+              <div class="vp-audit-popover" id="vpAuditPopover" hidden>
+                <div class="vp-ap-head">
+                  <strong>Журнал изменений</strong>
+                  <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
+                </div>
+                <div class="vp-ap-list" id="vpAuditPopoverList"></div>
+              </div>
+            </div>
+
+            <button type="button" class="vp-btn vp-btn-primary vp-btn-sm vp-topbar-export-btn" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
+              <span class="vp-export-btn-text-full">💾 Скачать perfumes.js</span>
+              <span class="vp-export-btn-text-short">💾 .js</span>
+            </button>
+            <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
+              <span>Витрина</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="vp-topbar-heading">
+          <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
+          <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
         </div>
       </header>
 
@@ -783,14 +791,25 @@
                   <label for="scConsultOnlineSub">Подзаголовок / Описание</label>
                   <textarea id="scConsultOnlineSub" rows="2" placeholder="Персональный разбор ольфакторного профиля за 1 минуту"></textarea>
                 </div>
-                <div class="vp-upload-block" style="margin-top:12px;">
-                  <label>Фотография онлайн-карточки</label>
-                  <div class="vp-upload-row">
-                    <input type="text" id="scConsultOnlineImg" placeholder="assets/img/consultation/consult_online_flacons.jpg">
-                    <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
-                      <span>Загрузить фото</span>
-                      <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOnlineImg" data-upload-folder="consultation">
-                    </label>
+                <div class="vp-photo-card">
+                  <div class="vp-photo-card-head">
+                    <label>Фотография онлайн-карточки</label>
+                    <span class="vp-photo-source-tag ok" id="scConsultOnlineStatusTag">Фото активно</span>
+                  </div>
+                  <div class="vp-photo-preview-box">
+                    <div class="vp-photo-thumb-wrap">
+                      <img id="scConsultOnlineImgPreview" class="vp-photo-thumb" src="assets/img/consultation/consult_online_flacons.jpg" alt="Онлайн-подбор" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+                    </div>
+                    <div class="vp-photo-fields">
+                      <div class="vp-upload-row">
+                        <input type="text" id="scConsultOnlineImg" class="vp-input-code" placeholder="assets/img/consultation/consult_online_flacons.jpg">
+                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                          <span>📷 Загрузить</span>
+                          <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOnlineImg" data-upload-folder="consultation">
+                        </label>
+                      </div>
+                      <p class="vp-field-hint">Отображается на карточке онлайн-подбора в каталоге и блоке консультаций.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -822,14 +841,25 @@
                     <textarea id="scConsultOfflineNote" rows="2" placeholder="45–60 минут примерное время подбора"></textarea>
                   </div>
                 </div>
-                <div class="vp-upload-block" style="margin-top:12px;">
-                  <label>Фотография чемодана / встречи</label>
-                  <div class="vp-upload-row">
-                    <input type="text" id="scConsultOfflineImg" placeholder="assets/img/consultation/consult_offline_suitcase_enhanced.jpg">
-                    <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
-                      <span>Загрузить фото</span>
-                      <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOfflineImg" data-upload-folder="consultation">
-                    </label>
+                <div class="vp-photo-card">
+                  <div class="vp-photo-card-head">
+                    <label>Фотография чемодана / встречи</label>
+                    <span class="vp-photo-source-tag ok" id="scConsultOfflineStatusTag">Фото активно</span>
+                  </div>
+                  <div class="vp-photo-preview-box">
+                    <div class="vp-photo-thumb-wrap">
+                      <img id="scConsultOfflineImgPreview" class="vp-photo-thumb" src="assets/img/consultation/consult_offline_suitcase_enhanced.jpg" alt="Чемодан" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+                    </div>
+                    <div class="vp-photo-fields">
+                      <div class="vp-upload-row">
+                        <input type="text" id="scConsultOfflineImg" class="vp-input-code" placeholder="assets/img/consultation/consult_offline_suitcase_enhanced.jpg">
+                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                          <span>📷 Загрузить</span>
+                          <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOfflineImg" data-upload-folder="consultation">
+                        </label>
+                      </div>
+                      <p class="vp-field-hint">Фирменный чемодан с 150+ нишевыми флаконами или сессия подбора.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -854,21 +884,31 @@
                 </div>
               </div>
 
-              <div class="vp-form-grid" style="margin-top:12px;">
+              <div class="vp-two-col" style="margin-top:14px;">
                 <div class="vp-field">
                   <label for="scCertDenominations">Доступные номиналы (через запятую или с новой строки)</label>
-                  <textarea id="scCertDenominations" rows="3" placeholder="3 000 ₽&#10;5 000 ₽&#10;10 000 ₽&#10;15 000 ₽&#10;25 000 ₽&#10;50 000 ₽"></textarea>
+                  <textarea id="scCertDenominations" rows="5" placeholder="3 000 ₽&#10;5 000 ₽&#10;10 000 ₽&#10;15 000 ₽&#10;25 000 ₽&#10;50 000 ₽"></textarea>
                 </div>
-                <div class="vp-upload-block">
-                  <label>Фотография фирменного конверта / карточки</label>
-                  <div class="vp-upload-row">
-                    <input type="text" id="scCertImage" placeholder="assets/img/certificates/real_certificate_envelope.jpg">
-                    <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
-                      <span>Загрузить фото</span>
-                      <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scCertImage" data-upload-folder="certificates">
-                    </label>
+                <div class="vp-photo-card" style="margin-top:0;">
+                  <div class="vp-photo-card-head">
+                    <label>Фотография фирменного конверта / карточки</label>
+                    <span class="vp-photo-source-tag ok" id="scCertStatusTag">Фото активно</span>
                   </div>
-                  <p style="font-size: 12px; color: var(--text-dim); margin-top: 6px;">Рекомендуется фото конверта с сургучной печатью или фирменной золотой карточки Volodium.</p>
+                  <div class="vp-photo-preview-box">
+                    <div class="vp-photo-thumb-wrap">
+                      <img id="scCertImgPreview" class="vp-photo-thumb" src="assets/img/certificates/real_certificate_envelope.jpg" alt="Сертификат" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+                    </div>
+                    <div class="vp-photo-fields">
+                      <div class="vp-upload-row">
+                        <input type="text" id="scCertImage" class="vp-input-code" placeholder="assets/img/certificates/real_certificate_envelope.jpg">
+                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                          <span>📷 Загрузить</span>
+                          <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scCertImage" data-upload-folder="certificates">
+                        </label>
+                      </div>
+                      <p class="vp-field-hint">Рекомендуется фото конверта с сургучной печатью или фирменной золотой карточки Volodium.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1508,6 +1548,6 @@
 
   <!-- Master Data & Admin Engine -->
   <script src="/assets/data/perfumes.js?v=20261116_16"></script>
-  <script src="/_atelier_assets/admin.js?v=20261124_03"></script>
+  <script src="/_atelier_assets/admin.js?v=20261124_05"></script>
 </body>
 </html>

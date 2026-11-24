@@ -207,6 +207,7 @@ BLOCKED_PREFIXES = (
     "/administrator",
     "/phpmyadmin",
     "/private_admin",
+    "/assets/admin",
     "/server.py",
     "/database.py",
     "/requirements.txt",
@@ -223,7 +224,8 @@ async def security_cloak_middleware(request: Request, call_next):
     lower_path = path.lower()
 
     # Never expose sensitive system files or generic admin brute-force paths (unless VP_ADMIN_PATH explicitly matches)
-    if lower_path != VP_ADMIN_PATH.lower():
+    admin_paths = (VP_ADMIN_PATH.lower(), VP_ADMIN_PATH.lower() + "/")
+    if lower_path not in admin_paths:
         if any(lower_path == p or lower_path.startswith(p + "/") or lower_path.startswith(p + ".") for p in BLOCKED_PREFIXES if not p.endswith("/")):
             return not_found_response()
         if any(lower_path.startswith(p) for p in BLOCKED_PREFIXES if p.endswith("/")):
@@ -259,6 +261,7 @@ async def security_cloak_middleware(request: Request, call_next):
 # ==============================================================================
 
 @app.get(VP_ADMIN_PATH)
+@app.get(f"{VP_ADMIN_PATH}/")
 async def stealth_admin_entry(request: Request, token: Optional[str] = None):
     ip = get_client_ip(request)
     gate_rl_key = f"gate:{ip}"
@@ -302,7 +305,7 @@ async def stealth_admin_entry(request: Request, token: Optional[str] = None):
             value=cookie_val,
             max_age=43200,
             httponly=True,
-            samesite="strict",
+            samesite="lax",
             secure=IS_PROD,
             path="/",
         )
@@ -404,7 +407,7 @@ async def auth_login(payload: LoginRequest, request: Request, response: Response
         value=session_token,
         max_age=43200,
         httponly=True,
-        samesite="strict",
+        samesite="lax",
         secure=IS_PROD,
         path="/",
     )
@@ -1011,7 +1014,7 @@ async def serve_favicon_svg():
 
 @app.api_route("/assets/{asset_path:path}", methods=["GET", "HEAD"])
 async def serve_public_assets(asset_path: str):
-    if ".." in asset_path or asset_path.startswith("."):
+    if ".." in asset_path or asset_path.startswith(".") or asset_path == "admin" or asset_path.startswith("admin/"):
         return not_found_response()
     target = (BASE_DIR / "assets" / asset_path).resolve()
     assets_root = (BASE_DIR / "assets").resolve()

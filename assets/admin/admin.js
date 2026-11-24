@@ -78,10 +78,13 @@
 
   function resolveMediaSrc(src) {
     const raw = String(src || '').trim();
-    if (!raw) return 'assets/images/noroot.png';
-    if (raw.startsWith('//')) return 'https:' + raw;
-    if (/^(https?:|data:|blob:)/i.test(raw)) return raw;
-    return raw.replace(/^\/+/, '');
+    const fallback = 'assets/images/noroot.png';
+    const target = raw || fallback;
+    if (target.startsWith('//')) return 'https:' + target;
+    if (/^(https?:|data:|blob:)/i.test(target)) return target;
+    const clean = target.replace(/^\/+/, '');
+    const isGitHubPages = typeof window !== 'undefined' && window.location && window.location.hostname.endsWith('github.io');
+    return isGitHubPages ? clean : ('/' + clean);
   }
 
   function formatRub(val) {

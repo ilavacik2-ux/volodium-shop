@@ -718,10 +718,10 @@ textarea {
 
 /* Desktop: Heading on left */
 .vp-topbar-heading {
-  order: 1;
-  min-width: 0;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  margin-right: auto;
 }
 
 .vp-page-title {
@@ -741,15 +741,7 @@ textarea {
   line-height: 1.4;
 }
 
-/* Desktop: Nav on right */
-.vp-topbar-nav {
-  order: 2;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.vp-topbar-left {
+.vp-topbar-brand-box {
   display: none;
 }
 
@@ -799,6 +791,7 @@ textarea {
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .vp-export-btn-text-full {
@@ -829,6 +822,7 @@ textarea {
   top: calc(100% + 10px);
   right: 0;
   width: 340px;
+  max-width: min(340px, calc(100vw - 32px));
   background: var(--bg-elev);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
@@ -846,11 +840,12 @@ textarea {
   margin-bottom: 10px;
 }
 
+.vp-audit-popover-list,
 .vp-ap-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 300px;
+  max-height: 280px;
   overflow-y: auto;
 }
 
@@ -2451,24 +2446,27 @@ textarea {
   }
 
   /* ROW 1: Burger + Brand on left, Action buttons on right */
-  .vp-topbar-nav {
-    order: 1;
+  .vp-topbar {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    gap: 8px;
+    padding: 10px 14px 12px;
+    gap: 8px 12px;
+    background: rgba(250, 248, 245, 0.96);
   }
 
-  .vp-topbar-left {
-    display: flex;
+  .vp-topbar-brand-box {
+    order: 1;
+    display: flex !important;
     align-items: center;
     gap: 8px;
     min-width: 0;
   }
 
   .vp-burger-btn {
-    display: flex;
+    display: flex !important;
     width: 36px;
     height: 36px;
     border-radius: 9px;
@@ -2482,7 +2480,7 @@ textarea {
   }
 
   .vp-topbar-brand {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     line-height: 1.05;
   }
@@ -2503,10 +2501,12 @@ textarea {
   }
 
   .vp-topbar-actions {
+    order: 2;
     display: flex;
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
+    margin-left: auto;
   }
 
   .vp-export-btn-text-full {
@@ -2521,7 +2521,7 @@ textarea {
 
   /* ROW 2: Full-width Page Heading & Subtitle */
   .vp-topbar-heading {
-    order: 2;
+    order: 3;
     width: 100%;
     padding-top: 8px;
     border-top: 1px solid var(--border);

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/_atelier_assets/admin.css?v=20261124_08">
+  <link rel="stylesheet" href="/_atelier_assets/admin.css?v=20261124_10">
   <style>
     /* Critical UI Guards: Desktop Header, macOS Photo Cards, and Clean Bottom Bar */
     html, body, .vp-app-shell, .vp-main-area {
@@ -25,44 +25,77 @@
       padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
     [data-theme="noir"] .vp-topbar { background: rgba(13, 14, 18, 0.94); }
-    .vp-topbar-heading { order: 1; display: flex; flex-direction: column; min-width: 0; }
-    .vp-topbar-nav { order: 2; display: flex; align-items: center; gap: 12px; }
-    .vp-topbar-left { display: none; }
-    .vp-burger-btn, .vp-topbar-brand { display: none; }
-    .vp-topbar-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .vp-topbar-brand-box { display: none !important; }
+    .vp-topbar-heading { display: flex; flex-direction: column; min-width: 0; margin-right: auto; }
+    .vp-topbar-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: auto; }
     .vp-export-btn-text-full { display: inline !important; }
     .vp-export-btn-text-short { display: none !important; }
 
+    .vp-audit-bell-wrap { position: relative; }
+    .vp-audit-popover {
+      position: absolute; top: calc(100% + 10px); right: 0;
+      width: 340px; max-width: min(340px, calc(100vw - 32px));
+      background: var(--bg-elev, #ffffff);
+      border: 1px solid var(--border-strong, rgba(17,18,22,0.18));
+      border-radius: var(--radius-md, 14px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      padding: 14px; z-index: 60;
+    }
+    [data-theme="noir"] .vp-audit-popover {
+      background: var(--bg-elev, #18191f);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+    .vp-ap-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 10px; border-bottom: 1px solid var(--border, rgba(17,18,22,0.1));
+      margin-bottom: 10px; font-size: 13px; font-weight: 600;
+    }
+    .vp-audit-popover-list, .vp-ap-list {
+      display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto;
+    }
+    .vp-audit-mini-row {
+      padding: 8px 10px; border-radius: 8px; background: var(--bg-soft, #f7f6f2);
+      border: 1px solid var(--border, rgba(17,18,22,0.08)); font-size: 12px; line-height: 1.35;
+    }
+    .vp-audit-mini-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      margin-bottom: 3px; font-size: 11px; color: var(--text-dim, #777);
+    }
+
     @media (max-width: 960px) {
       .vp-topbar {
-        display: flex; flex-direction: column; align-items: stretch; width: 100%;
-        padding: 10px 14px 12px; gap: 8px;
+        display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; width: 100%;
+        padding: 10px 14px 12px; gap: 8px 12px;
         background: rgba(250, 248, 245, 0.96);
       }
       [data-theme="noir"] .vp-topbar { background: rgba(13, 14, 18, 0.96); }
-      .vp-topbar-nav {
-        order: 1; display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 8px;
+      .vp-topbar-brand-box {
+        order: 1; display: flex !important; align-items: center; gap: 8px; min-width: 0;
       }
-      .vp-topbar-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
-      .vp-burger-btn { display: flex; width: 36px; height: 36px; }
-      .vp-topbar-brand { display: flex; }
-      .vp-topbar-actions { display: flex; align-items: center; gap: 6px; }
+      .vp-burger-btn { display: flex !important; width: 36px; height: 36px; }
+      .vp-topbar-brand { display: flex !important; flex-direction: column; line-height: 1.05; }
+      .vp-topbar-actions { order: 2; display: flex; align-items: center; gap: 6px; margin-left: auto; }
       .vp-export-btn-text-full { display: none !important; }
-      .vp-export-btn-text-short { display: inline !important; }
+      .vp-export-btn-text-short { display: inline !important; font-size: 11.5px; font-weight: 600; }
       .vp-topbar-heading {
-        order: 2; width: 100%; padding-top: 8px;
+        order: 3; width: 100%; padding-top: 8px;
         border-top: 1px solid var(--border, rgba(17,18,22,0.1));
       }
       .vp-page-title { font-size: 20px !important; }
       .vp-page-subtitle { font-size: 12px !important; }
       .vp-content { padding-left: 14px; padding-right: 14px; }
+      .vp-audit-popover {
+        position: fixed; top: 58px; right: 12px; left: 12px;
+        max-width: 360px; margin-left: auto; width: auto;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35); z-index: 100;
+      }
     }
 
-    /* Photo Preview Row (macOS Style) */
+    /* Photo Preview Row (macOS Style Thumbnail - Strict Constraints) */
     .vp-photo-card {
       border: 1px solid var(--border, rgba(17,18,22,0.1));
       border-radius: 12px; background: var(--bg-soft, #F3EFE8);
-      padding: 12px 14px; margin-top: 14px;
+      padding: 12px 14px; margin-top: 14px; box-sizing: border-box; width: 100%;
     }
     .vp-photo-card-head {
       display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px;
@@ -77,22 +110,35 @@
       color: #15803d; background: rgba(34, 197, 94, 0.12); border-color: rgba(34, 197, 94, 0.25);
     }
     .vp-photo-preview-box {
-      display: flex; align-items: center; gap: 14px;
+      display: flex !important; align-items: center !important; gap: 14px !important; width: 100% !important;
     }
     .vp-photo-thumb-wrap {
-      width: 110px; height: 95px; min-width: 110px; max-height: 95px;
-      border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong, rgba(17,18,22,0.18));
-      background: var(--bg-elev, #fff); flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      width: 110px !important; height: 95px !important; min-width: 110px !important; max-width: 110px !important;
+      min-height: 95px !important; max-height: 95px !important;
+      border-radius: 10px !important; overflow: hidden !important;
+      border: 1px solid var(--border-strong, rgba(17,18,22,0.18)) !important;
+      background: var(--bg-elev, #fff) !important; flex-shrink: 0 !important;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important; display: block !important;
     }
     .vp-photo-thumb {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+      width: 100% !important; height: 100% !important; max-width: 100% !important; max-height: 100% !important;
+      object-fit: cover !important; display: block !important;
     }
     .vp-photo-fields {
-      flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;
+      flex: 1 !important; min-width: 0 !important; display: flex !important; flex-direction: column !important; gap: 6px !important;
+    }
+    .vp-upload-row {
+      display: flex; gap: 8px; align-items: center; width: 100%;
+    }
+    .vp-upload-row input[type="text"] {
+      flex: 1; min-width: 0;
+    }
+    .vp-upload-trigger {
+      white-space: nowrap; cursor: pointer; flex-shrink: 0;
     }
     @media (max-width: 540px) {
-      .vp-photo-preview-box { flex-direction: column; align-items: stretch; gap: 10px; }
-      .vp-photo-thumb-wrap { width: 100%; height: 130px; max-height: 130px; }
+      .vp-photo-preview-box { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
+      .vp-photo-thumb-wrap { width: 100% !important; height: 130px !important; min-width: 100% !important; max-width: 100% !important; max-height: 130px !important; }
     }
 
     /* Clean Bottom Sticky Save Bar */
@@ -108,6 +154,9 @@
     }
     [data-theme="noir"] .vp-sticky-save-bar {
       background: rgba(13, 14, 18, 0.95);
+      border-top-color: rgba(255,255,255,0.08);
+      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.35);
+    }
       box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.4);
     }
     .vp-content { padding-bottom: 80px; }
@@ -251,49 +300,16 @@
 
     <!-- Main Workspace -->
     <div class="vp-main-area">
-      <!-- Top Header Bar -->
       <header class="vp-topbar">
-        <!-- Brand & Nav Row for Mobile; on Desktop wraps actions on right -->
-        <div class="vp-topbar-nav">
-          <div class="vp-topbar-left">
-            <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-              </svg>
-            </button>
-            <div class="vp-topbar-brand">
-              <span class="vp-topbar-brand-title">VOLODIUM</span>
-              <span class="vp-topbar-brand-sub">STUDIO</span>
-            </div>
-          </div>
-
-          <div class="vp-topbar-actions">
-            <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
-              <span id="vpThemeIcon">🌙</span>
-            </button>
-
-            <div class="vp-audit-bell-wrap">
-              <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
-                <span>🔔</span>
-                <span class="vp-bell-dot" id="vpBellDot" hidden></span>
-              </button>
-              <div class="vp-audit-popover" id="vpAuditPopover" hidden>
-                <div class="vp-ap-head">
-                  <strong>Журнал изменений</strong>
-                  <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
-                </div>
-                <div class="vp-audit-popover-list" id="vpAuditPopoverList"></div>
-              </div>
-            </div>
-
-            <button type="button" class="vp-btn vp-btn-primary vp-btn-sm vp-topbar-export-btn" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
-              <span class="vp-export-btn-text-full">💾 Скачать perfumes.js</span>
-              <span class="vp-export-btn-text-short">💾 .js</span>
-            </button>
-            <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
-              <span>Витрина</span>
-              <span>↗</span>
-            </a>
+        <div class="vp-topbar-brand-box">
+          <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div class="vp-topbar-brand">
+            <span class="vp-topbar-brand-title">VOLODIUM</span>
+            <span class="vp-topbar-brand-sub">STUDIO</span>
           </div>
         </div>
 
@@ -301,6 +317,35 @@
         <div class="vp-topbar-heading">
           <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
           <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
+        </div>
+
+        <div class="vp-topbar-actions">
+          <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
+            <span id="vpThemeIcon">🌙</span>
+          </button>
+
+          <div class="vp-audit-bell-wrap">
+            <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
+              <span>🔔</span>
+              <span class="vp-bell-dot" id="vpBellDot" hidden></span>
+            </button>
+            <div class="vp-audit-popover" id="vpAuditPopover" hidden>
+              <div class="vp-ap-head">
+                <strong>Журнал изменений</strong>
+                <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
+              </div>
+              <div class="vp-audit-popover-list" id="vpAuditPopoverList"></div>
+            </div>
+          </div>
+
+          <button type="button" class="vp-btn vp-btn-primary vp-btn-sm vp-topbar-export-btn" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
+            <span class="vp-export-btn-text-full">💾 Скачать perfumes.js</span>
+            <span class="vp-export-btn-text-short">💾 .js</span>
+          </button>
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
+            <span>Витрина</span>
+            <span>↗</span>
+          </a>
         </div>
       </header>
 
@@ -1650,6 +1695,6 @@
 
   <!-- Master Data & Admin Engine -->
   <script src="/assets/data/perfumes.js?v=20261116_16"></script>
-  <script src="/_atelier_assets/admin.js?v=20261124_08"></script>
+  <script src="/_atelier_assets/admin.js?v=20261124_10"></script>
 </body>
 </html>

@@ -11,37 +11,51 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/admin/admin.css?v=20261124_06">
+  <link rel="stylesheet" href="assets/admin/admin.css?v=20261124_08">
   <style>
     /* Critical UI Guards: Desktop Header, macOS Photo Cards, and Clean Bottom Bar */
+    html, body, .vp-app-shell, .vp-main-area {
+      width: 100%; max-width: 100vw; overflow-x: hidden;
+    }
     .vp-topbar {
-      position: sticky; top: 0; z-index: 30;
-      background: rgba(250, 248, 245, 0.92);
+      position: sticky; top: 0; z-index: 30; width: 100%; max-width: 100vw; box-sizing: border-box;
+      background: rgba(250, 248, 245, 0.94);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border, rgba(17,18,22,0.1));
-      padding: 14px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
-    [data-theme="noir"] .vp-topbar { background: rgba(13, 14, 18, 0.92); }
-    .vp-topbar-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
-    .vp-topbar-heading { display: flex; flex-direction: column; min-width: 0; }
+    [data-theme="noir"] .vp-topbar { background: rgba(13, 14, 18, 0.94); }
+    .vp-topbar-heading { order: 1; display: flex; flex-direction: column; min-width: 0; }
+    .vp-topbar-nav { order: 2; display: flex; align-items: center; gap: 12px; }
+    .vp-topbar-left { display: none; }
     .vp-burger-btn, .vp-topbar-brand { display: none; }
     .vp-topbar-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .vp-export-btn-text-full { display: inline !important; }
+    .vp-export-btn-text-short { display: none !important; }
 
     @media (max-width: 960px) {
       .vp-topbar {
-        display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-        padding: 10px 14px 12px; gap: 8px 12px;
+        display: flex; flex-direction: column; align-items: stretch; width: 100%;
+        padding: 10px 14px 12px; gap: 8px;
+        background: rgba(250, 248, 245, 0.96);
       }
-      .vp-topbar-left { display: contents; }
-      .vp-burger-btn { display: flex; order: 1; }
-      .vp-topbar-brand { display: flex; order: 2; margin-right: auto; margin-left: 8px; }
-      .vp-topbar-actions { display: flex; order: 3; gap: 8px; }
+      [data-theme="noir"] .vp-topbar { background: rgba(13, 14, 18, 0.96); }
+      .vp-topbar-nav {
+        order: 1; display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 8px;
+      }
+      .vp-topbar-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+      .vp-burger-btn { display: flex; width: 36px; height: 36px; }
+      .vp-topbar-brand { display: flex; }
+      .vp-topbar-actions { display: flex; align-items: center; gap: 6px; }
+      .vp-export-btn-text-full { display: none !important; }
+      .vp-export-btn-text-short { display: inline !important; }
       .vp-topbar-heading {
-        order: 4; width: 100%; margin-top: 4px; padding-top: 8px;
+        order: 2; width: 100%; padding-top: 8px;
         border-top: 1px solid var(--border, rgba(17,18,22,0.1));
       }
       .vp-page-title { font-size: 20px !important; }
       .vp-page-subtitle { font-size: 12px !important; }
+      .vp-content { padding-left: 14px; padding-right: 14px; }
     }
 
     /* Photo Preview Row (macOS Style) */
@@ -239,49 +253,54 @@
     <div class="vp-main-area">
       <!-- Top Header Bar -->
       <header class="vp-topbar">
-        <div class="vp-topbar-left">
-          <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
-          <div class="vp-topbar-brand">
-            <span class="vp-topbar-brand-title">VOLODIUM</span>
-            <span class="vp-topbar-brand-sub">STUDIO</span>
-          </div>
-          <div class="vp-topbar-heading">
-            <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
-            <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
-          </div>
-        </div>
-
-        <div class="vp-topbar-actions">
-          <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
-            <span id="vpThemeIcon">🌙</span>
-          </button>
-
-          <div class="vp-audit-bell-wrap">
-            <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
-              <span>🔔</span>
-              <span class="vp-bell-dot" id="vpBellDot" hidden></span>
+        <!-- Brand & Nav Row for Mobile; on Desktop wraps actions on right -->
+        <div class="vp-topbar-nav">
+          <div class="vp-topbar-left">
+            <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
             </button>
-            <div class="vp-audit-popover" id="vpAuditPopover" hidden>
-              <div class="vp-ap-head">
-                <strong>Журнал изменений</strong>
-                <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
-              </div>
-              <div class="vp-audit-popover-list" id="vpAuditPopoverList"></div>
+            <div class="vp-topbar-brand">
+              <span class="vp-topbar-brand-title">VOLODIUM</span>
+              <span class="vp-topbar-brand-sub">STUDIO</span>
             </div>
           </div>
 
-          <button type="button" class="vp-btn vp-btn-primary vp-btn-sm vp-topbar-export-btn" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
-            <span class="vp-export-btn-text-full">💾 Скачать perfumes.js</span>
-            <span class="vp-export-btn-text-short">💾 .js</span>
-          </button>
-          <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
-            <span>Витрина</span>
-            <span>↗</span>
-          </a>
+          <div class="vp-topbar-actions">
+            <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
+              <span id="vpThemeIcon">🌙</span>
+            </button>
+
+            <div class="vp-audit-bell-wrap">
+              <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
+                <span>🔔</span>
+                <span class="vp-bell-dot" id="vpBellDot" hidden></span>
+              </button>
+              <div class="vp-audit-popover" id="vpAuditPopover" hidden>
+                <div class="vp-ap-head">
+                  <strong>Журнал изменений</strong>
+                  <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
+                </div>
+                <div class="vp-audit-popover-list" id="vpAuditPopoverList"></div>
+              </div>
+            </div>
+
+            <button type="button" class="vp-btn vp-btn-primary vp-btn-sm vp-topbar-export-btn" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
+              <span class="vp-export-btn-text-full">💾 Скачать perfumes.js</span>
+              <span class="vp-export-btn-text-short">💾 .js</span>
+            </button>
+            <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
+              <span>Витрина</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Page Heading (Title & Subtitle) -->
+        <div class="vp-topbar-heading">
+          <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
+          <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
         </div>
       </header>
 
@@ -1631,6 +1650,6 @@
 
   <!-- Master Data & Admin Engine -->
   <script src="assets/data/perfumes.js?v=20261116_16"></script>
-  <script src="assets/admin/admin.js?v=20261124_05"></script>
+  <script src="assets/admin/admin.js?v=20261124_08"></script>
 </body>
 </html>

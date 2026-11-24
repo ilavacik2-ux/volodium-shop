@@ -145,15 +145,43 @@ def verify_gate_cookie(cookie_val: Optional[str]) -> Optional[tuple]:
     return (role, label)
 
 
+def is_request_secure(request: Request) -> bool:
+    if request.url.scheme == "https":
+        return True
+    proto = (request.headers.get("x-forwarded-proto") or "").lower()
+    return proto == "https"
+
+
 def resolve_gate_from_request(request: Request) -> Optional[tuple]:
-    """Authenticate gateway via HttpOnly signed cookie OR explicit X-Gateway-Token header."""
+    """Authenticate gateway via HttpOnly signed cookie, explicit header, query param, or valid referer token."""
     header_tok = (request.headers.get("x-gateway-token") or "").strip()
     if header_tok:
         resolved = db.resolve_gateway_token_role(header_tok)
         if resolved:
             return resolved
+    query_tok = (request.query_params.get("token") or "").strip()
+    if query_tok:
+        resolved = db.resolve_gateway_token_role(query_tok)
+        if resolved:
+            return resolved
     cookie_val = request.cookies.get(GATE_COOKIE_NAME)
-    return verify_gate_cookie(cookie_val)
+    from_cookie = verify_gate_cookie(cookie_val)
+    if from_cookie:
+        return from_cookie
+    # Fallback: check token in Referer for subresources (admin.css / admin.js) before cookie registers over HTTP
+    referer = (request.headers.get("referer") or "").strip()
+    if "?" in referer and "token=" in referer:
+        from urllib.parse import urlparse, parse_qs
+        try:
+            qs = parse_qs(urlparse(referer).query)
+            tok_list = qs.get("token")
+            if tok_list and tok_list[0]:
+                resolved = db.resolve_gateway_token_role(tok_list[0].strip())
+                if resolved:
+                    return resolved
+        except Exception:
+            pass
+    return None
 
 
 def require_session(request: Request) -> Dict[str, Any]:
@@ -306,7 +334,7 @@ async def stealth_admin_entry(request: Request, token: Optional[str] = None):
             max_age=43200,
             httponly=True,
             samesite="lax",
-            secure=IS_PROD,
+            secure=is_request_secure(request),
             path="/",
         )
     return resp
@@ -408,7 +436,7 @@ async def auth_login(payload: LoginRequest, request: Request, response: Response
         max_age=43200,
         httponly=True,
         samesite="lax",
-        secure=IS_PROD,
+        secure=is_request_secure(request),
         path="/",
     )
     return {

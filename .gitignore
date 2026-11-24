@@ -21,7 +21,8 @@ volodium_database.db-journal
 *.db
 
 # User Uploaded Media in Admin (backed up separately)
-assets/uploads/
+assets/uploads/*
+!assets/uploads/perfumes/
 
 # Logs & Backups
 *.log

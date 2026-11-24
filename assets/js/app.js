@@ -1608,7 +1608,7 @@ function createProductCardHtml(item) {
     <div class="perfume-card" id="card-${escapeHtml(item.id)}">
       ${(item.badge && !/наличи/i.test(item.badge)) ? `<span class="card-badge">${escapeHtml(item.badge)}</span>` : ''}
       <div class="card-img-wrap trigger-modal-${escapeHtml(item.id)}">
-        <img src="${escapeHtml(imgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${objPos};" loading="lazy" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+        <img src="${escapeHtml(imgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${objPos};" decoding="async" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
       </div>
       <div class="card-brand">${escapeHtml(item.brand || 'VOLODIUM PARFUM')}</div>
       <h3 class="card-title trigger-modal-${escapeHtml(item.id)}">${escapeHtml(item.name)}</h3>

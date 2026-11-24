@@ -225,20 +225,6 @@
       });
     }
 
-    const quickBtn = $('vpQuickLoginBtn');
-    if (quickBtn) {
-      quickBtn.addEventListener('click', async () => {
-        state.operatorRole = 'assistant';
-        state.operatorName = 'Admin 2';
-        sessionStorage.setItem('vp_static_granted', '1');
-        localStorage.setItem('vp_static_role', 'assistant');
-        $('vpAuthScreen').hidden = true;
-        $('vpAppShell').hidden = false;
-        await loadStudioOverview();
-        showToast('Добро пожаловать в студию (Admin 2)', 'ok');
-      });
-    }
-
     $('vpAuthForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const errEl = $('vpAuthError');

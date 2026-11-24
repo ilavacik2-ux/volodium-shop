@@ -688,7 +688,7 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(250, 248, 245, 0.88);
+  background: rgba(250, 248, 245, 0.90);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -696,24 +696,19 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
   transition: padding 0.2s ease, background-color 0.2s ease;
 }
 
 [data-theme="noir"] .vp-topbar {
-  background: rgba(13, 14, 18, 0.88);
-}
-
-.vp-topbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  background: rgba(13, 14, 18, 0.90);
 }
 
 .vp-topbar-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  min-width: 0;
 }
 
 .vp-topbar-brand {
@@ -1714,19 +1709,28 @@ textarea {
 
 .vp-sticky-save-bar {
   position: sticky;
-  bottom: 14px;
-  z-index: 20;
-  margin-top: 18px;
-  padding: 14px 20px;
-  border-radius: var(--radius-md);
-  background: var(--bg-elev);
-  border: 1px solid var(--wine);
-  box-shadow: var(--shadow-lg);
+  bottom: 0;
+  z-index: 25;
+  margin-top: 24px;
+  padding: 14px 24px;
+  border-radius: 14px 14px 0 0;
+  background: rgba(250, 248, 245, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-strong);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: none;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
+}
+
+[data-theme="noir"] .vp-sticky-save-bar {
+  background: rgba(13, 14, 18, 0.95);
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .vp-promo-list {
@@ -2408,27 +2412,40 @@ textarea {
     grid-template-columns: 1fr;
   }
   .vp-topbar {
-    padding: 10px 16px 12px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-  }
-  .vp-topbar-nav {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    padding: 10px 14px 12px;
+    gap: 8px 12px;
+  }
+  .vp-topbar-left {
+    display: contents;
+  }
+  .vp-burger-btn {
+    display: flex;
+    order: 1;
   }
   .vp-topbar-brand {
     display: flex;
+    order: 2;
+    margin-right: auto;
+    margin-left: 8px;
+  }
+  .vp-topbar-actions {
+    display: flex;
+    order: 3;
+    gap: 8px;
   }
   .vp-topbar-heading {
+    order: 4;
     width: 100%;
-    padding-top: 6px;
+    margin-top: 4px;
+    padding-top: 8px;
     border-top: 1px solid var(--border);
   }
   .vp-page-title {
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.2;
     word-break: break-word;
   }

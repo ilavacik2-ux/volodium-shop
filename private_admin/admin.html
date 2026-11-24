@@ -11,7 +11,93 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/_atelier_assets/admin.css?v=20261124_05">
+  <link rel="stylesheet" href="/_atelier_assets/admin.css?v=20261124_06">
+  <style>
+    /* Critical UI Guards: Desktop Header, macOS Photo Cards, and Clean Bottom Bar */
+    .vp-topbar {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border, rgba(17,18,22,0.1));
+      padding: 14px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    [data-theme="noir"] .vp-topbar { background: rgba(13, 14, 18, 0.92); }
+    .vp-topbar-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .vp-topbar-heading { display: flex; flex-direction: column; min-width: 0; }
+    .vp-burger-btn, .vp-topbar-brand { display: none; }
+    .vp-topbar-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    @media (max-width: 960px) {
+      .vp-topbar {
+        display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+        padding: 10px 14px 12px; gap: 8px 12px;
+      }
+      .vp-topbar-left { display: contents; }
+      .vp-burger-btn { display: flex; order: 1; }
+      .vp-topbar-brand { display: flex; order: 2; margin-right: auto; margin-left: 8px; }
+      .vp-topbar-actions { display: flex; order: 3; gap: 8px; }
+      .vp-topbar-heading {
+        order: 4; width: 100%; margin-top: 4px; padding-top: 8px;
+        border-top: 1px solid var(--border, rgba(17,18,22,0.1));
+      }
+      .vp-page-title { font-size: 20px !important; }
+      .vp-page-subtitle { font-size: 12px !important; }
+    }
+
+    /* Photo Preview Row (macOS Style) */
+    .vp-photo-card {
+      border: 1px solid var(--border, rgba(17,18,22,0.1));
+      border-radius: 12px; background: var(--bg-soft, #F3EFE8);
+      padding: 12px 14px; margin-top: 14px;
+    }
+    .vp-photo-card-head {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px;
+    }
+    .vp-photo-card-head label { font-size: 12.5px; font-weight: 600; color: var(--text, #111216); margin: 0; }
+    .vp-photo-source-tag {
+      font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+      background: var(--bg-elev, #fff); border: 1px solid var(--border-strong, rgba(17,18,22,0.18));
+      color: var(--text-muted, #5A5455);
+    }
+    .vp-photo-source-tag.ok {
+      color: #15803d; background: rgba(34, 197, 94, 0.12); border-color: rgba(34, 197, 94, 0.25);
+    }
+    .vp-photo-preview-box {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .vp-photo-thumb-wrap {
+      width: 110px; height: 95px; min-width: 110px; max-height: 95px;
+      border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong, rgba(17,18,22,0.18));
+      background: var(--bg-elev, #fff); flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .vp-photo-thumb {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .vp-photo-fields {
+      flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;
+    }
+    @media (max-width: 540px) {
+      .vp-photo-preview-box { flex-direction: column; align-items: stretch; gap: 10px; }
+      .vp-photo-thumb-wrap { width: 100%; height: 130px; max-height: 130px; }
+    }
+
+    /* Clean Bottom Sticky Save Bar */
+    .vp-sticky-save-bar {
+      position: sticky; bottom: 0; z-index: 25; margin-top: 24px; padding: 14px 24px;
+      border-radius: 14px 14px 0 0; background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-strong, rgba(17,18,22,0.18));
+      border-left: 1px solid var(--border, rgba(17,18,22,0.1));
+      border-right: 1px solid var(--border, rgba(17,18,22,0.1));
+      border-bottom: none; box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    [data-theme="noir"] .vp-sticky-save-bar {
+      background: rgba(13, 14, 18, 0.95);
+      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .vp-content { padding-bottom: 80px; }
+  </style>
 </head>
 <body>
   <div class="vp-ambient-aura" aria-hidden="true"></div>
@@ -153,52 +239,49 @@
     <div class="vp-main-area">
       <!-- Top Header Bar -->
       <header class="vp-topbar">
-        <div class="vp-topbar-nav">
-          <div class="vp-topbar-left">
-            <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-              </svg>
-            </button>
-            <div class="vp-topbar-brand">
-              <span class="vp-topbar-brand-title">VOLODIUM</span>
-              <span class="vp-topbar-brand-sub">STUDIO</span>
-            </div>
+        <div class="vp-topbar-left">
+          <button type="button" class="vp-burger-btn" id="vpSidebarOpenBtn" aria-label="Открыть навигацию">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div class="vp-topbar-brand">
+            <span class="vp-topbar-brand-title">VOLODIUM</span>
+            <span class="vp-topbar-brand-sub">STUDIO</span>
           </div>
-
-          <div class="vp-topbar-actions">
-            <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
-              <span id="vpThemeIcon">🌙</span>
-            </button>
-
-            <div class="vp-audit-bell-wrap">
-              <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
-                <span>🔔</span>
-                <span class="vp-bell-dot" id="vpBellDot" hidden></span>
-              </button>
-              <div class="vp-audit-popover" id="vpAuditPopover" hidden>
-                <div class="vp-ap-head">
-                  <strong>Журнал изменений</strong>
-                  <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
-                </div>
-                <div class="vp-ap-list" id="vpAuditPopoverList"></div>
-              </div>
-            </div>
-
-            <button type="button" class="vp-btn vp-btn-primary vp-btn-sm vp-topbar-export-btn" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
-              <span class="vp-export-btn-text-full">💾 Скачать perfumes.js</span>
-              <span class="vp-export-btn-text-short">💾 .js</span>
-            </button>
-            <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
-              <span>Витрина</span>
-              <span>↗</span>
-            </a>
+          <div class="vp-topbar-heading">
+            <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
+            <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
           </div>
         </div>
 
-        <div class="vp-topbar-heading">
-          <h2 class="vp-page-title" id="vpPageTitle">Обзор ателье</h2>
-          <p class="vp-page-subtitle" id="vpPageSubtitle">Сводка каталога, сезонности и быстрое управление ценами</p>
+        <div class="vp-topbar-actions">
+          <button type="button" class="vp-icon-btn" id="vpThemeToggleBtn" title="Переключить тему (Пергамент / Velvet Noir)" aria-label="Сменить тему">
+            <span id="vpThemeIcon">🌙</span>
+          </button>
+
+          <div class="vp-audit-bell-wrap">
+            <button type="button" class="vp-icon-btn" id="vpAuditBellBtn" title="Последние действия в студии" aria-label="Журнал событий">
+              <span>🔔</span>
+              <span class="vp-bell-dot" id="vpBellDot" hidden></span>
+            </button>
+            <div class="vp-audit-popover" id="vpAuditPopover" hidden>
+              <div class="vp-ap-head">
+                <strong>Журнал изменений</strong>
+                <button type="button" class="vp-link-btn" id="vpOpenFullAuditBtn">Все события →</button>
+              </div>
+              <div class="vp-audit-popover-list" id="vpAuditPopoverList"></div>
+            </div>
+          </div>
+
+          <button type="button" class="vp-btn vp-btn-primary vp-btn-sm vp-topbar-export-btn" id="vpTopbarExportJsBtn" title="Скачать актуальный assets/data/perfumes.js">
+            <span class="vp-export-btn-text-full">💾 Скачать perfumes.js</span>
+            <span class="vp-export-btn-text-short">💾 .js</span>
+          </button>
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-btn vp-btn-outline vp-btn-sm vp-hide-xs">
+            <span>Витрина</span>
+            <span>↗</span>
+          </a>
         </div>
       </header>
 
@@ -791,24 +874,24 @@
                   <label for="scConsultOnlineSub">Подзаголовок / Описание</label>
                   <textarea id="scConsultOnlineSub" rows="2" placeholder="Персональный разбор ольфакторного профиля за 1 минуту"></textarea>
                 </div>
-                <div class="vp-photo-card">
-                  <div class="vp-photo-card-head">
-                    <label>Фотография онлайн-карточки</label>
-                    <span class="vp-photo-source-tag ok" id="scConsultOnlineStatusTag">Фото активно</span>
+                <div class="vp-photo-card" style="margin-top: 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-soft);">
+                  <div class="vp-photo-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <label style="font-weight: 600; font-size: 13px;">Фотография онлайн-карточки</label>
+                    <span class="vp-photo-source-tag ok" id="scConsultOnlineStatusTag" style="font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px;">Фото активно</span>
                   </div>
-                  <div class="vp-photo-preview-box">
-                    <div class="vp-photo-thumb-wrap">
-                      <img id="scConsultOnlineImgPreview" class="vp-photo-thumb" src="assets/img/consultation/consult_online_flacons.jpg" alt="Онлайн-подбор" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+                  <div class="vp-photo-preview-box" style="display: flex; align-items: center; gap: 14px;">
+                    <div class="vp-photo-thumb-wrap" style="width: 110px; height: 95px; min-width: 110px; max-height: 95px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong); background: var(--bg-elev); flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                      <img id="scConsultOnlineImgPreview" class="vp-photo-thumb" src="assets/img/consultation/consult_online_flacons.jpg" alt="Онлайн-подбор" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
                     </div>
-                    <div class="vp-photo-fields">
-                      <div class="vp-upload-row">
-                        <input type="text" id="scConsultOnlineImg" class="vp-input-code" placeholder="assets/img/consultation/consult_online_flacons.jpg">
-                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                    <div class="vp-photo-fields" style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+                      <div class="vp-upload-row" style="display: flex; gap: 8px; align-items: center;">
+                        <input type="text" id="scConsultOnlineImg" class="vp-input-code" placeholder="assets/img/consultation/consult_online_flacons.jpg" style="flex: 1; min-width: 0;">
+                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger" style="white-space: nowrap; cursor: pointer; flex-shrink: 0;">
                           <span>📷 Загрузить</span>
                           <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOnlineImg" data-upload-folder="consultation">
                         </label>
                       </div>
-                      <p class="vp-field-hint">Отображается на карточке онлайн-подбора в каталоге и блоке консультаций.</p>
+                      <p class="vp-field-hint" style="margin: 0; font-size: 11.5px; color: var(--text-dim);">Отображается на карточке онлайн-подбора в каталоге и блоке консультаций.</p>
                     </div>
                   </div>
                 </div>
@@ -841,24 +924,24 @@
                     <textarea id="scConsultOfflineNote" rows="2" placeholder="45–60 минут примерное время подбора"></textarea>
                   </div>
                 </div>
-                <div class="vp-photo-card">
-                  <div class="vp-photo-card-head">
-                    <label>Фотография чемодана / встречи</label>
-                    <span class="vp-photo-source-tag ok" id="scConsultOfflineStatusTag">Фото активно</span>
+                <div class="vp-photo-card" style="margin-top: 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-soft);">
+                  <div class="vp-photo-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <label style="font-weight: 600; font-size: 13px;">Фотография чемодана / встречи</label>
+                    <span class="vp-photo-source-tag ok" id="scConsultOfflineStatusTag" style="font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px;">Фото активно</span>
                   </div>
-                  <div class="vp-photo-preview-box">
-                    <div class="vp-photo-thumb-wrap">
-                      <img id="scConsultOfflineImgPreview" class="vp-photo-thumb" src="assets/img/consultation/consult_offline_suitcase_enhanced.jpg" alt="Чемодан" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+                  <div class="vp-photo-preview-box" style="display: flex; align-items: center; gap: 14px;">
+                    <div class="vp-photo-thumb-wrap" style="width: 110px; height: 95px; min-width: 110px; max-height: 95px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong); background: var(--bg-elev); flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                      <img id="scConsultOfflineImgPreview" class="vp-photo-thumb" src="assets/img/consultation/consult_offline_suitcase_enhanced.jpg" alt="Чемодан" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
                     </div>
-                    <div class="vp-photo-fields">
-                      <div class="vp-upload-row">
-                        <input type="text" id="scConsultOfflineImg" class="vp-input-code" placeholder="assets/img/consultation/consult_offline_suitcase_enhanced.jpg">
-                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                    <div class="vp-photo-fields" style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+                      <div class="vp-upload-row" style="display: flex; gap: 8px; align-items: center;">
+                        <input type="text" id="scConsultOfflineImg" class="vp-input-code" placeholder="assets/img/consultation/consult_offline_suitcase_enhanced.jpg" style="flex: 1; min-width: 0;">
+                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger" style="white-space: nowrap; cursor: pointer; flex-shrink: 0;">
                           <span>📷 Загрузить</span>
                           <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scConsultOfflineImg" data-upload-folder="consultation">
                         </label>
                       </div>
-                      <p class="vp-field-hint">Фирменный чемодан с 150+ нишевыми флаконами или сессия подбора.</p>
+                      <p class="vp-field-hint" style="margin: 0; font-size: 11.5px; color: var(--text-dim);">Фирменный чемодан с 150+ нишевыми флаконами или сессия подбора.</p>
                     </div>
                   </div>
                 </div>
@@ -889,24 +972,24 @@
                   <label for="scCertDenominations">Доступные номиналы (через запятую или с новой строки)</label>
                   <textarea id="scCertDenominations" rows="5" placeholder="3 000 ₽&#10;5 000 ₽&#10;10 000 ₽&#10;15 000 ₽&#10;25 000 ₽&#10;50 000 ₽"></textarea>
                 </div>
-                <div class="vp-photo-card" style="margin-top:0;">
-                  <div class="vp-photo-card-head">
-                    <label>Фотография фирменного конверта / карточки</label>
-                    <span class="vp-photo-source-tag ok" id="scCertStatusTag">Фото активно</span>
+                <div class="vp-photo-card" style="margin-top: 0; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-soft);">
+                  <div class="vp-photo-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <label style="font-weight: 600; font-size: 13px;">Фотография фирменного конверта / карточки</label>
+                    <span class="vp-photo-source-tag ok" id="scCertStatusTag" style="font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px;">Фото активно</span>
                   </div>
-                  <div class="vp-photo-preview-box">
-                    <div class="vp-photo-thumb-wrap">
-                      <img id="scCertImgPreview" class="vp-photo-thumb" src="assets/img/certificates/real_certificate_envelope.jpg" alt="Сертификат" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+                  <div class="vp-photo-preview-box" style="display: flex; align-items: center; gap: 14px;">
+                    <div class="vp-photo-thumb-wrap" style="width: 110px; height: 95px; min-width: 110px; max-height: 95px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong); background: var(--bg-elev); flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                      <img id="scCertImgPreview" class="vp-photo-thumb" src="assets/img/certificates/real_certificate_envelope.jpg" alt="Сертификат" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
                     </div>
-                    <div class="vp-photo-fields">
-                      <div class="vp-upload-row">
-                        <input type="text" id="scCertImage" class="vp-input-code" placeholder="assets/img/certificates/real_certificate_envelope.jpg">
-                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger">
+                    <div class="vp-photo-fields" style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+                      <div class="vp-upload-row" style="display: flex; gap: 8px; align-items: center;">
+                        <input type="text" id="scCertImage" class="vp-input-code" placeholder="assets/img/certificates/real_certificate_envelope.jpg" style="flex: 1; min-width: 0;">
+                        <label class="vp-btn vp-btn-outline vp-btn-sm vp-upload-trigger" style="white-space: nowrap; cursor: pointer; flex-shrink: 0;">
                           <span>📷 Загрузить</span>
                           <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden data-upload-target="scCertImage" data-upload-folder="certificates">
                         </label>
                       </div>
-                      <p class="vp-field-hint">Рекомендуется фото конверта с сургучной печатью или фирменной золотой карточки Volodium.</p>
+                      <p class="vp-field-hint" style="margin: 0; font-size: 11.5px; color: var(--text-dim);">Рекомендуется фото конверта с сургучной печатью или фирменной золотой карточки Volodium.</p>
                     </div>
                   </div>
                 </div>

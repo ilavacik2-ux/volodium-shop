@@ -7,7 +7,7 @@
   'use strict';
 
   function isStaticDeployment() {
-    return window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
+    return window.location.hostname.includes('github.io') || window.location.protocol === 'file:';
   }
 
   // --- Immediate Stealth Token Scrubbing from URL Bar & Browser History ---
@@ -232,29 +232,32 @@
       errEl.hidden = true;
       submitBtn.disabled = true;
 
-      const enteredPass = (passInput.value || '').trim().toLowerCase();
+      const enteredPass = (passInput.value || '').trim();
 
-      // Static / offline fallback passwords
-      if (isStaticDeployment() || ['volodium', 'vova', 'sasha', 'admin', '1234', '123456', 'vatsiik'].includes(enteredPass)) {
-        const isSasha = enteredPass === 'sasha' || inMemoryGateToken.includes('help');
-        state.operatorRole = isSasha ? 'assistant' : 'owner';
-        state.operatorName = isSasha ? 'Admin 2' : 'Admin 1';
-        sessionStorage.setItem('vp_static_granted', '1');
-        localStorage.setItem('vp_static_role', state.operatorRole);
-        passInput.value = '';
-        $('vpAuthScreen').hidden = true;
-        $('vpAppShell').hidden = false;
-        await loadStudioOverview();
-        showToast(`Добро пожаловать, ${state.operatorName}`, 'ok');
-        submitBtn.disabled = false;
-        return;
+      // Static / offline fallback passwords (ONLY for static GitHub Pages or file://)
+      if (isStaticDeployment()) {
+        const lower = enteredPass.toLowerCase();
+        if (['volodium', 'vova', 'sasha', 'admin', '1234', '123456', 'vatsiik'].includes(lower)) {
+          const isSasha = lower === 'sasha' || inMemoryGateToken.includes('help');
+          state.operatorRole = isSasha ? 'assistant' : 'owner';
+          state.operatorName = isSasha ? 'Admin 2' : 'Admin 1';
+          sessionStorage.setItem('vp_static_granted', '1');
+          localStorage.setItem('vp_static_role', state.operatorRole);
+          passInput.value = '';
+          $('vpAuthScreen').hidden = true;
+          $('vpAppShell').hidden = false;
+          await loadStudioOverview();
+          showToast(`Добро пожаловать, ${state.operatorName}`, 'ok');
+          submitBtn.disabled = false;
+          return;
+        }
       }
 
       try {
         const res = await apiFetch('/api/auth/login', {
           method: 'POST',
           body: JSON.stringify({
-            password: passInput.value,
+            password: enteredPass,
             honeypot: ($('vpTrapInput') ? $('vpTrapInput').value : ''),
           }),
         });

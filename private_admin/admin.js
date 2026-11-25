@@ -2187,6 +2187,14 @@
     $('cmVkUrl').value = ct.vkUrl || '';
     $('cmHours').value = ct.hours || '';
     $('cmAddress').value = ct.address || '';
+    $('cmLegalName').value = ct.legalName || '';
+    $('cmInn').value = ct.inn || '';
+    $('cmOgrnip').value = ct.ogrnip || '';
+    $('cmEmail').value = ct.email || '';
+    const warnEl = $('cmOgrnipWarning');
+    if (warnEl) {
+      warnEl.style.display = String(ct.ogrnip || '').trim() === '324774600123456' ? 'block' : 'none';
+    }
   }
 
   function bindCommerceEvents() {
@@ -2254,8 +2262,16 @@
           vkDisplay: $('cmVkUrl').value.replace(/^https?:\/\//, '').trim(),
           hours: $('cmHours').value.trim(),
           address: $('cmAddress').value.trim(),
+          legalName: $('cmLegalName').value.trim(),
+          inn: $('cmInn').value.trim(),
+          ogrnip: $('cmOgrnip').value.trim(),
+          email: $('cmEmail').value.trim(),
         },
       };
+      const warnEl = $('cmOgrnipWarning');
+      if (warnEl) {
+        warnEl.style.display = nextContent.contacts.ogrnip === '324774600123456' ? 'block' : 'none';
+      }
 
       try {
         const res = await apiFetch('/api/admin/site-content', {

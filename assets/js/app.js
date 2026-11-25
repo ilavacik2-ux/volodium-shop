@@ -39,7 +39,11 @@ let ACTIVE_CONTACTS = {
   vkUrl: 'https://vk.ru/volodya_v_v',
   vkDisplay: 'vk.ru/volodya_v_v',
   address: 'Самовывоз Ⓜ️ Автозаводская',
-  hours: 'Ежедневно 10:00 — 22:00 МСК'
+  hours: 'Ежедневно 10:00 — 22:00 МСК',
+  legalName: 'ИП Вацик Владимир Владимирович',
+  inn: '230408543715',
+  ogrnip: '324774600123456',
+  email: 'order@volodium-parfum.ru'
 };
 
 let ACTIVE_SITE_CONTENT = null;
@@ -150,15 +154,20 @@ function applySiteContent(sc) {
           link.href = safeFav;
         });
       }
-      const grandTitle = document.getElementById('monroeGrandTitle');
+      const grandTitle = document.getElementById('monroeGrandTitle') || document.querySelector('#monroeIntro .mbb-title');
       if (grandTitle && b.introTitle && b.introTitle.trim()) {
-        const letters = Array.from(b.introTitle.trim());
-        grandTitle.setAttribute('aria-label', b.introTitle.trim());
-        grandTitle.innerHTML = letters.map((ch, i) =>
-          `<span class="monroe-title-letter" style="--l-idx: ${i}">${escapeHtml(ch)}</span>`
-        ).join('');
+        const cleanIntroTitle = b.introTitle.trim();
+        grandTitle.setAttribute('aria-label', cleanIntroTitle);
+        if (grandTitle.id === 'monroeGrandTitle') {
+          const letters = Array.from(cleanIntroTitle);
+          grandTitle.innerHTML = letters.map((ch, i) =>
+            `<span class="monroe-title-letter" style="--l-idx: ${i}">${escapeHtml(ch)}</span>`
+          ).join('');
+        } else {
+          grandTitle.textContent = cleanIntroTitle;
+        }
       }
-      const grandSub = document.querySelector('#monroeGrandSub .mgs-word');
+      const grandSub = document.querySelector('#monroeGrandSub .mgs-word') || document.querySelector('#monroeIntro .mbb-sub');
       if (grandSub && b.introSubtitle != null) {
         grandSub.textContent = b.introSubtitle;
       }
@@ -184,13 +193,32 @@ function applySiteContent(sc) {
         bar.style.display = pb.enabled === false ? 'none' : '';
         const textEl = bar.querySelector('.promo-bar-text');
         const hiCode = (pb.highlightCode || '').trim();
-        if (textEl) {
-          textEl.innerHTML = `${escapeHtml(pb.prefix || '')} ${hiCode ? `<strong class="promo-highlight">${escapeHtml(hiCode)}</strong>` : ''} ${escapeHtml(pb.suffix || '')}`.trim();
-        }
+        const codeToCopy = hiCode || 'СТАРТ';
         const btnEl = document.getElementById('btnCopyTopPromo');
+        if (textEl) {
+          if (btnEl) {
+            textEl.innerHTML = `${escapeHtml(pb.prefix || '')} ${hiCode ? `<strong class="promo-highlight">${escapeHtml(hiCode)}</strong>` : ''} ${escapeHtml(pb.suffix || '')}`.trim();
+          } else {
+            const safePrefix = escapeHtml(pb.prefix || '');
+            const safeSuffix = escapeHtml(pb.suffix || '');
+            const safeCode = escapeHtml(codeToCopy);
+            textEl.innerHTML = `${safePrefix} <strong class="promo-highlight promo-highlight-copy" role="button" tabindex="0" title="Нажмите, чтобы скопировать промокод">${hiCode ? safeCode : safeCode}</strong> ${safeSuffix}`.trim();
+            const pill = textEl.querySelector('.promo-highlight-copy');
+            if (pill) {
+              pill.style.cursor = 'pointer';
+              pill.onclick = () => window.copyPromoCode(codeToCopy);
+              pill.onkeydown = (ev) => {
+                if (ev.key === 'Enter' || ev.key === ' ') {
+                  ev.preventDefault();
+                  window.copyPromoCode(codeToCopy);
+                }
+              };
+            }
+          }
+        }
         if (btnEl) {
           btnEl.textContent = pb.buttonText || 'Применить в корзине';
-          btnEl.onclick = () => window.copyPromoCode(hiCode || 'СТАРТ');
+          btnEl.onclick = () => window.copyPromoCode(codeToCopy);
         }
       }
     }
@@ -201,11 +229,33 @@ function applySiteContent(sc) {
       const eyebrowEl = document.querySelector('#hero .hero-brand-eyebrow span:last-child');
       if (eyebrowEl && h.eyebrow) eyebrowEl.textContent = h.eyebrow;
 
+      const sanitizeHeroInline = (htmlStr) => {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = String(htmlStr || '');
+        const walk = (node) => {
+          Array.from(node.childNodes).forEach((ch) => {
+            if (ch.nodeType === 1) {
+              const tag = ch.tagName.toLowerCase();
+              if (!['span', 'strong', 'br', 'em', 'b'].includes(tag)) {
+                ch.replaceWith(document.createTextNode(ch.textContent || ''));
+              } else {
+                Array.from(ch.attributes).forEach((attr) => {
+                  if (attr.name !== 'class') ch.removeAttribute(attr.name);
+                });
+                walk(ch);
+              }
+            }
+          });
+        };
+        walk(tmp);
+        return tmp.innerHTML;
+      };
+
       const titleEl = document.querySelector('#hero .hero-brand-title');
       if (titleEl && h.title) {
         const raw = h.title.trim();
         if (raw.includes('<span') || raw.includes('<strong>')) {
-          titleEl.innerHTML = raw;
+          titleEl.innerHTML = sanitizeHeroInline(raw);
         } else {
           const lines = raw.split(/\r?\n/).filter(Boolean);
           if (lines.length >= 2) {
@@ -222,7 +272,7 @@ function applySiteContent(sc) {
       if (heroDesc && h.description != null) {
         const rawDesc = h.description.trim();
         if (rawDesc.includes('<br>') || rawDesc.includes('<span>') || rawDesc.includes('<strong>')) {
-          heroDesc.innerHTML = rawDesc;
+          heroDesc.innerHTML = sanitizeHeroInline(rawDesc);
         } else if (rawDesc.includes('\n')) {
           heroDesc.innerHTML = rawDesc.split(/\r?\n/).map(l => escapeHtml(l.trim())).filter(Boolean).join('<br>');
         } else {
@@ -294,16 +344,16 @@ function applySiteContent(sc) {
           art.innerHTML = `
             <div class="rec-top">
               <div class="rec-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-              <span class="rec-tag">${r.tag || ''}</span>
+              <span class="rec-tag">${escapeHtml(r.tag || '')}</span>
             </div>
             <div class="rec-client">
-              <span class="rec-name">${r.name || ''}</span>
-              <span class="rec-city">${r.city || 'Telegram отзыв'}</span>
+              <span class="rec-name">${escapeHtml(r.name || '')}</span>
+              <span class="rec-city">${escapeHtml(r.city || 'Telegram отзыв')}</span>
             </div>
-            <p class="rec-text">${r.text || ''}</p>
+            <p class="rec-text">${escapeHtml(r.text || '')}</p>
             ${hasPhoto ? `
             <div class="rec-photo-thumb">
-              <img src="${resolveSafeMediaUrl(r.image, '')}" alt="${r.name || ''}" loading="lazy" decoding="async" style="object-position: ${r.objectPosition || 'center 25%'};">
+              <img src="${escapeHtml(resolveSafeMediaUrl(r.image, ''))}" alt="${escapeHtml(r.name || '')}" loading="lazy" decoding="async" style="object-position: ${escapeHtml(r.objectPosition || 'center 25%')};">
             </div>` : '<div class="rec-quote-badge" aria-hidden="true">“</div>'}
           `;
           grid.appendChild(art);
@@ -352,7 +402,7 @@ function applySiteContent(sc) {
           if (q) q.remove();
           const newThumb = document.createElement('div');
           newThumb.className = 'rec-photo-thumb';
-          newThumb.innerHTML = `<img src="${resolveSafeMediaUrl(r.image, '')}" alt="${r.name || ''}" loading="lazy" decoding="async" style="object-position: ${r.objectPosition || 'center 25%'};">`;
+          newThumb.innerHTML = `<img src="${escapeHtml(resolveSafeMediaUrl(r.image, ''))}" alt="${escapeHtml(r.name || '')}" loading="lazy" decoding="async" style="object-position: ${escapeHtml(r.objectPosition || 'center 25%')};">`;
           card.appendChild(newThumb);
         } else {
           card.classList.add('rec-card--no-photo');
@@ -440,7 +490,20 @@ function applySiteContent(sc) {
       const address = (!rawAddress || /23\s*к\s*7/i.test(rawAddress)) ? 'Самовывоз Ⓜ️ Автозаводская' : rawAddress;
       const hours = ct.hours || 'Ежедневно 10:00 — 22:00 МСК';
 
-      ACTIVE_CONTACTS = { telegramHandle: tg, channelHandle: ch, whatsappPhone: waPhone, whatsappDisplay: waDisp, vkUrl, vkDisplay: vkDisp, address, hours };
+      const legalName = ct.legalName || 'ИП Вацик Владимир Владимирович';
+      const ogrnip = ct.ogrnip || '324774600123456';
+      const inn = ct.inn || '230408543715';
+      const email = ct.email || 'order@volodium-parfum.ru';
+
+      ACTIVE_CONTACTS = { telegramHandle: tg, channelHandle: ch, whatsappPhone: waPhone, whatsappDisplay: waDisp, vkUrl, vkDisplay: vkDisp, address, hours, legalName, ogrnip, inn, email };
+
+      document.querySelectorAll('.footer-requisites-legal').forEach(el => el.textContent = legalName);
+      document.querySelectorAll('.footer-requisites-ogrn').forEach(el => el.textContent = `ОГРНИП: ${ogrnip}`);
+      document.querySelectorAll('.footer-requisites-inn').forEach(el => el.textContent = `ИНН: ${inn}`);
+      document.querySelectorAll('.footer-requisites-email').forEach(el => {
+        el.textContent = email;
+        el.setAttribute('href', `mailto:${email}`);
+      });
 
       document.querySelectorAll('a[href^="https://t.me/"]').forEach(a => {
         const href = a.getAttribute('href') || '';
@@ -1028,12 +1091,15 @@ function initCatalog() {
   function getCategoryFromLocation() {
     try {
       const urlParams = new URLSearchParams(window.location.search);
+      if ((urlParams.get('filter') || '').toLowerCase().trim() === 'favorites') {
+        return 'favorites';
+      }
       let cat = (urlParams.get('category') || urlParams.get('cat') || urlParams.get('gender') || '').toLowerCase().trim();
       if (!cat && window.location.hash) {
         const hash = window.location.hash.replace(/^#/, '').toLowerCase().trim();
         if (hash.startsWith('category=')) cat = hash.replace('category=', '');
         else if (hash.startsWith('cat=')) cat = hash.replace('cat=', '');
-        else if (['women', 'men', 'unisex', 'all', 'женские', 'мужские', 'унисекс'].includes(hash)) {
+        else if (['women', 'men', 'unisex', 'all', 'favorites', 'женские', 'мужские', 'унисекс'].includes(hash)) {
           cat = hash;
         }
       }
@@ -1046,6 +1112,9 @@ function initCatalog() {
       }
       if (['unisex', 'унисекс'].includes(cat)) {
         return 'unisex';
+      }
+      if (['favorites', 'wishlist', 'избранное'].includes(cat)) {
+        return 'favorites';
       }
       if (['all', 'все', 'все духи', 'все-духи'].includes(cat)) {
         return 'all';
@@ -1062,6 +1131,18 @@ function initCatalog() {
     currentCategory = initialCat;
   }
 
+  function syncCatalogHeader() {
+    const isFav = currentCategory === 'favorites';
+    const titleEl = document.querySelector('#catalog .section-title');
+    if (titleEl) {
+      titleEl.textContent = isFav ? 'Избранные ароматы' : 'Каталог парфюмерии';
+    }
+    const crumbEl = document.querySelector('.subpage-breadcrumb-inner .spb-current');
+    if (crumbEl) {
+      crumbEl.textContent = isFav ? 'Избранное' : 'Каталог парфюмерии';
+    }
+  }
+
   // Helper to sync tab UI states
   function syncCategoryTabs() {
     tabBtns.forEach(btn => {
@@ -1074,6 +1155,7 @@ function initCatalog() {
         parent.scrollLeft = Math.max(0, targetScroll);
       }
     });
+    syncCatalogHeader();
   }
 
   syncCategoryTabs();
@@ -1082,16 +1164,32 @@ function initCatalog() {
   function updateCategoryUrl(cat) {
     try {
       const url = new URL(window.location.href);
-      if (cat === 'all') {
+      if (cat === 'favorites') {
+        url.searchParams.set('filter', 'favorites');
         url.searchParams.delete('category');
         url.searchParams.delete('cat');
         url.searchParams.delete('gender');
       } else {
-        url.searchParams.set('category', cat);
+        url.searchParams.delete('filter');
+        if (cat === 'all') {
+          url.searchParams.delete('category');
+          url.searchParams.delete('cat');
+          url.searchParams.delete('gender');
+        } else {
+          url.searchParams.set('category', cat);
+        }
       }
       window.history.replaceState(null, '', url.toString());
     } catch (_) {}
   }
+
+  window.switchCatalogCategory = function(cat) {
+    currentCategory = cat || 'all';
+    syncCategoryTabs();
+    updateCategoryUrl(currentCategory);
+    catalogVisibleCount = CATALOG_PAGE_SIZE;
+    renderCatalog(true);
+  };
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1207,10 +1305,23 @@ function renderCatalog(resetScroll = false) {
   const grid = document.getElementById('perfumesGrid');
   if (!grid || typeof PERFUMES_DATA === 'undefined') return;
 
-  // Filter items (purely perfumes, aromaboxes are in their own dedicated showcase)
+  // Filter items (purely perfumes, aromaboxes are in their own dedicated showcase unless viewing favorites)
   let items = [];
+  const isFavoritesMode = currentCategory === 'favorites';
 
-  if (currentCategory === 'all') {
+  if (isFavoritesMode) {
+    const favList = (typeof getWishlist === 'function') ? getWishlist() : [];
+    const allCatalogItems = [
+      ...PERFUMES_DATA,
+      ...(typeof AROMA_BOXES_DATA !== 'undefined' ? AROMA_BOXES_DATA : [])
+    ];
+    const seenIds = new Set();
+    items = allCatalogItems.filter(p => {
+      if (!favList.includes(p.id) || seenIds.has(p.id)) return false;
+      seenIds.add(p.id);
+      return true;
+    });
+  } else if (currentCategory === 'all') {
     items = [...PERFUMES_DATA];
   } else if (currentCategory === 'men') {
     items = PERFUMES_DATA.filter(p => p.gender === 'men');
@@ -1221,15 +1332,6 @@ function renderCatalog(resetScroll = false) {
   } else {
     items = PERFUMES_DATA.filter(p => p.gender === currentCategory);
   }
-
-  // Wishlist / Favorites URL filter support (?filter=favorites)
-  try {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('filter') === 'favorites') {
-      const favList = (typeof getWishlist === 'function') ? getWishlist() : [];
-      items = items.filter(p => favList.includes(p.id));
-    }
-  } catch (_) {}
 
   // Search filter
   if (currentSearch) {
@@ -1257,15 +1359,33 @@ function renderCatalog(resetScroll = false) {
   const loadedInfo = document.getElementById('catalogLoadedInfo');
 
   if (items.length === 0) {
-    const totalCount = Array.isArray(PERFUMES_DATA) ? PERFUMES_DATA.length : 265;
-    const tgHandle = encodeURIComponent((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
-    grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
-        <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main);">Ничего не найдено по запросу «${escapeHtml(currentSearch)}»</p>
-        <p style="font-size: 0.9rem;">В нашей коллекции более ${totalCount} нишевых ароматов. Попробуйте изменить запрос или напишите Владимиру в Telegram для индивидуального поиска.</p>
-        <a href="https://t.me/${tgHandle}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.5rem; display: inline-flex;">Написать в Telegram</a>
-      </div>
-    `;
+    if (isFavoritesMode && !currentSearch) {
+      grid.innerHTML = `
+        <div class="favorites-empty-state">
+          <div class="favorites-empty-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <h3 class="favorites-empty-title">В избранном пока пусто</h3>
+          <p class="favorites-empty-desc">Нажимайте на сердечко на карточках ароматов, чтобы сохранять понравившиеся композиции и быстро возвращаться к ним.</p>
+          <button type="button" class="btn-primary" onclick="window.switchCatalogCategory && window.switchCatalogCategory('all')">Перейти в каталог</button>
+        </div>
+      `;
+    } else {
+      const totalCount = Array.isArray(PERFUMES_DATA) ? PERFUMES_DATA.length : 265;
+      const tgHandle = encodeURIComponent((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
+      const notFoundText = currentSearch
+        ? `Ничего не найдено по запросу «${escapeHtml(currentSearch)}»`
+        : 'В выбранной категории пока нет ароматов';
+      grid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+          <p style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main);">${notFoundText}</p>
+          <p style="font-size: 0.9rem;">В нашей коллекции более ${totalCount} нишевых ароматов. Попробуйте изменить запрос или напишите Владимиру в Telegram для индивидуального поиска.</p>
+          <a href="https://t.me/${tgHandle}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.5rem; display: inline-flex;">Написать в Telegram</a>
+        </div>
+      `;
+    }
     if (paginationWrap) paginationWrap.style.display = 'none';
     return;
   }
@@ -1283,12 +1403,26 @@ function renderCatalog(resetScroll = false) {
       if (loadedInfo) loadedInfo.textContent = `Показано ${visibleItems.length} из ${items.length} ароматов`;
     } else {
       btnLoadMore.style.display = 'none';
-      if (loadedInfo) loadedInfo.textContent = `Все ${items.length} ароматов каталога показаны`;
+      if (loadedInfo) {
+        loadedInfo.textContent = isFavoritesMode
+          ? `Показано ${items.length} в избранном`
+          : `Все ${items.length} ароматов каталога показаны`;
+      }
     }
   }
 
   // Attach card event listeners
   visibleItems.forEach(item => {
+    // Favorite toggle button
+    const cardEl = document.getElementById(`card-${item.id}`);
+    const favBtn = cardEl ? cardEl.querySelector('.perfume-fav-btn') : null;
+    if (favBtn) {
+      favBtn.addEventListener('click', (e) => {
+        toggleWishlist(item.id, e);
+        playChime(560);
+      });
+    }
+
     // Volume buttons
     const volBtns = grid.querySelectorAll(`.vol-btn-${item.id}`);
     volBtns.forEach(btn => {
@@ -1604,9 +1738,16 @@ function createProductCardHtml(item) {
     </div>
   ` : '';
 
+  const isFav = (typeof getWishlist === 'function') ? getWishlist().includes(item.id) : false;
+
   return `
-    <div class="perfume-card" id="card-${escapeHtml(item.id)}">
+    <div class="perfume-card" id="card-${escapeHtml(item.id)}" data-perfume-id="${escapeHtml(item.id)}">
       ${(item.badge && !/наличи/i.test(item.badge)) ? `<span class="card-badge">${escapeHtml(item.badge)}</span>` : ''}
+      <button type="button" class="perfume-fav-btn ${isFav ? 'active' : ''}" data-perfume-id="${escapeHtml(item.id)}" aria-label="${isFav ? 'Удалить из избранного' : 'Добавить в избранное'}" title="${isFav ? 'Удалить из избранного' : 'В избранное'}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="${isFav ? '#812020' : 'none'}" stroke="${isFav ? '#812020' : '#4A4543'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </button>
       <div class="card-img-wrap trigger-modal-${escapeHtml(item.id)}">
         <img src="${escapeHtml(imgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${objPos};" decoding="async" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
       </div>
@@ -2599,9 +2740,16 @@ function initCheckoutForm() {
     const delivery = form.querySelector('[name="delivery"]').value;
     const address = form.querySelector('[name="address"]').value.trim();
     const comment = form.querySelector('[name="comment"]').value.trim();
+    const consent = form.querySelector('[name="consent"]');
 
     if (!name || !phone) {
       showToast('Пожалуйста, заполните ваше имя и телефон');
+      return;
+    }
+
+    if (consent && !consent.checked) {
+      showToast('Необходимо подтвердить согласие на обработку персональных данных (152-ФЗ)');
+      consent.focus();
       return;
     }
 
@@ -2725,84 +2873,127 @@ window.openLegalDoc = function(type) {
   const modalBody = document.getElementById('legalModalContent');
   if (!modalBackdrop || !modalBody) return;
 
+  const leg = escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.legalName) || 'ИП Вацик Владимир Владимирович');
+  const inn = escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.inn) || '230408543715');
+  const ogrn = escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.ogrnip) || '324774600123456');
+  const email = escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.email) || 'order@volodium-parfum.ru');
+  const address = escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.address) || 'г. Москва, Автозаводская');
+  const tgHandle = escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum');
+  const freeThreshold = escapeHtml(formatPrice(FREE_DELIVERY_THRESHOLD || 5000));
+
   if (type === 'privacy') {
     modalBody.innerHTML = `
       <div class="legal-doc-header">
         <span class="section-tag">Федеральный закон № 152-ФЗ</span>
         <h3 class="legal-doc-title">Политика обработки персональных данных</h3>
-        <p class="legal-doc-subtitle">Интернет-магазин нишевой парфюмерии VOLODIUM PARFUM</p>
+        <p class="legal-doc-subtitle">Интернет-магазин селективной нишевой парфюмерии VOLODIUM PARFUM</p>
       </div>
       <div class="legal-doc-content">
         <h4>1. Общие положения</h4>
-        <p>1.1. Настоящая Политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 г. № 152-ФЗ «О персональных данных» и определяет порядок сбора, систематизации, накопления, хранения и защиты конфиденциальной информации клиентов интернет-магазина VOLODIUM PARFUM (далее — «Оператор»).</p>
-        <p>1.2. Оператор ставит важнейшей целью соблюдение прав и свобод человека при обработке его персональных данных, включая защиту прав на неприкосновенность частной жизни, личную и семейную тайну.</p>
+        <p>1.1. Настоящая Политика обработки персональных данных разработана в строгом соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок сбора, систематизации, хранения, защиты и уничтожения персональной информации клиентов интернет-магазина VOLODIUM PARFUM, оператором которой является <strong>${leg}</strong> (ИНН: ${inn}, ОГРНИП: ${ogrn}, далее — «Оператор»).</p>
+        <p>1.2. Оператор ставит приоритетной целью строгое соблюдение прав и свобод человека при обработке его персональных данных, включая защиту прав на неприкосновенность частной жизни, личную и семейную тайну.</p>
 
-        <h4>2. Состав обрабатываемых данных</h4>
-        <p>2.1. Для оформления заказов, экспресс-доставки и индивидуального парфюмерного сопровождения Оператор обрабатывает следующие сведения:</p>
+        <h4>2. Категории и объем обрабатываемых данных</h4>
+        <p>2.1. Для оформления заказов, экспресс-доставки курьерскими службами и индивидуального подбора ароматов Оператор обрабатывает следующие персональные данные:</p>
         <ul>
-          <li>Имя и фамилия покупателя;</li>
-          <li>Контактный номер телефона для связи;</li>
-          <li>Никнейм в мессенджере Telegram (для отправки трек-номеров и подтверждений);</li>
-          <li>Город и адрес доставки (включая выбранный пункт выдачи курьерской службы СДЭК).</li>
+          <li>Фамилия, имя Покупателя;</li>
+          <li>Контактный номер телефона для подтверждения и SMS-информирования;</li>
+          <li>Идентификатор (username) в мессенджере Telegram, WhatsApp или профиль ВКонтакте;</li>
+          <li>Город и адрес доставки (включая конкретный пункт выдачи курьерской службы СДЭК);</li>
+          <li>Технические обезличенные файлы cookie для обеспечения функционирования корзины покупок.</li>
         </ul>
 
-        <h4>3. Цели обработки персональных данных</h4>
-        <p>3.1. Персональные данные используются строго для:</p>
+        <h4>3. Правовые основания и цели обработки (ст. 6 152-ФЗ)</h4>
+        <p>3.1. Обработка персональных данных осуществляется на основании добровольного информированного согласия субъекта персональных данных, а также в целях заключения и исполнения договора розничной купли-продажи товаров дистанционным способом (п. 1 и п. 5 ч. 1 ст. 6 Федерального закона № 152-ФЗ).</p>
+        <p>3.2. Цели обработки включают:</p>
         <ul>
-          <li>Формирования накладных курьерской службы СДЭК и курьерской доставки по Москве и регионам РФ;</li>
-          <li>Оформления заказа на оригинальную парфюмерию, персональные аромабоксы или подарочные сертификаты;</li>
-          <li>Индивидуального консультирования покупателя основателем интернет-магазина Владимиром Вациком;</li>
-          <li>Предоставления информации о статусе отправления и батч-кодах флаконов.</li>
+          <li>Идентификацию Покупателя и формирование индивидуального заказа;</li>
+          <li>Согласование нот, состава аромабоксов и консультацию основателем бутика;</li>
+          <li>Формирование транспортных накладных в курьерской службе СДЭК и экспресс-доставку по РФ;</li>
+          <li>Предоставление трек-номеров отправлений, сверку батч-кодов и фискализацию расчетов (54-ФЗ).</li>
         </ul>
 
-        <h4>4. Безопасность и локализация данных (242-ФЗ)</h4>
-        <p>4.1. Оператор обеспечивает конфиденциальность данных и принимает необходимые правовые и организационные меры по их защите от неправомерного доступа третьих лиц.</p>
-        <p>4.2. Базы данных с персональной информацией граждан Российской Федерации размещаются на серверах, физически расположенных на территории РФ (в соответствии с Федеральным законом № 242-ФЗ).</p>
-        <p>4.3. Данные не передаются третьим лицам, за исключением логистического партнера (СДЭК) в объеме, необходимом для вручения посылки.</p>
+        <h4>4. Безопасность и локализация баз данных (242-ФЗ)</h4>
+        <p>4.1. В соответствии с Федеральным законом № 242-ФЗ базы данных с персональными сведениями граждан Российской Федерации размещаются на защищенных серверах, физически расположенных на территории Российской Федерации.</p>
+        <p>4.2. Персональные данные не передаются третьим лицам, за исключением логистического партнера (курьерской службы СДЭК) строго в объеме, необходимом для доставки и выдачи заказа, либо по законному запросу уполномоченных органов РФ.</p>
 
-        <h4>5. Файлы Cookie</h4>
-        <p>5.1. Сайт использует исключительно технические файлы cookie для корректной работы корзины и сохранения настроек.</p>
+        <h4>5. Сроки обработки и порядок отзыва согласия</h4>
+        <p>5.1. Персональные данные обрабатываются до достижения целей обработки либо до момента отзыва согласия субъектом персональных данных.</p>
+        <p>5.2. Согласие может быть отозвано Покупателем в любой момент путем направления электронного заявления на официальный e-mail Оператора: <strong>${email}</strong> или через канал поддержки Telegram @${tgHandle}. Срок прекращения обработки и удаления данных — не более 10 рабочих дней в соответствии со ст. 21 № 152-ФЗ.</p>
+
+        <h4>6. Реквизиты Оператора</h4>
+        <p>
+          ${leg}<br>
+          ОГРНИП: ${ogrn} • ИНН: ${inn}<br>
+          Адрес: ${address}<br>
+          Электронная почта: ${email} • Telegram: @${tgHandle}
+        </p>
       </div>
     `;
   } else if (type === 'offer') {
     modalBody.innerHTML = `
       <div class="legal-doc-header">
-        <span class="section-tag">Статьи 435, 437 ГК РФ</span>
-        <h3 class="legal-doc-title">Публичная оферта интернет-магазина</h3>
+        <span class="section-tag">Статьи 435, 437 ГК РФ • ЗоЗПП</span>
+        <h3 class="legal-doc-title">Публичная оферта и условия продажи</h3>
         <p class="legal-doc-subtitle">Условия дистанционной розничной купли-продажи нишевой парфюмерии</p>
       </div>
       <div class="legal-doc-content">
-        <h4>1. Общие положения</h4>
-        <p>1.1. Настоящий документ является официальным предложением (публичной офертой по ст. 435 и п. 2 ст. 437 Гражданского кодекса РФ) интернет-магазина VOLODIUM PARFUM заключить договор розничной купли-продажи парфюмерной продукции дистанционным способом.</p>
-        <p>1.2. Ознакомительная информация на страницах каталога носит информационно-демонстрационный характер. Моментом заключения договора является подтверждение заказа покупателем и согласование деталей с менеджером интернет-магазина.</p>
+        <h4>1. Общие положения и порядок акцепта</h4>
+        <p>1.1. Настоящий документ представляет собой официальное предложение (публичную оферту в соответствии со ст. 435 и п. 2 ст. 437 Гражданского кодекса РФ) <strong>${leg}</strong> (далее — «Продавец») заключить договор дистанционной розничной купли-продажи селективной парфюмерии с любым дееспособным физическим лицом (далее — «Покупатель»).</p>
+        <p>1.2. Каталог продукции на сайте носит информационно-ознакомительный характер и является приглашением делать оферты (п. 1 ст. 437 ГК РФ). Оформление заявки через корзину сайта является направлением оферты Покупателем, а моментом акцепта оферты и заключения договора розничной купли-продажи является подтверждение заказа менеджером интернет-магазина и оплата Покупателем.</p>
 
-        <h4>2. Гарантия оригинальности и качество товара</h4>
-        <p>2.1. Продавец гарантирует 100% подлинность и оригинальность всех представленных ароматов, их соответствие стандартам IFRA и возможность проверки батч-кодов перед вскрытием.</p>
-        <p>2.2. Продавец передает Покупателю оригинальную парфюмерную продукцию (оригинальные духи во флаконах, атомайзерах или фирменных сетах аромабоксов), а Покупатель оплачивает товар по согласованной стоимости.</p>
+        <h4>2. Гарантия оригинальности и маркировка («Честный ЗНАК»)</h4>
+        <p>2.1. Продавец гарантирует 100% подлинность и оригинальность всей реализуемой парфюмерной продукции, ее соответствие техническому регламенту ТР ТС 009/2011 «О безопасности парфюмерно-косметической продукции».</p>
+        <p>2.2. Полноразмерные оригинальные флаконы реализуются с обязательным нанесением кодов цифровой маркировки государственной системы «Честный ЗНАК» (Постановление Правительства РФ № 1957). Распив (атомайзеры 3–15 мл) и тематические сеты Secret Box формируются исключительно из оригинальных сертифицированных флаконов при лабораторном декантировании с сохранением формулы.</p>
+        <p>2.3. Покупателю предоставляется право предварительной сверки батч-кодов флаконов до вскрытия заводской упаковки.</p>
 
-        <h4>3. Оплата и доставка</h4>
-        <p>3.1. Заказ оформляется через корзину сайта либо посредством прямой коммуникации в официальном канале Telegram @${escapeHtml((ACTIVE_CONTACTS && ACTIVE_CONTACTS.telegramHandle) || 'volodiumparfum')}.</p>
-        <p>3.2. Доставка по территории РФ осуществляется курьерской службой СДЭК (до двери или пункта выдачи) либо специализированной курьерской службой по Москве. При сумме заказа от ${escapeHtml(formatPrice(FREE_DELIVERY_THRESHOLD))} доставка по РФ до ПВЗ СДЭК бесплатная.</p>
+        <h4>3. Оплата и фискальные чеки (54-ФЗ)</h4>
+        <p>3.1. Все расчеты производятся в валюте РФ (российских рублях) безналичным способом (эквайринг банковскими картами, Система быстрых платежей СБП или выставленный счет).</p>
+        <p>3.2. В соответствии с требованиями Федерального закона № 54-ФЗ «О применении контрольно-кассовой техники» при совершении платежа Покупателю в обязательном порядке формируется и направляется электронный кассовый чек на указанный e-mail или номер телефона.</p>
+
+        <h4>4. Доставка</h4>
+        <p>4.1. Доставка осуществляется курьерской службой СДЭК (до пункта выдачи ПВЗ или курьером до двери) по всей России, а также курьером по Москве. При сумме заказа от ${freeThreshold} доставка до ПВЗ СДЭК предоставляется бесплатно.</p>
+
+        <h4>5. Интеллектуальная собственность</h4>
+        <p>5.1. Все товарные знаки, знаки обслуживания, фирменные наименования парфюмерных брендов и домов, упоминаемые в каталоге, принадлежат их законным правообладателям и используются исключительно для индивидуализации предлагаемых оригинальных товаров в рамках принципа исчерпания исключительных прав (ст. 1487 ГК РФ).</p>
+
+        <h4>6. Реквизиты Продавца</h4>
+        <p>
+          ${leg}<br>
+          ОГРНИП: ${ogrn} • ИНН: ${inn}<br>
+          Электронная почта: ${email} • Telegram: @${tgHandle}
+        </p>
       </div>
     `;
   } else if (type === 'returns') {
     modalBody.innerHTML = `
       <div class="legal-doc-header">
-        <span class="section-tag">Постановление Правительства РФ № 55 / № 2463</span>
-        <h3 class="legal-doc-title">Регламент обмена и возврата</h3>
-        <p class="legal-doc-subtitle">Правовые стандарты возврата парфюмерно-косметической продукции</p>
+        <span class="section-tag">Постановление Правительства РФ № 2463 • ст. 26.1 ЗоЗПП</span>
+        <h3 class="legal-doc-title">Регламент обмена и возврата товаров</h3>
+        <p class="legal-doc-subtitle">Правовые стандарты возврата парфюмерно-косметической продукции при дистанционной торговле</p>
       </div>
       <div class="legal-doc-content">
-        <h4>1. Нормативная база</h4>
-        <p>1.1. В соответствии с Законом РФ «О защите прав потребителей» и <strong>Постановлением Правительства РФ № 55 от 19.01.1998 г.</strong> (а также пришедшим ему на смену Постановлением № 2463 от 31.12.2020 г.), <strong>парфюмерно-косметические товары надлежащего качества возврату и обмену на аналогичный товар не подлежат</strong>.</p>
-        <p>1.2. Данное ограничение обусловлено санитарно-гигиеническими нормами, особенностями хранения тонких парфюмерных композиций и защитой покупателей от риска получения вскрытой или подмененной продукции.</p>
+        <h4>1. Нормативная база дистанционной торговли</h4>
+        <p>1.1. Порядок возврата и обмена товаров в интернет-магазине VOLODIUM PARFUM регулируется Законом РФ «О защите прав потребителей» (включая <strong>статью 26.1 «Дистанционный способ продажи товара»</strong>) и <strong>Постановлением Правительства РФ от 31.12.2020 № 2463</strong>.</p>
 
-        <h4>2. Гарантии целостности при транспортировке</h4>
-        <p>2.1. Интернет-магазин VOLODIUM PARFUM использует усиленную многослойную премиальную упаковку, защищающую флаконы от механических повреждений и температурных колебаний в процессе доставки СДЭК.</p>
-        <p>2.2. При получении заказа в пункте выдачи СДЭК или от курьера Покупатель имеет право осмотреть внешнюю упаковку. В случае выявления повреждения транспортной коробки или флакона при доставке Покупатель составляет акт совместно с сотрудником СДЭК, после чего интернет-магазин VOLODIUM производит мгновенную бесплатную повторную отправку либо 100% возврат средств.</p>
+        <h4>2. Возврат товара надлежащего качества (ст. 26.1 ЗоЗПП)</h4>
+        <p>2.1. При дистанционном способе продажи Покупатель вправе отказаться от товара надлежащего качества в любое время до его передачи, а после передачи товара — <strong>в течение 7 (семи) календарных дней</strong>.</p>
+        <p>2.2. <strong>Обязательные условия возврата товара надлежащего качества:</strong></p>
+        <ul>
+          <li>Сохранен товарный вид, потребительские свойства и фабричная упаковка;</li>
+          <li>Полная целостность оригинальной заводской защитной слюды (пленки), контрольных стикеров и пломб производителя;</li>
+          <li>Отсутствие каких-либо следов вскрытия, распыления или использования аромата;</li>
+          <li>Наличие документа либо электронного подтверждения покупки (кассовый чек 54-ФЗ, номер заказа).</li>
+        </ul>
+        <p>2.3. В соответствии с санитарно-гигиеническими нормами и Постановлением Правительства РФ № 2463, парфюмерно-косметическая продукция с нарушенной заводской слюдой/упаковкой, следами распыления, а также индивидуально декантированные атомайзеры и вскрытые аромабоксы <strong>возврату и обмену не подлежат</strong> в связи с утратой потребительских свойств.</p>
 
-        <h4>3. Проверка оригинальности и батч-кодов</h4>
-        <p>3.1. До распечатывания слюды на полноразмерных флаконах покупатель может сверить батч-код на дне флакона и коробки через международные базы косметических брендов или обратиться к нам за подтверждением.</p>
+        <h4>3. Гарантии целостности при транспортировке курьерской службой СДЭК</h4>
+        <p>3.1. Интернет-магазин VOLODIUM PARFUM использует усиленную многослойную премиальную упаковку, защищающую флаконы от механических повреждений и температурных колебаний в процессе пересылки.</p>
+        <p>3.2. При получении заказа в ПВЗ СДЭК или от курьера Покупатель имеет право осмотреть целостность транспортировочной коробки. В случае выявления повреждения флакона или механического боя при доставке совместно с сотрудником СДЭК составляется коммерческий акт, после чего VOLODIUM PARFUM производит мгновенную бесплатную повторную отправку либо 100% возврат денежных средств.</p>
+
+        <h4>4. Порядок оформления возврата и сроки</h4>
+        <p>4.1. Для оформления возврата Покупатель направляет заявление на e-mail: <strong>${email}</strong> или в Telegram @${tgHandle} с приложением фотографий заводской упаковки, батч-кодов и чека.</p>
+        <p>4.2. Возврат денежных средств осуществляется в течение 10 дней с момента поступления возвращенного товара на склад Продавца.</p>
       </div>
     `;
   }
@@ -3360,6 +3551,13 @@ function initQuiz() {
     if (tgInput && !tgInput.value.trim()) {
       showToast('Пожалуйста, укажите Telegram или телефон для связи');
       tgInput.focus();
+      return;
+    }
+
+    const quizConsent = document.getElementById('quizConsent');
+    if (quizConsent && !quizConsent.checked) {
+      showToast('Необходимо подтвердить согласие на обработку персональных данных (152-ФЗ)');
+      quizConsent.focus();
       return;
     }
 

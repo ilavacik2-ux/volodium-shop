@@ -29,7 +29,7 @@ volodiumparfum.ru, www.volodiumparfum.ru {
 
     # Единый 404 Cloaking для сканеров и закрытых каталогов
     @blocked {
-        path /.env* /.git* /admin /admin/* /admin.html /wp-admin* /wp-login* /administrator* /phpmyadmin* /private_admin* /assets/admin* /scripts/* /deploy/* /venv/* /backups/* /requirements.txt /xmlrpc.php
+        path /.env* /.git* /admin /admin/* /admin.html /wp-admin* /wp-login* /administrator* /phpmyadmin* /private_admin* /assets/admin* /_drafts* /_original_backup* /docs/* /tunnel_url.txt /scripts/* /deploy/* /venv/* /backups/* /requirements.txt /xmlrpc.php
         path *.env *.py *.pyc *.db *.db-wal *.db-shm *.sqlite *.sqlite3 *.log *.bak *.sh *.md *.example
     }
     respond @blocked "404 Not Found" 404

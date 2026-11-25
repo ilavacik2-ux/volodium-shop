@@ -14001,10 +14001,10 @@ body.hero-cinematic-active .header .trigger-cart svg {
 .hero-brand-sub {
   font-size: clamp(0.78rem, 1.6vw, 0.98rem);
   line-height: 1.45;
-  color: #4A4646;
+  color: #111216;
   max-width: 440px;
   margin-bottom: 1.35rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .hero-brand-actions {
@@ -15700,3 +15700,171 @@ body.hero-cinematic-active .header .trigger-cart svg {
     height: 14px;
   }
 }
+
+/* ==========================================================================
+   Analogs Section (Separate Category + Larger Comparison Cards & Modal)
+   ========================================================================== */
+.analog-sub-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.analog-sub-btn {
+  appearance: none;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.42rem 0.95rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.analog-sub-btn:hover {
+  border-color: rgba(129, 32, 32, 0.35);
+  color: var(--text-main);
+}
+
+.analog-sub-btn.active {
+  background: var(--bordo-primary);
+  border-color: var(--bordo-primary);
+  color: #ffffff;
+}
+
+/* Analog comparison graphics: edge-to-edge crisp presentation */
+.perfume-card--analog .card-img-wrap {
+  padding: 0;
+  border: none;
+}
+
+.perfume-card--analog .card-img-wrap img {
+  padding: 0;
+  object-fit: cover;
+}
+
+/* Dedicated Analogs Grid: noticeably larger cards & full-bleed square imagery */
+.perfumes-grid.analogs-grid-mode {
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 2rem;
+}
+
+.perfumes-grid.analogs-grid-mode .perfume-card {
+  padding: 0 0 1.25rem;
+  overflow: hidden;
+}
+
+.perfumes-grid.analogs-grid-mode .perfume-card > :not(.card-img-wrap):not(.card-badge):not(.perfume-fav-btn) {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.perfumes-grid.analogs-grid-mode .card-img-wrap {
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px 18px 0 0;
+  margin-bottom: 1rem;
+  padding: 0;
+  border: none;
+}
+
+.perfumes-grid.analogs-grid-mode .card-img-wrap img {
+  padding: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Analog Modal Image: full-width square so bottles & notes wheel are readable */
+.modal-main-img.modal-main-img--analog {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  max-height: 460px;
+  object-fit: cover;
+  padding: 0;
+  border-radius: 14px;
+}
+
+/* Homepage Accordion 5th Panel: Analogs */
+.acc-bg-analogs {
+  background:
+    linear-gradient(to right, #18110B 0%, rgba(24, 17, 11, 0.92) 38%, rgba(24, 17, 11, 0.48) 65%, rgba(24, 17, 11, 0.16) 100%),
+    url('../uploads/perfumes/vp-691614364143.webp') right center / cover no-repeat;
+}
+
+@media (max-width: 768px) {
+  .perfume-card--analog .card-img-wrap {
+    padding: 0 !important;
+  }
+
+  .perfume-card--analog .card-img-wrap img {
+    padding: 0 !important;
+    object-fit: cover !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode {
+    gap: 0.75rem !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode .perfume-card {
+    padding: 0 0 0.85rem !important;
+    border-radius: 14px !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode .perfume-card > :not(.card-img-wrap):not(.card-badge):not(.perfume-fav-btn) {
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode .card-img-wrap {
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 14px 14px 0 0 !important;
+    margin-bottom: 0.6rem !important;
+    padding: 0 !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode .card-img-wrap img {
+    padding: 0 !important;
+    object-fit: cover !important;
+  }
+
+  .modal-main-img.modal-main-img--analog {
+    max-height: 420px !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    padding: 0 !important;
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfumes-grid.analogs-grid-mode {
+    gap: 0.55rem !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode .perfume-card {
+    padding: 0 0 0.75rem !important;
+    border-radius: 12px !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode .perfume-card > :not(.card-img-wrap):not(.card-badge):not(.perfume-fav-btn) {
+    padding-left: 0.45rem !important;
+    padding-right: 0.45rem !important;
+  }
+
+  .perfumes-grid.analogs-grid-mode .card-img-wrap {
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+}
+

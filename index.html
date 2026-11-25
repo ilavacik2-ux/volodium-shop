@@ -47,7 +47,7 @@
 
   <script>try{var p=new URLSearchParams(window.location.search);if(!p.has('intro')&&!p.has('replay')&&(sessionStorage.getItem('vp_intro_seen')==='1'||(window.location.hash&&window.location.hash!=='#intro'))){document.documentElement.classList.remove('intro-active');}}catch(e){}</script>
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261125_v1">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261125_v2">
   <link rel="canonical" href="https://volodiumparfum.ru/">
 </head>
 <body class="intro-active">
@@ -156,8 +156,14 @@
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
 
-            <a href="boxes.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+            <a href="catalog.html?category=analog" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
               <span class="vdl-num">02</span>
+              <span class="vdl-title">Аналоги люкса и ниши</span>
+              <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="boxes.html" class="v-drawer-link" onclick="window.toggleVolodiumMenu && window.toggleVolodiumMenu(false)">
+              <span class="vdl-num">03</span>
               <span class="vdl-title">Аромабоксы</span>
               <svg class="vdl-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
@@ -432,8 +438,28 @@
         </div>
       </a>
 
-      <!-- 4. Наборы и боксы -->
-      <a href="boxes.html" class="acc-panel acc-panel-boxes" data-panel="3">
+      <!-- 4. Аналоги -->
+      <a href="catalog.html?category=analog" class="acc-panel" data-panel="3">
+        <div class="acc-panel-bg acc-bg-analogs"></div>
+        <div class="acc-glow"></div>
+
+        <div class="acc-collapsed-bar">
+          <span class="acc-collapsed-title">Аналоги парфюма</span>
+        </div>
+
+        <div class="acc-expanded-content">
+          <h3 class="acc-title">Аналоги <span class="acc-title-extra">люкса и ниши</span></h3>
+          <p class="acc-desc">Стойкие арабские интерпретации культовых мировых ароматов с разбором нот и сравнением.</p>
+          <span class="btn-acc-action">
+            <span class="btn-acc-text">Смотреть аналоги</span>
+            <span class="btn-acc-mobile-text">Смотреть</span>
+            <span class="acc-arrow" aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- 5. Наборы и боксы -->
+      <a href="boxes.html" class="acc-panel acc-panel-boxes" data-panel="4">
         <div class="acc-panel-bg acc-bg-boxes"></div>
         <div class="acc-glow"></div>
 

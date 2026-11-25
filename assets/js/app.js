@@ -1070,6 +1070,7 @@ function initCardPlaqueAnimations() {
    2. Catalog Engine with Filter, Volume Selector & Modals
    ========================================================================== */
 let currentCategory = 'all';
+let currentAnalogGender = 'all';
 let currentBoxGender = 'all';
 let aromaBoxesExpanded = false;
 let currentSearch = '';
@@ -1099,7 +1100,7 @@ function initCatalog() {
         const hash = window.location.hash.replace(/^#/, '').toLowerCase().trim();
         if (hash.startsWith('category=')) cat = hash.replace('category=', '');
         else if (hash.startsWith('cat=')) cat = hash.replace('cat=', '');
-        else if (['women', 'men', 'unisex', 'all', 'favorites', 'женские', 'мужские', 'унисекс'].includes(hash)) {
+        else if (['women', 'men', 'unisex', 'analog', 'all', 'favorites', 'женские', 'мужские', 'унисекс', 'аналоги'].includes(hash)) {
           cat = hash;
         }
       }
@@ -1112,6 +1113,9 @@ function initCatalog() {
       }
       if (['unisex', 'унисекс'].includes(cat)) {
         return 'unisex';
+      }
+      if (['analog', 'analogs', 'аналог', 'аналоги', 'dupe', 'dupes', 'дюп', 'дюпы'].includes(cat)) {
+        return 'analog';
       }
       if (['favorites', 'wishlist', 'избранное'].includes(cat)) {
         return 'favorites';
@@ -1133,13 +1137,14 @@ function initCatalog() {
 
   function syncCatalogHeader() {
     const isFav = currentCategory === 'favorites';
+    const isAnalog = currentCategory === 'analog';
     const titleEl = document.querySelector('#catalog .section-title');
     if (titleEl) {
-      titleEl.textContent = isFav ? 'Избранные ароматы' : 'Каталог парфюмерии';
+      titleEl.textContent = isFav ? 'Избранные ароматы' : (isAnalog ? 'Аналоги' : 'Каталог парфюмерии');
     }
     const crumbEl = document.querySelector('.subpage-breadcrumb-inner .spb-current');
     if (crumbEl) {
-      crumbEl.textContent = isFav ? 'Избранное' : 'Каталог парфюмерии';
+      crumbEl.textContent = isFav ? 'Избранное' : (isAnalog ? 'Аналоги' : 'Каталог парфюмерии');
     }
   }
 
@@ -1155,10 +1160,26 @@ function initCatalog() {
         parent.scrollLeft = Math.max(0, targetScroll);
       }
     });
+    const analogBar = document.getElementById('analogGenderBar');
+    if (analogBar) {
+      analogBar.style.display = currentCategory === 'analog' ? 'flex' : 'none';
+    }
     syncCatalogHeader();
   }
 
   syncCategoryTabs();
+
+  const analogGenderBtns = document.querySelectorAll('#analogGenderBar .analog-sub-btn');
+  analogGenderBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      analogGenderBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentAnalogGender = btn.dataset.analogGender || 'all';
+      catalogVisibleCount = CATALOG_PAGE_SIZE;
+      renderCatalog(true);
+      playChime(480);
+    });
+  });
 
   // Helper to sync URL without reload
   function updateCategoryUrl(cat) {
@@ -1308,6 +1329,8 @@ function renderCatalog(resetScroll = false) {
   // Filter items (purely perfumes, aromaboxes are in their own dedicated showcase unless viewing favorites)
   let items = [];
   const isFavoritesMode = currentCategory === 'favorites';
+  const isAnalogMode = currentCategory === 'analog';
+  grid.classList.toggle('analogs-grid-mode', isAnalogMode);
 
   if (isFavoritesMode) {
     const favList = (typeof getWishlist === 'function') ? getWishlist() : [];
@@ -1321,6 +1344,11 @@ function renderCatalog(resetScroll = false) {
       seenIds.add(p.id);
       return true;
     });
+  } else if (isAnalogMode) {
+    items = PERFUMES_DATA.filter(p => p.category === 'analog');
+    if (currentAnalogGender !== 'all') {
+      items = items.filter(p => p.gender === currentAnalogGender);
+    }
   } else if (currentCategory === 'all') {
     items = [...PERFUMES_DATA];
   } else if (currentCategory === 'men') {
@@ -1739,9 +1767,10 @@ function createProductCardHtml(item) {
   ` : '';
 
   const isFav = (typeof getWishlist === 'function') ? getWishlist().includes(item.id) : false;
+  const isAnalog = item.category === 'analog';
 
   return `
-    <div class="perfume-card" id="card-${escapeHtml(item.id)}" data-perfume-id="${escapeHtml(item.id)}">
+    <div class="perfume-card${isAnalog ? ' perfume-card--analog' : ''}" id="card-${escapeHtml(item.id)}" data-perfume-id="${escapeHtml(item.id)}">
       ${(item.badge && !/наличи/i.test(item.badge)) ? `<span class="card-badge">${escapeHtml(item.badge)}</span>` : ''}
       <button type="button" class="perfume-fav-btn ${isFav ? 'active' : ''}" data-perfume-id="${escapeHtml(item.id)}" aria-label="${isFav ? 'Удалить из избранного' : 'Добавить в избранное'}" title="${isFav ? 'Удалить из избранного' : 'В избранное'}">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="${isFav ? '#812020' : 'none'}" stroke="${isFav ? '#812020' : '#4A4543'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2072,15 +2101,15 @@ function openProductModal(itemId) {
 
         <div class="soc-notes-list">
           <div class="soc-note-item">
-            <span class="soc-phase">Верхние ноты (15 мин)</span>
+            <span class="soc-phase">Верхние ноты</span>
             <span class="soc-notes">${topStr}</span>
           </div>
           <div class="soc-note-item heart">
-            <span class="soc-phase">Ноты сердца (2–4 ч)</span>
+            <span class="soc-phase">Ноты сердца</span>
             <span class="soc-notes">${heartStr}</span>
           </div>
           <div class="soc-note-item base">
-            <span class="soc-phase">Шлейф и база (до 24 ч)</span>
+            <span class="soc-phase">Шлейф и база</span>
             <span class="soc-notes">${baseStr}</span>
           </div>
         </div>
@@ -2117,7 +2146,7 @@ function openProductModal(itemId) {
   modalContent.innerHTML = `
     <div class="modal-grid">
       <div class="modal-img-col">
-        <img class="modal-main-img" src="${escapeHtml(safeImgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${safeObjPos};" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
+        <img class="modal-main-img${item.category === 'analog' ? ' modal-main-img--analog' : ''}" src="${escapeHtml(safeImgUrl)}" alt="${escapeHtml(item.name)}" style="object-position: ${safeObjPos};" onerror="this.onerror=null;this.src='assets/images/noroot.png';">
         <div style="background: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: var(--radius-sm); padding: 1rem; font-size: 0.8rem; color: var(--text-muted);">
           <div style="color: #111216; font-weight: 600; margin-bottom: 0.25rem;">Гарантия оригинальности</div>
           100% оригинальный парфюм из официального флакона бренда. Разливается в стерильные стеклянные атомайзеры с металлической помпой.
@@ -2142,14 +2171,21 @@ function openProductModal(itemId) {
               ${escapeHtml(currentVol === 'bottle' ? 'полноразмерный флакон' : 'отливант ' + currentVol)}
             </div>
           </div>
-          <button class="btn-primary" id="modalAddToCartBtn" style="padding: 0.9rem 1.6rem; white-space: nowrap;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 0 1-8 0"/>
-            </svg>
-            Добавить в корзину
-          </button>
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <button type="button" class="modal-fav-btn ${((typeof getWishlist === 'function') && getWishlist().includes(item.id)) ? 'active' : ''}" id="modalFavBtn" data-perfume-id="${escapeHtml(item.id)}" aria-label="В избранное" title="В избранное">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="${((typeof getWishlist === 'function') && getWishlist().includes(item.id)) ? '#812020' : 'none'}" stroke="${((typeof getWishlist === 'function') && getWishlist().includes(item.id)) ? '#812020' : '#4A4543'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </button>
+            <button class="btn-primary" id="modalAddToCartBtn" style="padding: 0.9rem 1.6rem; white-space: nowrap;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              Добавить в корзину
+            </button>
+          </div>
         </div>
 
         <div class="modal-concierge-row">
@@ -2185,6 +2221,14 @@ function openProductModal(itemId) {
       playChime(440);
     });
   });
+
+  const modalFavBtn = document.getElementById('modalFavBtn');
+  if (modalFavBtn) {
+    modalFavBtn.addEventListener('click', (e) => {
+      toggleWishlist(item.id, e);
+      playChime(560);
+    });
+  }
 
   document.getElementById('modalAddToCartBtn').addEventListener('click', () => {
     addItemToCart(item, activeModalVol);
@@ -4062,6 +4106,10 @@ function toggleWishlist(perfumeId, e) {
   }
   setWishlist(list);
   updateWishlistBadges();
+
+  if (typeof currentCategory !== 'undefined' && currentCategory === 'favorites' && typeof renderCatalog === 'function') {
+    renderCatalog(false);
+  }
 }
 
 function updateWishlistBadges() {
@@ -4074,6 +4122,46 @@ function updateWishlistBadges() {
       badge.style.display = 'flex';
     } else {
       badge.style.display = 'none';
+    }
+  }
+
+  const tabFavCount = document.getElementById('tabFavCount');
+  if (tabFavCount) {
+    if (count > 0) {
+      tabFavCount.textContent = count;
+      tabFavCount.style.display = 'inline-flex';
+    } else {
+      tabFavCount.style.display = 'none';
+    }
+  }
+
+  document.querySelectorAll('.perfume-card').forEach(card => {
+    const pid = card.dataset.perfumeId || card.id.replace(/^card-/, '');
+    const btn = card.querySelector('.perfume-fav-btn');
+    if (btn && pid) {
+      const isFav = list.includes(pid);
+      btn.classList.toggle('active', isFav);
+      btn.setAttribute('aria-label', isFav ? 'Удалить из избранного' : 'Добавить в избранное');
+      btn.setAttribute('title', isFav ? 'Удалить из избранного' : 'В избранное');
+      const svg = btn.querySelector('svg');
+      if (svg) {
+        svg.setAttribute('fill', isFav ? '#812020' : 'none');
+        svg.setAttribute('stroke', isFav ? '#812020' : '#4A4543');
+      }
+    }
+  });
+
+  const modalFavBtn = document.getElementById('modalFavBtn');
+  if (modalFavBtn) {
+    const pid = modalFavBtn.dataset.perfumeId;
+    if (pid) {
+      const isFav = list.includes(pid);
+      modalFavBtn.classList.toggle('active', isFav);
+      const svg = modalFavBtn.querySelector('svg');
+      if (svg) {
+        svg.setAttribute('fill', isFav ? '#812020' : 'none');
+        svg.setAttribute('stroke', isFav ? '#812020' : '#4A4543');
+      }
     }
   }
 

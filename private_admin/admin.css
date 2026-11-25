@@ -1519,7 +1519,7 @@ textarea {
   padding: 4px 10px;
   border-radius: 999px;
   background: rgba(17, 18, 22, 0.84);
-  color: var(--gold);
+  color: #FAF8F5;
   font-size: 11px;
   font-weight: 700;
 }
@@ -2040,8 +2040,8 @@ textarea {
 }
 
 .vp-box-preview-shell.is-hit {
-  border-color: var(--gold-deep);
-  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.25), 0 8px 24px rgba(184, 134, 11, 0.15);
+  border-color: var(--wine);
+  box-shadow: 0 0 0 2px var(--wine-soft), 0 8px 24px rgba(129, 32, 32, 0.14);
 }
 
 .vp-preview-features-list {
@@ -2358,7 +2358,7 @@ textarea {
   border-radius: 12px;
   background: #141418;
   color: #FAF8F5;
-  border: 1px solid rgba(200, 162, 101, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: var(--shadow-lg);
   font-size: 13px;
   font-weight: 500;

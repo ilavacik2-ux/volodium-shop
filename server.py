@@ -379,7 +379,7 @@ class ChangePasswordRequest(BaseModel):
 
 
 class RotateTokenRequest(BaseModel):
-    role: str = Field(..., pattern="^(owner|assistant)$")
+    role: str = Field(..., pattern="^(owner|assistant|dev)$")
 
 
 @app.get("/api/auth/gate-status")
@@ -508,12 +508,15 @@ async def auth_get_tokens(request: Request):
     require_owner(sess)
     tokens = db.get_gateway_tokens()
     base = str(request.base_url).rstrip("/")
+    dev_tok = tokens.get("dev", "")
     return {
         "adminPath": VP_ADMIN_PATH,
         "ownerToken": tokens["owner"],
         "assistantToken": tokens["assistant"],
+        "devToken": dev_tok,
         "ownerUrl": f"{base}{VP_ADMIN_PATH}?token={tokens['owner']}",
         "assistantUrl": f"{base}{VP_ADMIN_PATH}?token={tokens['assistant']}",
+        "devUrl": f"{base}{VP_ADMIN_PATH}?token={dev_tok}" if dev_tok else "",
     }
 
 

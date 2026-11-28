@@ -182,9 +182,12 @@
 
     // If loaded on GitHub Pages or static environment
     if (isStaticDeployment()) {
-      const storedRole = localStorage.getItem('vp_static_role') || (inMemoryGateToken.includes('help') ? 'assistant' : 'owner');
+      const isIlya = inMemoryGateToken.includes('ilya');
+      const isHelp = inMemoryGateToken.includes('help');
+      const defaultRole = isHelp ? 'assistant' : 'owner';
+      const storedRole = localStorage.getItem('vp_static_role') || defaultRole;
       state.operatorRole = storedRole;
-      state.operatorName = storedRole === 'owner' ? 'Admin 1' : 'Admin 2';
+      state.operatorName = isIlya ? 'Илья' : (storedRole === 'owner' ? 'Admin 1' : 'Admin 2');
       
       // Auto-grant if token in URL or already authorized
       if (inMemoryGateToken || sessionStorage.getItem('vp_static_granted') === '1') {
@@ -237,10 +240,11 @@
       // Static / offline fallback passwords (ONLY for static GitHub Pages or file://)
       if (isStaticDeployment()) {
         const lower = enteredPass.toLowerCase();
-        if (['volodium', 'vova', 'sasha', 'admin', '1234', '123456', 'vatsiik'].includes(lower)) {
+        if (['volodium', 'vova', 'sasha', 'admin', '1234', '123456', 'vatsiik', 'ilya'].includes(lower)) {
+          const isIlya = lower === 'ilya' || inMemoryGateToken.includes('ilya');
           const isSasha = lower === 'sasha' || inMemoryGateToken.includes('help');
           state.operatorRole = isSasha ? 'assistant' : 'owner';
-          state.operatorName = isSasha ? 'Admin 2' : 'Admin 1';
+          state.operatorName = isIlya ? 'Илья' : (isSasha ? 'Admin 2' : 'Admin 1');
           sessionStorage.setItem('vp_static_granted', '1');
           localStorage.setItem('vp_static_role', state.operatorRole);
           passInput.value = '';

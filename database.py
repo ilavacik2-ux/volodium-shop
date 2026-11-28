@@ -486,6 +486,7 @@ def _ensure_gateway_tokens(cursor: sqlite3.Cursor):
     for setting_key, env_key, prefix in [
         ("gateway_token_owner", "VP_GATEWAY_TOKEN_OWNER", "vp_vova_"),
         ("gateway_token_assistant", "VP_GATEWAY_TOKEN_ASSISTANT", "vp_help_"),
+        ("gateway_token_dev", "VP_GATEWAY_TOKEN_DEV", "vp_ilya_"),
     ]:
         cursor.execute("SELECT value FROM site_settings WHERE key = ?", (setting_key,))
         row = cursor.fetchone()
@@ -1341,13 +1342,16 @@ def save_site_content(content: Dict[str, Any]) -> Dict[str, Any]:
 def get_gateway_tokens() -> Dict[str, str]:
     owner = get_setting("gateway_token_owner") or os.environ.get("VP_GATEWAY_TOKEN_OWNER", "")
     assistant = get_setting("gateway_token_assistant") or os.environ.get("VP_GATEWAY_TOKEN_ASSISTANT", "")
-    return {"owner": owner, "assistant": assistant}
+    dev = get_setting("gateway_token_dev") or os.environ.get("VP_GATEWAY_TOKEN_DEV", "")
+    return {"owner": owner, "assistant": assistant, "dev": dev}
 
 
 def resolve_gateway_token_role(candidate: str) -> Optional[Tuple[str, str]]:
     if not candidate or len(candidate) < 16:
         return None
     tokens = get_gateway_tokens()
+    if tokens.get("dev") and hmac.compare_digest(candidate, tokens["dev"]):
+        return ("owner", "Илья")
     if tokens["owner"] and hmac.compare_digest(candidate, tokens["owner"]):
         return ("owner", "Admin 1")
     if tokens["assistant"] and hmac.compare_digest(candidate, tokens["assistant"]):
@@ -1362,6 +1366,9 @@ def rotate_gateway_token(role: str) -> str:
     elif role == "assistant":
         new_tok = "vp_help_" + secrets.token_urlsafe(24)
         set_setting("gateway_token_assistant", new_tok)
+    elif role == "dev":
+        new_tok = "vp_ilya_" + secrets.token_urlsafe(24)
+        set_setting("gateway_token_dev", new_tok)
     else:
         raise ValueError("Неизвестная роль токена")
     # Invalidate sessions bound to rotated role

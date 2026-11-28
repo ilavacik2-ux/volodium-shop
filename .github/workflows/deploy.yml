@@ -34,17 +34,10 @@ jobs:
               ./venv/bin/pip install --quiet -r requirements.txt
             fi
 
-            # Sync Tilda catalog into SQLite DB and regenerate perfumes.js
-            ./venv/bin/python scripts/sync_tilda_catalog.py || echo "Catalog sync finished with warning, continuing..."
-
-            # Ensure proper file permissions and SQLite read/write access for www-data
-            chown -R www-data:www-data /var/www/volodium
-            chmod 775 /var/www/volodium
-            chmod 664 /var/www/volodium/volodium_database.db* || true
-            chmod -R u+rwX,g+rwX /var/www/volodium/assets/uploads || true
-
-            # Unban any rate-limited IPs from fail2ban if active
-            fail2ban-client unban --all 2>/dev/null || true
+            # Ensure proper file permissions
+            chown -R www-data:www-data /var/www/volodium || true
+            chmod 775 /var/www/volodium || true
+            chmod 664 /var/www/volodium/volodium_database.db* 2>/dev/null || true
 
             # Restart the service
             systemctl restart volodium

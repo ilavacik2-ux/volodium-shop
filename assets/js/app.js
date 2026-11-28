@@ -52,6 +52,9 @@ function resolveSafeMediaUrl(raw, fallback = 'assets/images/noroot.png') {
   const s = String(raw || '').trim();
   if (!s) return fallback;
   if (/^(javascript|vbscript|data:text\/html):/i.test(s)) return fallback;
+  if (s.includes('assets/uploads/perfumes/') && !s.includes('?')) {
+    return s + '?v=20261128_v1';
+  }
   return s;
 }
 

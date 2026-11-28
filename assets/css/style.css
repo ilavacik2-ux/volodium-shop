@@ -1625,7 +1625,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 0.75rem;
+  padding: 0.35rem;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -5994,10 +5994,13 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1001;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition-smooth);
+  overscroll-behavior: contain;
+  touch-action: none;
 }
 
 .cart-drawer-backdrop.active {
@@ -6023,6 +6026,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   flex-direction: column;
   box-shadow: -15px 0 50px rgba(0, 0, 0, 0.12);
   overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .cart-drawer-backdrop.active .cart-drawer {
@@ -6108,6 +6112,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
 }
@@ -6496,16 +6501,49 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   gap: 0.45rem;
   padding: 0.5rem 0.55rem;
   background: #ffffff;
-  border: 1px solid rgba(17, 18, 22, 0.1);
+  border: 1.5px solid rgba(17, 18, 22, 0.1);
   border-radius: 9px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  appearance: none;
+  font: inherit;
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  width: 100%;
 }
 
 .ccs-badge:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   border-color: rgba(129, 32, 32, 0.35);
+}
+
+.ccs-badge.active {
+  background: #FFFBF7 !important;
+  border-color: var(--bordo-primary, #812020) !important;
+  box-shadow: 0 3px 12px rgba(129, 32, 32, 0.16) !important;
+}
+
+.ccs-badge.active::after {
+  content: '✓';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--bordo-primary, #812020);
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }
 
 .ccs-badge-info {
@@ -6981,6 +7019,10 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
   margin-bottom: 0.25rem;
 }
 
+.footer-requisites-bar {
+  display: none !important;
+}
+
 .footer-legal-link {
   color: #6E6760;
   font-size: 0.8rem;
@@ -7449,10 +7491,10 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     background: #ffffff !important;
   }
   .card-img-wrap {
-    height: 150px;
+    height: 175px;
     margin-bottom: 0.65rem;
-    padding: 0.25rem;
-    border-radius: 10px;
+    padding: 0.15rem;
+    border-radius: 12px;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -7460,7 +7502,7 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     border: none !important;
   }
   .card-img-wrap img {
-    padding: 0.25rem;
+    padding: 0.15rem;
     max-width: 100% !important;
     max-height: 100% !important;
     object-fit: contain !important;
@@ -7614,11 +7656,13 @@ body.hero-cinematic-active .menu-toggle-btn .burger-line {
     gap: 1.25rem;
   }
   .modal-main-img {
-    max-height: 220px;
+    max-height: 280px;
+    width: 100%;
     aspect-ratio: 1;
     margin: 0 auto;
     display: block;
-    padding: 0.25rem;
+    padding: 0.15rem;
+    object-fit: contain;
     background: #ffffff !important;
     border: none !important;
   }
@@ -13237,9 +13281,12 @@ button, a, input, select, textarea, [role="button"] {
   }
 
   .modal-main-img {
-    max-height: 200px !important;
+    max-height: 280px !important;
+    width: 100% !important;
     aspect-ratio: 1 !important;
     margin: 0 auto !important;
+    padding: 0.15rem !important;
+    object-fit: contain !important;
     background: #ffffff !important;
     border: none !important;
   }
@@ -13297,9 +13344,16 @@ button, a, input, select, textarea, [role="button"] {
   }
 
   .card-img-wrap {
-    height: 135px !important;
+    height: 175px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .card-img-wrap img {
+    padding: 0.15rem !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
   }
 
   .card-title {
@@ -15246,7 +15300,16 @@ body.hero-cinematic-active .header .trigger-cart svg {
     background: radial-gradient(130% 120% at 85% 20%, #3D2714 0%, #1D1106 60%, #0C0602 100%) !important;
   }
 
+  .acc-bg-analogs {
+    background:
+      linear-gradient(to right, #18110B 0%, rgba(24, 17, 11, 0.88) 42%, rgba(24, 17, 11, 0.3) 70%, rgba(24, 17, 11, 0) 100%),
+      url('../images/perfumes/cat_analogs_clean.jpg') right center / cover no-repeat !important;
+  }
+
   .acc-panel.acc-panel-boxes {
+    grid-column: 1 / -1 !important;
+    aspect-ratio: auto !important;
+    min-height: 142px !important;
     border: 1px solid rgba(255, 255, 255, 0.09) !important;
     box-shadow: 0 8px 24px -4px rgba(20, 15, 12, 0.25) !important;
   }

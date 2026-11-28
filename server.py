@@ -882,6 +882,13 @@ async def admin_upload_image(
     target_dir = UPLOADS_DIR / safe_folder
     target_dir.mkdir(parents=True, exist_ok=True)
 
+    if safe_folder == "perfumes":
+        try:
+            from scripts.normalize_perfume_images import normalize_image_bytes
+            content = normalize_image_bytes(content, ext)
+        except Exception:
+            pass
+
     fname = f"vp_{int(time.time())}_{secrets.token_hex(6)}{ext}"
     out_path = target_dir / fname
     out_path.write_bytes(content)

@@ -168,6 +168,12 @@ def download_image(img_url: str, dest_dir: str, file_stem: str, dry_run: bool = 
         return rel_path
     if not os.path.exists(abs_path):
         data = fetch_url(img_url, timeout=25)
+        if "perfumes" in dest_dir:
+            try:
+                from scripts.normalize_perfume_images import normalize_image_bytes
+                data = normalize_image_bytes(data, ext)
+            except Exception:
+                pass
         with open(abs_path, "wb") as f:
             f.write(data)
     return rel_path
@@ -309,7 +315,7 @@ def main():
                     "name": name,
                     "fullTitle": title,
                     "gender": gender,
-                    "category": "perfume",
+                    "category": "analog" if ("дюп" in descr.lower() or "аналог" in descr.lower()) else "perfume",
                     "notesFamily": notes_family,
                     "image": rel_img or img_url,
                     "objectPosition": "center center",

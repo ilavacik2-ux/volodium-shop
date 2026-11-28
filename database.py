@@ -481,6 +481,33 @@ def init_db():
         _ensure_gateway_tokens(cursor)
         conn.commit()
 
+        # Ensure analog category is set for clone / dupe fragrances
+        _ensure_analog_categories(cursor)
+        conn.commit()
+
+
+ANALOG_PERFUME_IDS = (
+    "vp-580504102842", "vp-367678801132", "vp-712050604863", "vp-691614364143",
+    "vp-628965627023", "vp-821724811243", "vp-617975838433", "vp-701438056923",
+    "vp-186855034313", "vp-278040044553", "vp-788779700383", "vp-936867566983",
+    "vp-996317922373", "vp-108899118713", "vp-557884131193", "vp-330909733173",
+    "vp-726238053613", "vp-322799266663", "vp-922480490863", "vp-466447289153",
+    "vp-538915269073", "vp-998703134163", "vp-831548517373", "vp-706020708063",
+    "vp-129923921213", "vp-115205234663", "vp-311081379343", "vp-416843091913",
+    "vp-388748921403",
+)
+
+
+def _ensure_analog_categories(cursor: sqlite3.Cursor):
+    placeholders = ",".join("?" for _ in ANALOG_PERFUME_IDS)
+    cursor.execute(
+        f"UPDATE perfumes SET category = 'analog' WHERE id IN ({placeholders}) AND category != 'analog'",
+        ANALOG_PERFUME_IDS,
+    )
+    cursor.execute(
+        "UPDATE perfumes SET category = 'analog' WHERE LOWER(description) LIKE '%дюп%' AND category != 'analog'"
+    )
+
 
 def _ensure_gateway_tokens(cursor: sqlite3.Cursor):
     for setting_key, env_key, prefix in [

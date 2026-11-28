@@ -1964,13 +1964,50 @@ function buildProductUrl(item) {
 window.findStorefrontItem = findStorefrontItem;
 window.buildProductUrl = buildProductUrl;
 
-function openProductModal(itemId) {
+function syncModalAddressBar(item, isOpening) {
+  if (typeof window === 'undefined' || !window.history) return;
+  if (!window._defaultPageTitle) {
+    window._defaultPageTitle = document.title || 'VOLODIUM PARFUM';
+  }
+
+  if (isOpening && item) {
+    const isBox = item.category === 'box';
+    const queryKey = isBox ? 'box' : 'scent';
+    const queryVal = encodeURIComponent(item.id);
+    const loc = window.location;
+    const cleanPath = (loc && loc.pathname) ? loc.pathname : '/catalog.html';
+    const newUrl = cleanPath + '?' + queryKey + '=' + queryVal;
+
+    const itemTitle = (item.brand ? (item.brand + ' — ') : '') + item.name + ' | VOLODIUM PARFUM';
+    try {
+      window.history.pushState({ modalOpen: true, itemId: item.id }, '', newUrl);
+      document.title = itemTitle;
+    } catch (_) {}
+  } else {
+    const loc = window.location;
+    const cleanPath = (loc && loc.pathname) ? loc.pathname : '/catalog.html';
+    const hash = (loc && loc.hash) ? loc.hash : '';
+    const cleanUrl = cleanPath + hash;
+    try {
+      window.history.replaceState({ modalOpen: false }, '', cleanUrl);
+      if (window._defaultPageTitle) {
+        document.title = window._defaultPageTitle;
+      }
+    } catch (_) {}
+  }
+}
+
+function openProductModal(itemId, updateUrl = true) {
   const item = findStorefrontItem(itemId);
   if (!item) return;
 
   const modalBackdrop = document.getElementById('productModalBackdrop');
   const modalContent = document.getElementById('productModalContent');
   if (!modalBackdrop || !modalContent) return;
+
+  if (updateUrl) {
+    syncModalAddressBar(item, true);
+  }
 
   // Custom dedicated modal layout for Aromaboxes
   if (item.category === 'box') {
@@ -2330,13 +2367,27 @@ function openProductModal(itemId) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeProductModal() {
+function closeProductModal(updateUrl = true) {
   const modalBackdrop = document.getElementById('productModalBackdrop');
   if (modalBackdrop) {
     modalBackdrop.classList.remove('active');
     document.body.style.overflow = '';
   }
+  if (updateUrl) {
+    syncModalAddressBar(null, false);
+  }
 }
+
+// Handle browser Back / Forward buttons and mobile swipe gestures
+window.addEventListener('popstate', (e) => {
+  const modalBackdrop = document.getElementById('productModalBackdrop');
+  const isModalActive = modalBackdrop && modalBackdrop.classList.contains('active');
+  if (e.state && e.state.modalOpen && e.state.itemId) {
+    openProductModal(e.state.itemId, false);
+  } else if (isModalActive) {
+    closeProductModal(false);
+  }
+});
 
 // Share scent via Web Share API or Clipboard fallback
 function shareScent(itemId) {
@@ -3254,11 +3305,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeLegalDoc();
-    const productModal = document.getElementById('productModalBackdrop');
-    if (productModal && productModal.classList.contains('active')) {
-      productModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    closeProductModal();
     const checkoutModal = document.getElementById('checkoutModalBackdrop');
     if (checkoutModal && checkoutModal.classList.contains('active')) {
       checkoutModal.classList.remove('active');

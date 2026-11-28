@@ -74,4 +74,41 @@ assert(sisuUrl.indexOf('scent=vp-501166132292') !== -1, 'Expected scent query pa
 var boxUrl = buildProductUrl(box);
 assert(boxUrl.indexOf('box=') !== -1, 'Expected box query param in: ' + boxUrl);
 
-print('All Task 1 tests passed successfully!');
+print('Testing Task 2: openProductModal and closeProductModal history sync...');
+var pushedUrls = [];
+var replacedUrls = [];
+window.history.pushState = function(state, title, url) {
+  pushedUrls.push({ state: state, title: title, url: url });
+  window.location.search = url.split('?')[1] ? ('?' + url.split('?')[1]) : '';
+};
+window.history.replaceState = function(state, title, url) {
+  replacedUrls.push({ state: state, title: title, url: url });
+  window.location.search = url.split('?')[1] ? ('?' + url.split('?')[1]) : '';
+};
+
+var mockBackdrop = { classList: { add: function() {}, remove: function() {}, contains: function() { return false; } } };
+var mockContent = { innerHTML: '', querySelectorAll: function() { return []; } };
+document.getElementById = function(id) {
+  if (id === 'productModalBackdrop') return mockBackdrop;
+  if (id === 'productModalContent') return mockContent;
+  return {
+    addEventListener: function() {},
+    classList: { add: function() {}, remove: function() {}, contains: function() { return false; } },
+    style: {}
+  };
+};
+
+// Open perfume modal
+openProductModal('vp-501166132292');
+assert(pushedUrls.length > 0, 'pushState should be called when opening modal');
+var lastPush = pushedUrls[pushedUrls.length - 1];
+assert(lastPush.url.indexOf('scent=vp-501166132292') !== -1, 'pushState URL should contain scent=vp-501166132292, got: ' + lastPush.url);
+assert(document.title.indexOf('Sisu') !== -1, 'document.title should contain Sisu, got: ' + document.title);
+
+// Close modal
+closeProductModal();
+assert(replacedUrls.length > 0, 'replaceState should be called when closing modal');
+var lastReplace = replacedUrls[replacedUrls.length - 1];
+assert(lastReplace.url.indexOf('scent=') === -1, 'replaceState URL should NOT contain scent=, got: ' + lastReplace.url);
+
+print('All Task 1 & Task 2 tests passed successfully!');

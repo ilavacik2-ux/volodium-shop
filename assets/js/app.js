@@ -1876,9 +1876,96 @@ function formatPerfumeDescription(desc) {
 /* ==========================================================================
    3. Olfactory Pyramid & Product Details Modal
    ========================================================================== */
+function getAllStorefrontItems() {
+  const p = (typeof PERFUMES_DATA !== 'undefined' && Array.isArray(PERFUMES_DATA)) ? PERFUMES_DATA : [];
+  const b = (typeof AROMA_BOXES_DATA !== 'undefined' && Array.isArray(AROMA_BOXES_DATA)) ? AROMA_BOXES_DATA : [];
+  const s = (typeof SECRET_BOXES_DATA !== 'undefined' && Array.isArray(SECRET_BOXES_DATA)) ? SECRET_BOXES_DATA : [];
+  return [...p, ...b, ...s];
+}
+
+function findStorefrontItem(query) {
+  if (!query) return null;
+  const raw = String(query).trim();
+  if (!raw) return null;
+
+  let decoded = raw;
+  try {
+    decoded = decodeURIComponent(raw).trim();
+  } catch (_) {}
+
+  const allItems = getAllStorefrontItems();
+  const cleanQuery = decoded.toLowerCase();
+
+  // 1. Exact match on id
+  let match = allItems.find(item => item.id && item.id.toLowerCase() === cleanQuery);
+  if (match) return match;
+
+  // 2. Match with or without 'vp-' prefix
+  if (cleanQuery.startsWith('vp-')) {
+    const noPrefix = cleanQuery.slice(3);
+    match = allItems.find(item => String(item.uid) === noPrefix || (item.id && item.id.replace(/^vp-/, '') === noPrefix));
+    if (match) return match;
+  } else {
+    const withVp = 'vp-' + cleanQuery;
+    match = allItems.find(item => item.id && item.id.toLowerCase() === withVp);
+    if (match) return match;
+  }
+
+  // 3. Match on numeric uid
+  match = allItems.find(item => String(item.uid) === cleanQuery || (item.id && item.id.replace(/\D/g, '') === cleanQuery.replace(/\D/g, '') && cleanQuery.length >= 8));
+  if (match) return match;
+
+  // 4. Match on box id without 'box-' prefix
+  if (cleanQuery.startsWith('box-')) {
+    const noBox = cleanQuery.slice(4);
+    match = allItems.find(item => item.category === 'box' && item.id && item.id.replace(/^box-/, '').toLowerCase() === noBox);
+    if (match) return match;
+  } else {
+    match = allItems.find(item => item.category === 'box' && item.id && item.id.toLowerCase() === ('box-' + cleanQuery));
+    if (match) return match;
+  }
+
+  // 5. Match by URL field or slug
+  match = allItems.find(item => {
+    if (item.url && item.url.toLowerCase().includes(cleanQuery)) return true;
+    if (item.name && item.name.toLowerCase() === cleanQuery) return true;
+    if (item.fullTitle && item.fullTitle.toLowerCase() === cleanQuery) return true;
+    return false;
+  });
+
+  return match || null;
+}
+
+function buildProductUrl(item) {
+  if (!item || !item.id) return (window.location && window.location.href) || '';
+  const isBox = item.category === 'box';
+  const paramKey = isBox ? 'box' : 'scent';
+  const paramVal = encodeURIComponent(item.id);
+
+  const loc = (typeof window !== 'undefined' && window.location) ? window.location : { origin: '', pathname: '' };
+  const origin = loc.origin || '';
+  const pathname = loc.pathname || '';
+  const currentIsCatalog = pathname.endsWith('catalog.html') || pathname.endsWith('catalog');
+  const currentIsBoxes = pathname.endsWith('boxes.html') || pathname.endsWith('boxes');
+
+  let targetPath = pathname;
+  if (!currentIsCatalog && !currentIsBoxes) {
+    targetPath = isBox ? '/boxes.html' : '/catalog.html';
+  } else if (isBox && currentIsCatalog) {
+    targetPath = '/boxes.html';
+  } else if (!isBox && currentIsBoxes) {
+    targetPath = '/catalog.html';
+  }
+
+  const cleanPath = targetPath.startsWith('/') ? targetPath : '/' + targetPath;
+  return origin + cleanPath + '?' + paramKey + '=' + paramVal;
+}
+
+window.findStorefrontItem = findStorefrontItem;
+window.buildProductUrl = buildProductUrl;
+
 function openProductModal(itemId) {
-  const allItems = [...PERFUMES_DATA, ...AROMA_BOXES_DATA, ...SECRET_BOXES_DATA];
-  const item = allItems.find(p => p.id === itemId);
+  const item = findStorefrontItem(itemId);
   if (!item) return;
 
   const modalBackdrop = document.getElementById('productModalBackdrop');

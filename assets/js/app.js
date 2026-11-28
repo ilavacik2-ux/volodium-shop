@@ -2461,13 +2461,120 @@ function initCart() {
   initCheckoutForm();
   updateCartBadge();
   renderCartDrawer();
+  selectCartMessenger('Telegram');
+
+  // Prevent background touch-scrolling through cart backdrop on mobile Safari
+  const drawerBackdrop = document.getElementById('cartDrawerBackdrop');
+  if (drawerBackdrop) {
+    drawerBackdrop.addEventListener('touchmove', (e) => {
+      if (e.target === drawerBackdrop) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  }
+
+  // Messenger Selection in Cart Drawer: click selects preferred channel without navigating
+  document.addEventListener('click', (e) => {
+    const badge = e.target.closest('.ccs-badge');
+    if (badge) {
+      e.preventDefault();
+      e.stopPropagation();
+      let m = badge.getAttribute('data-messenger');
+      if (!m) {
+        if (badge.classList.contains('tg')) m = 'Telegram';
+        else if (badge.classList.contains('wa')) m = 'WhatsApp';
+        else if (badge.classList.contains('vk')) m = 'ВКонтакте';
+      }
+      if (m) {
+        selectCartMessenger(m);
+        if (typeof playChime === 'function') playChime(620);
+      }
+    }
+  });
 }
+
+let _bodyScrollPos = 0;
+let _isScrollLocked = false;
+
+function lockBodyScroll() {
+  if (_isScrollLocked) return;
+  _bodyScrollPos = window.pageYOffset || document.documentElement.scrollTop || 0;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${_bodyScrollPos}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+  _isScrollLocked = true;
+}
+
+function unlockBodyScroll() {
+  if (!_isScrollLocked) return;
+  const cartOpen = document.getElementById('cartDrawerBackdrop')?.classList.contains('active');
+  const checkoutOpen = document.getElementById('checkoutModalBackdrop')?.classList.contains('active');
+  const productModalOpen = document.getElementById('productModalBackdrop')?.classList.contains('active');
+  const legalOpen = document.getElementById('legalModalBackdrop')?.classList.contains('active');
+  const menuOpen = document.getElementById('volodiumMobileDrawer')?.classList.contains('active');
+  if (cartOpen || checkoutOpen || productModalOpen || legalOpen || menuOpen) {
+    return;
+  }
+
+  document.body.style.removeProperty('position');
+  document.body.style.removeProperty('top');
+  document.body.style.removeProperty('left');
+  document.body.style.removeProperty('right');
+  document.body.style.removeProperty('width');
+  document.body.style.removeProperty('overflow');
+  document.documentElement.style.removeProperty('overflow');
+  window.scrollTo(0, _bodyScrollPos);
+  _isScrollLocked = false;
+}
+
+let selectedOrderMessenger = 'Telegram';
+
+function selectCartMessenger(channelName) {
+  if (!channelName) return;
+  selectedOrderMessenger = channelName;
+
+  // Sync cart drawer badges (.ccs-badge)
+  document.querySelectorAll('.ccs-badge').forEach(b => {
+    let m = b.getAttribute('data-messenger') || '';
+    if (!m) {
+      if (b.classList.contains('tg')) m = 'Telegram';
+      else if (b.classList.contains('wa')) m = 'WhatsApp';
+      else if (b.classList.contains('vk')) m = 'ВКонтакте';
+    }
+    const isMatch = m.toLowerCase() === channelName.toLowerCase();
+    b.classList.toggle('active', isMatch);
+    b.setAttribute('aria-checked', isMatch ? 'true' : 'false');
+  });
+
+  // Sync checkout modal buttons (.cms-btn)
+  const messengerButtons = document.querySelectorAll('.cms-btn');
+  messengerButtons.forEach(btn => {
+    const m = btn.getAttribute('data-messenger') || '';
+    const match = m.toLowerCase() === channelName.toLowerCase();
+    btn.classList.toggle('active', match);
+    btn.setAttribute('aria-checked', match ? 'true' : 'false');
+  });
+
+  const messengerHint = document.getElementById('checkoutMessengerHint');
+  const submitBtnText = document.getElementById('btnCheckoutSubmitText');
+  if (typeof getCheckoutMessengerMeta === 'function') {
+    const cfg = getCheckoutMessengerMeta(channelName);
+    if (messengerHint) messengerHint.textContent = cfg.hint;
+    if (submitBtnText) submitBtnText.textContent = cfg.btnText;
+  }
+}
+window.selectCartMessenger = selectCartMessenger;
 
 function openCart() {
   const drawer = document.getElementById('cartDrawerBackdrop');
   if (drawer) {
     drawer.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
+    selectCartMessenger(selectedOrderMessenger);
     renderCartDrawer();
   }
 }
@@ -2476,7 +2583,7 @@ function closeCart() {
   const drawer = document.getElementById('cartDrawerBackdrop');
   if (drawer) {
     drawer.classList.remove('active');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
   }
 }
 
@@ -2719,7 +2826,8 @@ function openCheckoutModal() {
   const backdrop = document.getElementById('checkoutModalBackdrop');
   if (backdrop) {
     backdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
+    selectCartMessenger(selectedOrderMessenger);
     const totalEl = document.getElementById('checkoutDisplayTotal');
     if (totalEl) totalEl.textContent = formatPrice(getCartTotal());
   }
@@ -2729,7 +2837,7 @@ function closeCheckoutModal() {
   const backdrop = document.getElementById('checkoutModalBackdrop');
   if (backdrop) {
     backdrop.classList.remove('active');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
   }
 }
 window.openCheckoutModal = openCheckoutModal;
@@ -2742,22 +2850,12 @@ function initCheckoutForm() {
   const messengerButtons = document.querySelectorAll('.cms-btn');
   const messengerHint = document.getElementById('checkoutMessengerHint');
   const submitBtnText = document.getElementById('btnCheckoutSubmitText');
-  let selectedMessenger = 'Telegram';
 
   if (messengerButtons.length) {
     messengerButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        messengerButtons.forEach((b) => {
-          b.classList.remove('active');
-          b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-checked', 'true');
-        selectedMessenger = btn.getAttribute('data-messenger') || 'Telegram';
-
-        const cfg = getCheckoutMessengerMeta(selectedMessenger);
-        if (messengerHint) messengerHint.textContent = cfg.hint;
-        if (submitBtnText) submitBtnText.textContent = cfg.btnText;
+        const m = btn.getAttribute('data-messenger') || 'Telegram';
+        selectCartMessenger(m);
         if (typeof playChime === 'function') playChime(620);
       });
     });
@@ -2809,7 +2907,7 @@ function initCheckoutForm() {
 -----------------------------
 Клиент: ${name}
 Телефон: ${phone}
-Канал связи: ${selectedMessenger}
+Канал связи: ${selectedOrderMessenger}
 Доставка: ${delivery}
 Адрес / ПВЗ: ${address || 'Уточнить при подтверждении'}
 ${comment ? `Пожелания: ${comment}\n` : ''}
@@ -2829,7 +2927,7 @@ ${itemsListText}
     closeCart();
 
     // Trigger messenger-specific routing using live ACTIVE_CONTACTS
-    const cfg = getCheckoutMessengerMeta(selectedMessenger);
+    const cfg = getCheckoutMessengerMeta(selectedOrderMessenger);
     cfg.send(orderText);
   });
 }
